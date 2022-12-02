@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:39:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/02 19:21:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/02 19:44:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,52 +27,14 @@
 #define WINDOW_WIDTH 500
 #define WINDOW_HEIGHT 500
 
-// void	put_pixel_image(void *mlx, void *win, int x, int y, int color);
-// this struct is just a x,y point:
-// typedef struct s_point
-// {
-// 	int	x;
-// 	int	y;
-// 	int	z;
-// 	int	color;
-// }		t_point;
-//
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}		t_point;
 
-// bressenham algorithm to draw a line:
-// void	draw_line(t_point p0, t_point p1, void *mlx, void *win)
-// {
-// 	int	dx;
-// 	int	dy;
-// 	int	sx;
-// 	int	sy;
-// 	int	err;
-// 	int	e2;
-//
-// 	dx = abs(p1.x - p0.x);
-// 	dy = abs(p1.y - p0.y);
-// 	sx = p0.x < p1.x ? 1 : -1;
-// 	sy = p0.y < p1.y ? 1 : -1;
-// 	err = (dx > dy ? dx : -dy) / 2;
-// 	while (1)
-// 	{
-// 		put_pixel_image(mlx, win, p0.x, p0.y, p0.color);
-// 		if (p0.x == p1.x && p0.y == p1.y)
-// 			break ;
-// 		e2 = err;
-// 		if (e2 > -dx)
-// 		{
-// 			err -= dy;
-// 			p0.x += sx;
-// 		}
-// 		if (e2 < dy)
-// 		{
-// 			err += dx;
-// 			p0.y += sy;
-// 		}
-// 	}
-// }
-//
-// bpp means bits per pixel
 typedef struct s_img
 {
 	void	*mlx_img;
@@ -96,6 +58,41 @@ typedef struct s_quare
 	int		total_height;
 	int		total_width;
 }			t_square;
+
+void	put_pixel_image(t_img *img, int x, int y, int color);
+
+void	bressenham(t_point p0, t_point p1, void *img)
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+
+	dx = abs(p1.x - p0.x);
+	dy = abs(p1.y - p0.y);
+	sx = p0.x < p1.x ? 1 : -1;
+	sy = p0.y < p1.y ? 1 : -1;
+	err = (dx > dy ? dx : -dy) / 2;
+	while (1)
+	{
+		put_pixel_image(img, p0.x, p0.y, p0.color);
+		if (p0.x == p1.x && p0.y == p1.y)
+			break ;
+		e2 = err;
+		if (e2 > -dx)
+		{
+			err -= dy;
+			p0.x += sx;
+		}
+		if (e2 < dy)
+		{
+			err += dx;
+			p0.y += sy;
+		}
+	}
+}
 
 void	put_pixel_image(t_img *img, int x, int y, int color)
 {
@@ -155,6 +152,8 @@ int	main(void)
 	render_square(&data, &img, WHITE, &white_square);
 	render_square(&data, &img, RED, &red_square);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.mlx_img, 0, 0);
+	bressenham((t_point){0, 0, 0, RED}, (t_point){500, 500, 0, RED}, &img);
+	bressenham((t_point){0, 500, 0, RED}, (t_point){500, 0, 0, RED}, &img);
 	mlx_key_hook(data.win_ptr, deal_key, (void *)0);
 	mlx_loop(data.mlx_ptr);
 }
