@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:14:38 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 15:44:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:52:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,22 @@
 
 void	render_line(t_point p1, t_point p2, int color, t_img *img)
 {
-	int		dx;
-	int		dy;
-	int		steps;
-	float	x_inc;
-	float	y_inc;
-	float	x;
-	float	y;
+	t_line line;
 
-	dx = p2.x - p1.x;
-	dy = p2.y - p1.y;
-	if (abs(dx) > abs(dy))
-		steps = abs(dx);
+	line.dx = p2.x - p1.x;
+	line.dy = p2.y - p1.y;
+	if (abs(line.dx) > abs(line.dy))
+		line.steps = abs(line.dx);
 	else
-		steps = abs(dy);
-	x_inc = dx / (float)steps;
-	y_inc = dy / (float)steps;
-	x = p1.x;
-	y = p1.y;
-	while (steps--)
+		line.steps = abs(line.dy);
+	line.x_inc = line.dx / (float)line.steps;
+	line.y_inc = line.dy / (float)line.steps;
+	line.x = p1.x;
+	line.y = p1.y;
+	while (line.steps--)
 	{
-		put_pixel_img(img, x, y, color);
-		x += x_inc;
-		y += y_inc;
+		put_pixel_img(img, line.x, line.y, color);
+		line.x += line.x_inc;
+		line.y += line.y_inc;
 	}
 }
