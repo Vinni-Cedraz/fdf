@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/11/25 20:01:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/03 20:40:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*reading_function(int fd);
 static char	*linebreaker(char *wth_all, size_t wth_all_len, size_t aft_or_not);
 static char	*read_one(int fd);
 
-char	*get_next_line(int fd)
+char	*ft_gnl(int fd)
 {
 	t_ools		line;
 	static char	*aftbrk[1024];
