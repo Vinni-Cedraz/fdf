@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 13:37:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:50:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,13 @@ typedef struct s_quare
 
 typedef struct s_line
 {
-	int		x0;
-	int		y0;
-	int		x1;
-	int		y1;
-	int		xdif;
-	int		ydif;
-	int		sx;
-	int		sy;
-	int		err;
-	int		e2;
+	float	x;
+	float	y;
+	float	x_inc;
+	float	y_inc;
+	int		dx;
+	int		dy;
+	int		steps;
 	int		color;
 }			t_line;
 
