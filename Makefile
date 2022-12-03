@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/02 18:40:36 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/03 13:17:42 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ MLX = mlx/libmlx.a
 LIBFT = libft/libft.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
-
 # Colors
 RED    	  	=  \033[0;91m
 GRAY      	=   \033[0;37m
@@ -29,7 +28,14 @@ YELLOW      =       \033[0;93m
 MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
-SRCS = test
+SRCS = main \
+	   open_window \
+	   render_square \
+	   render_line \
+	   put_pixel_img \
+	   event_handlers \
+	   
+		
 SRCS_PATH = srcs/
 OBJS_PATH = objs/
 
@@ -41,9 +47,8 @@ $(NAME): $(OBJS)
 	@make -C libft --no-print-directory
 	@make -C mlx --no-print-directory
 	@$(CC) $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
-	./$(NAME)
 
-$(OBJS) : $(SRCS_PATH)$(SRCS).c
+$(OBJS) : $(SRCS_PATH)*.c
 	@mkdir -p $(OBJS_PATH)
 	@for file in $(SRCS); do \
 		printf "$(CYAN)Compiling $(WHITE)$$file.c$(DEF_COLOR)\n"; \
