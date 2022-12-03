@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:38:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/02 18:55:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/03 12:19:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,8 @@ SOFTWARE.
  *
  */
 
-#ifndef _X11_KEYSYMDEF_H_
-# define _X11_KEYSYMDEF_H_
+#ifndef KEYCODES_H 
+# define KEYCODES_H
 
 # define XK_VoidSymbol                  0xffffff  /* Void symbol */
 /*

@@ -1,0 +1,22 @@
+[
+ {
+  "directory": "/home/vcedraz-/42/fdf",
+  "arguments": [
+   "cc",
+   "-O3",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I",
+   "mlx",
+   "-I",
+   "libft",
+   "-I",
+   "includes",
+   "srcs/main.c",
+   "-o",
+   "srcs/main"
+  ],
+  "file": "srcs/main.c"
+ }
+]
