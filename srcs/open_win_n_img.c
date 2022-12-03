@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:55:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 13:08:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:15:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-void	open_window(t_data *data, t_img *img)
+void	open_win_n_img(t_data *data, t_img *img)
 {
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,

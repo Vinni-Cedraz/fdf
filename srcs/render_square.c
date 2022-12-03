@@ -6,19 +6,17 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:12:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 13:18:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:10:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-void	render_square(t_data *data, t_img *img, int color, t_square *square)
+void	render_square(t_img *img, int color, t_square *square)
 {
 	int	width_start_start;
 
 	width_start_start = square->height_start;
-	if (data->win_ptr == NULL)
-		return ;
 	while (square->height_start < square->total_height)
 	{
 		square->width_start = width_start_start;
