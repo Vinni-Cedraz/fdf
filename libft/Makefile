@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/04 16:52:06 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 17:27:30 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,11 +160,6 @@ $(NAME) : $(OBJS) header_makefile
 		ar -rsc $(NAME) $$file; \
 	done
 	@for file in $(SRCS); do \
-	if [ ! -f $(NAME) ]; then \
-		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file.o\n"; \
-	fi; \
 	if [[ -z "$$(nm $(NAME) | grep $${file})" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
 		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
