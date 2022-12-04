@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/03 22:48:51 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 12:42:49 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -I mlx -I libft -I includes
 MLX = mlx/libmlx.a
-LIBFT = libft/libft_fdf.a
+LIBFT = libft/srcs_to_fdf.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -68,9 +68,10 @@ $(OBJS) : $(SRCS_PATH)*.c
 	@printf "$(CYAN)All files compiled$(DEF_COLOR)\n"
 
 clean:
-	rm -rf $(OBJS_PATH)
-	@make -C libft clean --no-print-directory
-	@make -C mlx clean --no-print-directory
+	@make clean -C mlx --no-print-directory
+	@make clean -C $(LIBFT_PATH) --no-print-directory
+	@rm -rf $(OBJS_PATH)
+	@printf "$(RED)$(OBJS_PATH)$(DEF_COLOR) $(GREEN)deleted$(DEF_COLOR)\n"
 	@rm -f vgcore*
 
 fclean: clean

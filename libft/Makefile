@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/03 22:31:52 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 12:12:11 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ NAME = libft.a
 
 NAME_BONUS = libft_bonus.a
 
-NAME_PRNTF = libft_printf.a
+NAME_PRNTF = srcs_to_printf.a
 
-NAME_FDF = libft_fdf.a
+NAME_FDF = srcs_to_fdf.a
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -O3
 
 AR = ar -rs
 
@@ -117,15 +117,15 @@ ft_strdup \
 ft_strlcat \
 ft_strjoin \
 ft_gnl \
-		
+
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 OBJSB = $(patsubst %, $(OBJSB_PATH)%.o, $(BSRCS))
 OBJS_PRNTF = $(patsubst %, $(PRNTF_OBJS_PATH)%.o, $(PRNTF_SRCS))
 OBJS_FDF = $(patsubst %, $(FDF_OBJS_PATH)%.o, $(FDF_SRCS))
-MOD_OBJ = $(shell find . -name "*.o" -type f -newer $(NAME))
-MOD_OBJB = $(shell find . -name "*.o" -type f -newer $(NAME_BONUS))
-MOD_OBJ_PRNTF = $(shell find . -name "*.o" -type f -newer $(NAME_PRNTF))
-MOD_OBJ_FDF = $(shell find . -name "*.o" -type f -newer $(NAME_FDF))
+MOD_OBJ = $(shell find . -path "./objs/*.o" -type f -newer $(NAME))
+MOD_OBJB = $(shell find . -path "./objs_bonus/*.o" -type f -newer $(NAME_BONUS))
+MOD_OBJ_PRNTF = $(shell find . -path "./objs_printf/*.o" -type f -newer $(NAME_PRNTF))
+MOD_OBJ_FDF = $(shell find . -path "./objs_fdf/*.o" -type f -newer $(NAME_FDF))
 
 all : $(NAME) 
 
@@ -137,20 +137,20 @@ srcs_to_fdf : $(NAME_FDF)
 
 $(NAME) : $(OBJS)
 	@for file in $(MOD_OBJ); do \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file\n"; \
 		ar -rsc $(NAME) $$file; \
 	done
 	@for file in $(SRCS); do \
 	if [ ! -f $(NAME) ]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME) $$file.o\n"; \
 	fi; \
 	if [[ -z "$$(nm $(NAME) | grep $${file})" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME) $$file.o\n"; \
 	fi; \
 	done
 	@if [ -f $(NAME) ]; then \
@@ -159,20 +159,20 @@ $(NAME) : $(OBJS)
 
 $(NAME_PRNTF) : $(OBJS_PRNTF)
 	@for file in $(MOD_OBJ_PRNTF); do \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_PRNTF) $$file\n"; \
 		ar -rsc $(NAME_PRNTF) $$file; \
 	done
 	@for file in $(PRNTF_SRCS); do \
 	if [ ! -f $(NAME_PRNTF) ]; then \
 		ar -rsc $(NAME_PRNTF) $(PRNTF_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_PRNTF) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_PRNTF) $$file.o\n"; \
 	fi; \
 	if [[ -z "$$(nm $(NAME_PRNTF) | grep $${file})" ]]; then \
 		ar -rsc $(NAME_PRNTF) $(PRNTF_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_PRNTF) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_PRNTF) $$file.o\n"; \
 	fi; \
 	done
 	@if [ -f $(NAME_PRNTF) ]; then \
@@ -181,20 +181,20 @@ $(NAME_PRNTF) : $(OBJS_PRNTF)
 
 $(NAME_FDF) : $(OBJS_FDF)
 	@for file in $(MOD_OBJ_FDF); do \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_FDF) $$file\n"; \
 		ar -rsc $(NAME_FDF) $$file; \
 	done
 	@for file in $(FDF_SRCS); do \
 	if [ ! -f $(NAME_FDF) ]; then \
 		ar -rsc $(NAME_FDF) $(FDF_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_FDF) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_FDF) $$file.o\n"; \
 	fi; \
 	if [[ -z "$$(nm $(NAME_FDF) | grep $${file})" ]]; then \
 		ar -rsc $(NAME_FDF) $(FDF_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_FDF) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_FDF) $$file.o\n"; \
 	fi; \
 	done
 	@if [ -f $(NAME_FDF) ]; then \
@@ -204,20 +204,20 @@ $(NAME_FDF) : $(OBJS_FDF)
 $(NAME_BONUS) : $(NAME) $(OBJSB)
 	@cp $(NAME) $(NAME_BONUS)
 	@for file in $(MOD_OBJB); do \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_BONUS) $$file\n"; \
 		ar -rsc $(NAME_BONUS) $$file; \
 	done
 	@for file in $(BSRCS); do \
 	if [ ! -f $(NAME_BONUS) ]; then \
 		ar -rsc $(NAME_BONUS) $(OBJSB_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_BONUS) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_BONUS) $$file.o\n"; \
 	fi; \
 	if [[ -z "$$(nm $(NAME_BONUS) | grep $${file})" ]]; then \
 		ar -rsc $(NAME_BONUS) $(OBJSB_PATH)$$file.o; \
-		printf "\n$(CYAN)linking: $(WHITE)$$file$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_BONUS) $$file\n"; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_BONUS) $$file.o\n"; \
 	fi; \
 	done
 	@if [ -f $(NAME_BONUS) ]; then \
@@ -247,7 +247,7 @@ FDF_LOOP :
 		printf "$(CYAN)Compiling $(WHITE)$$file.c...$(DEF_COLOR)\n"; \
 		$(CC) $(CFLAGS) -c $$file.c -o $(FDF_OBJS_PATH)$$file.o; \
 		printf "$(CC) $(CFLAGS) -c $$file.c -o $(FDF_OBJS_PATH)$$file.o$(DEF_COLOR)\n"; \
-		printf "$(WHITE)$$file.c $(GREEN)OK$(DEF_COLOR)\n"; \
+		printf "$(WHITE)$$file.c $(GREEN)OK$(DEF_COLOR)\n\n"; \
 	fi; \
 	done
 
@@ -305,4 +305,3 @@ fclean : clean
 re : fclean all
 
 phony : all clean fclean re bonus printf
-
