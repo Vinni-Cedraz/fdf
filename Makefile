@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/04 12:42:49 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 16:55:42 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,23 @@ SRCS = main \
 	   put_pixel_img \
 	   event_handlers \
 
-LIBFT_SRCS = ft_memchr \
+FDF_SRCS = ft_memchr \
+		   ft_strchr \
 			 ft_strlen \
 			 ft_memcpy \
+			 ft_memmove \
+			 ft_memset \
 			 ft_strdup \
+			 ft_strlcpy \
+			 ft_free_arr \
+			 ft_word_counter \
+			 ft_calloc \
+		     ft_strlcat \
+			 ft_atoi \
+			 ft_split \
 			 ft_strjoin \
-			 ft_gnl \
-		
+			 ft_substr \
+
 SRCS_PATH = srcs/
 LIBFT_PATH = libft/
 OBJS_PATH = objs/
