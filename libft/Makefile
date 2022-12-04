@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/04 12:12:11 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 16:52:06 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME_PRNTF = srcs_to_printf.a
 
 NAME_FDF = srcs_to_fdf.a
 
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra -g
 
 AR = ar -rs
 
@@ -48,6 +48,11 @@ WHITE = \033[0;97m
 
 SRCS = ft_atoi \
 ft_free_arr \
+ft_isalnum \
+ft_isalpha \
+ft_isascii \
+ft_isdigit \
+ft_isprint \
 ft_memchr \
 ft_memcmp \
 ft_putchar \
@@ -56,12 +61,7 @@ ft_strlen \
 ft_strncmp \
 ft_word_counter \
 ft_abs \
-ft_isalpha \
-ft_isascii \
-ft_isdigit \
-ft_isprint \
 ft_memcpy \
-ft_memorylen \
 ft_memset \
 ft_numlen \
 ft_putstr \
@@ -80,7 +80,7 @@ ft_strchr \
 ft_strmapi \
 ft_strnstr \
 ft_calloc \
-ft_isalnum \
+ft_memorylen \
 ft_strdup \
 ft_strlcat \
 ft_itoa_base \
@@ -108,15 +108,23 @@ ft_memset \
 ft_calloc \
 ft_itoa_base \
 
-FDF_SRCS = ft_strlen \
-ft_memchr \
-ft_memcpy \
-ft_memmove \
-ft_strlcpy \
-ft_strdup \
-ft_strlcat \
-ft_strjoin \
-ft_gnl \
+FDF_SRCS = ft_memchr \
+		   ft_strchr \
+			 ft_strlen \
+			 ft_memcpy \
+			 ft_memmove \
+			 ft_memset \
+			 ft_strdup \
+			 ft_strlcpy \
+			 ft_free_arr \
+			 ft_word_counter \
+			 ft_calloc \
+		     ft_strlcat \
+			 ft_atoi \
+			 ft_split \
+			 ft_strjoin \
+			 ft_substr \
+			 ft_gnl \
 
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 OBJSB = $(patsubst %, $(OBJSB_PATH)%.o, $(BSRCS))
@@ -126,6 +134,8 @@ MOD_OBJ = $(shell find . -path "./objs/*.o" -type f -newer $(NAME))
 MOD_OBJB = $(shell find . -path "./objs_bonus/*.o" -type f -newer $(NAME_BONUS))
 MOD_OBJ_PRNTF = $(shell find . -path "./objs_printf/*.o" -type f -newer $(NAME_PRNTF))
 MOD_OBJ_FDF = $(shell find . -path "./objs_fdf/*.o" -type f -newer $(NAME_FDF))
+MOD_MK = $(shell find . -name "Makefile" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
+MOD_H = $(shell find . -name "*.h" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
 
 all : $(NAME) 
 
@@ -135,7 +145,15 @@ srcs_to_printf : $(NAME_PRNTF)
 
 srcs_to_fdf : $(NAME_FDF)
 
-$(NAME) : $(OBJS)
+header_makefile:
+	@if [ -n "$(MOD_MK)" ] || [ -n "$(MOD_H)" ]; then \
+		printf "$(WHITE)EITHER A$(CYAN) HEADER FILE $(WHITE)OR A$(CYAN) MAKEFILE $(WHITE)HAVE BEEN MODIFIED...\nPROJECT HAS TO BE RECOMPILED\n$(DEF_COLOR)"; \
+		sleep 3; \
+		printf "$(WHITE)Now you should run $(CYAN)\"make re\" followed by the rule of your project $(WHITE)to remake everything!\n$(DEF_COLOR)"; \
+		sleep 2; \
+	fi
+
+$(NAME) : $(OBJS) header_makefile
 	@for file in $(MOD_OBJ); do \
 		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file\n"; \
@@ -153,11 +171,8 @@ $(NAME) : $(OBJS)
 		printf "ar -rsc $(NAME) $$file.o\n"; \
 	fi; \
 	done
-	@if [ -f $(NAME) ]; then \
-		printf "\n$(RED)$(NAME) $(WHITE)created$(DEF_COLOR)\n"; \
-	fi
 
-$(NAME_PRNTF) : $(OBJS_PRNTF)
+$(NAME_PRNTF) : $(OBJS_PRNTF) header_makefile
 	@for file in $(MOD_OBJ_PRNTF); do \
 		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_PRNTF) $$file\n"; \
@@ -175,11 +190,8 @@ $(NAME_PRNTF) : $(OBJS_PRNTF)
 		printf "ar -rsc $(NAME_PRNTF) $$file.o\n"; \
 	fi; \
 	done
-	@if [ -f $(NAME_PRNTF) ]; then \
-		printf "\n$(RED)$(NAME_PRNTF) $(WHITE)created$(DEF_COLOR)\n"; \
-	fi
 
-$(NAME_FDF) : $(OBJS_FDF)
+$(NAME_FDF) : $(OBJS_FDF) header_makefile
 	@for file in $(MOD_OBJ_FDF); do \
 		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_FDF) $$file\n"; \
@@ -197,11 +209,8 @@ $(NAME_FDF) : $(OBJS_FDF)
 		printf "ar -rsc $(NAME_FDF) $$file.o\n"; \
 	fi; \
 	done
-	@if [ -f $(NAME_FDF) ]; then \
-		printf "\n$(RED)$(NAME_FDF) $(WHITE)created$(DEF_COLOR)\n"; \
-	fi
 
-$(NAME_BONUS) : $(NAME) $(OBJSB)
+$(NAME_BONUS) : $(NAME) $(OBJSB) header_makefile
 	@cp $(NAME) $(NAME_BONUS)
 	@for file in $(MOD_OBJB); do \
 		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
@@ -220,9 +229,6 @@ $(NAME_BONUS) : $(NAME) $(OBJSB)
 		printf "ar -rsc $(NAME_BONUS) $$file.o\n"; \
 	fi; \
 	done
-	@if [ -f $(NAME_BONUS) ]; then \
-		printf "\n$(RED)$(NAME_BONUS) $(WHITE)created$(DEF_COLOR)\n"; \
-	fi
 
 $(OBJS_PATH)%.o : %.c
 	@printf "\n$(YELLOW)Compiling All libft Sources...$(DEF_COLOR)\n"
@@ -299,9 +305,33 @@ clean_printf:
 	@rm -f a.out
 	@printf "$(RED)Printf Objects From Libft Removed$(DEF_COLOR)\n"
 
+clean_fdf:
+	@rm -rf $(FDF_OBJS_PATH)
+	@rm -f a.out
+	@printf "$(RED)FDF Objects From Libft Removed$(DEF_COLOR)\n"
+
+clean_bonus :
+	@rm -rf $(OBJSB_PATH)
+	@printf "$(RED)Bonus Objects From Libft Removed$(DEF_COLOR)\n"
+
 fclean : clean
-	$(RM) *.a
+	$(RM) $(NAME)
+
+fclean_printf : clean_printf
+	$(RM) $(NAME_PRNTF)
+
+fclean_fdf : clean_fdf
+	$(RM) $(NAME_FDF)
+
+fclean_bonus : clean_bonus
+	$(RM) $(NAME_BONUS)
 
 re : fclean all
+
+re_printf : fclean_printf srcs_to_printf
+
+re_fdf : fclean_fdf srcs_to_fdf
+
+re_bonus : fclean_bonus srcs_to_bonus
 
 phony : all clean fclean re bonus printf
