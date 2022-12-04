@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/04 16:55:42 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 20:21:37 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,20 +62,23 @@ LIBFT_OBJS = $(patsubst %, $(LIBFT_OBJS_PATH)%.o, $(LIBFT_SRCS))
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT_OBJS)
-	@make -C mlx --no-print-directory
+make_mlx:
+		@make -C mlx --no-print-directory
+
+make_libft:
+	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
+
+$(NAME): $(OBJS) make_mlx make_libft
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 
-$(OBJS) : $(SRCS_PATH)*.c
-	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH)
-	@for file in $(SRCS); do \
-		printf "$(CYAN)Compiling $(WHITE)$$file.c$(DEF_COLOR)\n"; \
-		$(CC) $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o; \
-		printf "$(GRAY)$(CC) $(CFLAGS) -c $$file.c -o $$file.o$(DEF_COLOR)\n"; \
-		printf "$(WHITE)$$file$(DEF_COLOR) $(GREEN)OK$(DEF_COLOR)\n"; \
+	@make LOOP --no-print-directory
+
+LOOP: 
+	@for i in $(SRCS); do \
+		$(CC) $(CFLAGS) -c $(SRCS_PATH)$$i.c -o $(OBJS_PATH)$$i.o; \
 	done
-	@printf "$(CYAN)All files compiled$(DEF_COLOR)\n"
 
 clean:
 	@make clean -C mlx --no-print-directory
