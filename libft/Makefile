@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/05 11:09:22 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/05 12:10:15 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ ft_strtrim \
 ft_substr \
 ft_gnl \
 ft_itoa \
+ft_split \
 
 BSRCS = ft_lstadd_back \
 ft_lstadd_front \
@@ -138,49 +139,45 @@ MOD_H = $(shell find . -name "*.h" -type f -newer $(NAME) || $(NAME_FDF) || $(NA
 
 all : $(NAME) 
 
-bonus : $(NAME_BONUS)
-
 srcs_to_printf : $(NAME_PRNTF)
 
 srcs_to_fdf : $(NAME_FDF)
 
-$(NAME) : $(OBJS)
+bonus : $(NAME_BONUS)
+
+all_all: all srcs_to_printf srcs_to_fdf bonus
+
+$(NAME) : $(OBJS) 
 	@printf "\n$(YELLOW)Linking Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(MOD_OBJ); do \
-		printf "\n$(CYAN)Linking $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file\n"; \
 		ar -rsc $(NAME) $$file; \
-		printf "$(GRAY)$$file.o linked to $(RED)$(NAME)$(DEF_COLOR)\n"; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(SRCS); do \
-		if [[ -z "$$(nm $(NAME) | grep $${file}:)" ]]; then \
+		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
+		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file.o\n"; \
-		printf "$(GRAY)$$file.o linked to $(RED)$(NAME)$(DEF_COLOR)\n"; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
 
 $(NAME_PRNTF) : $(OBJS_PRNTF) 
 	@printf "\n$(YELLOW)Linking Objects to Library...$(DEF_COLOR)\n";
-	@for file in $(MOD_OBJ); do \
 	@for file in $(MOD_OBJ_PRNTF); do \
-		printf "\n$(CYAN)Linking $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_PRNTF)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_PRNTF) $$file\n"; \
 		ar -rsc $(NAME_PRNTF) $$file; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(PRNTF_SRCS); do \
-	if [ ! -f $(NAME_PRNTF) ]; then \
+	if [[ -z "$$(nm $(NAME_PRNTF) | grep $${file}.o:)" ]]; then \
+		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_PRNTF)$(DEF_COLOR)\n"; \
 		ar -rsc $(NAME_PRNTF) $(PRNTF_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_PRNTF) $$file.o\n"; \
-		printf "\n$(WHITE)$$file linked to $(RED)$(NAME_PRNTF)$(DEF_COLOR)\n\n"; \
-	fi; \
-	if [[ -z "$$(nm $(NAME_PRNTF) | grep $${file})" ]]; then \
-		ar -rsc $(NAME_PRNTF) $(PRNTF_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_PRNTF) $$file.o\n"; \
-		printf "\n$(WHITE)$$file linked to $(RED)$(NAME_PRNTF)$(DEF_COLOR)\n\n"; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
 
@@ -193,13 +190,7 @@ $(NAME_FDF) : $(OBJS_FDF)
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(FDF_SRCS); do \
-	if [ ! -f $(NAME_FDF) ]; then \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME_FDF)$(DEF_COLOR)\n"; \
-		ar -rsc $(NAME_FDF) $(FDF_OBJS_PATH)$$file.o; \
-		printf "ar -rsc $(NAME_FDF) $$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
-	fi; \
-	if [[ -z "$$(nm $(NAME_FDF) | grep $${file})" ]]; then \
+	if [[ -z "$$(nm $(NAME_FDF) | grep $${file}.o:)" ]]; then \
 		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME_FDF)$(DEF_COLOR)\n"; \
 		ar -rsc $(NAME_FDF) $(FDF_OBJS_PATH)$$file.o; \
 		printf "ar -rsc $(NAME_FDF) $$file.o\n"; \
@@ -209,7 +200,6 @@ $(NAME_FDF) : $(OBJS_FDF)
 
 $(NAME_BONUS) : $(NAME) $(OBJSB) 
 	@printf "\n$(YELLOW)Linking Objects to Library...$(DEF_COLOR)\n";
-	@for file in $(MOD_OBJ); do \
 	@cp $(NAME) $(NAME_BONUS)
 	@for file in $(MOD_OBJB); do \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
@@ -218,19 +208,14 @@ $(NAME_BONUS) : $(NAME) $(OBJSB)
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(BSRCS); do \
-	if [ ! -f $(NAME_BONUS) ]; then \
-		ar -rsc $(NAME_BONUS) $(OBJSB_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_BONUS) $$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
-	fi; \
-	if [[ -z "$$(nm $(NAME_BONUS) | grep $${file})" ]]; then \
+	if [[ -z "$$(nm $(NAME_BONUS) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME_BONUS) $(OBJSB_PATH)$$file.o; \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_BONUS) $$file.o\n"; \
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
+
 
 $(OBJS_PATH)%.o : %.c
 	@printf "\n$(YELLOW)Compiling All libft Sources...$(DEF_COLOR)\n\n"
@@ -341,7 +326,7 @@ fclean :
 fclean_printf :
 	@make clean_printf --no-print-directory;
 	@if [ -f $(NAME_PRNTF) ]; then \
-		$(RM) $(NAME_PRNTF)
+		rm -f $(NAME_PRNTF); \
 		printf "$(RED)$(NAME_PRNTF) Removed$(DEF_COLOR)\n"; \
 	fi
 
