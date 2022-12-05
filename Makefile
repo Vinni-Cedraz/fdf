@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/04 22:39:01 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/05 12:02:33 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,20 +71,25 @@ make_libft:
 	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
 
 $(NAME): $(OBJS) make_mlx make_libft
+	@printf "\n$(YELLOW)Linking Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(MOD_OBJ); do \
-		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file\n"; \
 		ar -rsc $(NAME) $$file; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(SRCS); do \
-	if [[ -z "$$(nm $(NAME) | grep $${file})" ]]; then \
+		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file.o\n"; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
 	@$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(SRCS_TO_FDF) -o $(EXECUTABLE)
-	@printf "\n$(CYAN)$(CC) $(WHITE)$(MLXFLAGS) $(CFLAGS) $(RED)$(NAME) $(MLX) $(SRCS_TO_FDF) $(WHITE)-o $(CYAN)$(EXECUTABLE)$(DEF_COLOR)\n"
+	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
+	@printf "\n$(CYAN)$(CC) $(GRAY)$(MLXFLAGS) $(CFLAGS) $(RED)$(NAME) $(GRAY)mlx/$(RED)libmlx.a $(GRAY)libft/$(RED)srcs_to_fdf.a $(WHITE)-o $(GREEN)$(EXECUTABLE)$(DEF_COLOR)\n"
+	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH)
