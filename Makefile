@@ -6,16 +6,17 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/04 20:21:37 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/04 22:39:01 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
-NAME = fdf
+NAME = fdf.a
+EXECUTABLE = fdf
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -I mlx -I libft -I includes
 MLX = mlx/libmlx.a
-LIBFT = libft/srcs_to_fdf.a
+SRCS_TO_FDF = libft/srcs_to_fdf.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -28,12 +29,12 @@ YELLOW      =       \033[0;93m
 MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
-SRCS = main \
-	   open_win_n_img \
+SRCS = put_pixel_img \
 	   render_square \
 	   render_line \
-	   put_pixel_img \
 	   event_handlers \
+	   open_win_n_img \
+	   main \
 
 FDF_SRCS = ft_memchr \
 		   ft_strchr \
@@ -59,25 +60,44 @@ LIBFT_OBJS_PATH = $(LIBFT_PATH)objs_fdf/
 
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 LIBFT_OBJS = $(patsubst %, $(LIBFT_OBJS_PATH)%.o, $(LIBFT_SRCS))
+MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))
 
 all: $(NAME)
 
 make_mlx:
-		@make -C mlx --no-print-directory
+	@make -C mlx --no-print-directory
 
 make_libft:
 	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
 
 $(NAME): $(OBJS) make_mlx make_libft
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_OBJS) $(MLX) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+	@for file in $(MOD_OBJ); do \
+		printf "\n$(CYAN)linking $(WHITE)$$file$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME) $$file\n"; \
+		ar -rsc $(NAME) $$file; \
+	done
+	@for file in $(SRCS); do \
+	if [[ -z "$$(nm $(NAME) | grep $${file})" ]]; then \
+		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
+		printf "\n$(CYAN)linking $(WHITE)$$file.o$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME) $$file.o\n"; \
+	fi; \
+	done
+	@$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(SRCS_TO_FDF) -o $(EXECUTABLE)
+	@printf "\n$(CYAN)$(CC) $(WHITE)$(MLXFLAGS) $(CFLAGS) $(RED)$(NAME) $(MLX) $(SRCS_TO_FDF) $(WHITE)-o $(CYAN)$(EXECUTABLE)$(DEF_COLOR)\n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH)
 	@make LOOP --no-print-directory
 
 LOOP: 
-	@for i in $(SRCS); do \
-		$(CC) $(CFLAGS) -c $(SRCS_PATH)$$i.c -o $(OBJS_PATH)$$i.o; \
+	@for file in $(SRCS); do \
+		if [ $(SRCS_PATH)$$file.c -nt $(OBJS_PATH)$$file.o ]; then \
+			printf "$(GREEN)[$(NAME)]$(CYAN) Compiling $(WHITE)$$file.c$(DEF_COLOR)\n"; \
+			printf "$(CC) $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o\n"; \
+			$(CC) $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o; \
+			printf "$(WHITE)$$file.c$(GREEN) OK$(DEF_COLOR)\n\n"; \
+		fi; \
 	done
 
 clean:
@@ -86,8 +106,10 @@ clean:
 	@rm -rf $(OBJS_PATH)
 	@printf "$(RED)$(OBJS_PATH)$(DEF_COLOR) $(GREEN)deleted$(DEF_COLOR)\n"
 	@rm -f vgcore*
+	@rm -f a.out
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f $(EXECUTABLE)
 
 re: fclean all
