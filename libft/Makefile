@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/05 12:10:15 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/05 20:02:32 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,22 +109,22 @@ ft_calloc \
 ft_itoa_base \
 
 FDF_SRCS = ft_memchr \
-		   ft_strchr \
-			 ft_strlen \
-			 ft_memcpy \
-			 ft_memmove \
-			 ft_memset \
-			 ft_strdup \
-			 ft_strlcpy \
-			 ft_free_arr \
-			 ft_word_counter \
-			 ft_calloc \
-		     ft_strlcat \
-			 ft_atoi \
-			 ft_split \
-			 ft_strjoin \
-			 ft_substr \
-			 ft_gnl \
+ft_strchr \
+ft_strlen \
+ft_memcpy \
+ft_memmove \
+ft_memset \
+ft_strdup \
+ft_strlcpy \
+ft_free_arr \
+ft_word_counter \
+ft_calloc \
+ft_strlcat \
+ft_atoi \
+ft_split \
+ft_strjoin \
+ft_substr \
+ft_gnl \
 
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 OBJSB = $(patsubst %, $(OBJSB_PATH)%.o, $(BSRCS))
@@ -215,7 +215,6 @@ $(NAME_BONUS) : $(NAME) $(OBJSB)
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
-
 
 $(OBJS_PATH)%.o : %.c
 	@printf "\n$(YELLOW)Compiling All libft Sources...$(DEF_COLOR)\n\n"
