@@ -56,7 +56,7 @@ mlx_destroy_display.c \
 
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
-CFLAGS	= -g -I$(INC)
+CFLAGS	= -w -O3 -I$(INC)
 
 all	: $(NAME) 
 

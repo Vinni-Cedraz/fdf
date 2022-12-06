@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:52:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/04 14:27:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:01:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		deal_key(int key, t_data *data);
 
 void	open_win_n_img(t_data *data, t_img *img);
 
-void 	render_map(int fd);
+void	render_map(int fd);
 
 #endif
