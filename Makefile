@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/05 12:02:33 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/05 19:34:09 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,14 +107,15 @@ LOOP:
 
 clean:
 	@make clean -C mlx --no-print-directory
-	@make clean -C $(LIBFT_PATH) --no-print-directory
+	@make clean_fdf -C $(LIBFT_PATH) --no-print-directory
 	@rm -rf $(OBJS_PATH)
-	@printf "$(RED)$(OBJS_PATH)$(DEF_COLOR) $(GREEN)deleted$(DEF_COLOR)\n"
 	@rm -f vgcore*
 	@rm -f a.out
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(EXECUTABLE)
+	@make -C $(LIBFT_PATH) fclean_fdf --no-print-directory
+	@rm -f mlx/*.a
 
 re: fclean all
