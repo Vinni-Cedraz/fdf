@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/05 19:34:09 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/06 18:52:18 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -I mlx -I libft -I includes
-MLX = mlx/libmlx.a
-SRCS_TO_FDF = libft/srcs_to_fdf.a
+CFLAGS = -g -Wall -Wextra -Werror -I mlx -I$(LIBFT_PATH) -I includes
+MLX = mlx/libmlx_Linux.a
+SRCS_TO_FDF = $(LIBFT_PATH)/srcs_to_fdf.a
+LIBFT_PATH = lib/ft_printf_libft/libft/
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -30,6 +31,7 @@ MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
+	   render_map \
 	   render_square \
 	   render_line \
 	   event_handlers \
@@ -37,6 +39,7 @@ SRCS = put_pixel_img \
 	   main \
 
 FDF_SRCS = ft_memchr \
+		   ft_numlen \
 		   ft_strchr \
 			 ft_strlen \
 			 ft_memcpy \
@@ -54,7 +57,6 @@ FDF_SRCS = ft_memchr \
 			 ft_substr \
 
 SRCS_PATH = srcs/
-LIBFT_PATH = libft/
 OBJS_PATH = objs/
 LIBFT_OBJS_PATH = $(LIBFT_PATH)objs_fdf/
 
