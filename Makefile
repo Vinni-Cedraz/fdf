@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/07 12:41:46 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/07 13:54:57 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ EXECUTABLE = fdf
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -I mlx -I$(LIBFT_PATH) -I includes
 MLX = mlx/libmlx_Linux.a
-SRCS_TO_FDF = $(LIBFT_PATH)/srcs_to_fdf.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
+SRCS_TO_FDF = $(LIBFT_PATH)/srcs_to_fdf.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -31,6 +31,7 @@ MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
+	   render_map \
 	   render_square \
 	   render_line \
 	   event_handlers \
