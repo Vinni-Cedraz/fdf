@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/07 17:40:35 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/07 19:06:46 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -g -Wall -Wextra -Werror -I mlx -I$(LIBFT_PATH) -I includes
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
-SRCS_TO_FDF = $(LIBFT_PATH)*.a
+ARCHIVE_FROM_LIBFT = $(LIBFT_PATH)*.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -32,30 +32,30 @@ MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
-	   render_map \
-	   render_square \
-	   render_line \
-	   event_handlers \
-	   open_win_n_img \
-	   main \
+	       render_map \
+	     render_square \
+	        render_line \
+	      event_handlers \
+	       open_win_n_img \
+	                  main \
 
-FDF_SRCS = ft_memchr \
-		   ft_numlen \
-		   ft_strchr \
-			 ft_strlen \
-			 ft_memcpy \
-			 ft_memmove \
-			 ft_memset \
-			 ft_strdup \
-			 ft_strlcpy \
-			 ft_free_arr \
-			 ft_word_counter \
-			 ft_calloc \
-		     ft_strlcat \
-			 ft_atoi \
-			 ft_split \
-			 ft_strjoin \
-			 ft_substr \
+SRCS_FROM_LIBFT  = ft_memchr \
+		    		ft_numlen \
+		     		 ft_strchr \
+					  ft_strlen \
+					   ft_memcpy \
+					   ft_memmove \
+						 ft_memset \
+						  ft_strdup \
+						  ft_strlcpy \
+						  ft_free_arr \
+					   ft_word_counter \
+							  ft_calloc \
+							  ft_strlcat \
+								  ft_atoi \
+								  ft_split \
+								 ft_strjoin \
+								   ft_substr \
 
 SRCS_PATH = srcs/
 OBJS_PATH = objs/
@@ -94,7 +94,7 @@ $(NAME): $(OBJS) make_mlx make_work_in_progress
 	fi; \
 	done
 	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
-	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(SRCS_TO_FDF) -o $(EXECUTABLE)
+	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(ARCHIVE_FROM_LIBFT) -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
