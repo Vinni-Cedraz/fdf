@@ -5,11 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 13:29:52 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/06 19:00:33 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/07 12:51:53 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/07 12:52:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-// #include "../includes/includes.h"
+
+#include "includes.h"
 #include "libft.h"
 #include <stdio.h>
 

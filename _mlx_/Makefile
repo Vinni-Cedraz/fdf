@@ -19,6 +19,16 @@ ifeq ($(UNAME),FreeBSD)
 	CC = clang
 endif
 
+# Colors
+RED    	  	=  \033[0;91m
+GRAY      	=   \033[0;37m
+CYAN      	=    \033[0;96m
+WHITE     	=     \033[0;97m
+GREEN     	=      \033[0;92m
+YELLOW      =       \033[0;93m
+MAGENTA     =        \033[0;95m
+DEF_COLOR   =         \033[0;39m
+
 NAME		= libmlx.a
 NAME_UNAME	= libmlx_$(UNAME).a
 
@@ -61,7 +71,7 @@ CFLAGS	= -w -O3 -I$(INC)
 all	: $(NAME) 
 
 echo:
-	@printf "\033[32mMaking MiniLibX:\033[0m\n"
+	@printf "$(GREEN)making minilibx$(DEF_COLOR)..\n"
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)

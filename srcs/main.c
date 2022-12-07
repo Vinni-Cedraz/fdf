@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_square	white_square;
 
 	(void)argc;
+	(void)argv;
 	red_square.width_start = 125;
 	red_square.height_start = 125;
 	red_square.total_width = 375;
@@ -25,7 +26,6 @@ int	main(int argc, char **argv)
 	white_square.height_start = 0;
 	white_square.total_width = 500;
 	white_square.total_height = 500;
-	render_map(open(argv[1], O_RDONLY));
 	open_win_n_img(&data, &img);
 	render_square(&img, WHITE, &white_square);
 	render_square(&img, RED, &red_square);
