@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/07 13:54:57 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/07 17:40:35 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -I mlx -I$(LIBFT_PATH) -I includes
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
-SRCS_TO_FDF = $(LIBFT_PATH)/srcs_to_fdf.a
+PRNTF_PATH = lib/ft_printf_libft/
+SRCS_TO_FDF = $(LIBFT_PATH)*.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -72,8 +73,12 @@ make_mlx:
 make_libft:
 	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
 
-$(NAME): $(OBJS) make_mlx make_libft
-	@printf "\n$(YELLOW)Linking Objects to Library...$(DEF_COLOR)\n";
+make_work_in_progress:
+	@make bonus -C $(LIBFT_PATH) --no-print-directory
+	@make -C $(PRNTF_PATH) --no-print-directory
+
+$(NAME): $(OBJS) make_mlx make_work_in_progress
+	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(MOD_OBJ); do \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME) $$file\n"; \
@@ -84,13 +89,12 @@ $(NAME): $(OBJS) make_mlx make_libft
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file.o\n"; \
+		printf "ar -rsc $(NAME) $(OBJS_PATH)$$file.o\n"; \
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
-	@$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(SRCS_TO_FDF) -o $(EXECUTABLE)
 	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
-	@printf "\n$(CYAN)$(CC) $(GRAY)$(MLXFLAGS) $(CFLAGS) $(RED)$(NAME) $(GRAY)mlx/$(RED)libmlx.a $(GRAY)libft/$(RED)srcs_to_fdf.a $(WHITE)-o $(GREEN)$(EXECUTABLE)$(DEF_COLOR)\n"
+	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(SRCS_TO_FDF) -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
@@ -117,7 +121,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(EXECUTABLE)
-	@make -C $(LIBFT_PATH) fclean_fdf --no-print-directory
+	@make fclean -C $(PRNTF_PATH) --no-print-directory
 	@rm -f mlx/*.a
 
 re: fclean all
