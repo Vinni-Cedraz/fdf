@@ -8,7 +8,6 @@
 
 #include "includes.h"
 
-
 int	main(int argc, char **argv)
 {
 	t_img		img;
@@ -17,7 +16,7 @@ int	main(int argc, char **argv)
 	t_square	white_square;
 
 	(void)argc;
-	(void)argv;
+	// (void)argv;
 	red_square.width_start = 125;
 	red_square.height_start = 125;
 	red_square.total_width = 375;
@@ -31,7 +30,7 @@ int	main(int argc, char **argv)
 	render_square(&img, RED, &red_square);
 	render_line((t_point){0, 0, 0}, (t_point){500, 500, 0}, RED, &img);
 	render_line((t_point){500, 0, 0}, (t_point){0, 500, 0}, RED, &img);
-	// render_map(open(argv[1], O_RDONLY));
+	render_map(open(argv[1], O_RDONLY));
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.mlx_img, 0, 0);
 	mlx_key_hook(data.win_ptr, deal_key, &data);
 	mlx_loop(data.mlx_ptr);

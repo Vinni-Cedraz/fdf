@@ -6,13 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:51:53 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/07 12:52:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/07 19:55:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-#include "libft.h"
-#include <stdio.h>
 
 static void	printf_map(int map[11][19]);
 void		render_map(int fd);
@@ -51,17 +49,17 @@ static void	printf_map(int map[11][19])
 		{
 			if (ft_numlen(map[i][j]) == 1)
 			{
-				printf("  %d", map[i][j]);
+				ft_printf("  %d", map[i][j]);
 				j++;
 			}
 			else if (ft_numlen(map[i][j]) == 2)
 			{
-				printf(" %d", map[i][j]);
+				ft_printf(" %d", map[i][j]);
 				j++;
 			}
 		}
 		j = 0;
-		printf("\n");
+		ft_printf("\n");
 		i++;
 	}
 }
