@@ -5,60 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 12:51:53 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 14:54:57 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/08 19:34:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-static void	printf_map(int map[11][19]);
-void		render_map(int fd);
+typedef struct s_map
+{
+	int	i;
+	int	j;
+	int lines;
+	int numbers;
+	int	**map;
+	char *line;
+}	t_map;
+
+static void	printf_map(t_map *map);
 
 void	render_map(int fd)
 {
-	int		map[11][19];
-	char	**splitted_line;
-	t_ools	*tools;
-	char	*line;
-	int		i;
-	int		j;
+	t_split	*split;
+	t_map	map;
 
-	
-	tools = (t_ools *)ft_calloc(sizeof(t_ools), 1);
-	splitted_line = NULL;
-	i = -1;
-	j = -1;
-	while (++i < 11)
+	map.lines = 0;
+	map.numbers = -1;
+	while (1)
 	{
-		line = ft_gnl(fd);
-		splitted_line = ft_split(line, ' ');
-		while (++j < 19)
-			map[i][j] = ft_atoi(splitted_line[j]);
-		j = -1;
+		map.line = ft_gnl(fd);
+		if (!map.line)
+			break ;
+		split = ft_split(map.line, ' ');
+		free(map.line);
+		while (++map.numbers < (int)split->words)
+			map.map[map.lines][map.numbers] = ft_atoi(split->str_arr[map.numbers]);
+		map.numbers = -1;
+		map.lines++;
 	}
-	free(tools);
-	printf_map(map);
+	map.numbers = (int)split->words;
+	ft_free_arr(split->str_arr, (void **)split->str_arr);
+	printf_map(&map);
 }
-static void	printf_map(int map[11][19])
+static void	printf_map(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (i < 11)
+	while (i < map->lines)
 	{
-		while (j < 19)
+		while (j < map->numbers)
 		{
-			if (ft_numlen(map[i][j]) == 1)
+			if (ft_numlen(map->map[i][j]) == 1)
 			{
-				ft_printf("  %d", map[i][j]);
+				ft_printf("  %d", map->map[i][j]);
 				j++;
 			}
-			else if (ft_numlen(map[i][j]) == 2)
+			else if (ft_numlen(map->map[i][j]) == 2)
 			{
-				ft_printf(" %d", map[i][j]);
+				ft_printf(" %d", map->map[i][j]);
 				j++;
 			}
 		}
