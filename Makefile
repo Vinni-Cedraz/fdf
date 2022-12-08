@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/07 19:59:54 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/07 22:16:21 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))
 all: $(NAME)
 
 make_mlx:
+	@./_mlx_/cp
 	@make -C mlx --no-print-directory
 
 make_libft:
