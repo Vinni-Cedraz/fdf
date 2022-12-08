@@ -6,11 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:51:53 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 12:35:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:23:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "fdf_includes.h"
 
 static void	printf_map(int map[11][19]);
 void		render_map(int fd);

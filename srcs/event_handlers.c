@@ -6,11 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 13:15:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:23:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "fdf_includes.h"
 
 int	deal_key(int key, t_data *data)
 {

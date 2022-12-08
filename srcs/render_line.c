@@ -6,11 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:14:38 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 15:52:31 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:23:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "fdf_includes.h"
 
 void	render_line(t_point p1, t_point p2, int color, t_img *img)
 {

@@ -6,11 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:55:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/07 19:54:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:23:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#include "fdf_includes.h"
 
 void	open_win_n_img(t_data *data, t_img *img)
 {
