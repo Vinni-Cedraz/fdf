@@ -1,18 +1,18 @@
 /** ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   fdf_prototypes.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:52:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/06 18:01:26 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:47:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROTOTYPES_H
 # define PROTOTYPES_H
-# include "structs.h"
+# include "fdf_structs.h"
 
 void	put_pixel_img(t_img *img, int x, int y, int color);
 
