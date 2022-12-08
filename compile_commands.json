@@ -1,149 +1,19 @@
 [
  {
-  "directory": "/home/vcedraz-/42/fdf",
+  "directory": "/nfs/homes/vcedraz-/home/fdf",
   "arguments": [
    "cc",
-   "-g",
    "-Wall",
    "-Wextra",
    "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
+   "-Imlx",
+   "-Ilib/ft_printf_libft/includes",
+   "-Iincludes",
    "-c",
    "srcs/render_map.c",
    "-o",
    "objs/render_map.o"
   ],
   "file": "srcs/render_map.c"
- },
- {
-  "directory": "/home/vcedraz-/42/fdf",
-  "arguments": [
-   "cc",
-   "-g",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
-   "-c",
-   "srcs/main.c",
-   "-o",
-   "objs/main.o"
-  ],
-  "file": "srcs/main.c"
- },
- {
-  "directory": "/home/vcedraz-/42/fdf",
-  "arguments": [
-   "cc",
-   "-g",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
-   "-c",
-   "srcs/put_pixel_img.c",
-   "-o",
-   "objs/put_pixel_img.o"
-  ],
-  "file": "srcs/put_pixel_img.c"
- },
- {
-  "directory": "/home/vcedraz-/42/fdf",
-  "arguments": [
-   "cc",
-   "-g",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
-   "-c",
-   "srcs/render_square.c",
-   "-o",
-   "objs/render_square.o"
-  ],
-  "file": "srcs/render_square.c"
- },
- {
-  "directory": "/home/vcedraz-/42/fdf",
-  "arguments": [
-   "cc",
-   "-g",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
-   "-c",
-   "srcs/render_line.c",
-   "-o",
-   "objs/render_line.o"
-  ],
-  "file": "srcs/render_line.c"
- },
- {
-  "directory": "/home/vcedraz-/42/fdf",
-  "arguments": [
-   "cc",
-   "-g",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
-   "-c",
-   "srcs/event_handlers.c",
-   "-o",
-   "objs/event_handlers.o"
-  ],
-  "file": "srcs/event_handlers.c"
- },
- {
-  "directory": "/home/vcedraz-/42/fdf",
-  "arguments": [
-   "cc",
-   "-g",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-I",
-   "mlx",
-   "-Ilib/ft_printf_libft/libft/",
-   "-I",
-   "includes",
-   "-Ilib/ft_printf_libft/",
-   "-c",
-   "srcs/open_win_n_img.c",
-   "-o",
-   "objs/open_win_n_img.o"
-  ],
-  "file": "srcs/open_win_n_img.c"
  }
 ]

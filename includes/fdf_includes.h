@@ -6,12 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:48:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 12:48:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:51:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#ifndef FDF_INCLUDES_H
+# define FDF_INCLUDES_H
   
 #include "fdf_defines.h"
 #include "fdf_structs.h"
@@ -19,6 +19,6 @@
 #include "mlx.h"
 #include <math.h>
 #include "fdf_prototypes.h"
-#include "../lib/ft_printf_libft/includes/printf_libft_includes.h"
+#include "printf_libft_includes.h"
 
 #endif
