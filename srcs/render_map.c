@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:51:53 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 14:23:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:54:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	render_map(int fd)
 {
 	int		map[11][19];
 	char	**splitted_line;
+	t_ools	*tools;
 	char	*line;
 	int		i;
 	int		j;
 
+	
+	tools = (t_ools *)ft_calloc(sizeof(t_ools), 1);
 	splitted_line = NULL;
 	i = -1;
 	j = -1;
@@ -34,6 +37,7 @@ void	render_map(int fd)
 			map[i][j] = ft_atoi(splitted_line[j]);
 		j = -1;
 	}
+	free(tools);
 	printf_map(map);
 }
 static void	printf_map(int map[11][19])

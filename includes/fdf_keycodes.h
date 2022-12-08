@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keycodes.h                                         :+:      :+:    :+:   */
+/*   fdf_keycodes.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:38:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 12:19:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:46:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,8 @@ SOFTWARE.
  *
  */
 
-#ifndef KEYCODES_H 
-# define KEYCODES_H
+#ifndef FDF_KEYCODES_H 
+# define FDF_KEYCODES_H
 
 # define XK_VoidSymbol                  0xffffff  /* Void symbol */
 /*
