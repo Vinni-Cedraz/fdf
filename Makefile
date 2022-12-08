@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/08 09:40:12 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/08 10:51:43 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf.a
 EXECUTABLE = fdf
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes
-MLX = mlx/libmlx.a
+MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
 ARCHIVE_FROM_LIBFT = $(LIBFT_PATH)*.a
@@ -68,6 +68,7 @@ MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))
 all: $(NAME)
 
 make_mlx:
+	@./_mlx_/cp
 	@make -C mlx --no-print-directory
 
 make_libft:
@@ -94,7 +95,7 @@ $(NAME): $(OBJS) make_mlx make_work_in_progress
 	fi; \
 	done
 	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
-	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(PRNTF_PATH)libftprintf.a $(ARCHIVE_FROM_LIBFT) $(MLX) -o $(EXECUTABLE)
+	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(ARCHIVE_FROM_LIBFT) -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
