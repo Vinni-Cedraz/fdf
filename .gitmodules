@@ -4,3 +4,6 @@
 [submodule "lib/ft_printf_libft"]
 	path = lib/ft_printf_libft
 	url = https://github.com/Vinni-Cedraz/ft_printf_libft.git
+[submodule "ft_printf_libft"]
+	path = ft_printf_libft
+	url = https://github.com/Vinni-Cedraz/ft_printf_libft
