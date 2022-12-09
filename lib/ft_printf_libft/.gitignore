@@ -1,0 +1,9 @@
+#ignores everything:
+# /*
+
+# #un-ignores everything else:
+# !/Makefile
+# !/srcs/!*/!*.c
+# !/includes/!*/!*.h
+# !/libs/!*.c
+# !/libs/!*.h
