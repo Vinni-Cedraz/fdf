@@ -5,15 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 13:14:38 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 23:37:48 by vcedraz-         ###   ########.fr       */
-/*                                                                            */ /* ************************************************************************** */
+/*   Created: 2022/12/10 19:27:02 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/10 19:27:09 by vcedraz-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fdf_includes.h"
 
 void	render_line(t_point p1, t_point p2, int color, t_img *img)
 {
-	t_line line;
+	t_line	line;
 
 	line.dx = p2.x - p1.x;
 	line.dy = p2.y - p1.y;

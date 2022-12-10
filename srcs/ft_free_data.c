@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_defines.h                                      :+:      :+:    :+:   */
+/*   ft_free_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/10 19:45:47 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/10 16:52:14 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/10 19:16:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_DEFINES_H
-# define FDF_DEFINES_H
+#include "fdf_includes.h"
 
-// define colors: #define BLACK 0x000000
-# define WHITE 0xFFFFFF
-# define RED 0xFF0000
-# define GREEN 0x00FF00
-# define BLUE 0x0000FF
-# define YELLOW 0xFFFF00
-# define CYAN 0x00FFFF
-# define MAGENTA 0xFF00FF
+void	ft_free_data(t_data **d)
+{
+	int	i;
 
-// WIDTH and HEIGHT of the window
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
-
-#endif
+	i = 0;
+	while (i < (*d)->map->height + 1)
+	{
+		free((*d)->map->arr[i]);
+		i++;
+	}
+	free((*d)->map->arr);
+	free((*d)->map);
+}

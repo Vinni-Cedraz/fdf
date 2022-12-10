@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/10 15:41:46 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/10 19:15:33 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g -fsanitize=leak -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -32,12 +32,13 @@ MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
-  			 parse_map\
-	     render_square \
-	        render_line \
-	      event_handlers \
-	       open_win_n_img \
-	                  main \
+	     ft_free_data \
+  			  parse_map\
+	      render_square \
+	         render_line \
+	       event_handlers \
+	        open_win_n_img \
+	                   main \
 
 SRCS_FROM_LIBFT  = ft_memchr \
 		    		ft_numlen \

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 14:23:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:58:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 int	deal_key(int key, t_data *data)
 {
-	if (key == XK_Escape)
+	if (key == XK_ESCAPE)
 	{
+		mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		free(data->img);
 		exit(0);
 	}
 	return (0);
