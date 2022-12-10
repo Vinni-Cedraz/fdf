@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_dimensions.c                               :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/09 22:25:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:27:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-void	get_map_height(char *argv)
+//
+static void	create_map(t_map **map, char *argv);
+
+static void	print_map(t_map *map);
+
+void	parse_map(char *argv)
 {
 	int		fd;
 	int		line_counter;
@@ -30,7 +35,7 @@ void	get_map_height(char *argv)
 	create_map(&map, argv);
 }
 
-void	create_map(t_map **map, char *argv)
+static void	create_map(t_map **map, char *argv)
 {
 	int		width;
 	int		height;
