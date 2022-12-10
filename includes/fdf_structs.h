@@ -6,12 +6,29 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/09 22:12:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/10 15:55:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTS_H
 # define FDF_STRUCTS_H
+
+# include "printf_libft_structs.h"
+
+typedef struct s_counter
+{
+	int		x;
+	int		y;
+}			t_counter;
+
+typedef struct s_create_map
+{
+	int		width;
+	int		height;
+	int		fd;
+	char	*line;
+	t_split	*split;
+}			t_create_map;
 
 typedef struct s_map
 {
@@ -24,6 +41,7 @@ typedef struct s_point
 {
 	int		x;
 	int		y;
+	int		z;
 	int		color;
 }			t_point;
 
