@@ -6,13 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/10 13:27:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/10 16:02:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-//
 static void	create_map(t_map **map, char *argv);
 
 static void	print_map(t_map *map);
@@ -37,37 +36,33 @@ void	parse_map(char *argv)
 
 static void	create_map(t_map **map, char *argv)
 {
-	int		width;
-	int		height;
-	int		fd;
-	char	*line;
-	t_split	*split;
+	t_create_map	t;
 
-	width = -1;
-	height = 0;
-	fd = open(argv, O_RDONLY);
+	t.width = -1;
+	t.height = 0;
+	t.fd = open(argv, O_RDONLY);
 	(*map)->map = malloc(sizeof(int *) * (*map)->height);
 	while (1)
 	{
-		line = ft_gnl(fd);
-		if (!line)
+		t.line = ft_gnl(t.fd);
+		if (!t.line)
 			break ;
-		split = ft_split(line, ' ');
-		(*map)->map[height] = malloc(sizeof(int) * split->words);
-		free(line);
-		while (++width < (int)split->words)
-			(*map)->map[height][width] = ft_atoi(split->str_arr[width]);
-		width = -1;
-		height++;
-		if (height == 1)
-			(*map)->width = split->words;
-		ft_free_t_split(split);
+		t.split = ft_split(t.line, ' ');
+		(*map)->map[t.height] = malloc(sizeof(int) * t.split->words);
+		free(t.line);
+		while (++t.width < (int)t.split->words)
+			(*map)->map[t.height][t.width] = ft_atoi(t.split->str_arr[t.width]);
+		t.width = -1;
+		t.height++;
+		if (t.height == 1)
+			(*map)->width = t.split->words;
+		ft_free_t_split(t.split);
 	}
-	(*map)->height = height;
+	(*map)->height = t.height;
 	print_map(*map);
 }
 
-void	print_map(t_map *map)
+static void	print_map(t_map *map)
 {
 	int	i;
 	int	j;
@@ -76,18 +71,12 @@ void	print_map(t_map *map)
 	j = 0;
 	while (i < map->height)
 	{
-		while (j < map->width - 1)
+		while (j < map->width)
 		{
 			if (ft_numlen(map->map[i][j]) == 1)
-			{
-				ft_printf("  %d", map->map[i][j]);
-				j++;
-			}
+				ft_printf("  %d", map->map[i][j++]);
 			else if (ft_numlen(map->map[i][j]) == 2)
-			{
-				ft_printf(" %d", map->map[i][j]);
-				j++;
-			}
+				ft_printf(" %d", map->map[i][j++]);
 		}
 		j = 0;
 		ft_printf("\n");
