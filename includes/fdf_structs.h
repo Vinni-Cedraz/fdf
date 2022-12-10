@@ -6,12 +6,19 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/08 14:47:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:12:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTS_H
 # define FDF_STRUCTS_H
+
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	int		**map;
+}			t_map;
 
 typedef struct s_point
 {
