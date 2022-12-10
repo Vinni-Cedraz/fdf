@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/09 22:09:00 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/10 13:22:46 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
-   get_map_dimensions \
+  			 parse_map\
 	     render_square \
 	        render_line \
 	      event_handlers \
