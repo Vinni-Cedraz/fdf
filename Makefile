@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/11 13:39:20 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/11 17:20:13 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=leak
+CFLAGS = -O3 -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -39,6 +39,14 @@ SRCS = put_pixel_img \
 	       event_handlers \
 	        open_win_n_img \
 	                   main \
+
+SRCS_FROM_MLX = mlx_init \
+	       mlx_new_window \
+		     mlx_new_image \
+		  mlx_get_data_addr \
+	 mlx_put_image_to_window \
+		   mlx_destroy_window \
+		     mlx_destroy_image \
 
 SRCS_FROM_LIBFT  = ft_memchr \
 		    		ft_numlen \

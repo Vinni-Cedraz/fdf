@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/11 13:36:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:19:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	create_map(t_data *d, char *argv)
 	print_map(&d);
 }
 
-void	print_map(t_data **d)
+static	void	print_map(t_data **d)
 {
 	int	x;
 	int	y;
@@ -78,11 +78,13 @@ void	print_map(t_data **d)
 			if (ft_numlen((*d)->map->arr[y][x].z) == 1)
 			{
 				ft_printf("  %d", (*d)->map->arr[y][x].z);
+				ft_printf(",%u", (*d)->map->arr[y][x].color);
 				x++;
 			}
 			else
 			{
 				ft_printf(" %d", (*d)->map->arr[y][x].z);
+				ft_printf(",%u", (*d)->map->arr[y][x].color);
 				x++;
 			}
 		}
@@ -103,7 +105,7 @@ static	int	get_hex_color(char *str)
 	{
 		if (str[i] == ',')
 		{
-			color = ft_atoi_base(&str[i + 3], HEX);
+			color = ft_atoi_base(&str[i + 3], HEX_BASE_UPPER);
 			return (color);
 		}
 		i++;
