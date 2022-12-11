@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/10 19:15:33 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/11 13:39:20 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=leak
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -50,13 +50,14 @@ SRCS_FROM_LIBFT  = ft_memchr \
 						  ft_strdup \
 						  ft_strlcpy \
 						  ft_free_arr \
-					   ft_word_counter \
-							  ft_calloc \
-							  ft_strlcat \
-								  ft_atoi \
-								  ft_split \
-								 ft_strjoin \
-								   ft_substr \
+					      ft_atoi_base \
+					    ft_word_counter \
+					  		   ft_calloc \
+							   ft_strlcat \
+								   ft_atoi \
+								   ft_split \
+								  ft_strjoin \
+								    ft_substr \
 
 SRCS_PATH = srcs/
 OBJS_PATH = objs/
