@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/10 19:46:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:17:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_point
 	int		x;
 	int		y;
 	int		z;
-	char	*color;
+	int		color;
 }			t_point;
 
 typedef struct s_map

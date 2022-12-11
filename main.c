@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:27:20 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:39:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:46:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(void)
 	while (word++ < (int)split->words - 1)
 		ft_printf("%d\n", ft_atoi(split->str_arr[word]));
 	ft_printf("this is the number of lines:%d\n", split->words);
+	ft_printf("this number was passed as a hexcode: %d\n", 0x0FFFFFFF);
 	ft_free_t_split(split);
 }

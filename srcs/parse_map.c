@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/10 19:25:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/11 13:36:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	create_map(t_data *map, char *argv);
 
-static char	*get_hex_color(char *str);
-
 static void	print_map(t_data **d);
+
+static int	get_hex_color(char *str);
 
 void	parse_map(char *argv, t_data *d)
 {
@@ -50,7 +50,7 @@ static void	create_map(t_data *d, char *argv)
 			break ;
 		t.split = ft_split(t.line, ' ');
 		free(t.line);
-		d->map->arr[t.y] = ft_calloc(sizeof(t_point), t.split->words);
+		d->map->arr[t.y] = ft_calloc(sizeof(t_point), t.split->words + 1);
 		while (++t.x < (int)t.split->words)
 			d->map->arr[t.y][t.x] = (t_point){t.x, t.y, ft_atoi(t.split-> \
 			str_arr[t.x]), get_hex_color(t.split->str_arr[t.x])};
@@ -62,18 +62,6 @@ static void	create_map(t_data *d, char *argv)
 	}
 	d->map->height = t.y - 1;
 	print_map(&d);
-}
-
-static char	*get_hex_color(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] != ',')
-		i++;
-	if (str[i] == ',')
-		return (ft_substr(str, i + 1, 8));
-	return (NULL);
 }
 
 void	print_map(t_data **d)
@@ -102,4 +90,23 @@ void	print_map(t_data **d)
 		y++;
 	}
 	ft_free_data(d);
+}
+
+static	int	get_hex_color(char *str)
+{
+	int	i;
+	int	color;
+
+	i = 0;
+	color = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ',')
+		{
+			color = ft_atoi_base(&str[i + 3], HEX);
+			return (color);
+		}
+		i++;
+	}
+	return (0);
 }
