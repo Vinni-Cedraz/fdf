@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 11:21:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:10:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ static void	make_t_point(t_data **d, t_create_map *t);
 static int	create_map(t_data *map, char *argv);
 // finds a comma and a hex code in the string, then converts it to an int//
 static int	get_hex_color(char *str);
-// just prints is so I can check if the map is being stored correctly//
-// static void	print_map(t_data **d);
-// checks for invalid files, args invalid maps and counts map's line number//
 
 int	parse_map(char *argv, t_data *d)
 {
@@ -105,28 +102,3 @@ static int	get_hex_color(char *str)
 	}
 	return (0);
 }
-//
-// static void	print_map(t_data **d)
-// {
-// 	int	x;
-// 	int	y;
-//
-// 	y = -1;
-// 	while (++y < (*d)->map->height)
-// 	{
-// 		x = -1;
-// 		while (++x < (*d)->map->width)
-// 		{
-// 			if (ft_numlen((*d)->map->arr[y][x].z) == 1)
-// 			{
-// 				ft_printf("  %d", (*d)->map->arr[y][x].z);
-// 			}
-// 			else
-// 			{
-// 				ft_printf(" %d", (*d)->map->arr[y][x].z);
-// 			}
-// 		}
-// 		ft_printf("\n");
-// 	}
-// 	ft_free_data(d);
-// }
