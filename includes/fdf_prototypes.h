@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 09:08:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:28:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ int		parse_map(char *argv, t_data *d);
 void	ft_free_data(t_data **d);
 
 void	render_map(t_data *data);
+
+void	rotate_map(t_data *fdf);
 #endif
