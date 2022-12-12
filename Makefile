@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/12 10:53:41 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/12 18:38:58 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ DEF_COLOR   =         \033[0;39m
 SRCS = put_pixel_img \
 	     ft_free_data \
   			 parse_map \
+			 rotate_map \
 			 render_map \
+			 define_square \
 	       render_square \
 	          render_line \
 	        event_handlers \
