@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/10 19:47:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/11 22:09:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	open_win_n_img(t_data *data);
 
 void	get_map_dimensions(char *argv);
 
-void	parse_map(char *argv, t_data *d);
+int		parse_map(char *argv, t_data *d);
 
 void	ft_free_data(t_data **d);
 #endif
