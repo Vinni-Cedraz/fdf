@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/12 08:50:07 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/12 09:12:42 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,12 +33,13 @@ DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
 	     ft_free_data \
-  			  parse_map\
-	      render_square \
-	         render_line \
-	       event_handlers \
-	        open_win_n_img \
-	                   main \
+  			 parse_map \
+			 render_map \
+	       render_square \
+	          render_line \
+	        event_handlers \
+	         open_win_n_img \
+	                    main \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
