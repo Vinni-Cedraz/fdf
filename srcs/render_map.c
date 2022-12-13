@@ -6,12 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:12:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 09:34:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:57:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
+//this functions draws in an img a line between the points of a map:
 void	render_map(t_data *fdf)
 {
 	int	i;
