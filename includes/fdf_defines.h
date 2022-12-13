@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 10:20:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/12 21:11:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@
 // WIDTH and HEIGHT of the window
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 500
+
+# define ANGLE 0.523599
 
 #endif
