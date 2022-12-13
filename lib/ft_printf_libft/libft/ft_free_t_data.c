@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_data.c                                     :+:      :+:    :+:   */
+/*   ft_free_t_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 19:29:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/13 19:30:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:47:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_data(t_data **d)
+void	ft_free_t_data(t_data **d)
 {
 	int	i;
 
 	i = 0;
-	while (i < (*d)->map->height + 1)
+	while (i < (*d)->map->height)
 	{
 		free((*d)->map->arr[i]);
 		i++;
 	}
 	free((*d)->map->arr);
-	free((*d)->map);
 }

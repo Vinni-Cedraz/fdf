@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/13 19:33:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:45:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,6 @@ int		ft_ishexup(int c);
 // hex low:
 int		ft_ishexlow(int c);
 // this is to free a t_data pointer:
-void	ft_free_t_data(t_data *data);
+void	ft_free_t_data(t_data **data);
 
 #endif
