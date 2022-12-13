@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/11 21:36:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/12 20:47:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_img
 {
 	void	*mlx_img;
 	char	*addr;
+	int		width;
+	int		height;
 	int		bpp;
 	int		line_len;
 	int		endian;
