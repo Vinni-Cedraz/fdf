@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:44:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/13 09:54:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/13 10:44:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static void	rotate_z(t_point *point, double angle);
 // // this function rotates the a given point around the x axis:
 static void	rotate_x(t_point *point, double angle);
+
 //this function calls the two functions above on each point of a map:
 void	rotate_map(t_map *map)
 {

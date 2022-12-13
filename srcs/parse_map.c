@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 17:10:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:33:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static int	create_map(t_data *d, char *argv)
 		t.y++;
 		ft_free_t_split(t.split);
 	}
-	d->map->height = t.y - 1;
 	return (close(t.fd), 0);
 }
 
@@ -82,6 +81,8 @@ static void	make_t_point(t_data **d, t_create_map *t)
 	(*d)->map->arr[t->y][t->x].y = t->y;
 	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]);
 	(*d)->map->arr[t->y][t->x].color = get_hex_color(t->split->str_arr[t->x]);
+	if ((*d)->map->height > (*d)->map->width)
+		ft_swap(&(*d)->map->height, &(*d)->map->width, sizeof(int));
 }
 
 static int	get_hex_color(char *str)
