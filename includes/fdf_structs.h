@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 20:47:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:59:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,6 @@ typedef struct s_create_map
 	char	*line;
 	t_split	*split;
 }			t_create_map;
-
-typedef struct s_point
-{
-	int		x;
-	int		y;
-	int		z;
-	int		color;
-}			t_point;
-
-typedef struct s_map
-{
-	int		width;
-	int		height;
-	t_point	**arr;
-}			t_map;
-
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		width;
-	int		height;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}			t_img;
-
-typedef struct s_data
-{
-	void	*win_ptr;
-	void	*mlx_ptr;
-	int		hook;
-	t_img	*img;
-	t_map	*map;
-}			t_data;
 
 typedef struct s_quare
 {
