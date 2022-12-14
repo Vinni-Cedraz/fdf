@@ -6,15 +6,14 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/13 14:46:58 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/14 17:24:01 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
-CC = cc
-CFLAGS = -g -O3 -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=leak -fsanitize=address -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/

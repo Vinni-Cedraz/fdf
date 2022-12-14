@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/13 19:40:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:10:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,6 @@ typedef struct s_img
 	int					endian;
 }						t_img;
 
-typedef struct s_data
-{
-	void				*win_ptr;
-	void				*mlx_ptr;
-	int					hook;
-	t_img				*img;
-	t_map				*map;
-}						t_data;
-
 typedef struct s_list
 {
 	void				*content;
@@ -68,6 +59,26 @@ typedef struct s_plit
 	size_t				words;
 
 }						t_split;
+
+typedef struct s_create_map
+{
+	int		x;
+	int		y;
+	int		fd;
+	char	*line;
+	t_split	*split;
+}			t_create_map;
+
+typedef struct s_data
+{
+	void				*win_ptr;
+	void				*mlx_ptr;
+	int					hook;
+	t_img				*img;
+	t_map				*map;
+	t_create_map		tool;
+}						t_data;
+
 
 // this struct is just a box of tools, t_ools, got it? xD
 typedef struct s_tools
