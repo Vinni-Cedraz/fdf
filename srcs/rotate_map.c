@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:44:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:50:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:29:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,23 @@ void	rotate_map(t_map *map)
 
 static void	rotate_z(t_point *point, double angle)
 {
-	double	previous_x;
-	double	previous_y;
+	double	x;
+	double	y;
 
-	previous_x = point->x;
-	previous_y = point->y;
-	point->x = cos(angle) * previous_x - sin(angle) * previous_y;
-	point->y = sin(angle) * previous_x + cos(angle) * previous_y;
+	x = point->x;
+	y = point->y;
+	point->x = x * cos(angle) - y * sin(angle);
+	point->y = x * sin(angle) + y * cos(angle);
+	
 }
 
 static void	rotate_x(t_point *point, double angle)
 {
-	double	previous_y;
-	double	previous_z;
+	double	y;
+	double	z;
 
-	previous_y = point->y;
-	previous_z = point->z;
-	point->y = cos(angle) * previous_y - sin(angle) * previous_z;
-	point->z = sin(angle) * previous_y + cos(angle) * previous_z;
+	y = point->y;
+	z = point->z;
+	point->y = y * cos(angle) - z * sin(angle);
+	point->z = y * sin(angle) + z * cos(angle);
 }
