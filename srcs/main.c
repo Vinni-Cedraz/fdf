@@ -18,17 +18,14 @@
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	// t_square	white_square;
 
 	(void)argc;
 	data.img = malloc(sizeof(t_img));
-	// define_square(&white_square, (t_point){0, 0, 0, WHITE},
-	// (t_point){1280, 720, 0, WHITE}),
+	if (!parse_map(argv[1], &data))
+		return (0);
 	open_win_n_img(&data);
-	// render_square(data.img, WHITE, &white_square);
-	parse_map(argv[1], &data);
+	colorize(data.map);
 	rotate_map(data.map);
-	// colorize(data.map);
 	render_map(&data);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, \
 	data.img->mlx_img, 0, 0);

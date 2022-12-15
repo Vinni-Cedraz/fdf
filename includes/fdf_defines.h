@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 11:30:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:32:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define YELLOW 0xFFFF00
 # define CYAN 0x00FFFF
 # define MAGENTA 0xFF00FF
+# define LIGHT_GRAY 0xD3D3D3
 
 // WIDTH and HEIGHT of the window
 # define WINDOW_WIDTH 1920
