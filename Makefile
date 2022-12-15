@@ -6,14 +6,14 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/14 17:24:01 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/14 22:31:41 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=leak -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=address -fsanitize=leak -g3 -O3
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -31,15 +31,15 @@ MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
-  			 parse_map \
-			 rotate_map \
-			  render_map \
-			define_square \
-	         render_square \
-	            render_line \
-	          event_handlers \
-	           open_win_n_img \
-	                      main \
+  			parse_map \
+			rotate_map \
+			 render_map \
+		   define_square \
+	        render_square \
+	           render_line \
+				   deal_key \
+	          open_win_n_img \
+	                     main \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
@@ -55,18 +55,18 @@ SRCS_FROM_LIBFT =  ft_memchr \
 					  ft_strlen \
 					   ft_memcpy \
 					   ft_memmove \
-						  ft_memset \
-						   ft_strdup \
-						   ft_strlcpy \
-						   ft_free_arr \
-					       ft_atoi_base \
-					     ft_word_counter \
-					  		    ft_calloc \
-							    ft_strlcat \
-								    ft_atoi \
-								    ft_split \
-								   ft_strjoin \
-								     ft_substr \
+						 ft_memset \
+						  ft_strdup \
+						  ft_strlcpy \
+						  ft_free_arr \
+					      ft_atoi_base \
+					    ft_word_counter \
+					  		   ft_calloc \
+							   ft_strlcat \
+								   ft_atoi \
+								   ft_split \
+								  ft_strjoin \
+								    ft_substr \
 
 SRCS_PATH = srcs/
 OBJS_PATH = objs/

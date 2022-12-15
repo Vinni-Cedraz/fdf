@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 17:11:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/14 23:00:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //determines t_point attributes scaling it according to the map/window size//
 static void	make_t_point(t_data **d, t_create_map *t);
 //stores the map in a 2d array of t_point in the t_data struct//
-static int	create_map(t_data *map, char *argv, char *first_line);
+static int	create_map(t_data *map, char *argv, char **first_line);
 //finds a comma and a hex code in the string, then converts it to an int//
 static int	get_hex_color(char *str);
 
@@ -48,25 +48,27 @@ int	parse_map(char *argv, t_data *d)
 			if (!ft_isdigit(*buf) && !ft_ishexup(*buf) && !ft_ishexlow(*buf))
 				return (ft_printf("%s", strerror(22)));
 	ft_free_t_split(split_to_count_width);
-	return (close(fd), create_map(d, argv, first_line), 0);
+	return (close(fd), create_map(d, argv, &first_line), 0);
 }
 
 //tool->x and tool->y are just local counters for the loops //
-static int	create_map(t_data *d, char *argv, char *first_line)
+static int	create_map(t_data *d, char *argv, char **first_line)
 {
 	d->tool.y = 0;
 	d->tool.x = -1;
 	d->tool.fd = open(argv, O_RDONLY);
-	d->map->arr = ft_calloc(sizeof(t_point *), d->map->height);
-	while (1)
+	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
+	while (d->tool.y < d->map->height)
 	{
 		if (d->tool.y == 0)
-			d->tool.line = first_line;
+		{
+			d->tool.line = ft_strdup(*first_line);
+			free(*first_line);
+		}
 		else
-		  d->tool.line = ft_gnl(d->tool.fd);
-		if (!d->tool.line)
-			break ;
+			d->tool.line = ft_gnl(d->tool.fd);
 		d->tool.split = ft_split(d->tool.line, ' ');
+		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
 			make_t_point(&d, &d->tool);
@@ -81,13 +83,18 @@ static void	make_t_point(t_data **d, t_create_map *t)
 {
 	int	scale_x;
 	int	scale_y;
+	int hexcolor;
 
 	scale_x = WINDOW_WIDTH / (*d)->map->height;
 	scale_y = WINDOW_HEIGHT / (*d)->map->width;
 	(*d)->map->arr[t->y][t->x].x = t->x * scale_x;
 	(*d)->map->arr[t->y][t->x].y = t->y * scale_y;
 	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 2;
-	(*d)->map->arr[t->y][t->x].color = get_hex_color(t->split->str_arr[t->x]);
+	hexcolor = get_hex_color(t->split->str_arr[t->x]);
+	if (hexcolor)
+	  (*d)->map->arr[t->y][t->x].color = hexcolor;
+	else
+	  (*d)->map->arr[t->y][t->x].color = CYAN;
 }
 
 // static void	get_altitude(t_data *d)
