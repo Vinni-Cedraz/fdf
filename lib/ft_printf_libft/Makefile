@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:57:13 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/14 22:51:38 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/14 23:20:37 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 SHELL := /bin/bash
 NAME = libftprintf.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3 -g3 -fsanitize=address -fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 AR = ar rcs
 INCLUDES = -Iincludes/

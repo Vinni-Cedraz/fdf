@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 17:10:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/14 23:33:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_map
 {
 	int					width;
 	int					height;
+	int					max_z;
+	int					min_z;
 	t_point				**arr;
 }						t_map;
 

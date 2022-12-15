@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	// render_square(data.img, WHITE, &white_square);
 	parse_map(argv[1], &data);
 	rotate_map(data.map);
+	colorize(data.map);
 	render_map(&data);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, \
 	data.img->mlx_img, 0, 0);
