@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, \
 	data.img->mlx_img, 0, 0);
 	mlx_key_hook(data.win_ptr, deal_key, &data);
+	mlx_hook(data.win_ptr, 17, 0, close_win, &data);
 	mlx_loop(data.mlx_ptr);
 	free(data.img);
 }
