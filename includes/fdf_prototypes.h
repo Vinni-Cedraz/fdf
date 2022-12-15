@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 16:42:46 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:33:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	render_line(t_point p1, t_point p2, int color, t_data *d);
 
 int		close_win(t_data *data);
 
+void	open_img(t_data *data);
 #endif

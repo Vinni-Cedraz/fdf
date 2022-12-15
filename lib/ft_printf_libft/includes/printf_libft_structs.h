@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 23:33:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:03:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map
 	int					height;
 	int					max_z;
 	int					min_z;
+	int					y_offset;
+	int					x_offset;
 	t_point				**arr;
 }						t_map;
 
@@ -76,6 +78,10 @@ typedef struct s_data
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;
+	int					scale_x;
+	int					scale_y;
+	float				move_x;
+	float				move_y;
 	t_img				*img;
 	t_map				*map;
 	t_create_map		tool;
