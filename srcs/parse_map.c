@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 14:50:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:55:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ int	parse_map(char *argv, t_data *d)
 	while (read(fd, buf, 1))
 		if (*buf == '\n')
 			d->map->height++;
-		else if (*buf != ' ' && *buf != '-' && *buf != ',')
-			if (!ft_isdigit(*buf) && !ft_ishexup(*buf) && !ft_ishexlow(*buf))
-				return (ft_printf("%s", strerror(22)));
 	ft_free_t_split(split_to_count_width);
 	return (close(fd), create_map(d, argv, &first_line), 1);
 }
@@ -80,13 +77,18 @@ static void	make_t_point(t_data **d, t_create_map *t)
 {
 	int	scale_x;
 	int	scale_y;
+	int	hexcolor;
 
 	scale_x = WINDOW_WIDTH / (*d)->map->width;
 	scale_y = WINDOW_HEIGHT / (*d)->map->height;
 	(*d)->map->arr[t->y][t->x].x = (t->x * scale_x / 1.5);
 	(*d)->map->arr[t->y][t->x].y = (t->y * scale_y / 1.5);
 	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 1.5;
-	(*d)->map->arr[t->y][t->x].color = get_hex_color(t->split->str_arr[t->x]);
+	hexcolor = get_hex_color(t->split->str_arr[t->x]);
+	if (hexcolor)
+		(*d)->map->arr[t->y][t->x].color = hexcolor;
+	else
+		(*d)->map->arr[t->y][t->x].color = CYAN;
 }
 
 static int	get_hex_color(char *str)

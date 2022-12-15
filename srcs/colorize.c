@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:27:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 14:32:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:32:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,43 +21,27 @@ void	colorize(t_map *map)
 {
 	int	i;
 	int	j;
-	int	color;
 
-	i = 0;
+	i = -1;
 	get_max_altitude(map);
 	get_min_altitude(map);
 	if (!is_colorized(map))
-		while (i < map->height)
+		while (++i < map->height)
 		{
-			j = 0;
-			while (j < map->width)
+			j = -1;
+			while (++j < map->width)
 			{
-				{
-					if (map->arr[i][j].z < 0)
-						color = RED;
-					if (map->arr[i][j].z == map->min_z)
-						color = BLUE;
-					else if (map->arr[i][j].z == map->max_z)
-						color = MAGENTA;
-					else if (map->arr[i][j].z > 0)
-						color = CYAN;
-					else if (map->arr[i][j].z == 0)
-						color = LIGHT_GRAY;
-					map->arr[i][j].color = color;
-				}
-				j++;
+				if (map->arr[i][j].z < 0)
+					map->arr[i][j].color = RED;
+				if (map->arr[i][j].z == map->min_z)
+					map->arr[i][j].color = BLUE;
+				else if (map->arr[i][j].z == map->max_z)
+					map->arr[i][j].color = MAGENTA;
+				else if (map->arr[i][j].z > 0)
+					map->arr[i][j].color = CYAN;
+				else if (map->arr[i][j].z == 0)
+					map->arr[i][j].color = LIGHT_GRAY;
 			}
-			i++;
-		}
-	else
-		while (i < map->height)
-		{
-			j = 0;
-			while (j < map->width)
-			{
-				map->arr[i][j].color = CYAN;
-			}
-			i++;
 		}
 }
 
@@ -116,7 +100,7 @@ static int	is_colorized(t_map *map)
 		j = 0;
 		while (j < (*map).width)
 		{
-			if ((*map).arr[i][j].color != 0)
+			if ((*map).arr[i][j].color != CYAN)
 				return (1);
 			j++;
 		}
