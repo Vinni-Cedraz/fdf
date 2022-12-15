@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel_img.c                                    :+:      :+:    :+:   */
+/*   open_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 19:39:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 20:40:04 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/15 19:30:39 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/15 19:32:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-void	put_pixel_img(t_img *img, int x, int y, int color)
+void	open_img(t_data *data)
 {
-	char	*ptr_to_color;
-
-	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
-		return ;
-	ptr_to_color = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int *)ptr_to_color = color;
+	data->img->mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, \
+	WINDOW_HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp, \
+	&data->img->line_len, &data->img->endian);
 }

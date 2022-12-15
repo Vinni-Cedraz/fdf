@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 15:55:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:19:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,12 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 
 static void	make_t_point(t_data **d, t_create_map *t)
 {
-	int	scale_x;
-	int	scale_y;
 	int	hexcolor;
 
-	scale_x = WINDOW_WIDTH / (*d)->map->width;
-	scale_y = WINDOW_HEIGHT / (*d)->map->height;
-	(*d)->map->arr[t->y][t->x].x = (t->x * scale_x / 1.5);
-	(*d)->map->arr[t->y][t->x].y = (t->y * scale_y / 1.5);
+	(*d)->scale_x = (float)WINDOW_WIDTH / (*d)->map->width / 1.5;
+	(*d)->scale_y = (float)WINDOW_HEIGHT / (*d)->map->height/ 1.5;
+	(*d)->map->arr[t->y][t->x].x = t->x * (*d)->scale_x;
+	(*d)->map->arr[t->y][t->x].y = t->y * (*d)->scale_y;
 	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 1.5;
 	hexcolor = get_hex_color(t->split->str_arr[t->x]);
 	if (hexcolor)
