@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:27:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 23:50:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:32:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	get_max_altitude(t_map *map);
 static void	get_min_altitude(t_map *map);
+//checks if there's any hex color code in the map//
+static int	is_colorized(t_map *map);
 
 void	colorize(t_map *map)
 {
@@ -24,59 +26,101 @@ void	colorize(t_map *map)
 	i = 0;
 	get_max_altitude(map);
 	get_min_altitude(map);
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
+	if (!is_colorized(map))
+		while (i < map->height)
 		{
-			if (!map->arr[i][j].color)
+			j = 0;
+			while (j < map->width)
 			{
-				color = (map->arr[i][j].z - map->min_z) * 255 / (map->max_z
-						- map->min_z);
-				map->arr[i][j].color = color;
+				{
+					if (map->arr[i][j].z < 0)
+						color = RED;
+					if (map->arr[i][j].z == map->min_z)
+						color = BLUE;
+					else if (map->arr[i][j].z == map->max_z)
+						color = MAGENTA;
+					else if (map->arr[i][j].z > 0)
+						color = CYAN;
+					else if (map->arr[i][j].z == 0)
+						color = LIGHT_GRAY;
+					map->arr[i][j].color = color;
+				}
+				j++;
 			}
-			j++;
+			i++;
 		}
-		i++;
-	}
+	else
+		while (i < map->height)
+		{
+			j = 0;
+			while (j < map->width)
+			{
+				map->arr[i][j].color = CYAN;
+			}
+			i++;
+		}
 }
 
 static void	get_max_altitude(t_map *map)
 {
 	int	i;
 	int	j;
+	int	max_z;
 
 	i = 0;
-	(*map).max_z = 0;
+	max_z = -2147483648;
 	while (i < (*map).height)
 	{
 		j = 0;
 		while (j < (*map).width)
 		{
-			if ((*map).arr[i][j].z > (*map).max_z)
-				(*map).max_z = (*map).arr[i][j].z;
+			if ((*map).arr[i][j].z > max_z)
+				max_z = (*map).arr[i][j].z;
 			j++;
 		}
 		i++;
 	}
+	(*map).max_z = max_z;
 }
 
 static void	get_min_altitude(t_map *map)
 {
 	int	i;
 	int	j;
+	int	min_z;
 
 	i = 0;
-	(*map).min_z = (*map).max_z;
+	min_z = (*map).max_z;
 	while (i < (*map).height)
 	{
 		j = 0;
 		while (j < (*map).width)
 		{
-			if ((*map).arr[i][j].z < (*map).min_z)
-				(*map).min_z = (*map).arr[i][j].z;
+			if ((*map).arr[i][j].z < min_z)
+				min_z = (*map).arr[i][j].z;
 			j++;
 		}
 		i++;
 	}
+	(*map).min_z = min_z;
+}
+
+static int	is_colorized(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < (*map).height)
+	{
+		j = 0;
+		while (j < (*map).width)
+		{
+			if ((*map).arr[i][j].color != 0)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

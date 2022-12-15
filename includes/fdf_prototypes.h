@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 11:43:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:37:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	rotate_map(t_map *fdf);
 void	colorize(t_map *map);
 
 void	render_line(t_point p1, t_point p2, int color, t_data *d);
+
 #endif
