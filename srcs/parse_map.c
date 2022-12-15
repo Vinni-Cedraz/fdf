@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 23:00:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/14 23:38:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 	while (d->tool.y < d->map->height)
 	{
 		if (d->tool.y == 0)
-		{
 			d->tool.line = ft_strdup(*first_line);
-			free(*first_line);
-		}
 		else
 			d->tool.line = ft_gnl(d->tool.fd);
 		d->tool.split = ft_split(d->tool.line, ' ');
@@ -76,14 +73,14 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 		d->tool.y++;
 		ft_free_t_split(d->tool.split);
 	}
-	return (close(d->tool.fd), 0);
+	return (close(d->tool.fd), free(*first_line), 0);
 }
 
 static void	make_t_point(t_data **d, t_create_map *t)
 {
 	int	scale_x;
 	int	scale_y;
-	int hexcolor;
+	int	hexcolor;
 
 	scale_x = WINDOW_WIDTH / (*d)->map->height;
 	scale_y = WINDOW_HEIGHT / (*d)->map->width;
@@ -92,32 +89,10 @@ static void	make_t_point(t_data **d, t_create_map *t)
 	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 2;
 	hexcolor = get_hex_color(t->split->str_arr[t->x]);
 	if (hexcolor)
-	  (*d)->map->arr[t->y][t->x].color = hexcolor;
+		(*d)->map->arr[t->y][t->x].color = hexcolor;
 	else
-	  (*d)->map->arr[t->y][t->x].color = CYAN;
+		(*d)->map->arr[t->y][t->x].color = CYAN;
 }
-
-// static void	get_altitude(t_data *d)
-// {
-// 	int	i;
-// 	int	j;
-//
-// 	i = 0;
-// 	d->map->altitude = 0;
-// 	while (i < d->map->height)
-// 	{
-// 		j = 0;
-// 		while (j < d->map->width)
-// 		{
-// 			if (d->map->arr[i][j].z > d->map->altitude)
-// 				d->map->altitude = d->map->arr[i][j].z;
-// 			else if (d->map->arr[i][j].z == 0)
-// 				d->map->arr[i][j].z = 0;
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
 
 static int	get_hex_color(char *str)
 {

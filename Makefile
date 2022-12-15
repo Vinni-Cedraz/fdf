@@ -6,14 +6,14 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/14 22:31:41 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/14 23:38:07 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
 NAME = fdf.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=address -fsanitize=leak -g3 -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -36,10 +36,11 @@ SRCS = put_pixel_img \
 			 render_map \
 		   define_square \
 	        render_square \
-	           render_line \
-				   deal_key \
-	          open_win_n_img \
-	                     main \
+				  colorize \
+	            render_line \
+				    deal_key \
+	           open_win_n_img \
+	                      main \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
