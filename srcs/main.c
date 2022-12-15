@@ -18,14 +18,14 @@
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	t_square	white_square;
+	// t_square	white_square;
 
 	(void)argc;
 	data.img = malloc(sizeof(t_img));
-	define_square(&white_square, (t_point){0, 0, 0, WHITE}, \
-	(t_point){1280, 720, 0, WHITE}),
+	// define_square(&white_square, (t_point){0, 0, 0, WHITE},
+	// (t_point){1280, 720, 0, WHITE}),
 	open_win_n_img(&data);
-	render_square(data.img, WHITE, &white_square);
+	// render_square(data.img, WHITE, &white_square);
 	parse_map(argv[1], &data);
 	rotate_map(data.map);
 	render_map(&data);

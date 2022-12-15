@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/13 19:32:09 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/14 22:51:11 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME_PRNTF = ../libftprintf.a
 
 NAME_FDF = srcs_to_fdf.a
 
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address -fsanitize=leak
 
 AR = ar -rs
 
