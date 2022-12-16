@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:23:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:55:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		parse_map_bns(char *argv, t_data *d);
 
 void	render_map_bns(t_data *data);
 
-void	rotate_map_bns(t_map *fdf);
+void	rotate_map_bns(t_map *);
 
 void	colorize_bns(t_map *map);
 

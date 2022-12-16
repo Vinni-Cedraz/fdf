@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 23:00:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:37:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 15:02:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	main(int argc, char **argv)
 	colorize_bns(d.map);
 	d.move_x = 0;
 	d.move_y = 0;
-	rotate_map_bns(d.map);
 	render_map_bns(&d);
+	rotate_map_bns(d.map);
 	mlx_put_image_to_window(d.mlx_ptr, d.win_ptr, d.img->mlx_img, 0, 0);
-	mlx_key_hook(d.win_ptr, translation_movements_and_esc, &d);
 	// mlx_key_hook(d.win_ptr, rotation_movements, &d);
+	mlx_key_hook(d.win_ptr, translation_movements_and_esc, &d);
 	mlx_hook(d.win_ptr, 17, 0, close_win_bns, &d);
 	mlx_loop(d.mlx_ptr);
 	free(d.img);
