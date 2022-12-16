@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 02:10:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 03:15:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,9 @@
 
 void	put_pixel_img(t_img *img, int x, int y, int color);
 
-void	render_square(t_img *img, int color, t_square *square);
-
-void	define_square(t_square *square, t_point p1, t_point p2);
-
-void	linedraw(t_img *img, t_point *point1, t_point *point2);
-
 int		deal_key(int key, t_data *data);
 
 void	open_win_n_img(t_data *data);
-
-void	get_map_dimensions(char *argv);
 
 int		parse_map(char *argv, t_data *d);
 
@@ -39,11 +31,5 @@ void	colorize(t_map *map);
 void	render_line(t_point p1, t_point p2, int color, t_data *d);
 
 int		close_win(t_data *data);
-
-void	blackout(t_data *fdf);
-
-int		translation_movements_and_esc(int key, t_data *data);
-
-int		zoom_events(int key, t_data *data);
 
 #endif

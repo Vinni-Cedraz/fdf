@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_win.c                                        :+:      :+:    :+:   */
+/*   close_win_bns.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 01:01:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 01:01:11 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:24:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
-int	close_win(t_data *data)
+int	close_win_bns(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);

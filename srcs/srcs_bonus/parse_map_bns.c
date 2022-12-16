@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 #include "printf_libft_structs.h"
 #include <stdio.h>
 #include <string.h>
@@ -22,7 +22,7 @@ static int	create_map(t_data *map, char *argv, char **first_line);
 //finds a comma and a hex code in the string, then converts it to an int//
 static int	get_hex_color(char *str);
 
-int	parse_map(char *argv, t_data *d)
+int	parse_map_bns(char *argv, t_data *d)
 {
 	int		fd;
 	char	buf[1];

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel_img.c                                    :+:      :+:    :+:   */
+/*   blackout_bns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 19:39:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 20:40:04 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:23:38 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:23:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
-void	put_pixel_img(t_img *img, int x, int y, int color)
+// this functions paints the screen black:
+void	blackout_bns(t_data *data)
 {
-	char	*ptr_to_color;
+	int		i;
+	int		j;
 
-	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
-		return ;
-	ptr_to_color = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int *)ptr_to_color = color;
+	i = 0;
+	while (i < data->img->height)
+	{
+		j = 0;
+		while (j < data->img->width)
+		{
+			put_pixel_img_bns(data->img, j, i, BLACK);
+			j++;
+		}
+		i++;
+	}
 }

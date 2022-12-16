@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_win_n_img.c                                   :+:      :+:    :+:   */
+/*   open_win_n_img_bns.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 11:55:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 02:52:12 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:25:15 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:25:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
 static void	open_img(t_data *data);
 
-void	open_win_n_img(t_data *data)
+void	open_win_n_img_bns(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	data->img->width = WINDOW_WIDTH;

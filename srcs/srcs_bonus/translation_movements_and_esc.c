@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
 static void	move_right(t_data *d);
 static void	move_left(t_data *d);
@@ -20,7 +20,7 @@ static void	move_down(t_data *d);
 int	translation_movements_and_esc(int key, t_data *d)
 {
 	if (key == XK_ESCAPE)
-		close_win(d);
+		close_win_bns(d);
 	if (key == XK_RIGHT)
 		move_right(d);
 	if (key == XK_LEFT)
@@ -34,32 +34,32 @@ int	translation_movements_and_esc(int key, t_data *d)
 
 static void	move_right(t_data *d)
 {
-	blackout(d);
+	blackout_bns(d);
 	d->move_x += 25;
-	render_map(d);
+	render_map_bns(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
 static void	move_left(t_data *d)
 {
-	blackout(d);
+	blackout_bns(d);
 	d->move_x -= 25;
-	render_map(d);
+	render_map_bns(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
 static void	move_up(t_data *d)
 {
-	blackout(d);
+	blackout_bns(d);
 	d->move_y -= 25;
-	render_map(d);
+	render_map_bns(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
 static void	move_down(t_data *d)
 {
-	blackout(d);
+	blackout_bns(d);
 	d->move_y += 25;
-	render_map(d);
+	render_map_bns(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
