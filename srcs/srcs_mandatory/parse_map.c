@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 18:19:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 03:19:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	make_t_point(t_data **d, t_create_map *t)
 	int	hexcolor;
 
 	(*d)->scale_x = (float)WINDOW_WIDTH / (*d)->map->width / 1.5;
-	(*d)->scale_y = (float)WINDOW_HEIGHT / (*d)->map->height/ 1.5;
+	(*d)->scale_y = (float)WINDOW_HEIGHT / (*d)->map->height / 1.5;
 	(*d)->map->arr[t->y][t->x].x = t->x * (*d)->scale_x;
 	(*d)->map->arr[t->y][t->x].y = t->y * (*d)->scale_y;
 	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 1.5;

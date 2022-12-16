@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colorize.c                                         :+:      :+:    :+:   */
+/*   colorize_bns.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 23:27:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 15:32:44 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:23:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
 static void	get_max_altitude(t_map *map);
 static void	get_min_altitude(t_map *map);
 //checks if there's any hex color code in the map//
-static int	is_colorized(t_map *map);
+static int	is_colorize_bnsd(t_map *map);
 
-void	colorize(t_map *map)
+void	colorize_bns(t_map *map)
 {
 	int	i;
 	int	j;
@@ -25,7 +25,8 @@ void	colorize(t_map *map)
 	i = -1;
 	get_max_altitude(map);
 	get_min_altitude(map);
-	if (!is_colorized(map))
+	if (!is_colorize_bnsd(map))
+	{
 		while (++i < map->height)
 		{
 			j = -1;
@@ -43,6 +44,7 @@ void	colorize(t_map *map)
 					map->arr[i][j].color = LIGHT_GRAY;
 			}
 		}
+	}
 }
 
 static void	get_max_altitude(t_map *map)
@@ -89,7 +91,7 @@ static void	get_min_altitude(t_map *map)
 	(*map).min_z = min_z;
 }
 
-static int	is_colorized(t_map *map)
+static int	is_colorize_bnsd(t_map *map)
 {
 	int	i;
 	int	j;

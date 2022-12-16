@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   render_map_bns.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 09:12:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 11:46:01 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:24:17 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:24:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
 //this functions draws in an img a line between the points of a map:
-void	render_map(t_data *fdf)
+void	render_map_bns(t_data *fdf)
 {
 	int	i;
 	int	j;
@@ -25,12 +25,12 @@ void	render_map(t_data *fdf)
 		while (j < fdf->map->width)
 		{
 			if (j < fdf->map->width - 1)
-				render_line(fdf->map->arr[i][j],
+				render_line_bns(fdf->map->arr[i][j],
 					fdf->map->arr[i][j + 1],
 					fdf->map->arr[i][j + 1].color,
 					fdf);
 			if (i < fdf->map->height - 1)
-				render_line(fdf->map->arr[i][j],
+				render_line_bns(fdf->map->arr[i][j],
 					fdf->map->arr[i + 1][j],
 					fdf->map->arr[i + 1][j].color,
 					fdf);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_map.c                                       :+:      :+:    :+:   */
+/*   rotate_map_bns.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 17:44:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 11:39:47 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:22:14 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:22:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
 ////this function rotates a given point around the z axis:
 static void	rotate_z(t_point *point, double angle);
@@ -18,7 +18,7 @@ static void	rotate_z(t_point *point, double angle);
 static void	rotate_x(t_point *point, double angle);
 
 //this function calls the two functions above on each point of a map:
-void	rotate_map(t_map *map)
+void	rotate_map_bns(t_map *map)
 {
 	int	i;
 	int	j;
@@ -46,7 +46,6 @@ static void	rotate_z(t_point *point, double angle)
 	y = point->y;
 	point->x = x * cos(angle) - y * sin(angle);
 	point->y = x * sin(angle) + y * cos(angle);
-	
 }
 
 static void	rotate_x(t_point *point, double angle)

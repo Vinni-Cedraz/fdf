@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_line.c                                      :+:      :+:    :+:   */
+/*   render_line_bns.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 19:27:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 22:58:09 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 03:23:54 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 03:23:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
-void	render_line(t_point p1, t_point p2, int color, t_data *fdf)
+void	render_line_bns(t_point p1, t_point p2, int color, t_data *fdf)
 {
 	t_line	line;
 
@@ -28,7 +28,7 @@ void	render_line(t_point p1, t_point p2, int color, t_data *fdf)
 	line.y = p1.y + fdf->move_y + (float)WINDOW_HEIGHT / 5.0;
 	while (line.steps--)
 	{
-		put_pixel_img(fdf->img, line.x, line.y, color);
+		put_pixel_img_bns(fdf->img, line.x, line.y, color);
 		line.x += line.x_inc;
 		line.y += line.y_inc;
 	}

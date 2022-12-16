@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
+#include "fdf_includes_bonus.h"
 
 static void	zoom_in(t_data *d);
 static void	zoom_out(t_data *d);
@@ -26,22 +26,22 @@ int	zoom_events(int key, t_data *d)
 
 static void	zoom_in(t_data *d)
 {
-	blackout(d);
+	blackout_bns(d);
 	d->scale_x += 1;
 	d->scale_y += 1;
 	d->scale_x += 20;
 	d->scale_y += 20;
-	render_map(d);
+	render_map_bns(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img, 0, 0);
 }
 
 static void	zoom_out(t_data *d)
 {
-	blackout(d);
+	blackout_bns(d);
 	d->scale_x -= 1;
 	d->scale_y -= 1;
 	d->scale_x -= 20;
 	d->scale_y -= 20;
-	render_map(d);
+	render_map_bns(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img, 0, 0);
 }

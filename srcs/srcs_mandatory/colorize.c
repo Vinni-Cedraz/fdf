@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:27:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 02:56:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 03:20:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	colorize(t_map *map)
 	get_max_altitude(map);
 	get_min_altitude(map);
 	if (!is_colorized(map))
+	{
 		while (++i < map->height)
 		{
 			j = -1;
@@ -37,6 +38,7 @@ void	colorize(t_map *map)
 					map->arr[i][j].color = CYAN;
 			}
 		}
+	}
 }
 
 static void	get_max_altitude(t_map *map)
