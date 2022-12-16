@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 03:15:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:23:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ void	blackout_bns(t_data *fdf);
 
 int		translation_movements_and_esc(int key, t_data *data);
 
-int		zoom_events(int key, t_data *data);
-
+int		rotation_movements(t_data *d, int key);
 #endif
