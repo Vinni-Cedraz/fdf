@@ -5,8 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/03 20:37:04 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */ /*   Updated: 2022/12/16 17:52:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +13,23 @@
 
 static char	*reading_function(int fd);
 static char	*linebreaker(char *wth_all, size_t wth_all_len, size_t aft_or_not);
-static char	*read_one(int fd);
 
 char	*ft_gnl(int fd)
 {
 	t_ools		line;
-	static char	*aftbrk[1024];
+	static char	*aftbrk;
 
 	if (read(fd, NULL, 0) < 0 || fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (BUFFER_SIZE == 1)
-		return (read_one(fd));
 	line.bfr_brk = NULL;
-	if (!aftbrk[fd])
+	if (!aftbrk)
 		line.wth_all = reading_function(fd);
 	else
-		line.wth_all = ft_strjoin(aftbrk[fd], reading_function(fd));
+		line.wth_all = ft_strjoin(aftbrk, reading_function(fd));
 	line.len = ft_strlen(line.wth_all) + 1;
 	if (line.len - 1)
 	{
-		aftbrk[fd] = linebreaker(line.wth_all, line.len, 1);
+		aftbrk = linebreaker(line.wth_all, line.len, 1);
 		line.bfr_brk = linebreaker(line.wth_all, line.len, 0);
 	}
 	if (!(line.wth_all == line.bfr_brk))
@@ -85,31 +81,4 @@ static char	*linebreaker(char *wth_all, size_t wth_all_len, size_t aft_or_not)
 	ft_memcpy(line.bfr_brk, wth_all, line.bfrbrk_len);
 	*(line.bfr_brk + line.bfrbrk_len - 1) = '\0';
 	return (line.bfr_brk);
-}
-
-static char	*read_one(int fd)
-{
-	t_ools	line;
-
-	line.i = 0;
-	line.max = (size_t)__INT_MAX__ * 3;
-	line.read = malloc(line.max);
-	*line.read = '\0';
-	line.len = read(fd, line.read, 1);
-	while (line.len)
-	{
-		if (line.read[line.i] == '\n' || line.i == line.max - 1)
-		{
-			line.read[line.i + 1] = '\0';
-			line.res = ft_strdup(line.read);
-			return (free(line.read), line.res);
-		}
-		if (line.i < line.max - 1)
-			line.len = read(fd, &line.read[line.i++], 1);
-	}
-	if (!line.len && !line.i)
-		return (free(line.read), NULL);
-	line.read[line.i] = '\0';
-	line.res = ft_strdup(line.read);
-	return (free(line.read), line.res);
 }

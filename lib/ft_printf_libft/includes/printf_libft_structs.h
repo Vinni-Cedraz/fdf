@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 19:03:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:04:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ typedef struct s_map
 	int					height;
 	int					max_z;
 	int					min_z;
-	int					y_offset;
-	int					x_offset;
 	t_point				**arr;
 }						t_map;
 
@@ -66,12 +64,12 @@ typedef struct s_plit
 
 typedef struct s_create_map
 {
-	int		x;
-	int		y;
-	int		fd;
-	char	*line;
-	t_split	*split;
-}			t_create_map;
+	int					x;
+	int					y;
+	int					fd;
+	char				*line;
+	t_split				*split;
+}						t_create_map;
 
 typedef struct s_data
 {
@@ -86,7 +84,6 @@ typedef struct s_data
 	t_map				*map;
 	t_create_map		tool;
 }						t_data;
-
 
 // this struct is just a box of tools, t_ools, got it? xD
 typedef struct s_tools

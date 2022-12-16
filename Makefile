@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/16 13:21:24 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/16 17:56:29 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -fsanitize=leak -fsanitize=address
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -52,8 +52,10 @@ BONUS_SRCS = put_pixel_img_bns \
 					  render_line_bns \
 				    open_win_n_img_bns \
 							   main_bns \
-	        translation_movements_and_esc \
-			            rotation_movements \
+								deal_keys \
+			           	   	apply_isometry \
+	                   translation_movements \
+						     reset_isometry \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
