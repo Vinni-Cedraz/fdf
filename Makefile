@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/16 19:03:41 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/16 20:11:33 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ SRCS = put_pixel_img \
 
 BONUS_SRCS = put_pixel_img_bns \
 				  parse_map_bns \
-				  rotate_map_bns \
 				  	 blackout_bns \
 					 close_win_bns \
 				     render_map_bns \
@@ -52,10 +51,11 @@ BONUS_SRCS = put_pixel_img_bns \
 					  render_line_bns \
 				    open_win_n_img_bns \
 							   main_bns \
-								deal_keys \
-			           	   	apply_isometry \
-	                   translation_movements \
-						     reset_isometry \
+							   deal_keys \
+			           	   apply_isometry \
+	                 translation_movements \
+					     rotate_15_around_z \
+						      reset_isometry \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
