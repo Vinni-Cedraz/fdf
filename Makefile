@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/16 11:54:02 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/16 13:21:24 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,8 @@ BONUS_SRCS = put_pixel_img_bns \
 					  render_line_bns \
 				    open_win_n_img_bns \
 							   main_bns \
-						     zoom_events \
 	        translation_movements_and_esc \
+			            rotation_movements \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
