@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:55:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:20:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,19 @@ int		close_win_bns(t_data *data);
 
 void	blackout_bns(t_data *fdf);
 
-int		translation_movements_and_esc(int key, t_data *data);
+int		deal_keys(int key, t_data *data);
 
-int		rotation_movements(t_data *d, int key);
+int		translation_movements(t_data *data);
+
+int		apply_isometry(t_data *d);
+
+int		reset_isometry(t_data *map);
+
+void	move_down(t_data *d);
+
+void	move_up(t_data *d);
+
+void	move_left(t_data *d);
+
+void	move_right(t_data *d);
 #endif

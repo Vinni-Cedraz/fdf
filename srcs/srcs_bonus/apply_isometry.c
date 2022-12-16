@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bns.c                                         :+:      :+:    :+:   */
+/*   apply_isometry.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 23:00:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:24:35 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 16:21:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-int	main(int argc, char **argv)
+int	apply_isometry(t_data *d)
 {
-	t_data	d;
-
-	(void)argc;
-	d.img = malloc(sizeof(t_img));
-	if (!parse_map_bns(argv[1], &d))
-		return (0);
-	open_win_n_img_bns(&d);
-	colorize_bns(d.map);
-	d.move_x = 0;
-	d.move_y = 0;
-	render_map_bns(&d);
-	mlx_put_image_to_window(d.mlx_ptr, d.win_ptr, d.img->mlx_img, 0, 0);
-	mlx_key_hook(d.win_ptr, deal_keys, &d);
-	mlx_hook(d.win_ptr, 17, 0, close_win_bns, &d);
-	mlx_loop(d.mlx_ptr);
-	free(d.img);
+	blackout_bns(d);
+	rotate_map_bns(d->map);
+	render_map_bns(d);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
+	return (0);
 }
