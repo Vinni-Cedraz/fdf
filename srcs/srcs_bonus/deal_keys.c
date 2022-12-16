@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:23:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:07:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ int	deal_keys(int key, t_data *d)
 		apply_isometry(d);
 	if (key == 'r')
 		reset_isometry(d);
+	if (key == 'a')
+		rotate_15_around_z(d);
+	if (key == 'd')
+		reverse_15_around_z(d);
 	return (0);
 }

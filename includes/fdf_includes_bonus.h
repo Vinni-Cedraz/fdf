@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:20:46 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 20:08:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	open_win_n_img_bns(t_data *data);
 int		parse_map_bns(char *argv, t_data *d);
 
 void	render_map_bns(t_data *data);
-
-void	rotate_map_bns(t_map *);
 
 void	colorize_bns(t_map *map);
 
@@ -48,4 +46,8 @@ void	move_up(t_data *d);
 void	move_left(t_data *d);
 
 void	move_right(t_data *d);
+
+void	rotate_15_around_z(t_data *d);
+
+void	reverse_15_around_z(t_data *d);
 #endif
