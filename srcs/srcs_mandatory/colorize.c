@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:27:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 15:32:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 02:56:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,10 @@ void	colorize(t_map *map)
 			j = -1;
 			while (++j < map->width)
 			{
-				if (map->arr[i][j].z < 0)
-					map->arr[i][j].color = RED;
-				if (map->arr[i][j].z == map->min_z)
-					map->arr[i][j].color = BLUE;
-				else if (map->arr[i][j].z == map->max_z)
+				if (map->arr[i][j].z == map->max_z)
 					map->arr[i][j].color = MAGENTA;
 				else if (map->arr[i][j].z > 0)
 					map->arr[i][j].color = CYAN;
-				else if (map->arr[i][j].z == 0)
-					map->arr[i][j].color = LIGHT_GRAY;
 			}
 		}
 }
