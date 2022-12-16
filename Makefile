@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/16 03:16:40 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/16 11:54:02 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,7 @@ BONUS_MOD_OBJ = $(shell find $(BONUS_OBJS_PATH)*.o -newer $(NAME_BONUS))
 all: $(NAME)
 
 make_mlx:
-	@./_mlx_/cp
+	@./_mlx_/cp.c
 	@make -C mlx --no-print-directory
 
 make_libft:

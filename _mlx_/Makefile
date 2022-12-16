@@ -14,7 +14,6 @@
 INC	=%%%%
 
 UNAME = $(shell uname)
-CC	= cc
 ifeq ($(UNAME),FreeBSD)
 	CC = clang
 endif
@@ -73,9 +72,11 @@ all	: $(NAME)
 echo:
 	@printf "$(GREEN)making minilibx$(DEF_COLOR)..\n"
 
+
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@cc $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@printf "$(GREEN)#$(DEF_COLOR)"
 
 $(NAME)	: echo $(OBJ) 
 	@ar -r $(NAME) $(OBJ)

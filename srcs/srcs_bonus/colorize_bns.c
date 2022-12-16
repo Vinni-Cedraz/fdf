@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 03:23:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:51:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static void	get_max_altitude(t_map *map);
 static void	get_min_altitude(t_map *map);
+static void	get_altitude_range(t_map *map);
 //checks if there's any hex color code in the map//
-static int	is_colorize_bnsd(t_map *map);
+static int	is_colorized_bns(t_map *map);
 
 void	colorize_bns(t_map *map)
 {
@@ -23,9 +24,8 @@ void	colorize_bns(t_map *map)
 	int	j;
 
 	i = -1;
-	get_max_altitude(map);
-	get_min_altitude(map);
-	if (!is_colorize_bnsd(map))
+	get_altitude_range(map);
+	if (!is_colorized_bns(map))
 	{
 		while (++i < map->height)
 		{
@@ -91,7 +91,7 @@ static void	get_min_altitude(t_map *map)
 	(*map).min_z = min_z;
 }
 
-static int	is_colorize_bnsd(t_map *map)
+static int	is_colorized_bns(t_map *map)
 {
 	int	i;
 	int	j;
@@ -109,4 +109,10 @@ static int	is_colorize_bnsd(t_map *map)
 		i++;
 	}
 	return (0);
+}
+
+static void	get_altitude_range(t_map *map)
+{
+	get_max_altitude(map);
+	get_min_altitude(map);
 }

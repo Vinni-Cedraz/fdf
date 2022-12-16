@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/13 19:45:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:10:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ int		ft_atoi_base(char *str, char *base);
 // cheks if its am uppercase hex number:
 int		ft_ishexup(int c);
 // hex low:
-int		ft_ishexlow(int c);
+int		ft_ishexlow(char *s);
 // this is to free a t_data pointer:
 void	ft_free_t_data(t_data **data);
 

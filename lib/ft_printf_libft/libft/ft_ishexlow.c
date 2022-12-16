@@ -6,13 +6,19 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 08:32:21 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 08:32:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:37:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_ishexlow(int c)
+int	ft_ishexlow(char *s)
 {
-	return (ft_isdigit(c) || (c >= 'a' && c <= 'f') || c == 'x');
+	while (*s)
+	{
+		if (ft_isdigit(*s) || (*s >= 'a' && *s <= 'f'))
+			return (1);
+		s++;
+	}
+	return (0);
 }
