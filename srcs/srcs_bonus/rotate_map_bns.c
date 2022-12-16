@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 03:22:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 03:22:29 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/12 17:44:56 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 13:55:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	rotate_z(t_point *point, double angle)
 	y = point->y;
 	point->x = x * cos(angle) - y * sin(angle);
 	point->y = x * sin(angle) + y * cos(angle);
+	
 }
 
 static void	rotate_x(t_point *point, double angle)
