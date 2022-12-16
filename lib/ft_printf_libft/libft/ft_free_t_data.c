@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 19:29:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 21:06:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:30:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_t_data(t_data **d)
 	int	i;
 
 	i = 0;
-	while (i < (*d)->map->height)
+	while (i < (*d)->map->height + 1)
 	{
 		free((*d)->map->arr[i]);
 		i++;
