@@ -6,7 +6,6 @@ INCLIB=$(INC)/../lib
 UNAME := $(shell uname)
 
 CFLAGS= -O3 -w -I$(INC) -I..
-
 NAME= mlx-test
 SRC = main.c
 OBJ = $(SRC:%.c=%.o)
@@ -39,7 +38,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 	@printf "\n\n$(CYAN)MINILIBX OK$(DEF_COLOR)\n"
-	@sleep 2
 
 show:
 	@printf "UNAME		: $(UNAME)\n"
