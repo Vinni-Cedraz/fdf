@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/15 23:41:37 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/16 03:02:04 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -34,25 +34,26 @@ DEF_COLOR   =         \033[0;39m
 SRCS = put_pixel_img \
   			parse_map \
 			rotate_map \
-			 render_map \
-				colorize \
-	          render_line \
-				  deal_key \
-	         open_win_n_img \
-					open_img \
+			  close_win \
+			  render_map \
+			     colorize \
+	           render_line \
+				   deal_key \
+	          open_win_n_img \
 	                     main \
 
 BONUS_SRCS = put_pixel_img \
 				  parse_map \
 				  rotate_map \
 				  	 blackout \
-				    render_map \
-					   colorize \
-					 render_line \
-						 deal_key \
+					 close_win \
+				     render_map \
+					    colorize \
+					  render_line \
 				    open_win_n_img \
-						   open_img \
-							    main \
+							   main \
+						 zoom_events \
+	    translation_movements_and_esc \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
@@ -82,27 +83,27 @@ SRCS_FROM_LIBFT =  ft_memchr \
 								    ft_substr \
 
 SRCS_FROM_LIBFT_TO_BONUS = ft_memchr \
-		    		ft_numlen \
-		     		 ft_strchr \
-					  ft_strlen \
-					   ft_memcpy \
-					   ft_memmove \
-						 ft_memset \
-						  ft_strdup \
-						  ft_strlcpy \
-						  ft_free_arr \
-					      ft_atoi_base \
-					    ft_word_counter \
-					  		   ft_calloc \
-							   ft_strlcat \
-								   ft_atoi \
-								   ft_split \
-								  ft_strjoin \
-								    ft_substr \
-									ft_strncmp \
+							ft_numlen \
+							 ft_strchr \
+							  ft_strlen \
+							   ft_memcpy \
+							   ft_memmove \
+								 ft_memset \
+								  ft_strdup \
+								  ft_strlcpy \
+								  ft_free_arr \
+								  ft_atoi_base \
+								ft_word_counter \
+									   ft_calloc \
+									   ft_strlcat \
+										   ft_atoi \
+										   ft_split \
+										  ft_strjoin \
+											ft_substr \
+											ft_strncmp \
 
 ################ MANDATORY VARIABLES ################
-SRCS_PATH = srcs/
+SRCS_PATH = srcs/srcs_mandatory/
 OBJS_PATH = objs/
 LIBFT_OBJS_PATH = $(LIBFT_PATH)objs_fdf/
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))

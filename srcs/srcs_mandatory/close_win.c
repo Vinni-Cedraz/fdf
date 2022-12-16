@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_square.c                                    :+:      :+:    :+:   */
+/*   close_win.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 13:12:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/12 18:34:48 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/16 01:18:40 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/16 01:18:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-void	define_square(t_square *square, t_point p1, t_point p2)
+int	close_win(t_data *data)
 {
-	square->width_start = p1.x;
-	square->height_start = p1.y;
-	square->total_width = p2.x;
-	square->total_height = p2.y;
+	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	free(data->img);
+	ft_free_t_data(&data);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 23:00:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 23:00:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 02:53:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	render_map(&data);
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, \
 	data.img->mlx_img, 0, 0);
-	mlx_key_hook(data.win_ptr, deal_key, &data);
+	mlx_key_hook(data.win_ptr, translation_movements_and_esc, &data);
 	mlx_hook(data.win_ptr, 17, 0, close_win, &data);
 	mlx_loop(data.mlx_ptr);
 	free(data.img);
