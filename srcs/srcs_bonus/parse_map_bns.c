@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 14:17:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:30:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 	d->tool.x = -1;
 	d->tool.fd = open(argv, O_RDONLY);
 	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
-	while (d->tool.y < d->map->height)
+	while (1)
 	{
 		if (d->tool.y == 0)
 			d->tool.line = ft_strdup(*first_line);
 		else
 			d->tool.line = ft_gnl(d->tool.fd);
+		if (d->tool.line == NULL)
+			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
