@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deal_key.c                                         :+:      :+:    :+:   */
+/*   open_win_n_img.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 23:10:44 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/03 11:55:36 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/15 19:32:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-int	deal_key(int key, t_data *data)
+void	open_win_n_img(t_data *data)
 {
-	if (key == XK_ESCAPE)
-		close_win(data);
-	return (0);
-}
-
-int	close_win(t_data *data)
-{
-	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	free(data->img);
-	ft_free_t_data(&data);
-	exit(0);
+	data->mlx_ptr = mlx_init();
+	data->img->width = WINDOW_WIDTH;
+	data->img->height = WINDOW_HEIGHT;
+	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
+			"mlx 42");
+	open_img(data);
 }

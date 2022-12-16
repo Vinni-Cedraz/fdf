@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 14:32:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:09:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 // define colors: #define BLACK 0x000000
 # define WHITE 0xFFFFFF
+# define BLACK 0x000000
 # define RED 0xFF0000
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF

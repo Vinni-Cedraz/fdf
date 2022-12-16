@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deal_key.c                                         :+:      :+:    :+:   */
+/*   open_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 23:10:44 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/15 19:30:39 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/15 19:32:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-int	deal_key(int key, t_data *data)
+void	open_img(t_data *data)
 {
-	if (key == XK_ESCAPE)
-		close_win(data);
-	return (0);
-}
-
-int	close_win(t_data *data)
-{
-	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	free(data->img);
-	ft_free_t_data(&data);
-	exit(0);
+	data->img->mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, \
+	WINDOW_HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp, \
+	&data->img->line_len, &data->img->endian);
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/15 23:10:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/15 23:44:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,38 @@ int	deal_key(int key, t_data *data)
 {
 	if (key == XK_ESCAPE)
 		close_win(data);
+	if (key == XK_RIGHT)
+	{
+		blackout(data);
+		data->move_x += 25;
+		render_map(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, \
+		data->img->mlx_img, 0, 0);
+	}
+	if (key == XK_LEFT)
+	{	
+		blackout(data);
+		data->move_x -= 25;
+		render_map(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, \
+		data->img->mlx_img, 0, 0);
+	}
+	if (key == XK_UP)
+	{
+		blackout(data);
+		data->move_y -= 25;
+		render_map(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, \
+		data->img->mlx_img, 0, 0);
+	}
+	if (key == XK_DOWN)
+	{
+		blackout(data);
+		data->move_y += 25;
+		render_map(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, \
+		data->img->mlx_img, 0, 0);
+	}
 	return (0);
 }
 

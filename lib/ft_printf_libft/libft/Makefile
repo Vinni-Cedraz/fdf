@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/15 20:20:11 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/15 23:36:10 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ NAME_PRNTF = ../libftprintf.a
 
 NAME_FDF = srcs_to_fdf.a
 
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -O3
 
 AR = ar -rs
 
@@ -146,6 +146,8 @@ MOD_H = $(shell find . -name "*.h" -type f -newer $(NAME) || $(NAME_FDF) || $(NA
 all : $(NAME) 
 
 srcs_to_printf : $(NAME_PRNTF)
+
+srcs_to_fdf_bonus: $(NAME_FDF)
 
 srcs_to_fdf : $(NAME_FDF)
 
