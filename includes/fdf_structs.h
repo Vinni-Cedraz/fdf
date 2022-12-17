@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 17:09:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:43:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,12 @@
 
 # include "printf_libft_structs.h"
 
-typedef struct s_quare
-{
-	int		height_start;
-	int		width_start;
-	int		total_height;
-	int		total_width;
-}			t_square;
-
 typedef struct s_line
 {
-	float	x;
-	float	y;
-	float	x_inc;
-	float	y_inc;
+	double	x;
+	double	y;
+	double	x_inc;
+	double	y_inc;
 	int		dx;
 	int		dy;
 	int		steps;
