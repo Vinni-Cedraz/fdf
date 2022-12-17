@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 18:49:25 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/14 19:29:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/17 17:33:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_split	*ft_split(char const *s, char c)
 {
 	t_split	*tool;
 
+	if (!s)
+		return (NULL);
 	tool = (t_split *)malloc(sizeof(t_split));
 	tool->i = -1;
 	tool->words = ft_word_counter(s, c);
