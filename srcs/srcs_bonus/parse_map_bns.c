@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 16:13:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:33:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ static int	create_map(t_data *d, char *argv)
 	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
 	while (1)
 	{
+		ft_printf("[%d] out of [%d]\n", d->tool.y, d->map->height);
 		d->tool.line = ft_gnl(d->tool.fd);
 		if (d->tool.line == NULL)
 			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
 		if ((int)d->tool.split->words != d->map->width)
-			return (ft_printf("%s\n", "Error: uneven map."), \
-		free_error(d, d->tool.fd), 0);
+			return (ft_printf("%s\n", "Error: uneven map."),
+					free_error(d, d->tool.fd),
+					0);
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
@@ -79,7 +81,6 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	ft_printf("parsing line [%d] out of [%d] total\n", y, (*d)->map->height);
 	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
 	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
 	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
