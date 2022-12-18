@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/17 22:22:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:13:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //determines t_point attributes scaling it according to the map/window size//
 static void	make_t_point(t_data **d, t_split *t_split, int x, int y);
 //stores the map in a 2d array of t_point in the t_data struct//
-static int	create_map(t_data *map, char *argv, char **first_line);
+static int	create_map(t_data *map, char *argv);
 //finds a comma and a hex code in the string, then converts it to an int//
 static int	get_hex_color(char *str);
 // frees and exits the program if the map is invalid //
@@ -41,14 +41,15 @@ int	parse_map_bns(char *argv, t_data *d)
 	fd = open(argv, O_RDONLY);
 	d->map->height = 0;
 	while (read(fd, buf, 1))
-		if (*buf == '\n')
+		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
-	return (close(fd), create_map(d, argv, &first_line), 1);
+	free(first_line);
+	return (close(fd), create_map(d, argv), 1);
 }
 
 //tool->x and tool->y are just local counters for the loops //
-static int	create_map(t_data *d, char *argv, char **first_line)
+static int	create_map(t_data *d, char *argv)
 {
 	d->tool.y = 0;
 	d->tool.x = -1;
@@ -56,10 +57,7 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
 	while (1)
 	{
-		if (d->tool.y == 0)
-			d->tool.line = ft_strdup(*first_line);
-		else
-			d->tool.line = ft_gnl(d->tool.fd);
+		d->tool.line = ft_gnl(d->tool.fd);
 		if (d->tool.line == NULL)
 			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
@@ -74,21 +72,18 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 		d->tool.y++;
 		ft_free_t_split(d->tool.split);
 	}
-	return (close(d->tool.fd), free(*first_line), 0);
+	return (close(d->tool.fd), 0);
 }
 
 static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
+	ft_printf("parsing line [%d] out of [%d] total\n", y, (*d)->map->height);
 	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
 	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
 	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
-	printf("x: %f\n", (*d)->map->arr[y][x].x);
-	printf("x: %d\n", x);
 	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
-	printf("y: %f\n", (*d)->map->arr[y][x].y);
-	ft_printf("y: %d\n", y);
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]) * 3;
 	hexcolor = get_hex_color(t_split->str_arr[x]);
 	if (hexcolor)
