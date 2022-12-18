@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/17 21:09:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/17 22:22:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 //determines t_point attributes scaling it according to the map/window size//
-static void	make_t_point(t_data **d, t_create_map *t);
+static void	make_t_point(t_data **d, t_split *t_split, int x, int y);
 //stores the map in a 2d array of t_point in the t_data struct//
 static int	create_map(t_data *map, char *argv, char **first_line);
 //finds a comma and a hex code in the string, then converts it to an int//
@@ -69,7 +69,7 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
-			make_t_point(&d, &d->tool);
+			make_t_point(&d, d->tool.split, d->tool.x, d->tool.y);
 		d->tool.x = -1;
 		d->tool.y++;
 		ft_free_t_split(d->tool.split);
@@ -77,20 +77,24 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 	return (close(d->tool.fd), free(*first_line), 0);
 }
 
-static void	make_t_point(t_data **d, t_create_map *t)
+static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->scale_x = (float)WINDOW_WIDTH / (*d)->map->width / 1.5;
-	(*d)->scale_y = (float)WINDOW_HEIGHT / (*d)->map->height / 1.5;
-	(*d)->map->arr[t->y][t->x].x = t->x * (*d)->scale_x;
-	(*d)->map->arr[t->y][t->x].y = t->y * (*d)->scale_y;
-	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 5;
-	hexcolor = get_hex_color(t->split->str_arr[t->x]);
+	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
+	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
+	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
+	printf("x: %f\n", (*d)->map->arr[y][x].x);
+	printf("x: %d\n", x);
+	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
+	printf("y: %f\n", (*d)->map->arr[y][x].y);
+	ft_printf("y: %d\n", y);
+	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]) * 3;
+	hexcolor = get_hex_color(t_split->str_arr[x]);
 	if (hexcolor)
-		(*d)->map->arr[t->y][t->x].color = hexcolor;
+		(*d)->map->arr[y][x].color = hexcolor;
 	else
-		(*d)->map->arr[t->y][t->x].color = CYAN;
+		(*d)->map->arr[y][x].color = CYAN;
 }
 
 static int	get_hex_color(char *str)
