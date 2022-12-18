@@ -6,14 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/17 18:25:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/17 21:09:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "printf_libft_structs.h"
-#include <stdio.h>
-#include <string.h>
 
 //determines t_point attributes scaling it according to the map/window size//
 static void	make_t_point(t_data **d, t_create_map *t);
@@ -67,7 +64,8 @@ static int	create_map(t_data *d, char *argv, char **first_line)
 			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
 		if ((int)d->tool.split->words != d->map->width)
-			return (perror("Error"), free_error(d, d->tool.fd), 0);
+			return (ft_printf("%s\n", "Error: uneven map."), \
+		free_error(d, d->tool.fd), 0);
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
