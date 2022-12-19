@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 16:33:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:50:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
 	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
 	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
-	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]) * 3;
+	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color(t_split->str_arr[x]);
 	if (hexcolor)
 		(*d)->map->arr[y][x].color = hexcolor;

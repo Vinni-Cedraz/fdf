@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/17 22:06:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:27:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,11 @@ int	deal_keys(int key, t_data *d)
 		rotate_15_around_z(d);
 	if (key == 'd')
 		reverse_15_around_z(d);
+	if (key == 'z')
+		scale_z_up(d);
+	if (key == 'c')
+		scale_z_down(d);
+	if (key == 'm')
+		mirror_z(d);
 	return (0);
 }
