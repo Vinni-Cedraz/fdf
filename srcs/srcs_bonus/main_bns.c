@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 23:00:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 22:59:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:30:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 		return (0);
 	open_win_n_img_bns(&d);
 	colorize_bns(d.map);
+	d.clockwise = 0;
+	d.counter_clock = 0;
 	d.move_x = 0;
 	d.move_y = 0;
 	render_map_bns(&d);

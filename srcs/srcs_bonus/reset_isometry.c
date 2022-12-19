@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:34:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:35:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	reset_isometry_aux(t_data *d);
 
 int	reset_isometry(t_data *d)
 {
+	d->counter_clock++;
 	blackout_bns(d);
 	reset_isometry_aux(d);
 	render_map_bns(d);

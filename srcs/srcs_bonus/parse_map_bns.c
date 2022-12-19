@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 23:47:26 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:59:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
-	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
+	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 5;
+	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 5;
 	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
 	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
