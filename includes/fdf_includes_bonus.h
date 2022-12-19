@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 23:28:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:44:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,9 @@ void	scale_z_up(t_data *d);
 void	scale_z_down(t_data *d);
 
 void	mirror_z(t_data *d);
+
+void	zoom_in(t_data *d);
+
+void	zoom_out(t_data *d);
 
 #endif

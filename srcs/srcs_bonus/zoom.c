@@ -1,101 +1,76 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale_transformations.c                            :+:      :+:    :+:   */
+/*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/19 15:38:18 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/19 15:45:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	aux_scale_z_up(t_data *d);
-static void	aux_scale_z_down(t_data *d);
+static void	aux_zoom_in(t_data *d);
+static void	aux_zoom_out(t_data *d);
 
-void	scale_z_up(t_data *d)
+void	zoom_in(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
 	reset_isometry(d);
-	aux_scale_z_up(d);
-	apply_isometry(d);
 	blackout_bns(d);
-	render_map_bns(d);
+	aux_zoom_in(d);
+	apply_isometry(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
-void	scale_z_down(t_data *d)
+void	zoom_out(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
 	reset_isometry(d);
-	aux_scale_z_down(d);
-	apply_isometry(d);
 	blackout_bns(d);
-	render_map_bns(d);
+	aux_zoom_out(d);
+	apply_isometry(d);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
-static void	aux_scale_z_up(t_data *d)
+static void	aux_zoom_in(t_data *d)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < d->map->height)
 	{
+		j = 0;
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].z *= (double)2;
+			d->map->arr[i][j].x *= 1.1;
+			d->map->arr[i][j].y *= 1.1;
 			j++;
 		}
-		j = 0;
 		i++;
 	}
 }
 
-static void	aux_scale_z_down(t_data *d)
+static void	aux_zoom_out(t_data *d)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (i < d->map->height)
-	{
-		while (j < d->map->width)
-		{
-			d->map->arr[i][j].z /= (double)2;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	mirror_z(t_data *d)
-{
-	int	i;
-	int	j;
-
-	reset_isometry(d);
 	i = 0;
 	while (i < d->map->height)
 	{
 		j = 0;
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].z *= -1;
+			d->map->arr[i][j].x *= 0.9;
+			d->map->arr[i][j].y *= 0.9;
 			j++;
 		}
 		i++;
 	}
-	apply_isometry(d);
-	blackout_bns(d);
-	render_map_bns(d);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
