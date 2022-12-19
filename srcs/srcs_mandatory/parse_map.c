@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 21:25:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:33:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	parse_map(char *argv, t_data *d)
 {
 	int		fd;
 	char	buf[1];
-	t_split	*split_to_count_width;
 	char	*first_line;
+	t_split	*split_to_count_width;
 
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
 		return (ft_printf("%s\n", strerror(22)), 0);
@@ -42,7 +42,6 @@ int	parse_map(char *argv, t_data *d)
 	return (close(fd), create_map(d, argv), free(first_line), 1);
 }
 
-//tool->x and tool->y are just local counters for the loops //
 static int	create_map(t_data *d, char *argv)
 {
 	d->tool.y = 0;
@@ -68,11 +67,11 @@ static void	make_t_point(t_data **d, t_create_map *t)
 {
 	int	hexcolor;
 
-	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
 	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
+	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
 	(*d)->map->arr[t->y][t->x].x = t->x * (*d)->scale_x;
 	(*d)->map->arr[t->y][t->x].y = t->y * (*d)->scale_y;
-	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 1.5;
+	(*d)->map->arr[t->y][t->x].z = ft_atoi(t->split->str_arr[t->x]) * 2.5;
 	hexcolor = get_hex_color(t->split->str_arr[t->x]);
 	if (hexcolor)
 		(*d)->map->arr[t->y][t->x].color = hexcolor;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 20:08:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 23:28:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,11 @@ void	move_right(t_data *d);
 void	rotate_15_around_z(t_data *d);
 
 void	reverse_15_around_z(t_data *d);
+
+void	scale_z_up(t_data *d);
+
+void	scale_z_down(t_data *d);
+
+void	mirror_z(t_data *d);
+
 #endif

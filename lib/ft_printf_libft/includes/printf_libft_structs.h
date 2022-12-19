@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 20:55:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/18 22:56:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ typedef unsigned char	t_uc;
 
 typedef struct s_point
 {
-	double					x;
-	double					y;
-	double					z;
-	double					color;
+	double				x;
+	double				y;
+	double				z;
+	double				color;
 }						t_point;
 
 typedef struct s_map
@@ -75,11 +75,10 @@ typedef struct s_data
 {
 	void				*win_ptr;
 	void				*mlx_ptr;
-	int					i;
-	int					j;
 	int					hook;
 	int					scale_x;
 	int					scale_y;
+	int					scale_z;
 	float				move_x;
 	float				move_y;
 	t_img				*img;
