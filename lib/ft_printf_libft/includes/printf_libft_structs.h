@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 22:56:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:39:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_map
 	int					height;
 	int					max_z;
 	int					min_z;
+	double				scale_z;
 	t_point				**arr;
 }						t_map;
 
