@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 12:27:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:56:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	reset_isometry(t_data *d)
 {
 	d->counter_clock++;
 	reset_isometry_aux(d);
-	draw(d);
 	return (0);
 }
 
