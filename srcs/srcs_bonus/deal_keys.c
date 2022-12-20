@@ -6,11 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/19 15:44:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 08:43:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+
+static void	aux_deal_keys(int key, t_data *d);
 
 int	deal_keys(int key, t_data *d)
 {
@@ -18,7 +20,7 @@ int	deal_keys(int key, t_data *d)
 		close_win_bns(d);
 	if (key == XK_RIGHT || key == 'l')
 		move_right(d);
-	if (key == XK_LEFT|| key == 'h')
+	if (key == XK_LEFT || key == 'h')
 		move_left(d);
 	if (key == XK_UP || key == 'k')
 		move_up(d);
@@ -32,6 +34,13 @@ int	deal_keys(int key, t_data *d)
 		rotate_15_around_z(d);
 	if (key == 'd')
 		reverse_15_around_z(d);
+	else if (key)
+		aux_deal_keys(key, d);
+	return (0);
+}
+
+static void	aux_deal_keys(int key, t_data *d)
+{
 	if (key == 'z')
 		scale_z_up(d);
 	if (key == 'c')
@@ -42,5 +51,4 @@ int	deal_keys(int key, t_data *d)
 		zoom_in(d);
 	if (key == 's')
 		zoom_out(d);
-	return (0);
 }
