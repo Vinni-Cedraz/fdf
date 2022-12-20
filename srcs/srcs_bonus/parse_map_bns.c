@@ -6,19 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/19 14:59:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 08:31:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-//determines t_point attributes scaling it according to the map/window size//
 static void	make_t_point(t_data **d, t_split *t_split, int x, int y);
-//stores the map in a 2d array of t_point in the t_data struct//
 static int	create_map(t_data *map, char *argv);
-//finds a comma and a hex code in the string, then converts it to an int//
 static int	get_hex_color(char *str);
-// frees and exits the program if the map is invalid //
 static void	free_error(t_data *d, int fd);
 
 int	parse_map_bns(char *argv, t_data *d)
@@ -80,8 +76,8 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 5;
-	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 5;
+	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
+	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
 	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
 	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
