@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 12:31:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:52:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ void	scale_z_up(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
-	reset_isometry(d);
+	// reset_isometry(d);
 	aux_scale_z_up(d);
-	apply_isometry(d);
+	// apply_isometry(d);
 }
 
 void	scale_z_down(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
-	reset_isometry(d);
+	// reset_isometry(d);
 	aux_scale_z_down(d);
-	apply_isometry(d);
+	// apply_isometry(d);
 }
 
 static void	aux_scale_z_up(t_data *d)
@@ -76,7 +76,7 @@ void	mirror_z(t_data *d)
 	int	i;
 	int	j;
 
-	reset_isometry(d);
+	// reset_isometry(d);
 	i = 0;
 	while (i < d->map->height)
 	{
@@ -88,8 +88,5 @@ void	mirror_z(t_data *d)
 		}
 		i++;
 	}
-	apply_isometry(d);
-	blackout_bns(d);
-	render_map_bns(d);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
+	// apply_isometry(d);
 }
