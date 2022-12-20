@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/20 12:57:47 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/20 15:12:06 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ BONUS_SRCS = put_pixel_img_bns \
 							             zoom \
 						 scale_transformations \
 						 	 rotate_15_around_y \
-						 				    draw \
+							 	data_initializer \
+						 				     draw \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

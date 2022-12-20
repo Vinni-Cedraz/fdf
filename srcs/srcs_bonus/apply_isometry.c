@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 12:21:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:20:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	apply_isometry(t_data *d)
 {
 	d->clockwise++;
 	rotate_map_bns(d->map);
-	draw(d);
 	return (0);
 }
 
