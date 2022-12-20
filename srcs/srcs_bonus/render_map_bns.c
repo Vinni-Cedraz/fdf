@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/18 21:18:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 08:38:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ static void	aux_render_map(t_data *d)
 		while (j < d->map->width - 1)
 		{
 			if (j <= d->map->width / 2)
-				render_line_bns(d->map->arr[i][j], d->map->arr[i][j + 1],
-						d->map->arr[i][j].color, d);
+				render_line_bns(d->map->arr[i][j], d->map->arr[i][j + 1], \
+				d->map->arr[i][j].color, d);
 			else
-				render_line_bns(d->map->arr[i][j], d->map->arr[i][j + 1],
-						d->map->arr[i][j + 1].color, d);
+				render_line_bns(d->map->arr[i][j], d->map->arr[i][j + 1], \
+				d->map->arr[i][j + 1].color, d);
 			if (i < d->map->height / 2)
-				render_line_bns(d->map->arr[i][j], d->map->arr[i + 1][j],
-						d->map->arr[i][j].color, d);
+				render_line_bns(d->map->arr[i][j], d->map->arr[i + 1][j], \
+				d->map->arr[i][j].color, d);
 			else
-				render_line_bns(d->map->arr[i][j], d->map->arr[i + 1][j],
-						d->map->arr[i + 1][j].color, d);
+				render_line_bns(d->map->arr[i][j], d->map->arr[i + 1][j], \
+				d->map->arr[i + 1][j].color, d);
 			j++;
 		}
 		i++;
@@ -60,9 +60,9 @@ static void	render_last_column(t_data *d)
 	while (i < d->map->height - 1)
 	{
 		if (i < d->map->height - 1)
-			render_line_bns(d->map->arr[i][d->map->width - 1],
-							d->map->arr[i + 1][d->map->width - 1],
-							d->map->arr[i + 1][d->map->width - 1].color, d);
+			render_line_bns(d->map->arr[i][d->map->width - 1], \
+				d->map->arr[i + 1][d->map->width - 1], \
+				d->map->arr[i + 1][d->map->width - 1].color, d);
 		i++;
 	}
 }
@@ -75,13 +75,13 @@ static void	render_last_line(t_data *d)
 	while (j < d->map->width - 1)
 	{
 		if (j <= d->map->width / 2)
-			render_line_bns(d->map->arr[d->map->height - 1][j],
-							d->map->arr[d->map->height - 1][j + 1],
-							d->map->arr[d->map->height - 1][j].color, d);
+			render_line_bns(d->map->arr[d->map->height - 1][j], \
+				d->map->arr[d->map->height - 1][j + 1], \
+				d->map->arr[d->map->height - 1][j].color, d);
 		else
-			render_line_bns(d->map->arr[d->map->height - 1][j],
-							d->map->arr[d->map->height - 1][j + 1],
-							d->map->arr[d->map->height - 1][j + 1].color, d);
+			render_line_bns(d->map->arr[d->map->height - 1][j], \
+				d->map->arr[d->map->height - 1][j + 1], \
+				d->map->arr[d->map->height - 1][j + 1].color, d);
 		j++;
 	}
 }
