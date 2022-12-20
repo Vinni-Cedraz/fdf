@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/19 15:38:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 12:31:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void	scale_z_up(t_data *d)
 	reset_isometry(d);
 	aux_scale_z_up(d);
 	apply_isometry(d);
-	blackout_bns(d);
-	render_map_bns(d);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
 void	scale_z_down(t_data *d)
@@ -34,9 +31,6 @@ void	scale_z_down(t_data *d)
 	reset_isometry(d);
 	aux_scale_z_down(d);
 	apply_isometry(d);
-	blackout_bns(d);
-	render_map_bns(d);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 }
 
 static void	aux_scale_z_up(t_data *d)

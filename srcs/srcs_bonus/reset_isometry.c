@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/19 15:35:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 12:27:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static void	reset_isometry_aux(t_data *d);
 int	reset_isometry(t_data *d)
 {
 	d->counter_clock++;
-	blackout_bns(d);
 	reset_isometry_aux(d);
-	render_map_bns(d);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
+	draw(d);
 	return (0);
 }
 

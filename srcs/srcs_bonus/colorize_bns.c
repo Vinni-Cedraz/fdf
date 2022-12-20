@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 11:51:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:44:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	get_max_altitude(t_map *map);
 static void	get_min_altitude(t_map *map);
 static void	get_altitude_range(t_map *map);
-//checks if there's any hex color code in the map//
 static int	is_colorized_bns(t_map *map);
 
 void	colorize_bns(t_map *map)

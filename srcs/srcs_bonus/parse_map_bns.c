@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 08:31:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 12:49:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	make_t_point(t_data **d, t_split *t_split, int x, int y);
 static int	create_map(t_data *map, char *argv);
 static int	get_hex_color(char *str);
-static void	free_error(t_data *d, int fd);
 
 int	parse_map_bns(char *argv, t_data *d)
 {
@@ -58,9 +57,6 @@ static int	create_map(t_data *d, char *argv)
 		if (d->tool.line == NULL)
 			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
-		if ((int)d->tool.split->words != d->map->width)
-			return (ft_printf("%s\n", "Error: uneven map."), \
-		free_error(d, d->tool.fd), 0);
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
@@ -108,11 +104,4 @@ static int	get_hex_color(char *str)
 		i++;
 	}
 	return (0);
-}
-
-static void	free_error(t_data *d, int fd)
-{
-	free(d->map);
-	close(fd);
-	exit(0);
 }

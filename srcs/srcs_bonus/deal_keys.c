@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 08:43:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 12:56:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,8 @@ static void	aux_deal_keys(int key, t_data *d)
 		zoom_in(d);
 	if (key == 's')
 		zoom_out(d);
+	if (key == 'q')
+		call_rotate_15_y(d);
+	if (key == 'e')
+		call_reverse_15_y(d);
 }
