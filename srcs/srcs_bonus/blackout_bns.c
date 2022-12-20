@@ -6,13 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:23:38 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 03:23:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 11:43:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-// this functions paints the screen black:
 void	blackout_bns(t_data *data)
 {
 	int		i;
