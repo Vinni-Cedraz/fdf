@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 12:55:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:56:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ static	void	reverse_15_around_y(t_data *d);
 void	call_rotate_15_y(t_data *d)
 {
 	rotate_15_around_y(d);
-	draw(d);
 }
 
 void	call_reverse_15_y(t_data *d)
 {
 	reverse_15_around_y(d);
-	draw(d);
 }
 
 static	void	rotate_15_around_y(t_data *d)
