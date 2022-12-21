@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 08:38:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 05:19:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	render_map_bns(t_data *d)
 	aux_render_map(d);
 	render_last_line(d);
 	render_last_column(d);
+	draw_menu_background(d->img);
+	draw_menu(d);
 }
 
 static void	aux_render_map(t_data *d)
