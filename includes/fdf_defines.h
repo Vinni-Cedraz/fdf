@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 05:21:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:08:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@
 
 # define ANGLE_X 0.95539323254
 # define ANGLE_Z 0.785398
-# define ANGLE_15 0.261799
+# define ANGLE_5 0.0872664626
 #endif

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/21 05:02:56 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/21 12:37:32 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,11 +54,12 @@ BONUS_SRCS = put_pixel_img_bns \
 							   deal_keys \
 			           	   apply_isometry \
 	                 translation_movements \
-					     rotate_15_around_z \
+					     rotate_5_around_z \
+						 rotate_5_around_y \
+						 rotate_5_around_x \
 						      reset_isometry \
 							             zoom \
 						 scale_transformations \
-						 	 rotate_15_around_y \
 							 	data_initializer \
 						 				     draw \
 										 draw_menu \

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 13:56:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:27:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	reset_isometry_aux(t_data *d);
 
 int	reset_isometry(t_data *d)
 {
+	if (d->clockwise - d->counter_clock != 1)
+		return (0);
 	d->counter_clock++;
 	reset_isometry_aux(d);
 	return (0);

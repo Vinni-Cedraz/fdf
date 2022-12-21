@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 11:14:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:56:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ typedef struct s_data
 	int					scale_z;
 	int					clockwise;
 	int					counter_clock;
+	double				cx;
+	double				cy;
+	double				cz;
 	float				move_x;
 	float				move_y;
 	t_img				*img;
