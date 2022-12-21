@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 12:21:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 05:21:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 # define RED 0xFF0000
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
-# define YELLOW 0xFFFF00
+# define YELLOW 0xFFD700
 # define CYAN 0x00FFFF
 # define MAGENTA 0xFF00FF
 # define LIGHT_GRAY 0xD3D3D3
+// dark grey
+# define DARK_GRAY 0xA9A9A9
+// darker grey
+# define DARKER_GRAY 0x696969
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
