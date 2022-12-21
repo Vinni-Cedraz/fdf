@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 16:16:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 06:50:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	aux_scale_z_up(t_data *d)
 	{
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].z *= (double)2;
+			d->map->arr[i][j].z *= (double)1.1;
 			j++;
 		}
 		j = 0;
@@ -63,7 +63,7 @@ static void	aux_scale_z_down(t_data *d)
 	{
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].z /= (double)2;
+			d->map->arr[i][j].z /= (double)1.1;
 			j++;
 		}
 		j = 0;
