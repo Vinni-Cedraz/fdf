@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 12:32:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:01:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,5 @@ void	data_initializer(t_data *d);
 void	draw_menu(t_data *d);
 
 void	draw_menu_background(t_img *img);
-
 
 #endif

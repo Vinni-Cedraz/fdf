@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 12:36:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:59:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int	deal_keys(int key, t_data *d)
 		move_down(d);
 	else if (key == 'i')
 		apply_isometry(d);
-	else if (key == 'r')
-		reset_isometry(d);
-	else if (key == 'a')
-		rotate_5_around_z(d);
-	else if (key == 'd')
-		reverse_5_around_z(d);
 	else if (key)
 		aux_deal_keys(&key, d);
 	return (0);
@@ -51,12 +45,12 @@ static void	aux_deal_keys(int *key, t_data *d)
 		zoom_in(d);
 	else if (*key == 's')
 		zoom_out(d);
-	else if (*key == 'q')
+	else if (*key == 'a')
 		rotate_5_around_y(d);
-	else if (*key == 'e')
+	else if (*key == 'd')
 		reverse_5_around_y(d);
-	else if (*key == 'f')
+	else if (*key == 'q')
 		rotate_5_around_x(d);
-	else if (*key == 'g')
-		reverse_5_around_x(d);		
+	else if (*key == 'e')
+		reverse_5_around_x(d);
 }
