@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 14:52:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 06:48:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,20 @@ void	zoom_in(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
+	reset_isometry(d);
 	aux_zoom_in(d);
+	apply_isometry(d);
+	scale_z_up(d);
 }
 
 void	zoom_out(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
+	reset_isometry(d);
 	aux_zoom_out(d);
+	apply_isometry(d);
+	scale_z_down(d);
 }
 
 static void	aux_zoom_in(t_data *d)
