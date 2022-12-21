@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 14:19:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 04:53:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,16 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->scale_x = (double)WINDOW_WIDTH / (*d)->map->width / 1.5;
-	(*d)->scale_y = (double)WINDOW_HEIGHT / (*d)->map->height / 1.5;
-	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
-	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
-	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
+	(*d)->map->cam = init_projection((*d)->map);
+	(*d)->map->arr[y][x].x = x;
+	(*d)->map->arr[y][x].y = y;
+	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]) * 14 / (*d)->map->cam.z_divisor;
+	(*d)->map->arr[y][x].y *= (*d)->map->cam.zoom;
+	(*d)->map->arr[y][x].x *= (*d)->map->cam.zoom;
+	(*d)->map->arr[y][x].x -= ((double)(*d)->map->width * (*d)->map->cam.zoom) / 2;
+	(*d)->map->arr[y][x].y -= ((double)(*d)->map->height * (*d)->map->cam.zoom) / 2;
+	(*d)->map->arr[y][x].x += ((double)WINDOW_WIDTH - X_MENU) / 2 + (*d)->map->cam.x_offset + X_MENU;
+	(*d)->map->arr[y][x].y += ((double)WINDOW_HEIGHT + (5 * (*d)->map->cam.zoom)) / 2 + (*d)->map->cam.y_offset;
 	hexcolor = get_hex_color(t_split->str_arr[x]);
 	if (hexcolor)
 		(*d)->map->arr[y][x].color = hexcolor;

@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 14:20:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 04:25:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	rotate_z(t_point *point, double angle);
-static void	rotate_x(t_point *point, double angle);
+static void	aux_rotate_z(t_point *point, double angle);
+static void	aux_rotate_x(t_point *point, double angle);
 static void	rotate_map_bns(t_map *map);
 
 int	apply_isometry(t_data *d)
@@ -34,15 +34,15 @@ static void	rotate_map_bns(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_z(&map->arr[i][j], ANGLE_Z);
-			rotate_x(&map->arr[i][j], ANGLE_X);
+			aux_rotate_z(&map->arr[i][j], ANGLE_Z);
+			aux_rotate_x(&map->arr[i][j], ANGLE_X);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	rotate_z(t_point *point, double angle)
+static void	aux_rotate_z(t_point *point, double angle)
 {
 	double	x;
 	double	y;
@@ -53,7 +53,7 @@ static void	rotate_z(t_point *point, double angle)
 	point->y = x * sin(angle) + y * cos(angle);
 }
 
-static void	rotate_x(t_point *point, double angle)
+static void	aux_rotate_x(t_point *point, double angle)
 {
 	double	y;
 	double	z;

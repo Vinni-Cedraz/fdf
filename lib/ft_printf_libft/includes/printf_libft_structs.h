@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 11:14:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 00:59:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct s_point
 	double				z;
 	double				color;
 }						t_point;
+typedef struct s_projection
+{
+	int					zoom;
+	double				alpha;
+	double				beta;
+	double				gamma;
+	int					iso;
+	float				z_divisor;
+	int					x_offset;
+	int					y_offset;
+}						t_projection;
 
 typedef struct s_map
 {
@@ -32,7 +43,14 @@ typedef struct s_map
 	int					height;
 	int					max_z;
 	int					min_z;
+	int					depth;
+	int					origin_x;
+	int					origin_y;
+	int					origin_z;
+	double				scale_x;
+	double				scale_y;
 	double				scale_z;
+	t_projection		cam;
 	t_point				**arr;
 }						t_map;
 
@@ -77,9 +95,6 @@ typedef struct s_data
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;
-	int					scale_x;
-	int					scale_y;
-	int					scale_z;
 	int					clockwise;
 	int					counter_clock;
 	float				move_x;

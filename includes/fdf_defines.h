@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 12:21:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 01:52:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+# define X_MENU 160
+# define MENU_BACKGROUND 0x14040E
+# define TEXT_COLOR	0xFFFFFF
 
 # define ANGLE_X 0.95539323254
 # define ANGLE_Z 0.785398

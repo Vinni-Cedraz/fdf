@@ -5,27 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 20:00:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 13:56:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/21 03:33:16 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/21 03:35:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	rotate_15_around_z_aux(t_data *d);
-static void	reverse_15_around_z_aux(t_data *d);
+static void	aux_rotate_15_around_z_aux(t_data *d);
+static void	aux_reverse_15_around_z_aux(t_data *d);
 
 void	rotate_15_around_z(t_data *d)
 {
-	rotate_15_around_z_aux(d);
+	aux_rotate_15_around_z_aux(d);
 }
 
 void	reverse_15_around_z(t_data *d)
 {
-	reverse_15_around_z_aux(d);
+	aux_reverse_15_around_z_aux(d);
 }
 
-static void	rotate_15_around_z_aux(t_data *d)
+static void	aux_rotate_15_around_z_aux(t_data *d)
 {
 	int		i;
 	int		j;
@@ -48,7 +48,7 @@ static void	rotate_15_around_z_aux(t_data *d)
 	}
 }
 
-static void	reverse_15_around_z_aux(t_data *d)
+static void	aux_reverse_15_around_z_aux(t_data *d)
 {
 	int		i;
 	int		j;
