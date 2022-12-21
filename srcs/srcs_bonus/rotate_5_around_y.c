@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 12:13:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:50:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@ static void	find_center(t_data *d);
 
 void	rotate_5_around_y(t_data *d)
 {
+	d->clockwise += 5;
 	aux_rotate_5_around_y(d);
 }
 
 void	reverse_5_around_y(t_data *d)
 {
+	d->clockwise -= 5;
 	aux_reverse_5_around_y(d);
 }
 
 static void	find_center(t_data *d)
 {
 	d->cx = (double)d->map->width / 2;
-	d->cy = (double)d->map->height / 2;
 	d->cz = (double)d->map->max_z / 2;
 }
 

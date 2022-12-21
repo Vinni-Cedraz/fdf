@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 06:48:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:42:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,14 @@ void	zoom_in(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
-	reset_isometry(d);
 	aux_zoom_in(d);
-	apply_isometry(d);
-	scale_z_up(d);
 }
 
 void	zoom_out(t_data *d)
 {
 	if (d->clockwise - d->counter_clock != 1)
 		return ;
-	reset_isometry(d);
 	aux_zoom_out(d);
-	apply_isometry(d);
-	scale_z_down(d);
 }
 
 static void	aux_zoom_in(t_data *d)
@@ -46,8 +40,8 @@ static void	aux_zoom_in(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].x *= 1.1;
-			d->map->arr[i][j].y *= 1.1;
+			d->map->arr[i][j].x = (d->map->arr[i][j].x - d->cx) * 1.1 + d->cx;
+			d->map->arr[i][j].y = (d->map->arr[i][j].y - d->cy) * 1.1 + d->cy;
 			j++;
 		}
 		i++;
@@ -65,8 +59,8 @@ static void	aux_zoom_out(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].x *= 0.9;
-			d->map->arr[i][j].y *= 0.9;
+			d->map->arr[i][j].x = (d->map->arr[i][j].x - d->cx) * 0.9 + d->cx;
+			d->map->arr[i][j].y = (d->map->arr[i][j].y - d->cy) * 0.9 + d->cy;
 			j++;
 		}
 		i++;
