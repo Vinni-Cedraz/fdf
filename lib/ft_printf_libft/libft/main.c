@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 14:20:54 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/22 18:41:05 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/22 18:31:13 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/22 18:46:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_putstr(char *s)
+int	main(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (*(s + i))
-		ft_putchar(*(s + i++));
-	return (i);
+	char *file;
+	int fd;
+	int integer;
+	
+	(void)argc;
+	integer = 0;
+	fd = open(*++argv, O_RDONLY);
+	do {
+		file = ft_gnl(fd);
+		ft_printf("%d ", integer);
+		ft_putstr(file);
+		integer++;
+	} while (file);
 }
