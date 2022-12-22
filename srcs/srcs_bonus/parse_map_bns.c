@@ -5,16 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 07:23:35 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/22 18:59:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "fdf_includes_bonus.h"
 
-static void	make_t_point(t_data **d, t_split *t_split, int x, int y);
-static int	create_map(t_data *map, char *argv);
-static int	get_hex_color(char *str);
+static void	make_t_point_bns(t_data **d, t_split *t_split, int x, int y);
+static int	create_map_bns(t_data *map, char *argv, char *first_line);
+static int	get_hex_color_bns(char *str);
 
 int	parse_map_bns(char *argv, t_data *d)
 {
@@ -39,12 +40,11 @@ int	parse_map_bns(char *argv, t_data *d)
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
-	free(first_line);
-	return (close(fd), create_map(d, argv), 1);
+	return (close(fd), create_map_bns(d, argv, first_line), 1);
 }
 
 //tool->x and tool->y are just local counters for the loops //
-static int	create_map(t_data *d, char *argv)
+static int	create_map_bns(t_data *d, char *argv, char *first_line)
 {
 	d->tool.y = 0;
 	d->tool.x = -1;
@@ -53,14 +53,17 @@ static int	create_map(t_data *d, char *argv)
 	while (1)
 	{
 		printf("[%d] out of [%d]\r", d->tool.y, d->map->height);
-		d->tool.line = ft_gnl(d->tool.fd);
+		if (d->tool.y == 0)
+			d->tool.line = first_line;
+		else
+			d->tool.line = ft_gnl(d->tool.fd);
 		if (d->tool.line == NULL)
 			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
-			make_t_point(&d, d->tool.split, d->tool.x, d->tool.y);
+			make_t_point_bns(&d, d->tool.split, d->tool.x, d->tool.y);
 		d->tool.x = -1;
 		d->tool.y++;
 		ft_free_t_split(d->tool.split);
@@ -68,7 +71,7 @@ static int	create_map(t_data *d, char *argv)
 	return (close(d->tool.fd), 0);
 }
 
-static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
+static void	make_t_point_bns(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
@@ -77,14 +80,14 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 	(*d)->map->arr[y][x].x = x * (*d)->scale_x;
 	(*d)->map->arr[y][x].y = y * (*d)->scale_y;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
-	hexcolor = get_hex_color(t_split->str_arr[x]);
+	hexcolor = get_hex_color_bns(t_split->str_arr[x]);
 	if (hexcolor)
 		(*d)->map->arr[y][x].color = hexcolor;
 	else
 		(*d)->map->arr[y][x].color = CYAN;
 }
 
-static int	get_hex_color(char *str)
+static int	get_hex_color_bns(char *str)
 {
 	int	i;
 	int	color;
