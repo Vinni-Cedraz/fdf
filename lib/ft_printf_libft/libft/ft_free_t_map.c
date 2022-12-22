@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_t_data.c                                   :+:      :+:    :+:   */
+/*   ft_free_t_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 19:29:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/16 19:30:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/22 19:11:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_t_data(t_data **d)
+void	ft_free_t_map(t_point **map)
 {
-	int	i;
-
-	i = 0;
-	while (i < (*d)->map->height + 1)
-	{
-		free((*d)->map->arr[i]);
-		i++;
-	}
-	free((*d)->map->arr);
-	free((*d)->map);
+	if (map == NULL)
+		return ;
+	ft_free_arr((char **)(map), (void **)(map));
+	map = NULL;
 }
