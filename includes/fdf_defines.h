@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 16:26:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:29:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 // darker grey
 # define DARKER_GRAY 0x696969
 
-# define WINDOW_WIDTH 1080
+# define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
 # define ANGLE_X 0.95539323254
