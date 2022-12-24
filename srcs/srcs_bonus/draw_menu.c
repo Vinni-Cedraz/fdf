@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 04:57:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 16:29:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:28:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	draw_menu_background(t_img *img)
 	int	y;
 
 	x = -1;
-	while (++x < WINDOW_WIDTH / 10)
+	while (++x < MENU_WIDTH)
 	{
 		y = -1;
 		while (++y <= WINDOW_HEIGHT)

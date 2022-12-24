@@ -6,15 +6,16 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/22 18:56:16 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/23 20:28:03 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
+CC = clang
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -60,6 +61,7 @@ BONUS_SRCS = put_pixel_img_bns \
 							             zoom \
 						 scale_transformations \
 							 	data_initializer \
+								standard_scale \
 						 				     draw \
 										 draw_menu \
 
