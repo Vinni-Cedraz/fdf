@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/23 20:28:03 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/23 21:47:03 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,30 +40,32 @@ SRCS = put_pixel_img \
 			     colorize \
 	           render_line \
 				   deal_key \
+			   standard_scale\
 	          open_win_n_img \
 	                     main \
 
-BONUS_SRCS = put_pixel_img_bns \
-				  parse_map_bns \
-				  	 blackout_bns \
-					 close_win_bns \
-				     render_map_bns \
-					    colorize_bns \
-					  render_line_bns \
-				    open_win_n_img_bns \
-							   main_bns \
-							   deal_keys \
-			           	   apply_isometry \
-	                 translation_movements \
-						 rotate_5_around_y \
-						 rotate_5_around_x \
-						      reset_isometry \
-							             zoom \
-						 scale_transformations \
-							 	data_initializer \
-								standard_scale \
-						 				     draw \
-										 draw_menu \
+BONUS_SRCS = apply_isometry_bonus \
+apply_left_hand_rule_bonus \
+blackout_bonus \
+close_win_bonus \
+colorize_bonus \
+data_initializer_bonus \
+deal_keys_bonus \
+draw_bonus \
+draw_menu_bonus \
+main_bonus \
+open_win_n_img_bonus \
+parse_map_bonus \
+put_pixel_img_bonus \
+render_line_bonus \
+render_map_bonus \
+reset_isometry_bonus \
+rotate_5_around_x_bonus \
+rotate_5_around_y_bonus \
+scale_transformations_bonus \
+standard_scale_bonus \
+translation_movements_bonus \
+zoom_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
