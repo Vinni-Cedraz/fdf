@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 16:01:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:44:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_INCLUDES_BONUS_H
 
 # include "fdf_includes.h"
+# define MENU_WIDTH (WINDOW_WIDTH / 7)
 
 void	put_pixel_img_bns(t_img *img, int x, int y, int color);
 

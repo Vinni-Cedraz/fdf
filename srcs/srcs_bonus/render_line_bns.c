@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:23:54 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 07:51:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/23 21:08:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	render_line_bns(t_point p1, t_point p2, int color, t_data *fdf)
 		line.steps = abs(line.dy);
 	line.x_inc = line.dx / (double)line.steps;
 	line.y_inc = line.dy / (double)line.steps;
-	line.x = p1.x + fdf->move_x + (double)WINDOW_WIDTH / 2.5;
-	line.y = p1.y + fdf->move_y + (double)WINDOW_HEIGHT / 5.0;
+	line.x = p1.x + fdf->move_x + fdf->map->center_x;
+	line.y = p1.y + fdf->move_y + fdf->map->center_y;
 	while (line.steps--)
 	{
 		put_pixel_img_bns(fdf->img, line.x, line.y, color);
