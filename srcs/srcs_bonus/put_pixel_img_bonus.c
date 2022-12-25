@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel_img_bns.c                                :+:      :+:    :+:   */
+/*   put_pixel_img_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fdf_includes_bonus.h"
 
-void	put_pixel_img_bns(t_img *img, int x, int y, int color)
+void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
 {
 	char	*ptr_to_color;
 

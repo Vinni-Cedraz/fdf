@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:27:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 21:35:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 20:06:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	render_line(t_point p1, t_point p2, int color, t_data *fdf)
 		line.steps = abs(line.dy);
 	line.x_inc = line.dx / (float)line.steps;
 	line.y_inc = line.dy / (float)line.steps;
-	line.x = p1.x + fdf->move_x + fdf->map->center_x;
-	line.y = p1.y + fdf->move_y + fdf->map->center_y;
+	line.x = p1.x + fdf->move_x + fdf->gambiarra_x;
+	line.y = p1.y + fdf->move_y + fdf->gambiarra_y;
 	while (line.steps--)
 	{
 		put_pixel_img(fdf->img, line.x, line.y, color);

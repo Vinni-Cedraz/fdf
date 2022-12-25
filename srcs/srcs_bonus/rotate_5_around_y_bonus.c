@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 17:58:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 18:48:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	reverse_5_around_y(t_data *d)
 static void	find_center(t_data *d)
 {
 	d->cx = (double)d->map->diagonal / 2;
-	d->cz = (double)d->map->max_z / 2;
+	d->cz = (double)d->map->isometric_max_z / 2;
 }
 
 static void	aux_rotate_5_around_y(t_data *d)

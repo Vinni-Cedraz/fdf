@@ -17,7 +17,7 @@ static void	aux_deal_keys(int *key, t_data *d);
 int	deal_keys(int key, t_data *d)
 {
 	if (key == XK_ESCAPE)
-		close_win_bns(d);
+		close_win_bonus(d);
 	else if (key == XK_RIGHT || key == 'l')
 		move_right(d);
 	else if (key == XK_LEFT || key == 'h')

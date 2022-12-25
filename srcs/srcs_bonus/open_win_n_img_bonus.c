@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_win_n_img_bns.c                               :+:      :+:    :+:   */
+/*   open_win_n_img_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 static void	open_img(t_data *data);
 
-void	open_win_n_img_bns(t_data *data)
+void	open_win_n_img_bonus(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	data->img->width = WINDOW_WIDTH;

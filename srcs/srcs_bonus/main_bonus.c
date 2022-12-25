@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bns.c                                         :+:      :+:    :+:   */
+/*   main_bonus.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,13 +18,13 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	d.img = malloc(sizeof(t_img));
-	if (!parse_map_bns(argv[1], &d))
+	if (!parse_map_bonus(argv[1], &d))
 		return (0);
 	data_initializer(&d);
-	open_win_n_img_bns(&d);
+	open_win_n_img_bonus(&d);
 	mlx_loop_hook(d.mlx_ptr, &draw, &d);
 	mlx_hook(d.win_ptr, 02, 1L << 0, &deal_keys, &d);
-	mlx_hook(d.win_ptr, 17, 0, &close_win_bns, &d);
+	mlx_hook(d.win_ptr, 17, 0, &close_win_bonus, &d);
 	mlx_loop(d.mlx_ptr);
 	free(d.img);
 }

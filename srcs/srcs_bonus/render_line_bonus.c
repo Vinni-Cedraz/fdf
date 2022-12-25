@@ -12,7 +12,7 @@
 
 #include "fdf_includes_bonus.h"
 
-void	render_line_bns(t_point p1, t_point p2, int color, t_data *fdf)
+void	render_line_bonus(t_point p1, t_point p2, int color, t_data *fdf)
 {
 	t_line	line;
 
@@ -28,7 +28,7 @@ void	render_line_bns(t_point p1, t_point p2, int color, t_data *fdf)
 	line.y = p1.y + fdf->move_y + fdf->gambiarra_y;
 	while (line.steps--)
 	{
-		put_pixel_img_bns(fdf->img, line.x, line.y, color);
+		put_pixel_img_bonus(fdf->img, line.x, line.y, color);
 		line.x += line.x_inc;
 		line.y += line.y_inc;
 	}

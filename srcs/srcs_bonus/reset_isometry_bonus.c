@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reset_isometry.c                                   :+:      :+:    :+:   */
+/*   reset_isometry_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 12:27:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 20:02:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,22 @@
 
 static void	unrotate_z(t_point *point, double angle);
 static void	unrotate_x(t_point *point, double angle);
-static void	reset_isometry_aux(t_data *d);
+static void	reset_x_rotation_caller(t_data *d);
+static void	reset_z_rotation_caller(t_data *d);
 
-int	reset_isometry(t_data *d)
+void	reset_isometry(t_data *d)
 {
-	if (d->clockwise - d->counter_clock != 1)
-		return (0);
 	d->counter_clock++;
-	reset_isometry_aux(d);
-	return (0);
+	if ((d->clockwise - d->counter_clock) != 0 && \
+		(d->clockwise - d->counter_clock) != 1)
+	  return ;
+	else if ((d->clockwise - d->counter_clock) == 1)
+		reset_x_rotation_caller(d);
+	else if ((d->clockwise - d->counter_clock) == 0)
+		reset_z_rotation_caller(d);
 }
 
-static void	reset_isometry_aux(t_data *d)
+static void	reset_x_rotation_caller(t_data *d)
 {
 	int	i;
 	int	j;
@@ -37,6 +41,23 @@ static void	reset_isometry_aux(t_data *d)
 		while (j < d->map->width)
 		{
 			unrotate_x(&d->map->arr[i][j], ANGLE_X);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	reset_z_rotation_caller(t_data *d)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < d->map->height)
+	{
+		j = 0;
+		while (j < d->map->width)
+		{
 			unrotate_z(&d->map->arr[i][j], ANGLE_Z);
 			j++;
 		}
