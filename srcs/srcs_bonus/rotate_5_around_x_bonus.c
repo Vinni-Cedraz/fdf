@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_5_around_x.c                                :+:      :+:    :+:   */
+/*   rotate_5_around_x_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 15:32:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:01:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	reverse_5_around_x(t_data *d)
 
 static void	find_center(t_data *d)
 {
-	d->cx = (double)d->map->width / 2;
 	d->cy = (double)d->map->height / 2;
 	d->cz = (double)d->map->max_z / 2;
 }
