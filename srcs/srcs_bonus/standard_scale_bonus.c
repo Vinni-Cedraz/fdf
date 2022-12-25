@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   standard_scale.c                                   :+:      :+:    :+:   */
+/*   standard_scale_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 21:21:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 13:27:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static void	calculate_target_size(t_map *map)
 
 static void	calculate_center(t_map *map)
 {
-	if (map->ratio != 1)
+	if (map->ratio == 1 || (map->ratio >= 0.95 && map->ratio <= 1.05))
 	{
-		map->center_x = (double)WINDOW_WIDTH / 2.5 + (int)MENU_WIDTH * 0.71;
-		map->center_y = (double)WINDOW_HEIGHT / 4.3;
+		map->center_x = ((double)WINDOW_WIDTH / 2) + (int)MENU_WIDTH - 100;
+		map->center_y = (double)WINDOW_HEIGHT / 8;
 	}
-	else
+	else if (map->ratio != 1)
 	{
-		map->center_x = (double)WINDOW_WIDTH / 2.3 + (int)MENU_WIDTH;
-		map->center_y = (double)WINDOW_HEIGHT / 8.5;
+		map->center_x = ((double)WINDOW_WIDTH / 2.5) + (int)MENU_WIDTH - 100;
+		map->center_y = (double)WINDOW_HEIGHT / 5;
 	}
 }
 
