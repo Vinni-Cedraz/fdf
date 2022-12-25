@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 21:41:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 12:32:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static void	calculate_target_size(t_map *map)
 
 static void	calculate_center(t_map *map)
 {
-	if (map->ratio != 1)
-	{
-		map->center_x = (double)WINDOW_WIDTH / 2.5;
-		map->center_y = (double)WINDOW_HEIGHT / 5;
-	}
-	else
+	if (map->ratio == 1 || (map->ratio >= 0.95 && map->ratio <= 1.05))
 	{
 		map->center_x = (double)WINDOW_WIDTH / 2;
 		map->center_y = (double)WINDOW_HEIGHT / 8;
+	}
+	else if (map->ratio != 1)
+	{
+		map->center_x = (double)WINDOW_WIDTH / 2.5;
+		map->center_y = (double)WINDOW_HEIGHT / 5;
 	}
 }
 
