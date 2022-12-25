@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/23 21:47:03 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/25 13:21:19 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,6 @@ SRCS = put_pixel_img \
 	                     main \
 
 BONUS_SRCS = apply_isometry_bonus \
-apply_left_hand_rule_bonus \
 blackout_bonus \
 close_win_bonus \
 colorize_bonus \
