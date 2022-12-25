@@ -14,9 +14,9 @@
 
 int	draw(t_data *d)
 {
-	blackout_bns(d);
-	colorize_bns(d->map);
-	render_map_bns(d);
+	blackout_bonus(d);
+	colorize_bonus(d->map);
+	render_map_bonus(d);
 	draw_menu_background(d->img);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 	draw_menu(d);

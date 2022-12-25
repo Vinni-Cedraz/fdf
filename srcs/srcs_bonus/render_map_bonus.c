@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map_bns.c                                   :+:      :+:    :+:   */
+/*   render_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,7 +16,7 @@ static void	aux_render_map(t_data *d);
 static void	render_last_line(t_data *d);
 static void	render_last_column(t_data *d);
 
-void	render_map_bns(t_data *d)
+void	render_map_bonus(t_data *d)
 {
 	aux_render_map(d);
 	render_last_line(d);
@@ -37,16 +37,16 @@ static void	aux_render_map(t_data *d)
 		while (j < d->map->width - 1)
 		{
 			if (j <= d->map->width / 2)
-				render_line_bns(d->map->arr[i][j], d->map->arr[i][j + 1], \
+				render_line_bonus(d->map->arr[i][j], d->map->arr[i][j + 1], \
 				d->map->arr[i][j].color, d);
 			else
-				render_line_bns(d->map->arr[i][j], d->map->arr[i][j + 1], \
+				render_line_bonus(d->map->arr[i][j], d->map->arr[i][j + 1], \
 				d->map->arr[i][j + 1].color, d);
 			if (i < d->map->height / 2)
-				render_line_bns(d->map->arr[i][j], d->map->arr[i + 1][j], \
+				render_line_bonus(d->map->arr[i][j], d->map->arr[i + 1][j], \
 				d->map->arr[i][j].color, d);
 			else
-				render_line_bns(d->map->arr[i][j], d->map->arr[i + 1][j], \
+				render_line_bonus(d->map->arr[i][j], d->map->arr[i + 1][j], \
 				d->map->arr[i + 1][j].color, d);
 			j++;
 		}
@@ -62,7 +62,7 @@ static void	render_last_column(t_data *d)
 	while (i < d->map->height - 1)
 	{
 		if (i < d->map->height - 1)
-			render_line_bns(d->map->arr[i][d->map->width - 1], \
+			render_line_bonus(d->map->arr[i][d->map->width - 1], \
 				d->map->arr[i + 1][d->map->width - 1], \
 				d->map->arr[i + 1][d->map->width - 1].color, d);
 		i++;
@@ -77,11 +77,11 @@ static void	render_last_line(t_data *d)
 	while (j < d->map->width - 1)
 	{
 		if (j <= d->map->width / 2)
-			render_line_bns(d->map->arr[d->map->height - 1][j], \
+			render_line_bonus(d->map->arr[d->map->height - 1][j], \
 				d->map->arr[d->map->height - 1][j + 1], \
 				d->map->arr[d->map->height - 1][j].color, d);
 		else
-			render_line_bns(d->map->arr[d->map->height - 1][j], \
+			render_line_bonus(d->map->arr[d->map->height - 1][j], \
 				d->map->arr[d->map->height - 1][j + 1], \
 				d->map->arr[d->map->height - 1][j + 1].color, d);
 		j++;

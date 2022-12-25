@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colorize_bns.c                                     :+:      :+:    :+:   */
+/*   colorize_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 11:44:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 18:55:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 static void	get_max_altitude(t_map *map);
 static void	get_min_altitude(t_map *map);
 static void	get_altitude_range(t_map *map);
-static int	is_colorized_bns(t_map *map);
+static int	is_colorized_bonus(t_map *map);
 
-void	colorize_bns(t_map *map)
+void	colorize_bonus(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = -1;
 	get_altitude_range(map);
-	if (!is_colorized_bns(map))
+	if (!is_colorized_bonus(map))
 	{
 		while (++i < map->height)
 		{
@@ -90,7 +90,7 @@ static void	get_min_altitude(t_map *map)
 	(*map).min_z = min_z;
 }
 
-static int	is_colorized_bns(t_map *map)
+static int	is_colorized_bonus(t_map *map)
 {
 	int	i;
 	int	j;
@@ -114,4 +114,6 @@ static void	get_altitude_range(t_map *map)
 {
 	get_max_altitude(map);
 	get_min_altitude(map);
+	map->isometric_max_z = map->max_z * pow(cos(45), -1);
+	map->isometric_max_z *= map->scale_z;
 }

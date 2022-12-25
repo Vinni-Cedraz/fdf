@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blackout_bns.c                                     :+:      :+:    :+:   */
+/*   blackout_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fdf_includes_bonus.h"
 
-void	blackout_bns(t_data *data)
+void	blackout_bonus(t_data *data)
 {
 	int		i;
 	int		j;
@@ -23,7 +23,7 @@ void	blackout_bns(t_data *data)
 		j = 0;
 		while (j < data->img->width)
 		{
-			put_pixel_img_bns(data->img, j, i, BLACK);
+			put_pixel_img_bonus(data->img, j, i, BLACK);
 			j++;
 		}
 		i++;

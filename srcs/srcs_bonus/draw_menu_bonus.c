@@ -22,7 +22,7 @@ void	draw_menu_background(t_img *img)
 	{
 		y = -1;
 		while (++y <= WINDOW_HEIGHT)
-			put_pixel_img_bns(img, x, y, DARKER_GRAY);
+			put_pixel_img_bonus(img, x, y, DARKER_GRAY);
 	}
 }
 

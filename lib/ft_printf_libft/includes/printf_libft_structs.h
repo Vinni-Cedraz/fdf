@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 17:32:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 18:48:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ typedef struct s_map
 	int					width;
 	int					height;
 	int					diagonal;
-	int					max_z;
-	int					min_z;
-	int					depth;
-	float				target_width;
-	float				target_height;
-	float				ratio;
+	double				isometric_width;
+	double				isometric_height;
+	double				max_z;
+	double				min_z;
+	double				isometric_max_z;
+	double				target_width;
+	double				target_height;
+	double				ratio;
 	double				scale_z;
 	t_point				**arr;
 }						t_map;
