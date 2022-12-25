@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 21:08:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:29:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ typedef struct s_map
 	int					min_z;
 	float				target_width;
 	float				target_height;
-	float				center_x;
-	float				center_y;
 	float				ratio;
 	double				scale_z;
 	t_point				**arr;
@@ -82,14 +80,16 @@ typedef struct s_data
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;
-	double				scale_x;
-	double				scale_y;
 	int					scale_z;
 	int					clockwise;
 	int					counter_clock;
+	int					win_center_x;
+	int					win_center_y;
 	double				cx;
 	double				cy;
 	double				cz;
+	double				scale_x;
+	double				scale_y;
 	float				move_x;
 	float				move_y;
 	t_img				*img;

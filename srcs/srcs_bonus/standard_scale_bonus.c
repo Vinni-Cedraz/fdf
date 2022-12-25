@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 13:27:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:30:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ static void	calculate_target_size(t_map *map)
 	}
 }
 
-static void	calculate_center(t_map *map)
+static void	calculate_center(t_data *d)
 {
-	if (map->ratio == 1 || (map->ratio >= 0.95 && map->ratio <= 1.05))
+	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
 	{
-		map->center_x = ((double)WINDOW_WIDTH / 2) + (int)MENU_WIDTH - 100;
-		map->center_y = (double)WINDOW_HEIGHT / 8;
+		d->win_center_x = ((double)WINDOW_WIDTH / 2) + (int)MENU_WIDTH - 100;
+		d->win_center_y = (double)WINDOW_HEIGHT / 8;
 	}
-	else if (map->ratio != 1)
+	else if (d->map->ratio != 1)
 	{
-		map->center_x = ((double)WINDOW_WIDTH / 2.5) + (int)MENU_WIDTH - 100;
-		map->center_y = (double)WINDOW_HEIGHT / 5;
+		d->win_center_x = ((double)WINDOW_WIDTH / 2.5) + (int)MENU_WIDTH - 100;
+		d->win_center_y = (double)WINDOW_HEIGHT / 5;
 	}
 }
 
 void	calculate_scale(t_data *d)
 {
 	calculate_target_size(d->map);
-	calculate_center(d->map);
+	calculate_center(d);
 	d->scale_x = d->map->target_width / (d->map->width);
 	d->scale_y = d->map->target_height / (d->map->height);
 }
