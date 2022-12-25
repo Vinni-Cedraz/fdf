@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_5_around_y.c                                :+:      :+:    :+:   */
+/*   rotate_5_around_y_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 15:50:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:58:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	reverse_5_around_y(t_data *d)
 
 static void	find_center(t_data *d)
 {
-	d->cx = (double)d->map->width / 2;
+	d->cx = (double)d->map->diagonal / 2;
 	d->cz = (double)d->map->max_z / 2;
 }
 
@@ -48,12 +48,10 @@ static void	aux_rotate_5_around_y(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x;
-			z = d->map->arr[i][j].z;
-			d->map->arr[i][j].x = (x - d->cx) * cos(ANGLE_5) + (z - d->cz)
-				* sin(ANGLE_5) + d->cx;
-			d->map->arr[i][j].z = -(x - d->cx) * sin(ANGLE_5) + (z - d->cz)
-				* cos(ANGLE_5) + d->cz;
+			x = d->map->arr[i][j].x - d->cx;
+			z = d->map->arr[i][j].z - d->cz;
+			d->map->arr[i][j].x = x * cos(ANGLE_5) + z * sin(ANGLE_5) + d->cx;
+			d->map->arr[i][j].z = -x * sin(ANGLE_5) + z * cos(ANGLE_5) + d->cz;
 			j++;
 		}
 		i++;
@@ -74,12 +72,10 @@ static void	aux_reverse_5_around_y(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x;
-			z = d->map->arr[i][j].z;
-			d->map->arr[i][j].x = (x - d->cx) * cos(-ANGLE_5) + (z - d->cz)
-				* sin(-ANGLE_5) + d->cx;
-			d->map->arr[i][j].z = -(x - d->cx) * sin(-ANGLE_5) + (z - d->cz)
-				* cos(-ANGLE_5) + d->cz;
+			x = d->map->arr[i][j].x - d->cx;
+			z = d->map->arr[i][j].z - d->cz;
+			d->map->arr[i][j].x = x * cos(-ANGLE_5) + z * sin(-ANGLE_5) + d->cx;
+			d->map->arr[i][j].z = -x * sin(-ANGLE_5) + z * cos(-ANGLE_5) + d->cz;
 			j++;
 		}
 		i++;

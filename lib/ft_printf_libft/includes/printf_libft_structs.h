@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 14:29:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:32:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ typedef struct s_map
 {
 	int					width;
 	int					height;
+	int					diagonal;
 	int					max_z;
 	int					min_z;
+	int					depth;
 	float				target_width;
 	float				target_height;
 	float				ratio;
@@ -83,8 +85,8 @@ typedef struct s_data
 	int					scale_z;
 	int					clockwise;
 	int					counter_clock;
-	int					win_center_x;
-	int					win_center_y;
+	int					gambiarra_x;
+	int					gambiarra_y;
 	double				cx;
 	double				cy;
 	double				cz;

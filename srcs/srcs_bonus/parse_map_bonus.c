@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_bns.c                                    :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 20:57:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 17:06:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "fdf_includes_bonus.h"
 
 static void	make_t_point_bns(t_data **d, t_split *t_split, int x, int y);
 static int	create_map_bns(t_data *map, char *argv, char *first_line);
 static int	get_hex_color_bns(char *str);
+static void	get_diagonal(t_data *d);
 
 int	parse_map_bns(char *argv, t_data *d)
 {
@@ -40,6 +40,7 @@ int	parse_map_bns(char *argv, t_data *d)
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
+	get_diagonal(d);
 	return (close(fd), create_map_bns(d, argv, first_line), 1);
 }
 
@@ -106,4 +107,9 @@ static int	get_hex_color_bns(char *str)
 		i++;
 	}
 	return (0);
+}
+
+static void	get_diagonal(t_data *d)
+{
+	d->map->diagonal = sqrt(pow(d->map->width, 2) + pow(d->map->height, 2));
 }
