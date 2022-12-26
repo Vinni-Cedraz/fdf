@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 19:56:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:13:07 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_INCLUDES_BONUS_H
 
 # include "fdf_includes.h"
-# define MENU_WIDTH (WINDOW_WIDTH / 7)
+# define MENU_WIDTH 183
 
 void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
 

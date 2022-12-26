@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 20:19:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:11:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	zoom_out(t_data *d)
 
 static void	aux_zoom_in(t_data *d)
 {
-	int	i;
-	int	j;
-	double x;
-	double y;
+	int		i;
+	int		j;
+	double	x;
+	double	y;
 
 	i = 0;
 	while (i < d->map->height)
@@ -63,10 +63,10 @@ static void	aux_zoom_in(t_data *d)
 
 static void	aux_zoom_out(t_data *d)
 {
-	int	i;
-	int	j;
-	double x;
-	double y;
+	int		i;
+	int		j;
+	double	x;
+	double	y;
 
 	i = 0;
 	while (i < d->map->height)
