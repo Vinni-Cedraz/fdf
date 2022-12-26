@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 19:59:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:32:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void	x_rotation_caller_function(t_map *map)
 
 static void	rotate_around_z(t_point *point, double angle)
 {
-	double	x;
-	double	y;
+	double			x;
+	double			y;
 
 	x = point->x;
 	y = point->y;
