@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 20:27:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:14:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	render_line(t_point p1, t_point p2, int color, t_data *d);
 
 int		close_win(t_data *data);
 
-void		calculate_scale(t_data *d);
+void	calculate_scale(t_data *d);
 
 #endif

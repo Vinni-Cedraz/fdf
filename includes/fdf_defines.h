@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 16:31:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:13:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
 # define WINDOW_HEIGHT 720
 
 // 54.735610317245 in RADS
-# define RAD_54_73 (54.73 * M_PI / 180)
+# define RAD_54_73 0.9510565162951535
 // 45 in RADS
-# define RAD_45 (45 * M_PI / 180)
+# define RAD_45 0.7853981633974483
 // 120 in RADS:
-# define RAD_120 (120 * M_PI / 180)
+# define RAD_120 2.0943951023931953
 // 5 in RADS:
-# define RAD_5 (5 * M_PI / 180)
+# define RAD_5 0.08726646259971647
 
 #endif

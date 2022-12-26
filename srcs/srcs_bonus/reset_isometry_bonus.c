@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 20:02:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:09:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	reset_isometry(t_data *d)
 	d->counter_clock++;
 	if ((d->clockwise - d->counter_clock) != 0 && \
 		(d->clockwise - d->counter_clock) != 1)
-	  return ;
+		return ;
 	else if ((d->clockwise - d->counter_clock) == 1)
 		reset_x_rotation_caller(d);
 	else if ((d->clockwise - d->counter_clock) == 0)
