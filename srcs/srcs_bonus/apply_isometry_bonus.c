@@ -40,7 +40,7 @@ static void	z_rotation_caller_function(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_around_z(&map->arr[i][j], ANGLE_Z);
+			rotate_around_z(&map->arr[i][j], RAD_45);
 			j++;
 		}
 		i++;
@@ -58,7 +58,7 @@ static void	x_rotation_caller_function(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_around_x(&map->arr[i][j], ANGLE_X);
+			rotate_around_x(&map->arr[i][j], RAD_54_73);
 			j++;
 		}
 		i++;

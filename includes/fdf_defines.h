@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 17:57:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 21:44:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
-# define ANGLE_X 0.95539323254
-// ANGLE_X is given in radians but here is it's value in degrees
-// 54.735610317245
-# define ANGLE_Z 0.785398
-// ANGLE_Z is given in radians but here is it's value in degrees
-// 45
-# define ANGLE_5 0.0872664626
+// 54.735610317245 in RADS
+# define RAD_54_73 0.95539323254
+// 45 in RADS
+# define RAD_45 0.785398
+// 120 in RADS:
+# define RAD_120 2.09439510239
+// 5 in RADS:
+# define RAD_5 0.0872664626
+
 #endif

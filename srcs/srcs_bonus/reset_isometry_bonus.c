@@ -40,7 +40,7 @@ static void	reset_x_rotation_caller(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			unrotate_x(&d->map->arr[i][j], ANGLE_X);
+			unrotate_x(&d->map->arr[i][j], RAD_54_73);
 			j++;
 		}
 		i++;
@@ -58,7 +58,7 @@ static void	reset_z_rotation_caller(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			unrotate_z(&d->map->arr[i][j], ANGLE_Z);
+			unrotate_z(&d->map->arr[i][j], RAD_45);
 			j++;
 		}
 		i++;
