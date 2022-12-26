@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 17:01:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 22:05:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	aux_rotate_5_around_x(t_data *d);
 static void	aux_reverse_5_around_x(t_data *d);
-static void	find_center(t_data *d);
+// static void	find_center(t_data *d);
 
 void	rotate_5_around_x(t_data *d)
 {
@@ -28,11 +28,11 @@ void	reverse_5_around_x(t_data *d)
 	aux_reverse_5_around_x(d);
 }
 
-static void	find_center(t_data *d)
-{
-	d->cy = (double)d->map->height / 2;
-	d->cz = (double)d->map->max_z / 2;
-}
+// static void	find_center(t_data *d)
+// {
+// 	d->cy = (double)d->map->height / 2;
+// 	d->cz = (double)d->map->max_z / 2;
+// }
 
 static void	aux_rotate_5_around_x(t_data *d)
 {
@@ -42,7 +42,7 @@ static void	aux_rotate_5_around_x(t_data *d)
 	double	z;
 
 	i = 0;
-	find_center(d);
+	// find_center(d);
 	while (i < d->map->height)
 	{
 		j = 0;
@@ -50,10 +50,8 @@ static void	aux_rotate_5_around_x(t_data *d)
 		{
 			y = d->map->arr[i][j].y;
 			z = d->map->arr[i][j].z;
-			d->map->arr[i][j].y = (y - d->cy) * cos(ANGLE_5) + (z - d->cz) \
-				* sin(ANGLE_5) + d->cy;
-			d->map->arr[i][j].z = -(y - d->cy) * sin(ANGLE_5) + (z - d->cz) \
-				* cos(ANGLE_5) + d->cz;
+			d->map->arr[i][j].y = y * cos(RAD_5) + z * sin(RAD_5);
+			d->map->arr[i][j].z = -y * sin(RAD_5) + z * cos(RAD_5);
 			j++;
 		}
 		i++;
@@ -68,7 +66,7 @@ static void	aux_reverse_5_around_x(t_data *d)
 	double	z;
 
 	i = 0;
-	find_center(d);
+	// find_center(d);
 	while (i < d->map->height)
 	{
 		j = 0;
@@ -76,10 +74,8 @@ static void	aux_reverse_5_around_x(t_data *d)
 		{
 			y = d->map->arr[i][j].y;
 			z = d->map->arr[i][j].z;
-			d->map->arr[i][j].y = (y - d->cy) * cos(-ANGLE_5) + (z - d->cz) \
-				* sin(-ANGLE_5) + d->cy;
-			d->map->arr[i][j].z = -(y - d->cy) * sin(-ANGLE_5) + (z - d->cz) \
-				* cos(-ANGLE_5) + d->cz;
+			d->map->arr[i][j].y = y * cos(RAD_5) - z * sin(RAD_5);
+			d->map->arr[i][j].z = y * sin(RAD_5) + z * cos(RAD_5);
 			j++;
 		}
 		i++;

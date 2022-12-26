@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale_transformations.c                            :+:      :+:    :+:   */
+/*   scale_transformations_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/21 06:50:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 20:09:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	aux_scale_z_down(t_data *d);
 
 void	scale_z_up(t_data *d)
 {
-	if (d->clockwise - d->counter_clock != 1)
+	if (d->clockwise - d->counter_clock != 2)
 		return ;
 	reset_isometry(d);
 	aux_scale_z_up(d);
@@ -26,7 +26,7 @@ void	scale_z_up(t_data *d)
 
 void	scale_z_down(t_data *d)
 {
-	if (d->clockwise - d->counter_clock != 1)
+	if (d->clockwise - d->counter_clock != 2)
 		return ;
 	reset_isometry(d);
 	aux_scale_z_down(d);

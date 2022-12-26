@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 18:48:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/25 22:03:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	aux_rotate_5_around_y(t_data *d);
 static void	aux_reverse_5_around_y(t_data *d);
-static void	find_center(t_data *d);
+// static void	find_center(t_data *d);
 
 void	rotate_5_around_y(t_data *d)
 {
@@ -27,12 +27,12 @@ void	reverse_5_around_y(t_data *d)
 	d->clockwise -= 5;
 	aux_reverse_5_around_y(d);
 }
-
-static void	find_center(t_data *d)
-{
-	d->cx = (double)d->map->diagonal / 2;
-	d->cz = (double)d->map->isometric_max_z / 2;
-}
+//
+// static void	find_center(t_data *d)
+// {
+// 	d->cx = (double)d->map->width / 2;
+// 	d->cz = (double)d->map->isometric_max_z / 2.5;
+// }
 
 static void	aux_rotate_5_around_y(t_data *d)
 {
@@ -42,16 +42,16 @@ static void	aux_rotate_5_around_y(t_data *d)
 	double	z;
 
 	i = 0;
-	find_center(d);
+	// find_center(d);
 	while (i < d->map->height)
 	{
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x - d->cx;
-			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].x = x * cos(ANGLE_5) + z * sin(ANGLE_5) + d->cx;
-			d->map->arr[i][j].z = -x * sin(ANGLE_5) + z * cos(ANGLE_5) + d->cz;
+			x = d->map->arr[i][j].x;
+			z = d->map->arr[i][j].z;
+			d->map->arr[i][j].x = x * cos(RAD_5) + z * sin(RAD_5);
+			d->map->arr[i][j].z = -x * sin(RAD_5) + z * cos(RAD_5);
 			j++;
 		}
 		i++;
@@ -66,16 +66,16 @@ static void	aux_reverse_5_around_y(t_data *d)
 	double	z;
 
 	i = 0;
-	find_center(d);
+	// find_center(d);
 	while (i < d->map->height)
 	{
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x - d->cx;
-			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].x = x * cos(-ANGLE_5) + z * sin(-ANGLE_5) + d->cx;
-			d->map->arr[i][j].z = -x * sin(-ANGLE_5) + z * cos(-ANGLE_5) + d->cz;
+			x = d->map->arr[i][j].x;
+			z = d->map->arr[i][j].z;
+			d->map->arr[i][j].x = x * cos(-RAD_5) + z * sin(-RAD_5);
+			d->map->arr[i][j].z = -x * sin(-RAD_5) + z * cos(-RAD_5);
 			j++;
 		}
 		i++;
