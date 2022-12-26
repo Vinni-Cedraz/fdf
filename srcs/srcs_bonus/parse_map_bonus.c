@@ -6,17 +6,17 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 21:48:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:24:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 #include "printf_libft_structs.h"
 
-static void	make_t_point_bonus(t_data **d, t_split *t_split, int x, int y);
-static int	create_map_bonus(t_data *map, char *argv, char *first_line);
 static int	get_hex_color_bonus(char *str);
-static void	get_isometric_dimensions(t_data	*d);
+static void	get_isometric_dimensions(t_data *d);
+static int	create_map_bonus(t_data *map, char *argv, char *first_line);
+static void	make_t_point_bonus(t_data **d, t_split *t_split, int x, int y);
 
 int	parse_map_bonus(char *argv, t_data *d)
 {
@@ -110,16 +110,18 @@ static int	get_hex_color_bonus(char *str)
 	return (0);
 }
 
-static void	get_isometric_dimensions(t_data	*d)
+static void	get_isometric_dimensions(t_data *d)
 {
-	double a;
-	double b;
-	double c;
+	double	a;
+	double	b;
+	double	c;
+	double aux;
 
 	d->map->isometric_width = (d->map->width * sin(RAD_54_73) * d->scale_x);
 	d->map->isometric_height = (d->map->height * sin(RAD_54_73) * d->scale_y);
 	b = d->map->isometric_width;
 	c = d->map->isometric_height;
-	a = sqrt((pow(b, 2) + pow(c, 2) - (2 * b * c * cos(RAD_120))));
+	aux = pow(b, 2) + pow(c, 2) - 2 * b * c * cos(RAD_54_73);
+	a = sqrt(aux);
 	d->map->isometric_diagonal = a;
 }
