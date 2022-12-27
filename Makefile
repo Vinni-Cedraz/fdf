@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/26 17:09:50 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/26 20:49:47 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,8 +59,8 @@ put_pixel_img_bonus \
 render_line_bonus \
 render_map_bonus \
 reset_isometry_bonus \
-rotate_5_around_x_bonus \
-rotate_5_around_y_bonus \
+rotate_2_around_x_bonus \
+rotate_2_around_y_bonus \
 scale_transformations_bonus \
 standard_scale_bonus \
 translation_movements_bonus \

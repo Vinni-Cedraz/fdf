@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 20:11:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:56:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	find_center(t_data *d);
 
 static void	find_center(t_data *d)
 {
-	d->cx = (double)d->map->width / 2;
-	d->cy = (double)d->map->height / 2;
-	d->cz = (double)d->map->max_z / 2;
+	d->cx = d->map->arr[d->map->height / 2][d->map->width / 2].x;
+	d->cy = d->map->arr[d->map->height / 2][d->map->width / 2].y;
+	d->cz = d->map->arr[d->map->height / 2][d->map->width / 2].z;
 }
 
 void	zoom_in(t_data *d)
@@ -53,8 +53,8 @@ static void	aux_zoom_in(t_data *d)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			y = d->map->arr[i][j].y - d->cy;
-			d->map->arr[i][j].x = x * 1.1 + d->cx * 0.9;
-			d->map->arr[i][j].y = y * 1.1 + d->cy * 0.9;
+			d->map->arr[i][j].x = d->cx + x * 1.1;
+			d->map->arr[i][j].y = d->cy + y * 1.1;
 			j++;
 		}
 		i++;
@@ -76,8 +76,8 @@ static void	aux_zoom_out(t_data *d)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			y = d->map->arr[i][j].y - d->cy;
-			d->map->arr[i][j].x = x * 0.9 + d->cx * 1.1;
-			d->map->arr[i][j].y = y * 0.9 + d->cy * 1.1;
+			d->map->arr[i][j].x = d->cx + x * 0.9;
+			d->map->arr[i][j].y = d->cy + y * 0.9;
 			j++;
 		}
 		i++;

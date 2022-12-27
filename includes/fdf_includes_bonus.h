@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 20:13:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:48:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,13 @@ void	zoom_out(t_data *d);
 
 int		draw(t_data *d);
 
-void	rotate_5_around_z(t_data *d);
+void	rotate_2_around_y(t_data *d);
 
-void	rotate_5_around_y(t_data *d);
+void	reverse_2_around_y(t_data *d);
 
-void	rotate_5_around_x(t_data *d);
+void	rotate_2_around_x(t_data *d);
 
-void	reverse_5_around_z(t_data *d);
-
-void	reverse_5_around_y(t_data *d);
-
-void	reverse_5_around_x(t_data *d);
+void	reverse_2_around_x(t_data *d);
 
 void	data_initializer(t_data *d);
 
