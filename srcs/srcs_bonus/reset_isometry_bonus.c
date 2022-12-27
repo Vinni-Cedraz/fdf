@@ -6,59 +6,69 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 20:09:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 18:13:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "printf_libft_structs.h"
 
 static void	unrotate_z(t_point *point, double angle);
 static void	unrotate_x(t_point *point, double angle);
-static void	reset_x_rotation_caller(t_data *d);
-static void	reset_z_rotation_caller(t_data *d);
+static void	reset_x_rotation(t_map *map);
+static void	reset_z_rotation(t_map *map);
 
 void	reset_isometry(t_data *d)
 {
-	d->counter_clock++;
-	if ((d->clockwise - d->counter_clock) != 0 && \
-		(d->clockwise - d->counter_clock) != 1)
+	d->reset_iso++;
+	if ((d->apply_iso - d->reset_iso) == 1)
+	{
+		d->do_step_one = 0;
+		d->do_step_two = 1;
+	}
+	else if ((d->apply_iso - d->reset_iso) == 0)
+	{
+		d->do_step_two = 0;
+		d->do_step_one = 1;
+	}
+	else
 		return ;
-	else if ((d->clockwise - d->counter_clock) == 1)
-		reset_x_rotation_caller(d);
-	else if ((d->clockwise - d->counter_clock) == 0)
-		reset_z_rotation_caller(d);
+	if (d->do_step_two)
+		reset_x_rotation(d->map);
+	else if (d->do_step_one)
+		reset_z_rotation(d->map);
 }
 
-static void	reset_x_rotation_caller(t_data *d)
+static void	reset_x_rotation(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < d->map->height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < d->map->width)
+		while (j < map->width)
 		{
-			unrotate_x(&d->map->arr[i][j], RAD_54_73);
+			unrotate_x(&map->arr[i][j], RAD_54_73);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	reset_z_rotation_caller(t_data *d)
+static void	reset_z_rotation(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < d->map->height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < d->map->width)
+		while (j < map->width)
 		{
-			unrotate_z(&d->map->arr[i][j], RAD_45);
+			unrotate_z(&map->arr[i][j], RAD_45);
 			j++;
 		}
 		i++;

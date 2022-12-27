@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_5_around_y_bonus.c                          :+:      :+:    :+:   */
+/*   rotate_2_around_y_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 20:49:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 13:36:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ static void	find_center(t_data *d);
 
 void	rotate_2_around_y(t_data *d)
 {
-	d->clockwise += 5;
+	d->rotate_2_around_y++;
+	if ((d->rotate_2_around_y - d->reverse_2_around_y) == 0)
+		d->neutral_y = 1;
 	aux_rotate_2_around_y(d);
 }
 
 void	reverse_2_around_y(t_data *d)
 {
-	d->clockwise -= 5;
+	d->reverse_2_around_y++;
+	if ((d->rotate_2_around_y - d->reverse_2_around_y) == 0)
+		d->neutral_y = 1;
 	aux_reverse_2_around_y(d);
 }
 

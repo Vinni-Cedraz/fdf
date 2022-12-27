@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 20:09:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:25:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	aux_scale_z_down(t_data *d);
 
 void	scale_z_up(t_data *d)
 {
-	if (d->clockwise - d->counter_clock != 2)
-		return ;
 	reset_isometry(d);
 	aux_scale_z_up(d);
 	apply_isometry(d);
@@ -26,8 +24,6 @@ void	scale_z_up(t_data *d)
 
 void	scale_z_down(t_data *d)
 {
-	if (d->clockwise - d->counter_clock != 2)
-		return ;
 	reset_isometry(d);
 	aux_scale_z_down(d);
 	apply_isometry(d);
@@ -44,7 +40,7 @@ static void	aux_scale_z_up(t_data *d)
 	{
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].z *= (double)1.1;
+			d->map->arr[i][j].z *= 1.1;
 			j++;
 		}
 		j = 0;
@@ -63,7 +59,7 @@ static void	aux_scale_z_down(t_data *d)
 	{
 		while (j < d->map->width)
 		{
-			d->map->arr[i][j].z /= (double)1.1;
+			d->map->arr[i][j].z *= 0.9;
 			j++;
 		}
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 16:41:23 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 00:34:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,4 @@ static void	get_altitude_range(t_map *map)
 {
 	get_max_altitude(map);
 	get_min_altitude(map);
-	map->isometric_max_z = map->max_z * pow(cos(RAD_45), -1);
-	map->isometric_max_z *= map->scale_z;
 }
