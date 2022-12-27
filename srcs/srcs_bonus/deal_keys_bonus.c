@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deal_keys.c                                        :+:      :+:    :+:   */
+/*   deal_keys_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 20:05:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/26 20:51:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void	aux_deal_keys(int *key, t_data *d)
 	else if (*key == 's')
 		zoom_out(d);
 	else if (*key == 'a')
-		rotate_5_around_y(d);
+		rotate_2_around_y(d);
 	else if (*key == 'd')
-		reverse_5_around_y(d);
+		reverse_2_around_y(d);
 	else if (*key == 'q')
-		rotate_5_around_x(d);
+		rotate_2_around_x(d);
 	else if (*key == 'e')
-		reverse_5_around_x(d);
+		reverse_2_around_x(d);
 }
