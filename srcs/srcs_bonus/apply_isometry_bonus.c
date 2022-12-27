@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 20:10:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 18:17:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,31 @@
 
 static void	rotate_around_z(t_point *point, double angle);
 static void	rotate_around_x(t_point *point, double angle);
-static void	z_rotation_caller_function(t_map *map);
-static void	x_rotation_caller_function(t_map *map);
+static void	apply_z_rotation(t_map *map);
+static void	apply_x_rotation(t_map *map);
 
 void	apply_isometry(t_data *d)
 {
-	d->clockwise++;
-	if ((d->clockwise - d->counter_clock != 1) && \
-		(d->clockwise - d->counter_clock != 2))
+	d->apply_iso++;
+	if ((d->apply_iso - d->reset_iso) == 1)
+	{
+		d->do_step_one = 1;
+		d->do_step_two = 0;
+	}
+	else if ((d->apply_iso - d->reset_iso) == 2)
+	{
+		d->do_step_two = 1;
+		d->do_step_one = 0;
+	}
+	else
 		return ;
-	if ((d->clockwise - d->counter_clock) == 1)
-		z_rotation_caller_function(d->map);
-	else if ((d->clockwise - d->counter_clock) == 2)
-		x_rotation_caller_function(d->map);
+	if (d->do_step_one)
+		apply_z_rotation(d->map);
+	else if (d->do_step_two)
+		apply_x_rotation(d->map);
 }
 
-static void	z_rotation_caller_function(t_map *map)
+static void	apply_z_rotation(t_map *map)
 {
 	int	i;
 	int	j;
@@ -47,7 +56,7 @@ static void	z_rotation_caller_function(t_map *map)
 	}
 }
 
-static void	x_rotation_caller_function(t_map *map)
+static void	apply_x_rotation(t_map *map)
 {
 	int	i;
 	int	j;
