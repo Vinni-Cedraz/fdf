@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 20:26:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 23:53:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,22 @@ typedef struct s_data
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;
-	short int			default_x;
-	short int			default_y;
-	short int			rotate_2_around_x;
-	short int			reverse_2_around_x;
-	short int			rotate_2_around_y;
-	short int			reverse_2_around_y;
-	short int			neutral_y;
-	short int			neutral_x;
-	short int			apply_iso;
-	short int			reset_iso;
-	short int			neutral_iso;
-	short int			do_step_one;
-	short int			do_step_two;
-	short int			zoom_in;
-	short int			zoom_out;
-	short int			neutral_zoom;
+	size_t			default_x;
+	size_t			default_y;
+	size_t			rotate_2_around_x;
+	size_t			reverse_2_around_x;
+	size_t			rotate_2_around_y;
+	size_t			reverse_2_around_y;
+	size_t			neutral_y;
+	size_t			neutral_x;
+	size_t			apply_iso;
+	size_t			reset_iso;
+	size_t			neutral_iso;
+	size_t			do_step_one;
+	size_t			do_step_two;
+	size_t			zoom_in;
+	size_t			zoom_out;
+	size_t			neutral_zoom;
 	double				cx;
 	double				cy;
 	double				cz;
