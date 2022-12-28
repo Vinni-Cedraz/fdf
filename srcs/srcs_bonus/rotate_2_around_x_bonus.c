@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 00:04:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:01:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	find_center(t_data *d);
 
 void	rotate_2_around_x(t_data *d)
 {
-	printf("neutral_iso: %zu\n", d->neutral_iso);
 	if (!d->neutral_iso)
 		return ;
 	d->rotate_2_around_x++;
@@ -26,12 +25,12 @@ void	rotate_2_around_x(t_data *d)
 		d->neutral_x = 1;
 	else
 		d->neutral_x = 0;
+	reset_zoom(d);
 	aux_rotate_2_around_x(d);
 }
 
 void	reverse_2_around_x(t_data *d)
 {
-	printf("neutral_iso: %zu\n", d->neutral_iso);
 	if (!d->neutral_iso)
 		return ;
 	d->reverse_2_around_x++;
@@ -39,6 +38,7 @@ void	reverse_2_around_x(t_data *d)
 		d->neutral_x = 1;
 	else
 		d->neutral_x = 0;
+	reset_zoom(d);
 	aux_reverse_2_around_x(d);
 }
 
@@ -62,7 +62,6 @@ static void	aux_rotate_2_around_x(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			reset_zoom(d);
 			y = d->map->arr[i][j].y - d->cy;
 			z = d->map->arr[i][j].z - d->cz;
 			d->map->arr[i][j].y = y * cos(RAD_2) + z * sin(RAD_2) + d->cy;
@@ -87,7 +86,6 @@ static void	aux_reverse_2_around_x(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			reset_zoom(d);
 			y = d->map->arr[i][j].y - d->cy;
 			z = d->map->arr[i][j].z - d->cz;
 			d->map->arr[i][j].y = y * cos(RAD_2) - z * sin(RAD_2) + d->cy;
