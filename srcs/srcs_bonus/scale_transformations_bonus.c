@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 01:23:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:45:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	aux_scale_z_down(t_data *d);
 
 void	scale_z_up(t_data *d)
 {
-	reset_rotation_around_x(d);
-	reset_rotation_around_y(d);
-	reset_zoom(d);
+	if (d->map->max_z >= 1800)
+		return ;
+	get_back_to_isometric(d);
 	reset_isometry(d);
 	aux_scale_z_up(d);
 	apply_isometry(d);
@@ -27,9 +27,7 @@ void	scale_z_up(t_data *d)
 
 void	scale_z_down(t_data *d)
 {
-	reset_rotation_around_x(d);
-	reset_rotation_around_y(d);
-	reset_zoom(d);
+	get_back_to_isometric(d);
 	reset_isometry(d);
 	aux_scale_z_down(d);
 	apply_isometry(d);
@@ -78,9 +76,7 @@ void	mirror_z(t_data *d)
 	short int	i;
 	short int	j;
 
-	reset_rotation_around_x(d);
-	reset_rotation_around_y(d);
-	reset_zoom(d);
+	get_back_to_isometric(d);
 	reset_isometry(d);
 	i = 0;
 	while (i < d->map->height)

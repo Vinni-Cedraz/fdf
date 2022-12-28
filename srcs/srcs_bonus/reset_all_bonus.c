@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:11:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 14:07:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:43:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	reset_zoom(t_data *d)
 	short int	i;
 
 	i = -1;
-	zoom_in(d);
-	zoom_out(d);
 	if (d->neutral_zoom)
 		return ;
-	else if (d->zoom_in > d->zoom_out)
+	zoom_out(d);
+	zoom_in(d);
+	if (d->zoom_in > d->zoom_out)
 	{
 		successive_operations = (d->zoom_in - d->zoom_out);
 		while (++i < successive_operations)
