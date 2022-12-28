@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/26 20:49:47 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/27 21:43:38 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ scale_transformations_bonus \
 standard_scale_bonus \
 translation_movements_bonus \
 zoom_bonus \
+reset_all_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 13:38:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:11:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	find_center(t_data *d);
 
 void	zoom_in(t_data *d)
 {
-	int		i;
-	int		j;
-	double	x;
-	double	y;
+	short int	i;
+	short int	j;
+	double		x;
+	double		y;
 
 	i = 0;
 	d->zoom_in++;
@@ -39,14 +39,16 @@ void	zoom_in(t_data *d)
 	}
 	if ((d->zoom_in - d->zoom_out) == 0)
 		d->neutral_zoom = 1;
+	else
+		d->neutral_zoom = 0;
 }
 
 void	zoom_out(t_data *d)
 {
-	int		i;
-	int		j;
-	double	x;
-	double	y;
+	short int	i;
+	short int	j;
+	double		x;
+	double		y;
 
 	i = 0;
 	d->zoom_out++;
@@ -58,14 +60,16 @@ void	zoom_out(t_data *d)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			y = d->map->arr[i][j].y - d->cy;
-			d->map->arr[i][j].x = d->cx + x * 0.9;
-			d->map->arr[i][j].y = d->cy + y * 0.9;
+			d->map->arr[i][j].x = d->cx + x / 1.1;
+			d->map->arr[i][j].y = d->cy + y / 1.1;
 			j++;
 		}
 		i++;
 	}
 	if ((d->zoom_in - d->zoom_out) == 0)
 		d->neutral_zoom = 1;
+	else
+		d->neutral_zoom = 0;
 }
 
 static void	find_center(t_data *d)
