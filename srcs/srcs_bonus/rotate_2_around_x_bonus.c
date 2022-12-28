@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 13:37:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 22:28:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	rotate_2_around_x(t_data *d)
 	d->rotate_2_around_x++;
 	if ((d->rotate_2_around_x - d->reverse_2_around_x) == 0)
 		d->neutral_x = 1;
+	else
+		d->neutral_x = 0;
 	aux_rotate_2_around_x(d);
 }
 
@@ -29,6 +31,8 @@ void	reverse_2_around_x(t_data *d)
 	d->reverse_2_around_x++;
 	if ((d->rotate_2_around_x - d->reverse_2_around_x) == 0)
 		d->neutral_x = 1;
+	else
+		d->neutral_x = 0;
 	aux_reverse_2_around_x(d);
 }
 
@@ -52,6 +56,7 @@ static void	aux_rotate_2_around_x(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
+			reset_zoom(d);
 			y = d->map->arr[i][j].y - d->cy;
 			z = d->map->arr[i][j].z - d->cz;
 			d->map->arr[i][j].y = y * cos(RAD_2) + z * sin(RAD_2) + d->cy;
@@ -76,6 +81,7 @@ static void	aux_reverse_2_around_x(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
+			reset_zoom(d);
 			y = d->map->arr[i][j].y - d->cy;
 			z = d->map->arr[i][j].z - d->cz;
 			d->map->arr[i][j].y = y * cos(RAD_2) - z * sin(RAD_2) + d->cy;

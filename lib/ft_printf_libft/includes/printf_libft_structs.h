@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 21:18:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:26:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,8 @@ typedef struct s_map
 {
 	int					width;
 	int					height;
-	double				isometric_diagonal;
-	double				isometric_width;
-	double				isometric_height;
 	double				max_z;
 	double				min_z;
-	double				isometric_max_z;
 	double				target_width;
 	double				target_height;
 	double				ratio;
@@ -84,18 +80,30 @@ typedef struct s_data
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;
-	int					scale_z;
-	int					clockwise;
-	int					counter_clock;
-	int					gambiarra_x;
-	int					gambiarra_y;
+	short int			default_x;
+	short int			default_y;
+	short int			rotate_2_around_x;
+	short int			reverse_2_around_x;
+	short int			rotate_2_around_y;
+	short int			reverse_2_around_y;
+	short int			neutral_y;
+	short int			neutral_x;
+	short int			apply_iso;
+	short int			reset_iso;
+	short int			neutral_iso;
+	short int			do_step_one;
+	short int			do_step_two;
+	short int			zoom_in;
+	short int			zoom_out;
+	short int			neutral_zoom;
 	double				cx;
 	double				cy;
 	double				cz;
 	double				scale_x;
 	double				scale_y;
-	float				move_x;
-	float				move_y;
+	double				scale_z;
+	double				move_x;
+	double				move_y;
 	t_img				*img;
 	t_map				*map;
 	t_create_map		tool;

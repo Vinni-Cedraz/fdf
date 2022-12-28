@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 18:17:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:28:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	apply_isometry(t_data *d)
 		apply_z_rotation(d->map);
 	else if (d->do_step_two)
 		apply_x_rotation(d->map);
+	if (d->do_step_two)
+		d->neutral_iso = 1;
+	else if (d->do_step_one)
+		d->neutral_iso = 0;
 }
 
 static void	apply_z_rotation(t_map *map)
