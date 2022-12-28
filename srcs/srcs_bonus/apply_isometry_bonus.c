@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 20:28:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 00:57:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static void	apply_x_rotation(t_map *map);
 
 void	apply_isometry(t_data *d)
 {
+	reset_zoom(d);
+	reset_rotation_around_x(d);
+	reset_rotation_around_y(d);
 	d->apply_iso++;
 	if ((d->apply_iso - d->reset_iso) == 1)
 	{
@@ -36,10 +39,8 @@ void	apply_isometry(t_data *d)
 		apply_z_rotation(d->map);
 	else if (d->do_step_two)
 		apply_x_rotation(d->map);
-	if (d->do_step_two)
+	if (d->apply_iso - d->reset_iso == 2)
 		d->neutral_iso = 1;
-	else if (d->do_step_one)
-		d->neutral_iso = 0;
 }
 
 static void	apply_z_rotation(t_map *map)

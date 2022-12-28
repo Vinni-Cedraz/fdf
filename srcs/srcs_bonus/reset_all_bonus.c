@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:11:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 22:14:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 01:28:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	reset_rotation_around_y(t_data *d)
 void	get_back_to_isometric(t_data *d)
 {
 	reset_zoom(d);
-	reset_rotation_around_y(d);
 	reset_rotation_around_x(d);
+	reset_rotation_around_y(d);
 }

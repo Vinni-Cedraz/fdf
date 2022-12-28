@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 22:11:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 01:31:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	draw_menu(t_data *d);
 
 void	draw_menu_background(t_img *img);
 
-void 	get_back_to_isometric(t_data *d);
+void	get_back_to_isometric(t_data *d);
 
 void	reset_rotation_around_y(t_data *d);
 

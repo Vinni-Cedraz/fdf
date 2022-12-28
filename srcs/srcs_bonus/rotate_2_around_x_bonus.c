@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 22:28:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 00:04:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ static void	find_center(t_data *d);
 
 void	rotate_2_around_x(t_data *d)
 {
+	printf("neutral_iso: %zu\n", d->neutral_iso);
+	if (!d->neutral_iso)
+		return ;
 	d->rotate_2_around_x++;
 	if ((d->rotate_2_around_x - d->reverse_2_around_x) == 0)
 		d->neutral_x = 1;
@@ -28,6 +31,9 @@ void	rotate_2_around_x(t_data *d)
 
 void	reverse_2_around_x(t_data *d)
 {
+	printf("neutral_iso: %zu\n", d->neutral_iso);
+	if (!d->neutral_iso)
+		return ;
 	d->reverse_2_around_x++;
 	if ((d->rotate_2_around_x - d->reverse_2_around_x) == 0)
 		d->neutral_x = 1;
