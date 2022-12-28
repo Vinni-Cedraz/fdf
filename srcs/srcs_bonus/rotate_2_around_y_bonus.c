@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 00:00:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:01:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	rotate_2_around_y(t_data *d)
 		d->neutral_y = 1;
 	else
 		d->neutral_y = 0;
+	reset_zoom(d);
 	aux_rotate_2_around_y(d);
 }
 
@@ -37,6 +38,7 @@ void	reverse_2_around_y(t_data *d)
 		d->neutral_y = 1;
 	else
 		d->neutral_y = 0;
+	reset_zoom(d);
 	aux_reverse_2_around_y(d);
 }
 
@@ -60,7 +62,6 @@ static void	aux_rotate_2_around_y(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			reset_zoom(d);
 			x = d->map->arr[i][j].x - d->cx;
 			z = d->map->arr[i][j].z - d->cz;
 			d->map->arr[i][j].x = x * cos(RAD_2) + z * sin(RAD_2) + d->cx;
@@ -85,7 +86,6 @@ static void	aux_reverse_2_around_y(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			reset_zoom(d);
 			x = d->map->arr[i][j].x - d->cx;
 			z = d->map->arr[i][j].z - d->cz;
 			d->map->arr[i][j].x = x * cos(-RAD_2) + z * sin(-RAD_2) + d->cx;
