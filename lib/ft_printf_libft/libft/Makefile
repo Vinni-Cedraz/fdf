@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/22 19:12:12 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/29 11:44:32 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -379,4 +379,3 @@ re_fdf : fclean_fdf srcs_to_fdf
 re_bonus : fclean_bonus srcs_to_bonus
 
 phony : all clean fclean re bonus printf
-
