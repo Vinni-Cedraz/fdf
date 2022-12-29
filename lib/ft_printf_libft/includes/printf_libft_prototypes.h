@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/22 19:13:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:43:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,5 +189,21 @@ int		ft_ishexup(int c);
 int		ft_ishexlow(char *s);
 // this is to free a t_data pointer:
 void	ft_free_t_map(t_point **map);
+
+// LINKED LISTS:
+
+// ft_lstadd_back adds a new element at the end of a list:
+void	ft_lstadd_back(t_list **lst, t_list *new);
+// ft_lstadd_front adds a new element at the beginning of a list:
+void	ft_lstadd_front(t_list **lst, t_list *new);
+// ft_lstclear deletes and frees the given element and every successor of that
+// element, using the function del and free:
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+// ft_lstlast returns the last element of the list:
+t_list	*ft_lstlast(t_list *lst);
+// ft_lstnew creates a new element:
+t_list	*ft_lstnew(void *content);
+// ft_lstsize returns the number of elements in a list:
+int		ft_lstsize(t_list *lst);
 
 #endif
