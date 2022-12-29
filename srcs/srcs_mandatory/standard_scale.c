@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 20:05:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:25:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static void	calculate_center(t_data *d)
 {
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
 	{
-		d->gambiarra_x = (double)WINDOW_WIDTH / 2;
-		d->gambiarra_y = (double)WINDOW_HEIGHT / 8;
+		d->centralize_img_x = (double)WINDOW_WIDTH / 2;
+		d->centralize_img_y = (double)WINDOW_HEIGHT / 8;
 	}
 	else if (d->map->ratio != 1)
 	{
-		d->gambiarra_x = (double)WINDOW_WIDTH / 2.5;
-		d->gambiarra_y = (double)WINDOW_HEIGHT / 5;
+		d->centralize_img_x = (double)WINDOW_WIDTH / 2.5;
+		d->centralize_img_y = (double)WINDOW_HEIGHT / 5;
 	}
 }
 

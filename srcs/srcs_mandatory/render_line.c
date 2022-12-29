@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:27:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/25 20:06:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:24:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-void	render_line(t_point p1, t_point p2, int color, t_data *fdf)
+void	render_line(t_point p1, t_point p2, int color, t_data *d)
 {
 	t_line	line;
 
@@ -24,11 +24,11 @@ void	render_line(t_point p1, t_point p2, int color, t_data *fdf)
 		line.steps = abs(line.dy);
 	line.x_inc = line.dx / (float)line.steps;
 	line.y_inc = line.dy / (float)line.steps;
-	line.x = p1.x + fdf->move_x + fdf->gambiarra_x;
-	line.y = p1.y + fdf->move_y + fdf->gambiarra_y;
+	line.x = p1.x + d->move_x + d->centralize_img_x;
+	line.y = p1.y + d->move_y + d->centralize_img_y;
 	while (line.steps--)
 	{
-		put_pixel_img(fdf->img, line.x, line.y, color);
+		put_pixel_img(d->img, line.x, line.y, color);
 		line.x += line.x_inc;
 		line.y += line.y_inc;
 	}

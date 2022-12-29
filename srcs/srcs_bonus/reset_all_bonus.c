@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:11:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 23:59:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:05:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,53 +36,32 @@ void	reset_zoom(t_data *d)
 	}
 }
 
-void	reset_rotation_around_x(t_data *d)
+void	reset_rotations(t_data *d)
 {
-	short int	successive_operations;
-	short int	i;
+	t_node	*temp;
 
-	i = -1;
-	if (d->neutral_x)
+	if (d->rotations_history->content == NULL)
 		return ;
-	else if (d->rotate_2_around_x > d->reverse_2_around_x)
+	temp = d->rotations_history;
+	while (temp)
 	{
-		successive_operations = (d->rotate_2_around_x - d->reverse_2_around_x);
-		while (++i < successive_operations)
-			reverse_2_around_x(d);
+		if (temp->content == NULL)
+			break ;
+		if (!ft_strncmp(temp->content, "rot_x", 5))
+			reverse_5_around_x(d);
+		else if (!ft_strncmp(temp->content, "rev_x", 5))
+			rotate_5_around_x(d);
+		else if (!ft_strncmp(temp->content, "rot_y", 5))
+			reverse_5_around_y(d);
+		else if (!ft_strncmp(temp->content, "rev_y", 5))
+			rotate_5_around_y(d);
+		temp = temp->next;
 	}
-	else
-	{
-		successive_operations = (d->reverse_2_around_x - d->rotate_2_around_x);
-		while (++i < successive_operations)
-			rotate_2_around_x(d);
-	}
-}
-
-void	reset_rotation_around_y(t_data *d)
-{
-	short int	successive_operations;
-	short int	i;
-
-	i = -1;
-	if (d->neutral_y)
-		return ;
-	else if (d->rotate_2_around_y > d->reverse_2_around_y)
-	{
-		successive_operations = (d->rotate_2_around_y - d->reverse_2_around_y);
-		while (++i < successive_operations)
-			reverse_2_around_y(d);
-	}
-	else
-	{
-		successive_operations = (d->reverse_2_around_y - d->rotate_2_around_y);
-		while (++i < successive_operations)
-			rotate_2_around_y(d);
-	}
+	ft_free_list(&d->rotations_history);
 }
 
 void	get_back_to_isometric(t_data *d)
 {
 	reset_zoom(d);
-	reset_rotation_around_y(d);
-	reset_rotation_around_x(d);
+	reset_rotations(d);
 }

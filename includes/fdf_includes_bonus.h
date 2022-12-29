@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 01:31:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:20:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ void	reset_zoom(t_data *d);
 
 int		draw(t_data *d);
 
-void	rotate_2_around_y(t_data *d);
+void	rotate_5_around_y(t_data *d);
 
-void	reverse_2_around_y(t_data *d);
+void	reverse_5_around_y(t_data *d);
 
-void	rotate_2_around_x(t_data *d);
+void	rotate_5_around_x(t_data *d);
 
-void	reverse_2_around_x(t_data *d);
+void	reverse_5_around_x(t_data *d);
 
 void	data_initializer(t_data *d);
 
@@ -82,8 +82,7 @@ void	draw_menu_background(t_img *img);
 
 void	get_back_to_isometric(t_data *d);
 
-void	reset_rotation_around_y(t_data *d);
+void	reset_rotations(t_data *d);
 
-void	reset_rotation_around_x(t_data *d);
-
+void	del_node_content(void *node);
 #endif

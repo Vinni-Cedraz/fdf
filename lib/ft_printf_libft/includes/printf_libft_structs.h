@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 12:00:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:24:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ typedef struct s_data
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;
-	short int			default_x;
-	short int			default_y;
-	short int			rotate_2_around_x;
-	short int			reverse_2_around_x;
-	short int			rotate_2_around_y;
-	short int			reverse_2_around_y;
+	short int			centralize_img_x;
+	short int			centralize_img_y;
+	short int			rotate_5_around_x;
+	short int			reverse_5_around_x;
+	short int			rotate_5_around_y;
+	short int			reverse_5_around_y;
 	short int			neutral_y;
 	short int			neutral_x;
 	short int			apply_iso;
