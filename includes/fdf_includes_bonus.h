@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 01:31:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:39:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ int		deal_keys(int key, t_data *data);
 
 int		translation_movements(t_data *data);
 
-void	apply_isometry(t_data *d);
-
-void	reset_isometry(t_data *map);
-
 void	move_down(t_data *d);
 
 void	move_up(t_data *d);
@@ -58,21 +54,11 @@ void	scale_z_down(t_data *d);
 
 void	mirror_z(t_data *d);
 
-void	zoom_in(t_data *d);
-
-void	zoom_out(t_data *d);
+void	zoom(t_data *d, short int zoom_in, short int zoom_out);
 
 void	reset_zoom(t_data *d);
 
 int		draw(t_data *d);
-
-void	rotate_2_around_y(t_data *d);
-
-void	reverse_2_around_y(t_data *d);
-
-void	rotate_2_around_x(t_data *d);
-
-void	reverse_2_around_x(t_data *d);
 
 void	data_initializer(t_data *d);
 
@@ -86,4 +72,13 @@ void	reset_rotation_around_y(t_data *d);
 
 void	reset_rotation_around_x(t_data *d);
 
+void	ft_free_t_map(t_point **map);
+
+void	rotate_2_around_x(t_data *d, short int rotate, short int reverse);
+
+void	rotate_2_around_y(t_data *d, short int rotate, short int reverse);
+
+void	undo_isometric_steps(t_data *d);
+
+void	do_isometric_steps(t_data *d);
 #endif

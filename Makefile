@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/27 23:48:09 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/28 22:07:36 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = clang
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g3 -fsanitize=leak -fsanitize=address
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -43,6 +43,7 @@ SRCS = put_pixel_img \
 			   standard_scale\
 	          open_win_n_img \
 	                     main \
+					free_t_map \
 
 BONUS_SRCS = apply_isometry_bonus \
 blackout_bonus \
@@ -66,6 +67,7 @@ standard_scale_bonus \
 translation_movements_bonus \
 zoom_bonus \
 reset_all_bonus \
+free_t_map_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

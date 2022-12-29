@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/26 20:43:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:52:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	parse_map_bonus(char *argv, t_data *d)
 {
 	int		fd;
 	char	buf[1];
-	t_split	*split_to_count_width;
 	char	*first_line;
+	t_split	*split_to_count_width;
 
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
 		return (ft_printf("%s\n", strerror(22)), 0);
 	fd = open(argv, O_RDONLY);
 	if ((fd == -1 || read(fd, buf, 0) == -1 || !d))
 		return (perror("Error"), 0);
-	d->map = malloc(sizeof(t_map));
 	first_line = ft_gnl(fd);
 	split_to_count_width = ft_split(first_line, ' ');
+	d->map = malloc(sizeof(t_map));
 	d->map->width = split_to_count_width->words;
 	close(fd);
 	fd = open(argv, O_RDONLY);
@@ -76,14 +76,15 @@ static void	make_t_point_bonus(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->map->arr[y][x].x = (double)x * (*d)->scale_x;
-	(*d)->map->arr[y][x].y = (double)y * (*d)->scale_y;
+	(*d)->map->arr[y][x].x = (double)x * (*d)->offset->scale_x;
+	(*d)->map->arr[y][x].y = (double)y * (*d)->offset->scale_y;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color_bonus(t_split->str_arr[x]);
 	if (hexcolor)
 		(*d)->map->arr[y][x].color = hexcolor;
 	else
 		(*d)->map->arr[y][x].color = CYAN;
+	printf("x: %f, y: %f, z: %f, color: %d\n", (*d)->map->arr[y][x].x, (*d)->map->arr[y][x].y, (*d)->map->arr[y][x].z, (*d)->map->arr[y][x].color); //
 }
 
 static int	get_hex_color_bonus(char *str)

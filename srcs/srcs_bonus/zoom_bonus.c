@@ -6,91 +6,71 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:54:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:09:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	find_center(t_data *d);
-static void	aux_zoom_out(t_data *d);
-static void	aux_zoom_in(t_data *d);
+static void	iterate_points(t_data *d, short int zoom_in, short int zoom_out);
+static void	zoom_in_or_out(t_point *p, t_data *d, short int in, short int out);
 
-void	zoom_in(t_data *d)
+void	zoom(t_data *d, short int zoom_in, short int zoom_out)
 {
-	if ((d->zoom_in - d->zoom_out) >= 36)
-		return ;
-	find_center(d);
-	aux_zoom_in(d);
+	d->offset->center_x = d->map->arr[d->map->height / 2][d->map->width / 2].x;
+	d->offset->center_y = d->map->arr[d->map->height / 2][d->map->width / 2].y;
+	d->offset->center_z = d->map->arr[d->map->height / 2][d->map->width / 2].z;
+	if (zoom_in)
+	{
+		if ((d->state->zoomed_in - d->state->zoomed_out) >= 36)
+			return ;
+		iterate_points(d, 1, 0);
+	}
+	else if (zoom_out)
+	{
+		if ((d->state->zoomed_out - d->state->zoomed_in) >= 36)
+			return ;
+		iterate_points(d, 0, 1);
+	}
+	if ((d->state->zoomed_in - d->state->zoomed_out) == 0)
+		d->state->neutral_zoom = 1;
+	else
+		d->state->neutral_zoom = 0;
 }
 
-void	zoom_out(t_data *d)
-{
-	if ((d->zoom_out - d->zoom_in) >= 36)
-		return ;
-	find_center(d);
-	aux_zoom_out(d);
-}
-
-static void	aux_zoom_in(t_data *d)
+static void	iterate_points(t_data *d, short int zoom_in, short int zoom_out)
 {
 	short int	i;
 	short int	j;
-	double		x;
-	double		y;
 
 	i = 0;
-	d->zoom_in++;
 	while (i < d->map->height)
 	{
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x - d->cx;
-			y = d->map->arr[i][j].y - d->cy;
-			d->map->arr[i][j].x = d->cx + x * 1.1;
-			d->map->arr[i][j].y = d->cy + y * 1.1;
+			if (zoom_in)
+				zoom_in_or_out(&d->map->arr[i][j], d, 1, 0);
+			else if (zoom_out)
+				zoom_in_or_out(&d->map->arr[i][j], d, 0, 1);
 			j++;
 		}
 		i++;
 	}
-	if ((d->zoom_in - d->zoom_out) == 0)
-		d->neutral_zoom = 1;
-	else
-		d->neutral_zoom = 0;
 }
 
-static void	aux_zoom_out(t_data *d)
+static void	zoom_in_or_out(t_point *p, t_data *d, short int in, short int out)
 {
-	short int	i;
-	short int	j;
-	double		x;
-	double		y;
-
-	i = 0;
-	d->zoom_out++;
-	while (i < d->map->height)
+	if (in)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			x = d->map->arr[i][j].x - d->cx;
-			y = d->map->arr[i][j].y - d->cy;
-			d->map->arr[i][j].x = d->cx + x / 1.1;
-			d->map->arr[i][j].y = d->cy + y / 1.1;
-			j++;
-		}
-		i++;
+		p->x = d->offset->center_x + (p->x - d->offset->center_x) * 1.1;
+		p->y = d->offset->center_y + (p->y - d->offset->center_y) * 1.1;
+		d->state->zoomed_in++;
 	}
-	if ((d->zoom_in - d->zoom_out) == 0)
-		d->neutral_zoom = 1;
-	else
-		d->neutral_zoom = 0;
-}
-
-static void	find_center(t_data *d)
-{
-	d->cx = d->map->arr[d->map->height / 2][d->map->width / 2].x;
-	d->cy = d->map->arr[d->map->height / 2][d->map->width / 2].y;
-	d->cz = d->map->arr[d->map->height / 2][d->map->width / 2].z;
+	else if (out)
+	{
+		p->x = d->offset->center_x + (p->x - d->offset->center_x) / 1.1;
+		p->y = d->offset->center_y + (p->y - d->offset->center_y) / 1.1;
+		d->state->zoomed_out++;
+	}
 }

@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 01:27:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:49:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	aux_deal_keys(int *key, t_data *d);
+static void	aux_deal_keys(int key, t_data *d);
 
 int	deal_keys(int key, t_data *d)
 {
@@ -27,34 +27,34 @@ int	deal_keys(int key, t_data *d)
 	else if (key == XK_DOWN || key == 'j')
 		move_down(d);
 	else if (key == 'i')
-		apply_isometry(d);
+		do_isometric_steps(d);
 	else if (key == 'r')
-		reset_isometry(d);
+		undo_isometric_steps(d);
 	else if (key == ';')
 		get_back_to_isometric(d);
 	else if (key)
-		aux_deal_keys(&key, d);
+		aux_deal_keys(key, d);
 	return (0);
 }
 
-static void	aux_deal_keys(int *key, t_data *d)
+static void	aux_deal_keys(int key, t_data *d)
 {
-	if (*key == 'z')
+	if (key == 'z')
 		scale_z_up(d);
-	else if (*key == 'c')
+	else if (key == 'c')
 		scale_z_down(d);
-	else if (*key == 'm')
+	else if (key == 'm')
 		mirror_z(d);
-	else if (*key == 'w')
-		zoom_in(d);
-	else if (*key == 's')
-		zoom_out(d);
-	else if (*key == 'a')
-		rotate_2_around_y(d);
-	else if (*key == 'd')
-		reverse_2_around_y(d);
-	else if (*key == 'q')
-		rotate_2_around_x(d);
-	else if (*key == 'e')
-		reverse_2_around_x(d);
+	else if (key == 'w')
+		zoom(d, 1, 0);
+	else if (key == 's')
+		zoom(d, 0, 1);
+	else if (key == 'a')
+		rotate_2_around_y(d, 1, 0);
+	else if (key == 'd')
+		rotate_2_around_y(d, 0, 1);
+	else if (key == 'q')
+		rotate_2_around_x(d, 1, 0);
+	else if (key == 'e')
+		rotate_2_around_x(d, 0, 1);
 }

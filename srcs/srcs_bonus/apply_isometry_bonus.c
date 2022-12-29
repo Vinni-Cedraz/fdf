@@ -6,44 +6,44 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 00:57:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:31:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	rotate_around_z(t_point *point, double angle);
-static void	rotate_around_x(t_point *point, double angle);
-static void	apply_z_rotation(t_map *map);
-static void	apply_x_rotation(t_map *map);
+static void	isometry_step_one(t_point *point, double angle);
+static void	isometry_step_two(t_point *point, double angle);
+static void	apply_step_one(t_map *map);
+static void	apply_step_two(t_map *map);
 
-void	apply_isometry(t_data *d)
+void	do_isometric_steps(t_data *d)
 {
 	reset_zoom(d);
 	reset_rotation_around_x(d);
 	reset_rotation_around_y(d);
-	d->apply_iso++;
-	if ((d->apply_iso - d->reset_iso) == 1)
+	d->offset->apply_iso++;
+	if ((d->offset->apply_iso - d->offset->reset_iso) == 1)
 	{
-		d->do_step_one = 1;
-		d->do_step_two = 0;
+		d->offset->do_step_one = 1;
+		d->offset->do_step_two = 0;
 	}
-	else if ((d->apply_iso - d->reset_iso) == 2)
+	else if ((d->offset->apply_iso - d->offset->reset_iso) == 2)
 	{
-		d->do_step_two = 1;
-		d->do_step_one = 0;
+		d->offset->do_step_two = 1;
+		d->offset->do_step_one = 0;
 	}
 	else
 		return ;
-	if (d->do_step_one)
-		apply_z_rotation(d->map);
-	else if (d->do_step_two)
-		apply_x_rotation(d->map);
-	if (d->apply_iso - d->reset_iso == 2)
-		d->neutral_iso = 1;
+	if (d->offset->do_step_one)
+		apply_step_one(d->map);
+	else if (d->offset->do_step_two)
+		apply_step_two(d->map);
+	if (d->offset->apply_iso - d->offset->reset_iso == 2)
+		d->state->isometric = 1;
 }
 
-static void	apply_z_rotation(t_map *map)
+static void	apply_step_one(t_map *map)
 {
 	int	i;
 	int	j;
@@ -54,14 +54,14 @@ static void	apply_z_rotation(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_around_z(&map->arr[i][j], RAD_45);
+			isometry_step_one(&map->arr[i][j], RAD_45);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	apply_x_rotation(t_map *map)
+static void	apply_step_two(t_map *map)
 {
 	int	i;
 	int	j;
@@ -72,14 +72,14 @@ static void	apply_x_rotation(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_around_x(&map->arr[i][j], RAD_54_73);
+			isometry_step_two(&map->arr[i][j], RAD_54_73);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	rotate_around_z(t_point *point, double angle)
+static void	isometry_step_one(t_point *point, double angle)
 {
 	double	x;
 	double	y;
@@ -90,7 +90,7 @@ static void	rotate_around_z(t_point *point, double angle)
 	point->y = x * sin(angle) + y * cos(angle);
 }
 
-static void	rotate_around_x(t_point *point, double angle)
+static void	isometry_step_two(t_point *point, double angle)
 {
 	double	y;
 	double	z;

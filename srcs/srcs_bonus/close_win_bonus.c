@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:53:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:28:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	close_win_bonus(t_data *data)
 {
-	printf("zoom_in: %d\n", data->zoom_in - data->zoom_out);
-	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
+	mlx_destroy_image(data->mlx->ptr, data->img->ptr);
+	mlx_destroy_window(data->mlx->ptr, data->mlx->win);
+	mlx_destroy_display(data->mlx->ptr);
+	free(data->mlx->ptr);
 	free(data->img);
 	ft_free_t_map(data->map->arr);
 	free(data->map);
+	free(data->mlx);
+	free(data->offset);
+	free(data->state);
 	exit(0);
 }

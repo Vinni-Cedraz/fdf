@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_initializer_bonus.c                           :+:      :+:    :+:   */
+/*   free_t_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 22:28:15 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/13 19:29:13 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/28 19:35:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-void	data_initializer(t_data *d)
+void	free_t_map(t_point **map)
 {
-	d->img = malloc(sizeof(t_img));
-	d->mlx = malloc(sizeof(t_mlx));
-	d->state = malloc(sizeof(t_check_state));
-	d->offset = malloc(sizeof(t_offsets));
-	d->offset->center_img_x = 1;
-	d->offset->center_img_y = 1;
-	d->state->neutral_zoom = 1;
+	if (map == NULL)
+		return ;
+	ft_free_arr((char **)(map), (void **)(map));
+	map = NULL;
 }

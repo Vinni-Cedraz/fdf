@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:23:54 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 00:39:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 22:40:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-void	render_line_bonus(t_point p1, t_point p2, int color, t_data *fdf)
+void	render_line_bonus(t_point p1, t_point p2, int color, t_data *d)
 {
 	t_line	line;
 
@@ -24,11 +24,11 @@ void	render_line_bonus(t_point p1, t_point p2, int color, t_data *fdf)
 		line.steps = abs(line.dy);
 	line.x_inc = line.dx / (double)line.steps;
 	line.y_inc = line.dy / (double)line.steps;
-	line.x = p1.x + fdf->move_x + fdf->default_x;
-	line.y = p1.y + fdf->move_y + fdf->default_y;
+	line.x = p1.x + d->offset->move_x + d->offset->center_img_x;
+	line.y = p1.y + d->offset->move_y + d->offset->center_img_y;
 	while (line.steps--)
 	{
-		put_pixel_img_bonus(fdf->img, line.x, line.y, color);
+		put_pixel_img_bonus(d->img, line.x, line.y, color);
 		line.x += line.x_inc;
 		line.y += line.y_inc;
 	}
