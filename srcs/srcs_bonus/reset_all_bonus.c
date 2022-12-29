@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:11:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:43:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/28 23:59:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	reset_zoom(t_data *d)
 	short int	i;
 
 	i = -1;
-	if (d->neutral_zoom)
-		return ;
 	zoom_out(d);
 	zoom_in(d);
+	if (d->neutral_zoom)
+		return ;
 	if (d->zoom_in > d->zoom_out)
 	{
 		successive_operations = (d->zoom_in - d->zoom_out);
@@ -83,6 +83,6 @@ void	reset_rotation_around_y(t_data *d)
 void	get_back_to_isometric(t_data *d)
 {
 	reset_zoom(d);
-	reset_rotation_around_x(d);
 	reset_rotation_around_y(d);
+	reset_rotation_around_x(d);
 }
