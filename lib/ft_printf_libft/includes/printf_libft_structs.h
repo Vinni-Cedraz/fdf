@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:47:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:00:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ typedef struct s_img
 	int					endian;
 }						t_img;
 
-typedef struct s_list
+typedef struct s_nodes
 {
 	void				*content;
-	struct s_list		*next;
-}						t_list;
+	struct s_nodes		*next;
+}						t_node;
 
 typedef struct s_plit
 {
@@ -104,6 +104,7 @@ typedef struct s_data
 	double				scale_z;
 	double				move_x;
 	double				move_y;
+	t_node				*rotations_history;
 	t_img				*img;
 	t_map				*map;
 	t_create_map		tool;

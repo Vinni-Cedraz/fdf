@@ -6,18 +6,18 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 00:24:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/11/16 00:24:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:01:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_node	*ft_lstnew(void *content)
 {
-	t_list	*list;
+	t_node	*node;
 
-	list = malloc(sizeof(*list));
-	list->content = content;
-	list->next = NULL;
-	return (list);
+	node = malloc(sizeof(*node));
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
