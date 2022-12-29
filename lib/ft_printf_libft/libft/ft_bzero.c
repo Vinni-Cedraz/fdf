@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:56:52 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/11/15 20:48:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:11:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s)
 {
-	ft_memset(s, 0, n);
+	ft_memset(s, 0, ft_strlen(s));
 }

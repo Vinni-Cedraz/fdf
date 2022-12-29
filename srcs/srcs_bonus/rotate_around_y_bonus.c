@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_2_around_y_bonus.c                          :+:      :+:    :+:   */
+/*   rotate_5_around_y_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 14:01:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:55:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	aux_rotate_2_around_y(t_data *d);
-static void	aux_reverse_2_around_y(t_data *d);
+static void	aux_rotate_5_around_y(t_data *d);
+static void	aux_reverse_5_around_y(t_data *d);
 static void	find_center(t_data *d);
 
-void	rotate_2_around_y(t_data *d)
+void	rotate_5_around_y(t_data *d)
 {
 	if (!d->neutral_iso)
 		return ;
-	d->rotate_2_around_y++;
-	if ((d->rotate_2_around_y - d->reverse_2_around_y) == 0)
+	d->rotate_5_around_y++;
+	ft_lstadd_front(&d->rotations_history, ft_lstnew("rot_y"));
+	if ((d->rotate_5_around_y - d->reverse_5_around_y) == 0)
 		d->neutral_y = 1;
 	else
 		d->neutral_y = 0;
 	reset_zoom(d);
-	aux_rotate_2_around_y(d);
+	aux_rotate_5_around_y(d);
 }
 
-void	reverse_2_around_y(t_data *d)
+void	reverse_5_around_y(t_data *d)
 {
 	if (!d->neutral_iso)
 		return ;
-	d->reverse_2_around_y++;
-	if ((d->rotate_2_around_y - d->reverse_2_around_y) == 0)
+	d->reverse_5_around_y++;
+	ft_lstadd_front(&d->rotations_history, ft_lstnew("rev_y"));
+	if ((d->rotate_5_around_y - d->reverse_5_around_y) == 0)
 		d->neutral_y = 1;
 	else
 		d->neutral_y = 0;
 	reset_zoom(d);
-	aux_reverse_2_around_y(d);
+	aux_reverse_5_around_y(d);
 }
 
 static void	find_center(t_data *d)
@@ -48,7 +50,7 @@ static void	find_center(t_data *d)
 	d->cz = (double)d->map->arr[d->map->height / 2][d->map->width / 2].z;
 }
 
-static void	aux_rotate_2_around_y(t_data *d)
+static void	aux_rotate_5_around_y(t_data *d)
 {
 	int		i;
 	int		j;
@@ -64,15 +66,15 @@ static void	aux_rotate_2_around_y(t_data *d)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].x = x * cos(RAD_2) + z * sin(RAD_2) + d->cx;
-			d->map->arr[i][j].z = -x * sin(RAD_2) + z * cos(RAD_2) + d->cz;
+			d->map->arr[i][j].x = x * cos(RAD_5) + z * sin(RAD_5) + d->cx;
+			d->map->arr[i][j].z = -x * sin(RAD_5) + z * cos(RAD_5) + d->cz;
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	aux_reverse_2_around_y(t_data *d)
+static void	aux_reverse_5_around_y(t_data *d)
 {
 	int		i;
 	int		j;
@@ -88,8 +90,8 @@ static void	aux_reverse_2_around_y(t_data *d)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].x = x * cos(-RAD_2) + z * sin(-RAD_2) + d->cx;
-			d->map->arr[i][j].z = -x * sin(-RAD_2) + z * cos(-RAD_2) + d->cz;
+			d->map->arr[i][j].x = x * cos(-RAD_5) + z * sin(-RAD_5) + d->cx;
+			d->map->arr[i][j].z = -x * sin(-RAD_5) + z * cos(-RAD_5) + d->cz;
 			j++;
 		}
 		i++;

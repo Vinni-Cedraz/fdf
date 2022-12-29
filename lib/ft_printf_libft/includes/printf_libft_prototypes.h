@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 11:59:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:03:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 // fills a memory area with n null bytes and returns nothing, the void area can
 // be typecasted to any type of pointer:
-void	ft_bzero(void *s, size_t n);
+void	ft_bzero(void *s);
 
 // STRING MANIPULATION FUNCTIONS:
 // THE ONES THAT RETURN A NUMBER:
@@ -196,14 +196,19 @@ void	ft_free_t_map(t_point **map);
 void	ft_lstadd_back(t_node **first_node, t_node *new_node);
 // ft_lstadd_front adds a new element at the beginning of a list:
 void	ft_lstadd_front(t_node **first_node, t_node *new_node);
-// ft_lstclear deletes and frees the given element and every successor of that
-// element, using the function del and free:
-void	ft_lstdelone(t_node *first_node, void (*del)(void*));
+// ft_lstdel_one deletes a node from a list:
+void	ft_lstdel_one(t_node *first_node, void (*del)(void *));
+// ft_lstdel_each_one deletes and frees the given element and it's successors
+void	ft_lstdel_each_one(t_node **first_node, void (*del)(void *));
 // ft_lstlast returns the last element of the list:
-t_node *ft_lstlast(t_node *first_node);
+t_node	*ft_lstlast(t_node *first_node);
 // ft_lstnew creates a new element:
 t_node	*ft_lstnew(void *content);
 // ft_lstsize returns the number of elements in a list:
 int		ft_lstsize(t_node *first_node);
+// ft_free_list frees each node in a list and frees the list itself at the end
+void	ft_free_list(t_node **list);
+// ft_delnode_content sets the content of a node to NULL;
+void	ft_delnode_content(void *content);
 
 #endif

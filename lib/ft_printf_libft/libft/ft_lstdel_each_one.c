@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdel_each_one.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:23:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/11/16 00:23:24 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/29 12:10:03 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/29 12:59:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_node *lst, void (*del)(void *))
+void	ft_lstdel_each_one(t_node **lst, void (*del)(void *))
 {
-	if (!lst)
+	t_node	*tmp;
+	t_node	*element;
+
+	if (*lst == NULL)
 		return ;
-	del(lst->content);
-	free(lst);
+	element = *lst;
+	while (element != NULL)
+	{
+		tmp = element->next;
+		ft_lstdel_one(element, del);
+		element = tmp;
+	}
+	*lst = NULL;
 }

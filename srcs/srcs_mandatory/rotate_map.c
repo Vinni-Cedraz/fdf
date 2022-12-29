@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:44:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/19 14:43:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:25:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	rotate_map(t_map *map)
 		{
 			if (map->arr[i][j].z != 0)
 				map->arr[i][j].z *= map->scale_z;
-			rotate_z(&map->arr[i][j], ANGLE_Z);
-			rotate_x(&map->arr[i][j], ANGLE_X);
+			rotate_z(&map->arr[i][j], RAD_54_73);
+			rotate_x(&map->arr[i][j], RAD_45);
 			j++;
 		}
 		i++;

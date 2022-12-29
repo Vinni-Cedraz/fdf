@@ -6,12 +6,11 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/27 23:48:09 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/29 20:18:06 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
-CC = clang
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
@@ -59,8 +58,8 @@ put_pixel_img_bonus \
 render_line_bonus \
 render_map_bonus \
 reset_isometry_bonus \
-rotate_2_around_x_bonus \
-rotate_2_around_y_bonus \
+rotate_around_x_bonus \
+rotate_around_y_bonus \
 scale_transformations_bonus \
 standard_scale_bonus \
 translation_movements_bonus \

@@ -6,36 +6,23 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/29 11:44:32 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/29 20:03:29 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-## VARIABLES ##
-
+## SET-UP VARIABLES ##
 SHELL := /bin/bash
-
 NAME = libft.a
-
 NAME_BONUS = libft_bonus.a
-
 NAME_PRNTF = ../libftprintf.a
-
 NAME_FDF = srcs_to_fdf.a
-
 CFLAGS = -Wall -Werror -Wextra -O3
-
 AR = ar -rs
-
 RM = rm -f
-
 OBJS_PATH = ./objs/
-
 OBJSB_PATH = ./objs_bonus/
-
 PRNTF_OBJS_PATH = ./objs_printf/
-
 FDF_OBJS_PATH = ./objs_fdf/
-
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;37m
 RED = \033[0;91m
@@ -46,6 +33,7 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
+## SRCS VARIABLES ##
 SRCS = ft_abs \
 ft_atoi \
 ft_free_t_split \
@@ -102,7 +90,10 @@ ft_split \
 
 BSRCS = ft_lstadd_back \
 ft_lstadd_front \
-ft_lstdelone \
+ft_lstdel_one \
+ft_lstdel_each_one \
+ft_delnode_content \
+ft_free_list \
 ft_lstlast \
 ft_lstnew \
 ft_lstsize \
@@ -116,7 +107,7 @@ ft_itoa_base \
 FDF_SRCS = ft_memchr \
 		   ft_strchr \
 			 ft_strlen \
-		 ft_atoi_base \
+		 	 ft_atoi_base \
 			 ft_memcpy \
 			 ft_memmove \
 			 ft_memset \
@@ -132,6 +123,7 @@ FDF_SRCS = ft_memchr \
 			 ft_substr \
 			 ft_gnl \
 
+## OBJS VARIABLES ##
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 OBJSB = $(patsubst %, $(OBJSB_PATH)%.o, $(BSRCS))
 OBJS_PRNTF = $(patsubst %, $(PRNTF_OBJS_PATH)%.o, $(PRNTF_SRCS))
@@ -143,6 +135,7 @@ MOD_OBJ_FDF = $(shell find . -path "./objs_fdf/*.o" -type f -newer $(NAME_FDF))
 MOD_MK = $(shell find . -name "Makefile" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
 MOD_H = $(shell find . -name "*.h" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
 
+## COMPILATION RULES ##
 all : $(NAME) 
 
 srcs_to_printf : $(NAME_PRNTF)
@@ -288,6 +281,7 @@ BONUS_LIBFT_LOOP :
 	done
 	@printf "$(GREEN)Objects Compiled Into $(WHITE)$(OBJSB_PATH)$(DEF_COLOR)\n" \
 
+## CLEANING RULES ##
 clean_all :
 	@make clean --no-print-directory
 	@make clean_bonus --no-print-directory
