@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 23:21:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:10:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	deal_keys(int key, t_data *d)
 	if (key == XK_ESCAPE)
 		close_win_bonus(d);
 	else if (key == XK_RIGHT || key == 'l')
-		move_right(d);
+		translation_movements(d, 0, 1);
 	else if (key == XK_LEFT || key == 'h')
-		move_left(d);
+		translation_movements(d, 0, -1);
 	else if (key == XK_UP || key == 'k')
-		move_up(d);
+		translation_movements(d, 1, 0);
 	else if (key == XK_DOWN || key == 'j')
-		move_down(d);
+		translation_movements(d, -1, 0);
 	else if (key == 'i')
 		two_steps_to_isometry(d);
 	else if (key == 'r')
@@ -46,9 +46,9 @@ static void	aux_deal_keys(int *key, t_data *d)
 	else if (*key == 'm')
 		mirror_z(d);
 	else if (*key == 'w')
-		zoom_in(d);
+		zoom(d, 1, 0);
 	else if (*key == 's')
-		zoom_out(d);
+		zoom(d, 0, 1);
 	else if (*key == 'a')
 		rotate_5_around_y(d);
 	else if (*key == 'd')

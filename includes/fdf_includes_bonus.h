@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 23:20:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:10:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,35 +34,19 @@ void	blackout_bonus(t_data *fdf);
 
 int		deal_keys(int key, t_data *data);
 
-int		translation_movements(t_data *data);
+void	translation_movements(t_data *data, short int y_up, short int x_right);
+
+void	zoom(t_data *d, short int in, short int out);
 
 void	two_steps_to_isometry(t_data *d);
 
 void	undo_isometric_steps(t_data *map);
-
-void	move_down(t_data *d);
-
-void	move_up(t_data *d);
-
-void	move_left(t_data *d);
-
-void	move_right(t_data *d);
-
-void	rotate_15_around_z(t_data *d);
-
-void	reverse_15_around_z(t_data *d);
 
 void	scale_z_up(t_data *d);
 
 void	scale_z_down(t_data *d);
 
 void	mirror_z(t_data *d);
-
-void	zoom_in(t_data *d);
-
-void	zoom_out(t_data *d);
-
-void	reset_zoom(t_data *d);
 
 int		draw(t_data *d);
 
