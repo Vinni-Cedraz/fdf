@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:15:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:05:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void	aux_deal_keys(int *key, t_data *d);
 
-int	deal_keys(int key, t_data *d)
+int	deal_keys_bonus(int key, t_data *d)
 {
 	if (key == XK_ESCAPE)
 		close_win_bonus(d);
 	else if (key == XK_RIGHT || key == 'l')
-		translation_movements(d, 0, 1);
+		d->move_x += 100;
 	else if (key == XK_LEFT || key == 'h')
-		translation_movements(d, 0, -1);
+		d->move_x -= 100;
 	else if (key == XK_UP || key == 'k')
-		translation_movements(d, 1, 0);
+		d->move_y -= 100;
 	else if (key == XK_DOWN || key == 'j')
-		translation_movements(d, -1, 0);
+		d->move_y += 100;
 	else if (key == 'i')
-		two_steps_to_isometry(d);
+		two_steps_to_isometry_bonus(d, 0);
 	else if (key == 'r')
-		undo_isometric_steps(d);
+		undo_isometric_steps_bonus(d);
 	else if (key == ';')
-		get_back_to_isometric(d, RAD_5);
+		two_steps_to_isometry_bonus(d, 1);
 	else if (key)
 		aux_deal_keys(&key, d);
 	return (0);
@@ -40,21 +40,21 @@ int	deal_keys(int key, t_data *d)
 static void	aux_deal_keys(int *key, t_data *d)
 {
 	if (*key == 'z')
-		scale_z_up(d);
+		change_altitude(d, 1, 0);
 	else if (*key == 'c')
-		scale_z_down(d);
+		change_altitude(d, 0, 0);
 	else if (*key == 'm')
-		mirror_z(d);
+		change_altitude(d, 0, 1);
 	else if (*key == 'w')
-		zoom(d, 1, 0, 0);
+		zoom_bonus(d, 1, 0, 0);
 	else if (*key == 's')
-		zoom(d, 0, 1, 0);
+		zoom_bonus(d, 0, 1, 0);
 	else if (*key == 'a')
-		rotate_around_y(d, RAD_5, 1, 0);
+		rotate_around_y(d, 1, 0);
 	else if (*key == 'd')
-		rotate_around_y(d, RAD_5, 0, 1);
+		rotate_around_y(d, 0, 1);
 	else if (*key == 'q')
-		rotate_around_x(d, RAD_5, 1, 0);
+		rotate_around_x(d, 1, 0);
 	else if (*key == 'e')
-		rotate_around_x(d, RAD_5, 0, 1);
+		rotate_around_x(d, 0, 1);
 }

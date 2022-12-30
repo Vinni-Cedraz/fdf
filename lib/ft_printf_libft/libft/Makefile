@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/29 20:03:29 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/30 20:12:48 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = libft.a
 NAME_BONUS = libft_bonus.a
 NAME_PRNTF = ../libftprintf.a
 NAME_FDF = srcs_to_fdf.a
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra -g
 AR = ar -rs
 RM = rm -f
 OBJS_PATH = ./objs/

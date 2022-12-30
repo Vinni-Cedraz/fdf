@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:35:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 19:28:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include "fdf_includes.h"
 # define MENU_WIDTH 183
-
-void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
-
-void	open_win_n_img_bonus(t_data *data);
 
 int		parse_map_bonus(char *argv, t_data *d);
 
@@ -32,36 +28,24 @@ int		close_win_bonus(t_data *data);
 
 void	blackout_bonus(t_data *fdf);
 
-int		deal_keys(int key, t_data *data);
+int		deal_keys_bonus(int key, t_data *data);
 
-void	translation_movements(t_data *data, short int y_up, short int x_right);
+void	zoom_bonus(t_data *d, short int in, short int out, short int reset);
 
-void	zoom(t_data *d, short int in, short int out, short int reset);
+void	undo_isometric_steps_bonus(t_data *d);
 
-void	two_steps_to_isometry(t_data *d);
+void	change_altitude(t_data *d, short int up, short int mirror);
 
-void	undo_isometric_steps(t_data *map);
+int		draw_bonus(t_data *d);
 
-void	scale_z_up(t_data *d);
+void	rotate_around_y(t_data *d, short int rot, short int rev);
 
-void	scale_z_down(t_data *d);
+void	rotate_around_x(t_data *d, short int rot, short int rev);
 
-void	mirror_z(t_data *d);
-
-int		draw(t_data *d);
-
-void	rotate_around_y(t_data *d, double angle, short int rot, short int rev);
-
-void	rotate_around_x(t_data *d, double angle, short int rot, short int rev);
-
-void	data_initializer(t_data *d);
-
-void	draw_menu(t_data *d);
-
-void	draw_menu_background(t_img *img);
+void	data_initializer_bonus(t_data *d);
 
 void	reset_rotations(t_data *d, double angle);
 
-void	get_back_to_isometric(t_data *d, double reset_angle);
+void	two_steps_to_isometry_bonus(t_data *d, short int not_from_parallel);
 
 #endif

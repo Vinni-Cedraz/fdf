@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 19:15:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:21:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	main(int argc, char **argv)
 	d->img = malloc(sizeof(t_img));
 	if (!parse_map_bonus(argv[1], d))
 		return (0);
-	data_initializer(d);
-	open_win_n_img_bonus(d);
-	mlx_loop_hook(d->mlx_ptr, draw, d);
-	mlx_hook(d->win_ptr, 02, 1L << 0, deal_keys, d);
+	data_initializer_bonus(d);
+	mlx_loop_hook(d->mlx_ptr, draw_bonus, d);
+	mlx_hook(d->win_ptr, 02, 1L << 0, deal_keys_bonus, d);
 	mlx_hook(d->win_ptr, 17, 0, close_win_bonus, d);
 	mlx_loop(d->mlx_ptr);
 	free(d->img);

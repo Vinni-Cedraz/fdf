@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 14:18:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:48:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	zoom_out(t_data *d);
 static void	reset_zoom(t_data *d);
 static void	find_center(t_data *d);
 
-void	zoom(t_data *d, short int in, short int out, short int reset)
+void	zoom_bonus(t_data *d, short int in, short int out, short int reset)
 {
 	if (in)
 	{
@@ -109,20 +109,20 @@ static void	reset_zoom(t_data *d)
 	short int	successive_operations;
 
 	i = -1;
-	zoom(d, 1, 0, 0);
-	zoom(d, 0, 1, 0);
+	zoom_bonus(d, 1, 0, 0);
+	zoom_bonus(d, 0, 1, 0);
 	if (d->neutral_zoom)
 		return ;
 	if (d->zoom_in > d->zoom_out)
 	{
 		successive_operations = (d->zoom_in - d->zoom_out);
 		while (++i < successive_operations)
-			zoom(d, 0, 1, 0);
+			zoom_bonus(d, 0, 1, 0);
 	}
 	else
 	{
 		successive_operations = (d->zoom_out - d->zoom_in);
 		while (++i < successive_operations)
-			zoom(d, 1, 0, 0);
+			zoom_bonus(d, 1, 0, 0);
 	}
 }
