@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 00:34:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:33:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	get_max_altitude(t_map *map);
 static void	get_min_altitude(t_map *map);
 static void	get_altitude_range(t_map *map);
-static int	is_colorized_bonus(t_map *map);
+static int	is_colorized(t_map *map);
 
 void	colorize_bonus(t_map *map)
 {
@@ -24,7 +24,7 @@ void	colorize_bonus(t_map *map)
 
 	i = -1;
 	get_altitude_range(map);
-	if (!is_colorized_bonus(map))
+	if (!is_colorized(map))
 	{
 		while (++i < map->height)
 		{
@@ -90,7 +90,7 @@ static void	get_min_altitude(t_map *map)
 	(*map).min_z = min_z;
 }
 
-static int	is_colorized_bonus(t_map *map)
+static int	is_colorized(t_map *map)
 {
 	int	i;
 	int	j;

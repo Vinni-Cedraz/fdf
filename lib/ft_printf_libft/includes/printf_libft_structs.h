@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 20:24:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:03:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,6 @@
 # include <stdlib.h>
 
 typedef unsigned char	t_uc;
-
-typedef struct s_point
-{
-	double				x;
-	double				y;
-	double				z;
-	double				color;
-}						t_point;
-
-typedef struct s_map
-{
-	int					width;
-	int					height;
-	double				max_z;
-	double				min_z;
-	double				target_width;
-	double				target_height;
-	double				ratio;
-	double				scale_z;
-	t_point				**arr;
-}						t_map;
-
-typedef struct s_img
-{
-	void				*mlx_img;
-	char				*addr;
-	int					width;
-	int					height;
-	int					bpp;
-	int					line_len;
-	int					endian;
-}						t_img;
 
 typedef struct s_nodes
 {
@@ -66,51 +34,6 @@ typedef struct s_plit
 
 }						t_split;
 
-typedef struct s_create_map
-{
-	int					x;
-	int					y;
-	int					fd;
-	char				*line;
-	t_split				*split;
-}						t_create_map;
-
-typedef struct s_data
-{
-	void				*win_ptr;
-	void				*mlx_ptr;
-	int					hook;
-	short int			centralize_img_x;
-	short int			centralize_img_y;
-	short int			rotate_5_around_x;
-	short int			reverse_5_around_x;
-	short int			rotate_5_around_y;
-	short int			reverse_5_around_y;
-	short int			neutral_y;
-	short int			neutral_x;
-	short int			apply_iso;
-	short int			reset_iso;
-	short int			neutral_iso;
-	short int			do_step_one;
-	short int			do_step_two;
-	short int			zoom_in;
-	short int			zoom_out;
-	short int			neutral_zoom;
-	double				cx;
-	double				cy;
-	double				cz;
-	double				scale_x;
-	double				scale_y;
-	double				scale_z;
-	double				move_x;
-	double				move_y;
-	t_node				*rotations_history;
-	t_img				*img;
-	t_map				*map;
-	t_create_map		tool;
-}						t_data;
-
-// this struct is just a box of tools, t_ools, got it? xD
 typedef struct s_tools
 {
 	size_t				i;

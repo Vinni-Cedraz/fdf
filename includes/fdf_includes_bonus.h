@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 20:20:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:20:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int		deal_keys(int key, t_data *data);
 
 int		translation_movements(t_data *data);
 
-void	apply_isometry(t_data *d);
+void	two_steps_to_isometry(t_data *d);
 
-void	reset_isometry(t_data *map);
+void	undo_isometric_steps(t_data *map);
 
 void	move_down(t_data *d);
 
@@ -84,5 +84,4 @@ void	get_back_to_isometric(t_data *d);
 
 void	reset_rotations(t_data *d);
 
-void	del_node_content(void *node);
 #endif
