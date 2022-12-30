@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 23:14:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:22:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	rotate_around_z(t_point *point, double angle);
-static void	rotate_around_x(t_point *point, double angle);
+static void	fifty_three_around_x(t_point *point, double angle);
+static void	fourty_five_around_z(t_point *point, double angle);
 static void	take_first_step(t_map *map);
 static void	take_second_step(t_map *map);
 
@@ -53,7 +53,7 @@ static void	take_first_step(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_around_z(&map->arr[i][j], RAD_45);
+			fourty_five_around_z(&map->arr[i][j], RAD_45);
 			j++;
 		}
 		i++;
@@ -71,14 +71,14 @@ static void	take_second_step(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			rotate_around_x(&map->arr[i][j], RAD_54_73);
+			fifty_three_around_x(&map->arr[i][j], RAD_54_73);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	rotate_around_z(t_point *point, double angle)
+static void	fourty_five_around_z(t_point *point, double angle)
 {
 	double	x;
 	double	y;
@@ -89,7 +89,7 @@ static void	rotate_around_z(t_point *point, double angle)
 	point->y = x * sin(angle) + y * cos(angle);
 }
 
-static void	rotate_around_x(t_point *point, double angle)
+static void	fifty_three_around_x(t_point *point, double angle)
 {
 	double	y;
 	double	z;
