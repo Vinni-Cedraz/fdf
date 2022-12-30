@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 12:23:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:35:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,9 @@ void	mirror_z(t_data *d);
 
 int		draw(t_data *d);
 
-void	rotate_5_around_y(t_data *d);
+void	rotate_around_y(t_data *d, double angle, short int rot, short int rev);
 
-void	reverse_5_around_y(t_data *d);
-
-void	rotate_5_around_x(t_data *d);
-
-void	reverse_5_around_x(t_data *d);
+void	rotate_around_x(t_data *d, double angle, short int rot, short int rev);
 
 void	data_initializer(t_data *d);
 
@@ -64,8 +60,8 @@ void	draw_menu(t_data *d);
 
 void	draw_menu_background(t_img *img);
 
-void	get_back_to_isometric(t_data *d);
+void	reset_rotations(t_data *d, double angle);
 
-void	reset_rotations(t_data *d);
+void	get_back_to_isometric(t_data *d, double reset_angle);
 
 #endif
