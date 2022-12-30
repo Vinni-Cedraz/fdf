@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   translation_movements.c                            :+:      :+:    :+:   */
+/*   translation_movements_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:14:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 14:35:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:47:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-void	move_right(t_data *d)
+void	translation_movements(t_data *d, short int y_up, short int x_right)
 {
-	d->move_x += 100;
-}
-
-void	move_left(t_data *d)
-{
-	d->move_x -= 100;
-}
-
-void	move_up(t_data *d)
-{
-	d->move_y -= 100;
-}
-
-void	move_down(t_data *d)
-{
-	d->move_y += 100;
+	if (y_up == 1)
+		d->move_y -= 100;
+	else if (y_up == -1)
+		d->move_y += 100;
+	else if (x_right == 1)
+		d->move_x += 100;
+	else if (x_right == -1)
+		d->move_x -= 100;
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/28 15:54:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:10:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ static void	find_center(t_data *d);
 static void	aux_zoom_out(t_data *d);
 static void	aux_zoom_in(t_data *d);
 
-void	zoom_in(t_data *d)
+void	zoom(t_data *d, short int in, short int out)
 {
-	if ((d->zoom_in - d->zoom_out) >= 36)
-		return ;
-	find_center(d);
-	aux_zoom_in(d);
-}
-
-void	zoom_out(t_data *d)
-{
-	if ((d->zoom_out - d->zoom_in) >= 36)
-		return ;
-	find_center(d);
-	aux_zoom_out(d);
+	if (in)
+	{
+		if ((d->zoom_in - d->zoom_out) >= 36)
+			return ;
+		find_center(d);
+		aux_zoom_in(d);
+	}
+	else if (out)
+	{
+		if ((d->zoom_out - d->zoom_in) >= 36)
+			return ;
+		find_center(d);
+		aux_zoom_out(d);
+	}
 }
 
 static void	aux_zoom_in(t_data *d)
