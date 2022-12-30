@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/29 20:18:06 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/30 20:12:42 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -43,28 +43,23 @@ SRCS = put_pixel_img \
 	          open_win_n_img \
 	                     main \
 
-BONUS_SRCS = apply_isometry_bonus \
-blackout_bonus \
-close_win_bonus \
-colorize_bonus \
-data_initializer_bonus \
-deal_keys_bonus \
-draw_bonus \
-draw_menu_bonus \
-main_bonus \
-open_win_n_img_bonus \
-parse_map_bonus \
-put_pixel_img_bonus \
-render_line_bonus \
-render_map_bonus \
-reset_isometry_bonus \
-rotate_around_x_bonus \
-rotate_around_y_bonus \
-scale_transformations_bonus \
-standard_scale_bonus \
-translation_movements_bonus \
-zoom_bonus \
-reset_all_bonus \
+BONUS_SRCS = two_steps_to_isometry_bonus \
+					blackout_bonus \
+					close_win_bonus \
+					colorize_bonus \
+					data_initializer_bonus \
+					deal_keys_bonus \
+					draw_bonus \
+					undo_isometric_steps_bonus \
+					main_bonus \
+					parse_map_bonus \
+					render_line_bonus \
+					render_map_bonus \
+					rotate_around_x_bonus \
+					rotate_around_y_bonus \
+					scale_transformations_bonus \
+					standard_scale_bonus \
+					zoom_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
@@ -235,4 +230,3 @@ fclean: clean
 	@rm -f mlx/*.a
 
 re: fclean all
-

@@ -6,17 +6,17 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:15:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 19:07:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	aux_rotate_5_around_y(t_data *d, double angle);
-static void	aux_reverse_5_around_y(t_data *d, double angle);
+static void	aux_rotate_5_around_y(t_data *d);
+static void	aux_reverse_5_around_y(t_data *d);
 static void	find_center(t_data *d);
 
-void	rotate_around_y(t_data *d, double angle, short int rot, short int rev)
+void	rotate_around_y(t_data *d, short int rot, short int rev)
 {
 	if (!d->neutral_iso)
 		return ;
@@ -28,8 +28,8 @@ void	rotate_around_y(t_data *d, double angle, short int rot, short int rev)
 			d->neutral_y = 1;
 		else
 			d->neutral_y = 0;
-		zoom(d, 0, 0, 1);
-		aux_rotate_5_around_y(d, angle);
+		zoom_bonus(d, 0, 0, 1);
+		aux_rotate_5_around_y(d);
 	}
 	if (rev)
 	{
@@ -39,8 +39,8 @@ void	rotate_around_y(t_data *d, double angle, short int rot, short int rev)
 			d->neutral_y = 1;
 		else
 			d->neutral_y = 0;
-		zoom(d, 0, 0, 1);
-		aux_reverse_5_around_y(d, angle);
+		zoom_bonus(d, 0, 0, 1);
+		aux_reverse_5_around_y(d);
 	}
 }
 
@@ -50,7 +50,7 @@ static void	find_center(t_data *d)
 	d->cz = (double)d->map->arr[d->map->height / 2][d->map->width / 2].z;
 }
 
-static void	aux_rotate_5_around_y(t_data *d, double angle)
+static void	aux_rotate_5_around_y(t_data *d)
 {
 	int		i;
 	int		j;
@@ -66,15 +66,15 @@ static void	aux_rotate_5_around_y(t_data *d, double angle)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].x = x * cos(angle) + z * sin(angle) + d->cx;
-			d->map->arr[i][j].z = -x * sin(angle) + z * cos(angle) + d->cz;
+			d->map->arr[i][j].x = x * cos(RAD) + z * sin(RAD) + d->cx;
+			d->map->arr[i][j].z = -x * sin(RAD) + z * cos(RAD) + d->cz;
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	aux_reverse_5_around_y(t_data *d, double angle)
+static void	aux_reverse_5_around_y(t_data *d)
 {
 	int		i;
 	int		j;
@@ -90,8 +90,8 @@ static void	aux_reverse_5_around_y(t_data *d, double angle)
 		{
 			x = d->map->arr[i][j].x - d->cx;
 			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].x = x * cos(-angle) + z * sin(-angle) + d->cx;
-			d->map->arr[i][j].z = -x * sin(-angle) + z * cos(-angle) + d->cz;
+			d->map->arr[i][j].x = x * cos(-RAD) + z * sin(-RAD) + d->cx;
+			d->map->arr[i][j].z = -x * sin(-RAD) + z * cos(-RAD) + d->cz;
 			j++;
 		}
 		i++;

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_isometry_bonus.c                             :+:      :+:    :+:   */
+/*   two_steps_to_isometry_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:22:23 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:05:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	fifty_three_around_x(t_point *point, double angle);
-static void	fourty_five_around_z(t_point *point, double angle);
 static void	take_first_step(t_map *map);
 static void	take_second_step(t_map *map);
+static void	restore_isometric_state(t_data *d);
 
-void	two_steps_to_isometry(t_data *d)
+void	two_steps_to_isometry_bonus(t_data *d, short int not_from_parallel)
 {
+	if (not_from_parallel)
+		restore_isometric_state(d);
 	if (d->neutral_iso)
 		return ;
 	d->apply_iso++;
@@ -44,8 +45,10 @@ void	two_steps_to_isometry(t_data *d)
 
 static void	take_first_step(t_map *map)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	double	x;
+	double	y;
 
 	i = 0;
 	while (i < map->height)
@@ -53,7 +56,10 @@ static void	take_first_step(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			fourty_five_around_z(&map->arr[i][j], RAD_45);
+			x = map->arr[i][j].x;
+			y = map->arr[i][j].y;
+			map->arr[i][j].x = x * cos(RAD_45) - y * sin(RAD_45);
+			map->arr[i][j].y = x * sin(RAD_45) + y * cos(RAD_45);
 			j++;
 		}
 		i++;
@@ -62,8 +68,10 @@ static void	take_first_step(t_map *map)
 
 static void	take_second_step(t_map *map)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	double	y;
+	double	z;
 
 	i = 0;
 	while (i < map->height)
@@ -71,31 +79,39 @@ static void	take_second_step(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			fifty_three_around_x(&map->arr[i][j], RAD_54_73);
+			y = map->arr[i][j].y;
+			z = map->arr[i][j].z;
+			map->arr[i][j].y = y * cos(RAD_54_73) - z * sin(RAD_54_73);
+			map->arr[i][j].z = y * sin(RAD_54_73) + z * cos(RAD_54_73);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	fourty_five_around_z(t_point *point, double angle)
+static void	restore_isometric_state(t_data *d)
 {
-	double	x;
-	double	y;
+	t_node	*temp;
 
-	x = point->x;
-	y = point->y;
-	point->x = x * cos(angle) - y * sin(angle);
-	point->y = x * sin(angle) + y * cos(angle);
-}
-
-static void	fifty_three_around_x(t_point *point, double angle)
-{
-	double	y;
-	double	z;
-
-	y = point->y;
-	z = point->z;
-	point->y = y * cos(angle) - z * sin(angle);
-	point->z = y * sin(angle) + z * cos(angle);
+	temp = d->rotations_history;
+	if (temp->content == NULL)
+		return ;
+	while (temp)
+	{
+		if (temp->content == NULL)
+			break ;
+		else if (!ft_strncmp(temp->content, "rev_x", 5))
+			rotate_around_x(d, 0, 1);
+		else if (!ft_strncmp(temp->content, "rot_x", 5))
+			rotate_around_x(d, 1, 0);
+		else if (!ft_strncmp(temp->content, "rev_y", 5))
+			rotate_around_y(d, 0, 1);
+		else if (!ft_strncmp(temp->content, "rot_y", 5))
+			rotate_around_y(d, 1, 0);
+		temp = temp->next;
+	}
+	ft_free_list(&d->rotations_history);
+	d->neutral_iso = 1;
+	d->do_step_one = 0;
+	d->do_step_two = 1;
 }

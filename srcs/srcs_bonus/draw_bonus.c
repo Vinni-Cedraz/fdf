@@ -6,13 +6,17 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:19:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/27 00:04:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:21:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-int	draw(t_data *d)
+static void	draw_menu(t_data *d);
+static void	draw_menu_background(t_img *img);
+static void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
+
+int	draw_bonus(t_data *d)
 {
 	blackout_bonus(d);
 	colorize_bonus(d->map);
@@ -21,4 +25,51 @@ int	draw(t_data *d)
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 	draw_menu(d);
 	return (0);
+}
+
+static void	draw_menu_background(t_img *img)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < MENU_WIDTH)
+	{
+		y = -1;
+		while (++y <= WINDOW_HEIGHT)
+			put_pixel_img_bonus(img, x, y, DARKER_GRAY);
+	}
+}
+
+static void	draw_menu(t_data *d)
+{
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 20, YELLOW, \
+		"CONTROLS MENU");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 100, YELLOW, \
+		"CHANGE TO ISOMETRIC: 'i'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 180, YELLOW, \
+		"CHANGE TO PARALLEL : 'r'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 260, YELLOW, \
+		"MOVE: arrow keys");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 300, YELLOW, \
+		"but also:'h', 'j', 'k', 'l'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 420, YELLOW, \
+		"ROTATE HORIZONTAL: 'a' / 'd'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 580, YELLOW, \
+		"ROTATE VERTICAL: 'q' / 'e'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 700, YELLOW, \
+		"ZOOM:  'w' / 's'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 820, YELLOW, \
+		"RESTORE ISOMETRIC STATE: ';'");
+	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 860, YELLOW, "EXIT: 'esc'");
+}
+
+static void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
+{
+	char	*ptr_to_color;
+
+	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
+		return ;
+	ptr_to_color = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int *)ptr_to_color = color;
 }

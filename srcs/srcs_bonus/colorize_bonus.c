@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 23:33:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:36:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	colorize_bonus(t_map *map)
 	}
 }
 
+static void	get_altitude_range(t_map *map)
+{
+	get_max_altitude(map);
+	get_min_altitude(map);
+}
+
 static void	get_max_altitude(t_map *map)
 {
 	int	i;
@@ -54,18 +60,18 @@ static void	get_max_altitude(t_map *map)
 
 	i = 0;
 	max_z = -2147483648;
-	while (i < (*map).height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < (*map).width)
+		while (j < map->width)
 		{
-			if ((*map).arr[i][j].z > max_z)
-				max_z = (*map).arr[i][j].z;
+			if (map->arr[i][j].z > max_z)
+				max_z = map->arr[i][j].z;
 			j++;
 		}
 		i++;
 	}
-	(*map).max_z = max_z;
+	map->max_z = max_z;
 }
 
 static void	get_min_altitude(t_map *map)
@@ -75,19 +81,19 @@ static void	get_min_altitude(t_map *map)
 	int	min_z;
 
 	i = 0;
-	min_z = (*map).max_z;
-	while (i < (*map).height)
+	min_z = map->max_z;
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < (*map).width)
+		while (j < map->width)
 		{
-			if ((*map).arr[i][j].z < min_z)
-				min_z = (*map).arr[i][j].z;
+			if (map->arr[i][j].z < min_z)
+				min_z = map->arr[i][j].z;
 			j++;
 		}
 		i++;
 	}
-	(*map).min_z = min_z;
+	map->min_z = min_z;
 }
 
 static int	is_colorized(t_map *map)
@@ -96,22 +102,16 @@ static int	is_colorized(t_map *map)
 	int	j;
 
 	i = 0;
-	while (i < (*map).height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < (*map).width)
+		while (j < map->width)
 		{
-			if ((*map).arr[i][j].color != CYAN)
+			if (map->arr[i][j].color != CYAN)
 				return (1);
 			j++;
 		}
 		i++;
 	}
 	return (0);
-}
-
-static void	get_altitude_range(t_map *map)
-{
-	get_max_altitude(map);
-	get_min_altitude(map);
 }

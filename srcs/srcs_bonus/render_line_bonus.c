@@ -6,11 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:23:54 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 20:27:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:36:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+
+static void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
 
 void	render_line_bonus(t_point p1, t_point p2, int color, t_data *d)
 {
@@ -32,4 +34,14 @@ void	render_line_bonus(t_point p1, t_point p2, int color, t_data *d)
 		line.x += line.x_inc;
 		line.y += line.y_inc;
 	}
+}
+
+static void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
+{
+	char	*ptr_to_color;
+
+	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
+		return ;
+	ptr_to_color = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int *)ptr_to_color = color;
 }
