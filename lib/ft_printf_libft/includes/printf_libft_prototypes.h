@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 19:03:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:02:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "printf_libft_syslibs.h"
 
 // PRINTF PROTAGONISTS:
+
 
 int		ft_printf(const char *format, ...);
 
@@ -188,6 +189,7 @@ int		ft_ishexup(int c);
 // hex low:
 int		ft_ishexlow(char *s);
 // this is to free a t_data pointer:
+typedef struct s_point t_point; // this is to avoid a circular dependency
 void	ft_free_t_map(t_point **map);
 
 // LINKED LISTS:

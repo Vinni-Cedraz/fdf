@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:59:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 15:38:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:23:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 static void	unrotate_z(t_point *point, double angle);
 static void	unrotate_x(t_point *point, double angle);
-static void	reset_x_rotation(t_map *map);
-static void	reset_z_rotation(t_map *map);
+static void	undo_second_step(t_map *map);
+static void	undo_first_step(t_map *map);
 
-void	reset_isometry(t_data *d)
+void	undo_isometric_steps(t_data *d)
 {
 	if (!d->neutral_x || !d->neutral_y)
 		return ;
@@ -36,13 +36,13 @@ void	reset_isometry(t_data *d)
 	else
 		return ;
 	if (d->do_step_two)
-		reset_x_rotation(d->map);
+		undo_second_step(d->map);
 	else if (d->do_step_one)
-		reset_z_rotation(d->map);
+		undo_first_step(d->map);
 	d->neutral_iso = 0;
 }
 
-static void	reset_x_rotation(t_map *map)
+static void	undo_second_step(t_map *map)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ static void	reset_x_rotation(t_map *map)
 	}
 }
 
-static void	reset_z_rotation(t_map *map)
+static void	undo_first_step(t_map *map)
 {
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 13:54:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:21:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	deal_keys(int key, t_data *d)
 	else if (key == XK_DOWN || key == 'j')
 		move_down(d);
 	else if (key == 'i')
-		apply_isometry(d);
+		two_steps_to_isometry(d);
 	else if (key == 'r')
-		reset_isometry(d);
+		undo_isometric_steps(d);
 	else if (key == ';')
 		get_back_to_isometric(d);
 	else if (key)

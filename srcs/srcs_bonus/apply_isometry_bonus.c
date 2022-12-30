@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 15:31:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/29 23:14:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	rotate_around_z(t_point *point, double angle);
 static void	rotate_around_x(t_point *point, double angle);
-static void	apply_z_rotation(t_map *map);
-static void	apply_x_rotation(t_map *map);
+static void	take_first_step(t_map *map);
+static void	take_second_step(t_map *map);
 
-void	apply_isometry(t_data *d)
+void	two_steps_to_isometry(t_data *d)
 {
 	if (d->neutral_iso)
 		return ;
@@ -35,14 +35,14 @@ void	apply_isometry(t_data *d)
 	else
 		return ;
 	if (d->do_step_one)
-		apply_z_rotation(d->map);
+		take_first_step(d->map);
 	else if (d->do_step_two)
-		apply_x_rotation(d->map);
+		take_second_step(d->map);
 	if (d->apply_iso - d->reset_iso == 2)
 		d->neutral_iso = 1;
 }
 
-static void	apply_z_rotation(t_map *map)
+static void	take_first_step(t_map *map)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ static void	apply_z_rotation(t_map *map)
 	}
 }
 
-static void	apply_x_rotation(t_map *map)
+static void	take_second_step(t_map *map)
 {
 	int	i;
 	int	j;
