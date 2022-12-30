@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 12:10:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:23:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		deal_keys(int key, t_data *data);
 
 void	translation_movements(t_data *data, short int y_up, short int x_right);
 
-void	zoom(t_data *d, short int in, short int out);
+void	zoom(t_data *d, short int in, short int out, short int reset);
 
 void	two_steps_to_isometry(t_data *d);
 

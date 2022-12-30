@@ -6,35 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:11:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 12:12:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:26:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-
-void	reset_zoom(t_data *d)
-{
-	short int	i;
-	short int	successive_operations;
-
-	i = -1;
-	zoom(d, 1, 0);
-	zoom(d, 0, 1);
-	if (d->neutral_zoom)
-		return ;
-	if (d->zoom_in > d->zoom_out)
-	{
-		successive_operations = (d->zoom_in - d->zoom_out);
-		while (++i < successive_operations)
-			zoom(d, 0, 1);
-	}
-	else
-	{
-		successive_operations = (d->zoom_out - d->zoom_in);
-		while (++i < successive_operations)
-			zoom(d, 1, 0);
-	}
-}
 
 void	reset_rotations(t_data *d)
 {
@@ -62,6 +38,6 @@ void	reset_rotations(t_data *d)
 
 void	get_back_to_isometric(t_data *d)
 {
-	reset_zoom(d);
+	zoom(d, 0, 0, 1);
 	reset_rotations(d);
 }

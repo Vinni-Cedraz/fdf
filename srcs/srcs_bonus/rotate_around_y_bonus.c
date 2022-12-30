@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_5_around_y_bonus.c                          :+:      :+:    :+:   */
+/*   rotate_around_y_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 13:55:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:29:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rotate_5_around_y(t_data *d)
 		d->neutral_y = 1;
 	else
 		d->neutral_y = 0;
-	reset_zoom(d);
+	zoom(d, 0, 0, 1);
 	aux_rotate_5_around_y(d);
 }
 
@@ -40,7 +40,7 @@ void	reverse_5_around_y(t_data *d)
 		d->neutral_y = 1;
 	else
 		d->neutral_y = 0;
-	reset_zoom(d);
+	zoom(d, 0, 0, 1);
 	aux_reverse_5_around_y(d);
 }
 

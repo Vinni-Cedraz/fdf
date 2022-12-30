@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 12:10:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:30:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static void	aux_deal_keys(int *key, t_data *d)
 	else if (*key == 'm')
 		mirror_z(d);
 	else if (*key == 'w')
-		zoom(d, 1, 0);
+		zoom(d, 1, 0, 0);
 	else if (*key == 's')
-		zoom(d, 0, 1);
+		zoom(d, 0, 1, 0);
 	else if (*key == 'a')
 		rotate_5_around_y(d);
 	else if (*key == 'd')
