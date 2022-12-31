@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:26:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:52:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void	aux_deal_keys(int *key, t_data *d)
 		rotate_around_x(d, 1, 0);
 	else if (*key == 'e')
 		rotate_around_x(d, 0, 1);
-	else if (*key == 'g' && d->grid_style_nb == 1)
-		d->grid_style_nb = 2;
-	else if (*key == 'g' && d->grid_style_nb == 2)
-		d->grid_style_nb = 3;
-	else if (*key == 'g' && d->grid_style_nb == 3)
-		d->grid_style_nb = 1;
+	else if (*key == 'g' && d->state.grid_style_nb == 1)
+		d->state.grid_style_nb = 2;
+	else if (*key == 'g' && d->state.grid_style_nb == 2)
+		d->state.grid_style_nb = 3;
+	else if (*key == 'g' && d->state.grid_style_nb == 3)
+		d->state.grid_style_nb = 1;
 }

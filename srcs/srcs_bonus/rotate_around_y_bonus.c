@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:29:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:54:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ static void	find_center(t_data *d);
 
 void	rotate_around_y(t_data *d, short int rot, short int rev)
 {
-	if (!d->neutral_iso)
+	if (!d->state.isometric)
 		return ;
 	if (rot)
 	{
-		d->rotate_5_around_y++;
+		d->state.rotate_5_around_y++;
 		ft_lstadd_front(&d->rotations_history, ft_lstnew("rev_y"));
-		if ((d->rotate_5_around_y - d->reverse_5_around_y) == 0)
-			d->neutral_y = 1;
+		if ((d->state.rotate_5_around_y - d->state.reverse_5_around_y) == 0)
+			d->state.neutral_y = 1;
 		else
-			d->neutral_y = 0;
+			d->state.neutral_y = 0;
 		zoom_bonus(d, 0, 0, 1);
 		aux_rotate_5_around_y(d);
 	}
 	if (rev)
 	{
-		d->reverse_5_around_y++;
+		d->state.reverse_5_around_y++;
 		ft_lstadd_front(&d->rotations_history, ft_lstnew("rot_y"));
-		if ((d->rotate_5_around_y - d->reverse_5_around_y) == 0)
-			d->neutral_y = 1;
+		if ((d->state.rotate_5_around_y - d->state.reverse_5_around_y) == 0)
+			d->state.neutral_y = 1;
 		else
-			d->neutral_y = 0;
+			d->state.neutral_y = 0;
 		zoom_bonus(d, 0, 0, 1);
 		aux_reverse_5_around_y(d);
 	}
