@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/31 13:11:38 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/31 13:57:49 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 					main_bonus \
 					parse_map_bonus \
 					render_map_bonus \
+					render_line_bonus \
 					rotate_around_x_bonus \
 					rotate_around_y_bonus \
 					calculate_default_scale_bonus \
