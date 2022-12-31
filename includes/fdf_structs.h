@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 16:41:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:02:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,15 @@ typedef struct s_create_map
 	t_split			*split;
 }					t_create_map;
 
-typedef struct s_data
+typedef struct s_mlx
 {
 	void			*win_ptr;
 	void			*mlx_ptr;
 	int				hook;
+}					t_mlx;
+
+typedef struct s_data
+{
 	short int		centralize_img_x;
 	short int		centralize_img_y;
 	short int		rotate_5_around_x;
@@ -131,6 +135,7 @@ typedef struct s_data
 	double			scale_z;
 	double			move_x;
 	double			move_y;
+	t_mlx			*mlx;
 	t_node			*rotations_history;
 	t_img			*img;
 	t_map			*map;

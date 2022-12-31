@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:19:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 17:03:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:05:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	draw_bonus(t_data *d)
 	else if (d->grid_style_nb == 3)
 		render_map_bonus(d, 0, 0, 1);
 	draw_menu_background(d->img);
-	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(d->mlx->mlx_ptr, d->mlx->win_ptr, d->img->mlx_img \
+		, 0, 0);
 	draw_menu(d);
 	return (0);
 }
@@ -67,25 +68,26 @@ static void	paint_it_black(t_data *data)
 
 static void	draw_menu(t_data *d)
 {
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 20, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 20, YELLOW, \
 		"CONTROLS MENU");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 100, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 100, YELLOW, \
 		"CHANGE TO ISOMETRIC: 'i'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 180, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 180, YELLOW, \
 		"CHANGE TO PARALLEL : 'r'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 260, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 260, YELLOW, \
 		"MOVE: arrow keys");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 300, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 300, YELLOW, \
 		"but also:'h', 'j', 'k', 'l'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 420, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 420, YELLOW, \
 		"ROTATE HORIZONTAL: 'a' / 'd'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 580, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 580, YELLOW, \
 		"ROTATE VERTICAL: 'q' / 'e'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 700, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 700, YELLOW, \
 		"ZOOM:  'w' / 's'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 820, YELLOW, \
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 820, YELLOW, \
 		"RESTORE ISOMETRIC STATE: ';'");
-	mlx_string_put(d->mlx_ptr, d->win_ptr, 10, 860, YELLOW, "EXIT: 'esc'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 860, YELLOW, \
+		"EXIT: 'esc'");
 }
 
 static void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
