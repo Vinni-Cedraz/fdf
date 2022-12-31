@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:19:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 17:21:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 20:57:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 static void	draw_menu(t_data *d);
 static void	draw_menu_background(t_img *img);
 static void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
+static void	paint_it_black(t_data *data);
 
 int	draw_bonus(t_data *d)
 {
-	blackout_bonus(d);
+	paint_it_black(d);
 	colorize_bonus(d->map);
 	render_map_bonus(d);
 	draw_menu_background(d->img);
@@ -40,6 +41,25 @@ static void	draw_menu_background(t_img *img)
 			put_pixel_img_bonus(img, x, y, DARKER_GRAY);
 	}
 }
+
+static void	paint_it_black(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->img->height)
+	{
+		j = 0;
+		while (j < data->img->width)
+		{
+			put_pixel_img_bonus(data->img, j, i, BLACK);
+			j++;
+		}
+		i++;
+	}
+}
+
 
 static void	draw_menu(t_data *d)
 {
