@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 16:35:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 14:16:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct s_data
 	short int		zoom_in;
 	short int		zoom_out;
 	short int		neutral_zoom;
+	char 			*grid_style;
 	double			cx;
 	double			cy;
 	double			cz;
