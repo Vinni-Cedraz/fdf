@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   standard_scale_bonus.c                             :+:      :+:    :+:   */
+/*   calculate_default_scale_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 12:51:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:25:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	get_values_to_centralize_img_on_window(t_data *d);
 void	calculate_default_scale_bonus(t_data *d)
 {
 	calculate_target_scaled_map_size(d->map);
-	d->scale_x = d->map->target_width / (d->map->width);
-	d->scale_y = d->map->target_height / (d->map->height);
+	d->offset.scale_x = d->map->target_width / (d->map->width);
+	d->offset.scale_y = d->map->target_height / (d->map->height);
 	get_values_to_centralize_img_on_window(d);
 }
 
@@ -42,12 +42,12 @@ static void	get_values_to_centralize_img_on_window(t_data *d)
 {
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
 	{
-		d->centralize_img_x = (WINDOW_WIDTH / 2) + MENU_WIDTH - 100;
-		d->centralize_img_y = WINDOW_HEIGHT / 8;
+		d->offset.centralize_img_x = (WINDOW_WIDTH / 2) + MENU_WIDTH - 100;
+		d->offset.centralize_img_y = WINDOW_HEIGHT / 8;
 	}
 	else if (d->map->ratio != 1)
 	{
-		d->centralize_img_x = (WINDOW_WIDTH / 2.5) + MENU_WIDTH - 100;
-		d->centralize_img_y = WINDOW_HEIGHT / 5;
+		d->offset.centralize_img_x = (WINDOW_WIDTH / 2.5) + MENU_WIDTH - 100;
+		d->offset.centralize_img_y = WINDOW_HEIGHT / 5;
 	}
 }
