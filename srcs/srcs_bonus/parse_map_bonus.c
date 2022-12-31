@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 17:36:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:12:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	parse_map_bonus(char *argv, t_data *d)
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
-	calculate_scale(d);
+	calculate_default_scale_bonus(d);
 	return (close(fd), create_map_bonus(d, argv, first_line), 1);
 }
 

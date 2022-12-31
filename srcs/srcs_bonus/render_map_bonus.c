@@ -6,16 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:11:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 23:21:45 by vcedraz-         ###   ########.fr       */
+/*   UpdatedG 2022/12/31 13:21:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	render_lines(t_point p1, t_point p2, int color, t_data *d);
-// static void	render_last_line(t_data *d);
-// static void	render_last_column(t_data *d);
+static void	render_line_bonus(t_point p1, t_point p2, t_data *d);
 static void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
+static void	determine_line_color(t_point p1, t_point p2, int *color);
 
 void	render_map_bonus(t_data *d)
 {
@@ -30,49 +29,19 @@ void	render_map_bonus(t_data *d)
 		while (++j < d->map->width)
 		{
 			if (j < d->map->width - 1)
-			{
-				if (j < d->map->width / 2)
-					render_lines(d->map->arr[i][j], d->map->arr[i][j + 1],
-							d->map->arr[i][j].color, d);
-				else
-					render_lines(d->map->arr[i][j], d->map->arr[i][j + 1],
-							d->map->arr[i][j + 1].color, d);
-			}
+				render_line_bonus(d->map->arr[i][j], d->map->arr[i][j + 1], d);
 			if (i < d->map->height - 1)
-			{
-				if (i < d->map->height / 2)
-					render_lines(d->map->arr[i][j], d->map->arr[i + 1][j],
-							d->map->arr[i][j].color, d);
-				else
-					render_lines(d->map->arr[i][j], d->map->arr[i + 1][j],
-							d->map->arr[i + 1][j].color, d);
-			}
-			if (j < d->map->width - 1 && i > 0)
-			{
-				if (j > d->map->width / 2)
-					render_lines(d->map->arr[i][j], d->map->arr[i - 1][j + 1],
-							d->map->arr[i][j].color, d);
-				else
-					render_lines(d->map->arr[i][j], d->map->arr[i - 1][j + 1],
-							d->map->arr[i - 1][j + 1].color, d);
-			}
-			if (i > 0 && j < d->map->width - 1)
-			{
-				if (i < d->map->height / 2)
-					render_lines(d->map->arr[i][j], d->map->arr[i - 1][j + 1],
-							d->map->arr[i][j].color, d);
-				else
-					render_lines(d->map->arr[i][j], d->map->arr[i - 1][j + 1],
-							d->map->arr[i - 1][j + 1].color, d);
-			}
+				render_line_bonus(d->map->arr[i][j], d->map->arr[i + 1][j], d);
 		}
 	}
 }
 
-static void	render_lines(t_point p1, t_point p2, int color, t_data *d)
+static void	render_line_bonus(t_point p1, t_point p2, t_data *d)
 {
 	t_line	line;
+	int		color;
 
+	determine_line_color(p1, p2, &color);
 	line.dx = p2.x - p1.x;
 	line.dy = p2.y - p1.y;
 	if (abs(line.dx) > abs(line.dy))
@@ -100,40 +69,16 @@ static void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
 	ptr_to_color = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	*(unsigned int *)ptr_to_color = color;
 }
-//
-// static void	render_last_line(t_data *d)
-// {
-// 	int	j;
-//
-// 	j = 0;
-// 	while (j < d->map->width - 1)
-// 	{
-// 		if (j <= d->map->width / 2)
-// 			render_lines(d->map->arr[d->map->height - 1][j],
-// 								d->map->arr[d->map->height - 1][j + 1],
-// 								d->map->arr[d->map->height - 1][j].color,
-// 								d);
-// 		else
-// 			render_lines(d->map->arr[d->map->height - 1][j],
-// 								d->map->arr[d->map->height - 1][j + 1],
-// 								d->map->arr[d->map->height - 1][j + 1].color,
-// 								d);
-// 		j++;
-// 	}
-// }
-//
-// static void	render_last_column(t_data *d)
-// {
-// 	int	i;
-//
-// 	i = 0;
-// 	while (i < d->map->height - 1)
-// 	{
-// 		if (i < d->map->height - 1)
-// 			render_lines(d->map->arr[i][d->map->width - 1],
-// 								d->map->arr[i + 1][d->map->width - 1],
-// 								d->map->arr[i + 1][d->map->width - 1].color,
-// 								d);
-// 		i++;
-// 	}
-// }
+
+static void	determine_line_color(t_point p1, t_point p2, int *color)
+{
+	if (p1.color == p2.color)
+		*color = p1.color;
+	else
+	{
+		if (p1.z < p2.z)
+			*color = p1.color;
+		else
+			*color = p2.color;
+	}
+}

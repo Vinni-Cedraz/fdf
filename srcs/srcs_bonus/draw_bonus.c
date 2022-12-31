@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:19:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 20:57:46 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 12:43:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	paint_it_black(t_data *data);
 int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
-	colorize_bonus(d->map);
+	colorize_points_bonus(d->map);
 	render_map_bonus(d);
 	draw_menu_background(d->img);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);

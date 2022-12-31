@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 16:49:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 18:56:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 10:04:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	undo_first_step(t_map *map);
 
 void	undo_isometric_steps_bonus(t_data *d)
 {
-	if (!d->neutral_x || !d->neutral_y)
+	if (!d->neutral_x || !d->neutral_y || !d->neutral_zoom)
 		return ;
 	d->reset_iso++;
 	if ((d->apply_iso - d->reset_iso) == 1)
