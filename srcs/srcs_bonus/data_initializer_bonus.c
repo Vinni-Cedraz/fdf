@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 20:24:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 14:56:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	open_win_and_img(t_data *data);
 void	data_initializer_bonus(t_data *d)
 {
 	open_win_and_img(d);
+	d->grid_style = ft_strdup("square");
 	d->rotations_history = ft_lstnew(NULL);
 	d->reverse_5_around_x = 0;
 	d->rotate_5_around_x = 0;
@@ -41,10 +42,10 @@ static void	open_win_and_img(t_data *data)
 	data->mlx_ptr = mlx_init();
 	data->img->width = WINDOW_WIDTH;
 	data->img->height = WINDOW_HEIGHT;
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, \
-		"mlx 42");
-	data->img->mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, \
-		WINDOW_HEIGHT);
-	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp, \
-		&data->img->line_len, &data->img->endian);
+	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
+			"mlx 42");
+	data->img->mlx_img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH,
+			WINDOW_HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
+			&data->img->line_len, &data->img->endian);
 }
