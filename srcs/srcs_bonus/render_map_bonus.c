@@ -5,22 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 20:11:35 by vcedraz-          #+#    #+#             */
-/*   UpdatedG 2022/12/31 13:21:09 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
+/*   Updated: 2022/12/31 17:03:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
+static void	render_pentagram(t_data *d);
 static void	render_lines_square(t_data *d);
 static void	render_lines_cross(t_data *d);
 
-void	render_map_bonus(t_data *d, int square, int cross)
+void	render_map_bonus(t_data *d, int square, int cross, int pent)
 {
 	if (square)
 		render_lines_square(d);
 	else if (cross)
 		render_lines_cross(d);
+	else if (pent)
+		render_pentagram(d);
 }
 
 static void	render_lines_square(t_data *d)
@@ -64,6 +67,31 @@ static void	render_lines_cross(t_data *d)
 				p1 = d->map->arr[i + 1][j];
 				render_line_bonus(p1, d->map->arr[i][j + 1], d);
 			}
+		}
+	}
+}
+
+static void	render_pentagram(t_data *d)
+{
+	int		i;
+	int		j;
+	t_point	p1;
+
+	i = -1;
+	j = -1;
+	while (++i < d->map->height - 3)
+	{
+		j = -1;
+		while (++j < d->map->width - 3)
+		{
+			p1 = d->map->arr[i + 1][j];
+			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
+			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
+			p1 = d->map->arr[i + 2][j];
+			render_line_bonus(p1, d->map->arr[i][j + 1], d);
+			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
+			p1 = d->map->arr[i][j + 1];
+			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
 		}
 	}
 }

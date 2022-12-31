@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:19:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 14:21:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 17:03:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
 	colorize_points_bonus(d->map);
-	if (!ft_strncmp(d->grid_style, "square", 6))
-		render_map_bonus(d, 1, 0);
-	else if (!ft_strncmp(d->grid_style, "cross", 5))
-		render_map_bonus(d, 0, 1);
+	if (d->grid_style_nb == 1)
+		render_map_bonus(d, 1, 0, 0);
+	else if (d->grid_style_nb == 2)
+		render_map_bonus(d, 0, 1, 0);
+	else if (d->grid_style_nb == 3)
+		render_map_bonus(d, 0, 0, 1);
 	draw_menu_background(d->img);
 	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
 	draw_menu(d);
@@ -62,7 +64,6 @@ static void	paint_it_black(t_data *data)
 		i++;
 	}
 }
-
 
 static void	draw_menu(t_data *d)
 {
