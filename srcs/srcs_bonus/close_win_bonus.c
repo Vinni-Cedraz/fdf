@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:15:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:48:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	close_win_bonus(t_data *data)
 {
-	if (data->neutral_y == 0)
+	if (data->state.neutral_y == 0)
 		two_steps_to_isometry_bonus(data, 1);
-	else if (data->neutral_x == 0)
+	else if (data->state.neutral_x == 0)
 		two_steps_to_isometry_bonus(data, 1);
 	free(data->rotations_history);
 	mlx_destroy_image(data->mlx->mlx_ptr, data->img->mlx_img);

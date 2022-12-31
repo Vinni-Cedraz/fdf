@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 16:49:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 10:04:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:57:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@ static void	undo_first_step(t_map *map);
 
 void	undo_isometric_steps_bonus(t_data *d)
 {
-	if (!d->neutral_x || !d->neutral_y || !d->neutral_zoom)
+	if (!d->state.neutral_x || !d->state.neutral_y || !d->state.neutral_zoom)
 		return ;
-	d->reset_iso++;
-	if ((d->apply_iso - d->reset_iso) == 1)
+	d->state.step_back++;
+	if ((d->state.step_forward - d->state.step_back) == 1)
 	{
-		d->do_step_one = 0;
-		d->do_step_two = 1;
+		d->state.do_step_one = 0;
+		d->state.do_step_two = 1;
 	}
-	else if ((d->apply_iso - d->reset_iso) == 0)
+	else if ((d->state.step_forward - d->state.step_back) == 0)
 	{
-		d->do_step_two = 0;
-		d->do_step_one = 1;
+		d->state.do_step_two = 0;
+		d->state.do_step_one = 1;
 	}
 	else
 		return ;
-	if (d->do_step_two)
+	if (d->state.do_step_two)
 		undo_second_step(d->map);
-	else if (d->do_step_one)
+	else if (d->state.do_step_one)
 		undo_first_step(d->map);
-	d->neutral_iso = 0;
+	d->state.isometric = 0;
 }
 
 static void	undo_second_step(t_map *map)

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 10:06:26 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:56:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,27 @@ void	two_steps_to_isometry_bonus(t_data *d, short int not_from_parallel)
 {
 	if (not_from_parallel)
 		restore_isometric_state(d);
-	if (d->neutral_iso)
+	if (d->state.isometric)
 		return ;
-	d->apply_iso++;
-	if ((d->apply_iso - d->reset_iso) == 1)
+	d->state.step_forward++;
+	if ((d->state.step_forward - d->state.step_back) == 1)
 	{
-		d->do_step_one = 1;
-		d->do_step_two = 0;
+		d->state.do_step_one = 1;
+		d->state.do_step_two = 0;
 	}
-	else if ((d->apply_iso - d->reset_iso) == 2)
+	else if ((d->state.step_forward - d->state.step_back) == 2)
 	{
-		d->do_step_two = 1;
-		d->do_step_one = 0;
+		d->state.do_step_two = 1;
+		d->state.do_step_one = 0;
 	}
 	else
 		return ;
-	if (d->do_step_one)
+	if (d->state.do_step_one)
 		take_first_step(d->map);
-	else if (d->do_step_two)
+	else if (d->state.do_step_two)
 		take_second_step(d->map);
-	if (d->apply_iso - d->reset_iso == 2)
-		d->neutral_iso = 1;
+	if (d->state.step_forward - d->state.step_back == 2)
+		d->state.isometric = 1;
 }
 
 static void	take_first_step(t_map *map)
@@ -93,7 +93,7 @@ static void	restore_isometric_state(t_data *d)
 {
 	t_node	*temp;
 
-	if (!d->neutral_zoom)
+	if (!d->state.neutral_zoom)
 		zoom_bonus(d, 0, 0, 1);
 	temp = d->rotations_history;
 	if (temp->content == NULL)
@@ -113,7 +113,7 @@ static void	restore_isometric_state(t_data *d)
 		temp = temp->next;
 	}
 	ft_free_list(&d->rotations_history);
-	d->neutral_iso = 1;
-	d->do_step_one = 0;
-	d->do_step_two = 1;
+	d->state.isometric = 1;
+	d->state.do_step_one = 0;
+	d->state.do_step_two = 1;
 }
