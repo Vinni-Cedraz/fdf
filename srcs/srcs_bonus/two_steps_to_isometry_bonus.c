@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 20:05:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 22:22:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ static void	restore_isometric_state(t_data *d)
 {
 	t_node	*temp;
 
+	if (d->neutral_zoom)
+		zoom_bonus(d, 0, 0, 1);
 	temp = d->rotations_history;
 	if (temp->content == NULL)
 		return ;
