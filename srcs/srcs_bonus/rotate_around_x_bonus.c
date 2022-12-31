@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 19:10:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:27:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	rotate_around_x(t_data *d, short int rot, short int rev)
 
 static void	find_center(t_data *d)
 {
-	d->cy = d->map->arr[d->map->height / 2][d->map->width / 2].y;
-	d->cx = d->map->arr[d->map->height / 2][d->map->width / 2].x;
+	d->offset.cy = d->map->arr[d->map->height / 2][d->map->width / 2].y;
+	d->offset.cx = d->map->arr[d->map->height / 2][d->map->width / 2].x;
 }
 
 static void	aux_rotate_5_around_x(t_data *d)
@@ -63,10 +63,10 @@ static void	aux_rotate_5_around_x(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			y = d->map->arr[i][j].y - d->cy;
-			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].y = y * cos(RAD) + z * sin(RAD) + d->cy;
-			d->map->arr[i][j].z = -y * sin(RAD) + z * cos(RAD) + d->cz;
+			y = d->map->arr[i][j].y - d->offset.cy;
+			z = d->map->arr[i][j].z - d->offset.cz;
+			d->map->arr[i][j].y = y * cos(RAD) + z * sin(RAD) + d->offset.cy;
+			d->map->arr[i][j].z = -y * sin(RAD) + z * cos(RAD) + d->offset.cz;
 			j++;
 		}
 		i++;
@@ -87,10 +87,10 @@ static void	aux_reverse_5_around_x(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			y = d->map->arr[i][j].y - d->cy;
-			z = d->map->arr[i][j].z - d->cz;
-			d->map->arr[i][j].y = y * cos(RAD) - z * sin(RAD) + d->cy;
-			d->map->arr[i][j].z = y * sin(RAD) + z * cos(RAD) + d->cz;
+			y = d->map->arr[i][j].y - d->offset.cy;
+			z = d->map->arr[i][j].z - d->offset.cz;
+			d->map->arr[i][j].y = y * cos(RAD) - z * sin(RAD) + d->offset.cy;
+			d->map->arr[i][j].z = y * sin(RAD) + z * cos(RAD) + d->offset.cz;
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:02:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:23:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,22 @@ typedef struct s_mlx
 	int				hook;
 }					t_mlx;
 
-typedef struct s_data
+typedef struct s_offset
 {
+  	double			cx;
+	double			cy;
+	double			cz;
+	float			scale_x;
+	float			scale_y;
+	float			scale_z;
+	short int		move_x;
+	short int		move_y;
 	short int		centralize_img_x;
 	short int		centralize_img_y;
+}					t_offset;
+
+typedef struct s_data
+{
 	short int		rotate_5_around_x;
 	short int		reverse_5_around_x;
 	short int		rotate_5_around_y;
@@ -127,14 +139,7 @@ typedef struct s_data
 	short int		zoom_out;
 	short int		neutral_zoom;
 	short int		grid_style_nb;
-	double			cx;
-	double			cy;
-	double			cz;
-	double			scale_x;
-	double			scale_y;
-	double			scale_z;
-	double			move_x;
-	double			move_y;
+	t_offset		offset;
 	t_mlx			*mlx;
 	t_node			*rotations_history;
 	t_img			*img;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:15:23 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:25:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	data_initializer_bonus(t_data *d)
 	d->zoom_in = 0;
 	d->zoom_out = 0;
 	d->neutral_zoom = 1;
-	d->move_x = 0;
-	d->move_y = 0;
+	d->offset.move_x = 0;
+	d->offset.move_y = 0;
 }
 
 static void	open_win_and_img(t_data *data)

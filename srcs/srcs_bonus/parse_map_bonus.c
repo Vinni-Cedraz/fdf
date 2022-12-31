@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 13:12:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 19:26:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ static void	make_t_point_bonus(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->map->arr[y][x].x = (double)x * (*d)->scale_x;
-	(*d)->map->arr[y][x].y = (double)y * (*d)->scale_y;
+	(*d)->map->arr[y][x].x = (double)x * (*d)->offset.scale_x;
+	(*d)->map->arr[y][x].y = (double)y * (*d)->offset.scale_y;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color_bonus(t_split->str_arr[x]);
 	if (hexcolor)
