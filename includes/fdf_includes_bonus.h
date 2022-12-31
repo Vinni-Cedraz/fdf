@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 14:08:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 16:05:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	calculate_default_scale_bonus(t_data *d);
 
 void	render_line_bonus(t_point p1, t_point p2, t_data *d);
 
-void	render_map_bonus(t_data *d, int cross, int square);
+void	render_map_bonus(t_data *d, int square, int cross, int dense);
 
 void	colorize_points_bonus(t_map *map);
 

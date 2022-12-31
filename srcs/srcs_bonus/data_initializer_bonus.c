@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 14:56:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 16:41:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	open_win_and_img(t_data *data);
 void	data_initializer_bonus(t_data *d)
 {
 	open_win_and_img(d);
-	d->grid_style = ft_strdup("square");
+	d->grid_style_nb = 1;
 	d->rotations_history = ft_lstnew(NULL);
 	d->reverse_5_around_x = 0;
 	d->rotate_5_around_x = 0;
