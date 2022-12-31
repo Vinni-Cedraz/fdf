@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 20:05:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:10:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int	deal_keys_bonus(int key, t_data *d)
 static void	aux_deal_keys(int *key, t_data *d)
 {
 	if (*key == 'z')
-		change_altitude(d, 1, 0);
+		change_altitude_bonus(d, 1, 0);
 	else if (*key == 'c')
-		change_altitude(d, 0, 0);
+		change_altitude_bonus(d, 0, 0);
 	else if (*key == 'm')
-		change_altitude(d, 0, 1);
+		change_altitude_bonus(d, 0, 1);
 	else if (*key == 'w')
 		zoom_bonus(d, 1, 0, 0);
 	else if (*key == 's')

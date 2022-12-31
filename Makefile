@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/30 21:53:41 by vcedraz-         ###   ########.fr        #
+#    Updated: 2022/12/31 13:11:38 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -45,7 +45,7 @@ SRCS = put_pixel_img \
 
 BONUS_SRCS = two_steps_to_isometry_bonus \
 					close_win_bonus \
-					colorize_bonus \
+					colorize_points_bonus \
 					data_initializer_bonus \
 					deal_keys_bonus \
 					draw_bonus \
@@ -55,8 +55,8 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 					render_map_bonus \
 					rotate_around_x_bonus \
 					rotate_around_y_bonus \
-					scale_transformations_bonus \
-					standard_scale_bonus \
+					calculate_default_scale_bonus \
+					change_altitude_bonus \
 					zoom_bonus \
 
 SRCS_FROM_MLX = mlx_init \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colorize_bonus.c                                   :+:      :+:    :+:   */
+/*   colorize_points_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 20:36:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:02:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	get_min_altitude(t_map *map);
 static void	get_altitude_range(t_map *map);
 static int	is_colorized(t_map *map);
 
-void	colorize_bonus(t_map *map)
+void	colorize_points_bonus(t_map *map)
 {
 	int	i;
 	int	j;

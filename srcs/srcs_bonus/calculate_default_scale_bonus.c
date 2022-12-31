@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 11:22:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 12:51:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	calculate_target_scaled_map_size(t_map *map);
 static void	get_values_to_centralize_img_on_window(t_data *d);
 
-void	calculate_scale(t_data *d)
+void	calculate_default_scale_bonus(t_data *d)
 {
 	calculate_target_scaled_map_size(d->map);
 	d->scale_x = d->map->target_width / (d->map->width);

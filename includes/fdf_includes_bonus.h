@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 21:21:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 12:51:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ void	data_initializer_bonus(t_data *d);
 
 int		parse_map_bonus(char *argv, t_data *d);
 
+void	calculate_default_scale_bonus(t_data *d);
+
 void	render_map_bonus(t_data *data);
 
-void	colorize_bonus(t_map *map);
+void	colorize_points_bonus(t_map *map);
 
 int		draw_bonus(t_data *d);
 
@@ -36,7 +38,7 @@ void	undo_isometric_steps_bonus(t_data *d);
 
 void	zoom_bonus(t_data *d, short int in, short int out, short int reset);
 
-void	change_altitude(t_data *d, short int up, short int mirror);
+void	change_altitude_bonus(t_data *d, short int up, short int mirror);
 
 void	rotate_around_y(t_data *d, short int rot, short int rev);
 
