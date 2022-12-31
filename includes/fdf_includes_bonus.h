@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/30 21:16:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/30 21:21:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	data_initializer_bonus(t_data *d);
 int		parse_map_bonus(char *argv, t_data *d);
 
 void	render_map_bonus(t_data *data);
-
-void	render_line_bonus(t_point p1, t_point p2, int color, t_data *d);
 
 void	colorize_bonus(t_map *map);
 
