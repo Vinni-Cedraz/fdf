@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 12:51:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:56:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	data_initializer_bonus(t_data *d);
 int		parse_map_bonus(char *argv, t_data *d);
 
 void	calculate_default_scale_bonus(t_data *d);
+
+void	render_line_bonus(t_point p1, t_point p2, t_data *d);
 
 void	render_map_bonus(t_data *data);
 
