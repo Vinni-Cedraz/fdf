@@ -6,17 +6,18 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:56:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:59:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "fdf_structs.h"
 
 static void	take_first_step(t_map *map);
 static void	take_second_step(t_map *map);
 static void	restore_isometric_state(t_data *d);
 
-void	two_steps_to_isometry_bonus(t_data *d, short int not_from_parallel)
+void	two_steps_to_isometry_bonus(t_data *d, t_short not_from_parallel)
 {
 	if (not_from_parallel)
 		restore_isometric_state(d);
@@ -45,8 +46,8 @@ void	two_steps_to_isometry_bonus(t_data *d, short int not_from_parallel)
 
 static void	take_first_step(t_map *map)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	x;
 	double	y;
 
@@ -68,8 +69,8 @@ static void	take_first_step(t_map *map)
 
 static void	take_second_step(t_map *map)
 {
-	int		i;
-	int		j;
+	t_short i;
+	t_short j;
 	double	y;
 	double	z;
 

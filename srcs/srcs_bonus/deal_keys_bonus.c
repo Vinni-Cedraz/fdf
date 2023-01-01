@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:52:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:56:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	aux_deal_keys(int *key, t_data *d);
+static void	aux_deal_keys(int key, t_data *d);
 
 int	deal_keys_bonus(int key, t_data *d)
 {
@@ -33,34 +33,34 @@ int	deal_keys_bonus(int key, t_data *d)
 	else if (key == ';')
 		two_steps_to_isometry_bonus(d, 1);
 	else if (key)
-		aux_deal_keys(&key, d);
+		aux_deal_keys(key, d);
 	return (0);
 }
 
-static void	aux_deal_keys(int *key, t_data *d)
+static void	aux_deal_keys(int key, t_data *d)
 {
-	if (*key == 'z')
+	if (key == 'z')
 		change_altitude_bonus(d, 1, 0);
-	else if (*key == 'c')
+	else if (key == 'c')
 		change_altitude_bonus(d, 0, 0);
-	else if (*key == 'm')
+	else if (key == 'm')
 		change_altitude_bonus(d, 0, 1);
-	else if (*key == 'w')
+	else if (key == 'w')
 		zoom_bonus(d, 1, 0, 0);
-	else if (*key == 's')
+	else if (key == 's')
 		zoom_bonus(d, 0, 1, 0);
-	else if (*key == 'a')
+	else if (key == 'a')
 		rotate_around_y(d, 1, 0);
-	else if (*key == 'd')
+	else if (key == 'd')
 		rotate_around_y(d, 0, 1);
-	else if (*key == 'q')
+	else if (key == 'q')
 		rotate_around_x(d, 1, 0);
-	else if (*key == 'e')
+	else if (key == 'e')
 		rotate_around_x(d, 0, 1);
-	else if (*key == 'g' && d->state.grid_style_nb == 1)
+	else if (key == 'g' && d->state.grid_style_nb == 1)
 		d->state.grid_style_nb = 2;
-	else if (*key == 'g' && d->state.grid_style_nb == 2)
+	else if (key == 'g' && d->state.grid_style_nb == 2)
 		d->state.grid_style_nb = 3;
-	else if (*key == 'g' && d->state.grid_style_nb == 3)
+	else if (key == 'g' && d->state.grid_style_nb == 3)
 		d->state.grid_style_nb = 1;
 }

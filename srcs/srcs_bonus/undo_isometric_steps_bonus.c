@@ -6,11 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 16:49:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:57:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:59:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "fdf_structs.h"
 
 static void	undo_second_step(t_map *map);
 static void	undo_first_step(t_map *map);
@@ -41,8 +42,8 @@ void	undo_isometric_steps_bonus(t_data *d)
 
 static void	undo_second_step(t_map *map)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	z;
 	double	y;
 
@@ -64,8 +65,8 @@ static void	undo_second_step(t_map *map)
 
 static void	undo_first_step(t_map *map)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	x;
 	double	y;
 

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:48:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:00:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	zoom_out(t_data *d);
 static void	reset_zoom(t_data *d);
 static void	find_center(t_data *d);
 
-void	zoom_bonus(t_data *d, short int in, short int out, short int reset)
+void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 {
 	if (in)
 	{
@@ -49,10 +49,10 @@ static void	find_center(t_data *d)
 
 static void	zoom_in(t_data *d)
 {
-	short int	i;
-	short int	j;
-	double		x;
-	double		y;
+	t_short	i;
+	t_short	j;
+	double	x;
+	double	y;
 
 	i = 0;
 	d->state.zoom_in++;
@@ -77,10 +77,10 @@ static void	zoom_in(t_data *d)
 
 static void	zoom_out(t_data *d)
 {
-	short int	i;
-	short int	j;
-	double		x;
-	double		y;
+	t_short	i;
+	t_short	j;
+	double	x;
+	double	y;
 
 	i = 0;
 	d->state.zoom_out++;
@@ -105,8 +105,8 @@ static void	zoom_out(t_data *d)
 
 static void	reset_zoom(t_data *d)
 {
-	short int	i;
-	short int	successive_operations;
+	t_short	i;
+	t_short	successive_operations;
 
 	i = -1;
 	if (d->state.neutral_zoom)
