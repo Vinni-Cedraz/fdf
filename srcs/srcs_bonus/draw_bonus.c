@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:19:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 22:46:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 23:06:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include <time.h>
 
 static void	draw_menu(t_data *d);
 static void	draw_menu_background(t_img *img);
@@ -20,21 +19,7 @@ static void	paint_it_black(t_data *data);
 
 int	draw_bonus(t_data *d)
 {
-	static short	s;
-	clock_t			begin;
-	clock_t			end;
-	float			time_spent;
-
-	begin = 0;
-	end = 0;
-	time_spent = 0;
-	s = 0;
-	s++;
-	if (s == 1)
-	{
-		begin = clock();
-		paint_it_black(d);
-	}
+	paint_it_black(d);
 	colorize_points_bonus(d->map);
 	if (d->state.grid_style_nb == 1)
 		render_map_bonus(d, 1, 0, 0);
@@ -46,13 +31,6 @@ int	draw_bonus(t_data *d)
 	mlx_put_image_to_window(d->mlx->mlx_ptr, d->mlx->win_ptr, d->img->mlx_img,
 			0, 0);
 	draw_menu(d);
-	if (s == 1)
-	{
-		end = clock();
-		time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		printf("time spent: %f", time_spent);
-		return (0);
-	}
 	return (0);
 }
 
@@ -90,26 +68,26 @@ static void	paint_it_black(t_data *data)
 
 static void	draw_menu(t_data *d)
 {
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 20, YELLOW, \
-		"CONTROLS MENU");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 100, YELLOW, \
-		"CHANGE TO ISOMETRIC: 'i'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 180, YELLOW, \
-		"CHANGE TO PARALLEL : 'r'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 260, YELLOW, \
-		"MOVE: arrow keys");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 300, YELLOW, \
-		"but also:'h', 'j', 'k', 'l'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 420, YELLOW, \
-		"ROTATE HORIZONTAL: 'a' / 'd'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 580, YELLOW, \
-		"ROTATE VERTICAL: 'q' / 'e'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 700, YELLOW, \
-		"ZOOM:  'w' / 's'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 820, YELLOW, \
-		"RESTORE ISOMETRIC STATE: ';'");
-	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 860, YELLOW, \
-		"EXIT: 'esc'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 20, YELLOW,
+			"CONTROLS MENU");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 100, YELLOW,
+			"CHANGE TO ISOMETRIC: 'i'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 180, YELLOW,
+			"CHANGE TO PARALLEL : 'r'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 260, YELLOW,
+			"MOVE: arrow keys");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 300, YELLOW,
+			"but also:'h', 'j', 'k', 'l'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 420, YELLOW,
+			"ROTATE HORIZONTAL: 'a' / 'd'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 580, YELLOW,
+			"ROTATE VERTICAL: 'q' / 'e'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 700, YELLOW,
+			"ZOOM:  'w' / 's'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 820, YELLOW,
+			"RESTORE ISOMETRIC STATE: ';'");
+	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 860, YELLOW,
+			"EXIT: 'esc'");
 }
 
 static void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
