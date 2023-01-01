@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:43:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 21:35:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,108 +48,108 @@
 // [y']  ==  [0  cos(RAD_54.73)  sin(RAD_54.73)] * [y]
 // [z']  ==  [0  -sin(RAD_54.73)  cos(RAD_54.73)]   [z]
 
+typedef unsigned int short	t_short;
+
 typedef struct s_line
 {
-	double			x;
-	double			y;
-	double			x_inc;
-	double			y_inc;
-	int				dx;
-	int				dy;
-	int				steps;
-	int				color;
-}					t_line;
+	double					x;
+	double					y;
+	double					x_inc;
+	double					y_inc;
+	short					dx;
+	short					dy;
+	t_short					steps;
+	unsigned int			color;
+}							t_line;
 
 typedef struct s_point
 {
-	double			x;
-	double			y;
-	double			z;
-	double			color;
-}					t_point;
+	double					x;
+	double					y;
+	double					z;
+	unsigned int			color;
+}							t_point;
 
 typedef struct s_map
 {
-	int				width;
-	int				height;
-	double			max_z;
-	double			min_z;
-	double			target_width;
-	double			target_height;
-	double			ratio;
-	double			scale_z;
-	t_point			**arr;
-}					t_map;
+	int						width;
+	int						height;
+	short					max_z;
+	short					min_z;
+	double					target_width;
+	double					target_height;
+	double					ratio;
+	t_point					**arr;
+}							t_map;
 
 typedef struct s_img
 {
-	void			*mlx_img;
-	char			*addr;
-	int				width;
-	int				height;
-	int				bpp;
-	int				line_len;
-	int				endian;
-}					t_img;
+	void					*mlx_img;
+	char					*addr;
+	t_short					width;
+	t_short					height;
+	int						bpp;
+	int						line_len;
+	int						endian;
+}							t_img;
 
 typedef struct s_create_map
 {
-	int				x;
-	int				y;
-	int				fd;
-	char			*line;
-	t_split			*split;
-}					t_create_map;
+	t_short					x;
+	t_short					y;
+	t_short					fd;
+	char					*line;
+	t_split					*split;
+}							t_create_map;
 
 typedef struct s_mlx
 {
-	void			*win_ptr;
-	void			*mlx_ptr;
-	int				hook;
-}					t_mlx;
+	void					*win_ptr;
+	void					*mlx_ptr;
+	t_short					hook;
+}							t_mlx;
 
 typedef struct s_offset
 {
-	double			cx;
-	double			cy;
-	double			cz;
-	float			scale_x;
-	float			scale_y;
-	float			scale_z;
-	short int		move_x;
-	short int		move_y;
-	short int		centralize_img_x;
-	short int		centralize_img_y;
-}					t_offset;
+	float					cx;
+	float					cy;
+	float					cz;
+	float					scale_x;
+	float					scale_y;
+	short					move_x;
+	short					move_y;
+	t_short					centralize_img_x;
+	t_short					centralize_img_y;
+}							t_offset;
 
 typedef struct s_state
 {
-	short int		rotate_5_around_x;
-	short int		reverse_5_around_x;
-	short int		rotate_5_around_y;
-	short int		reverse_5_around_y;
-	short int		neutral_y;
-	short int		neutral_x;
-	short int		step_forward;
-	short int		step_back;
-	short int		isometric;
-	short int		do_step_one;
-	short int		do_step_two;
-	short int		zoom_in;
-	short int		zoom_out;
-	short int		neutral_zoom;
-	short int		grid_style_nb;
-}					t_state;
+	t_short					rotate_5_around_x;
+	t_short					reverse_5_around_x;
+	t_short					rotate_5_around_y;
+	t_short					reverse_5_around_y;
+	t_short					neutral_y;
+	t_short					neutral_x;
+	t_short					step_forward;
+	t_short					step_back;
+	t_short					isometric;
+	t_short					do_step_one;
+	t_short					do_step_two;
+	t_short					zoom_in;
+	t_short					zoom_out;
+	t_short					neutral_zoom;
+	t_short					grid_style_nb;
+}							t_state;
 
 typedef struct s_data
 {
-	t_state			state;
-	t_offset		offset;
-	t_mlx			*mlx;
-	t_node			*rotations_history;
-	t_img			*img;
-	t_map			*map;
-	t_create_map	tool;
-}					t_data;
+	t_state					state;
+	t_offset				offset;
+	t_mlx					*mlx;
+	t_node					*rotations_history;
+	t_img					*img;
+	t_map					*map;
+	t_create_map			tool;
+}							t_data;
 
 #endif
