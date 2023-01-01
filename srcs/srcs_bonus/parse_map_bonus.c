@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 22:03:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 23:47:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	make_t_point_bonus(t_data **d, t_split *t_split, short x, short y);
 
 int	parse_map_bonus(char *argv, t_data *d)
 {
-	short fd;
+	short	fd;
 	char	buf[1];
 	t_split	*split_to_count_width;
 	char	*first_line;

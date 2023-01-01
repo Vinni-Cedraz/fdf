@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 21:59:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 23:50:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ static void	take_first_step(t_map *map)
 
 static void	take_second_step(t_map *map)
 {
-	t_short i;
-	t_short j;
+	t_short	i;
+	t_short	j;
 	double	y;
 	double	z;
 
