@@ -6,21 +6,21 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 21:10:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:04:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	get_max_altitude(t_map *map);
-static void	get_min_altitude(t_map *map);
-static void	get_altitude_range(t_map *map);
-static int	is_colorized(t_map *map);
+static void		get_max_altitude(t_map *map);
+static void		get_min_altitude(t_map *map);
+static void		get_altitude_range(t_map *map);
+static t_short	is_colorized(t_map *map);
 
 void	colorize_points_bonus(t_map *map)
 {
-	int	i;
-	int	j;
+	t_short	i;
+	t_short	j;
 
 	i = -1;
 	get_altitude_range(map);
@@ -54,9 +54,9 @@ static void	get_altitude_range(t_map *map)
 
 static void	get_max_altitude(t_map *map)
 {
-	int	i;
-	int	j;
-	int	max_z;
+	t_short	i;
+	t_short	j;
+	t_short	max_z;
 
 	i = 0;
 	max_z = _SC_INT_MIN / 2;
@@ -76,9 +76,9 @@ static void	get_max_altitude(t_map *map)
 
 static void	get_min_altitude(t_map *map)
 {
-	int	i;
-	int	j;
-	int	min_z;
+	t_short	i;
+	t_short	j;
+	t_short	min_z;
 
 	i = 0;
 	min_z = map->max_z;
@@ -96,10 +96,10 @@ static void	get_min_altitude(t_map *map)
 	map->min_z = min_z;
 }
 
-static int	is_colorized(t_map *map)
+static t_short	is_colorized(t_map *map)
 {
-	int	i;
-	int	j;
+	t_short	i;
+	t_short	j;
 
 	i = 0;
 	while (i < map->height)

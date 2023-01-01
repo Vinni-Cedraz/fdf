@@ -6,20 +6,21 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:26:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:03:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "fdf_structs.h"
 #include "printf_libft_structs.h"
 
 static int	get_hex_color_bonus(char *str);
 static int	create_map_bonus(t_data *map, char *argv, char *first_line);
-static void	make_t_point_bonus(t_data **d, t_split *t_split, int x, int y);
+static void	make_t_point_bonus(t_data **d, t_split *t_split, short x, short y);
 
 int	parse_map_bonus(char *argv, t_data *d)
 {
-	int		fd;
+	short fd;
 	char	buf[1];
 	t_split	*split_to_count_width;
 	char	*first_line;
@@ -72,9 +73,9 @@ static int	create_map_bonus(t_data *d, char *argv, char *first_line)
 	return (close(d->tool.fd), 0);
 }
 
-static void	make_t_point_bonus(t_data **d, t_split *t_split, int x, int y)
+static void	make_t_point_bonus(t_data **d, t_split *t_split, short x, short y)
 {
-	int	hexcolor;
+	unsigned int	hexcolor;
 
 	(*d)->map->arr[y][x].x = (double)x * (*d)->offset.scale_x;
 	(*d)->map->arr[y][x].y = (double)y * (*d)->offset.scale_y;

@@ -6,17 +6,18 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 17:03:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:06:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "fdf_structs.h"
 
 static void	render_pentagram(t_data *d);
 static void	render_lines_square(t_data *d);
 static void	render_lines_cross(t_data *d);
 
-void	render_map_bonus(t_data *d, int square, int cross, int pent)
+void	render_map_bonus(t_data *d, t_short square, t_short cross, t_short pent)
 {
 	if (square)
 		render_lines_square(d);
@@ -28,8 +29,8 @@ void	render_map_bonus(t_data *d, int square, int cross, int pent)
 
 static void	render_lines_square(t_data *d)
 {
-	int	i;
-	int	j;
+	t_short	i;
+	t_short	j;
 
 	i = -1;
 	j = -1;
@@ -48,8 +49,8 @@ static void	render_lines_square(t_data *d)
 
 static void	render_lines_cross(t_data *d)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	t_point	p1;
 
 	i = -1;
@@ -73,8 +74,8 @@ static void	render_lines_cross(t_data *d)
 
 static void	render_pentagram(t_data *d)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	t_point	p1;
 
 	i = -1;

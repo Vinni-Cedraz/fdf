@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:50:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:54:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:01:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	aux_rotate_5_around_y(t_data *d);
 static void	aux_reverse_5_around_y(t_data *d);
 static void	find_center(t_data *d);
 
-void	rotate_around_y(t_data *d, short int rot, short int rev)
+void	rotate_around_y(t_data *d, t_short rot, t_short rev)
 {
 	if (!d->state.isometric)
 		return ;
@@ -52,8 +52,8 @@ static void	find_center(t_data *d)
 
 static void	aux_rotate_5_around_y(t_data *d)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	x;
 	double	z;
 
@@ -76,8 +76,8 @@ static void	aux_rotate_5_around_y(t_data *d)
 
 static void	aux_reverse_5_around_y(t_data *d)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	x;
 	double	z;
 

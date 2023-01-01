@@ -6,17 +6,18 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 12:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:53:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:02:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "fdf_structs.h"
 
 static void	aux_reverse_5_around_x(t_data *d);
 static void	aux_rotate_5_around_x(t_data *d);
 static void	find_center(t_data *d);
 
-void	rotate_around_x(t_data *d, short int rot, short int rev)
+void	rotate_around_x(t_data *d, t_short rot, t_short rev)
 {
 	if (!d->state.isometric)
 		return ;
@@ -51,8 +52,8 @@ static void	find_center(t_data *d)
 
 static void	aux_rotate_5_around_x(t_data *d)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	y;
 	double	z;
 
@@ -75,8 +76,8 @@ static void	aux_rotate_5_around_x(t_data *d)
 
 static void	aux_reverse_5_around_x(t_data *d)
 {
-	int		i;
-	int		j;
+	t_short	i;
+	t_short	j;
 	double	y;
 	double	z;
 

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale_transformations_bonus.c                      :+:      :+:    :+:   */
+/*   change_altitude_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 12:45:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2022/12/31 22:04:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	scale_z(t_data *d, short int up, short int down, short int mirror);
+static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror);
 
-void	change_altitude_bonus(t_data *d, short int up, short int mirror)
+void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 {
 	two_steps_to_isometry_bonus(d, 1);
 	undo_isometric_steps_bonus(d);
@@ -31,10 +31,10 @@ void	change_altitude_bonus(t_data *d, short int up, short int mirror)
 	two_steps_to_isometry_bonus(d, 0);
 }
 
-static void	scale_z(t_data *d, short int up, short int down, short int mirror)
+static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror)
 {
-	int	i;
-	int	j;
+	t_short	i;
+	t_short	j;
 
 	i = 0;
 	while (i < d->map->height)
