@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 16:41:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:16:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,6 @@
 # define FDF_STRUCTS_H
 
 # include "printf_libft_structs.h"
-
-// rotation 5 degrees around y axis:
-// [x']  ==  [cos(RAD_5)  0  sin(RAD_5)]   [x]
-// [y']  ==  [  0     1    0   ] * [y]
-// [z']  ==  [-sin(RAD_5) 0  cos(RAD_5)]   [z]
-// reversion 5 degrees around y axis:
-// [x']  ==  [cos(RAD_5)  0  -sin(RAD_5)]   [x]
-// [y']  ==  [  0     1    0   ] * [y]
-// [z']  ==  [sin(RAD_5) 0  cos(RAD_5)]   [z]
-// rotation 5 degrees around x axis:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_5)  -sin(RAD_5)] * [y]
-// [z']  ==  [0  sin(RAD_5)  cos(RAD_5)]   [z]
-// reversion 5 degrees around x axis:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_5)  sin(RAD_5)] * [y]
-// [z']  ==  [0  -sin(RAD_5)  cos(RAD_5)]   [z]
-// rotation 45 degrees around z:
-// [x']  ==  [cos(RAD_45)  -sin(RAD_45)  0]   [x]
-// [y']  ==  [sin(RAD_45)  cos(RAD_45)   0] * [y]
-// [z']  ==  [0  0    1]   [z]
-// reversion 45 degrees around z:
-// [x']  ==  [cos(RAD_45)  sin(RAD_45)  0]   [x]
-// [y']  ==  [-sin(RAD_45)  cos(RAD_45)   0] * [y]
-// [z']  ==  [0  0    1]   [z]
-// rotation 54.73 degrees around x:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_54.73)  -sin(RAD_54.73)] * [y]
-// [z']  ==  [0  sin(RAD_54.73)  cos(RAD_54.73)]   [z]
-// reversion 54.73 degrees around x:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_54.73)  sin(RAD_54.73)] * [y]
-// [z']  ==  [0  -sin(RAD_54.73)  cos(RAD_54.73)]   [z]
 
 typedef struct s_line
 {

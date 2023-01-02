@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 11:41:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:06:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	calculate_default_scale_bonus(t_data *d);
 
 void	define_rotation_matrices_bonus(t_rotation_matrices *matrix);
 
-void	linear_transformations_bonus(t_point **point, t_matrix *rotation);
+void	linear_transformations_bonus(t_data *d, t_matrix *rotation_matrix);
 
 void	render_line_bonus(t_point p1, t_point p2, t_data *d);
 

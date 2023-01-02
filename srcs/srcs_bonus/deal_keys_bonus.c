@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 01:30:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:06:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,25 @@ static void	aux_deal_keys(int key, t_data *d)
 	else if (key == 's')
 		zoom_bonus(d, 0, 1, 0);
 	else if (key == 'a')
-		linear_transformations_bonus(d->map->pts, &d->matrix->rot_y);
+		linear_transformations_bonus(d, &d->matrix->rot_y);
 	else if (key == 'd')
-		linear_transformations_bonus(d->map->pts, &d->matrix->rev_y);
+		linear_transformations_bonus(d, &d->matrix->rev_y);
 	else if (key == 'q')
-		linear_transformations_bonus(d->map->pts, &d->matrix->rot_x);
+	{
+		linear_transformations_bonus(d, &d->matrix->rot_x);
+		printf("rot_x row_1: x: %f y: %f z: %f\n", d->matrix->rot_x.row_1.x,
+				d->matrix->rot_x.row_1.y, d->matrix->rot_x.row_1.z);
+		printf("rot_x row_2: x: %f y: %f z: %f\n", d->matrix->rot_x.row_2.x,
+				d->matrix->rot_x.row_2.y, d->matrix->rot_x.row_2.z);
+		printf("rot_x row_3: x: %f y: %f z: %f\n", d->matrix->rot_x.row_3.x,
+				d->matrix->rot_x.row_3.y, d->matrix->rot_x.row_3.z);
+	}
 	else if (key == 'e')
-		linear_transformations_bonus(d->map->pts, &d->matrix->rev_x);
+		linear_transformations_bonus(d, &d->matrix->rev_x);
 	else if (key == 'x')
-		linear_transformations_bonus(d->map->pts, &d->matrix->rot_z);
+		linear_transformations_bonus(d, &d->matrix->rot_z);
 	else if (key == 'v')
-		linear_transformations_bonus(d->map->pts, &d->matrix->rev_z);
+		linear_transformations_bonus(d, &d->matrix->rev_z);
 	else if (key == 'g' && d->state.grid_style_nb == 1)
 		d->state.grid_style_nb = 2;
 	else if (key == 'g' && d->state.grid_style_nb == 2)

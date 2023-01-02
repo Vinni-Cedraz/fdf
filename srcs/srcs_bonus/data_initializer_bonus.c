@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 01:21:31 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:36:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void	data_initializer_bonus(t_data *d)
 	d->state = (t_state){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1};
 	d->offset = (t_offset){0, 0, 0, 0, 0, 0, 0, 0, 0};
 	define_rotation_matrices_bonus(d->matrix);
+	// printf("rot_x row_1: x: %f y: %f z: %f\n", d->matrix->rot_x.row_1.x, d->matrix->rot_x.row_1.y, d->matrix->rot_x.row_1.z);
+	// printf("rot_x row_2: x: %f y: %f z: %f\n", d->matrix->rot_y.row_2.x, d->matrix->rot_y.row_2.y, d->matrix->rot_y.row_2.z);
+	// printf("rot_x row_3: x: %f y: %f z: %f\n", d->matrix->rot_z.row_3.x, d->matrix->rot_z.row_3.y, d->matrix->rot_z.row_3.z);
+	// printf("rev_x row_1: x: %f y: %f z: %f\n", d->matrix->rev_x.row_1.x, d->matrix->rev_x.row_1.y, d->matrix->rev_x.row_1.z);
+	// printf("rev_x row_2: x: %f y: %f z: %f\n", d->matrix->rev_y.row_2.x, d->matrix->rev_y.row_2.y, d->matrix->rev_y.row_2.z);
+	// printf("rev_x row_3: x: %f y: %f z: %f\n", d->matrix->rev_z.row_3.x, d->matrix->rev_z.row_3.y, d->matrix->rev_z.row_3.z);
 }
 
 static void	open_win_and_img(t_data *data)
