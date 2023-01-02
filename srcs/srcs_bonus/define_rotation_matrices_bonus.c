@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 13:40:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:49:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ void	define_rotation_matrices_bonus(t_rotation_matrices *matrix)
 	{cos(RAD), -sin(RAD), 0},
 	{sin(RAD), cos(RAD), 0},
 	{0, 0, 1}};
-  	printf("rot_x row_1: x: %f y: %f z: %f\n", matrix->rot_x.row_1.x, matrix->rot_x.row_1.y, matrix->rot_x.row_1.z);
-	printf("rot_x row_2: x: %f y: %f z: %f\n", matrix->rot_x.row_2.x, matrix->rot_x.row_2.y, matrix->rot_x.row_2.z);
-	printf("rot_x row_3: x: %f y: %f z: %f\n", matrix->rot_x.row_3.x, matrix->rot_x.row_3.y, matrix->rot_x.row_3.z);
 	define_reversion_matrices(matrix);
 	define_isometry_step_one_rotation(matrix);
 	define_isometry_step_two_rotation(matrix);

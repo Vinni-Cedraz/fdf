@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 22:00:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:37:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	zoom_in(t_data *d);
 static void	zoom_out(t_data *d);
 static void	reset_zoom(t_data *d);
-static void	find_center(t_data *d);
 
 void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 {
@@ -23,28 +22,18 @@ void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 	{
 		if ((d->state.zoom_in - d->state.zoom_out) >= 36)
 			return ;
-		find_center(d);
 		zoom_in(d);
 	}
 	else if (out)
 	{
 		if ((d->state.zoom_out - d->state.zoom_in) >= 36)
 			return ;
-		find_center(d);
 		zoom_out(d);
 	}
 	else if (reset)
 	{
-		find_center(d);
 		reset_zoom(d);
 	}
-}
-
-static void	find_center(t_data *d)
-{
-	d->offset.cx = d->map->pts[d->map->height / 2][d->map->width / 2].x;
-	d->offset.cy = d->map->pts[d->map->height / 2][d->map->width / 2].y;
-	d->offset.cz = d->map->pts[d->map->height / 2][d->map->width / 2].z;
 }
 
 static void	zoom_in(t_data *d)
