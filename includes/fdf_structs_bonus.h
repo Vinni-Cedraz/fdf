@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 19:08:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:30:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct s_state
 	t_short					reverse_5_around_x;
 	t_short					rotate_5_around_y;
 	t_short					reverse_5_around_y;
-	t_short					step_forward;
+	t_short					step_towards_isometry;
 	t_short					step_back;
 	t_short					diagonal;
 	t_short					isometric;
