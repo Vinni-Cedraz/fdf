@@ -6,14 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 01:08:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 11:15:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_INCLUDES_BONUS_H
 # define FDF_INCLUDES_BONUS_H
 
+#include "fdf_structs_bonus.h"
 # include "fdf_includes.h"
+
 # define MENU_WIDTH 183
 
 // PART ONE//
