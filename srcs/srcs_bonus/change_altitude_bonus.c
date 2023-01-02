@@ -43,11 +43,11 @@ static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror)
 		while (j < d->map->width)
 		{
 			if (up)
-				d->map->arr[i][j].z *= 1.1;
+				d->map->pts[i][j].z *= 1.1;
 			if (down)
-				d->map->arr[i][j].z /= 1.1;
+				d->map->pts[i][j].z /= 1.1;
 			if (mirror)
-				d->map->arr[i][j].z *= -1;
+				d->map->pts[i][j].z *= -1;
 			j++;
 		}
 		i++;

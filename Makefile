@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/31 21:39:51 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/02 00:42:30 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -46,7 +46,6 @@ SRCS = put_pixel_img \
 BONUS_SRCS = two_steps_to_isometry_bonus \
 					close_win_bonus \
 					colorize_points_bonus \
-					data_initializer_bonus \
 					deal_keys_bonus \
 					draw_bonus \
 					undo_isometric_steps_bonus \
@@ -54,8 +53,9 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 					parse_map_bonus \
 					render_map_bonus \
 					render_line_bonus \
-					rotate_around_x_bonus \
-					rotate_around_y_bonus \
+					linear_transformations_bonus \
+					define_rotation_matrices_bonus \
+					data_initializer_bonus \
 					calculate_default_scale_bonus \
 					change_altitude_bonus \
 					zoom_bonus \

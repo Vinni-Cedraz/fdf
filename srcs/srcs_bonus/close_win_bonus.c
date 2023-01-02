@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 19:48:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 01:22:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	close_win_bonus(t_data *data)
 	free(data->mlx->mlx_ptr);
 	free(data->mlx);
 	free(data->img);
-	ft_free_t_map(data->map->arr);
+	ft_free_t_map(data->map->pts);
 	free(data->map);
+	free(data->matrix);
 	free(data);
 	exit(0);
 }

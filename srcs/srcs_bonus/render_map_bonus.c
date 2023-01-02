@@ -40,9 +40,9 @@ static void	render_lines_square(t_data *d)
 		while (++j < d->map->width)
 		{
 			if (j < d->map->width - 1)
-				render_line_bonus(d->map->arr[i][j], d->map->arr[i][j + 1], d);
+				render_line_bonus(d->map->pts[i][j], d->map->pts[i][j + 1], d);
 			if (i < d->map->height - 1)
-				render_line_bonus(d->map->arr[i][j], d->map->arr[i + 1][j], d);
+				render_line_bonus(d->map->pts[i][j], d->map->pts[i + 1][j], d);
 		}
 	}
 }
@@ -63,10 +63,10 @@ static void	render_lines_cross(t_data *d)
 		{
 			if (j < d->map->width - 1 && i < d->map->height - 1)
 			{
-				p1 = d->map->arr[i][j];
-				render_line_bonus(p1, d->map->arr[i + 1][j + 1], d);
-				p1 = d->map->arr[i + 1][j];
-				render_line_bonus(p1, d->map->arr[i][j + 1], d);
+				p1 = d->map->pts[i][j];
+				render_line_bonus(p1, d->map->pts[i + 1][j + 1], d);
+				p1 = d->map->pts[i + 1][j];
+				render_line_bonus(p1, d->map->pts[i][j + 1], d);
 			}
 		}
 	}
@@ -85,14 +85,14 @@ static void	render_pentagram(t_data *d)
 		j = -1;
 		while (++j < d->map->width - 3)
 		{
-			p1 = d->map->arr[i + 1][j];
-			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
-			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
-			p1 = d->map->arr[i + 2][j];
-			render_line_bonus(p1, d->map->arr[i][j + 1], d);
-			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
-			p1 = d->map->arr[i][j + 1];
-			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
+			p1 = d->map->pts[i + 1][j];
+			render_line_bonus(p1, d->map->pts[i + 1][j + 2], d);
+			render_line_bonus(p1, d->map->pts[i + 2][j + 2], d);
+			p1 = d->map->pts[i + 2][j];
+			render_line_bonus(p1, d->map->pts[i][j + 1], d);
+			render_line_bonus(p1, d->map->pts[i + 1][j + 2], d);
+			p1 = d->map->pts[i][j + 1];
+			render_line_bonus(p1, d->map->pts[i + 2][j + 2], d);
 		}
 	}
 }

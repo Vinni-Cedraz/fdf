@@ -51,7 +51,7 @@ static int	create_map_bonus(t_data *d, char *argv, char *first_line)
 	d->tool.y = 0;
 	d->tool.x = -1;
 	d->tool.fd = open(argv, O_RDONLY);
-	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
+	d->map->pts = ft_calloc(d->map->height, sizeof(t_point));
 	while (1)
 	{
 		printf("[%d] out of [%d]\r", d->tool.y, d->map->height);
@@ -63,7 +63,7 @@ static int	create_map_bonus(t_data *d, char *argv, char *first_line)
 			break ;
 		d->tool.split = ft_split(d->tool.line, ' ');
 		free(d->tool.line);
-		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
+		d->map->pts[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
 			make_t_point_bonus(&d, d->tool.split, d->tool.x, d->tool.y);
 		d->tool.x = -1;
@@ -77,14 +77,14 @@ static void	make_t_point_bonus(t_data **d, t_split *t_split, short x, short y)
 {
 	unsigned int	hexcolor;
 
-	(*d)->map->arr[y][x].x = (double)x * (*d)->offset.scale_x;
-	(*d)->map->arr[y][x].y = (double)y * (*d)->offset.scale_y;
-	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
+	(*d)->map->pts[y][x].x = (double)x * (*d)->offset.scale_x;
+	(*d)->map->pts[y][x].y = (double)y * (*d)->offset.scale_y;
+	(*d)->map->pts[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color_bonus(t_split->str_arr[x]);
 	if (hexcolor)
-		(*d)->map->arr[y][x].color = hexcolor;
+		(*d)->map->pts[y][x].color = hexcolor;
 	else
-		(*d)->map->arr[y][x].color = CYAN;
+		(*d)->map->pts[y][x].color = CYAN;
 }
 
 static int	get_hex_color_bonus(char *str)
