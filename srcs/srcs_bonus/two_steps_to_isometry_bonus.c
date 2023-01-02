@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/01 22:51:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 11:36:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "fdf_structs.h"
 
 static void	take_first_step(t_map *map);
 static void	take_second_step(t_map *map);

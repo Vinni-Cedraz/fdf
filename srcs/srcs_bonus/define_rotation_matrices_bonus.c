@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 01:28:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 11:39:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "fdf_structs.h"
 
 void		define_rotation_matrices_bonus(t_rotation_matrices *matrix);
 static void	define_reversion_matrices(t_rotation_matrices *matrix);

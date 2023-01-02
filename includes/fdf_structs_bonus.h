@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 11:14:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 11:37:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_STRUCTS_H
-# define FDF_STRUCTS_H
+#ifndef FDF_STRUCTS_BONUS_H
+# define FDF_STRUCTS_BONUS_H
 
-#include "printf_libft_includes.h"
+# include "printf_libft_includes.h"
 
 typedef unsigned int short	t_short;
 
