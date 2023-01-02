@@ -6,12 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 19:57:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:05:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
+static void	reset_states(t_data *d);
 static void	aux_deal_keys(int key, t_data *d);
 
 int	deal_keys_bonus(int key, t_data *d)
@@ -49,7 +50,9 @@ static void	aux_deal_keys(int key, t_data *d)
 		zoom_bonus(d, 1, 0, 0);
 	else if (key == 's')
 		zoom_bonus(d, 0, 1, 0);
-	else if (key == 'a')
+	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v')
+		reset_states(d);
+	if (key == 'a')
 		linear_transformations_bonus(d, &d->matrix->rot_y);
 	else if (key == 'd')
 		linear_transformations_bonus(d, &d->matrix->rev_y);
@@ -67,4 +70,11 @@ static void	aux_deal_keys(int key, t_data *d)
 		d->state.grid_style_nb = 3;
 	else if (key == 'g' && d->state.grid_style_nb == 3)
 		d->state.grid_style_nb = 1;
+}
+
+static void	reset_states(t_data *d)
+{
+	d->state.isometric = 0;
+	d->state.diagonal = 0;
+	d->state.diagonal = 0;
 }
