@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 11:37:31 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:22:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ typedef struct s_matrix
 	t_row					row_3;
 }							t_matrix;
 
-typedef struct s_matrices
+typedef struct s_rotation_matrices
 {
 	t_matrix				rot_x;
 	t_matrix				rot_y;
