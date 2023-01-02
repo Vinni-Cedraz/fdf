@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/02 00:42:30 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/02 18:32:24 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 					colorize_points_bonus \
 					deal_keys_bonus \
 					draw_bonus \
-					undo_isometric_steps_bonus \
 					main_bonus \
 					parse_map_bonus \
 					render_map_bonus \

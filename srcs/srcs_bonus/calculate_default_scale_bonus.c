@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 14:38:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:19:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static void	get_values_to_centralize_img_on_window(t_data *d)
 {
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
 	{
-		d->offset.centralize_img_x = (WINDOW_WIDTH / 2) + MENU_WIDTH - 100;
-		d->offset.centralize_img_y = WINDOW_HEIGHT / 8;
+		d->offset.center_img_x = (WINDOW_WIDTH / 2) + MENU_WIDTH - 100;
+		d->offset.center_img_y = WINDOW_HEIGHT / 8;
 	}
 	else if (d->map->ratio != 1)
 	{
-		d->offset.centralize_img_x = (WINDOW_WIDTH / 2.5) + MENU_WIDTH - 100;
-		d->offset.centralize_img_y = WINDOW_HEIGHT / 5;
+		d->offset.center_img_x = (WINDOW_WIDTH / 2.5) + MENU_WIDTH - 100;
+		d->offset.center_img_y = WINDOW_HEIGHT / 5;
 	}
 }
