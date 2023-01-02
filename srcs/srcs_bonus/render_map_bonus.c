@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 22:06:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 11:38:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "fdf_structs.h"
 
 static void	render_pentagram(t_data *d);
 static void	render_lines_square(t_data *d);

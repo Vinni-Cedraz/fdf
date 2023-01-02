@@ -6,13 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 23:47:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 11:39:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "fdf_structs.h"
-#include "printf_libft_structs.h"
 
 static int	get_hex_color_bonus(char *str);
 static int	create_map_bonus(t_data *map, char *argv, char *first_line);

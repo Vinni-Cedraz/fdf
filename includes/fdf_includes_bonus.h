@@ -5,16 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 03:11:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 11:15:10 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/02 11:41:07 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_INCLUDES_BONUS_H
 # define FDF_INCLUDES_BONUS_H
 
-#include "fdf_structs_bonus.h"
-# include "fdf_includes.h"
+# include "fdf_defines.h"
+# include "fdf_keycodes.h"
+# include "fdf_structs_bonus.h"
+# include "mlx.h"
+# include <errno.h>
+# include <math.h>
+# include <stdio.h>
+# include <string.h>
 
 # define MENU_WIDTH 183
 
