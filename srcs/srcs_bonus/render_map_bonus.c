@@ -6,12 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 11:38:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:39:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
+static void	find_center_of_the_img(t_data *d);
 static void	render_pentagram(t_data *d);
 static void	render_lines_square(t_data *d);
 static void	render_lines_cross(t_data *d);
@@ -24,6 +25,7 @@ void	render_map_bonus(t_data *d, t_short square, t_short cross, t_short pent)
 		render_lines_cross(d);
 	else if (pent)
 		render_pentagram(d);
+	find_center_of_the_img(d);
 }
 
 static void	render_lines_square(t_data *d)
@@ -94,4 +96,11 @@ static void	render_pentagram(t_data *d)
 			render_line_bonus(p1, d->map->pts[i + 2][j + 2], d);
 		}
 	}
+}
+
+static void	find_center_of_the_img(t_data *d)
+{
+	d->offset.cx = d->map->pts[d->map->height / 2][d->map->width / 2].x;
+	d->offset.cy = d->map->pts[d->map->height / 2][d->map->width / 2].y;
+	d->offset.cz = d->map->pts[d->map->height / 2][d->map->width / 2].z;
 }

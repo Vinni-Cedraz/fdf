@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 14:23:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:48:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	transform_a_point(t_point *old_p, t_matrix *matrix);
+static void	transform_a_point(t_point *old_p, t_matrix *matrix, t_data *d);
 
 void	linear_transformations_bonus(t_data *d, t_matrix *rotation_matrix)
 {
@@ -25,22 +25,28 @@ void	linear_transformations_bonus(t_data *d, t_matrix *rotation_matrix)
 		j = 0;
 		while (j < d->map->width)
 		{
-			transform_a_point(&d->map->pts[i][j], rotation_matrix);
+			transform_a_point(&d->map->pts[i][j], rotation_matrix, d);
 			j++;
 		}
 		i++;
 	}
 }
 
-static void	transform_a_point(t_point *old, t_matrix *m)
+static void	transform_a_point(t_point *old, t_matrix *m, t_data *d)
 {
 	t_point	*p;
+	double	cx;
+	double	cy;
+	double	cz;
 
 	p = &(t_point){1, 1, 1, 1};
-	p->x = old->x * m->row_1.x + old->y * m->row_1.y + old->z * m->row_1.z;
-	p->y = old->x * m->row_2.x + old->y * m->row_2.y + old->z * m->row_2.z;
-	p->z = old->x * m->row_3.x + old->y * m->row_3.y + old->z * m->row_3.z;
-	old->x = p->x;
-	old->y = p->y;
-	old->z = p->z;
+	cx = d->offset.cx;
+	cy = d->offset.cy;
+	cz = d->offset.cz;
+	p->x = old->x - cx;
+	p->y = old->y - cy;
+	p->z = old->z - cz;
+	old->x = p->x * m->row_1.x + p->y * m->row_2.x + p->z * m->row_3.x + cx;
+	old->y = p->x * m->row_1.y + p->y * m->row_2.y + p->z * m->row_3.y + cy;
+	old->z = p->x * m->row_1.z + p->y * m->row_2.z + p->z * m->row_3.z + cz;
 }
