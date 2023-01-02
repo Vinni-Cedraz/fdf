@@ -75,7 +75,7 @@ static void	draw_menu(t_data *d)
 	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 180, YELLOW, \
 		"CHANGE TO PARALLEL : 'r'");
 	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 260, YELLOW, \
-		"MOVE: arrow keys");
+		"MOVE: ptsow keys");
 	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 300, YELLOW, \
 		"but also:'h', 'j', 'k', 'l'");
 	mlx_string_put(d->mlx->mlx_ptr, d->mlx->win_ptr, 10, 420, YELLOW, \

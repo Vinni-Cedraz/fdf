@@ -42,9 +42,9 @@ void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 
 static void	find_center(t_data *d)
 {
-	d->offset.cx = d->map->arr[d->map->height / 2][d->map->width / 2].x;
-	d->offset.cy = d->map->arr[d->map->height / 2][d->map->width / 2].y;
-	d->offset.cz = d->map->arr[d->map->height / 2][d->map->width / 2].z;
+	d->offset.cx = d->map->pts[d->map->height / 2][d->map->width / 2].x;
+	d->offset.cy = d->map->pts[d->map->height / 2][d->map->width / 2].y;
+	d->offset.cz = d->map->pts[d->map->height / 2][d->map->width / 2].z;
 }
 
 static void	zoom_in(t_data *d)
@@ -61,10 +61,10 @@ static void	zoom_in(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x - d->offset.cx;
-			y = d->map->arr[i][j].y - d->offset.cy;
-			d->map->arr[i][j].x = d->offset.cx + x * 1.1;
-			d->map->arr[i][j].y = d->offset.cy + y * 1.1;
+			x = d->map->pts[i][j].x - d->offset.cx;
+			y = d->map->pts[i][j].y - d->offset.cy;
+			d->map->pts[i][j].x = d->offset.cx + x * 1.1;
+			d->map->pts[i][j].y = d->offset.cy + y * 1.1;
 			j++;
 		}
 		i++;
@@ -89,10 +89,10 @@ static void	zoom_out(t_data *d)
 		j = 0;
 		while (j < d->map->width)
 		{
-			x = d->map->arr[i][j].x - d->offset.cx;
-			y = d->map->arr[i][j].y - d->offset.cy;
-			d->map->arr[i][j].x = d->offset.cx + x / 1.1;
-			d->map->arr[i][j].y = d->offset.cy + y / 1.1;
+			x = d->map->pts[i][j].x - d->offset.cx;
+			y = d->map->pts[i][j].y - d->offset.cy;
+			d->map->pts[i][j].x = d->offset.cx + x / 1.1;
+			d->map->pts[i][j].y = d->offset.cy + y / 1.1;
 			j++;
 		}
 		i++;

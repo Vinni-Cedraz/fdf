@@ -31,16 +31,16 @@ void	colorize_points_bonus(t_map *map)
 			j = -1;
 			while (++j < map->width)
 			{
-				if (map->arr[i][j].z < 0)
-					map->arr[i][j].color = RED;
-				if (map->arr[i][j].z == map->min_z)
-					map->arr[i][j].color = BLUE;
-				else if (map->arr[i][j].z == map->max_z)
-					map->arr[i][j].color = MAGENTA;
-				else if (map->arr[i][j].z > 0)
-					map->arr[i][j].color = CYAN;
-				else if (map->arr[i][j].z == 0)
-					map->arr[i][j].color = LIGHT_GRAY;
+				if (map->pts[i][j].z < 0)
+					map->pts[i][j].color = RED;
+				if (map->pts[i][j].z == map->min_z)
+					map->pts[i][j].color = BLUE;
+				else if (map->pts[i][j].z == map->max_z)
+					map->pts[i][j].color = MAGENTA;
+				else if (map->pts[i][j].z > 0)
+					map->pts[i][j].color = CYAN;
+				else if (map->pts[i][j].z == 0)
+					map->pts[i][j].color = LIGHT_GRAY;
 			}
 		}
 	}
@@ -65,8 +65,8 @@ static void	get_max_altitude(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			if (map->arr[i][j].z > max_z)
-				max_z = map->arr[i][j].z;
+			if (map->pts[i][j].z > max_z)
+				max_z = map->pts[i][j].z;
 			j++;
 		}
 		i++;
@@ -87,8 +87,8 @@ static void	get_min_altitude(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			if (map->arr[i][j].z < min_z)
-				min_z = map->arr[i][j].z;
+			if (map->pts[i][j].z < min_z)
+				min_z = map->pts[i][j].z;
 			j++;
 		}
 		i++;
@@ -107,7 +107,7 @@ static t_short	is_colorized(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			if (map->arr[i][j].color != CYAN)
+			if (map->pts[i][j].color != CYAN)
 				return (1);
 			j++;
 		}

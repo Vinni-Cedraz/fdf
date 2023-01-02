@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 21:35:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 01:31:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,6 @@
 # define FDF_STRUCTS_H
 
 # include "printf_libft_structs.h"
-
-// rotation 5 degrees around y axis:
-// [x']  ==  [cos(RAD_5)  0  sin(RAD_5)]   [x]
-// [y']  ==  [  0     1    0   ] * [y]
-// [z']  ==  [-sin(RAD_5) 0  cos(RAD_5)]   [z]
-// reversion 5 degrees around y axis:
-// [x']  ==  [cos(RAD_5)  0  -sin(RAD_5)]   [x]
-// [y']  ==  [  0     1    0   ] * [y]
-// [z']  ==  [sin(RAD_5) 0  cos(RAD_5)]   [z]
-// rotation 5 degrees around x axis:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_5)  -sin(RAD_5)] * [y]
-// [z']  ==  [0  sin(RAD_5)  cos(RAD_5)]   [z]
-// reversion 5 degrees around x axis:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_5)  sin(RAD_5)] * [y]
-// [z']  ==  [0  -sin(RAD_5)  cos(RAD_5)]   [z]
-// rotation 45 degrees around z:
-// [x']  ==  [cos(RAD_45)  -sin(RAD_45)  0]   [x]
-// [y']  ==  [sin(RAD_45)  cos(RAD_45)   0] * [y]
-// [z']  ==  [0  0    1]   [z]
-// reversion 45 degrees around z:
-// [x']  ==  [cos(RAD_45)  sin(RAD_45)  0]   [x]
-// [y']  ==  [-sin(RAD_45)  cos(RAD_45)   0] * [y]
-// [z']  ==  [0  0    1]   [z]
-// rotation 54.73 degrees around x:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_54.73)  -sin(RAD_54.73)] * [y]
-// [z']  ==  [0  sin(RAD_54.73)  cos(RAD_54.73)]   [z]
-// reversion 54.73 degrees around x:
-// [x']  ==  [1  0    0   ]   [x]
-// [y']  ==  [0  cos(RAD_54.73)  sin(RAD_54.73)] * [y]
-// [z']  ==  [0  -sin(RAD_54.73)  cos(RAD_54.73)]   [z]
 
 typedef unsigned int short	t_short;
 
@@ -79,7 +46,7 @@ typedef struct s_map
 	double					target_width;
 	double					target_height;
 	double					ratio;
-	t_point					**arr;
+	t_point					**pts;
 }							t_map;
 
 typedef struct s_img
@@ -98,9 +65,37 @@ typedef struct s_create_map
 	t_short					x;
 	t_short					y;
 	t_short					fd;
-	char					*line;
 	t_split					*split;
+	char					*line;
 }							t_create_map;
+
+typedef struct s_line_data
+{
+	double					x;
+	double					y;
+	double					z;
+}							t_row;
+
+typedef struct s_matrix
+{
+	t_row					row_1;
+	t_row					row_2;
+	t_row					row_3;
+}							t_matrix;
+
+typedef struct s_matrices
+{
+	t_matrix				rot_x;
+	t_matrix				rot_y;
+	t_matrix				rot_z;
+	t_matrix				rev_z;
+	t_matrix				rev_x;
+	t_matrix				rev_y;
+	t_matrix				rot_z_45;
+	t_matrix				rev_z_45;
+	t_matrix				rot_x_54_73;
+	t_matrix				rev_x_54_73;
+}							t_rotation_matrices;
 
 typedef struct s_mlx
 {
@@ -116,8 +111,8 @@ typedef struct s_offset
 	float					cz;
 	float					scale_x;
 	float					scale_y;
-	short					move_x;
-	short					move_y;
+	float					move_x;
+	float					move_y;
 	t_short					centralize_img_x;
 	t_short					centralize_img_y;
 }							t_offset;
@@ -128,8 +123,6 @@ typedef struct s_state
 	t_short					reverse_5_around_x;
 	t_short					rotate_5_around_y;
 	t_short					reverse_5_around_y;
-	t_short					neutral_y;
-	t_short					neutral_x;
 	t_short					step_forward;
 	t_short					step_back;
 	t_short					isometric;
@@ -138,6 +131,8 @@ typedef struct s_state
 	t_short					zoom_in;
 	t_short					zoom_out;
 	t_short					neutral_zoom;
+	t_short					neutral_y;
+	t_short					neutral_x;
 	t_short					grid_style_nb;
 }							t_state;
 
@@ -150,6 +145,7 @@ typedef struct s_data
 	t_img					*img;
 	t_map					*map;
 	t_create_map			tool;
+	t_rotation_matrices		*matrix;
 }							t_data;
 
 #endif

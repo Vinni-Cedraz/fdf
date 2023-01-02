@@ -53,10 +53,10 @@ static void	undo_second_step(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			z = map->arr[i][j].z;
-			y = map->arr[i][j].y;
-			map->arr[i][j].z = z * cos(RAD_54_73) - y * sin(RAD_54_73);
-			map->arr[i][j].y = z * sin(RAD_54_73) + y * cos(RAD_54_73);
+			z = map->pts[i][j].z;
+			y = map->pts[i][j].y;
+			map->pts[i][j].z = z * cos(RAD_54_73) - y * sin(RAD_54_73);
+			map->pts[i][j].y = z * sin(RAD_54_73) + y * cos(RAD_54_73);
 			j++;
 		}
 		i++;
@@ -76,10 +76,10 @@ static void	undo_first_step(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			x = map->arr[i][j].x;
-			y = map->arr[i][j].y;
-			map->arr[i][j].x = x * cos(-RAD_45) - y * sin(-RAD_45);
-			map->arr[i][j].y = x * sin(-RAD_45) + y * cos(-RAD_45);
+			x = map->pts[i][j].x;
+			y = map->pts[i][j].y;
+			map->pts[i][j].x = x * cos(-RAD_45) - y * sin(-RAD_45);
+			map->pts[i][j].y = x * sin(-RAD_45) + y * cos(-RAD_45);
 			j++;
 		}
 		i++;
