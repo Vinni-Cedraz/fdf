@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 19:05:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:57:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	deal_keys_bonus(int key, t_data *d)
 		two_steps_to_isometry_bonus(d, 1);
 	else if (key == ';')
 		two_steps_to_isometry_bonus(d, 0);
-	else if (key)
-		aux_deal_keys(key, d);
 	else if (key == 'z')
 		change_altitude_bonus(d, 1, 0);
 	else if (key == 'c')
 		change_altitude_bonus(d, 0, 0);
 	else if (key == 'm')
 		change_altitude_bonus(d, 0, 1);
+	else if (key)
+		aux_deal_keys(key, d);
 	return (0);
 }
 
