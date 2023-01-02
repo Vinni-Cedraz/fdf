@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/31 21:21:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:20:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	render_line_bonus(t_point p1, t_point p2, t_data *d)
 		line.steps = abs(line.dy);
 	line.x_inc = line.dx / (double)line.steps;
 	line.y_inc = line.dy / (double)line.steps;
-	line.x = p1.x + d->offset.move_x + d->offset.centralize_img_x;
-	line.y = p1.y + d->offset.move_y + d->offset.centralize_img_y;
+	line.x = p1.x + d->offset.move_x + d->offset.center_img_x;
+	line.y = p1.y + d->offset.move_y + d->offset.center_img_y;
 	while (line.steps--)
 	{
 		put_pixel_img_bonus(d->img, line.x, line.y, color);

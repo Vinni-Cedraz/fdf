@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 14:33:26 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:05:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	deal_keys_bonus(int key, t_data *d)
 	else if (key == 'i')
 		two_steps_to_isometry_bonus(d, 0);
 	else if (key == 'r')
-		undo_isometric_steps_bonus(d);
-	else if (key == ';')
 		two_steps_to_isometry_bonus(d, 1);
+	else if (key == ';')
+		two_steps_to_isometry_bonus(d, 0);
 	else if (key)
 		aux_deal_keys(key, d);
 	else if (key == 'z')

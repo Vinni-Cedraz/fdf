@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 13:22:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 19:08:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ typedef struct s_offset
 	float					scale_y;
 	float					move_x;
 	float					move_y;
-	t_short					centralize_img_x;
-	t_short					centralize_img_y;
+	t_short					center_img_x;
+	t_short					center_img_y;
 }							t_offset;
 
 typedef struct s_state
@@ -126,14 +126,15 @@ typedef struct s_state
 	t_short					reverse_5_around_y;
 	t_short					step_forward;
 	t_short					step_back;
+	t_short					diagonal;
 	t_short					isometric;
-	t_short					do_step_one;
-	t_short					do_step_two;
 	t_short					zoom_in;
 	t_short					zoom_out;
 	t_short					neutral_zoom;
-	t_short					neutral_y;
 	t_short					neutral_x;
+	t_short					neutral_y;
+	t_short					neutral_z;
+	t_short					parallel;
 	t_short					grid_style_nb;
 }							t_state;
 
