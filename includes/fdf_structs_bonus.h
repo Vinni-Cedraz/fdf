@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 19:30:46 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:33:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,20 @@ typedef struct s_line
 	unsigned int			color;
 }							t_line;
 
+typedef struct s_origin
+{
+	double					old_x;
+	double					old_y;
+	double					old_z;
+}							t_snapshot;
+
 typedef struct s_point
 {
 	double					x;
 	double					y;
 	double					z;
 	unsigned int			color;
+	t_snapshot				snapshot;
 }							t_point;
 
 typedef struct s_map

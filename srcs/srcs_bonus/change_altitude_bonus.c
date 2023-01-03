@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 19:55:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:58:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror);
 
 void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 {
-	two_steps_to_isometry_bonus(d, 1);
+	if (!d->state.neutral_zoom)
+		zoom_bonus(d, 0, 0, 1);
+	if (up && d->map->max_z >= 1800)
+		return ;
+	else
+		two_steps_to_isometry_bonus(d, 1, 0);
 	if (up)
-	{
-		if (d->map->max_z >= 1800)
-			return ;
 		scale_z(d, 1, 0, 0);
-	}
 	else if (mirror)
 		scale_z(d, 0, 0, 1);
-	else
+	else if (!up)
 		scale_z(d, 0, 1, 0);
-	two_steps_to_isometry_bonus(d, 0);
+	two_steps_to_isometry_bonus(d, 0, 0);
 }
 
 static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror)

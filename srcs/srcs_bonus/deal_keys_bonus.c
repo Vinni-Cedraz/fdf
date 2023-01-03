@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 20:05:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:54:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	deal_keys_bonus(int key, t_data *d)
 	else if (key == XK_DOWN || key == 'j')
 		d->offset.move_y += 100;
 	else if (key == 'i')
-		two_steps_to_isometry_bonus(d, 0);
+		two_steps_to_isometry_bonus(d, 0, 0);
 	else if (key == 'r')
-		two_steps_to_isometry_bonus(d, 1);
+		two_steps_to_isometry_bonus(d, 1, 0);
 	else if (key == ';')
-		two_steps_to_isometry_bonus(d, 0);
+		two_steps_to_isometry_bonus(d, 0, 1);
 	else if (key == 'z')
 		change_altitude_bonus(d, 1, 0);
 	else if (key == 'c')

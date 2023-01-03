@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 14:48:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:58:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	linear_transformations_bonus(t_data *d, t_matrix *rotation_matrix)
 	int	i;
 	int	j;
 
+	if (!d->state.neutral_zoom)
+		zoom_bonus(d, 0, 0, 1);
 	i = 0;
 	while (i < d->map->height)
 	{
@@ -39,7 +41,7 @@ static void	transform_a_point(t_point *old, t_matrix *m, t_data *d)
 	double	cy;
 	double	cz;
 
-	p = &(t_point){1, 1, 1, 1};
+	p = &(t_point){1, 1, 1, 1, {1, 1, 1}};
 	cx = d->offset.cx;
 	cy = d->offset.cy;
 	cz = d->offset.cz;
