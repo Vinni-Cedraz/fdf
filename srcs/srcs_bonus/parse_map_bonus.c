@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 11:39:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 01:39:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	parse_map_bonus(char *argv, t_data *d)
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
-	calculate_default_scale_bonus(d);
+	calculate_default_scale_bonus(d, WINDOW_HEIGHT);
 	return (close(fd), create_map_bonus(d, argv, first_line), 1);
 }
 
@@ -75,8 +75,8 @@ static void	make_t_point_bonus(t_data **d, t_split *t_split, short x, short y)
 {
 	unsigned int	hexcolor;
 
-	(*d)->map->pts[y][x].x = (double)x * (*d)->offset.scale_x;
-	(*d)->map->pts[y][x].y = (double)y * (*d)->offset.scale_y;
+	(*d)->map->pts[y][x].x = (double)x * (*d)->offset.scale;
+	(*d)->map->pts[y][x].y = (double)y * (*d)->offset.scale;
 	(*d)->map->pts[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color_bonus(t_split->str_arr[x]);
 	if (hexcolor)
