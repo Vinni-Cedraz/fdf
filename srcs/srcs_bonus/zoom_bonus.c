@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 14:37:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:56:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 		zoom_out(d);
 	}
 	else if (reset)
-	{
 		reset_zoom(d);
-	}
 }
 
 static void	zoom_in(t_data *d)
