@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 01:48:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:07:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	calculate_target_scaled_map_size(t_map *map, t_short size)
 	if (map->ratio > 1)
 	{
 		map->target_width = size;
-		map->target_height = size/ map->ratio;
+		map->target_height = size / map->ratio;
 	}
 	else
 	{
@@ -51,7 +51,7 @@ static void	get_values_to_centralize_img_on_window(t_data *d)
 	win_h = WINDOW_HEIGHT;
 	magic_factor = d->offset.scale;
 	if (magic_factor > 10)
-	  magic_factor /= 10;
+		magic_factor /= 10;
 	if (map_h > map_w)
 		ft_swap(&map_h, &map_w, sizeof(double));
 	d->offset.move_x += ((win_w - map_w * d->offset.scale) / 2);
