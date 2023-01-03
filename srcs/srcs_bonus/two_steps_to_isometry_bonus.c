@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 20:54:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:01:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	take_snapshot(t_data *d);
 static void	undo_isometric_steps(t_data *d);
 static void	restore_isometric_state_from_snapshot(t_data *d);
 
-void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps, \
-	t_short restore_iso_state)
+void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps,
+		t_short restore_iso_state)
 {
 	if (undo_iso_steps)
 		undo_isometric_steps(d);
@@ -33,6 +33,8 @@ void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps, \
 
 static void	apply_isometric_steps(t_data *d)
 {
+	if (d->state.isometric)
+		return ;
 	d->state.step_towards_isometry++;
 	if ((d->state.step_towards_isometry - d->state.step_back) == 1)
 	{
@@ -57,6 +59,8 @@ static void	apply_isometric_steps(t_data *d)
 
 static void	undo_isometric_steps(t_data *d)
 {
+	if (d->state.parallel)
+		return ;
 	d->state.step_back++;
 	if ((d->state.step_towards_isometry - d->state.step_back) == 1)
 	{
