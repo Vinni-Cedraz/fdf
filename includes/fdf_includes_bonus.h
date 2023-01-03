@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 20:54:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 01:35:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	data_initializer_bonus(t_data *d);
 
 int		parse_map_bonus(char *argv, t_data *d);
 
-void	calculate_default_scale_bonus(t_data *d);
+void	calculate_default_scale_bonus(t_data *d, t_short size);
 
 void	define_rotation_matrices_bonus(t_rotation_matrices *matrix);
 

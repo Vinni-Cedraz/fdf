@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 19:08:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 01:39:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	data_initializer_bonus(t_data *d)
 	open_win_and_img(d);
 	d->rotations_history = ft_lstnew(NULL);
 	d->state = (t_state){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1};
-	d->offset = (t_offset){0, 0, 0, 0, 0, 0, 0, 0, 0};
 	define_rotation_matrices_bonus(d->matrix);
 }
 
