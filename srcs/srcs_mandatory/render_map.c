@@ -6,82 +6,68 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/20 08:28:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:45:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-static void	aux_render_map(t_data *d);
-static void	render_last_line(t_data *d);
-static void	render_last_column(t_data *d);
+static void	determine_line_color(t_point p1, t_point p2, unsigned int *color);
+static void	render_line(t_point p1, t_point p2, t_data *d);
 
 void	render_map(t_data *d)
 {
-	aux_render_map(d);
-	render_last_line(d);
-	render_last_column(d);
-}
-
-static void	aux_render_map(t_data *d)
-{
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < d->map->height - 1)
+	i = -1;
+	j = -1;
+	while (++i < d->map->height)
 	{
-		j = 0;
-		while (j < d->map->width - 1)
+		j = -1;
+		while (++j < d->map->width)
 		{
-			if (j <= d->map->width / 2)
-				render_line(d->map->arr[i][j], d->map->arr[i][j + 1], \
-				d->map->arr[i][j].color, d);
-			else
-				render_line(d->map->arr[i][j], d->map->arr[i][j + 1], \
-				d->map->arr[i][j + 1].color, d);
-			if (i < d->map->height / 2)
-				render_line(d->map->arr[i][j], d->map->arr[i + 1][j], \
-				d->map->arr[i][j].color, d);
-			else
-				render_line(d->map->arr[i][j], d->map->arr[i + 1][j], \
-				d->map->arr[i + 1][j].color, d);
-			j++;
+			if (j < d->map->width - 1)
+				render_line(d->map->arr[i][j], d->map->arr[i][j + 1], d);
+			if (i < d->map->height - 1)
+				render_line(d->map->arr[i][j], d->map->arr[i + 1][j], d);
 		}
-		i++;
 	}
 }
 
-static void	render_last_column(t_data *d)
+static void	render_line(t_point p1, t_point p2, t_data *d)
 {
-	int	i;
+	t_line			line;
+	unsigned int	color;
 
-	i = 0;
-	while (i < d->map->height - 1)
+	determine_line_color(p1, p2, &color);
+	line.dx = p2.x - p1.x;
+	line.dy = p2.y - p1.y;
+	if (abs(line.dx) > abs(line.dy))
+		line.steps = abs(line.dx);
+	else
+		line.steps = abs(line.dy);
+	line.x_inc = line.dx / (double)line.steps;
+	line.y_inc = line.dy / (double)line.steps;
+	line.x = p1.x + d->move_x;
+	line.y = p1.y + d->move_y;
+	while (line.steps--)
 	{
-		if (i < d->map->height - 1)
-			render_line(d->map->arr[i][d->map->width - 1], \
-				d->map->arr[i + 1][d->map->width - 1], \
-				d->map->arr[i + 1][d->map->width - 1].color, d);
-		i++;
+		put_pixel_img(d->img, line.x, line.y, color);
+		line.x += line.x_inc;
+		line.y += line.y_inc;
 	}
 }
 
-static void	render_last_line(t_data *d)
+static void	determine_line_color(t_point p1, t_point p2, unsigned int *color)
 {
-	int	j;
-
-	j = 0;
-	while (j < d->map->width - 1)
+	if (p1.color == p2.color)
+		*color = p1.color;
+	else
 	{
-		if (j <= d->map->width / 2)
-			render_line(d->map->arr[d->map->height - 1][j], \
-				d->map->arr[d->map->height - 1][j + 1], \
-				d->map->arr[d->map->height - 1][j].color, d);
+		if (p1.z < p2.z)
+			*color = p1.color;
 		else
-			render_line(d->map->arr[d->map->height - 1][j], \
-				d->map->arr[d->map->height - 1][j + 1], \
-				d->map->arr[d->map->height - 1][j + 1].color, d);
-		j++;
+			*color = p2.color;
 	}
 }

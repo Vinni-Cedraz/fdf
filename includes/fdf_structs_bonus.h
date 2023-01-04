@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 01:11:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 23:29:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_offset
 	double					cy;
 	double					cz;
 	double					scale;
+	double					scale_z;
 	double					move_x;
 	double					move_y;
 }							t_offset;
@@ -152,8 +153,6 @@ typedef struct s_data
 	t_map					*map;
 	t_create_map			tool;
 	t_rotation_matrices		*matrix;
-	int						window_width;
-	int						window_height;
 }							t_data;
 
 #endif

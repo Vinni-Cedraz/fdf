@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/23 21:30:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:48:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	parse_map(char *argv, t_data *d)
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
+	standard_scale(d, WINDOW_HEIGHT);
 	return (close(fd), create_map(d, argv, first_line), 1);
 }
 
@@ -74,9 +75,8 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	calculate_scale(*d);
-	(*d)->map->arr[y][x].x = (double)x * (*d)->scale_x;
-	(*d)->map->arr[y][x].y = (double)y * (*d)->scale_y;
+	(*d)->map->arr[y][x].x = (double)x * (*d)->scale;
+	(*d)->map->arr[y][x].y = (double)y * (*d)->scale;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color(t_split->str_arr[x]);
 	if (hexcolor)

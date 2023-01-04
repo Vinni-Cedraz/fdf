@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 13:16:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:58:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_map
 	double			target_width;
 	double			target_height;
 	double			ratio;
-	double			scale_z;
 	t_point			**arr;
 }					t_map;
 
@@ -93,11 +92,10 @@ typedef struct s_data
 	double			cx;
 	double			cy;
 	double			cz;
-	double			scale_x;
-	double			scale_y;
-	double			scale_z;
 	double			move_x;
 	double			move_y;
+	double			scale;
+	double			scale_z;
 	t_node			*rotations_history;
 	t_img			*img;
 	t_map			*map;

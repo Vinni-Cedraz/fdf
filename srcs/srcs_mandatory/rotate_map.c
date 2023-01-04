@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 17:44:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 23:03:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:00:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static void	rotate_z(t_point *point, double angle);
 static void	rotate_x(t_point *point, double angle);
-static void	calculate_z_scale(t_map *map);
+static void	calculate_z_scale(t_data *d);
 
-void	rotate_map(t_map *map)
+void	rotate_map(t_data *d)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	calculate_z_scale(map);
-	while (i < map->height)
+	calculate_z_scale(d);
+	while (i < d->map->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < d->map->width)
 		{
-			if (map->arr[i][j].z != 0)
-				map->arr[i][j].z *= map->scale_z;
-			rotate_z(&map->arr[i][j], RAD_45);
-			rotate_x(&map->arr[i][j], RAD_54_73);
+			if (d->map->arr[i][j].z != 0)
+				d->map->arr[i][j].z *= d->scale_z;
+			rotate_z(&d->map->arr[i][j], RAD_45);
+			rotate_x(&d->map->arr[i][j], RAD_54_73);
 			j++;
 		}
 		i++;
@@ -60,10 +60,10 @@ static void	rotate_x(t_point *point, double angle)
 	point->z = y * sin(angle) + z * cos(angle);
 }
 
-static void	calculate_z_scale(t_map *map)
+static void	calculate_z_scale(t_data *d)
 {
 	double	z_range;
 
-	z_range = map->max_z - map->min_z;
-	map->scale_z = 5 / (z_range / 10);
+	z_range = d->map->max_z - d->map->min_z;
+	d->scale_z = 5 / (z_range / 10);
 }
