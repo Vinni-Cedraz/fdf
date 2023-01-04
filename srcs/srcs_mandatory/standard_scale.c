@@ -6,45 +6,60 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 23:04:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/04 00:56:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-static void	calculate_target_size(t_map *map)
+static void	calculate_target_scaled_map_size(t_map *map, short size);
+static void	get_values_to_centralize_img_on_window(t_data *d);
+
+void	standard_scale(t_data *d, short size)
+{
+	calculate_target_scaled_map_size(d->map, size);
+	d->scale = d->map->target_width / d->map->width;
+	get_values_to_centralize_img_on_window(d);
+}
+
+static void	calculate_target_scaled_map_size(t_map *map, short size)
 {
 	map->ratio = (float)map->width / (float)map->height;
 	if (map->ratio > 1)
 	{
-		map->target_width = 720;
-		map->target_height = 720 / map->ratio;
+		map->target_width = size;
+		map->target_height = size / map->ratio;
 	}
 	else
 	{
-		map->target_width = 720 * map->ratio;
-		map->target_height = 720;
+		map->target_width = size * map->ratio;
+		map->target_height = size;
 	}
 }
 
-static void	calculate_center(t_data *d)
+static void	get_values_to_centralize_img_on_window(t_data *d)
 {
+	double	map_w;
+	double	map_h;
+	double	win_w;
+	double	win_h;
+	double	magic_factor;
+
+	map_w = d->map->width;
+	map_h = d->map->height;
+	win_w = WINDOW_WIDTH;
+	win_h = WINDOW_HEIGHT;
+	magic_factor = d->scale;
+	if (magic_factor > 10)
+		magic_factor /= 10;
+	if (map_h > map_w)
+		ft_swap(&map_h, &map_w, sizeof(double));
+	d->move_x += (win_w - map_w * d->scale) / 1.10;
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
+		d->move_y += (win_h - map_h * d->scale) / 2;
+	else
 	{
-		d->centralize_img_x = (double)WINDOW_WIDTH / 2;
-		d->centralize_img_y = (double)WINDOW_HEIGHT / 8;
+		d->move_y += (win_h - map_h * d->scale) / 2;
+		d->move_y -= (d->map->ratio * magic_factor);
 	}
-	else if (d->map->ratio != 1)
-	{
-		d->centralize_img_x = (double)WINDOW_WIDTH / 2.5;
-		d->centralize_img_y = (double)WINDOW_HEIGHT / 5;
-	}
-}
-
-void	calculate_scale(t_data *d)
-{
-	calculate_target_size(d->map);
-	calculate_center(d);
-	d->scale_x = d->map->target_width / (d->map->width);
-	d->scale_y = d->map->target_height / (d->map->height);
 }
