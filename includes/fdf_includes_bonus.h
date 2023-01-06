@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 01:35:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:18:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps, \
 void	change_altitude_bonus(t_data *d, t_short up, t_short mirror);
 
 int		close_win_bonus(t_data *data);
+
 #endif
