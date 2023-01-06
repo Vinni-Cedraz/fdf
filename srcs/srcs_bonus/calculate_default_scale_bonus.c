@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 15:25:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:34:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	calculate_default_scale_bonus(t_data *d, t_short size)
 
 static void	calculate_target_scaled_map_size(t_map *map, t_short size)
 {
-	map->ratio = (float)map->width / (float)map->height;
+	map->ratio = (double)map->width / (double)map->height;
 	if (map->ratio > 1)
 	{
 		map->target_width = size;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 12:32:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:18:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	get_min_altitude(t_map *map)
 {
 	t_short	i;
 	t_short	j;
-	t_short	min_z;
+	short	min_z;
 
 	i = 0;
 	min_z = map->max_z;
