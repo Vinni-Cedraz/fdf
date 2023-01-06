@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/05 19:18:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:11:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "fdf_defines.h"
 # include "fdf_keycodes.h"
+# include "printf_libft_includes.h"
 # include "fdf_structs_bonus.h"
 # include "mlx.h"
 # include <errno.h>

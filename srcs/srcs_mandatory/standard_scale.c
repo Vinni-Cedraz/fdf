@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/04 00:56:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:09:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	get_values_to_centralize_img_on_window(t_data *d)
 		ft_swap(&map_h, &map_w, sizeof(double));
 	d->move_x += (win_w - map_w * d->scale) / 1.10;
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
-		d->move_y += (win_h - map_h * d->scale) / 2;
+		d->move_y += (win_h - map_h) * d->scale / 2;
 	else
 	{
 		d->move_y += (win_h - map_h * d->scale) / 2;
