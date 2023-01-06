@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/05 23:58:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:33:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,59 +20,26 @@
 
 typedef unsigned char	t_uc;
 
-typedef struct s_module
+typedef struct s_mod
 {
+	short				read_failed;
+	short				malloc_failed;
 	char				*buf;
 	int					l_bgn;
 	int					l_end;
 	int					l_sz;
 	int					read;
-}						t_module;
+}						t_mod;
 
-static inline void	destroy_module(t_module *mod)
+static inline void		destroy_module(t_mod *mod) __attribute__((unused));
+
+static inline void	destroy_module(t_mod *mod)
 {
 	if (mod->buf)
 		free(mod->buf);
 	mod->buf = 0;
 }
 
-static	inline int	create_module(t_module *mod, int fd)
-{
-	mod->l_bgn = 0;
-	mod->buf = malloc(BUFFER_SIZE);
-	if (!mod->buf)
-		return (1);
-	mod->read = read(fd, mod->buf, BUFFER_SIZE);
-	if (mod->read < 1)
-		destroy_module(mod);
-	if (mod->read < 0)
-		return (1);
-	while (mod->l_bgn < mod->read && mod->buf[mod->l_bgn] != '\n')
-		mod->l_bgn++;
-	if (mod->l_bgn < mod->read)
-		mod->l_sz = mod->l_bgn + 1;
-	else
-		mod->l_sz = mod->l_bgn;
-	mod->l_bgn++;
-	mod->l_end = mod->l_bgn;
-	return (0);
-}
-
-// typedef struct s_gnl
-// {
-// 	int					fd;
-// 	t_module			mod_list[1024];
-// 	t_module			mod;
-// 	t_module			old;
-// 	t_module			*neo;
-// 	char				*line;
-// 	char				*append;
-// 	int					readed;
-// 	int					cp_n_bts;
-// 	int					sz;
-// 	int					ln_sz;
-// }						t_gnl;
-//
 typedef struct s_nodes
 {
 	void				*content;

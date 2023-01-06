@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:31:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/22 18:46:31 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 18:39:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 int	main(int argc, char **argv)
 {
-	char *file;
-	int fd;
-	int integer;
-	
+	char	*file;
+	int		fd;
+
 	(void)argc;
-	integer = 0;
 	fd = open(*++argv, O_RDONLY);
-	do {
-		file = ft_gnl(fd);
-		ft_printf("%d ", integer);
+	file = ft_gnl(fd);
+	while (file)
+	{
 		ft_putstr(file);
-		integer++;
-	} while (file);
+		file = ft_gnl(fd);
+	}
+	return (0);
 }
