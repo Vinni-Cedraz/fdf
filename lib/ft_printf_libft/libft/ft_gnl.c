@@ -5,80 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */ /*   Updated: 2022/12/16 17:52:53 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/05 23:49:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*reading_function(int fd);
-static char	*linebreaker(char *wth_all, size_t wth_all_len, size_t aft_or_not);
+static char			*l_make(char *line, char *append, int copy_n_bytes,
+						int size);
+static char			*read_fd(int fd, t_module old, t_module *mod_new,
+						int l_size);
 
 char	*ft_gnl(int fd)
 {
-	t_ools		line;
-	static char	*aftbrk;
+	static t_module	mod_list[1024];
+	t_module		mod;
+	char			*line;
 
-	if (read(fd, NULL, 0) < 0 || fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	line.bfr_brk = NULL;
-	if (!aftbrk)
-		line.wth_all = reading_function(fd);
+	if (BUFFER_SIZE < 1 || fd < 0)
+		return (0);
+	mod = mod_list[fd];
+	while (mod.l_end < mod.read && mod.buf[mod.l_end] != '\n')
+		mod.l_end++;
+	mod.l_sz = mod.l_end - mod.l_bgn;
+	if (mod.l_end < mod.read)
+	{
+		mod.l_sz++;
+		line = l_make(0, mod.buf + mod.l_bgn, mod.l_sz, mod.l_sz);
+		mod.l_bgn= mod.l_end + 1;
+		mod.l_end = mod.l_bgn;
+		mod_list[fd] = mod;
+	}
 	else
-		line.wth_all = ft_strjoin(aftbrk, reading_function(fd));
-	line.len = ft_strlen(line.wth_all) + 1;
-	if (line.len - 1)
 	{
-		aftbrk = linebreaker(line.wth_all, line.len, 1);
-		line.bfr_brk = linebreaker(line.wth_all, line.len, 0);
+		line = read_fd(fd, mod, mod_list + fd, mod.l_sz);
+		destroy_module(&mod);
 	}
-	if (!(line.wth_all == line.bfr_brk))
-		free(line.wth_all);
-	return (line.bfr_brk);
+	return (line);
 }
 
-static char	*reading_function(int fd)
+static inline char	*l_make(char *line, char *append, int copy_n_bytes,
+		int size)
 {
-	t_ools	line;
-
-	line.read = malloc(BUFFER_SIZE + 1 * sizeof(char));
-	line.bfr_brk = malloc(sizeof(char));
-	line.len = read(fd, line.read, BUFFER_SIZE);
-	*line.bfr_brk = '\0';
-	while (line.len != 0)
+	if (size)
 	{
-		*(line.read + line.len) = '\0';
-		line.bfr_brk = ft_strjoin(line.bfr_brk, line.read);
-		if (ft_memchr(line.bfr_brk, '\n', ft_strlen(line.bfr_brk)))
-			break ;
-		line.read = malloc(BUFFER_SIZE + 1 * sizeof(char));
-		line.len = read(fd, line.read, BUFFER_SIZE);
+		line = malloc(size + 1);
+		if (line)
+			line[size] = 0;
+		size -= copy_n_bytes;
 	}
-	if (line.len == 0)
-		free(line.read);
-	return (line.bfr_brk);
+	if (line)
+		while (copy_n_bytes--)
+			line[size++] = *append++;
+	return (line);
 }
 
-// wth_all_len already has the +1 for the \0
-static char	*linebreaker(char *wth_all, size_t wth_all_len, size_t aft_or_not)
+static char	*read_fd(int fd, t_module old, t_module *mod_new, int l_size)
 {
-	t_ools	line;
+	t_module	tmp;
+	char		*line;
+	int			total_size;
 
-	line.lnbrk = ft_memchr(wth_all, '\n', wth_all_len);
-	if (aft_or_not == 1)
+	total_size = l_size;
+	while (1)
 	{
-		line.aftbrk_len = (wth_all + wth_all_len) - (line.lnbrk + 1);
-		if (!line.lnbrk || line.lnbrk == wth_all + wth_all_len)
-			return (NULL);
-		line.aftbrk = malloc((line.aftbrk_len + 1) * sizeof(char));
-		ft_memcpy(line.aftbrk, line.lnbrk + 1, line.aftbrk_len);
-		return (line.aftbrk);
+		if (create_module(&tmp, fd))
+			return (0);
+		if (tmp.l_bgn> BUFFER_SIZE)
+		{
+			total_size += BUFFER_SIZE;
+			continue ;
+		}
+		else
+		{
+			line = l_make(0, tmp.buf, tmp.l_sz, total_size + tmp.l_sz);
+			if (old.buf)
+				l_make(line, old.buf + old.l_bgn, old.l_sz, 0);
+			*mod_new = tmp;
+			return (line);
+		}
+		if (line)
+			l_make(line + total_size, tmp.buf, BUFFER_SIZE, 0);
+		destroy_module(&tmp);
 	}
-	line.bfrbrk_len = line.lnbrk - wth_all + 2;
-	if (!line.lnbrk || line.lnbrk == wth_all + wth_all_len)
-		return ((char *)wth_all);
-	line.bfr_brk = malloc((line.bfrbrk_len) * sizeof(char));
-	ft_memcpy(line.bfr_brk, wth_all, line.bfrbrk_len);
-	*(line.bfr_brk + line.bfrbrk_len - 1) = '\0';
-	return (line.bfr_brk);
 }

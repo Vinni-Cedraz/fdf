@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:57:13 by vcedraz-          #+#    #+#              #
-#    Updated: 2022/12/22 19:06:33 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/05 23:54:21 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@
 
 SHELL := /bin/bash
 NAME = libftprintf.a
-CC = cc
 CFLAGS = -Wall -Wextra -Werror -O3
 RM = rm -f
 AR = ar rcs
