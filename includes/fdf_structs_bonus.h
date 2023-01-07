@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/05 23:42:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:09:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_create_map
 	char					*line;
 }							t_create_map;
 
-typedef struct s_line_data
+typedef struct s_row
 {
 	double					x;
 	double					y;
@@ -148,7 +148,6 @@ typedef struct s_data
 	t_state					state;
 	t_offset				offset;
 	t_mlx					*mlx;
-	t_node					*rotations_history;
 	t_img					*img;
 	t_map					*map;
 	t_create_map			tool;

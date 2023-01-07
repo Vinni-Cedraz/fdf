@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 19:34:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:04:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	standard_scale(t_data *d, short size)
 
 static void	calculate_target_scaled_map_size(t_map *map, short size)
 {
-	map->ratio = ((double)(int)map->width / (int)map->height);
+	map->ratio = (double)map->width / (double)map->height;
 	if (map->ratio > 1)
 	{
 		map->target_width = size;
@@ -54,12 +54,12 @@ static void	get_values_to_centralize_img_on_window(t_data *d)
 		magic_factor /= 10;
 	if (map_h > map_w)
 		ft_swap(&map_h, &map_w, sizeof(double));
-	d->move_x += (win_w - map_w * d->scale) / 1.10;
+	d->move_x += ((win_w - map_w * d->scale) / 2);
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
 		d->move_y += (win_h - map_h * d->scale) / 2;
 	else
 	{
 		d->move_y += (win_h - map_h * d->scale) / 2;
-		d->move_y -= (d->map->ratio * magic_factor);
+		d->move_y -= d->map->ratio * magic_factor;
 	}
 }

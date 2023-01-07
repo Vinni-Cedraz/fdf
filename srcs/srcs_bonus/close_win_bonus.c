@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 21:05:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 23:49:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	close_win_bonus(t_data *data)
 		two_steps_to_isometry_bonus(data, 1, 0);
 	else if (data->state.neutral_x == 0)
 		two_steps_to_isometry_bonus(data, 1, 0);
-	free(data->rotations_history);
 	mlx_destroy_image(data->mlx->mlx_ptr, data->img->mlx_img);
 	mlx_destroy_window(data->mlx->mlx_ptr, data->mlx->win_ptr);
 	mlx_destroy_display(data->mlx->mlx_ptr);

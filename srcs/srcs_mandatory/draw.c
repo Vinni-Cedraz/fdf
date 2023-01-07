@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_win.c                                        :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 01:18:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 00:00:52 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/06 22:31:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
-int	close_win(t_data *data)
+static void	paint_it_black(t_data *data);
+
+int	draw(t_data *d)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	free(data->img);
-	ft_free_t_map(data->map->arr);
-	free(data->matrix);
-	free(data->map);
-	free(data);
-	exit(0);
+	paint_it_black(d);
+	colorize(d->map);
+	render_map(d);
+	mlx_put_image_to_window(d->mlx_ptr, d->win_ptr, d->img->mlx_img, 0, 0);
+	return (0);
+}
+
+static void	paint_it_black(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->img->height)
+	{
+		j = 0;
+		while (j < data->img->width)
+		{
+			put_pixel_img(data->img, j, i, BLACK);
+			j++;
+		}
+		i++;
+	}
 }
