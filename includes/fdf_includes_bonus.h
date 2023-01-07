@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 19:11:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:15:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "fdf_defines.h"
 # include "fdf_keycodes.h"
-# include "printf_libft_includes.h"
 # include "fdf_structs_bonus.h"
 # include "mlx.h"
+# include "printf_libft_includes.h"
 # include <errno.h>
 # include <math.h>
 # include <stdio.h>
@@ -49,8 +49,8 @@ int		deal_keys_bonus(int key, t_data *d);
 
 void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset);
 
-void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps, \
-	t_short restore_iso_state);
+void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps,
+			t_short restore_iso_state);
 
 void	change_altitude_bonus(t_data *d, t_short up, t_short mirror);
 

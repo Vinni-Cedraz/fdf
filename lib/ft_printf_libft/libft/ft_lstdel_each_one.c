@@ -6,11 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 12:10:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 12:59:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 12:58:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft_bonus.h"
 
 void	ft_lstdel_each_one(t_node **lst, void (*del)(void *))
 {

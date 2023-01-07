@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 18:33:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:48:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef unsigned char	t_uc;
 typedef struct s_mod
 {
 	short				read_failed;
-	short				malloc_failed;
 	char				*buf;
 	int					l_bgn;
 	int					l_end;
@@ -39,12 +38,6 @@ static inline void	destroy_module(t_mod *mod)
 		free(mod->buf);
 	mod->buf = 0;
 }
-
-typedef struct s_nodes
-{
-	void				*content;
-	struct s_nodes		*next;
-}						t_node;
 
 typedef struct s_plit
 {

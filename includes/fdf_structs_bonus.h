@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 21:09:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:26:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FDF_STRUCTS_BONUS_H
 
 # include "printf_libft_structs.h"
+// stdio needed for FILE type
+# include <stdio.h>
 
 typedef unsigned int short	t_short;
 
@@ -72,7 +74,7 @@ typedef struct s_create_map
 {
 	t_short					x;
 	t_short					y;
-	t_short					fd;
+	FILE					*fp;
 	t_split					*split;
 	char					*line;
 }							t_create_map;

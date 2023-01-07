@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gnl.c                                           :+:      :+:    :+:   */
+/*   ft_special_gnl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:54:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:57:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static char		*l_make(char *line, char *append, int copy_n_bytes, int size);
-static void		read_file_and_create_module(t_mod *mod, int fd);
-static char		*read_fd(int fd, t_mod old, t_mod *mod_new, int l_size);
+static void		read_fp_create_module(t_mod *mod, FILE *fp);
+static char		*read_fp(FILE *fp, t_mod old, t_mod *mod_new, int l_size);
 
-char	*ft_gnl(int fd)
+char	*ft_special_gnl(FILE *fp)
 {
-	static t_mod	mod_list[1024];
+	static t_mod	mod_list[1];
 	t_mod			mod;
 	char			*line;
 
-	if (BUFFER_SIZE < 1 || fd < 0)
+	if (BUFFER_SIZE < 1 || !fp)
 		return (0);
-	mod = mod_list[fd];
+	mod = mod_list[0];
 	while (mod.l_end < mod.read && mod.buf[mod.l_end] != '\n')
 		mod.l_end++;
 	mod.l_sz = mod.l_end - mod.l_bgn;
@@ -34,11 +35,11 @@ char	*ft_gnl(int fd)
 		line = l_make(0, mod.buf + mod.l_bgn, mod.l_sz, mod.l_sz);
 		mod.l_bgn = mod.l_end + 1;
 		mod.l_end = mod.l_bgn;
-		mod_list[fd] = mod;
+		mod_list[0] = mod;
 	}
 	else
 	{
-		line = read_fd(fd, mod, mod_list + fd, mod.l_sz);
+		line = read_fp(fp, mod, mod_list, mod.l_sz);
 		destroy_module(&mod);
 	}
 	return (line);
@@ -60,7 +61,7 @@ static inline char	*l_make(char *line, char *append, int copy_n_bytes,
 	return (line);
 }
 
-static char	*read_fd(int fd, t_mod old, t_mod *mod_new, int l_size)
+static char	*read_fp(FILE *fp, t_mod old, t_mod *mod_new, int l_size)
 {
 	t_mod	tmp;
 	char	*line;
@@ -69,7 +70,7 @@ static char	*read_fd(int fd, t_mod old, t_mod *mod_new, int l_size)
 	total_size = l_size;
 	while (1)
 	{
-		read_file_and_create_module(&tmp, fd);
+		read_fp_create_module(&tmp, fp);
 		if (tmp.read_failed)
 			return (0);
 		if (tmp.l_bgn > BUFFER_SIZE)
@@ -88,11 +89,11 @@ static char	*read_fd(int fd, t_mod old, t_mod *mod_new, int l_size)
 	}
 }
 
-static void	read_file_and_create_module(t_mod *mod, int fd)
+static void	read_fp_create_module(t_mod *mod, FILE *fp)
 {
 	mod->l_bgn = 0;
 	mod->buf = malloc(BUFFER_SIZE);
-	mod->read = read(fd, mod->buf, BUFFER_SIZE);
+	mod->read = fread(mod->buf, 1, BUFFER_SIZE, fp);
 	if (mod->read < 1)
 		destroy_module(mod);
 	if (mod->read < 0)

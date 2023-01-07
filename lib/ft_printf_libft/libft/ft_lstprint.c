@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delnode_content.c                               :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 17:12:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 17:48:20 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/07 11:48:44 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/07 12:59:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft_bonus.h"
 
-void	del_node_content(void *node)
+void	ft_lstprint(t_node *lst)
 {
-	t_node	*temp;
-
-	temp = (t_node *)node;
-	if (!temp || !temp->content)
-		return ;
-	temp->content = NULL;
+	while (lst)
+	{
+		ft_putstr(lst->content);
+		ft_putchar('-');
+		ft_putchar('>');
+		ft_putchar('\n');
+		lst = lst->next;
+	}
 }
