@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 15:32:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/06 22:23:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,20 @@ int		parse_map(char *argv, t_data *d);
 
 void	render_map(t_data *data);
 
+void	linear_transformations(t_data *d, t_matrix *rotation_matrix);
+
 void	standard_scale(t_data *d, short size);
+
+int		draw(t_data *d);
 
 void	rotate_map(t_data *d);
 
 void	colorize(t_map *map);
 
 int		close_win(t_data *data);
+
+void	define_rotation_matrices(t_rotation_matrices *matrix);
+
+void	data_initializer(t_data *d);
 
 #endif
