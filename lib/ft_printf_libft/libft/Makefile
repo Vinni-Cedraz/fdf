@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/05 23:54:37 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/07 12:44:02 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,13 +90,15 @@ ft_split \
 
 BSRCS = ft_lstadd_back \
 ft_lstadd_front \
+ft_special_gnl \
 ft_lstdel_one \
 ft_lstdel_each_one \
-ft_delnode_content \
-ft_free_list \
+ft_lstnull_node \
+ft_lstfree \
 ft_lstlast \
 ft_lstnew \
 ft_lstsize \
+ft_lstprint \
 	
 PRNTF_SRCS = ft_putchar \
 ft_strlen \
