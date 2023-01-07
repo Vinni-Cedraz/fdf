@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 00:04:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 00:07:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define DARK_GRAY 0xA9A9A9
 # define DARKER_GRAY 0x696969
 
-# define WINDOW_HEIGHT 1080
-# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 1080
 
 // 54.735610317245 in RADS
 # define RAD_54_73 0.9510565162951535
