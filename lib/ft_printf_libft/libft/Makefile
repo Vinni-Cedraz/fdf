@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/07 12:44:02 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/08 13:11:26 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = libft.a
 NAME_BONUS = libft_bonus.a
 NAME_PRNTF = ../libftprintf.a
 NAME_FDF = srcs_to_fdf.a
+NAME_FDF_BONUS = srcs_to_fdf_bonus.a
 CFLAGS = -Wall -Werror -Wextra -O3
 AR = ar -rs
 RM = rm -f
@@ -23,6 +24,7 @@ OBJS_PATH = ./objs/
 OBJSB_PATH = ./objs_bonus/
 PRNTF_OBJS_PATH = ./objs_printf/
 FDF_OBJS_PATH = ./objs_fdf/
+FDF_OBJSB_PATH = ./objs_fdf_bonus/
 DEF_COLOR = \033[0;39m
 GRAY = \033[0;37m
 RED = \033[0;91m
@@ -106,34 +108,45 @@ ft_memset \
 ft_calloc \
 ft_itoa_base \
 
-FDF_SRCS = ft_memchr \
-		   ft_strchr \
-			 ft_strlen \
-		 	 ft_atoi_base \
-			 ft_memcpy \
-			 ft_memmove \
-			 ft_memset \
-			 ft_strdup \
-			 ft_strlcpy \
-			 ft_free_arr \
-			 ft_word_counter \
-			 ft_calloc \
-		     ft_strlcat \
-			 ft_atoi \
-			 ft_split \
-			 ft_strjoin \
-			 ft_substr \
-			 ft_gnl \
+FDF_SRCS = ft_strnstr \
+			   ft_swap \
+		  ft_free_t_map \
+		 ft_free_t_split \
+			 ft_atoi_base \
+		   ft_word_counter \
+				  ft_strlen \
+					  ft_gnl \
+				  ft_ishexlow \
+					 ft_calloc \
+					    ft_atoi \
+					   ft_memchr \
+					     ft_split \
+
+FDF_SRCS_BONUS = ft_strnstr \
+				     ft_swap \
+			    ft_free_t_map \
+			   ft_free_t_split \
+				   ft_atoi_base \
+			     ft_word_counter \
+					    ft_strlen \
+				    ft_special_gnl \
+					    ft_ishexlow \
+						   ft_calloc \
+							  ft_atoi \
+						     ft_memchr \
+							   ft_split \
 
 ## OBJS VARIABLES ##
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 OBJSB = $(patsubst %, $(OBJSB_PATH)%.o, $(BSRCS))
 OBJS_PRNTF = $(patsubst %, $(PRNTF_OBJS_PATH)%.o, $(PRNTF_SRCS))
 OBJS_FDF = $(patsubst %, $(FDF_OBJS_PATH)%.o, $(FDF_SRCS))
+OBJSB_FDF = $(patsubst %, $(FDF_OBJSB_PATH)%.o, $(FDF_SRCS_BONUS))
 MOD_OBJ = $(shell find . -path "./objs/*.o" -type f -newer $(NAME))
 MOD_OBJB = $(shell find . -path "./objs_bonus/*.o" -type f -newer $(NAME_BONUS))
 MOD_OBJ_PRNTF = $(shell find . -path "./objs_printf/*.o" -type f -newer $(NAME_PRNTF))
 MOD_OBJ_FDF = $(shell find . -path "./objs_fdf/*.o" -type f -newer $(NAME_FDF))
+MOD_OBJB_FDF = $(shell find . -path "./objs_fdf_bonus/*.o" -type f -newer $(NAME_FDF_BONUS))
 MOD_MK = $(shell find . -name "Makefile" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
 MOD_H = $(shell find . -name "*.h" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
 
@@ -142,7 +155,7 @@ all : $(NAME)
 
 srcs_to_printf : $(NAME_PRNTF)
 
-srcs_to_fdf_bonus: $(NAME_FDF)
+srcs_to_fdf_bonus: $(NAME_FDF_BONUS)
 
 srcs_to_fdf : $(NAME_FDF)
 
@@ -201,6 +214,23 @@ $(NAME_FDF) : $(OBJS_FDF)
 	fi; \
 	done
 
+$(NAME_FDF_BONUS) : $(OBJSB_FDF)
+	@printf "\n$(YELLOW)Linking fdf Bonus Objects From libft to Library...$(DEF_COLOR)\n";
+	@for file in $(MOD_OBJB_FDF); do \
+		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_FDF_BONUS)$(DEF_COLOR)\n"; \
+		printf "ar -rsc $(NAME_FDF_BONUS) $$file\n"; \
+		ar -rsc $(NAME_FDF_BONUS) $$file; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
+	done
+	@for file in $(FDF_SRCS_BONUS); do \
+	if [[ -z "$$(nm $(NAME_FDF_BONUS) | grep $${file}.o:)" ]]; then \
+		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME_FDF_BONUS)$(DEF_COLOR)\n"; \
+		ar -rsc $(NAME_FDF_BONUS) $(FDF_OBJSB_PATH)$$file.o; \
+		printf "ar -rsc $(NAME_FDF_BONUS) $$file.o\n"; \
+		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
+	fi; \
+	done
+
 $(NAME_BONUS) : $(NAME) $(OBJSB) 
 	@printf "\n$(YELLOW)Creating $(NAME_BONUS) Library With ALL Objects from libft...$(DEF_COLOR)\n";
 	cp $(NAME) $(NAME_BONUS)
@@ -219,7 +249,6 @@ $(NAME_BONUS) : $(NAME) $(OBJSB)
 	fi; \
 	done
 
-
 $(OBJS_PATH)%.o : %.c
 	@printf "\n$(YELLOW)Compiling All libft Sources...$(DEF_COLOR)\n\n"
 	@make LIBFT_LOOP --no-print-directory
@@ -236,6 +265,10 @@ $(FDF_OBJS_PATH)%.o : %.c
 	@printf "\n$(YELLOW)Compiling libft Sources... $(DEF_COLOR)\n\n"
 	@make FDF_LOOP --no-print-directory
 
+$(FDF_OBJSB_PATH)%.o : %.c
+	@printf "\n$(YELLOW)Compiling Bonus libft Sources... $(DEF_COLOR)\n\n"
+	@make FDF_BONUS_LOOP --no-print-directory
+
 FDF_LOOP :
 	@mkdir -p $(FDF_OBJS_PATH)
 	@for file in $(FDF_SRCS); do \
@@ -243,6 +276,17 @@ FDF_LOOP :
 		printf "$(CYAN)Compiling $(WHITE)$$file.c...$(DEF_COLOR)\n"; \
 		$(CC) $(CFLAGS) -c $$file.c -o $(FDF_OBJS_PATH)$$file.o; \
 		printf "$(CC) $(CFLAGS) -c $$file.c -o $(FDF_OBJS_PATH)$$file.o$(DEF_COLOR)\n"; \
+		printf "$(WHITE)$$file.c $(GREEN)OK$(DEF_COLOR)\n\n"; \
+	fi; \
+	done
+
+FDF_BONUS_LOOP :
+	@mkdir -p $(FDF_OBJSB_PATH)
+	@for file in $(FDF_SRCS_BONUS); do \
+	if [ $$file.c -nt $(FDF_OBJSB_PATH)$$file.o ]; then \
+		printf "$(CYAN)Compiling $(WHITE)$$file.c...$(DEF_COLOR)\n"; \
+		$(CC) $(CFLAGS) -c $$file.c -o $(FDF_OBJSB_PATH)$$file.o; \
+		printf "$(CC) $(CFLAGS) -c $$file.c -o $(FDF_OBJSB_PATH)$$file.o$(DEF_COLOR)\n"; \
 		printf "$(WHITE)$$file.c $(GREEN)OK$(DEF_COLOR)\n\n"; \
 	fi; \
 	done
@@ -321,6 +365,13 @@ clean_fdf:
 	fi
 	@rm -f a.out
 
+clean_fdf_bonus:
+	@if [ -d $(FDF_OBJSB_PATH) ]; then \
+		rm -rf $(FDF_OBJSB_PATH); \
+		printf "$(RED)FDF Bonus Objects Removed$(DEF_COLOR)\n"; \
+	fi
+	@rm -f a.out
+
 clean_bonus :
 	@if [ -d $(OBJSB_PATH) ]; then \
 		rm -rf $(OBJSB_PATH); \
@@ -357,6 +408,13 @@ fclean_fdf :
 	@if [ -f $(NAME_FDF) ]; then \
 		rm -f $(NAME_FDF); \
 		printf "$(RED)$(NAME_FDF) Removed$(DEF_COLOR)\n"; \
+	fi
+
+fclean_fdf_bonus :
+	@make clean_fdf --no-print-directory;
+	@if [ -f $(NAME_FDF_BONUS) ]; then \
+		rm -f $(NAME_FDF_BONUS); \
+		printf "$(RED)$(NAME_FDF_BONUS) Removed$(DEF_COLOR)\n"; \
 	fi
 
 fclean_bonus :
