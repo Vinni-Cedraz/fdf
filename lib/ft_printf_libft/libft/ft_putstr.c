@@ -6,11 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:20:54 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/22 18:41:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:54:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static inline size_t	aux_ft_putchar(char c);
 
 size_t	ft_putstr(char *s)
 {
@@ -20,6 +22,11 @@ size_t	ft_putstr(char *s)
 	if (!s)
 		return (0);
 	while (*(s + i))
-		ft_putchar(*(s + i++));
+		aux_ft_putchar(*(s + i++));
 	return (i);
+}
+
+static inline size_t	aux_ft_putchar(char c)
+{
+	return (write(1, &c, 1));
 }
