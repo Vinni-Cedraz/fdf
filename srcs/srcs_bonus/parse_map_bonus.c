@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:34:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:40:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_map_bonus(char *argv, t_data *d)
 	char	*first_line;
 
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
-		return (ft_printf("%s\n", strerror(22)), 0);
+		return (printf("%s\n", strerror(22)), 0);
 	fp = fopen(argv, "r");
 	if (!fp || !d)
 		return (perror("Error"), 0);

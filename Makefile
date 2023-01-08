@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/06 22:24:52 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/08 13:10:31 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
-ARCHIVE_FROM_LIBFT = $(LIBFT_PATH)*.a
 # these are the flags mlx needs to compile on linux:
 MLXFLAGS = -lXext -lX11 -lm
 # Colors
@@ -33,12 +32,12 @@ DEF_COLOR   =         \033[0;39m
 
 SRCS = put_pixel_img \
   			parse_map \
-			  close_win \
-			  render_map \
-			     colorize \
-				      draw \
-   define_rotation_matrices \
-      linear_transformations \
+			 close_win \
+			 render_map \
+			    colorize \
+				     draw \
+  define_rotation_matrices \
+     linear_transformations \
 		    data_initializer \
 				     deal_key \
 			     standard_scale\
@@ -46,20 +45,20 @@ SRCS = put_pixel_img \
 	                        main \
 
 BONUS_SRCS = two_steps_to_isometry_bonus \
-					close_win_bonus \
-					colorize_points_bonus \
-					deal_keys_bonus \
-					draw_bonus \
-					main_bonus \
-					parse_map_bonus \
-					render_map_bonus \
-					render_line_bonus \
-					linear_transformations_bonus \
+					      close_win_bonus \
+					 colorize_points_bonus \
+					        deal_keys_bonus \
+					              draw_bonus \
+					               main_bonus \
+					           parse_map_bonus \
+					           render_map_bonus \
+					           render_line_bonus \
+					 linear_transformations_bonus \
 					define_rotation_matrices_bonus \
-					data_initializer_bonus \
-					calculate_default_scale_bonus \
-					change_altitude_bonus \
-					zoom_bonus \
+					         data_initializer_bonus \
+					   calculate_default_scale_bonus \
+					            change_altitude_bonus \
+					                        zoom_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
@@ -69,44 +68,33 @@ SRCS_FROM_MLX = mlx_init \
 		   mlx_destroy_window \
 		     mlx_destroy_image \
 
-SRCS_FROM_LIBFT =  ft_memchr \
-		    		ft_numlen \
-		     		 ft_strchr \
-					  ft_strlen \
-					   ft_memcpy \
-					   ft_memmove \
-						 ft_memset \
-						  ft_strdup \
-						  ft_strlcpy \
-						  ft_free_arr \
-					      ft_atoi_base \
-					    ft_word_counter \
-					  		   ft_calloc \
-							   ft_strlcat \
-								   ft_atoi \
-								   ft_split \
-								  ft_strjoin \
-								    ft_substr \
+SRCS_FROM_LIBFT =  ft_strnstr \
+				   	   ft_swap \
+				  ft_free_t_map \
+				 ft_free_t_split \
+				     ft_atoi_base \
+				   ft_word_counter \
+				          ft_strlen \
+					          ft_gnl \
+					      ft_ishexlow \
+					         ft_calloc \
+					            ft_atoi \
+							   ft_memchr \
+					             ft_split \
 
-SRCS_FROM_LIBFT_TO_BONUS = ft_memchr \
-							ft_numlen \
-							 ft_strchr \
-							  ft_strlen \
-							   ft_memcpy \
-							   ft_memmove \
-								 ft_memset \
-								  ft_strdup \
-								  ft_strlcpy \
-								  ft_free_arr \
-								  ft_atoi_base \
-								ft_word_counter \
-									   ft_calloc \
-									   ft_strlcat \
-										   ft_atoi \
-										   ft_split \
-										  ft_strjoin \
-											ft_substr \
-											ft_strncmp \
+SRCS_FROM_LIBFT_TO_BONUS = ft_strnstr \
+							   ft_swap \
+						  ft_free_t_map \
+						 ft_free_t_split \
+							 ft_atoi_base \
+						   ft_word_counter \
+							 ft_special_gnl \
+								 ft_ishexlow \
+									ft_calloc \
+									   ft_atoi \
+									  ft_memchr \
+									    ft_split \
+										ft_strlen \
 
 ################ MANDATORY VARIABLES ################
 SRCS_PATH = srcs/srcs_mandatory/
@@ -130,12 +118,13 @@ make_mlx:
 
 make_libft:
 	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
+	@make -C $(PRNTF_PATH) --no-print-directory
 
 make_work_in_progress:
 	@make bonus -C $(LIBFT_PATH) --no-print-directory
 	@make -C $(PRNTF_PATH) --no-print-directory
 
-$(NAME): $(OBJS) make_mlx make_work_in_progress
+$(NAME): $(OBJS) make_mlx make_libft
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(MOD_OBJ); do \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
@@ -152,7 +141,7 @@ $(NAME): $(OBJS) make_mlx make_work_in_progress
 	fi; \
 	done
 	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
-	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(ARCHIVE_FROM_LIBFT) -o $(EXECUTABLE)
+	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(LIBFT_PATH)srcs_to_fdf.a -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
@@ -175,9 +164,8 @@ bonus: $(NAME_BONUS)
 
 make_libft_for_bonus:
 	@make srcs_to_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
-	@make -C $(PRNTF_PATH) --no-print-directory
 
-$(NAME_BONUS): $(BONUS_OBJS) make_mlx make_work_in_progress make_libft_for_bonus
+$(NAME_BONUS): $(BONUS_OBJS) make_mlx make_libft_for_bonus
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(BONUS_MOD_OBJ); do \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
@@ -194,7 +182,7 @@ $(NAME_BONUS): $(BONUS_OBJS) make_mlx make_work_in_progress make_libft_for_bonus
 	fi; \
 	done
 	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
-	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME_BONUS) $(MLX) $(PRNTF_PATH)libftprintf.a $(ARCHIVE_FROM_LIBFT) -o $(EXECUTABLE)
+	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME_BONUS) $(MLX) $(LIBFT_PATH)srcs_to_fdf_bonus.a -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(BONUS_OBJS_PATH)%.o: $(BONUS_SRCS_PATH)%.c
@@ -216,6 +204,7 @@ BONUS_LOOP:
 clean:
 	@make clean -C mlx --no-print-directory
 	@make clean_fdf -C $(LIBFT_PATH) --no-print-directory
+	@make clean_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 	@make clean -C $(PRNTF_PATH) --no-print-directory
 	@rm -rf $(OBJS_PATH)
 	@rm -rf $(BONUS_OBJS_PATH)
@@ -227,6 +216,8 @@ fclean: clean
 	@rm -f $(NAME_BONUS)
 	@rm -f $(EXECUTABLE)
 	@make fclean -C $(PRNTF_PATH) --no-print-directory
+	@make fclean_fdf -C $(LIBFT_PATH) --no-print-directory
+	@make fclean_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 	@rm -f mlx/*.a
 
 re: fclean all
