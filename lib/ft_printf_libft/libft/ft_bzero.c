@@ -6,13 +6,20 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:56:52 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/12/29 17:11:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 00:03:07 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s)
+void	ft_bzero(char *s, int n)
 {
-	ft_memset(s, 0, ft_strlen(s));
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*(s + i) = 0;
+		i++;
+	}
 }

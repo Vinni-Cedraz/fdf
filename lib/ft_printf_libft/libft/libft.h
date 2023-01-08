@@ -5,9 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 09:46:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/05 19:14:47 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/07 23:48:41 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/08 00:33:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf_libft_includes.h"
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include "../includes/printf_libft_includes.h"
+
+#endif

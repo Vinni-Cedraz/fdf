@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:48:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/07 22:07:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct s_plit
 	char				*end;
 	char				*start;
 	char				**str_arr;
-	size_t				i;
 	size_t				words;
 
 }						t_split;
