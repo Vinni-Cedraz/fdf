@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:26:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:31:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ typedef struct s_point
 	double					y;
 	double					z;
 	unsigned int			color;
+	double					phi;
+	double					theta;
+	double					r;
 	t_snapshot				snapshot;
 }							t_point;
 
@@ -105,6 +108,7 @@ typedef struct s_rotation_matrices
 	t_matrix				rev_z_45;
 	t_matrix				rot_x_54_73;
 	t_matrix				rev_x_54_73;
+	t_matrix				spherical;
 }							t_rotation_matrices;
 
 typedef struct s_mlx
@@ -124,6 +128,12 @@ typedef struct s_offset
 	double					move_x;
 	double					move_y;
 }							t_offset;
+
+// phi is also known as latitude
+// theta is also known as longitude
+typedef struct s_sphere
+{
+}							t_sphere;
 
 typedef struct s_state
 {

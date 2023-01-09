@@ -6,13 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 18:16:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:42:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-void		define_rotation_matrices_bonus(t_rotation_matrices *matrix);
 static void	define_reversion_matrices(t_rotation_matrices *matrix);
 static void	define_isometry_step_one_rotation(t_rotation_matrices *matrix);
 static void	define_isometry_step_two_rotation(t_rotation_matrices *matrix);

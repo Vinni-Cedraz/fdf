@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 23:14:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:40:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,19 @@ static void	aux_deal_keys(int key, t_data *d)
 	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v')
 		reset_states(d);
 	if (key == 'a')
-		linear_transformations_bonus(d, &d->matrix->rot_y);
+		linear_transformations_bonus(d, &d->matrix->rot_y, 0);
 	else if (key == 'd')
-		linear_transformations_bonus(d, &d->matrix->rev_y);
+		linear_transformations_bonus(d, &d->matrix->rev_y, 0);
 	else if (key == 'q')
-		linear_transformations_bonus(d, &d->matrix->rot_x);
+		linear_transformations_bonus(d, &d->matrix->rot_x, 0);
 	else if (key == 'e')
-		linear_transformations_bonus(d, &d->matrix->rev_x);
+		linear_transformations_bonus(d, &d->matrix->rev_x, 0);
 	else if (key == 'x')
-		linear_transformations_bonus(d, &d->matrix->rot_z);
+		linear_transformations_bonus(d, &d->matrix->rot_z, 0);
 	else if (key == 'v')
-		linear_transformations_bonus(d, &d->matrix->rev_z);
+		linear_transformations_bonus(d, &d->matrix->rev_z, 0);
+	else if (key == 'p')
+		linear_transformations_bonus(d, (void *)d, 1);
 	else if (key == 'g' && d->state.grid_style_nb == 1)
 		d->state.grid_style_nb = 2;
 	else if (key == 'g' && d->state.grid_style_nb == 2)
