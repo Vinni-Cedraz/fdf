@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 17:19:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:57:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes.h"
 
 static void	open_win_and_img(t_data *data);
-static void	find_center_of_the_img(t_data *d);
+static void	find_center_of_the_map(t_data *d);
 
 void	data_initializer(t_data *d)
 {
@@ -22,7 +22,7 @@ void	data_initializer(t_data *d)
 	d->matrix = ft_calloc(sizeof(t_rotation_matrices), 1);
 	if (ft_strnstr(d->argv[1], "elem-fract.fdf", ft_strlen(d->argv[1])))
 		d->move_y -= 50;
-	find_center_of_the_img(d);
+	find_center_of_the_map(d);
 	open_win_and_img(d);
 	define_rotation_matrices(d->matrix);
 }
@@ -40,7 +40,7 @@ static void	open_win_and_img(t_data *data)
 			&data->img->line_len, &data->img->endian);
 }
 
-static void	find_center_of_the_img(t_data *d)
+static void	find_center_of_the_map(t_data *d)
 {
 	d->cx = d->map->arr[d->map->height / 2][d->map->width / 2].x;
 	d->cy = d->map->arr[d->map->height / 2][d->map->width / 2].y;

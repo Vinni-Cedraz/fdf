@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/08 17:17:54 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/09 12:24:19 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -411,7 +411,7 @@ fclean_fdf :
 	fi
 
 fclean_fdf_bonus :
-	@make clean_fdf --no-print-directory;
+	@make clean_fdf_bonus --no-print-directory;
 	@if [ -f $(NAME_FDF_BONUS) ]; then \
 		rm -f $(NAME_FDF_BONUS); \
 		printf "$(RED)$(NAME_FDF_BONUS) Removed$(DEF_COLOR)\n"; \

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 14:01:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:43:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static void	apply_isometric_steps(t_data *d)
 		d->state.parallel = 0;
 	}
 	if (d->state.parallel)
-		linear_transformations_bonus(d, &d->matrix->rot_z_45);
+		linear_transformations_bonus(d, &d->matrix->rot_z_45, 0);
 	else if (d->state.diagonal)
-		linear_transformations_bonus(d, &d->matrix->rot_x_54_73);
+		linear_transformations_bonus(d, &d->matrix->rot_x_54_73, 0);
 	if ((d->state.step_towards_isometry - d->state.step_back) == 2)
 	{
 		d->state.isometric = 1;
@@ -73,9 +73,9 @@ static void	undo_isometric_steps(t_data *d)
 		d->state.parallel = 1;
 	}
 	if (d->state.diagonal)
-		linear_transformations_bonus(d, &d->matrix->rev_x_54_73);
+		linear_transformations_bonus(d, &d->matrix->rev_x_54_73, 0);
 	else if (d->state.parallel)
-		linear_transformations_bonus(d, &d->matrix->rev_z_45);
+		linear_transformations_bonus(d, &d->matrix->rev_z_45, 0);
 	d->state.isometric = 0;
 }
 

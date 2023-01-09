@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:15:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/08 23:25:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	calculate_default_scale_bonus(t_data *d, t_short size);
 
 void	define_rotation_matrices_bonus(t_rotation_matrices *matrix);
 
-void	linear_transformations_bonus(t_data *d, t_matrix *rotation_matrix);
+void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere);
 
 void	render_line_bonus(t_point p1, t_point p2, t_data *d);
 
@@ -51,6 +51,8 @@ void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset);
 
 void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps,
 			t_short restore_iso_state);
+
+void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere);
 
 void	change_altitude_bonus(t_data *d, t_short up, t_short mirror);
 
