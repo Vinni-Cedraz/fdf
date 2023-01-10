@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 23:43:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 00:06:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps,
 		restore_isometric_state_from_snapshot(d);
 	else
 	{
-		take_snapshot(d);
 		apply_isometric_steps(d);
+		if (d->state.isometric)
+			take_snapshot(d);
 	}
 }
 
 static void	apply_isometric_steps(t_data *d)
 {
-	if (d->state.isometric)
+	if ((!d->state.parallel && !d->state.diagonal) || d->state.isometric)
 		return ;
 	d->state.step_towards_isometry++;
 	if ((d->state.step_towards_isometry - d->state.step_back) == 1)
@@ -59,7 +60,7 @@ static void	apply_isometric_steps(t_data *d)
 
 static void	undo_isometric_steps(t_data *d)
 {
-	if (d->state.parallel)
+	if (!d->state.isometric && !d->state.diagonal)
 		return ;
 	d->state.step_back++;
 	if ((d->state.step_towards_isometry - d->state.step_back) == 1)
