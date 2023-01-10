@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 23:40:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 23:53:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	aux_deal_keys(int key, t_data *d)
 		zoom_bonus(d, 1, 0, 0);
 	else if (key == 's')
 		zoom_bonus(d, 0, 1, 0);
-	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v')
+	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v' \
+	|| key == 'q')
 		reset_states(d);
 	if (key == 'a')
 		linear_transformations_bonus(d, &d->matrix->rot_y, 0);
