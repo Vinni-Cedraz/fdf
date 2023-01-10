@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 10:27:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:52:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-typedef unsigned char	t_uc;
 
 typedef struct s_plit
 {

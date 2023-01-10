@@ -6,29 +6,29 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:31:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 22:49:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:26:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libft_bonus.h"
+#include <stdio.h>
 
 //gnl test
-int	main(int argc, char **argv)
-{
-	char	*file;
-	int		fd;
-
-	(void)argc;
-	fd = open(*++argv, O_RDONLY);
-	file = ft_gnl(fd);
-	while (file)
-	{
-		ft_putstr(file);
-		file = ft_gnl(fd);
-	}
-	return (0);
-}
+// int	main(int argc, char **argv)
+// {
+// 	char	*file;
+// 	int		fd;
+//
+// 	(void)argc;
+// 	fd = open(*++argv, O_RDONLY);
+// 	file = ft_gnl(fd);
+// 	while (file)
+// 	{
+// 		ft_putstr(file);
+// 		file = ft_gnl(fd);
+// 	}
+// 	return (0);
+// }
 
 // linked lists tests
 // static void	list_init(t_node **node);
