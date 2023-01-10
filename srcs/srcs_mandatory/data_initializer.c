@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 17:57:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 23:33:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	data_initializer(t_data *d)
 	find_center_of_the_map(d);
 	open_win_and_img(d);
 	define_rotation_matrices(d->matrix);
+	d->state.altitude = d->map->max_z;
 }
 
 static void	open_win_and_img(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/03 14:05:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 23:39:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 		return ;
 	if (!d->state.neutral_zoom)
 		zoom_bonus(d, 0, 0, 1);
-	if (up && d->map->max_z >= 1800)
+	if (up && d->map->max_z >= 500)
+		return ;
+	if (up && abs(d->map->min_z) >= 500)
 		return ;
 	else
 		two_steps_to_isometry_bonus(d, 1, 0);
@@ -37,6 +39,7 @@ static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror)
 {
 	t_short	i;
 	t_short	j;
+	t_point	*p;
 
 	i = 0;
 	while (i < d->map->height)
@@ -44,12 +47,13 @@ static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror)
 		j = 0;
 		while (j < d->map->width)
 		{
-			if (up)
-				d->map->pts[i][j].z *= 1.1;
-			if (down)
-				d->map->pts[i][j].z /= 1.1;
-			if (mirror)
-				d->map->pts[i][j].z *= -1;
+			p = &d->map->pts[i][j];
+			if (up && p->z != 0)
+				p->z *= 1.1;
+			if (down && p->z != 0)
+				p->z /= 1.1;
+			if (mirror && p->z != 0)
+				p->z *= -1;
 			j++;
 		}
 		i++;
