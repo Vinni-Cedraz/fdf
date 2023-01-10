@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 12:18:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:27:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,11 @@
 
 # include "printf_libft_defines.h"
 # include <stdarg.h>
+# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef unsigned char	t_uc;
-
-typedef struct s_mod
-{
-	short				read_failed;
-	char				*buf;
-	int					l_bgn;
-	int					l_end;
-	int					l_sz;
-	int					read;
-}						t_mod;
-
-static inline void		destroy_module(t_mod *mod) __attribute__((unused));
-
-static inline void	destroy_module(t_mod *mod)
-{
-	if (mod->buf)
-		free(mod->buf);
-	mod->buf = 0;
-}
 
 typedef struct s_plit
 {
@@ -70,5 +52,28 @@ typedef struct s_tools
 	size_t				abs;
 	va_list				list;
 }						t_ools;
+
+typedef struct s_gnl
+{
+	size_t				bfrbrk_len;
+	size_t				aftbrk_len;
+	size_t				len;
+	char				*read;
+	char				*line;
+	char				*bfr_brk;
+	char				*lnbrk;
+	char				*aftbrk;
+	char				*wth_all;
+}						t_gnl;
+
+typedef struct s_read_one
+{
+	char				*buf;
+	char				*read;
+	char				*res;
+	size_t				len;
+	size_t				i;
+	size_t				max;
+}						t_read_one;
 
 #endif

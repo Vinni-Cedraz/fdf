@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 00:25:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 20:28:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int						ft_isalpha(int c);
 int						ft_isascii(int c);
 // The ft_isprint function tests whether c represents a printable character
 // in the ascii table.
-int						ft_isprint(int c);
+int						ft_isprint(void *c);
 // ft_toupper - converts a lower-case letter to the corresponding upper-case
 int						ft_toupper(int c);
 // ft_tolower - converts an upper-case letter to the corresponding lower-case

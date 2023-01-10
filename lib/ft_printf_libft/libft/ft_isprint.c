@@ -6,11 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 17:43:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/10/01 19:06:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 20:30:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+int	ft_isprint(void *c)
 {
-	return (' ' <= c && c <= '~');
+	char	*aux;
+
+	aux = (char *)c;
+	if (*aux >= 32 && *aux <= 126)
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/09 12:24:19 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/09 22:53:22 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,14 +93,18 @@ ft_split \
 BSRCS = ft_lstadd_back \
 ft_lstadd_front \
 ft_special_gnl \
-ft_lstdel_one \
-ft_lstdel_each_one \
-ft_lstnull_node \
 ft_lstfree \
 ft_lstlast \
 ft_lstnew \
 ft_lstsize \
 ft_lstprint \
+ft_lstadd_here \
+ft_lstdel_here \
+ft_lstgetby_index \
+ft_lstgetby_content \
+ft_lstfree_nodes \
+ft_lstpop \
+ft_lstshift \
 	
 PRNTF_SRCS = ft_putchar \
 ft_strlen \
@@ -121,6 +125,9 @@ FDF_SRCS = ft_strnstr \
 					    ft_atoi \
 					   ft_memchr \
 					     ft_split \
+						ft_strjoin \
+						  ft_memcpy \
+						   ft_strdup \
 
 FDF_SRCS_BONUS = ft_strnstr \
 				     ft_swap \
@@ -147,8 +154,6 @@ MOD_OBJB = $(shell find . -path "./objs_bonus/*.o" -type f -newer $(NAME_BONUS))
 MOD_OBJ_PRNTF = $(shell find . -path "./objs_printf/*.o" -type f -newer $(NAME_PRNTF))
 MOD_OBJ_FDF = $(shell find . -path "./objs_fdf/*.o" -type f -newer $(NAME_FDF))
 MOD_OBJB_FDF = $(shell find . -path "./objs_fdf_bonus/*.o" -type f -newer $(NAME_FDF_BONUS))
-MOD_MK = $(shell find . -name "Makefile" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
-MOD_H = $(shell find . -name "*.h" -type f -newer $(NAME) || $(NAME_FDF) || $(NAME_PRNTF) || $(NAME_BONUS))
 
 ## COMPILATION RULES ##
 all : $(NAME) 
@@ -233,7 +238,9 @@ $(NAME_FDF_BONUS) : $(OBJSB_FDF)
 
 $(NAME_BONUS) : $(NAME) $(OBJSB) 
 	@printf "\n$(YELLOW)Creating $(NAME_BONUS) Library With ALL Objects from libft...$(DEF_COLOR)\n";
-	cp $(NAME) $(NAME_BONUS)
+	@if	[[ -z "$$(nm $(NAME_BONUS) | grep ft_lstnew.o:)" ]]; then \
+		cp $(NAME) $(NAME_BONUS); \
+	fi
 	@for file in $(MOD_OBJB); do \
 		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
 		printf "ar -rsc $(NAME_BONUS) $$file\n"; \

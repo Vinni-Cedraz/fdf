@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel_one.c                                    :+:      :+:    :+:   */
+/*   ft_lstclean.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 12:13:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 12:58:52 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/09 18:34:10 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/09 18:35:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft_bonus.h"
 
-void	ft_lstdel_one(t_node *lst, void (*del)(void *))
+void	ft_lstfree_nodes(t_node **list)
 {
-	if (!lst)
+	t_node	*tmp;
+
+	tmp = *list;
+	if (list == NULL)
 		return ;
-	del(lst->content);
-	free(lst);
+	while (tmp)
+	{
+		*list = tmp->next;
+		free(tmp);
+		tmp = *list;
+	}
+	list = NULL;
 }

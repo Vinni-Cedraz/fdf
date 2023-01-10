@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstgetby_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:22:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 19:05:45 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/09 17:14:22 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/09 21:17:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft_bonus.h"
 
-void	ft_lstadd_back(t_node **lst, t_node *new)
+t_node	*ft_lstgetby_index(t_node *lst, uint index)
 {
-	t_node	*temp;
-
-	if (!lst || !new)
-		return ;
-	if (!*lst)
+	if (!index)
+		return (NULL);
+	while (lst)
 	{
-		*lst = new;
-		return ;
+		if (!index--)
+			return (lst);
+		lst = lst->next;
 	}
-	temp = *lst;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new;
-	new->next = NULL;
+	return (NULL);
 }

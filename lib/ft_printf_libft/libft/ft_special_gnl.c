@@ -6,16 +6,17 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 18:49:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:57:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:09:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_bonus.h"
 #include <stdio.h>
 
 static char		*l_make(char *line, char *append, int copy_n_bytes, int size);
 static void		read_fp_create_module(t_mod *mod, FILE *fp);
 static char		*read_fp(FILE *fp, t_mod old, t_mod *mod_new, int l_size);
+static void		destroy_module(t_mod *mod);
 
 char	*ft_special_gnl(FILE *fp)
 {
@@ -23,8 +24,6 @@ char	*ft_special_gnl(FILE *fp)
 	t_mod			mod;
 	char			*line;
 
-	if (BUFFER_SIZE < 1 || !fp)
-		return (0);
 	mod = mod_list[0];
 	while (mod.l_end < mod.read && mod.buf[mod.l_end] != '\n')
 		mod.l_end++;
@@ -73,9 +72,9 @@ static char	*read_fp(FILE *fp, t_mod old, t_mod *mod_new, int l_size)
 		read_fp_create_module(&tmp, fp);
 		if (tmp.read_failed)
 			return (0);
-		if (tmp.l_bgn > BUFFER_SIZE)
+		if (tmp.l_bgn > FIXED_BUFSZ)
 		{
-			total_size += BUFFER_SIZE;
+			total_size += FIXED_BUFSZ;
 			continue ;
 		}
 		else
@@ -92,8 +91,8 @@ static char	*read_fp(FILE *fp, t_mod old, t_mod *mod_new, int l_size)
 static void	read_fp_create_module(t_mod *mod, FILE *fp)
 {
 	mod->l_bgn = 0;
-	mod->buf = malloc(BUFFER_SIZE);
-	mod->read = fread(mod->buf, 1, BUFFER_SIZE, fp);
+	mod->buf = malloc(FIXED_BUFSZ);
+	mod->read = fread(mod->buf, 1, FIXED_BUFSZ, fp);
 	if (mod->read < 1)
 		destroy_module(mod);
 	if (mod->read < 0)
@@ -109,4 +108,11 @@ static void	read_fp_create_module(t_mod *mod, FILE *fp)
 		mod->l_sz = mod->l_bgn;
 	mod->l_bgn++;
 	mod->l_end = mod->l_bgn;
+}
+
+static void	destroy_module(t_mod *mod)
+{
+	if (mod->buf)
+		free(mod->buf);
+	mod->buf = 0;
 }

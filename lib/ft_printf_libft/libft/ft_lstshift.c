@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel_each_one.c                               :+:      :+:    :+:   */
+/*   ft_lstshift.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 12:10:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 12:58:48 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/09 18:39:56 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/09 19:03:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft_bonus.h"
 
-void	ft_lstdel_each_one(t_node **lst, void (*del)(void *))
+t_node	*ft_lstshift(t_node **head)
 {
-	t_node	*tmp;
-	t_node	*element;
+	t_node	*new_head;
 
-	if (*lst == NULL)
-		return ;
-	element = *lst;
-	while (element != NULL)
-	{
-		tmp = element->next;
-		ft_lstdel_one(element, del);
-		element = tmp;
-	}
-	*lst = NULL;
+	if (!head || !*head || !(*head)->next)
+		return (*head);
+	new_head = (*head)->next;
+	free(*head);
+	*head = new_head;
+	return (new_head);
 }
