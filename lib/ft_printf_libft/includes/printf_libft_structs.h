@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 13:27:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 10:27:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,54 @@ typedef struct s_plit
 
 typedef struct s_tools
 {
-	size_t				i;
-	size_t				chars;
-	size_t				counter;
-	size_t				prntd;
-	size_t				chckd;
-	char				*str;
-	char				*res;
-	char				*tmp;
-	char				*to_ascii;
+	size_t				abs;
 	size_t				len;
 	size_t				size;
 	size_t				half;
 	size_t				baselen;
 	size_t				sign;
-	size_t				from_start;
-	size_t				from_end;
-	size_t				result;
-	size_t				abs;
 	va_list				list;
 }						t_ools;
 
+typedef enum s_enum
+{
+	TAB = 9,
+	NEWLINE = 10,
+	VERTICAL_TAB = 11,
+	FORMFEED = 12,
+	CARRIAGE_RETURN = 13,
+	SPACE = ' ',
+}						t_whitespace;
+
+typedef struct s_counters
+{
+	size_t				chars;
+	size_t				counter;
+	size_t				prntd;
+	size_t				chckd;
+	size_t				from_start;
+	size_t				from_end;
+}						t_counters;
+
+typedef struct s_tring
+{
+	char				*str;
+	char				*res;
+	char				*tmp;
+	char				*to_ascii;
+}						t_string;
+
 typedef struct s_gnl
 {
-	size_t				bfrbrk_len;
-	size_t				aftbrk_len;
-	size_t				len;
 	char				*read;
 	char				*line;
 	char				*bfr_brk;
 	char				*lnbrk;
 	char				*aftbrk;
 	char				*wth_all;
+	size_t				bfrbrk_len;
+	size_t				aftbrk_len;
+	size_t				len;
 }						t_gnl;
 
 typedef struct s_read_one
