@@ -6,34 +6,50 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:55:25 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 17:59:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:43:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 
-typedef unsigned char	t_uc;
+static inline size_t	aux_strlen(const char *str);
+static inline int		aux_strncmp(const char *s1, const char *s2, size_t n);
+static inline int		within_limits(size_t i, size_t nstr_sz, size_t len);
 
-static inline size_t	aux_ft_strlen(const char *str);
-static inline int		aux_ft_strncmp(const char *s1, const char *s2,
-							size_t n);
-
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *str, const char *inner_str, size_t len)
 {
 	size_t	i;
-	size_t	lil_sz;
+	size_t	inner_str_sz;
 
-	i = -1;
-	lil_sz = aux_ft_strlen(little);
-	if (*little == '\0')
-		return ((char *)big);
-	while (big[++i] && i < len)
-		if (!aux_ft_strncmp(big + i, little, lil_sz) && i + lil_sz <= len)
-			return ((char *)(big + i));
-	return (NULL);
+	if (*inner_str == '\0')
+		return ((char *)str);
+	if (!len)
+		return (NULL);
+	inner_str_sz = aux_strlen(inner_str);
+	i = 0;
+	while (1)
+	{
+		if (i == len)
+			return (NULL);
+		if (str[i] == '\0')
+			return (NULL);
+		if (!aux_strncmp(str + i, inner_str, inner_str_sz))
+			if (within_limits(i, inner_str_sz, len))
+				break ;
+		i++;
+	}
+	return ((char *)(str + i));
 }
 
-static inline size_t	aux_ft_strlen(const char *str)
+static inline int	within_limits(size_t i, size_t nlen, size_t len)
+{
+	if (i + nlen <= len)
+		return (1);
+	return (0);
+}
+
+static inline size_t	aux_strlen(const char *str)
 {
 	size_t	i;
 
@@ -43,14 +59,17 @@ static inline size_t	aux_ft_strlen(const char *str)
 	return (i);
 }
 
-static inline int	aux_ft_strncmp(const char *s1, const char *s2, size_t n)
+static inline int	aux_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
+	int		difference;
 
 	i = 0;
+	difference = 0;
 	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
 		i++;
 	if (i == n)
-		return (0);
-	return ((t_uc)s1[i] - (t_uc)s2[i]);
+		return (difference);
+	difference = (unsigned char)s1[i] - (unsigned char)s2[i];
+	return (difference);
 }

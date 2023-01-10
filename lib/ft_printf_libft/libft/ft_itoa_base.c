@@ -6,13 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:46:59 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 22:19:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 10:54:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline size_t	aux_ft_strlen(const char *str)
+static size_t			converted_len(size_t n, char *base);
+static void				*aux_calloc(size_t nmemb, size_t size);
+
+static inline size_t	aux_strlen(const char *str)
 {
 	size_t	i;
 
@@ -22,12 +25,31 @@ static inline size_t	aux_ft_strlen(const char *str)
 	return (i);
 }
 
+char	*ft_itoa_base(size_t n, char *base)
+{
+	int		len;
+	int		baselen;
+	char	*str;
+
+	len = converted_len(n, base);
+	baselen = aux_strlen(base);
+	str = aux_calloc((len + 1), sizeof(char));
+	if (!str)
+		return (NULL);
+	while (len--)
+	{
+		str[len] = base[n % baselen];
+		n /= baselen;
+	}
+	return (str);
+}
+
 static size_t	converted_len(size_t n, char *base)
 {
 	t_ools	nb;
 
 	nb.len = 1;
-	nb.baselen = aux_ft_strlen(base);
+	nb.baselen = aux_strlen(base);
 	while (n >= nb.baselen)
 	{
 		n /= nb.baselen;
@@ -36,7 +58,7 @@ static size_t	converted_len(size_t n, char *base)
 	return (nb.len);
 }
 
-static inline void	*aux_ft_calloc(size_t nmemb, size_t size)
+static void	*aux_calloc(size_t nmemb, size_t size)
 {
 	char	*ptr;
 	size_t	i;
@@ -53,21 +75,4 @@ static inline void	*aux_ft_calloc(size_t nmemb, size_t size)
 		i++;
 	}
 	return (ptr);
-}
-
-char	*ft_itoa_base(size_t n, char *base)
-{
-	t_ools	tool;
-
-	tool.len = converted_len(n, base);
-	tool.baselen = aux_ft_strlen(base);
-	tool.str = aux_ft_calloc((tool.len + 1), sizeof(char));
-	if (!tool.str)
-		return (NULL);
-	while (tool.len--)
-	{
-		tool.str[tool.len] = base[n % tool.baselen];
-		n /= tool.baselen;
-	}
-	return (tool.str);
 }

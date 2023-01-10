@@ -6,16 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:28:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 09:45:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:32:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-typedef unsigned char	t_uc;
-static inline void		*aux_memcpy(void *dst, const void *src, size_t n);
-static inline void		aux_swap(void *a, void *b, size_t size);
+static inline void	*aux_memcpy(void *dst, const void *src, size_t n);
+static inline void	aux_swap(void *a, void *b, size_t size);
 
 void	ft_rev_int_tab(size_t *tab, size_t size)
 {
@@ -44,13 +43,13 @@ static inline void	aux_swap(void *a, void *b, size_t size)
 
 static inline void	*aux_memcpy(void *dst, const void *src, size_t n)
 {
-	t_uc	*dest;
-	t_uc	*source;
-	size_t	i;
+	unsigned char	*dest;
+	unsigned char	*source;
+	size_t			i;
 
 	i = -1;
-	dest = (t_uc *)dst;
-	source = (t_uc *)src;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
 	while (++i < n)
 		*(dest + i) = *(source + i);
 	return (dest);
