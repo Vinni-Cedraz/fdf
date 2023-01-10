@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnull_node.c                                  :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 17:12:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 12:59:07 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/09 18:41:21 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/09 19:55:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft_bonus.h"
 
-void	ft_lst_del_content(void *node)
+void	ft_lstpop(t_node **lst)
 {
-	t_node	*temp;
+	t_node	*new_tail;
 
-	temp = (t_node *)node;
-	if (!temp || !temp->content)
+	if (!lst || !(*lst)->next)
 		return ;
-	temp->content = NULL;
+	new_tail = *lst;
+	while (new_tail->next->next)
+		new_tail = new_tail->next;
+	free(new_tail->next);
+	new_tail->next = NULL;
 }

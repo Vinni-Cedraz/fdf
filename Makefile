@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/08 17:17:44 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/09 23:07:25 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -81,6 +81,9 @@ SRCS_FROM_LIBFT =  ft_strnstr \
 					            ft_atoi \
 							   ft_memchr \
 					             ft_split \
+							    ft_strjoin \
+								  ft_memcpy \
+								   ft_strdup \
 
 SRCS_FROM_LIBFT_TO_BONUS = ft_strnstr \
 							   ft_swap \

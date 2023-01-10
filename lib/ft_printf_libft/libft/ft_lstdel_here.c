@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstdel_here.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:22:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 19:05:45 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/09 14:41:15 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/09 17:11:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft_bonus.h"
 
-void	ft_lstadd_back(t_node **lst, t_node *new)
+// if not at the top of the list unlinks and frees a node at a given index
+void	ft_lstdel_here(t_node **lst, uint index)
 {
-	t_node	*temp;
+	t_node	*prev;
+	t_node	*here;
 
-	if (!lst || !new)
-		return ;
-	if (!*lst)
+	prev = NULL;
+	here = *lst;
+	while (here)
 	{
-		*lst = new;
-		return ;
+		if (!index--)
+			break ;
+		prev = here;
+		here = here->next;
 	}
-	temp = *lst;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = new;
-	new->next = NULL;
+	if (!here || !prev)
+		return ;
+	prev->next = here->next;
+	free(here);
 }
