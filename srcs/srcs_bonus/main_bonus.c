@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 14:57:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:04:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	// mlx_hook(d->mlx->win_ptr, 17, 0, close_win_bonus, d);
 	// mlx_loop(d->mlx->mlx_ptr);
 	// free(d->img);
+	ft_lstfree_nodes(&d->map->pts);
 	free(d->map);
 	free(d);
 }
