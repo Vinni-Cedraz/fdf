@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 14:58:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:59:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parse_map_bonus(char *argv, t_data *d)
 	get_map_dimensions(fp, d, argv);
 	map_size = d->map->height * d->map->width;
 	d->map->pts = ft_lstnew(point_placeholder);
-	while (map_size--)
+	while (map_size-- > 1)
 		ft_lstadd_front(&d->map->pts, ft_lstnew(point_placeholder));
 	ft_lstprint(&d->map->pts);
 	ft_lstfree_nodes(&d->map->pts);
@@ -40,9 +40,9 @@ int	parse_map_bonus(char *argv, t_data *d)
 
 static inline void	get_map_dimensions(FILE *fp, t_data *d, char *argv)
 {
-	t_split	*split_to_count_width;
-	char	*first_line;
 	char	buf[1];
+	char	*first_line;
+	t_split	*split_to_count_width;
 
 	d->map->height = 0;
 	while (fread(buf, 1, 1, fp))
