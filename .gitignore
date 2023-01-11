@@ -1,1 +1,5 @@
-mlx
+*.o
+fdf
+a.out
+*.a
+mlx/
