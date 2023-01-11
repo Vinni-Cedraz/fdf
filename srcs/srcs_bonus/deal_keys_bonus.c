@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 21:00:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:52:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static void	aux_deal_keys(int key, t_data *d)
 	else if (key == 'v')
 		linear_transformations_bonus(d, &d->matrix->rev_z, 0);
 	else if (key == 'p')
+	{
 		linear_transformations_bonus(d, (void *)d, 1);
+		linear_transformations_bonus(d, &d->matrix->rot_x_54_73, 0);
+	}
 	else if (key)
 		aux_aux_deal_keys(key, d);
 }
