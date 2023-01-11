@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 23:36:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:58:31 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void			find_center_of_the_map(t_data *d);
 static void			open_win_and_img(t_data *data);
 static void			get_phi_and_theta(t_map *map);
-static inline void	aux_get_phi_and_theta(t_point *p);
+static void			aux_get_phi_and_theta(t_point *p);
 
 void	data_initializer_bonus(t_data *d)
 {

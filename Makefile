@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/09 23:07:25 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/10 21:05:55 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,19 +85,22 @@ SRCS_FROM_LIBFT =  ft_strnstr \
 								  ft_memcpy \
 								   ft_strdup \
 
-SRCS_FROM_LIBFT_TO_BONUS = ft_strnstr \
-							   ft_swap \
-						  ft_free_t_map \
-						 ft_free_t_split \
-							 ft_atoi_base \
-						   ft_word_counter \
-							 ft_special_gnl \
-								 ft_ishexlow \
-									ft_calloc \
-									   ft_atoi \
-									  ft_memchr \
-									    ft_split \
-										ft_strlen \
+SRCS_FROM_LIBFT_BONUS =  ft_strnstr \
+						     ft_swap \
+					    ft_free_t_map \
+					   ft_free_t_split \
+						   ft_atoi_base \
+					     ft_word_counter \
+							    ft_strlen \
+							ft_special_gnl \
+							    ft_ishexlow \
+								   ft_calloc \
+									  ft_atoi \
+								     ft_memchr \
+									   ft_split \
+									  ft_strjoin \
+									    ft_memcpy \
+									     ft_strdup \
 
 ################ MANDATORY VARIABLES ################
 SRCS_PATH = srcs/srcs_mandatory/

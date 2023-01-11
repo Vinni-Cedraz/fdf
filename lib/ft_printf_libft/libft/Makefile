@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/10 19:13:41 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/10 21:06:25 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME_BONUS = libft_bonus.a
 NAME_PRNTF = ../libftprintf.a
 NAME_FDF = srcs_to_fdf.a
 NAME_FDF_BONUS = srcs_to_fdf_bonus.a
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -O3
 AR = ar -rs
 RM = rm -f
 OBJS_PATH = ./objs/
@@ -129,20 +129,22 @@ FDF_SRCS = ft_strnstr \
 						  ft_memcpy \
 						   ft_strdup \
 
-FDF_SRCS_BONUS = ft_strnstr \
-				     ft_swap \
-			    ft_free_t_map \
-			   ft_free_t_split \
-				   ft_atoi_base \
-			     ft_word_counter \
-					    ft_strlen \
-				    ft_special_gnl \
-					    ft_ishexlow \
-						   ft_calloc \
-							  ft_atoi \
-						     ft_memchr \
-							   ft_split \
-
+FDF_SRCS_BONUS =  ft_strnstr \
+					  ft_swap \
+				 ft_free_t_map \
+				ft_free_t_split \
+					ft_atoi_base \
+				  ft_word_counter \
+						 ft_strlen \
+				     ft_special_gnl \
+						 ft_ishexlow \
+							ft_calloc \
+							   ft_atoi \
+							  ft_memchr \
+								ft_split \
+							   ft_strjoin \
+								 ft_memcpy \
+								  ft_strdup \
 ## OBJS VARIABLES ##
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 OBJSB = $(patsubst %, $(OBJSB_PATH)%.o, $(BSRCS))

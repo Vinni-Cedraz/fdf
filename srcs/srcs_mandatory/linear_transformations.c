@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 22:21:22 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 22:22:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:57:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ static void	transform_a_point(t_point *old, t_matrix *m, t_data *d)
 	double	cy;
 	double	cz;
 
-	p = &(t_point){1, 1, 1, 1,};
+	p = &(t_point){
+		1,
+		1,
+		1,
+		1,
+	};
 	cx = d->cx;
 	cy = d->cy;
 	cz = d->cz;
