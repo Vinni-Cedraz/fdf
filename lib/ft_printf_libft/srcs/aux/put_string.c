@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022 23:33:25 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/11/28 20:18:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:55:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	put_string(char *str)
 {
-	t_ools	type;
+	int	counter;
 
-	type.counter = 0;
+	counter = 0;
 	if (!str)
 		str = EXCEPTION_STR;
-	while (str[type.counter] != '\0')
-		type.counter += ft_putchar(str[type.counter]);
-	return (type.counter);
+	while (str[counter] != '\0')
+		counter += ft_putchar(str[counter]);
+	return (counter);
 }

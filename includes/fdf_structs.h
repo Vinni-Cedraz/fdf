@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 17:14:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 21:00:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_rotation_matrices
 
 typedef struct s_data
 {
-	char 				**argv;
+	char				**argv;
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					hook;

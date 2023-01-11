@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 22:20:30 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/10/28 16:48:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:56:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_until(const char *str, va_list args)
 {
-	t_ools	chars;
+	t_counters	chars;
 
 	chars.prntd = 0;
 	chars.chckd = -1;

@@ -6,17 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 00:14:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:58:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void			transform_a_point(t_point *old_p, t_matrix *matrix,
-						t_data *d);
+static void			transform_a_point(t_point *old_p, t_matrix *m, t_data *d);
 static void			calculate_z_scale(t_data *d);
 static void			apply_spherical_projection(t_point *p, t_data *d);
-static inline void	define_radius(t_point *p);
+static void			define_radius(t_point *p);
 
 void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere)
 {
@@ -74,7 +73,7 @@ static void	calculate_z_scale(t_data *d)
 
 static void	apply_spherical_projection(t_point *old, t_data *d)
 {
-	t_point *p;
+	t_point	*p;
 	double	cx;
 	double	cy;
 	double	cz;
@@ -83,9 +82,9 @@ static void	apply_spherical_projection(t_point *old, t_data *d)
 	cy = d->offset.cy;
 	cz = d->offset.cz;
 	p = old;
-	p->x-= cx;
-	p->y-= cy;
-	p->z-= cz;
+	p->x -= cx;
+	p->y -= cy;
+	p->z -= cz;
 	define_radius(p);
 	p->x = p->r * cos(p->theta) * cos(p->phi) + cx;
 	p->y = p->r * cos(p->theta) * sin(p->phi) + cy;
