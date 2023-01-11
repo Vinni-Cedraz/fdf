@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 23:36:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:43:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,17 @@ typedef struct s_create_map
 
 typedef struct s_row
 {
+	double					col_1;
+	double					col_2;
+	double					col_3;
+}							t_row;
+
+typedef struct s_tmps
+{
 	double					x;
 	double					y;
 	double					z;
-}							t_row;
+}							t_emporary;
 
 typedef struct s_matrix
 {
@@ -128,12 +135,6 @@ typedef struct s_offset
 	double					move_x;
 	double					move_y;
 }							t_offset;
-
-// phi is also known as latitude
-// theta is also known as longitude
-typedef struct s_sphere
-{
-}							t_sphere;
 
 typedef struct s_state
 {
