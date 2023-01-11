@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 23:43:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 13:06:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FDF_STRUCTS_BONUS_H
 
 # include "printf_libft_structs.h"
+# include "../lib/ft_printf_libft/libft/libft_bonus.h"
+
 // stdio needed for FILE type
 # include <stdio.h>
 
@@ -77,8 +79,8 @@ typedef struct s_create_map
 {
 	t_short					x;
 	t_short					y;
-	FILE					*fp;
 	t_split					*split;
+	FILE					*fp;
 	char					*line;
 }							t_create_map;
 
@@ -155,6 +157,18 @@ typedef struct s_state
 	t_short					parallel;
 	t_short					grid_style_nb;
 }							t_state;
+
+typedef struct s_map
+{
+	int						width;
+	int						height;
+	short					max_z;
+	short					min_z;
+	double					target_width;
+	double					target_height;
+	double					ratio;
+	t_node					*pts;
+}							t_map;
 
 typedef struct s_data
 {
