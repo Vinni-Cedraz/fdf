@@ -6,13 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 20:58:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:41:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "fdf_structs_bonus.h"
 
-static void			transform_a_point(t_point *old_p, t_matrix *m, t_data *d);
+static void			transform_a_point(t_point *p, t_matrix *m, t_data *d);
 static void			calculate_z_scale(t_data *d);
 static void			apply_spherical_projection(t_point *p, t_data *d);
 static void			define_radius(t_point *p);
@@ -44,23 +45,19 @@ void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere)
 	}
 }
 
-static void	transform_a_point(t_point *old, t_matrix *m, t_data *d)
+static void	transform_a_point(t_point *p, t_matrix *m, t_data *d)
 {
-	t_point	*p;
-	double	cx;
-	double	cy;
-	double	cz;
+	t_emporary	t;
 
-	p = &(t_point){1, 1, 1, 1, 1, 1, 1, {1, 1, 1}};
-	cx = d->offset.cx;
-	cy = d->offset.cy;
-	cz = d->offset.cz;
-	p->x = old->x - cx;
-	p->y = old->y - cy;
-	p->z = old->z - cz;
-	old->x = p->x * m->row_1.x + p->y * m->row_2.x + p->z * m->row_3.x + cx;
-	old->y = p->x * m->row_1.y + p->y * m->row_2.y + p->z * m->row_3.y + cy;
-	old->z = p->x * m->row_1.z + p->y * m->row_2.z + p->z * m->row_3.z + cz;
+	t.x = p->x - d->offset.cx;
+	t.y = p->y - d->offset.cy;
+	t.z = p->z - d->offset.cz;
+	p->x = t.x * m->row_1.col_1 + t.y * m->row_2.col_1 + t.z * m->row_3.col_1;
+	p->y = t.x * m->row_1.col_2 + t.y * m->row_2.col_2 + t.z * m->row_3.col_2;
+	p->z = t.x * m->row_1.col_3 + t.y * m->row_2.col_3 + t.z * m->row_3.col_3;
+	p->x += d->offset.cx;
+	p->y += d->offset.cy;
+	p->z += d->offset.cz;
 }
 
 static void	calculate_z_scale(t_data *d)
