@@ -40,29 +40,22 @@ typedef struct s_origin
 	double					old_z;
 }							t_snapshot;
 
+typedef struct s_phere
+{
+	double					phi;
+	double					theta;
+	double					r;
+}							t_sphere;
+
 typedef struct s_point
 {
 	double					x;
 	double					y;
 	double					z;
 	unsigned int			color;
-	double					phi;
-	double					theta;
-	double					r;
+	t_sphere				ball;
 	t_snapshot				snapshot;
 }							t_point;
-
-typedef struct s_map
-{
-	int						width;
-	int						height;
-	short					max_z;
-	short					min_z;
-	double					target_width;
-	double					target_height;
-	double					ratio;
-	t_point					**pts;
-}							t_map;
 
 typedef struct s_img
 {
