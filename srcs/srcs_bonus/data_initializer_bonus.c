@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 20:58:31 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:21:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@ static void	get_phi_and_theta(t_map *map)
 
 static inline void	aux_get_phi_and_theta(t_point *p)
 {
-	double	latitude;
-	double	longitude;
-
-	latitude = atan2(p->z, sqrt(pow(p->x, 2) + pow(p->y, 2)));
-	longitude = atan2(p->y, p->x);
-	p->theta = -longitude;
-	p->phi = -(90 - latitude);
+	p->theta = atan2(p->x, p->y);
+	p->phi = atan2(p->z, sqrt(pow(p->x, 2) + pow(p->y, 2)));
 }
