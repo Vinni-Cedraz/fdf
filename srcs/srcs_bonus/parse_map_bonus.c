@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 16:59:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:05:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	parse_map_bonus(char *argv, t_data *d)
 	while (map_size-- > 1)
 		ft_lstadd_front(&d->map->pts, ft_lstnew(point_placeholder));
 	ft_lstprint(&d->map->pts);
-	ft_lstfree_nodes(&d->map->pts);
 	return (1);
 }
 
