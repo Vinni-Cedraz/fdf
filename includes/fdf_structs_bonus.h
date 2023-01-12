@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 14:45:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:29:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define FDF_STRUCTS_BONUS_H
 
 // stdio needed for FILE type
-# include <stdio.h>
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
 # include "t_point_bonus.h"
+# include <stdio.h>
 
 typedef unsigned int short	t_short;
 typedef struct s_point		t_point;
@@ -137,7 +137,7 @@ typedef struct s_map
 	double					target_width;
 	double					target_height;
 	double					ratio;
-	t_node					*pts;
+	t_node_with_a_point		*pts;
 }							t_map;
 
 typedef struct s_data

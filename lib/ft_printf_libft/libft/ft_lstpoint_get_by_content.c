@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclean.c                                      :+:      :+:    :+:   */
+/*   ft_lstpoint_get_by_content.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 18:34:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 18:35:10 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 15:41:30 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/12 15:43:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_bonus.h"
 
-void	ft_lstfree_nodes(t_node **list)
-{
-	t_node	*tmp;
+typedef double d;
 
-	tmp = *list;
-	if (list == NULL)
-		return ;
-	while (tmp)
+int	ft_lstpoint_getby_content(t_node_with_a_point *lst, d x, d y, d z)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
 	{
-		*list = tmp->next;
-		free(tmp);
-		tmp = *list;
+		if (lst->point.x == x && lst->point.y == y && lst->point.z == z)
+			return (i);
+		lst = lst->next;
+		i++;
 	}
-	list = NULL;
+	return (-1);
 }

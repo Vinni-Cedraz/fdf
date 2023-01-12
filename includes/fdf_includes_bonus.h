@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 23:30:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:21:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 
 # define MENU_WIDTH 183
 
-//TEST_FUNCTIONS//
-void	print_linked_list_of_points(t_node **lst);
 // PART ONE//
 void	data_initializer_bonus(t_data *d);
 

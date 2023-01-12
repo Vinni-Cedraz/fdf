@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_print_list_of_nodes_with_points.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:24:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:02:09 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 15:22:42 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/12 15:25:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_bonus.h"
 
-t_node	*ft_lstnew(void *content)
+void	ft_lstpoint_print(t_node_with_a_point **lst)
 {
-	t_node	*node;
+	t_node_with_a_point	*tmp;
 
-	node = malloc(sizeof(*node));
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	if (!lst || !*lst)
+	{
+		if (!lst)
+			printf("\n\n all nodes and list itself were already freed \n");
+		else
+			printf("\n\n empty list");
+		return ;
+	}
+	tmp = *lst;
+	while (tmp)
+	{
+		printf("%f, ", tmp->point.x);
+		printf("%f;\n ", tmp->point.y);
+		tmp = tmp->next;
+	}
 }

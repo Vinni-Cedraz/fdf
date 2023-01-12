@@ -6,12 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 14:33:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:29:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/ft_printf_libft/libft/libft_bonus.h"
 #include "fdf_includes_bonus.h"
+#include "t_point_bonus.h"
 
 static void	get_map_dimensions(t_data *d);
 static void	assign_point_coordinates_xy(t_data *d);
@@ -28,16 +29,16 @@ int	parse_map_bonus(t_data *d)
 		return (perror("Error"), 0);
 	get_map_dimensions(d);
 	d->tool.map_size = d->map->height * d->map->width;
-	d->map->pts = ft_lstnew_node_for_a_point();
+	d->map->pts = ft_lstpoint_new();
 	while (d->tool.map_size-- > 1)
-		ft_lstadd_front(&d->map->pts, ft_lstnew_node_for_a_point());
+		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	assign_point_coordinates_xy(d);
 	return (1);
 }
 
 static void	assign_point_coordinates_xy(t_data *d)
 {
-	t_node	*tmp;
+	t_node_with_a_point	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)
