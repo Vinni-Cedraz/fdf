@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:29:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:47:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
 # include "t_point_bonus.h"
 # include <stdio.h>
+#include <sys/types.h>
 
 typedef unsigned int short	t_short;
 typedef struct s_point		t_point;
@@ -122,7 +123,6 @@ typedef struct s_state
 
 typedef struct s_assign_coordinates
 {
-	int						map_size;
 	FILE					*fp;
 	char					*line;
 	char					*argv;
@@ -132,6 +132,7 @@ typedef struct s_map
 {
 	int						width;
 	int						height;
+	uint					size;
 	short					max_z;
 	short					min_z;
 	double					target_width;
