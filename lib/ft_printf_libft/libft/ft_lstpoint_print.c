@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list_of_nodes_with_points.c               :+:      :+:    :+:   */
+/*   ft_lstpoint_print.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:22:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:25:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:57:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	ft_lstpoint_print(t_node_with_a_point **lst)
 	while (tmp)
 	{
 		printf("%f, ", tmp->point.x);
-		printf("%f;\n ", tmp->point.y);
+		printf("%f, ", tmp->point.y);
+		printf("%f;\n ", tmp->point.z);
 		tmp = tmp->next;
 	}
 }
