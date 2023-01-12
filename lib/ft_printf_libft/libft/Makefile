@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/12 12:15:57 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/12 14:19:28 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,7 @@ ft_lstgetby_content \
 ft_lstfree_nodes \
 ft_lstpop \
 ft_lstshift \
+ft_lstnew_node_for_a_point \
 	
 PRNTF_SRCS = ft_putchar \
 ft_strlen \

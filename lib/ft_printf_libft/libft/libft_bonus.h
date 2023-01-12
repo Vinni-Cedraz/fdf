@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:07:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 12:13:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:31:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "../../../includes/t_point_bonus.h"
 
 # define FIXED_BUFSZ 10000
 
@@ -31,16 +32,17 @@ typedef struct s_mod
 	int					read;
 }						t_mod;
 
-typedef struct s_point	t_point;
 typedef struct s_nodes
 {
-	t_point				*point;
+	t_point				point;
 	t_node				*next;
 }						t_node;
 
 // LINKED LISTS BASIC FUNCTIONS
-// ft_lstnew creates a new node 
+// ft_lstnew creates a new node
 t_node					*ft_lstnew(void *content);
+// ads a node 
+t_node					*ft_lstnew_node_for_a_point(void);
 // ft_lstadd_back adds a new element at the end of a list
 void					ft_lstadd_back(t_node **head, t_node *new_node);
 // ft_lstadd_front adds a new element at the beginning of a list
