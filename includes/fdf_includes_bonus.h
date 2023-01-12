@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/08 23:25:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:02:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 // PART ONE//
 void	data_initializer_bonus(t_data *d);
 
-int		parse_map_bonus(char *argv, t_data *d);
+int		parse_map_bonus(t_data *d);
 
 void	calculate_default_scale_bonus(t_data *d, t_short size);
 

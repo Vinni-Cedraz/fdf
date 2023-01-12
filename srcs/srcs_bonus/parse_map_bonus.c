@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 18:00:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:02:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "fdf_includes_bonus.h"
 #include "fdf_structs_bonus.h"
 
-static inline void	get_map_dimensions(t_data *d, char *argv);
+static inline void	get_map_dimensions(t_data *d);
 
-int	parse_map_bonus(char *argv, t_data *d)
+int	parse_map_bonus(t_data *d)
 {
 	t_point	*point_placeholder;
 	char	*argv;
 	int		map_size;
 
-	point_placeholder = NULL;
 	argv = d->tool.argv;
+	point_placeholder = NULL;
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
 		return (printf("%s\n", strerror(22)), 0);
 	d->tool.fp = fopen(argv, "r");
@@ -38,7 +38,7 @@ int	parse_map_bonus(char *argv, t_data *d)
 	return (1);
 }
 
-static inline void	get_map_dimensions(t_data *d, char *argv)
+static inline void	get_map_dimensions(t_data *d)
 {
 	char	buf[1];
 	char	*first_line;
