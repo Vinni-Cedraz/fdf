@@ -6,38 +6,49 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 12:36:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:33:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/ft_printf_libft/libft/libft_bonus.h"
 #include "fdf_includes_bonus.h"
-#include "fdf_structs_bonus.h"
 
-static inline void	get_map_dimensions(t_data *d);
+static void	get_map_dimensions(t_data *d);
+static void	assign_point_coordinates_xy(t_data *d);
 
 int	parse_map_bonus(t_data *d)
 {
-	t_point	*point_placeholder;
 	char	*argv;
-	int		map_size;
 
 	argv = d->tool.argv;
-	point_placeholder = &(t_point){9, 8, 8, 8, {9, 8, 8}, {8, 89, 8}};
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
 		return (printf("%s\n", strerror(22)), 0);
 	d->tool.fp = fopen(argv, "r");
 	if (!d->tool.fp || !d)
 		return (perror("Error"), 0);
 	get_map_dimensions(d);
-	map_size = d->map->height * d->map->width;
-	d->map->pts = ft_lstnew(point_placeholder);
-	while (map_size-- > 1)
-		ft_lstadd_front(&d->map->pts, ft_lstnew(point_placeholder));
+	d->tool.map_size = d->map->height * d->map->width;
+	d->map->pts = ft_lstnew_node_for_a_point();
+	while (d->tool.map_size-- > 1)
+		ft_lstadd_front(&d->map->pts, ft_lstnew_node_for_a_point());
+	assign_point_coordinates_xy(d);
 	return (1);
 }
 
-static inline void	get_map_dimensions(t_data *d)
+static void	assign_point_coordinates_xy(t_data *d)
+{
+	t_node	*tmp;
+
+	tmp = d->map->pts;
+	while (tmp)
+	{
+		tmp->point.x = 1;
+		tmp->point.y = 2;
+		tmp = tmp->next;
+	}
+}
+
+static void	get_map_dimensions(t_data *d)
 {
 	char	buf[1];
 	char	*first_line;

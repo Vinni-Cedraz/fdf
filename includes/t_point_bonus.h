@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   t_point_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:24:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 14:31:20 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/12 14:28:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#ifndef T_POINT_BONUS_H
+# define T_POINT_BONUS_H
 
-t_node	*ft_lstnew(void *content)
+typedef struct s_origin
 {
-	t_node	*node;
+	double			old_x;
+	double			old_y;
+	double			old_z;
+}					t_snapshot;
 
-	node = malloc(sizeof(*node));
-	node->point = *(t_point *)content;
-	node->next = NULL;
-	return (node);
-}
+typedef struct s_phere
+{
+	double			phi;
+	double			theta;
+	double			r;
+}					t_sphere;
+
+typedef struct s_point
+{
+	double			x;
+	double			y;
+	double			z;
+	unsigned int	color;
+	t_sphere		ball;
+	t_snapshot		snapshot;
+}					t_point;
+
+#endif

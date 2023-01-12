@@ -6,20 +6,22 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 17:58:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:45:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTS_BONUS_H
 # define FDF_STRUCTS_BONUS_H
 
-# include "printf_libft_structs.h"
-# include "../lib/ft_printf_libft/libft/libft_bonus.h"
-
 // stdio needed for FILE type
 # include <stdio.h>
+# include "../lib/ft_printf_libft/libft/libft_bonus.h"
+# include "t_point_bonus.h"
 
 typedef unsigned int short	t_short;
+typedef struct s_point		t_point;
+typedef struct s_phere		t_sphere;
+typedef struct s_origin		t_snapshot;
 
 typedef struct s_line
 {
@@ -32,30 +34,6 @@ typedef struct s_line
 	t_short					steps;
 	unsigned int			color;
 }							t_line;
-
-typedef struct s_origin
-{
-	double					old_x;
-	double					old_y;
-	double					old_z;
-}							t_snapshot;
-
-typedef struct s_phere
-{
-	double					phi;
-	double					theta;
-	double					r;
-}							t_sphere;
-
-typedef struct s_point
-{
-	double					x;
-	double					y;
-	double					z;
-	unsigned int			color;
-	t_sphere				ball;
-	t_snapshot				snapshot;
-}							t_point;
 
 typedef struct s_img
 {
@@ -144,12 +122,10 @@ typedef struct s_state
 
 typedef struct s_assign_coordinates
 {
-	int						x;
-	int						y;
+	int						map_size;
 	FILE					*fp;
 	char					*line;
 	char					*argv;
-	t_split					*splited;
 }							t_assign_coordinates;
 
 typedef struct s_map
