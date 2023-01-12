@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:29:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:30:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,18 @@ int	parse_map_bonus(t_data *d)
 	return (1);
 }
 
-static void	assign_point_coordinates_xy(t_data *d)
+static void assign_point_coordinates_xy(t_data *d)
 {
-	t_node_with_a_point	*tmp;
+    t_node_with_a_point *tmp = d->map->pts;
+    int counter = 0;
 
-	tmp = d->map->pts;
-	while (tmp)
-	{
-		tmp->point.x = 1;
-		tmp->point.y = 2;
-		tmp = tmp->next;
-	}
+    while (tmp)
+    {
+        tmp->point.x = counter % d->map->width;
+        tmp->point.y = (int)((double)counter / d->map->width);
+        tmp = tmp->next;
+        counter++;
+    }
 }
 
 static void	get_map_dimensions(t_data *d)
