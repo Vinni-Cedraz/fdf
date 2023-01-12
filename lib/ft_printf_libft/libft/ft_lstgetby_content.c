@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 21:22:44 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 12:14:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:02:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_lstgetby_content(t_node *lst, void *content)
 		return (-1);
 	while (lst)
 	{
-		if (!ft_memcmp(lst->point, content, sizeof(content)))
+		if (!ft_memcmp(lst->content, content, sizeof(content)))
 			return (index);
 		lst = lst->next;
 		index++;

@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstpoint_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:24:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:02:09 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 15:38:05 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/12 15:38:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "libft_bonus.h"
 
-t_node	*ft_lstnew(void *content)
+void	ft_lstpoint_back(t_node_with_a_point **lst, t_node_with_a_point *new)
 {
-	t_node	*node;
+	t_node_with_a_point	*temp;
 
-	node = malloc(sizeof(*node));
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	if (!lst || !new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	temp = *lst;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new;
+	new->next = NULL;
 }

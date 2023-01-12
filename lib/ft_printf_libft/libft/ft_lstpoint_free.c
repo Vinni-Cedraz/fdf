@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstfree_nodes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 00:24:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:02:09 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/09 18:34:10 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/12 15:30:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_bonus.h"
 
-t_node	*ft_lstnew(void *content)
+void	ft_lstpoint_free(t_node_with_a_point **list)
 {
-	t_node	*node;
+	t_node_with_a_point	*tmp;
 
-	node = malloc(sizeof(*node));
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	tmp = *list;
+	if (list == NULL)
+		return ;
+	while (tmp)
+	{
+		*list = tmp->next;
+		free(tmp);
+		tmp = *list;
+	}
+	list = NULL;
 }
