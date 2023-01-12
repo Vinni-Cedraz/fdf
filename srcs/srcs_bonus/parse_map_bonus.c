@@ -6,13 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 19:02:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:48:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../lib/ft_printf_libft/libft/libft_bonus.h"
 #include "fdf_includes_bonus.h"
-#include "t_point_bonus.h"
+#include <sys/types.h>
 
 static inline void	get_map_dimensions(t_data *d);
 static inline void	assign_point_coordinates_xy(t_data *d);
@@ -21,6 +20,7 @@ static inline void	assign_coordinate_z(t_data *d);
 int	parse_map_bonus(t_data *d)
 {
 	char	*argv;
+	uint	counter;
 
 	argv = d->tool.argv;
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
@@ -29,12 +29,14 @@ int	parse_map_bonus(t_data *d)
 	if (!d->tool.fp || !d)
 		return (perror("Error"), 0);
 	get_map_dimensions(d);
-	d->tool.map_size = d->map->height * d->map->width;
+	counter = d->map->size;
+	printf("Map size: %d\n", d->map->size);
 	d->map->pts = ft_lstpoint_new();
-	while (d->tool.map_size-- > 1)
+	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	assign_point_coordinates_xy(d);
 	assign_coordinate_z(d);
+	printf("Map size: %d\n", d->map->size);
 	return (1);
 }
 
@@ -83,5 +85,6 @@ static void	get_map_dimensions(t_data *d)
 	free(first_line);
 	d->map->width = split_to_count_width->words;
 	ft_free_t_split(split_to_count_width);
+	d->map->size = d->map->height * d->map->width;
 	rewind(d->tool.fp);
 }
