@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 11:48:44 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 10:57:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:15:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_lstprint(t_node **lst)
 	tmp = *lst;
 	while (tmp)
 	{
-		aux_putstr(tmp->content);
+		// aux_putstr(tmp->content);
 		aux_putchar('-');
 		aux_putchar('>');
 		aux_putchar('\n');
