@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 23:27:20 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 23:29:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:46:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void	print_linked_list_of_points(t_node **lst)
 	while (tmp)
 	{
 		printf("%f, ", tmp->point->x);
-		printf("%f; ", tmp->point->y);
-		ft_putchar('-');
-		ft_putchar('>');
-		ft_putchar('\n');
+		printf("%f;\n ", tmp->point->y);
 		tmp = tmp->next;
 	}
 }

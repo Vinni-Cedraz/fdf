@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:07:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 22:12:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:13:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,16 @@ typedef struct s_mod
 	int					read;
 }						t_mod;
 
+typedef struct s_point	t_point;
 typedef struct s_nodes
 {
-	void				*content;
+	t_point				*point;
 	t_node				*next;
 }						t_node;
 
 // LINKED LISTS BASIC FUNCTIONS
-// ft_lstnew creates a new element
+// ft_lstnew creates a new node 
 t_node					*ft_lstnew(void *content);
-typedef struct s_point	t_point;
-t_node					*ft_lstnew_point(t_point *content);
 // ft_lstadd_back adds a new element at the end of a list
 void					ft_lstadd_back(t_node **head, t_node *new_node);
 // ft_lstadd_front adds a new element at the beginning of a list
