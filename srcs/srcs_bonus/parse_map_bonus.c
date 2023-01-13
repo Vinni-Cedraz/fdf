@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 19:48:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:30:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include <sys/types.h>
 
 static inline void	get_map_dimensions(t_data *d);
 static inline void	assign_point_coordinates_xy(t_data *d);
@@ -36,7 +35,6 @@ int	parse_map_bonus(t_data *d)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	assign_point_coordinates_xy(d);
 	assign_coordinate_z(d);
-	printf("Map size: %d\n", d->map->size);
 	return (1);
 }
 

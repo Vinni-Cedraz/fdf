@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/12 19:21:06 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/12 21:25:43 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,8 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 WIP_SRCS = parse_map_bonus \
 		   main_bonus \
 		   data_initializer_bonus \
+		   define_rotation_matrices_bonus \
+		   close_win_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

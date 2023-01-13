@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 19:47:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:29:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ int	main(int argc, char **argv)
 	data_initializer_bonus(d);
 	// mlx_loop_hook(d->mlx->mlx_ptr, draw_bonus, d);
 	// mlx_hook(d->mlx->win_ptr, 02, 1L << 0, deal_keys_bonus, d);
-	// mlx_hook(d->mlx->win_ptr, 17, 0, close_win_bonus, d);
-	// mlx_loop(d->mlx->mlx_ptr);
-	ft_lstpoint_free(&d->map->pts);
-	free(d->map);
-	free(d->img);
-	free(d);
+	mlx_hook(d->mlx->win_ptr, 17, 0, close_win_bonus, d);
+	mlx_loop(d->mlx->mlx_ptr);
 }

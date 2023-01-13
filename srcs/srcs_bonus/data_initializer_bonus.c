@@ -6,44 +6,44 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:19:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:24:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static void			find_center_of_the_map(t_data *d);
-// static void			open_win_and_img(t_data *data);
+static void			open_win_and_img(t_data *data);
 static void			get_phi_and_theta(t_node_with_a_point *map);
 static void			aux_get_phi_and_theta(t_point *p);
 
 void	data_initializer_bonus(t_data *d)
 {
-	// d->matrix = ft_calloc(sizeof(t_rotation_matrices), 1);
-	// d->mlx = malloc(sizeof(t_mlx));
-	// open_win_and_img(d);
+	d->matrix = ft_calloc(sizeof(t_rotation_matrices), 1);
+	d->mlx = malloc(sizeof(t_mlx));
+	open_win_and_img(d);
 	d->state = (t_state){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1};
-	// define_rotation_matrices_bonus(d->matrix);
+	define_rotation_matrices_bonus(d->matrix);
 	find_center_of_the_map(d);
 	get_phi_and_theta(d->map->pts);
 }
 
-// static void	open_win_and_img(t_data *data)
-// {
-// 	data->mlx->mlx_ptr = mlx_init();
-// 	data->img->width = WINDOW_WIDTH;
-// 	data->img->height = WINDOW_HEIGHT;
-// 	data->mlx->win_ptr = mlx_new_window(data->mlx->mlx_ptr, WINDOW_WIDTH,
-// 			WINDOW_HEIGHT, "mlx 42");
-// 	data->img->mlx_img = mlx_new_image(data->mlx->mlx_ptr, WINDOW_WIDTH,
-// 			WINDOW_HEIGHT);
-// 	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
-// 			&data->img->line_len, &data->img->endian);
-// }
+static void	open_win_and_img(t_data *data)
+{
+	data->mlx->mlx_ptr = mlx_init();
+	data->img->width = WINDOW_WIDTH;
+	data->img->height = WINDOW_HEIGHT;
+	data->mlx->win_ptr = mlx_new_window(data->mlx->mlx_ptr, WINDOW_WIDTH,
+			WINDOW_HEIGHT, "mlx 42");
+	data->img->mlx_img = mlx_new_image(data->mlx->mlx_ptr, WINDOW_WIDTH,
+			WINDOW_HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->mlx_img, &data->img->bpp,
+			&data->img->line_len, &data->img->endian);
+}
 
 static void	find_center_of_the_map(t_data *d)
 {
-	uint index;
+	uint				index;
 	t_node_with_a_point	*central_node;
 
 	if (d->map->size % 2 == 0)

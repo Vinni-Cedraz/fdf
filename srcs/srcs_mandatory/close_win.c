@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 01:18:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 00:00:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:28:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	close_win(t_data *data)
 	free(data->mlx_ptr);
 	free(data->img);
 	ft_free_t_map(data->map->arr);
-	free(data->matrix);
 	free(data->map);
-	free(data);
 	exit(0);
 }
