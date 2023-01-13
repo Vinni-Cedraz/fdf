@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 19:47:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:06:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,15 @@ typedef struct s_mlx
 	t_short					hook;
 }							t_mlx;
 
+typedef struct s_center
+{
+	double					x;
+	double					y;
+	double					z;
+}							t_center;
+
 typedef struct s_offset
 {
-	double					cx;
-	double					cy;
-	double					cz;
 	double					scale;
 	double					scale_z;
 	double					move_x;
@@ -145,6 +149,7 @@ typedef struct s_data
 {
 	t_state					state;
 	t_offset				offset;
+	t_center				center;
 	t_mlx					*mlx;
 	t_img					*img;
 	t_map					*map;

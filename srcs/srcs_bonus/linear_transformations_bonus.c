@@ -6,11 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:50:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:15:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "t_point_bonus.h"
 
 static void			transform_a_point(t_point *p, t_matrix *m, t_data *d);
 static void			calculate_z_scale(t_data *d);
@@ -48,15 +49,15 @@ static void	transform_a_point(t_point *p, t_matrix *m, t_data *d)
 {
 	t_emporary	t;
 
-	t.x = p->x - d->offset.cx;
-	t.y = p->y - d->offset.cy;
-	t.z = p->z - d->offset.cz;
+	t.x = p->x - d->center.x;
+	t.y = p->y - d->center.y;
+	t.z = p->z - d->center.z;
 	p->x = t.x * m->row_1.col_1 + t.y * m->row_2.col_1 + t.z * m->row_3.col_1;
 	p->y = t.x * m->row_1.col_2 + t.y * m->row_2.col_2 + t.z * m->row_3.col_2;
 	p->z = t.x * m->row_1.col_3 + t.y * m->row_2.col_3 + t.z * m->row_3.col_3;
-	p->x += d->offset.cx;
-	p->y += d->offset.cy;
-	p->z += d->offset.cz;
+	p->x += d->center.x;
+	p->y += d->center.y;
+	p->z += d->center.z;
 }
 
 static void	calculate_z_scale(t_data *d)
@@ -74,9 +75,9 @@ static void	apply_spherical_projection(t_point *old, t_data *d)
 	double	cy;
 	double	cz;
 
-	cx = d->offset.cx;
-	cy = d->offset.cy;
-	cz = d->offset.cz;
+	cx = d->center.x;
+	cy = d->center.y;
+	cz = d->center.z;
 	p = old;
 	p->x -= cx;
 	p->y -= cy;
@@ -87,7 +88,7 @@ static void	apply_spherical_projection(t_point *old, t_data *d)
 	p->z = p->ball.r * sin(p->ball.theta) + cz;
 }
 
-static inline void define_radius(t_point *p)
+static inline void	define_radius(t_point *p)
 {
-    p->ball.r = hypot(p->x, hypot(p->y, p->z));
+	p->ball.r = hypot(p->x, hypot(p->y, p->z));
 }

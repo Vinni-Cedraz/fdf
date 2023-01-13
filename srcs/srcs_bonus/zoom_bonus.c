@@ -36,58 +36,40 @@ void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 
 static void	zoom_in(t_data *d)
 {
-	t_short	i;
-	t_short	j;
-	double	x;
-	double	y;
+	double				centered_origin_x;
+	double				centered_origin_y;
+	t_node_with_a_point	*tmp;
 
-	i = 0;
+	tmp = d->map->pts;
 	d->state.zoom_in++;
-	while (i < d->map->height)
+	while (tmp)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			x = d->map->pts[i][j].x - d->offset.cx;
-			y = d->map->pts[i][j].y - d->offset.cy;
-			d->map->pts[i][j].x = d->offset.cx + x * 1.1;
-			d->map->pts[i][j].y = d->offset.cy + y * 1.1;
-			j++;
-		}
-		i++;
+		centered_origin_x = tmp->point.x - d->center.x;
+		centered_origin_y = tmp->point.y - d->center.y;
+		tmp->point.x = d->center.x + centered_origin_x * 1.1;
+		tmp->point.y = d->center.y + centered_origin_y * 1.1;
+		tmp = tmp->next;
 	}
-	if ((d->state.zoom_in - d->state.zoom_out) == 0)
-		d->state.neutral_zoom = 1;
-	else
-		d->state.neutral_zoom = 0;
+	update_state(d);
 }
 
 static void	zoom_out(t_data *d)
 {
-	t_short	i;
-	t_short	j;
-	double	x;
-	double	y;
+	double				centered_origin_x;
+	double				centered_origin_y;
+	t_node_with_a_point	*tmp;
 
-	i = 0;
+	tmp = d->map->pts;
 	d->state.zoom_out++;
-	while (i < d->map->height)
+	while (tmp)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			x = d->map->pts[i][j].x - d->offset.cx;
-			y = d->map->pts[i][j].y - d->offset.cy;
-			d->map->pts[i][j].x = d->offset.cx + x / 1.1;
-			d->map->pts[i][j].y = d->offset.cy + y / 1.1;
-			j++;
-		}
-		i++;
+		centered_origin_x = tmp->point.x - d->center.x;
+		centered_origin_y = tmp->point.y - d->center.y;
+		tmp->point.x = d->center.x + centered_origin_x / 1.1;
+		tmp->point.y = d->center.y + centered_origin_y / 1.1;
+		tmp = tmp->next;
 	}
-	if ((d->state.zoom_in - d->state.zoom_out) == 0)
-		d->state.neutral_zoom = 1;
-	else
-		d->state.neutral_zoom = 0;
+	update_state(d);
 }
 
 static void	reset_zoom(t_data *d)
