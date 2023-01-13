@@ -6,11 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 00:06:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:44:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "t_point_bonus.h"
 
 static void	apply_isometric_steps(t_data *d);
 static void	take_snapshot(t_data *d);
@@ -82,41 +83,29 @@ static void	undo_isometric_steps(t_data *d)
 
 static void	take_snapshot(t_data *d)
 {
-	int	i;
-	int	j;
+	t_node_with_a_point *tmp;	
 
-	i = 0;
-	while (i < d->map->height)
+	tmp = d->map->pts;
+	while (tmp)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			d->map->pts[i][j].snapshot.old_x = d->map->pts[i][j].x;
-			d->map->pts[i][j].snapshot.old_y = d->map->pts[i][j].y;
-			d->map->pts[i][j].snapshot.old_z = d->map->pts[i][j].z;
-			j++;
-		}
-		i++;
+		tmp->point.x = tmp->point.snapshot.old_x;
+		tmp->point.y = tmp->point.snapshot.old_y;
+		tmp->point.z = tmp->point.snapshot.old_z;
+		tmp = tmp->next;
 	}
 }
 
 static void	restore_isometric_state_from_snapshot(t_data *d)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < d->map->height)
+	t_node_with_a_point *tmp;
+	
+	tmp = d->map->pts;
+	while (tmp)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			d->map->pts[i][j].x = d->map->pts[i][j].snapshot.old_x;
-			d->map->pts[i][j].y = d->map->pts[i][j].snapshot.old_y;
-			d->map->pts[i][j].z = d->map->pts[i][j].snapshot.old_z;
-			j++;
-		}
-		i++;
+		tmp->point.x = tmp->point.snapshot.old_x;
+		tmp->point.y = tmp->point.snapshot.old_y;
+		tmp->point.z = tmp->point.snapshot.old_z;
+		tmp = tmp->next;
 	}
 	d->state.diagonal = 0;
 	d->state.parallel = 0;

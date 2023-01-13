@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:29:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:41:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	close_win_bonus(t_data *d)
 {
-	// if (d->state.neutral_y == 0)
-	// 	two_steps_to_isometry_bonus(d, 1, 0);
-	// else if (d->state.neutral_x == 0)
-	// 	two_steps_to_isometry_bonus(d, 1, 0);
+	if (d->state.neutral_y == 0)
+		two_steps_to_isometry_bonus(d, 1, 0);
+	else if (d->state.neutral_x == 0)
+		two_steps_to_isometry_bonus(d, 1, 0);
 	mlx_destroy_image(d->mlx->mlx_ptr, d->img->mlx_img);
 	mlx_destroy_window(d->mlx->mlx_ptr, d->mlx->win_ptr);
 	mlx_destroy_display(d->mlx->mlx_ptr);
