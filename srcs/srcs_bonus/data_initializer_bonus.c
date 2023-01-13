@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:24:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:16:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static void	find_center_of_the_map(t_data *d)
 	else
 		index = d->map->size / 2;
 	central_node = ft_lstpoint_getby_index(d->map->pts, index);
-	d->offset.cx = central_node->point.x;
-	d->offset.cy = central_node->point.y;
-	d->offset.cz = central_node->point.z;
+	d->center.x = central_node->point.x;
+	d->center.y = central_node->point.y;
+	d->center.z = central_node->point.z;
 }
 
 static void	get_phi_and_theta(t_node_with_a_point *map)
