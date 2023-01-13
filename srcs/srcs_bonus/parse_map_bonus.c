@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:30:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 00:31:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static inline void	get_map_dimensions(t_data *d);
 static inline void	assign_point_coordinates_xy(t_data *d);
 static inline void	assign_coordinate_z(t_data *d);
+static inline void	get_hexcolor(t_data *d);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -35,6 +36,7 @@ int	parse_map_bonus(t_data *d)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	assign_point_coordinates_xy(d);
 	assign_coordinate_z(d);
+	get_hexcolor(d);
 	return (1);
 }
 
@@ -62,6 +64,20 @@ static inline void	assign_coordinate_z(t_data *d)
 	while (tmp)
 	{
 		fscanf(d->tool.fp, "%lf", &tmp->point.z);
+		tmp->point.color = CYAN;
+		tmp = tmp->next;
+	}
+	rewind(d->tool.fp);
+}
+
+static inline void	get_hexcolor(t_data *d)
+{
+	t_node_with_a_point	*tmp;
+
+	tmp = d->map->pts;
+	while (tmp)
+	{
+		fscanf(d->tool.fp, "%x", &tmp->point.color);
 		tmp = tmp->next;
 	}
 	fclose(d->tool.fp);
