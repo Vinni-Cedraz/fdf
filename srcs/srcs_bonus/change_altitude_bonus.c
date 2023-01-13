@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/09 23:39:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 00:39:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,19 @@ void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 
 static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror)
 {
-	t_short	i;
-	t_short	j;
-	t_point	*p;
+	t_point				*p;
+	t_node_with_a_point	*node;
 
-	i = 0;
-	while (i < d->map->height)
+	node = d->map->pts;
+	while (node)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			p = &d->map->pts[i][j];
-			if (up && p->z != 0)
-				p->z *= 1.1;
-			if (down && p->z != 0)
-				p->z /= 1.1;
-			if (mirror && p->z != 0)
-				p->z *= -1;
-			j++;
-		}
-		i++;
+		p = &node->point;
+		if (up && p->z != 0)
+			p->z *= 1.1;
+		if (down && p->z != 0)
+			p->z /= 1.1;
+		if (mirror && p->z != 0)
+			p->z *= -1;
+		node = node->next;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/12 22:24:37 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/13 00:37:07 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,15 @@ WIP_SRCS = parse_map_bonus \
 		   close_win_bonus \
 		   two_steps_to_isometry_bonus \
 		   linear_transformations_bonus \
+		   render_map_bonus \
+		   render_line_bonus \
 		   zoom_bonus \
+		   draw_bonus \
+		   colorize_points_bonus \
+		   deal_keys_bonus \
+		   change_altitude_bonus \
+		   calculate_default_scale_bonus \
+
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
