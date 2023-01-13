@@ -6,15 +6,24 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/02 20:56:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:13:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "t_point_bonus.h"
 
-static void	zoom_in(t_data *d);
-static void	zoom_out(t_data *d);
-static void	reset_zoom(t_data *d);
+static void			zoom_in(t_data *d);
+static void			zoom_out(t_data *d);
+static void			reset_zoom(t_data *d);
+
+static inline void	update_state(t_data *d)
+{
+	if ((d->state.zoom_in - d->state.zoom_out) == 0)
+		d->state.neutral_zoom = 1;
+	else
+		d->state.neutral_zoom = 0;
+}
 
 void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 {
