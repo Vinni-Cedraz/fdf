@@ -20,28 +20,24 @@ static void			define_radius(t_point *p);
 
 void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere)
 {
-	t_short			i;
-	t_short			j;
-	static short	counter;
+	static short		counter;
+	t_node_with_a_point	*tmp;
 
-	// if (!d->state.neutral_zoom)
-	// 	zoom_bonus(d, 0, 0, 1);
+	tmp = d->map->pts;
+	if (!d->state.neutral_zoom)
+		zoom_bonus(d, 0, 0, 1);
 	if (++counter == 1)
 		calculate_z_scale(d);
-	i = -1;
-	while (++i < d->map->height)
+	while (tmp)
 	{
-		j = -1;
-		while (++j < d->map->width)
-		{
-			if (counter == 1)
-				if (d->map->pts->point.z != 0)
-					d->map->pts->point.z *= d->offset.scale_z;
-			if (sphere)
-				apply_spherical_projection(&d->map->pts->point, d);
-			else if (!sphere)
-				transform_a_point(&d->map->pts->point, rot, d);
-		}
+		if (counter == 1)
+			if (tmp->point.z != 0)
+				tmp->point.z *= d->offset.scale_z;
+		if (sphere)
+			apply_spherical_projection(&tmp->point, d);
+		else if (!sphere)
+			transform_a_point(&tmp->point, rot, d);
+		tmp = tmp->next;
 	}
 }
 
