@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 19:51:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:19:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,17 @@ void	data_initializer_bonus(t_data *d)
 
 static void	find_center_of_the_map(t_data *d)
 {
-	uint	half_map_size;
+	uint index;
+	t_node_with_a_point	*central_node;
 
-	half_map_size = d->map->size / 2;
-	d->offset.cx = ft_lstpoint_getby_index(d->map->pts, half_map_size)->point.x;
-	d->offset.cy = ft_lstpoint_getby_index(d->map->pts, half_map_size)->point.y;
-	d->offset.cz = ft_lstpoint_getby_index(d->map->pts, half_map_size)->point.z;
-	printf("cx: %lf cy: %lf cz: %lf\n", d->offset.cx, d->offset.cy, d->offset.cz);
+	if (d->map->size % 2 == 0)
+		index = (d->map->size / 2) + d->map->width / 2;
+	else
+		index = d->map->size / 2;
+	central_node = ft_lstpoint_getby_index(d->map->pts, index);
+	d->offset.cx = central_node->point.x;
+	d->offset.cy = central_node->point.y;
+	d->offset.cz = central_node->point.z;
 }
 
 static void	get_phi_and_theta(t_node_with_a_point *map)
