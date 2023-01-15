@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 22:06:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 22:51:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
 # include "t_point_bonus.h"
 # include <stdio.h>
-#include <sys/types.h>
 
 typedef unsigned int short	t_short;
 typedef struct s_point		t_point;
@@ -143,6 +142,7 @@ typedef struct s_map
 	double					target_height;
 	double					ratio;
 	t_node_with_a_point		*pts;
+	t_point					**arr;
 }							t_map;
 
 typedef struct s_data
