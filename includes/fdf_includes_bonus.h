@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:21:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:18:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere);
 
 void	render_line_bonus(t_point p1, t_point p2, t_data *d);
 
-void	render_map_bonus(t_data *d, t_short squre, t_short cross, t_short pent);
+void	render_map_bonus(t_data *d, t_short sqr, t_short cross, t_short pent);
 
 void	colorize_points_bonus(t_map *map);
 
