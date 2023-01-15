@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/14 23:19:41 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/15 12:21:51 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,6 @@ ft_split \
 
 BSRCS = ft_lstadd_back \
 ft_lstadd_front \
-ft_special_gnl \
 ft_lstfree \
 ft_lstlast \
 ft_lstnew \

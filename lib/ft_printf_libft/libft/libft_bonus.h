@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:07:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/13 19:55:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:22:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,5 @@ int						ft_lstgetby_content(t_node *lst, void *content);
 t_node					*ft_lstshift(t_node **lst);
 // frees the last node of a list
 void					ft_lstpop(t_node **lst);
-
-//  FORBIDDEN FUNCTIONS, USE ONLY WHEN THE BONUS ALLOWS ANY FUNCTION
-// ft_special_gnl is a faster gnl with fread, fopen and a fixed buffersize
-char					*ft_special_gnl(FILE *fp);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/14 23:22:17 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/15 12:09:39 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 NAME_WIP = wip.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/

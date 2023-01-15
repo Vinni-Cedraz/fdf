@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/14 23:30:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:21:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,30 @@ int	parse_map_bonus(t_data *d)
 static void	get_map_dimensions(t_data *d)
 {
 	char	buf[1];
+	size_t	len;
 	char	*first_line;
-	t_split	*split_to_count_width;
+	t_split	*get_width;
 
+	len = 0;
 	d->map->height = 0;
+	first_line = "";
 	while (fread(buf, 1, 1, d->tool.fp))
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	rewind(d->tool.fp);
-	first_line = ft_special_gnl(d->tool.fp);
-	split_to_count_width = ft_split(first_line, ' ');
-	free(first_line);
-	d->map->width = split_to_count_width->words;
-	ft_free_t_split(split_to_count_width);
+	getline(&first_line, &len, d->tool.fp);
+	get_width = ft_split(first_line, ' ');
+	d->map->width = get_width->words;
 	d->map->size = d->map->height * d->map->width;
+	ft_free_t_split(get_width);
+	free(first_line);
 	rewind(d->tool.fp);
 }
 
 static void	assign_point_coordinates_xy(t_data *d)
 {
-	t_node_with_a_point	*tmp;
 	int					counter;
+	t_node_with_a_point	*tmp;
 
 	tmp = d->map->pts;
 	counter = 0;
