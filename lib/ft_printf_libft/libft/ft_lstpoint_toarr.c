@@ -6,13 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:45:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/13 23:54:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:26:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libft_bonus.h"
-#include <assert.h>
 
 t_point	**ft_lstpoint_toarr(t_node_with_a_point *node, uint width)
 {
