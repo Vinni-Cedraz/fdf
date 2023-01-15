@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 12:21:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 20:29:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	parse_map_bonus(t_data *d)
 	assign_point_coordinates_xy(d);
 	assign_coordinate_z(d);
 	get_hexcolor(d);
+	fclose(d->tool.fp);
 	return (1);
 }
 
@@ -107,5 +108,4 @@ static inline void	get_hexcolor(t_data *d)
 		fscanf(d->tool.fp, "%x", &tmp->point.color);
 		tmp = tmp->next;
 	}
-	fclose(d->tool.fp);
 }

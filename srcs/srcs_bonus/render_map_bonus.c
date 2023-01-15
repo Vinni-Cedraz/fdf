@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/14 23:15:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 20:39:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,6 @@ void	render_map_bonus(t_data *d, t_short square, t_short cross, t_short pent)
 		render_pentagram(d);
 	find_center_of_the_map(d);
 }
-
-// static void	render_lines_square(t_data *d)
-// {
-// 	int					k;
-// 	t_point				p1;
-// 	t_node_with_a_point	*current;
-// 	t_node_with_a_point	*next;
-// 	t_node_with_a_point	*down;
-//
-// 	current = d->map->pts;
-// 	while (current)
-// 	{
-// 		p1 = current->point;
-// 		next = current->next;
-// 		down = current;
-// 		k = -1;
-// 		while (++k < d->map->width)
-// 			down = down->next;
-// 		if (next)
-// 			render_line_bonus(p1, next->point, d);
-// 		if (down)
-// 			render_line_bonus(p1, down->point, d);
-// 		current = current->next;
-// 	}
-// }
 
 static void render_lines_square(t_data *d)
 {

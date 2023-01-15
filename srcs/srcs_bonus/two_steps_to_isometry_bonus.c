@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:44:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 20:39:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ static void	take_snapshot(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		tmp->point.x = tmp->point.snapshot.old_x;
-		tmp->point.y = tmp->point.snapshot.old_y;
-		tmp->point.z = tmp->point.snapshot.old_z;
+		tmp->point.snapshot.old_x = tmp->point.x;
+		tmp->point.snapshot.old_y = tmp->point.y;
+		tmp->point.snapshot.old_z = tmp->point.z;
 		tmp = tmp->next;
 	}
 }
