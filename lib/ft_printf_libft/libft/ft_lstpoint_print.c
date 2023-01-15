@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:22:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 18:57:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:50:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_lstpoint_print(t_node_with_a_point **lst)
 	{
 		printf("%f, ", tmp->point.x);
 		printf("%f, ", tmp->point.y);
-		printf("%f;\n ", tmp->point.z);
+		printf("%f, ", tmp->point.z);
+		printf("%d;\n", tmp->point.color);
 		tmp = tmp->next;
 	}
 }

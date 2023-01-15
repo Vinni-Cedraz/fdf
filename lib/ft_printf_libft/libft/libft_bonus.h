@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:07:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:22:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:55:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // ATTENTION, THIS INCLUDE SHOULD BE COMMENTED OUT IF THE PROJECT IS NOT FDF//
 # include "libft_bonus_for_fdf.h"
+typedef struct s_data t_data;
 
 typedef struct s_nodes	t_node;
 typedef struct s_nodes

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_arr.c                                      :+:      :+:    :+:   */
+/*   ft_lstpoint_size.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 19:34:35 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/10/03 13:10:12 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/13 19:47:40 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/13 19:47:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
+#include "libft_bonus.h"
 
-void	ft_free_arr(char **arr, void **aux)
+int	ft_lstpoint_size(t_node_with_a_point *lst)
 {
-	while (*arr)
-		free(*arr++);
-	free(aux);
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }

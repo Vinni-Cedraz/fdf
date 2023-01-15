@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:07:06 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:25:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:46:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 typedef t_node_with_a_point	t_n;
 typedef double				t_d;
+typedef struct s_data		t_data;
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n							*ft_lstpoint_new(void);
@@ -39,5 +40,11 @@ void						ft_lstpoint_free(t_node_with_a_point **list);
 
 // get's the index of the node contating a t_point with specific xyz values
 int							lstpoint_getby_content(t_n *n, t_d x, t_d y, t_d z);
+
+// just ft_lstsize but for t_node_with_a_point
+int							ft_lstpoint_size(t_node_with_a_point *lst);
+
+// to transform a linked list of ode_with_a_points into a 2d array of t_points
+t_point						**ft_lstpoint_toarr(t_n *node, uint width);
 
 #endif

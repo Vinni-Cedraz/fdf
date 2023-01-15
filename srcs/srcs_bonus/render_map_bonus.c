@@ -6,90 +6,126 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/13 00:43:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:15:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 #include "t_point_bonus.h"
 
-// static void	render_pentagram(t_data *d);
-static void	render_lines_list(t_data *d);
-// static void	render_lines_cross(t_data *d);
+static void	render_pentagram(t_data *d);
+static void	render_lines_square(t_data *d);
+static void	render_lines_cross(t_data *d);
 static void	find_center_of_the_map(t_data *d);
 
-void	render_map_bonus(t_data *d, t_short list, t_short cross, t_short pent)
+void	render_map_bonus(t_data *d, t_short square, t_short cross, t_short pent)
 {
-	if (list)
-		render_lines_list(d);
+	if (square)
+		render_lines_square(d);
 	else if (cross)
-		return ;
+		render_lines_cross(d);
 	else if (pent)
-		return ;
+		render_pentagram(d);
 	find_center_of_the_map(d);
 }
 
-static void	render_lines_list(t_data *d)
-{
-	t_node_with_a_point	*tmp;
+// static void	render_lines_square(t_data *d)
+// {
+// 	int					k;
+// 	t_point				p1;
+// 	t_node_with_a_point	*current;
+// 	t_node_with_a_point	*next;
+// 	t_node_with_a_point	*down;
+//
+// 	current = d->map->pts;
+// 	while (current)
+// 	{
+// 		p1 = current->point;
+// 		next = current->next;
+// 		down = current;
+// 		k = -1;
+// 		while (++k < d->map->width)
+// 			down = down->next;
+// 		if (next)
+// 			render_line_bonus(p1, next->point, d);
+// 		if (down)
+// 			render_line_bonus(p1, down->point, d);
+// 		current = current->next;
+// 	}
+// }
 
-	tmp = d->map->pts;
-	while (tmp->next)
+static void render_lines_square(t_data *d)
+{
+	int		i;
+	int		j;
+	t_point	p;
+
+	i = 0;
+	while (i < d->map->height)
 	{
-		render_line_bonus(tmp->point, tmp->next->point, d);
-		tmp = tmp->next;
+		j = 0;
+		while (j < d->map->width)
+		{
+			p = d->map->arr[i][j];
+			if (j + 1 < d->map->width)
+				render_line_bonus(p, d->map->arr[i][j + 1], d);
+			if (i + 1 < d->map->height)
+				render_line_bonus(p, d->map->arr[i + 1][j], d);
+			j++;
+		}
+		i++;
 	}
 }
-//
-// static void	render_lines_cross(t_data *d)
-// {
-// 	t_short	i;
-// 	t_short	j;
-// 	t_point	p1;
-//
-// 	i = -1;
-// 	j = -1;
-// 	render_lines_list(d);
-// 	while (++i < d->map->height)
-// 	{
-// 		j = -1;
-// 		while (++j < d->map->width)
-// 		{
-// 			if (j < d->map->width - 1 && i < d->map->height - 1)
-// 			{
-// 				p1 = d->map->pts[i][j];
-// 				render_line_bonus(p1, d->map->pts[i + 1][j + 1], d);
-// 				p1 = d->map->pts[i + 1][j];
-// 				render_line_bonus(p1, d->map->pts[i][j + 1], d);
-// 			}
-// 		}
-// 	}
-// }
-//
-// static void	render_pentagram(t_data *d)
-// {
-// 	t_short	i;
-// 	t_short	j;
-// 	t_point	p1;
-//
-// 	i = -1;
-// 	j = -1;
-// 	while (++i < d->map->height - 3)
-// 	{
-// 		j = -1;
-// 		while (++j < d->map->width - 3)
-// 		{
-// 			p1 = d->map->pts[i + 1][j];
-// 			render_line_bonus(p1, d->map->pts[i + 1][j + 2], d);
-// 			render_line_bonus(p1, d->map->pts[i + 2][j + 2], d);
-// 			p1 = d->map->pts[i + 2][j];
-// 			render_line_bonus(p1, d->map->pts[i][j + 1], d);
-// 			render_line_bonus(p1, d->map->pts[i + 1][j + 2], d);
-// 			p1 = d->map->pts[i][j + 1];
-// 			render_line_bonus(p1, d->map->pts[i + 2][j + 2], d);
-// 		}
-// 	}
-// }
+
+static void	render_lines_cross(t_data *d)
+{
+	t_short	i;
+	t_short	j;
+	t_point	p1;
+
+	i = -1;
+	j = -1;
+	render_lines_square(d);
+	while (++i < d->map->height)
+	{
+		j = -1;
+		while (++j < d->map->width)
+		{
+			if (j < d->map->width - 1 && i < d->map->height - 1)
+			{
+				p1 = d->map->arr[i][j];
+				render_line_bonus(p1, d->map->arr[i + 1][j + 1], d);
+				p1 = d->map->arr[i + 1][j];
+				render_line_bonus(p1, d->map->arr[i][j + 1], d);
+			}
+		}
+	}
+}
+
+static void	render_pentagram(t_data *d)
+{
+	t_short	i;
+	t_short	j;
+	t_point	p1;
+
+	i = -1;
+	j = -1;
+	while (++i < d->map->height - 3)
+	{
+		j = -1;
+		while (++j < d->map->width - 3)
+		{
+			p1 = d->map->arr[i + 1][j];
+			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
+			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
+			p1 = d->map->arr[i + 2][j];
+			render_line_bonus(p1, d->map->arr[i][j + 1], d);
+			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
+			p1 = d->map->arr[i][j + 1];
+			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
+		}
+	}
+}
 
 static void	find_center_of_the_map(t_data *d)
 {
