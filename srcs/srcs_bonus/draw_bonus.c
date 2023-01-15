@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/14 23:14:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:33:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,19 @@ int	draw_bonus(t_data *d)
 
 static void	draw_menu_background(t_img *img)
 {
-	int	x;
-	int	y;
-
-	x = -1;
-	while (++x < MENU_WIDTH)
+	int counter;
+	int menu_size;
+	int i;
+	int j;
+	
+	counter = 0;
+	menu_size = MENU_WIDTH * img->height;
+	while (counter < menu_size)
 	{
-		y = -1;
-		while (++y <= WINDOW_HEIGHT)
-			put_pixel_img_bonus(img, x, y, DARKER_GRAY);
+		i = counter / img->height;
+		j = counter % img->height;
+		put_pixel_img_bonus(img, i, j, DARKER_GRAY);
+		counter++;
 	}
 }
 
