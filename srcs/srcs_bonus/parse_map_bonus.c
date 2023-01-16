@@ -15,7 +15,7 @@
 static inline void	get_map_dimensions(t_data *d);
 static inline void	assign_point_coordinates_xy(t_data *d);
 static inline void	assign_coordinate_z(t_data *d);
-static inline void	get_hexcolor(t_data *d);
+// static inline void	get_hexcolor(t_data *d);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -30,14 +30,14 @@ int	parse_map_bonus(t_data *d)
 		return (perror("Error"), 0);
 	get_map_dimensions(d);
 	counter = d->map->size;
-	printf("Map size: %d\n", d->map->size);
 	d->map->pts = ft_lstpoint_new();
 	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	calculate_default_scale_bonus(d, WINDOW_HEIGHT);
 	assign_point_coordinates_xy(d);
 	assign_coordinate_z(d);
-	get_hexcolor(d);
+	// get_hexcolor(d);
+	colorize_points_bonus(d);
 	fclose(d->tool.fp);
 	return (1);
 }
@@ -95,17 +95,17 @@ static inline void	assign_coordinate_z(t_data *d)
 		tmp->point.color = CYAN;
 		tmp = tmp->next;
 	}
-	rewind(d->tool.fp);
+	// rewind(d->tool.fp);
 }
-
-static inline void	get_hexcolor(t_data *d)
-{
-	t_node_with_a_point	*tmp;
-
-	tmp = d->map->pts;
-	while (tmp)
-	{
-		fscanf(d->tool.fp, "%x", &tmp->point.color);
-		tmp = tmp->next;
-	}
-}
+//
+// static inline void	get_hexcolor(t_data *d)
+// {
+// 	t_node_with_a_point	*tmp;
+//
+// 	tmp = d->map->pts;
+// 	while (tmp)
+// 	{
+// 		fscanf(d->tool.fp, "%x", &tmp->point.color);
+// 		tmp = tmp->next;
+// 	}
+// }

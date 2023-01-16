@@ -20,7 +20,6 @@ static void	paint_it_black(t_data *data);
 int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
-	colorize_points_bonus(d);
 	d->map->arr = ft_lstpoint_toarr(d->map->pts, d->map->width);
 	if (d->state.grid_style_nb == 1)
 		render_map_bonus(d, 1, 0, 0);

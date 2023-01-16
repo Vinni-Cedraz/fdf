@@ -16,6 +16,7 @@ static void	scale_z(t_data *d, t_short up, t_short down, t_short mirror);
 
 void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 {
+	get_altitude_range_bonus(d->map);
 	if (!d->state.isometric)
 		return ;
 	if (!d->state.neutral_zoom)
