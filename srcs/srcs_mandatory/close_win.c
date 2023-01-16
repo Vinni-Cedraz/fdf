@@ -19,7 +19,7 @@ int	close_win(t_data *data)
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	free(data->img);
-	ft_free_t_map(data->map->arr);
+	ft_free_2d_arr((void **)data->map->arr, data->map->height);
 	free(data->map);
 	exit(0);
 }

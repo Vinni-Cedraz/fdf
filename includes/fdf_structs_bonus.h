@@ -23,18 +23,58 @@ typedef struct s_point		t_point;
 typedef struct s_phere		t_sphere;
 typedef struct s_origin		t_snapshot;
 
-typedef struct s_line
+/*  \struct  */
+/* \brief temporary variables are often defined locally to hold some values and
+ * make code more readable. The purpost t_emporary is to have those handy */
+typedef struct s_tmps
 {
 	double					x;
 	double					y;
-	double					x_inc;
-	double					y_inc;
-	short					dx;
-	short					dy;
-	t_short					steps;
-	unsigned int			color;
-}							t_line;
+	double					z;
+}							t_emporary;
 
+/*  \struct  */
+/*  \brief It organizes the data mlx need to create a window */
+typedef struct s_mlx
+{
+	void					*win_ptr;
+	void					*mlx_ptr;
+	t_short					hook;
+}							t_mlx;
+
+/* \struct  */
+/*  \brief  Holds values different parse_map_bonus functions needs to read and
+ * work with a file */
+typedef struct s_assign_coordinates
+{
+	FILE					*fp;
+	char					*line;
+	char					*argv;
+}							t_assign_coordinates;
+
+/*  \struct  */
+/*  \brief  holds the values that are used to change x, y and z of the t_points
+ * for scaling, change of altitude and translation*/
+typedef struct s_offset
+{
+	double					scale;
+	double					scale_z;
+	double					move_x;
+	double					move_y;
+}							t_offset;
+
+/*   \struct  */
+/*  \brief  holds the x, y and z values of the specific t_point located at the
+ * center of the map*/
+typedef struct s_center
+{
+	double					x;
+	double					y;
+	double					z;
+}							t_center;
+
+/*  \struct  */
+/*  \brief  holds the data mlx needs to create and work with an image */
 typedef struct s_img
 {
 	t_short					width;
@@ -46,6 +86,24 @@ typedef struct s_img
 	int						endian;
 }							t_img;
 
+/*  \struct  */
+/*  \brief  holds the data needed by render_line_bonus to create a line using
+ * Bressenham's algorithm*/
+typedef struct s_line
+{
+	double					x;
+	double					y;
+	double					x_inc;
+	double					y_inc;
+	short					dx;
+	short					dy;
+	unsigned int			color;
+	t_short					steps;
+}							t_line;
+
+/*  \struct  */
+/*  \brief  each row in a 3x3 matrix has three columns, t_row holds the values
+ * in each of the three columns for each row */
 typedef struct s_row
 {
 	double					col_1;
@@ -53,13 +111,10 @@ typedef struct s_row
 	double					col_3;
 }							t_row;
 
-typedef struct s_tmps
-{
-	double					x;
-	double					y;
-	double					z;
-}							t_emporary;
-
+/*  \class  */
+/*  \brief  the t_matrix class is used to defined different t_matrix objects,
+ * all with three t_row attributes each with it's own t_row values specific to
+ * that object*/
 typedef struct s_matrix
 {
 	t_row					row_1;
@@ -67,6 +122,9 @@ typedef struct s_matrix
 	t_row					row_3;
 }							t_matrix;
 
+/*  \struct  */
+/*  \brief  It's the set of the different t_matrix objects that will be defined
+ * in the define_rotation_matrices_bonus function */
 typedef struct s_rotation_matrices
 {
 	t_matrix				rot_x;
@@ -82,28 +140,9 @@ typedef struct s_rotation_matrices
 	t_matrix				spherical;
 }							t_rotation_matrices;
 
-typedef struct s_mlx
-{
-	void					*win_ptr;
-	void					*mlx_ptr;
-	t_short					hook;
-}							t_mlx;
-
-typedef struct s_center
-{
-	double					x;
-	double					y;
-	double					z;
-}							t_center;
-
-typedef struct s_offset
-{
-	double					scale;
-	double					scale_z;
-	double					move_x;
-	double					move_y;
-}							t_offset;
-
+/*  \class  */
+/*  \brief  t_state is a class that holds pseudo-boolean indicators of the state
+ * of the map as it is rotated and translated by the user.*/
 typedef struct s_state
 {
 	t_short					snapshot_taken;
@@ -125,13 +164,10 @@ typedef struct s_state
 	t_short					grid_style_nb;
 }							t_state;
 
-typedef struct s_assign_coordinates
-{
-	FILE					*fp;
-	char					*line;
-	char					*argv;
-}							t_assign_coordinates;
-
+/*  \class  */
+/*  \brief  A t_map is essentially the series of t_points that will be used to
+ * render de wireframe, but t_map also contains other important data about the
+ * set of t_points, such as it's size and max/min altitude values. */
 typedef struct s_map
 {
 	int						width;
@@ -146,15 +182,18 @@ typedef struct s_map
 	t_point					**arr;
 }							t_map;
 
+/*  \class  */
+/*  \brief  t_data is a meta-class that holds all the data_structures that are
+ * most used throughout the project */
 typedef struct s_data
 {
+	t_assign_coordinates	tool;
 	t_state					state;
 	t_offset				offset;
 	t_center				center;
 	t_mlx					*mlx;
 	t_img					*img;
 	t_map					*map;
-	t_assign_coordinates	tool;
 	t_rotation_matrices		*matrix;
 }							t_data;
 

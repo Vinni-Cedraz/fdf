@@ -29,6 +29,9 @@ typedef struct s_phere
 	double							r;
 }									t_sphere;
 
+/*  \class */
+/*   \brief t_point class defines the attributes a new t_point object has,
+ * such as cartesian coordinates, color and etc */
 typedef struct s_point
 {
 	double							x;
@@ -39,6 +42,9 @@ typedef struct s_point
 	t_snapshot						snapshot;
 }									t_point;
 
+/*  \class */
+/*   \brief Allows the creation of a linked list where each node has a t_point
+ * object as it's first attribute, the other being *next*/
 typedef struct s_node_for_a_point
 {
 	t_point							point;

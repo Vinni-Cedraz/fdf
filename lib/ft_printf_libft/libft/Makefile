@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/15 12:21:51 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/16 14:08:39 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,7 @@ ft_itoa_base \
 
 FDF_SRCS = ft_strnstr \
 			   ft_swap \
-		  ft_free_t_map \
+		  ft_free_2d_arr\
 		 ft_free_t_split \
 			 ft_atoi_base \
 		   ft_word_counter \
@@ -136,7 +136,7 @@ FDF_SRCS = ft_strnstr \
 
 FDF_SRCS_BONUS =  ft_strnstr \
 					  ft_swap \
-				 ft_free_t_map \
+				ft_free_2d_arr \
 				ft_free_t_split \
 					ft_atoi_base \
 				  ft_word_counter \

@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/*  \struct*/
 typedef struct s_plit
 {
 	char	*end;
@@ -28,6 +29,7 @@ typedef struct s_plit
 
 }			t_split;
 
+/*  \struct*/
 typedef struct s_tools
 {
 	size_t	abs;
@@ -40,6 +42,7 @@ typedef struct s_tools
 	va_list	list;
 }			t_ools;
 
+/*  \struct*/
 typedef enum s_enum
 {
 	TAB = 9,
@@ -50,6 +53,7 @@ typedef enum s_enum
 	SPACE = ' ',
 }			t_whitespace;
 
+/*  \struct*/
 typedef struct s_counters
 {
 	size_t	chars;
@@ -60,6 +64,7 @@ typedef struct s_counters
 	size_t	from_end;
 }			t_counters;
 
+/*  \struct*/
 typedef struct s_tring
 {
 	char	*str;
@@ -68,6 +73,7 @@ typedef struct s_tring
 	char	*to_ascii;
 }			t_string;
 
+/*  \struct*/
 typedef struct s_gnl
 {
 	char	*read;
@@ -81,6 +87,7 @@ typedef struct s_gnl
 	size_t	len;
 }			t_gnl;
 
+/*  \struct*/
 typedef struct s_read_one
 {
 	char	*buf;
