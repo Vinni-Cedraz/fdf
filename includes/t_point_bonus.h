@@ -26,6 +26,13 @@ typedef struct s_origin
 	double							z;
 }									t_snapshot;
 
+typedef struct s_raw
+{
+	short							x;
+	short							y;
+	short							z;
+}									t_raw;
+
 /*  \struct*/
 /*  \brief each t_point has it's cartesian coordinates xyz translated to
  * spherical coordinates and stored in a t_sphere struct */
@@ -47,6 +54,7 @@ typedef struct s_point
 	unsigned int					color;
 	t_sphere						ball;
 	t_snapshot						ol;
+	t_raw							raw;
 }									t_point;
 
 /*  \class */

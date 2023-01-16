@@ -76,6 +76,8 @@ static void	assign_point_coordinates_xy(t_data *d)
 	{
 		tmp->point.x = counter % d->map->width;
 		tmp->point.y = (int)((double)counter / d->map->width);
+		tmp->point.raw.y = tmp->point.y;
+		tmp->point.raw.x = tmp->point.x;
 		tmp->point.x *= d->offset.scale;
 		tmp->point.y *= d->offset.scale;
 		tmp = tmp->next;
@@ -91,6 +93,7 @@ static inline void	assign_coordinate_z(t_data *d)
 	while (tmp)
 	{
 		fscanf(d->tool.fp, "%lf", &tmp->point.z);
+		tmp->point.raw.z = tmp->point.z;
 		tmp->point.z *= d->offset.scale;
 		tmp->point.color = CYAN;
 		tmp = tmp->next;
