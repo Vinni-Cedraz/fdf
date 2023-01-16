@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 12:38:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 21:17:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	paint_it_black(t_data *data);
 int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
-	colorize_points_bonus(d->map);
+	colorize_points_bonus(d);
 	d->map->arr = ft_lstpoint_toarr(d->map->pts, d->map->width);
 	if (d->state.grid_style_nb == 1)
 		render_map_bonus(d, 1, 0, 0);
