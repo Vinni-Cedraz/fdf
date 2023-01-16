@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 22:38:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:52:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,25 @@ static void	get_map_dimensions(t_data *d)
 {
 	char	buf[1];
 	size_t	len;
-	char	*first_line;
+	char	*first_line_dirty;
+	char	*first_line_clean;
 	t_split	*get_width;
 
 	len = 0;
 	d->map->height = 0;
-	first_line = "";
+	first_line_dirty = "";
 	while (fread(buf, 1, 1, d->tool.fp))
 		if (*buf == '\n' || *buf == '\0')
 			d->map->height++;
 	rewind(d->tool.fp);
-	getline(&first_line, &len, d->tool.fp);
-	get_width = ft_split(first_line, ' ');
+	getline(&first_line_dirty, &len, d->tool.fp);
+	first_line_clean = ft_strtrim(first_line_dirty, "\n");
+	free(first_line_dirty);
+	get_width = ft_split(first_line_clean, ' ');
 	d->map->width = get_width->words;
 	d->map->size = d->map->height * d->map->width;
 	ft_free_t_split(get_width);
-	free(first_line);
+	free(first_line_clean);
 	rewind(d->tool.fp);
 }
 
