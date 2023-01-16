@@ -106,6 +106,7 @@ typedef struct s_offset
 
 typedef struct s_state
 {
+	t_short					snapshot_taken;
 	t_short					rotate_5_around_x;
 	t_short					reverse_5_around_x;
 	t_short					rotate_5_around_y;

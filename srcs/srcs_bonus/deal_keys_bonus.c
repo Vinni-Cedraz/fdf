@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/11 11:52:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:48:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	deal_keys_bonus(int key, t_data *d)
 		d->offset.move_y -= 25;
 	else if (key == XK_DOWN || key == 'j')
 		d->offset.move_y += 25;
-	else if (key == 'i')
+	else if (key == 'i' || key == ' ')
 		two_steps_to_isometry_bonus(d, 0, 0);
 	else if (key == 'r')
 		two_steps_to_isometry_bonus(d, 1, 0);
@@ -54,19 +54,19 @@ static void	aux_deal_keys(int key, t_data *d)
 	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v'
 		|| key == 'q')
 		reset_states(d);
-	if (key == 'a')
+	if (key == 'a' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rot_y, 0);
-	else if (key == 'd')
+	else if (key == 'd' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rev_y, 0);
-	else if (key == 'q')
+	else if (key == 'q' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rot_x, 0);
-	else if (key == 'e')
+	else if (key == 'e' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rev_x, 0);
-	else if (key == 'x')
+	else if (key == 'x' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rot_z, 0);
-	else if (key == 'v')
+	else if (key == 'v' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rev_z, 0);
-	else if (key == 'p')
+	else if (key == 'p' )
 	{
 		linear_transformations_bonus(d, (void *)d, 1);
 		linear_transformations_bonus(d, &d->matrix->rot_x_54_73, 0);

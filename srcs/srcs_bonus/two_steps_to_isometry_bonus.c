@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 20:39:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:43:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ static void	restore_isometric_state_from_snapshot(t_data *d)
 {
 	t_node_with_a_point *tmp;
 	
+	if (d->state.isometric)
+		return ;
 	tmp = d->map->pts;
 	while (tmp)
 	{
