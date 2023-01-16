@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 16:25:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:36:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,20 @@
 
 typedef struct s_node_for_a_point	t_node_with_a_point;
 
+/*  \struct */
+/*  \brief  each t_point has stored in it it's old x,y and z values that are set
+ * at the moment they achieve isometry by the static function take_snapshot
+ * inside two_steps_to_isometry_bonus*/
 typedef struct s_origin
 {
-	double							old_x;
-	double							old_y;
-	double							old_z;
+	double							x;
+	double							y;
+	double							z;
 }									t_snapshot;
 
+/*  \struct*/
+/*  \brief each t_point has it's cartesian coordinates xyz translated to
+ * spherical coordinates and stored in a t_sphere struct */
 typedef struct s_phere
 {
 	double							phi;
@@ -39,7 +46,7 @@ typedef struct s_point
 	double							z;
 	unsigned int					color;
 	t_sphere						ball;
-	t_snapshot						snapshot;
+	t_snapshot						ol;
 }									t_point;
 
 /*  \class */

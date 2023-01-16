@@ -21,9 +21,9 @@ void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 		return ;
 	if (!d->state.neutral_zoom)
 		zoom_bonus(d, 0, 0, 1);
-	if (up && d->map->max_z >= 500)
+	if (up && d->map->max_z >= 800)
 		return ;
-	if (up && abs(d->map->min_z) >= 500)
+	if (up && abs(d->map->min_z) >= 800)
 		return ;
 	else
 		two_steps_to_isometry_bonus(d, 1, 0);
