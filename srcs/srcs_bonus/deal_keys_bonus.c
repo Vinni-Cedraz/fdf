@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 23:48:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 00:17:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	deal_keys_bonus(int key, t_data *d)
 		two_steps_to_isometry_bonus(d, 0, 0);
 	else if (key == 'r')
 		two_steps_to_isometry_bonus(d, 1, 0);
-	else if (key == ';')
+	else if (key == ';' && !d->state.parallel)
 		two_steps_to_isometry_bonus(d, 0, 1);
 	else if (key == 'z')
 		change_altitude_bonus(d, 1, 0);
