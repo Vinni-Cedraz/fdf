@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 18:52:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:36:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	parse_map_bonus(t_data *d)
 	assign_point_coordinates_xy(d);
 	assign_coordinate_z(d);
 	// get_hexcolor(d);
-	colorize_points_bonus(d);
 	fclose(d->tool.fp);
 	return (1);
 }

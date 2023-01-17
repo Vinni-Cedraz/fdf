@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 17:30:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:36:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	data_initializer_bonus(t_data *d)
 	open_win_and_img(d);
 	d->state = (t_state){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1};
 	get_altitude_range_bonus(d->map);
+	colorize_points_bonus(d);
 	define_rotation_matrices_bonus(d->matrix);
 	find_center_of_the_map(d);
 	get_phi_and_theta(d->map->pts);
