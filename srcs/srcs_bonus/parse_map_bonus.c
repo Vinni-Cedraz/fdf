@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 16:51:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:40:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	get_map_dimensions(t_data *d);
 static inline void	get_hexstring(t_data *d);
-static inline int	get_hexcolor_from_hexstring(char *str);
+static inline void	get_hexcolor_from_hexstring(char **str, t_point *p);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -75,26 +75,25 @@ static inline void	get_hexstring(t_data *d)
 	{
 		buf = "\0";
 		fscanf(d->tool.fp, "%*d,%ms", &buf);
-		tmp->point.color = get_hexcolor_from_hexstring(buf);
+		get_hexcolor_from_hexstring(&buf, &tmp->point);
 		tmp = tmp->next;
 	}
 }
 
-static inline int	get_hexcolor_from_hexstring(char *str)
+static inline void	get_hexcolor_from_hexstring(char **str, t_point *p)
 {
-	int	i;
 	int	color;
 
-	i = 0;
-	color = 0;
-	while (str[i] != '\0')
+	color = CYAN;
+	if (**str != '\0')
 	{
-		if (ft_ishexlow(&str[i + 2]))
-			color = ft_atoi_base(&str[i + 2], HEX_BASE);
-		else
-			color = ft_atoi_base(&str[i + 2], HEX_BASE_UPPER);
-		return (color);
-		i++;
+		if (ft_ishexlow(*(str)))
+		{
+			p->color = ft_atoi_base(*str, HEX_BASE);
+			return (free(*str));
+		}
+		p->color = ft_atoi_base(*str, HEX_BASE_UPPER);
+		return (free(*str));
 	}
-	return (CYAN);
+	p->color = color;
 }

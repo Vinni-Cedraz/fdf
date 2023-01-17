@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 00:51:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:49:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "t_point_bonus.h"
 
 static void	apply_isometric_steps(t_data *d);
 static void	take_snapshot(t_data *d);
@@ -83,7 +82,7 @@ static void	undo_isometric_steps(t_data *d)
 
 static void	take_snapshot(t_data *d)
 {
-	t_node_with_a_point *tmp;	
+	t_node_with_a_point	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)
@@ -97,8 +96,8 @@ static void	take_snapshot(t_data *d)
 
 static void	restore_isometric_state_from_snapshot(t_data *d)
 {
-	t_node_with_a_point *tmp;
-	
+	t_node_with_a_point	*tmp;
+
 	if (d->state.isometric)
 		return ;
 	tmp = d->map->pts;

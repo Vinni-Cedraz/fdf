@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 23:41:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:48:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_tmps
 typedef struct s_mlx
 {
 	void					*win_ptr;
-	void					*mlx_ptr;
+	void					*ptr;
 	t_short					hook;
 }							t_mlx;
 
@@ -75,7 +75,7 @@ typedef struct s_img
 {
 	t_short					width;
 	t_short					height;
-	void					*mlx_img;
+	void					*ptr;
 	char					*addr;
 	int						bpp;
 	int						line_len;

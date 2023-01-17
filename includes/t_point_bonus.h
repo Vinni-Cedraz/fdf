@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 12:00:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:49:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ typedef struct s_node_for_a_point	t_node_with_a_point;
 
 /*  \struct */
 /*  \brief  t_raw stores the original "uncooked" map's coordinates as they were
- * given originally in the file, before scales and transformations are applied*/
+given originally in the file, before scales and transformations are applied*/
 typedef struct s_raw
 {
 	short							x;

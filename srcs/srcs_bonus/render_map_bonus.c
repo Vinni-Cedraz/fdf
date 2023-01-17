@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 20:39:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:44:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "t_point_bonus.h"
 
 static void	render_pentagram(t_data *d);
 static void	render_lines_square(t_data *d);
@@ -29,7 +28,7 @@ void	render_map_bonus(t_data *d, t_short square, t_short cross, t_short pent)
 	find_center_of_the_map(d);
 }
 
-static void render_lines_square(t_data *d)
+static void	render_lines_square(t_data *d)
 {
 	int		i;
 	int		j;

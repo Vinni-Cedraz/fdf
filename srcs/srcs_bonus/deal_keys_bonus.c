@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 00:17:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:45:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ static void	aux_deal_keys(int key, t_data *d)
 		linear_transformations_bonus(d, &d->matrix->rot_z, 0);
 	else if (key == 'v' && !d->state.parallel)
 		linear_transformations_bonus(d, &d->matrix->rev_z, 0);
-	else if (key == 'p' )
-	{
-		linear_transformations_bonus(d, (void *)d, 1);
-		linear_transformations_bonus(d, &d->matrix->rot_x_54_73, 0);
-	}
 	else if (key)
 		aux_aux_deal_keys(key, d);
 }
 
 static void	aux_aux_deal_keys(int key, t_data *d)
 {
+	if (key == 'p')
+	{
+		linear_transformations_bonus(d, (void *)d, 1);
+		linear_transformations_bonus(d, &d->matrix->rot_x_54_73, 0);
+	}
 	if (key == 'g' && d->state.grid_style_nb == 1)
 		d->state.grid_style_nb = 2;
 	else if (key == 'g' && d->state.grid_style_nb == 2)
