@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 23:46:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 00:22:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,13 @@ static void	put_pixel_img_bonus(t_img *img, int x, int y, unsigned int color)
 
 static void	determine_line_color(t_point p1, t_point p2, unsigned int *color)
 {
-	// printf("p1.z = %lf, p2.z = %lf, p1.raw.y = %d, p1.raw.x = %d\n\n", p1.z, p2.z, p1.raw.y, p1.raw.x);
 	if (p1.color == p2.color)
 		*color = p1.color;
 	else
 	{
 		if (p1.ol.raw.z < p2.ol.raw.z)
 			*color = p1.color;
-		else if (p1.ol.raw.z > p2.ol.raw.z)
+		else
 			*color = p2.color;
 	}
 }
