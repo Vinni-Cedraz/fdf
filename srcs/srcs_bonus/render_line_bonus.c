@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 18:34:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:46:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static void	determine_line_color(t_point p1, t_point p2, unsigned int *color)
 		*color = p1.color;
 	else
 	{
-		if (p1.z < p2.z)
+		if (p1.ol.raw.z < p2.ol.raw.z)
 			*color = p1.color;
-		else if (p1.z > p2.z)
+		else if (p1.ol.raw.z > p2.ol.raw.z)
 			*color = p2.color;
 	}
 }

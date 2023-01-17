@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 18:06:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:41:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@
 // stdio needed for FILE type
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
 # include "t_point_bonus.h"
-# include <stdio.h>
 
 typedef unsigned int short	t_short;
-typedef struct s_point		t_point;
-typedef struct s_phere		t_sphere;
-typedef struct s_origin		t_snapshot;
 
 /*  \struct  */
 /* \brief temporary variables are often defined locally to hold some values and

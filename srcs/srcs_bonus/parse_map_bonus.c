@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 23:36:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:45:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static void	assign_point_coordinates_xy(t_data *d)
 	{
 		tmp->point.x = counter % d->map->width;
 		tmp->point.y = (int)((double)counter / d->map->width);
-		tmp->point.raw.y = tmp->point.y;
-		tmp->point.raw.x = tmp->point.x;
+		tmp->point.ol.raw.y = tmp->point.y;
+		tmp->point.ol.raw.x = tmp->point.x;
 		tmp->point.x *= d->offset.scale;
 		tmp->point.y *= d->offset.scale;
 		tmp = tmp->next;
@@ -95,7 +95,7 @@ static inline void	assign_coordinate_z(t_data *d)
 	while (tmp)
 	{
 		fscanf(d->tool.fp, "%lf", &tmp->point.z);
-		tmp->point.raw.z = tmp->point.z;
+		tmp->point.ol.raw.z = tmp->point.z;
 		tmp->point.z *= d->offset.scale;
 		tmp->point.color = CYAN;
 		tmp = tmp->next;
