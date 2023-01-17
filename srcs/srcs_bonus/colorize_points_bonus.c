@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 12:48:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:37:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ static t_short	is_colorized(t_data *d);
 void	colorize_points_bonus(t_data *d)
 {
 	t_node_with_a_point	*tmp;
-	double 				tolerance;
+	double				tolerance;
 
-	
 	if (is_colorized(d))
 		return ;
 	tolerance = 0.1;

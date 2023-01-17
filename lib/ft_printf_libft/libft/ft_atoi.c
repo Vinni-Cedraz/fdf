@@ -6,15 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:49:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 15:36:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:13:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline short	is_whitespace(char c);
-static inline short	isdigit(int c);
-static inline short	issign(int c);
+static inline int	is_whitespace(char c);
+static inline int	isdigit(int c);
+static inline int	issign(int c);
 
 int	ft_atoi(const char *asci)
 {
@@ -41,7 +41,7 @@ int	ft_atoi(const char *asci)
 	return (to_int);
 }
 
-static inline short	is_whitespace(char c)
+static inline int	is_whitespace(char c)
 {
 	if (c == SPACE)
 		return (1);

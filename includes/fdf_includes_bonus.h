@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/15 22:51:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:00:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 void	data_initializer_bonus(t_data *d);
 
 int		parse_map_bonus(t_data *d);
+
+void	assign_coordinates_bonus(t_data *d);
 
 void	get_altitude_range_bonus(t_map *map);
 

@@ -6,16 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 23:45:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:51:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static inline void	get_map_dimensions(t_data *d);
-static inline void	assign_point_coordinates_xy(t_data *d);
-static inline void	assign_coordinate_z(t_data *d);
-// static inline void	get_hexcolor(t_data *d);
+static inline void	get_hexstring(t_data *d);
+static inline int	get_hexcolor_from_hexstring(char *str);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -34,9 +33,8 @@ int	parse_map_bonus(t_data *d)
 	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	calculate_default_scale_bonus(d, WINDOW_HEIGHT);
-	assign_point_coordinates_xy(d);
-	assign_coordinate_z(d);
-	// get_hexcolor(d);
+	assign_coordinates_bonus(d);
+	get_hexstring(d);
 	fclose(d->tool.fp);
 	return (1);
 }
@@ -67,50 +65,36 @@ static void	get_map_dimensions(t_data *d)
 	rewind(d->tool.fp);
 }
 
-static void	assign_point_coordinates_xy(t_data *d)
+static inline void	get_hexstring(t_data *d)
 {
-	int					counter;
-	t_node_with_a_point	*tmp;
-
-	tmp = d->map->pts;
-	counter = 0;
-	while (tmp)
-	{
-		tmp->point.x = counter % d->map->width;
-		tmp->point.y = (int)((double)counter / d->map->width);
-		tmp->point.ol.raw.y = tmp->point.y;
-		tmp->point.ol.raw.x = tmp->point.x;
-		tmp->point.x *= d->offset.scale;
-		tmp->point.y *= d->offset.scale;
-		tmp = tmp->next;
-		counter++;
-	}
-}
-
-static inline void	assign_coordinate_z(t_data *d)
-{
+	char				*buf;
 	t_node_with_a_point	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		fscanf(d->tool.fp, "%lf", &tmp->point.z);
-		tmp->point.ol.raw.z = tmp->point.z;
-		tmp->point.z *= d->offset.scale;
-		tmp->point.color = CYAN;
+		buf = "\0";
+		fscanf(d->tool.fp, "%*d,%ms", &buf);
+		tmp->point.color = get_hexcolor_from_hexstring(buf);
 		tmp = tmp->next;
 	}
-	// rewind(d->tool.fp);
 }
-//
-// static inline void	get_hexcolor(t_data *d)
-// {
-// 	t_node_with_a_point	*tmp;
-//
-// 	tmp = d->map->pts;
-// 	while (tmp)
-// 	{
-// 		fscanf(d->tool.fp, "%x", &tmp->point.color);
-// 		tmp = tmp->next;
-// 	}
-// }
+
+static inline int	get_hexcolor_from_hexstring(char *str)
+{
+	int	i;
+	int	color;
+
+	i = 0;
+	color = 0;
+	while (str[i] != '\0')
+	{
+		if (ft_ishexlow(&str[i + 2]))
+			color = ft_atoi_base(&str[i + 2], HEX_BASE);
+		else
+			color = ft_atoi_base(&str[i + 2], HEX_BASE_UPPER);
+		return (color);
+		i++;
+	}
+	return (CYAN);
+}
