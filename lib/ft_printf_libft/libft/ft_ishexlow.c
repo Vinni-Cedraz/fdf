@@ -6,26 +6,34 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 08:32:21 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 20:03:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:21:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline int	aux_isdigit(int c);
+static inline int	is_digit(int c);
+static inline int	is_hexlow(int c);
 
 int	ft_ishexlow(char *s)
 {
-	while (s && *s)
+	if (!s)
+		return (0);
+	while (*s)
 	{
-		if (aux_isdigit(*s) || (*s >= 'a' && *s <= 'f'))
+		if (is_digit(*s) || is_hexlow(*s))
 			return (1);
 		s++;
 	}
 	return (0);
 }
 
-static inline int	aux_isdigit(int c)
+static inline int	is_digit(int c)
 {
 	return ('0' <= c && c <= '9');
+}
+
+static inline int	is_hexlow(int c)
+{
+	return ('a' <= c && c <= 'f');
 }

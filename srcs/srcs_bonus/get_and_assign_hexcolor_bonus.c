@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 00:46:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:25:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ void	get_and_assign_hexcolor_bonus(t_data *d)
 	j = ft_calloc(sizeof(int), 1);
 	tmp = d->map->pts;
 	module_counter = 0;
+	points_in_current_row = &(t_split){NULL, NULL, 0, 0};
 	while (tmp)
 	{
 		if (is_begining_of_new_row(module_counter, j, (int)d->map->width))
 			points_in_current_row = read_points_in_current_row(d);
 		hexstring = get_point_string(points_in_current_row->str_arr[*j]);
-		if (hexstring)
-			tmp->point.color = ft_atoi_hex(hexstring);
+		if (ft_ishexlow(hexstring))
+			tmp->point.color = ft_atoi_base(hexstring, HEX_BASE);
+		else if (hexstring)
+			tmp->point.color = ft_atoi_base(hexstring, HEX_BASE_UPPER);
 		module_counter++;
 		if (is_end_of_row(j, d->map->width))
 			ft_free_t_split(points_in_current_row);

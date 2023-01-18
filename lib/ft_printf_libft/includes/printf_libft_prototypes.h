@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 20:48:26 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:30:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,5 @@ int		ft_atoi_base(char *str, char *base);
 int		ft_ishexup(char *s);
 // hex low:
 int		ft_ishexlow(char *s);
-// like atoi base but just for hex
-int		ft_atoi_hex(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/17 20:48:54 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/18 12:29:44 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,6 @@ ft_substr \
 ft_gnl \
 ft_itoa \
 ft_split \
-ft_atoi_hex \
 
 BSRCS = ft_lstadd_back \
 ft_lstadd_front \
