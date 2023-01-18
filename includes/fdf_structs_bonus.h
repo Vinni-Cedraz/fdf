@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:48:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 00:27:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 // stdio needed for FILE type
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
+# include "printf_libft_structs.h"
 # include "t_point_bonus.h"
+# include <stdio.h>
 
 typedef unsigned int short	t_short;
 
@@ -44,7 +46,6 @@ typedef struct s_mlx
 typedef struct s_assign_coordinates
 {
 	FILE					*fp;
-	char					*line;
 	char					*argv;
 }							t_assign_coordinates;
 
@@ -166,6 +167,7 @@ typedef struct s_state
  * set of t_points, such as it's size and max/min altitude values. */
 typedef struct s_map
 {
+	t_short					has_hexcolor;
 	int						width;
 	int						height;
 	uint					size;
@@ -191,6 +193,7 @@ typedef struct s_data
 	t_img					*img;
 	t_map					*map;
 	t_rotation_matrices		*matrix;
+	t_emporary				t;
 }							t_data;
 
 #endif

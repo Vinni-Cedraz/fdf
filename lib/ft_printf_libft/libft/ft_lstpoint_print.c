@@ -6,10 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:22:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/13 10:50:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 22:35:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "libft_bonus.h"
 
 void	ft_lstpoint_print(t_node_with_a_point **lst)
@@ -19,18 +20,18 @@ void	ft_lstpoint_print(t_node_with_a_point **lst)
 	if (!lst || !*lst)
 	{
 		if (!lst)
-			printf("\n\n all nodes and list itself were already freed \n");
+			ft_putstr("\n\n all nodes and list itself were already freed \n");
 		else
-			printf("\n\n empty list");
+			ft_putstr("\n\n empty list");
 		return ;
 	}
 	tmp = *lst;
 	while (tmp)
 	{
-		printf("%f, ", tmp->point.x);
-		printf("%f, ", tmp->point.y);
-		printf("%f, ", tmp->point.z);
-		printf("%d;\n", tmp->point.color);
+		ft_printf("%d, ", (int)tmp->point.x);
+		ft_printf("%d, ", (int)tmp->point.y);
+		ft_printf("%d, ", (int)tmp->point.z);
+		ft_printf("%d;\n", (int)tmp->point.color);
 		tmp = tmp->next;
 	}
 }

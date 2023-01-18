@@ -6,15 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 18:40:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 00:21:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static inline void	get_map_dimensions(t_data *d);
-static inline void	get_hexstring(t_data *d);
-static inline void	get_hexcolor_from_hexstring(char **str, t_point *p);
+static inline void	check_for_hexcolor(t_data *d);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -34,7 +33,9 @@ int	parse_map_bonus(t_data *d)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
 	calculate_default_scale_bonus(d, WINDOW_HEIGHT);
 	assign_coordinates_bonus(d);
-	get_hexstring(d);
+	check_for_hexcolor(d);
+	if (d->map->has_hexcolor)
+		get_and_assign_hexcolor_bonus(d);
 	fclose(d->tool.fp);
 	return (1);
 }
@@ -65,35 +66,12 @@ static void	get_map_dimensions(t_data *d)
 	rewind(d->tool.fp);
 }
 
-static inline void	get_hexstring(t_data *d)
+static inline void	check_for_hexcolor(t_data *d)
 {
-	char				*buf;
-	t_node_with_a_point	*tmp;
+	char	buf[1];
 
-	tmp = d->map->pts;
-	while (tmp)
-	{
-		buf = "\0";
-		fscanf(d->tool.fp, "%*d,%ms", &buf);
-		get_hexcolor_from_hexstring(&buf, &tmp->point);
-		tmp = tmp->next;
-	}
-}
-
-static inline void	get_hexcolor_from_hexstring(char **str, t_point *p)
-{
-	int	color;
-
-	color = CYAN;
-	if (**str != '\0')
-	{
-		if (ft_ishexlow(*(str)))
-		{
-			p->color = ft_atoi_base(*str, HEX_BASE);
-			return (free(*str));
-		}
-		p->color = ft_atoi_base(*str, HEX_BASE_UPPER);
-		return (free(*str));
-	}
-	p->color = color;
+	while (fread(buf, 1, 1, d->tool.fp))
+		if (*buf == ',')
+			d->map->has_hexcolor = 1;
+	rewind(d->tool.fp);
 }

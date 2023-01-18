@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:54:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 00:00:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	d = ft_calloc(sizeof(t_data), 1);
-	d->tool.argv = argv[1];
+	d->tool = (t_assign_coordinates){.fp = NULL, .argv = argv[1]};
 	d->map = calloc(sizeof(t_map), 1);
 	d->img = calloc(sizeof(t_img), 1);
 	if (!parse_map_bonus(d))

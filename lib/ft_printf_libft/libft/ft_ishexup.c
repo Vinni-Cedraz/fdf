@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 08:31:28 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 12:34:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:56:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 static inline int	aux_isdigit(int c);
 
-int	ft_ishexup(int c)
+int	ft_ishexup(char *s)
 {
-	return (aux_isdigit(c) || (c >= 'A' && c <= 'F') || c == 'x');
+	while (*s)
+	{
+		if (aux_isdigit(*s) || (*s >= 'A' && *s <= 'F'))
+			return (1);
+		s++;
+	}
+	return (0);
 }
 
 static inline int	aux_isdigit(int c)

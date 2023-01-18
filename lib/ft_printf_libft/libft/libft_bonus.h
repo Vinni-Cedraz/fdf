@@ -6,16 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:07:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 15:35:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 22:00:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_BONUS_H
 # define LIBFT_BONUS_H
 
-# include <pthread.h>
-# include <stdio.h>
-# include <stdlib.h>
 // ATTENTION, THIS INCLUDE SHOULD BE COMMENTED OUT IF THE PROJECT IS NOT FDF//
 # include "libft_bonus_for_fdf.h"
 

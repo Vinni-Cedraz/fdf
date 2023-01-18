@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 08:32:21 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 12:34:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:03:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static inline int	aux_isdigit(int c);
 
 int	ft_ishexlow(char *s)
 {
-	while (*s)
+	while (s && *s)
 	{
 		if (aux_isdigit(*s) || (*s >= 'a' && *s <= 'f'))
 			return (1);

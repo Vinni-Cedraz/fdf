@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 16:55:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:25:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static inline void	assign_coordinate_z(t_n *map, double scale, FILE *fp)
 		free(buf);
 		tmp->point.ol.raw.z = tmp->point.z;
 		tmp->point.z *= scale;
+		tmp->point.color = CYAN;
 		tmp = tmp->next;
 	}
 	rewind(fp);
