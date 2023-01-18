@@ -6,27 +6,24 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 22:13:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:44:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "t_point_bonus.h"
 
 static void			zoom_in(t_data *d);
 static void			zoom_out(t_data *d);
-static void			reset_zoom(t_data *d);
+static void			snapshot_zoom(t_data *d, t_short take, t_short restore);
+static void			update_state(t_data *d);
 
-static inline void	update_state(t_data *d)
+void	zoom_bonus(t_data *d, t_short in, t_short out, t_short restore)
 {
-	if ((d->state.zoom_in - d->state.zoom_out) == 0)
-		d->state.neutral_zoom = 1;
-	else
-		d->state.neutral_zoom = 0;
-}
+	static t_short	not_first_time;
 
-void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
-{
+	if (!not_first_time)
+		snapshot_zoom(d, 1, 0);
+	not_first_time = 1;
 	if (in)
 	{
 		if ((d->state.zoom_in - d->state.zoom_out) >= 36)
@@ -39,11 +36,11 @@ void	zoom_bonus(t_data *d, t_short in, t_short out, t_short reset)
 			return ;
 		zoom_out(d);
 	}
-	else if (reset)
-		reset_zoom(d);
+	else if (restore)
+		snapshot_zoom(d, 0, 1);
 }
 
-static void	zoom_in(t_data *d)
+static inline void	zoom_in(t_data *d)
 {
 	double				centered_origin_x;
 	double				centered_origin_y;
@@ -62,7 +59,7 @@ static void	zoom_in(t_data *d)
 	update_state(d);
 }
 
-static void	zoom_out(t_data *d)
+static inline void	zoom_out(t_data *d)
 {
 	double				centered_origin_x;
 	double				centered_origin_y;
@@ -81,26 +78,38 @@ static void	zoom_out(t_data *d)
 	update_state(d);
 }
 
-static void	reset_zoom(t_data *d)
+static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
 {
-	t_short	i;
-	t_short	successive_operations;
+	t_node_with_a_point	*tmp;
 
-	i = -1;
-	if (d->state.neutral_zoom)
-		return ;
-	zoom_bonus(d, 1, 0, 0);
-	zoom_bonus(d, 0, 1, 0);
-	if (d->state.zoom_in > d->state.zoom_out)
+	tmp = d->map->pts;
+	if (take)
+		while (tmp)
+		{
+			tmp->point.ol.zoom_x = tmp->point.x;
+			tmp->point.ol.zoom_y = tmp->point.y;
+			tmp->point.ol.zoom_z = tmp->point.z;
+			tmp = tmp->next;
+		}
+	else if (restore)
 	{
-		successive_operations = (d->state.zoom_in - d->state.zoom_out);
-		while (++i < successive_operations)
-			zoom_bonus(d, 0, 1, 0);
+		while (tmp)
+		{
+			tmp->point.x = tmp->point.ol.zoom_x;
+			tmp->point.y = tmp->point.ol.zoom_y;
+			tmp->point.z = tmp->point.ol.zoom_z;
+			tmp = tmp->next;
+		}
+		d->state.zoom_in = 0;
+		d->state.zoom_out = 0;
+		d->state.neutral_zoom = 1;
 	}
+}
+
+static inline void	update_state(t_data *d)
+{
+	if ((d->state.zoom_in - d->state.zoom_out) == 0)
+		d->state.neutral_zoom = 1;
 	else
-	{
-		successive_operations = (d->state.zoom_out - d->state.zoom_in);
-		while (++i < successive_operations)
-			zoom_bonus(d, 1, 0, 0);
-	}
+		d->state.neutral_zoom = 0;
 }

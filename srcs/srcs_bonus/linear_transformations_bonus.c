@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/12 22:15:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:33:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "t_point_bonus.h"
 
 static void			transform_a_point(t_point *p, t_matrix *m, t_data *d);
 static void			calculate_z_scale(t_data *d);
@@ -24,10 +23,10 @@ void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere)
 	t_node_with_a_point	*tmp;
 
 	tmp = d->map->pts;
-	if (!d->state.neutral_zoom)
-		zoom_bonus(d, 0, 0, 1);
 	if (++counter == 1)
 		calculate_z_scale(d);
+	if (!d->state.neutral_zoom)
+		zoom_bonus(d, 0, 0, 1);
 	while (tmp)
 	{
 		if (counter == 1)
