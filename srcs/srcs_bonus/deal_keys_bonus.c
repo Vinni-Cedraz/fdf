@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:45:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:55:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ int	deal_keys_bonus(int key, t_data *d)
 		two_steps_to_isometry_bonus(d, 1, 0);
 	else if (key == ';' && !d->state.parallel)
 		two_steps_to_isometry_bonus(d, 0, 1);
-	else if (key == 'z')
-		change_altitude_bonus(d, 1, 0);
-	else if (key == 'c')
-		change_altitude_bonus(d, 0, 0);
 	else if (key == 'm')
 		change_altitude_bonus(d, 0, 1);
 	else if (key)
@@ -83,6 +79,10 @@ static void	aux_aux_deal_keys(int key, t_data *d)
 		d->state.grid_style_nb = 3;
 	else if (key == 'g' && d->state.grid_style_nb == 3)
 		d->state.grid_style_nb = 1;
+	else if (key == 'z')
+		change_altitude_bonus(d, 1, 0);
+	else if (key == 'c')
+		change_altitude_bonus(d, 0, 0);
 }
 
 static void	reset_states(t_data *d)

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 00:15:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:58:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	change_altitude_bonus(t_data *d, t_short up, t_short mirror)
 		return ;
 	if (!d->state.neutral_zoom)
 		zoom_bonus(d, 0, 0, 1);
-	if (up && d->map->max_z >= 800)
+	if (up && d->map->max_z >= 450)
 		return ;
-	if (up && abs(d->map->min_z) >= 800)
+	if (up && abs(d->map->min_z) >= 450)
 		return ;
 	else
 		two_steps_to_isometry_bonus(d, 1, 0);

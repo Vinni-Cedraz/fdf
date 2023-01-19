@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 00:27:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 01:10:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ typedef struct s_map
 	uint					size;
 	short					max_z;
 	short					min_z;
+	double					initial_max_z;
 	double					target_width;
 	double					target_height;
 	double					ratio;
