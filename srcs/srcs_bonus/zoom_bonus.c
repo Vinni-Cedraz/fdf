@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 20:44:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:21:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ static void			update_state(t_data *d);
 
 void	zoom_bonus(t_data *d, t_short in, t_short out, t_short restore)
 {
-	static t_short	not_first_time;
-
-	if (!not_first_time)
+	if (d->state.neutral_zoom)
 		snapshot_zoom(d, 1, 0);
-	not_first_time = 1;
 	if (in)
 	{
 		if ((d->state.zoom_in - d->state.zoom_out) >= 36)
