@@ -54,7 +54,7 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 					           parse_map_bonus \
 					           render_map_bonus \
 					           render_line_bonus \
-					 linear_transformations_bonus \
+					 transpts_with_given_matrix_bonus \
 					define_rotation_matrices_bonus \
 					         data_initializer_bonus \
 					   calculate_default_scale_bonus \
@@ -67,7 +67,7 @@ WIP_SRCS = parse_map_bonus \
 		   define_rotation_matrices_bonus \
 		   close_win_bonus \
 		   two_steps_to_isometry_bonus \
-		   linear_transformations_bonus \
+		   transpts_with_given_matrix_bonus \
 		   render_map_bonus \
 		   render_line_bonus \
 		   zoom_bonus \

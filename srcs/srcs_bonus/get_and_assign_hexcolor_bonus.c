@@ -14,8 +14,8 @@
 
 static t_split			*read_points_in_current_row(t_data *d);
 static char				*get_point_string(char *current_point);
-static t_short			is_begining_of_new_row(int counter, int *j, int width);
-static t_short			is_end_of_row(int *j, int width);
+static int			is_begining_of_new_row(int counter, int *j, int width);
+static int			is_end_of_row(int *j, int width);
 
 void	get_and_assign_hexcolor_bonus(t_data *d)
 {
@@ -46,7 +46,7 @@ void	get_and_assign_hexcolor_bonus(t_data *d)
 	free(j);
 }
 
-static inline t_short	is_begining_of_new_row(int counter, int *j, int width)
+static inline int	is_begining_of_new_row(int counter, int *j, int width)
 {
 	*j = counter % width;
 	if (*j == 0)
@@ -84,7 +84,7 @@ static inline char	*get_point_string(char *current_point)
 	return (hexstring);
 }
 
-static inline t_short	is_end_of_row(int *j, int width)
+static inline int	is_end_of_row(int *j, int width)
 {
 	if (*j == width - 1)
 		return (1);

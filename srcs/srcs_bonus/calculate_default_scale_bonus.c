@@ -12,17 +12,17 @@
 
 #include "fdf_includes_bonus.h"
 
-static void	calculate_target_scaled_map_size(t_map *map, t_short size);
+static void	calculate_target_scaled_map_size(t_map *map, int size);
 static void	get_values_to_centralize_img_on_window(t_data *d);
 
-void	calculate_default_scale_bonus(t_data *d, t_short size)
+void	calculate_default_scale_bonus(t_data *d, int size)
 {
 	calculate_target_scaled_map_size(d->map, size);
 	d->offset.scale = d->map->target_width / d->map->width;
 	get_values_to_centralize_img_on_window(d);
 }
 
-static void	calculate_target_scaled_map_size(t_map *map, t_short size)
+static void	calculate_target_scaled_map_size(t_map *map, int size)
 {
 	map->ratio = (double)map->width / (double)map->height;
 	if (map->ratio > 1)

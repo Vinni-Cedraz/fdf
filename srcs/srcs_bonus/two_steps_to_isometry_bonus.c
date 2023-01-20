@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/19 10:47:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:36:38 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	undo_isometric_steps(t_data *d);
 static void	restore_isometric_state_from_snapshot(t_data *d);
 
 // variables renamed locally to improve readability
-void	two_steps_to_isometry_bonus(t_data *d, t_short opt_1, t_short opt_2)
+void	two_steps_to_isometry_bonus(t_data *d, int opt_1, int opt_2)
 {
-	t_short		undo_isometry;
-	t_short		go_back_to_isometry;
+	int		undo_isometry;
+	int		go_back_to_isometry;
 
 	undo_isometry = opt_1;
 	go_back_to_isometry = opt_2;
@@ -53,9 +53,9 @@ static void	apply_isometric_steps(t_data *d)
 		d->state.parallel = 0;
 	}
 	if (d->state.parallel)
-		linear_transformations_bonus(d, &d->matrix->rot_z_45, 0);
+		transpts_with_given_matrix_bonus(d, &d->matrix->rot_z_45);
 	else if (d->state.diagonal)
-		linear_transformations_bonus(d, &d->matrix->rot_x_54_73, 0);
+		transpts_with_given_matrix_bonus(d, &d->matrix->rot_x_54_73);
 	if ((d->state.step_towards_isometry - d->state.step_back) == 2)
 	{
 		d->state.isometric = 1;
@@ -79,9 +79,9 @@ static void	undo_isometric_steps(t_data *d)
 		d->state.parallel = 1;
 	}
 	if (d->state.diagonal)
-		linear_transformations_bonus(d, &d->matrix->rev_x_54_73, 0);
+		transpts_with_given_matrix_bonus(d, &d->matrix->rev_x_54_73);
 	else if (d->state.parallel)
-		linear_transformations_bonus(d, &d->matrix->rev_z_45, 0);
+		transpts_with_given_matrix_bonus(d, &d->matrix->rev_z_45);
 	d->state.isometric = 0;
 }
 

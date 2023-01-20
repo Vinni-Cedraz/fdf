@@ -14,10 +14,10 @@
 
 static void			zoom_in(t_data *d);
 static void			zoom_out(t_data *d);
-static void			snapshot_zoom(t_data *d, t_short take, t_short restore);
-static void			update_state(t_data *d, t_short snapshot_zoom);
+static void			snapshot_zoom(t_data *d, int take, int restore);
+static void			update_state(t_data *d, int snapshot_zoom);
 
-void	zoom_bonus(t_data *d, t_short in, t_short out, t_short restore)
+void	zoom_bonus(t_data *d, int in, int out, int restore)
 {
 	if (d->state.neutral_zoom)
 		snapshot_zoom(d, 1, 0);
@@ -75,7 +75,7 @@ static inline void	zoom_out(t_data *d)
 	update_state(d, 0);
 }
 
-static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
+static inline void	snapshot_zoom(t_data *d, int take, int restore)
 {
 	t_node_with_a_point	*tmp;
 
@@ -103,7 +103,7 @@ static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
 	}
 }
 
-static inline void	update_state(t_data *d, t_short snapshot_zoom)
+static inline void	update_state(t_data *d, int snapshot_zoom)
 {
 	if (snapshot_zoom)
 	{

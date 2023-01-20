@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:07:06 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/19 17:37:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:20:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 typedef t_node_with_a_point	t_n;
 typedef double				t_d;
-typedef struct s_data		t_data;
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n							*ft_lstpoint_new(void);

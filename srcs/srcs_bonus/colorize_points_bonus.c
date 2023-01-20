@@ -12,7 +12,7 @@
 
 #include "fdf_includes_bonus.h"
 
-static t_short	is_colorized(t_data *d);
+static int	is_colorized(t_data *d);
 
 void	colorize_points_bonus(t_data *d)
 {
@@ -39,7 +39,7 @@ void	colorize_points_bonus(t_data *d)
 	}
 }
 
-static t_short	is_colorized(t_data *d)
+static int	is_colorized(t_data *d)
 {
 	t_node_with_a_point	*tmp;
 

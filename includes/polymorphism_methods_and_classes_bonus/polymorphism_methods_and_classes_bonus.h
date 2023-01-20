@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_altitude_bonus.c                            :+:      :+:    :+:   */
+/*   polymorphism_methods_and_classes_bonus.h           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 18:33:54 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/20 16:31:29 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/20 17:44:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes_bonus.h"
+#ifndef POLYMORPHISM_METHODS_AND_CLASSES_BONUS_H
+# define POLYMORPHISM_METHODS_AND_CLASSES_BONUS_H
 
-void	change_altitude_bonus(t_data *d, t_zscaler direction)
-{
-	get_altitude_range_bonus(d->map);
-	if (!d->state.isometric)
-		return ;
-	if (!d->state.neutral_zoom)
-		zoom_bonus(d, 0, 0, 1);
-	direction.scale_method(d);
-}
+# include "methods_to_change_altitude_bonus.h"
+
+#endif

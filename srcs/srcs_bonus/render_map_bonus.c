@@ -17,7 +17,7 @@ static void	render_lines_square(t_data *d);
 static void	render_lines_cross(t_data *d);
 static void	find_center_of_the_map(t_data *d);
 
-void	render_map_bonus(t_data *d, t_short square, t_short cross, t_short pent)
+void	render_map_bonus(t_data *d, int square, int cross, int pent)
 {
 	if (square)
 		render_lines_square(d);
@@ -53,8 +53,8 @@ static void	render_lines_square(t_data *d)
 
 static void	render_lines_cross(t_data *d)
 {
-	t_short	i;
-	t_short	j;
+	int	i;
+	int	j;
 	t_point	p1;
 
 	i = -1;
@@ -78,8 +78,8 @@ static void	render_lines_cross(t_data *d)
 
 static void	render_pentagram(t_data *d)
 {
-	t_short	i;
-	t_short	j;
+	int	i;
+	int	j;
 	t_point	p1;
 
 	i = -1;
