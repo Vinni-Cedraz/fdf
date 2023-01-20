@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 18:29:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:07:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "fdf_keycodes.h"
 # include "fdf_structs_bonus.h"
 # include "fdf_prototypes_bonus.h"
-# include "polymorphism_methods_and_classes_bonus/methods_to_change_altitude_bonus.h"
+# include "polymorphism_methods_and_classes_bonus/polymorphism_methods_and_classes_bonus.h"
 # include "printf_libft_includes.h"
 # include "mlx.h"
 # include <errno.h>

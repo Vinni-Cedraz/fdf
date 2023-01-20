@@ -6,38 +6,27 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 17:36:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:21:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	apply_isometric_steps(t_data *d);
+void		apply_iso_steps(t_data *d);
+void		undo_iso_steps(t_data *d);
+void		restore_snapshot(t_data *d);
 static void	take_snapshot(t_data *d);
-static void	undo_isometric_steps(t_data *d);
-static void	restore_isometric_state_from_snapshot(t_data *d);
 
-// variables renamed locally to improve readability
-void	two_steps_to_isometry_bonus(t_data *d, int opt_1, int opt_2)
+void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer changer)
 {
-	int		undo_isometry;
-	int		go_back_to_isometry;
-
-	undo_isometry = opt_1;
-	go_back_to_isometry = opt_2;
-	if (undo_isometry)
-		undo_isometric_steps(d);
-	else if (go_back_to_isometry)
-		restore_isometric_state_from_snapshot(d);
-	else
-	{
-		apply_isometric_steps(d);
-		if (d->state.isometric)
-			take_snapshot(d);
-	}
+	if (d->state.isometric)
+		take_snapshot(d);
+	changer.action(d);
+	if (d->state.isometric)
+		take_snapshot(d);
 }
 
-static void	apply_isometric_steps(t_data *d)
+void	apply_iso_steps(t_data *d)
 {
 	if ((!d->state.parallel && !d->state.diagonal) || d->state.isometric)
 		return ;
@@ -57,13 +46,10 @@ static void	apply_isometric_steps(t_data *d)
 	else if (d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rot_x_54_73);
 	if ((d->state.step_towards_isometry - d->state.step_back) == 2)
-	{
 		d->state.isometric = 1;
-		take_snapshot(d);
-	}
 }
 
-static void	undo_isometric_steps(t_data *d)
+void	undo_iso_steps(t_data *d)
 {
 	if (!d->state.isometric && !d->state.diagonal)
 		return ;
@@ -99,7 +85,7 @@ static void	take_snapshot(t_data *d)
 	}
 }
 
-static void	restore_isometric_state_from_snapshot(t_data *d)
+void	restore_snapshot(t_data *d)
 {
 	t_node_with_a_point	*tmp;
 

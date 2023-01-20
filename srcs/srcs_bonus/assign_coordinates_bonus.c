@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 21:25:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:43:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,17 @@ void	assign_coordinates_bonus(t_data *d)
 	assign_coordinate_z(d->map->pts, d->offset.scale, d->tool.fp);
 }
 
-static inline void	assign_coordinates_xy(t_n *map, short w, double scale)
+static inline void	assign_coordinates_xy(t_n *map, short width, double scale)
 {
 	int					counter;
-	short				map_width;
 	t_node_with_a_point	*tmp;
 
 	tmp = map;
 	counter = 0;
-	map_width = w;
 	while (tmp)
 	{
-		tmp->point.x = counter % map_width;
-		tmp->point.y = (int)((double)counter / map_width);
+		tmp->point.x = counter % width;
+		tmp->point.y = (int)((double)counter / width);
 		tmp->point.ol.raw.y = tmp->point.y;
 		tmp->point.ol.raw.x = tmp->point.x;
 		tmp->point.x *= scale;
