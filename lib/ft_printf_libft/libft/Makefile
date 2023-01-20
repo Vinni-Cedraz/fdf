@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/18 23:42:07 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/19 17:38:07 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,6 +110,7 @@ ft_lstpoint_free \
 ft_lstpoint_getby_index \
 ft_lstpoint_toarr \
 ft_lstpoint_size \
+ft_lstpoint_dup \
 	
 PRNTF_SRCS = ft_putchar \
 ft_strlen \

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 22:02:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:16:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # define MENU_WIDTH 183
 
+typedef t_matrix	t_m;
 // PART ONE//
 void	data_initializer_bonus(t_data *d);
 
@@ -59,6 +60,8 @@ void	two_steps_to_isometry_bonus(t_data *d, t_short undo_iso_steps,
 			t_short restore_iso_state);
 
 void	linear_transformations_bonus(t_data *d, t_matrix *rot, t_short sphere);
+
+t_m		multiply_two_matrices_bonus(t_matrix a, t_matrix b);
 
 void	change_altitude_bonus(t_data *d, t_short up, t_short mirror);
 

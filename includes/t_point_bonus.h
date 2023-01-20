@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 20:35:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:03:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_origin
 	double							z;
 	double							zoom_x;
 	double							zoom_y;
-	double 							zoom_z;
+	double							zoom_z;
 	t_raw							raw;
 }									t_snapshot;
 

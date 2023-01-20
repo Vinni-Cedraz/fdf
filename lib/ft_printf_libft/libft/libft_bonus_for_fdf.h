@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:07:06 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/16 15:33:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:37:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ int							ft_lstpoint_size(t_node_with_a_point *lst);
 
 // to transform a linked list of ode_with_a_points into a 2d array of t_points
 t_point						**ft_lstpoint_toarr(t_n *node, uint width);
+
+// duplicates a linked list of 't_node_with_a_point' s
+t_node_with_a_point			*ft_lstpoint_dup(t_node_with_a_point *lst);
 
 #endif

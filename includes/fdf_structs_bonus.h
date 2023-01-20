@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/19 01:10:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:08:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,14 @@ typedef struct s_rotation_matrices
 	t_matrix				rev_z_45;
 	t_matrix				rot_x_54_73;
 	t_matrix				rev_x_54_73;
+	t_matrix				go_iso;
+	t_matrix				undo_iso;
+	t_matrix				scaling_z_up;
+	t_matrix				scaling_z_down;
+	t_matrix				scaling_z_mirror;
+	t_matrix				change_altitude_up;
+	t_matrix				change_altitude_down;
+	t_matrix				change_altitude_mirror;
 	t_matrix				spherical;
 }							t_rotation_matrices;
 

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 23:21:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:26:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void			zoom_in(t_data *d);
 static void			zoom_out(t_data *d);
 static void			snapshot_zoom(t_data *d, t_short take, t_short restore);
-static void			update_state(t_data *d);
+static void			update_state(t_data *d, t_short snapshot_zoom);
 
 void	zoom_bonus(t_data *d, t_short in, t_short out, t_short restore)
 {
@@ -53,7 +53,7 @@ static inline void	zoom_in(t_data *d)
 		tmp->point.y = d->center.y + centered_origin_y * 1.1;
 		tmp = tmp->next;
 	}
-	update_state(d);
+	update_state(d, 0);
 }
 
 static inline void	zoom_out(t_data *d)
@@ -72,7 +72,7 @@ static inline void	zoom_out(t_data *d)
 		tmp->point.y = d->center.y + centered_origin_y / 1.1;
 		tmp = tmp->next;
 	}
-	update_state(d);
+	update_state(d, 0);
 }
 
 static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
@@ -81,6 +81,7 @@ static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
 
 	tmp = d->map->pts;
 	if (take)
+	{
 		while (tmp)
 		{
 			tmp->point.ol.zoom_x = tmp->point.x;
@@ -88,6 +89,7 @@ static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
 			tmp->point.ol.zoom_z = tmp->point.z;
 			tmp = tmp->next;
 		}
+	}
 	else if (restore)
 	{
 		while (tmp)
@@ -97,14 +99,17 @@ static inline void	snapshot_zoom(t_data *d, t_short take, t_short restore)
 			tmp->point.z = tmp->point.ol.zoom_z;
 			tmp = tmp->next;
 		}
-		d->state.zoom_in = 0;
-		d->state.zoom_out = 0;
-		d->state.neutral_zoom = 1;
+		update_state(d, 1);
 	}
 }
 
-static inline void	update_state(t_data *d)
+static inline void	update_state(t_data *d, t_short snapshot_zoom)
 {
+	if (snapshot_zoom)
+	{
+		d->state.zoom_in = 0;
+		d->state.zoom_out = 0;
+	}
 	if ((d->state.zoom_in - d->state.zoom_out) == 0)
 		d->state.neutral_zoom = 1;
 	else
