@@ -71,11 +71,11 @@ static void	aux_aux_deal_keys(int key, t_data *d)
 	else if (key == 'g' && d->state.grid_style_nb == 3)
 		d->state.grid_style_nb = 1;
 	else if (key == 'z')
-		change_altitude_bonus(d, (t_zscaler){&scale_z_up});
+		change_altitude_bonus(d, (t_zscaler){&z_up_method});
 	else if (key == 'c')
-		change_altitude_bonus(d, (t_zscaler){&scale_z_down});
+		change_altitude_bonus(d, (t_zscaler){&z_down_method});
 	else if (key == 'm')
-		change_altitude_bonus(d, (t_zscaler){&scale_z_mirror});
+		change_altitude_bonus(d, (t_zscaler){&z_mirror_method});
 }
 
 static void	reset_states(t_data *d)
