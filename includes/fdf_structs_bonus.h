@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 18:24:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 02:07:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,13 @@ typedef struct s_mp
 	t_point					**arr;
 }							t_map;
 
+typedef struct s_d			t_data;
+
+typedef struct s_context
+{
+	void					(*transition)(t_data *d);
+}							t_iso_context;
+
 /*  \brief  t_data is a meta-class that holds all the data_structures that are
  * most used throughout the project */
 typedef struct s_d
@@ -188,6 +195,7 @@ typedef struct s_d
 	t_map					*map;
 	t_rotation_matrices		*matrix;
 	t_emporary				t;
+	t_iso_context			iso_fsm[4];
 }							t_data;
 
 #endif

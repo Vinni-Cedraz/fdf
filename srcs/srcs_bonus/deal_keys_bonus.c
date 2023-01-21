@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 19:20:46 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 02:17:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	deal_keys_bonus(int key, t_data *d)
 		d->offset.move_y += 25;
 	else if (key == 'i' || key == ' ')
 		two_steps_to_isometry_bonus(d, (t_isometry_changer){&apply_iso_steps});
-	else if (key == 'r')
-		two_steps_to_isometry_bonus(d, (t_isometry_changer){&undo_iso_steps});
 	else if (key == ';' && !d->state.parallel)
 		two_steps_to_isometry_bonus(d,(t_isometry_changer){&restore_snapshot});
 	else if (key)
@@ -48,17 +46,17 @@ static void	aux_deal_keys(int key, t_data *d)
 	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v'
 		|| key == 'q')
 		reset_states(d);
-	if (key == 'a' && !d->state.parallel)
+	if (key == 'a' && !d->state.parallel && !d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
-	else if (key == 'd' && !d->state.parallel)
+	else if (key == 'd' && !d->state.parallel && !d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
-	else if (key == 'q' && !d->state.parallel)
+	else if (key == 'q' && !d->state.parallel && !d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rot_x);
-	else if (key == 'e' && !d->state.parallel)
+	else if (key == 'e' && !d->state.parallel && !d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rev_x);
-	else if (key == 'x' && !d->state.parallel)
+	else if (key == 'x' && !d->state.parallel && !d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rot_z);
-	else if (key == 'v' && !d->state.parallel)
+	else if (key == 'v' && !d->state.parallel && !d->state.diagonal)
 		transpts_with_given_matrix_bonus(d, &d->matrix->rev_z);
 	else if (key)
 		aux_aux_deal_keys(key, d);
