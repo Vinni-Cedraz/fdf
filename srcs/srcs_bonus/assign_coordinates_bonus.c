@@ -6,56 +6,66 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 18:43:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:29:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static inline void	assign_coordinates_xy(t_n *map, short width, double scale);
-static inline void	assign_coordinate_z(t_n *map, double scale, FILE *fp);
+static inline void		assign_coordinate_z(t_data *d);
+static inline double	get_column_position(int map_width, int counter);
+static inline double	get_row_position(int map_width, int counter);
+static inline void		take_snapshot_and_apply_scale(t_point *p, t_data *d);
 
 void	assign_coordinates_bonus(t_data *d)
-{
-	assign_coordinates_xy(d->map->pts, d->map->width, d->offset.scale);
-	assign_coordinate_z(d->map->pts, d->offset.scale, d->tool.fp);
-}
-
-static inline void	assign_coordinates_xy(t_n *map, short width, double scale)
 {
 	int					counter;
 	t_node_with_a_point	*tmp;
 
-	tmp = map;
+	tmp = d->map->pts;
 	counter = 0;
 	while (tmp)
 	{
-		tmp->point.x = counter % width;
-		tmp->point.y = (int)((double)counter / width);
-		tmp->point.ol.raw.y = tmp->point.y;
-		tmp->point.ol.raw.x = tmp->point.x;
-		tmp->point.x *= scale;
-		tmp->point.y *= scale;
+		tmp->point.x = get_column_position(d->map->width, counter);
+		tmp->point.y = get_row_position(d->map->width, counter);
+		take_snapshot_and_apply_scale(&tmp->point, d);
 		tmp = tmp->next;
 		counter++;
 	}
+	assign_coordinate_z(d);
 }
 
-static inline void	assign_coordinate_z(t_n *map, double scale, FILE *fp)
+static inline void	take_snapshot_and_apply_scale(t_point *p, t_data *d)
+{
+	p->ol.raw.x = p->x;
+	p->ol.raw.y = p->y;
+	p->x *= d->offset.scale;
+	p->y *= d->offset.scale;
+}
+
+static inline double	get_column_position(int map_width, int counter)
+{
+	return (counter % map_width);
+}
+
+static inline double	get_row_position(int map_width, int counter)
+{
+	return ((int)((double)counter / map_width));
+}
+
+static inline void	assign_coordinate_z(t_data *d)
 {
 	char				*buf;
 	t_node_with_a_point	*tmp;
 
-	tmp = map;
+	tmp = d->map->pts;
 	while (tmp)
 	{
-		fscanf(fp, "%ms", &buf);
+		fscanf(d->tool.fp, "%ms", &buf);
 		tmp->point.z = ft_atoi(buf);
 		free(buf);
-		tmp->point.ol.raw.z = tmp->point.z;
-		tmp->point.z *= scale;
 		tmp->point.color = CYAN;
 		tmp = tmp->next;
 	}
-	rewind(fp);
+	rewind(d->tool.fp);
 }
