@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/21 14:25:04 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/21 18:51:33 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_BONUS = fdf_bonus.a
 NAME_WIP = wip.a
 EXECUTABLE = fdf
 INCLUDE = includes/methods_and_classes_bonus/
-CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -I$(INCLUDE) -O3
+CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -I$(INCLUDE) -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/
 PRNTF_PATH = lib/ft_printf_libft/
@@ -67,10 +67,6 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 #go_to_isometric;
 #undo_iso;
 #undo_diag;
-#restore_snapshot;
-#scale_z_up;
-#scale_z_down;
-#scale_z_mirror;
 
 WIP_SRCS = parse_map_bonus \
 		   main_bonus \
@@ -91,6 +87,7 @@ WIP_SRCS = parse_map_bonus \
 		   assign_coordinates_bonus \
 		   get_and_assign_hexcolor_bonus \
 		   multiply_two_matrices_bonus \
+		   get_map_dimensions_bonus \
 
 
 SRCS_FROM_MLX = mlx_init \
@@ -125,7 +122,7 @@ SRCS_FROM_LIBFT_BONUS =  ft_strnstr \
 						   ft_atoi_base \
 					     ft_word_counter \
 							    ft_strlen \
-							ft_special_gnl \
+									ft_gnl \
 							    ft_ishexlow \
 								   ft_calloc \
 									  ft_atoi \

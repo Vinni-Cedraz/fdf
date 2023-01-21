@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 14:32:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 18:32:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_STRUCTS_BONUS_H
 
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
+#include "fdf_prototypes_bonus.h"
 # include "printf_libft_structs.h"
 # include "t_point_bonus.h"
 // stdio needed for FILE type
@@ -42,6 +43,8 @@ typedef struct s_assign_coordinates
 {
 	FILE					*fp;
 	char					*argv;
+	char 					*first_line;
+
 }							t_assign_coordinates;
 
 /*  \brief  holds the values that are used to change x, y and z of the t_points
@@ -166,6 +169,7 @@ typedef struct s_state
 typedef struct s_mp
 {
 	int						has_hexcolor;
+	int						is_vertical;
 	int						width;
 	int						height;
 	uint					size;
