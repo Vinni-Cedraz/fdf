@@ -140,12 +140,7 @@ typedef struct s_rm
 typedef struct s_state
 {
 	int						snapshot_taken;
-	int						rotate_5_around_x;
-	int						reverse_5_around_x;
-	int						rotate_5_around_y;
-	int						reverse_5_around_y;
-	int						step_towards_isometry;
-	int						step_back;
+	int						out_of_position;
 	int						diagonal;
 	int						isometric;
 	int						zoom_in;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:44:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 11:39:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void	render_lines_square(t_data *d)
 
 static void	render_lines_cross(t_data *d)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_point	p1;
 
 	i = -1;
@@ -78,8 +78,8 @@ static void	render_lines_cross(t_data *d)
 
 static void	render_pentagram(t_data *d)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_point	p1;
 
 	i = -1;

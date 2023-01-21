@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 02:03:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 11:10:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	data_initializer_bonus(t_data *d)
 	d->matrix = ft_calloc(sizeof(t_rotation_matrices), 1);
 	d->mlx = malloc(sizeof(t_mlx));
 	open_win_and_img(d);
-	d->state = (t_state){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1};
+	d->state = (t_state){0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1};
 	get_altitude_range_bonus(d->map);
 	colorize_points_bonus(d);
 	define_rotation_matrices_bonus(d->matrix);
