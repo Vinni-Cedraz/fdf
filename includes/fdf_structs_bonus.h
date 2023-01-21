@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 11:34:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:02:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,13 @@ typedef struct s_line
 	unsigned int			color;
 	int						steps;
 }							t_line;
+
+typedef struct s_vec
+{
+	double					x;
+	double					y;
+	double					z;
+}							t_vector;
 
 /*  \brief  each row in a 3x3 matrix has three columns, t_row holds the values
  * in each of the three columns for each row */
