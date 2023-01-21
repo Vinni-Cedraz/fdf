@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/19 21:26:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:23:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ void	zoom_bonus(t_data *d, int in, int out, int restore)
 		zoom_out(d);
 	}
 	else if (restore)
+	{
+		if (d->state.neutral_zoom)
+			return ;
 		snapshot_zoom(d, 0, 1);
+	}
 }
 
 static inline void	zoom_in(t_data *d)
@@ -79,8 +83,6 @@ static inline void	snapshot_zoom(t_data *d, int take, int restore)
 {
 	t_node_with_a_point	*tmp;
 
-	if (d->state.neutral_zoom)
-		return ;
 	tmp = d->map->pts;
 	if (take)
 	{
