@@ -6,22 +6,20 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 02:15:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 11:20:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 void		apply_iso_steps(t_data *d);
-void		restore_snapshot(t_data *d);
+void		restore_from_snapshot(t_data *d);
 static void	take_snapshot(t_data *d);
-static void	initialize_array_of_transitioner_objects(t_data *d);
+static void	initialize_iso_finite_state_machine(t_data *d);
 
 void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer changer)
 {
-	initialize_array_of_transitioner_objects(d);
-	if (d->state.isometric)
-		take_snapshot(d);
+	initialize_iso_finite_state_machine(d);
 	changer.action(d);
 	if (d->state.isometric)
 		take_snapshot(d);
@@ -37,7 +35,7 @@ void	apply_iso_steps(t_data *d)
 		i = 0;
 }
 
-static void	initialize_array_of_transitioner_objects(t_data *d)
+static void	initialize_iso_finite_state_machine(t_data *d)
 {
 	d->iso_fsm[0] = (t_iso_context){.transition = go_to_diagonal};
 	d->iso_fsm[1] = (t_iso_context){.transition = go_to_isometric};
@@ -59,7 +57,7 @@ static void	take_snapshot(t_data *d)
 	}
 }
 
-void	restore_snapshot(t_data *d)
+void	restore_from_snapshot(t_data *d)
 {
 	t_node_with_a_point	*tmp;
 
@@ -73,7 +71,4 @@ void	restore_snapshot(t_data *d)
 		tmp->point.z = tmp->point.ol.z;
 		tmp = tmp->next;
 	}
-	d->state.diagonal = 0;
-	d->state.parallel = 0;
-	d->state.isometric = 1;
 }

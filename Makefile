@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/21 01:40:30 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/21 11:36:13 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 NAME_WIP = wip.a
 EXECUTABLE = fdf
-INCLUDE = includes/polymorphism_methods_and_classes_bonus/
+INCLUDE = includes/methods_and_classes_bonus/
 CFLAGS = -Wall -Wextra -Werror -Imlx -I$(PRNTF_PATH)includes -Iincludes -I$(INCLUDE) -g
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = lib/ft_printf_libft/libft/

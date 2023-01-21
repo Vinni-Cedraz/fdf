@@ -3,190 +3,247 @@
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/put_pixel_img.c",
+   "srcs/srcs_mandatory/put_pixel_img.c",
    "-o",
    "objs/put_pixel_img.o"
   ],
-  "file": "srcs/put_pixel_img.c"
+  "file": "srcs/srcs_mandatory/put_pixel_img.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/parse_map.c",
+   "srcs/srcs_mandatory/parse_map.c",
    "-o",
    "objs/parse_map.o"
   ],
-  "file": "srcs/parse_map.c"
+  "file": "srcs/srcs_mandatory/parse_map.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/rotate_map.c",
+   "srcs/srcs_mandatory/close_win.c",
    "-o",
-   "objs/rotate_map.o"
+   "objs/close_win.o"
   ],
-  "file": "srcs/rotate_map.c"
+  "file": "srcs/srcs_mandatory/close_win.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/render_map.c",
+   "srcs/srcs_mandatory/render_map.c",
    "-o",
    "objs/render_map.o"
   ],
-  "file": "srcs/render_map.c"
+  "file": "srcs/srcs_mandatory/render_map.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/define_square.c",
+   "srcs/srcs_mandatory/colorize.c",
    "-o",
-   "objs/define_square.o"
+   "objs/colorize.o"
   ],
-  "file": "srcs/define_square.c"
+  "file": "srcs/srcs_mandatory/colorize.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/render_square.c",
+   "srcs/srcs_mandatory/draw.c",
    "-o",
-   "objs/render_square.o"
+   "objs/draw.o"
   ],
-  "file": "srcs/render_square.c"
+  "file": "srcs/srcs_mandatory/draw.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/render_line.c",
+   "srcs/srcs_mandatory/define_rotation_matrices.c",
    "-o",
-   "objs/render_line.o"
+   "objs/define_rotation_matrices.o"
   ],
-  "file": "srcs/render_line.c"
+  "file": "srcs/srcs_mandatory/define_rotation_matrices.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/event_handlers.c",
+   "srcs/srcs_mandatory/linear_transformations.c",
    "-o",
-   "objs/event_handlers.o"
+   "objs/linear_transformations.o"
   ],
-  "file": "srcs/event_handlers.c"
+  "file": "srcs/srcs_mandatory/linear_transformations.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/open_win_n_img.c",
+   "srcs/srcs_mandatory/data_initializer.c",
+   "-o",
+   "objs/data_initializer.o"
+  ],
+  "file": "srcs/srcs_mandatory/data_initializer.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Imlx",
+   "-Ilib/ft_printf_libft/includes",
+   "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
+   "-c",
+   "srcs/srcs_mandatory/deal_key.c",
+   "-o",
+   "objs/deal_key.o"
+  ],
+  "file": "srcs/srcs_mandatory/deal_key.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Imlx",
+   "-Ilib/ft_printf_libft/includes",
+   "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
+   "-c",
+   "srcs/srcs_mandatory/standard_scale.c",
+   "-o",
+   "objs/standard_scale.o"
+  ],
+  "file": "srcs/srcs_mandatory/standard_scale.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Imlx",
+   "-Ilib/ft_printf_libft/includes",
+   "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
+   "-c",
+   "srcs/srcs_mandatory/open_win_n_img.c",
    "-o",
    "objs/open_win_n_img.o"
   ],
-  "file": "srcs/open_win_n_img.c"
+  "file": "srcs/srcs_mandatory/open_win_n_img.c"
  },
  {
   "directory": "/home/vcedraz-/42/fdf",
   "arguments": [
    "cc",
-   "-g",
-   "-O3",
    "-Wall",
    "-Wextra",
    "-Werror",
    "-Imlx",
    "-Ilib/ft_printf_libft/includes",
    "-Iincludes",
+   "-Iincludes/methods_and_classes_bonus/",
+   "-g",
    "-c",
-   "srcs/main.c",
+   "srcs/srcs_mandatory/main.c",
    "-o",
    "objs/main.o"
   ],
-  "file": "srcs/main.c"
+  "file": "srcs/srcs_mandatory/main.c"
  }
 ]

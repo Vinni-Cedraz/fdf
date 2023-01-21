@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 02:07:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 11:34:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ typedef struct s_m
 	t_row					row_2;
 	t_row					row_3;
 }							t_matrix;
+
+typedef t_matrix			t_m;
 
 /*  \brief  It's the set of the different t_matrix objects that will be defined
  * in the define_rotation_matrices_bonus function */
