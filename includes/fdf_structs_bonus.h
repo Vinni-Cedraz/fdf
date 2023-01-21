@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 18:32:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:02:28 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ typedef struct s_state
 typedef struct s_mp
 {
 	int						has_hexcolor;
-	int						is_vertical;
 	int						width;
 	int						height;
 	uint					size;
