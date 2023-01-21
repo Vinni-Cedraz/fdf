@@ -6,35 +6,35 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 19:02:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:31:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void		calculate_target_scaled_map_size(t_map *map, int size);
+static void		calculate_target_scaled_map_size(t_map *map);
 static void		calculate_x_y_initial_offset(t_data *d);
 static double	get_magic_factor(t_data *d);
 
-void	calculate_default_scale_bonus(t_data *d, int size)
+void	calculate_default_scale_bonus(t_data *d)
 {
-	calculate_target_scaled_map_size(d->map, size);
+	calculate_target_scaled_map_size(d->map);
 	d->offset.scale = d->map->target_width / d->map->width;
 	calculate_x_y_initial_offset(d);
 }
 
-static inline void	calculate_target_scaled_map_size(t_map *map, int size)
+static inline void	calculate_target_scaled_map_size(t_map *map)
 {
 	map->ratio = (double)map->width / (double)map->height;
 	if (map->ratio > 1)
 	{
-		map->target_width = size;
-		map->target_height = size / map->ratio;
+		map->target_width = WINDOW_HEIGHT;
+		map->target_height = WINDOW_HEIGHT / map->ratio;
 	}
 	else
 	{
-		map->target_width = size * map->ratio;
-		map->target_height = size;
+		map->target_width = WINDOW_HEIGHT * map->ratio;
+		map->target_height = WINDOW_HEIGHT;
 	}
 }
 

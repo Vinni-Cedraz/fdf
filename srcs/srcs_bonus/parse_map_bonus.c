@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 18:24:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:32:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	parse_map_bonus(t_data *d)
 	if (!parse_file(d))
 		return (0);
 	create_points_list(d);
-	calculate_default_scale_bonus(d, WINDOW_HEIGHT);
+	calculate_default_scale_bonus(d);
 	assign_coordinates_bonus(d);
 	check_for_hexcolor(d);
 	if (d->map->has_hexcolor)

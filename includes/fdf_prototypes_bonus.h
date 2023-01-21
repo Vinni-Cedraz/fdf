@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 18:11:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:31:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void				get_and_assign_hexcolor_bonus(t_data *d);
 
 void				get_altitude_range_bonus(t_map *map);
 
-void				calculate_default_scale_bonus(t_data *d, int size);
+void				calculate_default_scale_bonus(t_data *d);
 
 void				define_rotation_matrices_bonus(t_rotation_matrices *matrix);
 
