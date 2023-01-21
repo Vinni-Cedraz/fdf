@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/21 11:36:13 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/21 12:21:37 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,12 +55,22 @@ BONUS_SRCS = two_steps_to_isometry_bonus \
 					           parse_map_bonus \
 					           render_map_bonus \
 					           render_line_bonus \
-					 transpts_with_given_matrix_bonus \
+				 transpts_with_given_matrix_bonus \
 					define_rotation_matrices_bonus \
 					         data_initializer_bonus \
 					   calculate_default_scale_bonus \
 					            change_altitude_bonus \
 					                        zoom_bonus \
+
+## FUNCTIONS DECLARED AS METHODS OF SPECIFIC CLASSES IN A HEADER FILE:
+#go_to_diagonal;
+#go_to_isometric;
+#undo_iso;
+#undo_diag;
+#restore_snapshot;
+#scale_z_up;
+#scale_z_down;
+#scale_z_mirror;
 
 WIP_SRCS = parse_map_bonus \
 		   main_bonus \
