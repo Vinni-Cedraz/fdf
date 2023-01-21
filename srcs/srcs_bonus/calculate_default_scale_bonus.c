@@ -6,58 +6,61 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 19:31:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 20:32:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void		calculate_target_scaled_map_size(t_map *map);
-static void		calculate_x_y_initial_offset(t_data *d);
-static double	get_magic_factor(t_data *d);
+static void				calculate_target_size(t_map *map);
+static void				calculate_initial_offset(t_data *d);
+static double			calculate_magic_factor(t_data *d);
+static int				is_map_square(double ratio);
 
 void	calculate_default_scale_bonus(t_data *d)
 {
-	calculate_target_scaled_map_size(d->map);
+	d->map->is_square = is_map_square(d->map->ratio);
+	calculate_target_size(d->map);
 	d->offset.scale = d->map->target_width / d->map->width;
-	calculate_x_y_initial_offset(d);
+	calculate_initial_offset(d);
 }
 
-static inline void	calculate_target_scaled_map_size(t_map *map)
+static inline void	calculate_target_size(t_map *map)
 {
-	map->ratio = (double)map->width / (double)map->height;
-	if (map->ratio > 1)
-	{
+	map->target_width = WINDOW_HEIGHT * 0.9;
+	if (map->size > 1800)
 		map->target_width = WINDOW_HEIGHT;
-		map->target_height = WINDOW_HEIGHT / map->ratio;
-	}
-	else
-	{
-		map->target_width = WINDOW_HEIGHT * map->ratio;
-		map->target_height = WINDOW_HEIGHT;
-	}
 }
 
-static inline void	calculate_x_y_initial_offset(t_data *d)
+static inline void	calculate_initial_offset(t_data *d)
 {
-	double	magic_factor;
+	double	x_offset;
+	double	y_offset;
 
-	d->offset.move_x += ((WINDOW_WIDTH - d->map->width * d->offset.scale) / 2);
-	d->offset.move_x += (double)MENU_WIDTH / 2;
-	magic_factor = get_magic_factor(d);
-	d->offset.move_y += (WINDOW_HEIGHT - d->map->height * d->offset.scale) / 2;
-	if (d->map->ratio != 1 && !(d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
-		d->offset.move_y -= d->map->ratio * magic_factor;
+	x_offset = (WINDOW_WIDTH - d->map->width * d->offset.scale) / 2;
+	x_offset += (double)MENU_WIDTH / 2;
+	y_offset = (WINDOW_HEIGHT - d->map->height * d->offset.scale) / 2;
+	y_offset += calculate_magic_factor(d);
+	if (!d->map->is_square)
+		y_offset -= d->map->ratio * y_offset;
+	d->offset.move_x += x_offset;
+	d->offset.move_y += y_offset;
 }
 
-static inline double	get_magic_factor(t_data *d)
+static inline double	calculate_magic_factor(t_data *d)
 {
-	double	magic_factor;
+	double	factor;
 
-	magic_factor = d->offset.scale;
-	if (magic_factor > 10)
-	{
-		magic_factor /= 10;
-	}
-	return (magic_factor);
+	factor = d->offset.scale;
+	if (factor > 10)
+		factor /= 10;
+	return (factor);
+}
+
+static inline int	is_map_square(double ratio)
+{
+	double	tolerance;
+
+	tolerance = 0.15;
+	return (ratio >= 1 - tolerance && ratio <= 1 + tolerance);
 }

@@ -6,16 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 19:29:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 20:31:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static inline void		assign_coordinate_z(t_data *d);
-static inline double	get_column_position(int map_width, int counter);
-static inline double	get_row_position(int map_width, int counter);
-static inline void		take_snapshot_and_apply_scale(t_point *p, t_data *d);
+static void				assign_coordinate_z(t_data *d);
+static double			get_column_position(int map_width, int counter);
+static double			get_row_position(int map_width, int counter);
+static void				take_snapshot_and_apply_scale(t_point *p, t_data *d);
 
 void	assign_coordinates_bonus(t_data *d)
 {
