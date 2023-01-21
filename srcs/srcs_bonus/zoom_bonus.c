@@ -79,6 +79,8 @@ static inline void	snapshot_zoom(t_data *d, int take, int restore)
 {
 	t_node_with_a_point	*tmp;
 
+	if (d->state.neutral_zoom)
+		return ;
 	tmp = d->map->pts;
 	if (take)
 	{
