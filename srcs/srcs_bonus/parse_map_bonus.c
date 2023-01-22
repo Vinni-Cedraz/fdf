@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 19:32:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/21 22:14:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int			parse_file(t_data *d);
 static void			create_points_list(t_data *d);
 static void			check_for_hexcolor(t_data *d);
+static void			define_color_by_altitude(t_point *p, t_data *d);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -47,11 +48,19 @@ static int	parse_file(t_data *d)
 static void	create_points_list(t_data *d)
 {
 	uint	counter;
+	t_node_with_a_point *tmp;
 
 	counter = d->map->size;
 	d->map->pts = ft_lstpoint_new();
 	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
+	tmp = d->map->pts;
+	while (tmp)
+	{
+		tmp->point.define_color_by_altitude = define_color_by_altitude;
+		tmp = tmp->next;
+	}
+
 }
 
 static inline void	check_for_hexcolor(t_data *d)
@@ -62,4 +71,21 @@ static inline void	check_for_hexcolor(t_data *d)
 		if (*buf == ',')
 			d->map->has_hexcolor = 1;
 	rewind(d->tool.fp);
+}
+
+static inline void	define_color_by_altitude(t_point *p, t_data *d)
+{
+	double	tolerance;
+
+	tolerance = 0.1;
+	if (p->z == 0)
+		p->color = WHITE;
+	else if (p->z == d->map->min_z)
+		p->color = BLUE;
+	else if (p->z < 0)
+		p->color = RED;
+	else if (p->z > d->map->max_z - tolerance)
+		p->color = MAGENTA;
+	else if (p->z > 0)
+		p->color = CYAN;
 }
