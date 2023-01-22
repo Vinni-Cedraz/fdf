@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 22:02:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:21:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 typedef struct s_nd		t_node_with_a_point;
 typedef struct s_d		t_data;
 typedef struct s_pt		t_point;
+
+typedef double			t_d;
+static unsigned int		rgb_to_int(t_d r, t_d g, t_d b) __attribute__((unused));
 
 typedef struct s_raw
 {
@@ -52,6 +55,18 @@ typedef struct s_pt
 	t_snapshot			ol;
 	void				(*define_color_by_altitude)(t_point *p, t_data *d);
 }						t_point;
+
+static unsigned int	rgb_to_int(double r, double g, double b)
+{
+	unsigned int	red;
+	unsigned int	green;
+	unsigned int	blue;
+
+	red = (unsigned int)(r * 255);
+	green = (unsigned int)(g * 255);
+	blue = (unsigned int)(b * 255);
+	return ((red << 16) | (green << 8) | blue);
+}
 
 typedef struct s_nd
 {

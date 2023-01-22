@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:22:47 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 22:24:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:21:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static int			is_colorized(t_data *d);
+static int	is_colorized(t_data *d);
 
 void	colorize_points_bonus(t_data *d)
 {
@@ -23,7 +23,7 @@ void	colorize_points_bonus(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		tmp->point.define_color_by_altitude(&tmp->point , d);
+		tmp->point.define_color_by_altitude(&tmp->point, d);
 		tmp = tmp->next;
 	}
 }

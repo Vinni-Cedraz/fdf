@@ -6,11 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 22:14:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:21:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "t_point_bonus.h"
 
 static int			parse_file(t_data *d);
 static void			create_points_list(t_data *d);
@@ -47,8 +48,8 @@ static int	parse_file(t_data *d)
 
 static void	create_points_list(t_data *d)
 {
-	uint	counter;
-	t_node_with_a_point *tmp;
+	uint				counter;
+	t_node_with_a_point	*tmp;
 
 	counter = d->map->size;
 	d->map->pts = ft_lstpoint_new();
@@ -60,7 +61,6 @@ static void	create_points_list(t_data *d)
 		tmp->point.define_color_by_altitude = define_color_by_altitude;
 		tmp = tmp->next;
 	}
-
 }
 
 static inline void	check_for_hexcolor(t_data *d)
@@ -75,17 +75,21 @@ static inline void	check_for_hexcolor(t_data *d)
 
 static inline void	define_color_by_altitude(t_point *p, t_data *d)
 {
-	double	tolerance;
+	double	range;
+	double	normalized_z;
+	double	r;
+	double	b;
+	double	g;
 
-	tolerance = 0.1;
-	if (p->z == 0)
-		p->color = WHITE;
-	else if (p->z == d->map->min_z)
-		p->color = BLUE;
-	else if (p->z < 0)
-		p->color = RED;
-	else if (p->z > d->map->max_z - tolerance)
-		p->color = MAGENTA;
-	else if (p->z > 0)
-		p->color = CYAN;
+	range = d->map->max_z - d->map->min_z;
+	normalized_z = (p->z - d->map->min_z) / range;
+	r = normalized_z;
+	g = 1 - normalized_z;
+	b = 0;
+	if (p->z < d->map->min_z)
+		p->color = rgb_to_int(0, 0, 1);
+	else if (p->z > d->map->max_z)
+		p->color = rgb_to_int(1, 0, 1);
+	else
+		p->color = rgb_to_int(r, g, b);
 }
