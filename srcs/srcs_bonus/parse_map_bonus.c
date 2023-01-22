@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 00:21:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 01:58:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,22 @@ static inline void	define_color_by_altitude(t_point *p, t_data *d)
 {
 	double	range;
 	double	normalized_z;
-	double	r;
-	double	b;
-	double	g;
+	double	hue;
+	double	saturation;
+	double	value;
 
 	range = d->map->max_z - d->map->min_z;
 	normalized_z = (p->z - d->map->min_z) / range;
-	r = normalized_z;
-	g = 1 - normalized_z;
-	b = 0;
-	if (p->z < d->map->min_z)
-		p->color = rgb_to_int(0, 0, 1);
-	else if (p->z > d->map->max_z)
-		p->color = rgb_to_int(1, 0, 1);
+	saturation = 1;
+	value = 1;
+	if (normalized_z <= d->map->min_z)
+		hue = 240;
+	else if (normalized_z >= d->map->max_z)
+		hue = 300;
 	else
-		p->color = rgb_to_int(r, g, b);
+	{
+		hue = normalized_z * 60 + 240;
+		value = 0.5 + normalized_z / 2;
+	}
+	hsv_to_rgb(hue, saturation, value, &p->color);
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 21:40:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 02:03:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ typedef struct s_d
 	t_map					*map;
 	t_rotation_matrices		*matrix;
 	t_emporary				t;
+	t_rgb					rgb[6];
 	t_iso_context			iso_fsm[4];
 }							t_data;
 

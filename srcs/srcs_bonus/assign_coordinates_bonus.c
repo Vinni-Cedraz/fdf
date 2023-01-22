@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 20:31:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 01:25:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static inline void	assign_coordinate_z(t_data *d)
 		fscanf(d->tool.fp, "%ms", &buf);
 		tmp->point.z = ft_atoi(buf);
 		free(buf);
+		tmp->point.ol.raw.z = tmp->point.z;
+		tmp->point.z *= d->offset.scale;
 		tmp->point.color = CYAN;
 		tmp = tmp->next;
 	}
