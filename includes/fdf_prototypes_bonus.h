@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 19:31:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 11:53:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void				two_steps_to_isometry_bonus(t_data *d, t_i_changer changer);
 t_m					multiply_two_matrices_bonus(t_m a, t_m b);
 
 void				change_altitude_bonus(t_data *d, t_zscaler direction);
+
+void				compute_color_gradient_bonus(t_point *p, t_data *d);
 
 void				get_map_dimensions_bonus(t_data *d);
 

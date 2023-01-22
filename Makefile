@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/21 18:51:33 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/22 11:57:56 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ WIP_SRCS = parse_map_bonus \
 		   get_and_assign_hexcolor_bonus \
 		   multiply_two_matrices_bonus \
 		   get_map_dimensions_bonus \
+		   compute_color_gradient_bonus \
 
 
 SRCS_FROM_MLX = mlx_init \

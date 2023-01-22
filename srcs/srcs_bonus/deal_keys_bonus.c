@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 11:39:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 11:19:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,7 @@ static void	aux_deal_keys(int key, t_data *d)
 		zoom_bonus(d, 1, 0, 0);
 	else if (key == 's')
 		zoom_bonus(d, 0, 1, 0);
-	if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v'
-		|| key == 'q')
-		reset_states(d);
-	if (key == 'a')
-		transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
-	else if (key == 'd')
-		transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
-	else if (key == 'q')
-		transpts_with_given_matrix_bonus(d, &d->matrix->rot_x);
-	else if (key == 'e')
-		transpts_with_given_matrix_bonus(d, &d->matrix->rev_x);
-	else if (key == 'x')
-		transpts_with_given_matrix_bonus(d, &d->matrix->rot_z);
-	else if (key == 'v')
-		transpts_with_given_matrix_bonus(d, &d->matrix->rev_z);
-	else if (key)
-		aux_aux_deal_keys(key, d);
-}
-
-static void	aux_aux_deal_keys(int key, t_data *d)
-{
-	if (key == 'g' && d->state.grid_style_nb == 1)
+	else if (key == 'g' && d->state.grid_style_nb == 1)
 		d->state.grid_style_nb = 2;
 	else if (key == 'g' && d->state.grid_style_nb == 2)
 		d->state.grid_style_nb = 3;
@@ -76,6 +55,30 @@ static void	aux_aux_deal_keys(int key, t_data *d)
 		change_altitude_bonus(d, (t_zscaler){&z_down_method});
 	else if (key == 'm')
 		change_altitude_bonus(d, (t_zscaler){&z_mirror_method});
+	else if (key)
+		aux_aux_deal_keys(key, d);
+}
+
+static void	aux_aux_deal_keys(int key, t_data *d)
+{
+	if (!d->state.diagonal && !d->state.parallel)
+	{
+		if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v'
+			|| key == 'q')
+			reset_states(d);
+		if (key == 'a')
+			transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
+		else if (key == 'd')
+			transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
+		else if (key == 'q')
+			transpts_with_given_matrix_bonus(d, &d->matrix->rot_x);
+		else if (key == 'e')
+			transpts_with_given_matrix_bonus(d, &d->matrix->rev_x);
+		else if (key == 'x')
+			transpts_with_given_matrix_bonus(d, &d->matrix->rot_z);
+		else if (key == 'v')
+			transpts_with_given_matrix_bonus(d, &d->matrix->rev_z);
+	}
 }
 
 static void	reset_states(t_data *d)

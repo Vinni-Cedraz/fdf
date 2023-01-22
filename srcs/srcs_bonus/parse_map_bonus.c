@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 01:58:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 11:59:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static int			parse_file(t_data *d);
 static void			create_points_list(t_data *d);
 static void			check_for_hexcolor(t_data *d);
-static void			define_color_by_altitude(t_point *p, t_data *d);
 
 int	parse_map_bonus(t_data *d)
 {
@@ -58,7 +57,7 @@ static void	create_points_list(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		tmp->point.define_color_by_altitude = define_color_by_altitude;
+		tmp->point.define_p_color_by_altitude = compute_color_gradient_bonus;
 		tmp = tmp->next;
 	}
 }
@@ -71,28 +70,4 @@ static inline void	check_for_hexcolor(t_data *d)
 		if (*buf == ',')
 			d->map->has_hexcolor = 1;
 	rewind(d->tool.fp);
-}
-
-static inline void	define_color_by_altitude(t_point *p, t_data *d)
-{
-	double	range;
-	double	normalized_z;
-	double	hue;
-	double	saturation;
-	double	value;
-
-	range = d->map->max_z - d->map->min_z;
-	normalized_z = (p->z - d->map->min_z) / range;
-	saturation = 1;
-	value = 1;
-	if (normalized_z <= d->map->min_z)
-		hue = 240;
-	else if (normalized_z >= d->map->max_z)
-		hue = 300;
-	else
-	{
-		hue = normalized_z * 60 + 240;
-		value = 0.5 + normalized_z / 2;
-	}
-	hsv_to_rgb(hue, saturation, value, &p->color);
 }
