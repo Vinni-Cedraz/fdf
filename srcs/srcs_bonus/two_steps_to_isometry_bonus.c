@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 11:20:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 22:17:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void		restore_from_snapshot(t_data *d);
 static void	take_snapshot(t_data *d);
 static void	initialize_iso_finite_state_machine(t_data *d);
 
-void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer changer)
+void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer iso_changer)
 {
 	initialize_iso_finite_state_machine(d);
-	changer.action(d);
+	iso_changer.action(d);
 	if (d->state.isometric)
 		take_snapshot(d);
 }
@@ -29,7 +29,7 @@ void	apply_iso_steps(t_data *d)
 {
 	static int	i;
 
-	d->iso_fsm[i].transition(d);
+	d->state_transition_method[i](d);
 	i++;
 	if (i == 4)
 		i = 0;
@@ -37,10 +37,10 @@ void	apply_iso_steps(t_data *d)
 
 static void	initialize_iso_finite_state_machine(t_data *d)
 {
-	d->iso_fsm[0] = (t_iso_context){.transition = go_to_diagonal};
-	d->iso_fsm[1] = (t_iso_context){.transition = go_to_isometric};
-	d->iso_fsm[2] = (t_iso_context){.transition = undo_iso};
-	d->iso_fsm[3] = (t_iso_context){.transition = undo_diag};
+	d->state_transition_method[0] = &go_to_diagonal;
+	d->state_transition_method[1] = &go_to_isometric;
+	d->state_transition_method[2] = &undo_isometric;
+	d->state_transition_method[3] = &undo_diagonal;
 }
 
 static void	take_snapshot(t_data *d)

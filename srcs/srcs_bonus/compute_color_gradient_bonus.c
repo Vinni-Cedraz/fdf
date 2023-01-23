@@ -6,60 +6,62 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 14:09:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 22:56:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static long			rgb_to_int(double r, double g, double b);
-static long			hsl_to_rgb(t_d h, t_d s, t_d v, t_data *d);
+static long			hsl_to_rgb(t_compute_color *c);
 static int			get_color_wheel_sector_of_hue(double h);
+static void			initialize_rgb_map(t_compute_color *c);
 
 void	compute_color_gradient_bonus(t_point *p, t_data *d)
 {
 	double	range;
 	double	normalized_z;
-	double	hue;
-	double	saturation;
-	double	value;
 
 	range = d->map->max_z - d->map->min_z;
 	normalized_z = (p->z - d->map->min_z) / range;
-	saturation = 1;
-	value = 1;
+	d->c.saturation = 1;
+	d->c.light = 1;
 	if (normalized_z <= d->map->min_z)
-		hue = 240;
+		d->c.hue = 240;
 	else if (normalized_z >= d->map->max_z)
-		hue = 300;
+		d->c.hue = 300;
 	else
 	{
-		hue = normalized_z * 60 + 240;
-		value = 0.5 + normalized_z / 2;
+		d->c.hue = normalized_z * 60 + 240;
+		d->c.light = 0.5 + normalized_z / 2;
 	}
-	p->color = hsl_to_rgb(hue, saturation, value, d);
+	p->color = hsl_to_rgb(&d->c);
 }
 
-static inline long	hsl_to_rgb(t_d hue, t_d saturation, t_d light, t_data *d)
+static inline long	hsl_to_rgb(t_compute_color *c)
 {
 	int		i;
 	double	fractional;
-	double	base;
-	double	shaded;
-	double	tinted;
+	double	p_color;
 
-	i = get_color_wheel_sector_of_hue(hue);
-	fractional = (hue / 60 - i);
-	base = light * (1 - saturation);
-	shaded = light * (1 - saturation * fractional);
-	tinted = light * (1 - saturation * (1 - fractional));
-	d->rgb_map[0] = (t_rgb){.r = light, .g = tinted, .b = base};
-	d->rgb_map[1] = (t_rgb){.r = shaded, .g = light, .b = base};
-	d->rgb_map[2] = (t_rgb){.r = base, .g = light, .b = tinted};
-	d->rgb_map[3] = (t_rgb){.r = base, .g = shaded, .b = light};
-	d->rgb_map[4] = (t_rgb){.r = tinted, .g = base, .b = light};
-	d->rgb_map[5] = (t_rgb){.r = light, .g = base, .b = shaded};
-	return (rgb_to_int(d->rgb_map[i].r, d->rgb_map[i].g, d->rgb_map[i].b));
+	i = get_color_wheel_sector_of_hue(c->hue);
+	fractional = (c->hue / 60 - i);
+	c->base = c->light * (1 - c->saturation);
+	c->shaded = c->light * (1 - c->saturation * fractional);
+	c->tinted = c->light * (1 - c->saturation * (1 - fractional));
+	initialize_rgb_map(c);
+	p_color = rgb_to_int(c->rgb_map[i].r, c->rgb_map[i].g, c->rgb_map[i].b);
+	return (p_color);
+}
+
+static inline void	initialize_rgb_map(t_compute_color *c)
+{
+	c->rgb_map[0] = (t_rgb){.r = c->light, .g = c->tinted, .b = c->base};
+	c->rgb_map[1] = (t_rgb){.r = c->shaded, .g = c->light, .b = c->base};
+	c->rgb_map[2] = (t_rgb){.r = c->base, .g = c->light, .b = c->tinted};
+	c->rgb_map[3] = (t_rgb){.r = c->base, .g = c->shaded, .b = c->light};
+	c->rgb_map[4] = (t_rgb){.r = c->tinted, .g = c->base, .b = c->light};
+	c->rgb_map[5] = (t_rgb){.r = c->light, .g = c->base, .b = c->shaded};
 }
 
 static inline int	get_color_wheel_sector_of_hue(double h)

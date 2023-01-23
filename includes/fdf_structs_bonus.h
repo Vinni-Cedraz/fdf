@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 11:27:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/22 22:55:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@
 # include "../lib/ft_printf_libft/libft/libft_bonus.h"
 # include "fdf_prototypes_bonus.h"
 # include "printf_libft_structs.h"
-# include "t_point_bonus.h"
 // stdio needed for FILE type
 # include <stdio.h>
 
-/* \brief temporary variables are often defined locally to hold some values and
- * make code more readable. The purpost t_emporary is to have those handy */
 typedef struct s_tmps
 {
 	double					x;
@@ -29,7 +26,6 @@ typedef struct s_tmps
 	double					z;
 }							t_emporary;
 
-/*  \brief It organizes the data mlx need to create a window */
 typedef struct s_mlx
 {
 	void					*win_ptr;
@@ -37,8 +33,6 @@ typedef struct s_mlx
 	int						hook;
 }							t_mlx;
 
-/*  \brief  Holds values different parse_map_bonus functions needs to read and
- * work with a file */
 typedef struct s_assign_coordinates
 {
 	FILE					*fp;
@@ -47,8 +41,6 @@ typedef struct s_assign_coordinates
 
 }							t_assign_coordinates;
 
-/*  \brief  holds the values that are used to change x, y and z of the t_points
- * for scaling, change of altitude and translation*/
 typedef struct s_offset
 {
 	double					scale;
@@ -57,8 +49,6 @@ typedef struct s_offset
 	double					move_y;
 }							t_offset;
 
-/*  \brief  holds the x, y and z values of the specific t_point located at the
- * center of the map*/
 typedef struct s_center
 {
 	double					x;
@@ -66,7 +56,6 @@ typedef struct s_center
 	double					z;
 }							t_center;
 
-/*  \brief  holds the data mlx needs to create and work with an image */
 typedef struct s_img
 {
 	int						width;
@@ -78,8 +67,6 @@ typedef struct s_img
 	int						endian;
 }							t_img;
 
-/*  \brief  holds the data needed by render_line_bonus to create a line using
- * Bressenham's algorithm*/
 typedef struct s_line
 {
 	double					x;
@@ -99,8 +86,6 @@ typedef struct s_vec
 	double					z;
 }							t_vector;
 
-/*  \brief  each row in a 3x3 matrix has three columns, t_row holds the values
- * in each of the three columns for each row */
 typedef struct s_row
 {
 	double					col_1;
@@ -108,9 +93,6 @@ typedef struct s_row
 	double					col_3;
 }							t_row;
 
-/*  \brief  the t_matrix class is used to defined different t_matrix objects,
- * all with three t_row attributes each with it's own t_row values specific to
- * that object*/
 typedef struct s_m
 {
 	t_row					row_1;
@@ -120,8 +102,6 @@ typedef struct s_m
 
 typedef t_matrix			t_m;
 
-/*  \brief  It's the set of the different t_matrix objects that will be defined
- * in the define_rotation_matrices_bonus function */
 typedef struct s_rm
 {
 	t_matrix				rot_x;
@@ -145,8 +125,6 @@ typedef struct s_rm
 	t_matrix				spherical;
 }							t_rotation_matrices;
 
-/*  \brief  t_state is a class that holds pseudo-boolean indicators of the state
- * of the map as it is rotated and translated by the user.*/
 typedef struct s_state
 {
 	int						snapshot_taken;
@@ -163,9 +141,6 @@ typedef struct s_state
 	int						grid_style_nb;
 }							t_state;
 
-/*  \brief  A t_map is essentially the series of t_points that will be used to
- * render de wireframe, but t_map also contains other important data about the
- * set of t_points, such as it's size and max/min altitude values. */
 typedef struct s_mp
 {
 	int						has_hexcolor;
@@ -183,15 +158,20 @@ typedef struct s_mp
 	t_point					**arr;
 }							t_map;
 
-typedef struct s_d			t_data;
+typedef void				(*t_fsm)(t_data *d);
 
-typedef struct s_context
+typedef struct s_compute_color
 {
-	void					(*transition)(t_data *d);
-}							t_iso_context;
+	double					base;
+	double					shaded;
+	double					tinted;
+	double					saturation;
+	double					light;
+	double					hue;
+	t_rgb					rgb_map[6];
 
-/*  \brief  t_data is a meta-class that holds all the data_structures that are
- * most used throughout the project */
+}							t_compute_color;
+
 typedef struct s_d
 {
 	t_assign_coordinates	tool;
@@ -203,8 +183,8 @@ typedef struct s_d
 	t_map					*map;
 	t_rotation_matrices		*matrix;
 	t_emporary				t;
-	t_rgb					rgb_map[6];
-	t_iso_context			iso_fsm[4];
+	t_fsm					state_transition_method[4];
+	t_compute_color			c;
 }							t_data;
 
 #endif
