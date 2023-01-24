@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zscaler_bonus.h                                    :+:      :+:    :+:   */
+/*   ft_lstpoint_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 11:25:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 19:34:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 15:36:48 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/23 21:13:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZSCALER_BONUS_H
-# define ZSCALER_BONUS_H
+#include "linked_list_tools.h"
 
-# include "fdf_structs_bonus.h"
-
-typedef struct s_zs
+void	ft_lstpoint_front(t_node_with_a_point **lst, t_node_with_a_point *new)
 {
-	void	(*scale_method)(t_data *d);
-}			t_zscaler;
-
-void		z_up_method(t_data *d);
-void		z_down_method(t_data *d);
-void		z_mirror_method(t_data *d);
-void		transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot);
-
-#endif
+	if (lst)
+	{
+		if (*lst)
+			new->next = *lst;
+		*lst = new;
+	}
+}

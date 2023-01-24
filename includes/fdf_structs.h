@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 21:00:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:51:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTS_H
 # define FDF_STRUCTS_H
 
-# include "printf_libft_structs.h"
+# include "../libs/ft_printf_libft/includes/printf_libft_structs.h"
 
 typedef struct s_line
 {

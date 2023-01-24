@@ -6,12 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:47:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 22:23:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 21:04:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_PROTOTYPES_H
 # define FDF_PROTOTYPES_H
+
 # include "fdf_structs.h"
 
 void	put_pixel_img(t_img *img, int x, int y, int color);

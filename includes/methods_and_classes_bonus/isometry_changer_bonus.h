@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:27:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 22:09:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:35:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,21 @@
 
 # include "fdf_structs_bonus.h"
 
-// CLASS FOR ISOMETRY CHANGER OBJECTS:
 typedef struct s_is
 {
-	void			(*action)(t_data *d);
-}					t_isometry_changer;
-//alias
+	void					(*action)(t_data *d);
+}							t_isometry_changer;
+
 typedef t_isometry_changer	t_i_changer;
+static void					go_to_diagonal(t_data *d) __attribute__((unused));
+static void					go_to_isometric(t_data *d) __attribute__((unused));
+static void					undo_isometric(t_data *d) __attribute__((unused));
+static void					undo_diagonal(t_data *d) __attribute__((unused));
+static void					restore_snapshot(t_data *d) __attribute__((unused));
+void						apply_iso_steps(t_data *d);
+void						restore_from_snapshot(t_data *d);
+void						transpts_with_given_matrix_bonus(t_data *d, t_m *m);
 
-// ISOMETRY CHANGER METHODS:
-static void			go_to_diagonal(t_data *d) __attribute__((unused));
-static void			go_to_isometric(t_data *d) __attribute__((unused));
-static void			undo_isometric(t_data *d) __attribute__((unused));
-static void			undo_diagonal(t_data *d) __attribute__((unused));
-static void			restore_snapshot(t_data *d) __attribute__((unused));
-void				apply_iso_steps(t_data *d);
-void				restore_from_snapshot(t_data *d);
-void				transpts_with_given_matrix_bonus(t_data *d, t_m *m);
-
-// FUNCTION DEFINITIONS:
 static inline void	go_to_diagonal(t_data *d)
 {
 	transpts_with_given_matrix_bonus(d, &d->matrix->rot_z_45);

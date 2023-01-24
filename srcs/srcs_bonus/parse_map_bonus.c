@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 11:59:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:49:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "t_point_bonus.h"
 
 static int			parse_file(t_data *d);
 static void			create_points_list(t_data *d);
@@ -57,6 +56,7 @@ static void	create_points_list(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
+		tmp->point.set_hexcolor = &set_hexcolor_method;
 		tmp->point.define_p_color_by_altitude = compute_color_gradient_bonus;
 		tmp = tmp->next;
 	}

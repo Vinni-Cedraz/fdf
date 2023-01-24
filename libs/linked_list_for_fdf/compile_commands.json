@@ -1,0 +1,146 @@
+[
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_new.c",
+   "-o",
+   "objs/ft_lstpoint_new.o"
+  ],
+  "file": "srcs/ft_lstpoint_new.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_back.c",
+   "-o",
+   "objs/ft_lstpoint_back.o"
+  ],
+  "file": "srcs/ft_lstpoint_back.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_dup.c",
+   "-o",
+   "objs/ft_lstpoint_dup.o"
+  ],
+  "file": "srcs/ft_lstpoint_dup.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_free.c",
+   "-o",
+   "objs/ft_lstpoint_free.o"
+  ],
+  "file": "srcs/ft_lstpoint_free.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_front.c",
+   "-o",
+   "objs/ft_lstpoint_front.o"
+  ],
+  "file": "srcs/ft_lstpoint_front.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_getby_index.c",
+   "-o",
+   "objs/ft_lstpoint_getby_index.o"
+  ],
+  "file": "srcs/ft_lstpoint_getby_index.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_size.c",
+   "-o",
+   "objs/ft_lstpoint_size.o"
+  ],
+  "file": "srcs/ft_lstpoint_size.c"
+ },
+ {
+  "directory": "/home/vcedraz-/42/fdf/libs/linked_list_for_fdf",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-I../ft_printf_libft/libft/",
+   "-I../ft_printf_libft/includes/",
+   "-I../../includes/",
+   "-Iincludes/",
+   "-c",
+   "srcs/ft_lstpoint_toarr.c",
+   "-o",
+   "objs/ft_lstpoint_toarr.o"
+  ],
+  "file": "srcs/ft_lstpoint_toarr.c"
+ }
+]

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zscaler_bonus.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 11:25:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 19:34:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2022/09/16 11:02:35 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/23 13:02:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZSCALER_BONUS_H
-# define ZSCALER_BONUS_H
+#include "libft.h"
 
-# include "fdf_structs_bonus.h"
-
-typedef struct s_zs
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	void	(*scale_method)(t_data *d);
-}			t_zscaler;
+	unsigned char	chr;
+	unsigned char	*str;
 
-void		z_up_method(t_data *d);
-void		z_down_method(t_data *d);
-void		z_mirror_method(t_data *d);
-void		transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot);
-
-#endif
+	chr = (unsigned char)c;
+	str = (unsigned char *)s;
+	if (!str)
+		return (NULL);
+	while (n--)
+		if (*str++ == chr)
+			return (str - 1);
+	return (NULL);
+}

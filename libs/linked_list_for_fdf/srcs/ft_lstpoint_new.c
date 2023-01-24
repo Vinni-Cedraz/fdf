@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zscaler_bonus.h                                    :+:      :+:    :+:   */
+/*   ft_lstpoint_new.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 11:25:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 19:34:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 12:59:57 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/23 21:13:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZSCALER_BONUS_H
-# define ZSCALER_BONUS_H
+#include "linked_list_tools.h"
 
-# include "fdf_structs_bonus.h"
-
-typedef struct s_zs
+t_node_with_a_point	*ft_lstpoint_new(void)
 {
-	void	(*scale_method)(t_data *d);
-}			t_zscaler;
+	t_node_with_a_point	*n;
 
-void		z_up_method(t_data *d);
-void		z_down_method(t_data *d);
-void		z_mirror_method(t_data *d);
-void		transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot);
-
-#endif
+	n = (t_node_with_a_point *)malloc(sizeof(t_node_with_a_point));
+	n->point = (t_point){0, 0, 0, 0, {0, 0, 0}, {0, 0, 0, 0, 0, 0, {0, 0, 0}},
+		NULL, NULL};
+	n->next = NULL;
+	return (n);
+}

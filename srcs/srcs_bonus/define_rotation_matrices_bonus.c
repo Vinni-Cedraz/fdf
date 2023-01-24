@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/19 21:19:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 10:49:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	define_isometry_step_one_rotation(t_rotation_matrices *matrix);
 static void	define_isometry_step_two_rotation(t_rotation_matrices *matrix);
 static void	define_change_altitude_matrix(t_rotation_matrices *matrix);
 
-// the rev_ matrices are the transpose of their correspoding rot_ 
-// and are used to perform the inverse rotation
 void	define_rotation_matrices_bonus(t_rotation_matrices *matrix)
 {
 	matrix->scaling_z_up = (t_matrix){

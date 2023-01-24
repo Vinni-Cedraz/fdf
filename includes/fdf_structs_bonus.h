@@ -6,18 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 22:55:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:51:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTS_BONUS_H
 # define FDF_STRUCTS_BONUS_H
 
-# include "../lib/ft_printf_libft/libft/libft_bonus.h"
-# include "fdf_prototypes_bonus.h"
-# include "printf_libft_structs.h"
-// stdio needed for FILE type
 # include <stdio.h>
+# include "fdf_prototypes_bonus.h"
+# include "../libs/linked_list_for_fdf/includes/linked_list_tools.h"
 
 typedef struct s_tmps
 {
@@ -169,7 +167,6 @@ typedef struct s_compute_color
 	double					light;
 	double					hue;
 	t_rgb					rgb_map[6];
-
 }							t_compute_color;
 
 typedef struct s_d

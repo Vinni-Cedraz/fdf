@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zscaler_bonus.h                                    :+:      :+:    :+:   */
+/*   ft_lst_make_it_circular.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 11:25:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 19:34:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/20 22:05:40 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/23 14:00:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZSCALER_BONUS_H
-# define ZSCALER_BONUS_H
+#include "libft_bonus.h"
 
-# include "fdf_structs_bonus.h"
-
-typedef struct s_zs
+void	ft_lst_make_it_circular(t_node **head)
 {
-	void	(*scale_method)(t_data *d);
-}			t_zscaler;
+	t_node *tail;
 
-void		z_up_method(t_data *d);
-void		z_down_method(t_data *d);
-void		z_mirror_method(t_data *d);
-void		transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot);
-
-#endif
+	tail = *head;
+	if (!head || !*head)
+		return ;
+	tail = ft_lstlast(*head)->next;
+	tail->next = *head;
+}

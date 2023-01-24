@@ -6,16 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/20 18:08:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:33:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void			transform_a_point(t_point *p, t_matrix *m, t_data *d);
-static void			calculate_z_scale(t_data *d);
-// static void			apply_spherical_projection(t_point *p, t_data *d);
-// static void			define_radius(t_point *p);
+static void	transform_a_point(t_point *p, t_matrix *m, t_data *d);
+static void	calculate_z_scale(t_data *d);
 
 void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 {

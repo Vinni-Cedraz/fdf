@@ -6,11 +6,10 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 11:53:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:35:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// HEADER GUARD
 #ifndef FDF_PROTOTYPES_BONUS_H
 # define FDF_PROTOTYPES_BONUS_H
 
@@ -63,5 +62,7 @@ void				compute_color_gradient_bonus(t_point *p, t_data *d);
 void				get_map_dimensions_bonus(t_data *d);
 
 int					close_win_bonus(t_data *data);
+
+void				set_hexcolor(t_point *self, char *hexstring);
 
 #endif

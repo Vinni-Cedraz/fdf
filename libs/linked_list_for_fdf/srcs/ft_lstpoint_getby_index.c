@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zscaler_bonus.h                                    :+:      :+:    :+:   */
+/*   ft_lstpoint_getby_index.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 11:25:48 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 19:34:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/12 15:38:58 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/23 21:13:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZSCALER_BONUS_H
-# define ZSCALER_BONUS_H
+#include "linked_list_tools.h"
 
-# include "fdf_structs_bonus.h"
-
-typedef struct s_zs
+t_node_with_a_point	*ft_lstpoint_getby_index(t_node_with_a_point *lst, uint i)
 {
-	void	(*scale_method)(t_data *d);
-}			t_zscaler;
-
-void		z_up_method(t_data *d);
-void		z_down_method(t_data *d);
-void		z_mirror_method(t_data *d);
-void		transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot);
-
-#endif
+	if (!i)
+		return (NULL);
+	while (lst)
+	{
+		if (!i--)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}
