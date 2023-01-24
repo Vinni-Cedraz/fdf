@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ishexup.c                                       :+:      :+:    :+:   */
+/*   initialize_t_point_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 08:31:28 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/24 18:02:28 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/24 21:46:10 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/24 22:17:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf_includes_bonus.h"
 
-static inline int	is_digit(int c);
-static inline int	is_hexup(int c);
-
-int	ft_ishexup(char *s)
+void	assign_t_points_methods_bonus(t_data *d)
 {
-	if (!s)
-		return (0);
-	while (*s)
+	t_node_with_a_point	*tmp;
+
+	tmp = d->map->pts;
+	while (tmp)
 	{
-		if (!is_digit(*s) && !is_hexup(*s))
-			return (0);
-		s++;
+		tmp->point.set_hexcolor = &set_hexcolor;
+		tmp->point.define_p_color_by_altitude = compute_color_gradient_bonus;
+		tmp = tmp->next;
 	}
-	return (1);
-}
-
-static inline int	is_digit(int c)
-{
-	return ('0' <= c && c <= '9');
-}
-
-static inline int	is_hexup(int c)
-{
-	return ('A' <= c && c <= 'F');
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 14:49:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/24 22:28:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_map_bonus(t_data *d)
 	assign_coordinates_bonus(d);
 	check_for_hexcolor(d);
 	if (d->map->has_hexcolor)
-		get_and_assign_hexcolor_bonus(d);
+		assign_hexcolor_bonus(d);
 	fclose(d->tool.fp);
 	return (1);
 }
@@ -47,19 +47,12 @@ static int	parse_file(t_data *d)
 static void	create_points_list(t_data *d)
 {
 	uint				counter;
-	t_node_with_a_point	*tmp;
 
 	counter = d->map->size;
 	d->map->pts = ft_lstpoint_new();
 	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
-	tmp = d->map->pts;
-	while (tmp)
-	{
-		tmp->point.set_hexcolor = &set_hexcolor_method;
-		tmp->point.define_p_color_by_altitude = compute_color_gradient_bonus;
-		tmp = tmp->next;
-	}
+	assign_t_points_methods_bonus(d);
 }
 
 static inline void	check_for_hexcolor(t_data *d)

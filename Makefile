@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/23 23:52:19 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/24 22:28:39 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,10 +76,11 @@ BONUS_SRCS = parse_map_bonus \
 		   	 calculate_default_scale_bonus \
 		   		   get_altitude_range_bonus \
 		   			assign_coordinates_bonus \
-		   		get_and_assign_hexcolor_bonus \
+		   				assign_hexcolor_bonus \
 		   		   multiply_two_matrices_bonus \
 		   			   get_map_dimensions_bonus \
 		   			compute_color_gradient_bonus \
+					assign_t_points_methods_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

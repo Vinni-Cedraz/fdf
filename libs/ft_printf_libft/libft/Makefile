@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/23 23:41:05 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/24 18:11:40 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,6 +147,7 @@ FDF_SRCS_BONUS =  ft_strnstr \
 								   ft_strtrim \
 								     ft_substr \
 									  ft_putstr \
+									   ft_strchr \
 
 ## OBJS VARIABLES ##
 

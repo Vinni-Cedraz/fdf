@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 08:32:21 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 12:21:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:00:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	ft_ishexlow(char *s)
 		return (0);
 	while (*s)
 	{
-		if (is_digit(*s) || is_hexlow(*s))
-			return (1);
+		if (!is_digit(*s) && !is_hexlow(*s))
+			return (0);
 		s++;
 	}
-	return (0);
+	return (1);
 }
 
 static inline int	is_digit(int c)

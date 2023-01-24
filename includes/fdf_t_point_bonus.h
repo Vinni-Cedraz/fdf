@@ -6,22 +6,21 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 22:47:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:48:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_T_POINT_BONUS_H
 # define FDF_T_POINT_BONUS_H
 
-# include <string.h>
 # include "../libs/ft_printf_libft/includes/printf_libft_includes.h"
+# include <string.h>
 
 typedef struct s_d	t_data;
 typedef struct s_pt	t_point;
 
-static char			*filter_out_prefix(char *current_point);
-static char			*check_for_hexstring(char *current_p_as_str);
-static void			set_hexcolor_method(t_point *p, char *current_p_as_str)__attribute__((unused));
+static char			*filter_up_to_x(char *current_point);
+static void			set_hexcolor(t_point *p, char *s) __attribute__((unused));
 
 typedef struct s_phere
 {
@@ -67,43 +66,27 @@ typedef struct s_rgb
 	double			b;
 }					t_rgb;
 
-static inline void	set_hexcolor_method(t_point *p, char *current_p_as_str)
+static inline void	set_hexcolor(t_point *p, char *current_p_as_str)
 {
 	char	*hexstring;
 
-	hexstring = check_for_hexstring(current_p_as_str);
+	hexstring = filter_up_to_x(current_p_as_str);
 	if (ft_ishexlow(hexstring))
 	{
 		p->color = ft_atoi_base(hexstring, HEX_BASE);
-		free(hexstring);
 		return ;
 	}
-	p->color = ft_atoi_base(hexstring, HEX_BASE_UPPER);
-	free(hexstring);
-}
-
-static inline char	*check_for_hexstring(char *current_p_as_str)
-{
-	char	*hexstring;
-
-	hexstring = filter_out_prefix(current_p_as_str);
-	if (!ft_ishexlow(hexstring) && !ft_ishexup(hexstring))
+	if (ft_ishexup(hexstring))
 	{
-		free(hexstring);
-		strerror(ft_putstr("Error: found ',''x' or '0' but wasn't hexstring."));
-		return (NULL);
+		p->color = ft_atoi_base(hexstring, HEX_BASE_UPPER);
+		return ;
 	}
-	return (hexstring);
+	hexstring = NULL;
 }
 
-static inline char	*filter_out_prefix(char *current_point)
+static inline char	*filter_up_to_x(char *current_point)
 {
-	char	*hexstring;
-
-	hexstring = ft_strtrim(current_point, ",0x");
-	if (!hexstring)
-		return (NULL);
-	return (hexstring);
+	return (ft_strchr(current_point, 'x') + 1);
 }
 
 #endif

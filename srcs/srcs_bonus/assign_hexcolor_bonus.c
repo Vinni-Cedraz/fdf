@@ -6,59 +6,43 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 13:02:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/24 22:24:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static t_split			*read_points_in_current_row(t_data *d);
-static int				is_end_of_row(int *j, int width);
-static void				increment_j(int module_counter, int row_len, int *j);
-static int				is_begining_of_new_row(int *j);
+static int				is_end_of_row(int j, int width);
 
-void	get_and_assign_hexcolor_bonus(t_data *d)
+void	assign_hexcolor_bonus(t_data *d)
 {
 	t_split				*pts_in_this_row;
-	int					module_counter;
-	int					*j;
+	int					counter;
+	int					j;
 	int					row_len;
 	t_node_with_a_point	*tmp;
 
-	j = ft_calloc(sizeof(int), 1);
 	tmp = d->map->pts;
-	module_counter = 0;
-	pts_in_this_row = &(t_split){NULL, NULL, 0, 0};
+	counter = 0;
 	row_len = (int)d->map->width;
+	pts_in_this_row = &(t_split){NULL, NULL, 0, 0};
 	while (tmp)
 	{
-		increment_j(module_counter, row_len, j);
-		if (is_begining_of_new_row(j))
+		j = counter % row_len;
+		if (j == 0)
 			pts_in_this_row = read_points_in_current_row(d);
-		tmp->point.set_hexcolor(&tmp->point, pts_in_this_row->str_arr[*j]);
+		tmp->point.set_hexcolor(&tmp->point, pts_in_this_row->str_arr[j]);
+		tmp = tmp->next;
+		counter++;
 		if (is_end_of_row(j, row_len))
 			ft_free_t_split(pts_in_this_row);
-		module_counter++;
-		tmp = tmp->next;
 	}
-	free(j);
 }
 
-static inline void	increment_j(int module_counter, int row_len, int *j)
+static inline int	is_end_of_row(int j, int width)
 {
-	*j = (module_counter % row_len);
-}
-
-static inline int	is_begining_of_new_row(int *j)
-{
-	if (*j == 0)
-		return (1);
-	return (0);
-}
-
-static inline int	is_end_of_row(int *j, int width)
-{
-	if (*j == width - 1)
+	if (j == width - 1)
 		return (1);
 	return (0);
 }
