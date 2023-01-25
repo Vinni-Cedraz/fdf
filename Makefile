@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/24 22:28:39 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/25 19:58:15 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,13 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -I$(MLX_INC) -I$(INC_LIBFT) -I$(INC_PRNTF) -I$(INC_CLASSES_METHODS) -I$(INC_LINKED_LIST) -I$(INC) -O3
+CFLAGS = -Wall -Wextra -Werror -O3 \
+		 -I$(MLX_INC) \
+		 -I$(INC_LIBFT) \
+		 -I$(INC_PRNTF) \
+		 -I$(INC_CLASSES_METHODS) \
+		 -I$(INC_LINKED_LIST) \
+		 -I$(INC)
 MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = libs/ft_printf_libft/libft/
 PRNTF_PATH = libs/ft_printf_libft/

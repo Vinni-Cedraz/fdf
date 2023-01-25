@@ -6,21 +6,21 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/24 18:48:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:51:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_T_POINT_BONUS_H
 # define FDF_T_POINT_BONUS_H
 
-# include "../libs/ft_printf_libft/includes/printf_libft_includes.h"
+# include "printf_libft_includes.h"
 # include <string.h>
 
 typedef struct s_d	t_data;
 typedef struct s_pt	t_point;
 
 static char			*filter_up_to_x(char *current_point);
-static void			set_hexcolor(t_point *p, char *s) __attribute__((unused));
+static void			set_hexcolor(t_point *p, char *s)__attribute__((unused));
 
 typedef struct s_phere
 {

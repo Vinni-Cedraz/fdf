@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_t_point_bonus.c                         :+:      :+:    :+:   */
+/*   assign_t_points_methods_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 21:46:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/24 22:17:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:52:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	assign_t_points_methods_bonus(t_data *d)
 	while (tmp)
 	{
 		tmp->point.set_hexcolor = &set_hexcolor;
-		tmp->point.define_p_color_by_altitude = compute_color_gradient_bonus;
+		tmp->point.define_p_color_by_altitude = &compute_color_gradient_bonus;
 		tmp = tmp->next;
 	}
 }

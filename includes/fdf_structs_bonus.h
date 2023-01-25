@@ -6,16 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 20:51:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:50:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_STRUCTS_BONUS_H
 # define FDF_STRUCTS_BONUS_H
 
-# include <stdio.h>
 # include "fdf_prototypes_bonus.h"
-# include "../libs/linked_list_for_fdf/includes/linked_list_tools.h"
+# include "fdf_t_point_bonus.h"
+# include <stdio.h>
 
 typedef struct s_tmps
 {
@@ -36,7 +36,7 @@ typedef struct s_assign_coordinates
 	FILE					*fp;
 	char					*argv;
 	char					*first_line;
-
+	t_split					*pts_in_this_row;
 }							t_assign_coordinates;
 
 typedef struct s_offset

@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:40:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 21:28:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:53:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINKED_LIST_TOOLS_H
 # define LINKED_LIST_TOOLS_H
 
-#include "fdf_t_point_bonus.h"
+# include "fdf_t_point_bonus.h"
 
 typedef unsigned int		t_ui;
 
