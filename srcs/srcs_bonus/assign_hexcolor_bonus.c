@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 19:52:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:58:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,5 @@ static inline int	is_beginning_of_row(int counter, int width)
 
 static inline int	is_end_of_row(int counter, int width)
 {
-	if (counter == width - 1)
-		return (1);
-	return (0);
+	return ((counter + 1) % width == 0);
 }
