@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/26 12:50:03 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/26 13:44:47 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,8 +87,9 @@ BONUS_SRCS = parse_map_bonus \
 		   			   get_map_dimensions_bonus \
 		   			compute_color_gradient_bonus \
 					assign_t_points_methods_bonus \
-			   initialize_transition_methods_bonus \
-			       			   open_win_n_img_bonus \
+			       			  open_win_n_img_bonus \
+			          initialize_lookup_lists_bonus \
+					  		   find_map_center_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

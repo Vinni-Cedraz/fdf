@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 17:54:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:18:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
 	d->map->arr = ft_lstpoint_toarr(d->map->pts, d->map->width);
-	if (d->state.grid_style_nb == 1)
-		render_map_bonus(d, 1, 0, 0);
-	else if (d->state.grid_style_nb == 2)
-		render_map_bonus(d, 0, 1, 0);
-	else if (d->state.grid_style_nb == 3)
-		render_map_bonus(d, 0, 0, 1);
+	render_map_bonus(d);
 	ft_free_2d_arr((void **)d->map->arr, d->map->height);
 	draw_menu_background(d->img);
 	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win_ptr, d->img->ptr, 0, 0);

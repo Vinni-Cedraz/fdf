@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 23:34:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:24:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,8 @@ static void	aux_deal_keys(int key, t_data *d)
 		zoom_bonus(d, 1, 0, 0);
 	else if (key == 's')
 		zoom_bonus(d, 0, 1, 0);
-	else if (key == 'g' && d->state.grid_style_nb == 1)
-		d->state.grid_style_nb = 2;
-	else if (key == 'g' && d->state.grid_style_nb == 2)
-		d->state.grid_style_nb = 3;
-	else if (key == 'g' && d->state.grid_style_nb == 3)
-		d->state.grid_style_nb = 1;
+	else if (key == 'g' )
+		change_grid_rendering_method(d);
 	else if (key == 'z')
 		change_altitude_bonus(d, (t_zscaler){&z_up_method});
 	else if (key == 'c')

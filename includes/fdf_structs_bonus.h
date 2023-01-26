@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 23:56:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:19:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ typedef struct s_state
 	int						neutral_y;
 	int						neutral_z;
 	int						parallel;
-	int						grid_style_nb;
 }							t_state;
 
 typedef struct s_mp
@@ -170,6 +169,12 @@ typedef struct s_compute_color
 	t_rgb					rgb_map[6];
 }							t_compute_color;
 
+typedef struct s_lookup
+{
+	t_node					*state_transit_methods;
+	t_node					*grid_methods;
+}							t_lookup;
+
 typedef struct s_d
 {
 	t_assign_coordinates	tool;
@@ -182,7 +187,7 @@ typedef struct s_d
 	t_map					*map;
 	t_rotation_matrices		*matrix;
 	t_compute_color			c;
-	t_node					*state_transition_methods;
+	t_lookup				lookup;
 }							t_data;
 
 #endif

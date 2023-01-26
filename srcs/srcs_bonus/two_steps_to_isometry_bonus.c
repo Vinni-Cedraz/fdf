@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 23:55:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:12:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer iso_changer)
 
 void	apply_iso_steps(t_data *d)
 {
-	((t_func_ptr)(d->state_transition_methods->content))(d);
-	d->state_transition_methods = d->state_transition_methods->next;
+	((t_func_ptr)(d->lookup.state_transit_methods->content))(d);
+	d->lookup.state_transit_methods = d->lookup.state_transit_methods->next;
 }
 
 static void	take_snapshot(t_data *d)
