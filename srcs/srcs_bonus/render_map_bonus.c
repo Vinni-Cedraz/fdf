@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 11:39:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:57:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	render_pentagram(t_data *d);
 static void	render_lines_square(t_data *d);
 static void	render_lines_cross(t_data *d);
-static void	find_center_of_the_map(t_data *d);
 
 void	render_map_bonus(t_data *d, int square, int cross, int pent)
 {
@@ -25,7 +24,6 @@ void	render_map_bonus(t_data *d, int square, int cross, int pent)
 		render_lines_cross(d);
 	else if (pent)
 		render_pentagram(d);
-	find_center_of_the_map(d);
 }
 
 static void	render_lines_square(t_data *d)
@@ -99,19 +97,4 @@ static void	render_pentagram(t_data *d)
 			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
 		}
 	}
-}
-
-static void	find_center_of_the_map(t_data *d)
-{
-	uint				index;
-	t_node_with_a_point	*central_node;
-
-	if (d->map->size % 2 == 0)
-		index = (d->map->size / 2) + d->map->width / 2;
-	else
-		index = d->map->size / 2;
-	central_node = ft_lstpoint_getby_index(d->map->pts, index);
-	d->center.x = central_node->point.x;
-	d->center.y = central_node->point.y;
-	d->center.z = central_node->point.z;
 }
