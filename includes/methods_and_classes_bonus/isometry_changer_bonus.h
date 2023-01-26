@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:27:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 19:35:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:48:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ISOMETRY_CHANGER_BONUS_H
 
 # include "fdf_structs_bonus.h"
+
+typedef void				(*t_func_ptr)(t_data *d);
 
 typedef struct s_is
 {

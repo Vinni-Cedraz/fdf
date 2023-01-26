@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 01:47:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 00:32:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	close_win_bonus(t_data *d)
 	free(d->img);
 	free(d->matrix);
 	ft_lstpoint_free(&d->map->pts);
+	ft_lstcircular_free(&d->state_transition_methods);
 	free(d->map);
 	free(d);
 	exit(0);

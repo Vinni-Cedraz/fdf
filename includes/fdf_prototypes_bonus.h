@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/24 22:24:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:10:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ int					close_win_bonus(t_data *data);
 void				set_hexcolor(t_point *self, char *hexstring);
 
 void				assign_t_points_methods_bonus(t_data *d);
+
+void				initialize_transition_methods_bonus(t_data *d);
 #endif

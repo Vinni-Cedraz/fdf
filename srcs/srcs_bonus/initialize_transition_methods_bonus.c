@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_win.c                                        :+:      :+:    :+:   */
+/*   initialize_transition_methods_bonus.c              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 01:18:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 00:08:46 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/25 23:02:00 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/25 23:54:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_includes.h"
-#include "../libs/ft_printf_libft/libft/libft_bonus.h"
+#include "fdf_includes_bonus.h"
 
-int	close_win(t_data *data)
+void	initialize_transition_methods_bonus(t_data *d)
 {
-	mlx_destroy_image(data->mlx_ptr, data->img->mlx_img);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
-	free(data->img);
-	ft_free_2d_arr((void **)data->map->arr, data->map->height);
-	free(data->map);
-	exit(0);
+	t_node	*head;
+
+	head = ft_lstnew(&go_to_diagonal);
+	ft_lstadd_back(&head, ft_lstnew(&go_to_isometric));
+	ft_lstadd_back(&head, ft_lstnew(&undo_isometric));
+	ft_lstadd_back(&head, ft_lstnew(&undo_diagonal));
+	ft_lst_make_it_circular(&head);
+	d->state_transition_methods = head;
 }

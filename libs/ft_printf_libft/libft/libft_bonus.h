@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 17:07:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 14:02:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 00:39:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ t_node					*ft_lstshift(t_node **lst);
 void					ft_lstpop(t_node **lst);
 // makes a list become a circular list
 void					ft_lst_make_it_circular(t_node **head);
+// frees a circular list
+void					ft_lstcircular_free(t_node **head);
 
 #endif

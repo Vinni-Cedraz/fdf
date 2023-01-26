@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/24 18:11:40 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/26 00:20:09 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME_BONUS = libft_bonus.a
 NAME_PRNTF = ../libftprintf.a
 NAME_FDF = srcs_to_fdf.a
 NAME_FDF_BONUS = srcs_to_fdf_bonus.a
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra -g
 AR = ar -rs
 RM = rm -f
 OBJS_PATH = ./objs/
@@ -101,6 +101,7 @@ ft_lstdel_here \
 ft_lstgetby_index \
 ft_lstgetby_content \
 ft_lst_make_it_circular \
+ft_lstcircular_free \
 ft_lstpop \
 ft_lstshift \
 	
@@ -148,6 +149,12 @@ FDF_SRCS_BONUS =  ft_strnstr \
 								     ft_substr \
 									  ft_putstr \
 									   ft_strchr \
+									    ft_lstnew \
+								   	ft_lstadd_back \
+								         ft_lstlast \
+							 ft_lst_make_it_circular \
+							 	  ft_lstcircular_free \
+							                ft_lstfree \
 
 ## OBJS VARIABLES ##
 

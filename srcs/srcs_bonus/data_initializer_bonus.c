@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 18:46:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:05:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	data_initializer_bonus(t_data *d)
 	d->mlx = malloc(sizeof(t_mlx));
 	open_win_and_img(d);
 	d->state = (t_state){0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1};
+	initialize_transition_methods_bonus(d);
 	get_altitude_range_bonus(d->map);
 	colorize_points_bonus(d);
 	define_rotation_matrices_bonus(d->matrix);
@@ -30,17 +31,25 @@ void	data_initializer_bonus(t_data *d)
 	get_phi_and_theta(d->map->pts);
 }
 
-static void	open_win_and_img(t_data *data)
+static void	open_win_and_img(t_data *d)
 {
-	data->mlx->ptr = mlx_init();
-	data->img->width = WINDOW_WIDTH;
-	data->img->height = WINDOW_HEIGHT;
-	data->mlx->win_ptr = mlx_new_window(data->mlx->ptr, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "mlx 42");
-	data->img->ptr = mlx_new_image(data->mlx->ptr, WINDOW_WIDTH,
-			WINDOW_HEIGHT);
-	data->img->addr = mlx_get_data_addr(data->img->ptr, &data->img->bpp,
-			&data->img->line_len, &data->img->endian);
+	int	win_w;
+	int	win_h;
+	int	*bpp;
+	int	*endian;
+	int	*line_len;
+
+	bpp = &d->img->bpp;
+	line_len = &d->img->line_len;
+	win_w = WINDOW_WIDTH;
+	win_h = WINDOW_HEIGHT;
+	endian = &d->img->endian;
+	d->mlx->ptr = mlx_init();
+	d->img->width = WINDOW_WIDTH;
+	d->img->height = WINDOW_HEIGHT;
+	d->mlx->win_ptr = mlx_new_window(d->mlx->ptr, win_w, win_h, "mlx 42");
+	d->img->ptr = mlx_new_image(d->mlx->ptr, win_w, win_h);
+	d->img->addr = mlx_get_data_addr(d->img->ptr, bpp, line_len, endian);
 }
 
 static void	find_center_of_the_map(t_data *d)

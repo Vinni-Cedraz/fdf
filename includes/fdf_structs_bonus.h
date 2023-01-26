@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 19:50:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:56:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FDF_STRUCTS_BONUS_H
 
 # include "fdf_prototypes_bonus.h"
-# include "fdf_t_point_bonus.h"
+# include "libs/ft_printf_libft/libft/libft_bonus.h"
+# include "linked_list_tools.h"
 # include <stdio.h>
 
 typedef struct s_tmps
@@ -175,13 +176,13 @@ typedef struct s_d
 	t_state					state;
 	t_offset				offset;
 	t_center				center;
+	t_emporary				t;
 	t_mlx					*mlx;
 	t_img					*img;
 	t_map					*map;
 	t_rotation_matrices		*matrix;
-	t_emporary				t;
-	t_fsm					state_transition_method[4];
 	t_compute_color			c;
+	t_node					*state_transition_methods;
 }							t_data;
 
 #endif

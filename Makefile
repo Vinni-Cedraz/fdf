@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/25 19:58:15 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/26 00:18:07 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -O3 \
+CFLAGS = -Wall -Wextra -Werror -g \
 		 -I$(MLX_INC) \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
@@ -87,6 +87,7 @@ BONUS_SRCS = parse_map_bonus \
 		   			   get_map_dimensions_bonus \
 		   			compute_color_gradient_bonus \
 					assign_t_points_methods_bonus \
+			   initialize_transition_methods_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
@@ -114,6 +115,11 @@ SRCS_FROM_LIBFT =  ft_strnstr \
 							      ft_strjoin \
 								    ft_memcpy \
 								     ft_strdup \
+									  ft_lstnew \
+							      ft_lstadd_back \
+						  ft_lst_make_it_circular \
+						       ft_lstcircular_free \
+
 
 SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \
 								ft_lstpoint_new \

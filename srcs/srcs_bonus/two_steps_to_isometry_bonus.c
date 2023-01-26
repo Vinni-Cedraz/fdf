@@ -6,20 +6,19 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 22:17:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:55:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../libs/ft_printf_libft/libft/libft_bonus.h"
 #include "fdf_includes_bonus.h"
 
 void		apply_iso_steps(t_data *d);
 void		restore_from_snapshot(t_data *d);
 static void	take_snapshot(t_data *d);
-static void	initialize_iso_finite_state_machine(t_data *d);
 
 void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer iso_changer)
 {
-	initialize_iso_finite_state_machine(d);
 	iso_changer.action(d);
 	if (d->state.isometric)
 		take_snapshot(d);
@@ -27,20 +26,8 @@ void	two_steps_to_isometry_bonus(t_data *d, t_isometry_changer iso_changer)
 
 void	apply_iso_steps(t_data *d)
 {
-	static int	i;
-
-	d->state_transition_method[i](d);
-	i++;
-	if (i == 4)
-		i = 0;
-}
-
-static void	initialize_iso_finite_state_machine(t_data *d)
-{
-	d->state_transition_method[0] = &go_to_diagonal;
-	d->state_transition_method[1] = &go_to_isometric;
-	d->state_transition_method[2] = &undo_isometric;
-	d->state_transition_method[3] = &undo_diagonal;
+	((t_func_ptr)(d->state_transition_methods->content))(d);
+	d->state_transition_methods = d->state_transition_methods->next;
 }
 
 static void	take_snapshot(t_data *d)
