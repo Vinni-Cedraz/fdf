@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 15:39:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:40:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	change_altitude_bonus(t_data *d, t_zscaler scaler)
 {
 	if (!d->state.isometric)
 		return ;
-	zoom_bonus(d, 0, 0, 1);
+	zoom_bonus(d, &restore_from_snapshot);
 	scaler.scale_method(d);
 }
 

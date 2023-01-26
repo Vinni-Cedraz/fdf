@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 13:24:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:40:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	deal_keys_bonus(int key, t_data *d)
 static void	aux_deal_keys(int key, t_data *d)
 {
 	if (key == 'w')
-		zoom_bonus(d, 1, 0, 0);
+		zoom_bonus(d, &zoom_in);
 	else if (key == 's')
-		zoom_bonus(d, 0, 1, 0);
+		zoom_bonus(d, &zoom_out);
 	else if (key == 'g' )
 		change_grid_rendering_method(d);
 	else if (key == 'z')

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 13:43:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:18:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_rm	t_rotation_matrices;
 typedef struct s_zs	t_zscaler;
 typedef struct s_d	t_data;
 typedef struct s_is	t_i_changer;
+typedef void		(*t_func_ptr)(t_data *d);
 
 // FUNCTION PROTOTYPES //
 void				data_initializer_bonus(t_data *d);
@@ -55,7 +56,7 @@ int					draw_bonus(t_data *d);
 
 int					deal_keys_bonus(int key, t_data *d);
 
-void				zoom_bonus(t_data *d, int in, int out, int reset);
+void				zoom_bonus(t_data *d, t_func_ptr zoom_method);
 
 void				transpts_with_given_matrix_bonus(t_data *d, t_m *rot);
 
@@ -80,5 +81,13 @@ void				initialize_lookup_lists_bonus(t_data *d);
 void				change_grid_rendering_method(t_data *d);
 
 void				find_map_center_bonus(t_data *d);
+
+void				zoom_in(t_data *d);
+
+void				zoom_out(t_data *d);
+
+void				take_zoom_snapshot(t_data *d);
+
+void				restore_zoom_from_snapshot(t_data *d);
 
 #endif
