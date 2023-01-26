@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 23:28:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:47:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FDF_INCLUDES_BONUS_H
 
 # define MENU_WIDTH 183
+
+# define WIN_HGHT 720
+# define WIN_WDTH 1080
 
 # include <errno.h>
 # include <math.h>

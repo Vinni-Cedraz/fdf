@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 23:10:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:39:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_is	t_i_changer;
 void				data_initializer_bonus(t_data *d);
 
 int					parse_map_bonus(t_data *d);
+
+void				open_win_and_img_bonus(t_data *d);
 
 void				assign_coordinates_bonus(t_data *d);
 

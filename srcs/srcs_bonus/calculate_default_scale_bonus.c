@@ -27,9 +27,9 @@ void	calculate_default_scale_bonus(t_data *d)
 
 static inline void	calculate_target_size(t_map *map)
 {
-	map->target_width = WINDOW_HEIGHT * 0.9;
+	map->target_width = WIN_HGHT * 0.9;
 	if (map->size > 1800)
-		map->target_width = WINDOW_HEIGHT;
+		map->target_width = WIN_HGHT;
 }
 
 static inline void	calculate_initial_offset(t_data *d)
@@ -39,7 +39,7 @@ static inline void	calculate_initial_offset(t_data *d)
 
 	x_offset = (WINDOW_WIDTH - d->map->width * d->offset.scale) / 2;
 	x_offset += (double)MENU_WIDTH / 2;
-	y_offset = (WINDOW_HEIGHT - d->map->height * d->offset.scale) / 2;
+	y_offset = (WIN_HGHT - d->map->height * d->offset.scale) / 2;
 	y_offset += calculate_magic_factor(d);
 	if (!d->map->is_square)
 		y_offset -= d->map->ratio * y_offset;
