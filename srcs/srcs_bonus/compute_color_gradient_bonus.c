@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 22:56:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:02:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	compute_color_gradient_bonus(t_point *p, t_data *d)
 	double	range;
 	double	normalized_z;
 
-	if (p->color != CYAN || d->map->is_plateau)
+	if (p->color != CYAN)
 		return ;
 	range = d->map->max_z - d->map->min_z;
 	normalized_z = (p->z - d->map->min_z) / range;
