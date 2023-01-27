@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/24 22:28:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:21:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ static void			check_for_hexcolor(t_data *d);
 int	parse_map_bonus(t_data *d)
 {
 	if (!parse_file(d))
-		return (0);
+		return (fclose(d->tool.fp), 0);
 	create_points_list(d);
 	calculate_default_scale_bonus(d);
 	assign_coordinates_bonus(d);
 	check_for_hexcolor(d);
 	if (d->map->has_hexcolor)
-		assign_hexcolor_bonus(d);
-	fclose(d->tool.fp);
-	return (1);
+		if (!assign_hexcolor_bonus(d))
+			return (fclose(d->tool.fp), 0);
+	return (fclose(d->tool.fp), 1);
 }
 
 static int	parse_file(t_data *d)
@@ -39,14 +39,14 @@ static int	parse_file(t_data *d)
 		return (printf("%s\n", strerror(22)), 0);
 	d->tool.fp = fopen(argv, "r");
 	if (!d->tool.fp || !d)
-		return (perror("Error"), 0);
+		return (free(d->tool.fp), perror("Error"), 0);
 	get_map_dimensions_bonus(d);
 	return (1);
 }
 
 static void	create_points_list(t_data *d)
 {
-	uint				counter;
+	uint	counter;
 
 	counter = d->map->size;
 	d->map->pts = ft_lstpoint_new();

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 20:18:26 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:56:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void				open_win_and_img_bonus(t_data *d);
 
 void				assign_coordinates_bonus(t_data *d);
 
-void				assign_hexcolor_bonus(t_data *d);
+int					assign_hexcolor_bonus(t_data *d);
 
 void				get_altitude_range_bonus(t_map *map);
 

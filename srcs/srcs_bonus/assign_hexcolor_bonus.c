@@ -6,22 +6,24 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 11:58:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:27:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static t_split			*read_points_in_current_row(t_data *d);
-static int				is_end_of_row(int counter, int width);
-static int				is_beginning_of_row(int counter, int width);
+static int			read_points_in_current_row(t_data *d);
+static int			is_end_of_row(int counter, int width);
+static int			is_beginning_of_row(int counter, int width);
+static void			handle_error(t_data *d);
 
-void	assign_hexcolor_bonus(t_data *d)
+int	assign_hexcolor_bonus(t_data *d)
 {
 	int					counter;
 	int					row_len;
 	t_node_with_a_point	*tmp;
 	char				*p_as_str;
+	int					success;
 
 	tmp = d->map->pts;
 	counter = -1;
@@ -29,30 +31,34 @@ void	assign_hexcolor_bonus(t_data *d)
 	while (tmp)
 	{
 		if (is_beginning_of_row(++counter, row_len))
-			d->tool.pts_in_this_row = read_points_in_current_row(d);
+			success = read_points_in_current_row(d);
+		if (!success)
+			return (handle_error(d), 0);
 		p_as_str = d->tool.pts_in_this_row->str_arr[counter % row_len];
 		tmp->point.set_hexcolor(&tmp->point, p_as_str);
 		tmp = tmp->next;
 		if (is_end_of_row(counter, row_len))
 			ft_free_t_split(d->tool.pts_in_this_row);
 	}
+	return (1);
 }
 
-static inline t_split	*read_points_in_current_row(t_data *d)
+static inline int	read_points_in_current_row(t_data *d)
 {
 	size_t	len;
 	char	*untrimmed_line;
 	char	*trimmed_line;
-	t_split	*points_in_current_row;
 
 	len = 0;
 	untrimmed_line = "";
 	getline(&untrimmed_line, &len, d->tool.fp);
 	trimmed_line = ft_strtrim(untrimmed_line, "\n");
 	free(untrimmed_line);
-	points_in_current_row = ft_split(trimmed_line, ' ');
+	d->tool.pts_in_this_row = ft_split(trimmed_line, ' ');
 	free(trimmed_line);
-	return (points_in_current_row);
+	if ((int)d->tool.pts_in_this_row->words < d->map->width)
+		return (0);
+	return (1);
 }
 
 static inline int	is_beginning_of_row(int counter, int width)
@@ -63,4 +69,12 @@ static inline int	is_beginning_of_row(int counter, int width)
 static inline int	is_end_of_row(int counter, int width)
 {
 	return ((counter + 1) % width == 0);
+}
+
+static void	handle_error(t_data *d)
+{
+	errno = EINVAL;
+	ft_free_t_split(d->tool.pts_in_this_row);
+	ft_lstpoint_free(&d->map->pts);
+	perror("First line of the shouldn't be longer than any other line");
 }
