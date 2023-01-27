@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/26 13:44:47 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/27 09:11:37 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,8 @@ SRCS_FROM_MLX = mlx_init \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
 				   	   ft_swap \
-				  ft_free_t_map \
+				    ft_free_arr \
+				ft_free_arr_size \
 				 ft_free_t_split \
 				     ft_atoi_base \
 				   ft_word_counter \

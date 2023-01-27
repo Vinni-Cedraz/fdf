@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/18 12:30:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:07:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,9 @@ char	*ft_strrev(char *str, size_t strlen);
 // ft_word_counter counts the number of words in a string:
 int		ft_word_counter(char const *s, char c);
 // ft_free_arr frees an array of strings:
-void	ft_free_2d_arr(void **arr, uint size);
+void 	ft_free_arr(char **arr, void **aux);
+// ft_free_arr_size does the same but uses size instead of relying on NULLs
+void	ft_free_arr_size(void **arr, uint size);
 // ft_itoa_base converts an int to a string in a given base:
 char	*ft_itoa_base(size_t n, char *base);
 // ft_swap swaps two voids:

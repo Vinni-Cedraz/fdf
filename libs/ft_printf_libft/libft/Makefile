@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/26 12:24:22 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/27 09:10:08 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ WHITE = \033[0;97m
 SRCS = ft_abs \
 ft_atoi \
 ft_free_t_split \
-ft_free_2d_arr \
+ft_free_arr \
+ft_free_arr_size \
 ft_isalpha \
 ft_isascii \
 ft_isdigit \
@@ -113,7 +114,7 @@ ft_itoa_base \
 
 FDF_SRCS = ft_strnstr \
 			   ft_swap \
-		  ft_free_2d_arr\
+		    ft_free_arr \
 		 ft_free_t_split \
 			 ft_atoi_base \
 		   ft_word_counter \
@@ -130,7 +131,7 @@ FDF_SRCS = ft_strnstr \
 
 FDF_SRCS_BONUS =  ft_strnstr \
 					  ft_swap \
-				ft_free_2d_arr \
+			  ft_free_arr_size \
 				ft_free_t_split \
 					ft_atoi_base \
 				  ft_word_counter \

@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d_arr.c                                   :+:      :+:    :+:   */
+/*   ft_free_arr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 19:29:13 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/13 23:55:41 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/27 09:08:44 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/27 09:09:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <assert.h>
 
-void	ft_free_2d_arr(void **arr, uint size)
+void	ft_free_arr(char **arr, void **aux)
 {
-	uint	i;
-
-	if (arr == NULL)
-		return ;
-	i = 0;
-	while (i < size)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
+	while (*arr)
+		free(*arr++);
+	free(aux);
 }
