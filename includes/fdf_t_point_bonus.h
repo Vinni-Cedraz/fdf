@@ -6,21 +6,23 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 19:51:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/27 02:37:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_T_POINT_BONUS_H
 # define FDF_T_POINT_BONUS_H
 
-# include "printf_libft_includes.h"
 # include <string.h>
+# include "fdf_defines.h"
+# include "printf_libft_includes.h"
 
 typedef struct s_d	t_data;
 typedef struct s_pt	t_point;
 
 static char			*filter_up_to_x(char *current_point);
-static void			set_hexcolor(t_point *p, char *s)__attribute__((unused));
+static char			*check_hexstring(char *hexstring);
+static void			set_hexcolor(t_point *p, char *s) __attribute__((unused));
 
 typedef struct s_phere
 {
@@ -69,24 +71,33 @@ typedef struct s_rgb
 static inline void	set_hexcolor(t_point *p, char *current_p_as_str)
 {
 	char	*hexstring;
+	char	*base;
 
 	hexstring = filter_up_to_x(current_p_as_str);
-	if (ft_ishexlow(hexstring))
-	{
-		p->color = ft_atoi_base(hexstring, HEX_BASE);
-		return ;
-	}
-	if (ft_ishexup(hexstring))
-	{
-		p->color = ft_atoi_base(hexstring, HEX_BASE_UPPER);
-		return ;
-	}
-	hexstring = NULL;
+	base = check_hexstring(hexstring);
+	if (base)
+		p->color = ft_atoi_base(hexstring, base);
+	else
+		p->color = CYAN;
 }
 
 static inline char	*filter_up_to_x(char *current_point)
 {
-	return (ft_strchr(current_point, 'x') + 1);
+	char	*comma;
+
+	comma = ft_strchr(current_point, ',');
+	if (!comma)
+		return (NULL);
+	return (comma + 3);
+}
+
+static inline char	*check_hexstring(char *hexstring)
+{
+	if (ft_ishexlow(hexstring))
+		return (HEX_BASE);
+	if (ft_ishexup(hexstring))
+		return (HEX_BASE_UPPER);
+	return (NULL);
 }
 
 #endif

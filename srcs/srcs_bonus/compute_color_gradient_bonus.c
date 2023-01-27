@@ -22,6 +22,8 @@ void	compute_color_gradient_bonus(t_point *p, t_data *d)
 	double	range;
 	double	normalized_z;
 
+	if (p->color != CYAN || d->map->is_plateau)
+		return ;
 	range = d->map->max_z - d->map->min_z;
 	normalized_z = (p->z - d->map->min_z) / range;
 	d->c.saturation = 1;

@@ -25,6 +25,8 @@ int	ft_atoi(const char *asci)
 	i = 0;
 	sign = 1;
 	to_int = 0;
+	if (!asci)
+		return (0);
 	while (is_whitespace(asci[i]))
 		i++;
 	if (issign(asci[i]))
