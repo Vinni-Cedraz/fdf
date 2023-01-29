@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 13:44:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/28 20:52:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	render_map_bonus(t_data *d)
 {
 	((t_func_ptr)(d->lookup.grid_methods->content))(d);
-	find_map_center_bonus(d);
+	d->map->get_center(d);
 }
 
 void	change_grid_rendering_method(t_data *d)

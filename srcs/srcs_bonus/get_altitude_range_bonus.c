@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:43:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/19 00:22:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/28 20:59:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	get_altitude_range_bonus(t_map *map)
 	map->max_z = get_max_z(map->pts);
 	map->min_z = get_min_z(map->pts);
 	map->initial_max_z = map->max_z;
+	map->is_plateau = (map->max_z == map->min_z);
 }
 
 static inline short	get_max_z(t_node_with_a_point *map)

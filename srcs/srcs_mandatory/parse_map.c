@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/06 22:16:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/28 22:33:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	make_t_point(t_data **d, t_split *t_split, int x, int y);
 static int	create_map(t_data *map, char *argv, char *first_line);
 static int	get_hex_color(char *str);
+static int	is_shorter_than_first_line(t_data *d);
 
 int	parse_map(char *argv, t_data *d)
 {
@@ -28,7 +29,6 @@ int	parse_map(char *argv, t_data *d)
 	fd = open(argv, O_RDONLY);
 	if ((fd == -1 || read(fd, buf, 0) == -1 || !d))
 		return (perror("Error"), 0);
-	d->map = malloc(sizeof(t_map));
 	first_line = ft_gnl(fd);
 	split_to_count_width = ft_split(first_line, ' ');
 	d->map->width = split_to_count_width->words;
@@ -40,10 +40,12 @@ int	parse_map(char *argv, t_data *d)
 			d->map->height++;
 	ft_free_t_split(split_to_count_width);
 	standard_scale(d, WINDOW_HEIGHT);
-	return (close(fd), create_map(d, argv, first_line), 1);
+	close(fd);
+	if (!create_map(d, argv, first_line))
+		return (ft_free_arr((char **)d->map->arr, (void **)d->map->arr), 0);
+	return (1);
 }
 
-//tool->x and tool->y are just local counters for the loops //
 static int	create_map(t_data *d, char *argv, char *first_line)
 {
 	d->tool.y = 0;
@@ -52,13 +54,15 @@ static int	create_map(t_data *d, char *argv, char *first_line)
 	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
 	while (1)
 	{
-		printf("[%d] out of [%d]\r", d->tool.y, d->map->height);
+		ft_printf("[%d] out of [%d]\r", d->tool.y, d->map->height);
 		if (d->tool.y == 0)
 			d->tool.line = first_line;
 		else
 			d->tool.line = ft_gnl(d->tool.fd);
 		if (d->tool.line == NULL)
 			break ;
+		if (is_shorter_than_first_line(d))
+			return (ft_printf("Error: map is too uneven"), 0);
 		d->tool.split = ft_split(d->tool.line, ' ');
 		free(d->tool.line);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
@@ -68,7 +72,7 @@ static int	create_map(t_data *d, char *argv, char *first_line)
 		d->tool.y++;
 		ft_free_t_split(d->tool.split);
 	}
-	return (close(d->tool.fd), 0);
+	return (close(d->tool.fd), 1);
 }
 
 static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
@@ -103,6 +107,23 @@ static int	get_hex_color(char *str)
 			return (color);
 		}
 		i++;
+	}
+	return (0);
+}
+
+static int	is_shorter_than_first_line(t_data *d)
+{
+	char	*gnl_buggy_line;
+
+	gnl_buggy_line = d->tool.line;
+	if (d->map->width > (int)ft_strlen(d->tool.line))
+	{
+		while (gnl_buggy_line != NULL)
+		{
+			free(gnl_buggy_line);
+			gnl_buggy_line = ft_gnl(d->tool.fd);
+		}
+		return (1);
 	}
 	return (0);
 }

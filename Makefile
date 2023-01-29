@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/27 15:03:27 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/28 21:48:34 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ BONUS_SRCS = parse_map_bonus \
 					assign_t_points_methods_bonus \
 			       			  open_win_n_img_bonus \
 			          initialize_lookup_lists_bonus \
-					  		   find_map_center_bonus \
+					  	   find_map_center_aux_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
@@ -122,6 +122,7 @@ SRCS_FROM_LIBFT =  ft_strnstr \
 							      ft_lstadd_back \
 						  ft_lst_make_it_circular \
 						       ft_lstcircular_free \
+							              ft_putstr \
 
 
 SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \

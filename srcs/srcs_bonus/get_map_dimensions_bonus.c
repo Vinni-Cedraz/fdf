@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:59:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 17:14:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/28 20:53:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ static inline void	get_map_width(t_data *d)
 static inline void	get_map_size(t_data *d)
 {
 	d->map->size = d->map->height * d->map->width;
+	d->map->is_vertical = (d->map->height >= d->map->width);
 }

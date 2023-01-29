@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 13:19:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/28 20:50:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ typedef struct s_offset
 	double					move_y;
 }							t_offset;
 
-typedef struct s_center
+typedef struct s_ctr
 {
 	double					x;
 	double					y;
 	double					z;
+	int						index;
 }							t_center;
 
 typedef struct s_img
@@ -138,23 +139,6 @@ typedef struct s_state
 	int						neutral_z;
 	int						parallel;
 }							t_state;
-
-typedef struct s_mp
-{
-	int						has_hexcolor;
-	int						is_square;
-	int						width;
-	int						height;
-	uint					size;
-	short					max_z;
-	short					min_z;
-	double					initial_max_z;
-	double					target_width;
-	double					target_height;
-	double					ratio;
-	t_node_with_a_point		*pts;
-	t_point					**arr;
-}							t_map;
 
 typedef void				(*t_fsm)(t_data *d);
 

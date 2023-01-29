@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/27 09:10:08 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/28 21:48:19 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,6 +128,7 @@ FDF_SRCS = ft_strnstr \
 						ft_strjoin \
 						  ft_memcpy \
 						   ft_strdup \
+						    ft_putstr \
 
 FDF_SRCS_BONUS =  ft_strnstr \
 					  ft_swap \
