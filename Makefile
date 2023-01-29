@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/29 12:09:07 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/29 17:58:03 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,27 +70,31 @@ BONUS_SRCS = parse_map_bonus \
 	    data_initializer_bonus \
  define_rotation_matrices_bonus \
 		   		 close_win_bonus \
-	  two_steps_to_isometry_bonus \
+	   two_ways_to_isometry_bonus \
   transpts_with_given_matrix_bonus \
 		           render_map_bonus \
 		           render_line_bonus \
-		       			   zoom_bonus \
-		     				draw_bonus \
-		   		  colorize_points_bonus \
-		   				 deal_keys_bonus \
-		   			change_altitude_bonus \
-		   	 calculate_default_scale_bonus \
-		   		   get_altitude_range_bonus \
-		   			assign_coordinates_bonus \
-		   				assign_hexcolor_bonus \
-		   		   multiply_two_matrices_bonus \
-		   			   get_map_dimensions_bonus \
-		   			compute_color_gradient_bonus \
-					assign_t_points_methods_bonus \
-			       			  open_win_n_img_bonus \
-			          initialize_lookup_lists_bonus \
-					  	   find_map_center_aux_bonus \
-						   			rotate_five_bonus \
+		     			   draw_bonus \
+		   		 colorize_points_bonus \
+		   				deal_keys_bonus \
+		   		   change_altitude_bonus \
+		   	calculate_default_scale_bonus \
+		   		  get_altitude_range_bonus \
+		   		   assign_coordinates_bonus \
+		   			   assign_hexcolor_bonus \
+		   		  multiply_two_matrices_bonus \
+		   			  get_map_dimensions_bonus \
+		   		   compute_color_gradient_bonus \
+				   assign_t_points_methods_bonus \
+			       			 open_win_n_img_bonus \
+			         initialize_lookup_lists_bonus \
+					  	  find_map_center_aux_bonus \
+						   		   rotate_five_bonus \
+								   reverse_five_bonus \
+								            zoom_bonus \
+									 zoom_methods_bonus \
+								  isometry_methods_bonus \
+						isometry_transition_methods_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \

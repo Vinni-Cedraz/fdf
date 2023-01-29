@@ -6,31 +6,32 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 19:40:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:51:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-void	change_altitude_bonus(t_data *d, t_zscaler scaler)
+inline void	invert_altitude(t_data *d)
 {
 	if (!d->state.isometric)
 		return ;
-	zoom_bonus(d, &restore_from_snapshot);
-	scaler.scale_method(d);
-}
-
-inline void	z_mirror_method(t_data *d)
-{
+	reset_zoom_from_snapshot(d);
 	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_mirror);
 }
 
-inline void	z_up_method(t_data *d)
+inline void	increase_altitude(t_data *d)
 {
+	if (!d->state.isometric)
+		return ;
+	reset_zoom_from_snapshot(d);
 	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_up);
 }
 
-inline void	z_down_method(t_data *d)
+inline void	decrease_altitude(t_data *d)
 {
+	if (!d->state.isometric)
+		return ;
+	reset_zoom_from_snapshot(d);
 	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_down);
 }

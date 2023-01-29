@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 13:40:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/25 19:53:14 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/01/28 17:21:55 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/01/29 16:01:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINKED_LIST_TOOLS_H
 # define LINKED_LIST_TOOLS_H
 
-# include "fdf_t_point_bonus.h"
+# include "../includes/methods_and_classes_bonus/t_point_bonus.h"
 
 typedef unsigned int		t_ui;
 

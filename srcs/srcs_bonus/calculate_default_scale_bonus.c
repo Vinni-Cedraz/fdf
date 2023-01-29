@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 20:32:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:54:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	calculate_default_scale_bonus(t_data *d)
 {
 	d->map->is_square = is_map_square(d->map->ratio);
 	calculate_target_size(d->map);
-	d->offset.scale = d->map->target_width / d->map->width;
+	d->offset->scale = d->map->target_width / d->map->width;
 	calculate_initial_offset(d);
 }
 
@@ -37,21 +37,21 @@ static inline void	calculate_initial_offset(t_data *d)
 	double	x_offset;
 	double	y_offset;
 
-	x_offset = (WINDOW_WIDTH - d->map->width * d->offset.scale) / 2;
+	x_offset = (WINDOW_WIDTH - d->map->width * d->offset->scale) / 2;
 	x_offset += (double)MENU_WIDTH / 2;
-	y_offset = (WIN_HGHT - d->map->height * d->offset.scale) / 2;
+	y_offset = (WIN_HGHT - d->map->height * d->offset->scale) / 2;
 	y_offset += calculate_magic_factor(d);
 	if (!d->map->is_square)
 		y_offset -= d->map->ratio * y_offset;
-	d->offset.move_x += x_offset;
-	d->offset.move_y += y_offset;
+	d->offset->move_x += x_offset;
+	d->offset->move_y += y_offset;
 }
 
 static inline double	calculate_magic_factor(t_data *d)
 {
 	double	factor;
 
-	factor = d->offset.scale;
+	factor = d->offset->scale;
 	if (factor > 10)
 		factor /= 10;
 	return (factor);

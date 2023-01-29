@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 12:10:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:50:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	data_initializer_bonus(t_data *d)
 	colorize_points_bonus(d);
 	define_rotation_matrices_bonus(d->matrix);
 	d->map->get_center = &find_map_center;
-	take_zoom_snapshot(d);
 	get_phi_and_theta(d->map->pts);
 }
 
@@ -48,18 +47,4 @@ static inline void	aux_get_phi_and_theta(t_point *p)
 {
 	p->ball.theta = atan2(p->x, p->y);
 	p->ball.phi = atan2(p->z, hypot(p->x, p->y));
-}
-
-void	take_zoom_snapshot(t_data *d)
-{
-	t_node_with_a_point	*tmp;
-
-	tmp = d->map->pts;
-	while (tmp)
-	{
-		tmp->point.ol.zoom_x = tmp->point.x;
-		tmp->point.ol.zoom_y = tmp->point.y;
-		tmp->point.ol.zoom_z = tmp->point.z;
-		tmp = tmp->next;
-	}
 }

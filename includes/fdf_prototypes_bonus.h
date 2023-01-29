@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 12:07:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:13:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_m		t_m;
 typedef struct s_rm		t_rm;
 typedef struct s_zs		t_zscaler;
 typedef struct s_d		t_data;
+typedef struct s_d		t_d;
 typedef struct s_is		t_i_changer;
 typedef struct s_ctr	t_center;
 typedef struct s_nd		t_n;
@@ -58,15 +59,17 @@ int						draw_bonus(t_data *d);
 
 int						deal_keys_bonus(int key, t_data *d);
 
-void					zoom_bonus(t_data *d, t_func_ptr zoom_method);
-
 void					transpts_with_given_matrix_bonus(t_data *d, t_m *rot);
 
-void					two_steps_to_isometry_bonus(t_data *d, t_i_changer c);
+void					go_isometric_from_any(t_data *d, t_func_ptr iso_action);
+
+void					loop_through_each_transition_method(t_data *d);
+
+void					go_isometric_from_state_out_of_position(t_data *d);
+
+void					go_through_each_stage_of_isometric_transform(t_data *d);
 
 t_m						multiply_two_matrices_bonus(t_m a, t_m b);
-
-void					change_altitude_bonus(t_data *d, t_zscaler direction);
 
 void					compute_color_gradient_bonus(t_point *p, t_data *d);
 
@@ -84,11 +87,17 @@ void					find_map_center_bonus(t_data *d);
 
 void					zoom_in(t_data *d);
 
+void					zoom_in_method(t_data *d);
+
 void					zoom_out(t_data *d);
+
+void					zoom_out_method(t_data *d);
+
+void					reset_zoom_method(t_data *d);
 
 void					take_zoom_snapshot(t_data *d);
 
-void					restore_zoom_from_snapshot(t_data *d);
+void					reset_zoom_from_snapshot(t_data *d);
 
 void					set_t_center_coordinates(t_center *d, t_n *n_center);
 
@@ -98,7 +107,9 @@ int						is_width_even(int width);
 
 int						are_height_and_width_even(t_data *d);
 
-void					reset_states(t_data *d);
+void					rotate_five_around_y(t_data *d);
+
+void					reverse_five_around_y(t_data *d);
 
 void					rotate_five_around_x(t_data *d);
 
@@ -107,4 +118,35 @@ void					reverse_five_around_x(t_data *d);
 void					rotate_five_around_z(t_data *d);
 
 void					reverse_five_around_z(t_data *d);
+
+void					go_through_each_stage_of_isometric_projection(t_d *d);
+
+void					move_back_to_isometric_state(t_data *d);
+
+void					increase_altitude(t_data *d);
+
+void					decrease_altitude(t_data *d);
+
+void					invert_altitude(t_data *d);
+
+void					change_altitude_bonus(t_data *d, t_func_ptr method);
+
+void					update_state_after_reset(t_data *d);
+
+void					update_state_after_zoom(t_data *d);
+
+void					take_snapshot(t_data *d);
+
+void					restore_snapshot(t_data *d);
+
+void					go_to_diagonal(t_data *d);
+
+void					go_to_isometric(t_data *d);
+
+void					undo_isometric(t_data *d);
+
+void					undo_diagonal(t_data *d);
+
+void					restore_snapshot(t_data *d);
+
 #endif

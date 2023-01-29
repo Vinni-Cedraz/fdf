@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 11:09:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:52:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 	if (++counter == 1)
 		calculate_z_scale(d);
 	if (d->state.neutral_zoom != 1)
-		zoom_bonus(d, &restore_zoom_from_snapshot);
+		reset_zoom_from_snapshot(d);
 	while (tmp)
 	{
 		if (counter == 1 && tmp->point.z)
-			tmp->point.z *= d->offset.scale_z;
+			tmp->point.z *= d->offset->scale_z;
 		transform_a_point(&tmp->point, rot, d);
 		tmp = tmp->next;
 	}
@@ -70,5 +70,5 @@ static inline void	calculate_z_scale(t_data *d)
 	double	z_range;
 
 	z_range = d->map->max_z - d->map->min_z;
-	d->offset.scale_z = 5 / (z_range / 10);
+	d->offset->scale_z = 5 / (z_range / 10);
 }

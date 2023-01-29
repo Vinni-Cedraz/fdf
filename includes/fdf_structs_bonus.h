@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 12:10:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:06:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ typedef struct s_assign_coordinates
 	char					*first_line;
 	t_split					*pts_in_this_row;
 }							t_assign_coordinates;
-
-typedef struct s_offset
-{
-	double					scale;
-	double					scale_z;
-	double					move_x;
-	double					move_y;
-}							t_offset;
 
 typedef struct s_ctr
 {
@@ -151,23 +143,32 @@ typedef struct s_compute_color
 
 typedef struct s_lookup
 {
-	t_node					*state_transit_methods;
+	t_node					*iso_transit_methods;
 	t_node					*grid_methods;
 }							t_lookup;
+
+typedef struct s_kc
+{
+	int						keycode;
+	void					(*f)(t_data *d);
+}							t_keycall;
+
+typedef struct s_offset		t_offset;
 
 typedef struct s_d
 {
 	t_assign_coordinates	tool;
 	t_state					state;
-	t_offset				offset;
+	t_offset				*offset;
 	t_center				center;
 	t_emporary				t;
+	t_compute_color			c;
 	t_mlx					*mlx;
 	t_img					*img;
 	t_map					*map;
 	t_rotation_matrices		*matrix;
-	t_compute_color			c;
 	t_lookup				lookup;
+	t_keycall				keycall;
 }							t_data;
 
 #endif

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_t_point_bonus.h                                :+:      :+:    :+:   */
+/*   t_point_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/27 02:37:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:21:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_T_POINT_BONUS_H
-# define FDF_T_POINT_BONUS_H
+#ifndef T_POINT_BONUS_H
+# define T_POINT_BONUS_H
 
 # include <string.h>
 # include "fdf_defines.h"

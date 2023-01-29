@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_t_map_bonus.h                                  :+:      :+:    :+:   */
+/*   t_map_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 12:02:27 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:45:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_T_MAP_BONUS_H
-# define FDF_T_MAP_BONUS_H
+#ifndef T_MAP_BONUS_H
+# define T_MAP_BONUS_H
 
 # include "fdf_prototypes_bonus.h"
 # include "fdf_structs_bonus.h"

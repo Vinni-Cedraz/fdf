@@ -29,8 +29,8 @@ void	render_line_bonus(t_point p1, t_point p2, t_data *d)
 		line.steps = abs(line.dy);
 	line.x_inc = line.dx / (double)line.steps;
 	line.y_inc = line.dy / (double)line.steps;
-	line.x = p1.x + d->offset.move_x;
-	line.y = p1.y + d->offset.move_y;
+	line.x = p1.x + d->offset->move_x;
+	line.y = p1.y + d->offset->move_y;
 	while (line.steps--)
 	{
 		put_pixel_img_bonus(d->img, line.x, line.y, color);
