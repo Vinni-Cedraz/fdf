@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/28 22:33:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:48:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,16 @@ static int	create_map(t_data *d, char *argv, char *first_line)
 	d->map->arr = ft_calloc(d->map->height, sizeof(t_point));
 	while (1)
 	{
-		ft_printf("[%d] out of [%d]\r", d->tool.y, d->map->height);
 		if (d->tool.y == 0)
 			d->tool.line = first_line;
 		else
 			d->tool.line = ft_gnl(d->tool.fd);
 		if (d->tool.line == NULL)
 			break ;
-		if (is_shorter_than_first_line(d))
-			return (ft_printf("Error: map is too uneven"), 0);
 		d->tool.split = ft_split(d->tool.line, ' ');
 		free(d->tool.line);
+		if (is_shorter_than_first_line(d))
+			return (ft_printf("Error: map is too uneven"), 0);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
 			make_t_point(&d, d->tool.split, d->tool.x, d->tool.y);
@@ -96,12 +95,14 @@ static int	get_hex_color(char *str)
 
 	i = 0;
 	color = 0;
+	if (!str)
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (str[i] == ',')
 		{
 			if (ft_ishexlow(str + i + 3))
-				color = ft_atoi_base(str + i + 3, HEX_BASE);
+				color = ft_atoi_base(&str[i + 3], HEX_BASE);
 			else
 				color = ft_atoi_base(&str[i + 3], HEX_BASE_UPPER);
 			return (color);
@@ -116,12 +117,13 @@ static int	is_shorter_than_first_line(t_data *d)
 	char	*gnl_buggy_line;
 
 	gnl_buggy_line = d->tool.line;
-	if (d->map->width > (int)ft_strlen(d->tool.line))
+	if ((int)d->tool.split->words < d->map->width)
 	{
+		ft_free_t_split(d->tool.split);
 		while (gnl_buggy_line != NULL)
 		{
-			free(gnl_buggy_line);
 			gnl_buggy_line = ft_gnl(d->tool.fd);
+			free(gnl_buggy_line);
 		}
 		return (1);
 	}

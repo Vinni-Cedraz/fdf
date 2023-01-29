@@ -6,15 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 19:40:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:08:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	reset_states(t_data *d);
-static void	aux_deal_keys(int key, t_data *d);
-static void	aux_aux_deal_keys(int key, t_data *d);
+static void			aux_deal_keys(int key, t_data *d);
+static void			aux_aux_deal_keys(int key, t_data *d);
+static void			rotate_five_around_y(t_data *d);
+static void			reverse_five_around_y(t_data *d);
 
 int	deal_keys_bonus(int key, t_data *d)
 {
@@ -28,7 +29,7 @@ int	deal_keys_bonus(int key, t_data *d)
 		d->offset.move_y -= 25;
 	else if (key == XK_DOWN || key == 'j')
 		d->offset.move_y += 25;
-	else if ((key == 'i' || key == ' ') && !d->state.out_of_position)
+	else if ((key == 'i' || key == ' '))
 		two_steps_to_isometry_bonus(d, (t_isometry_changer){&apply_iso_steps});
 	else if (key == ';' && !d->state.parallel)
 		two_steps_to_isometry_bonus(d, (t_isometry_changer){&restore_snapshot});
@@ -43,7 +44,7 @@ static void	aux_deal_keys(int key, t_data *d)
 		zoom_bonus(d, &zoom_in);
 	else if (key == 's')
 		zoom_bonus(d, &zoom_out);
-	else if (key == 'g' )
+	else if (key == 'g')
 		change_grid_rendering_method(d);
 	else if (key == 'z')
 		change_altitude_bonus(d, (t_zscaler){&z_up_method});
@@ -57,30 +58,32 @@ static void	aux_deal_keys(int key, t_data *d)
 
 static void	aux_aux_deal_keys(int key, t_data *d)
 {
-	if (!d->state.diagonal && !d->state.parallel)
-	{
-		if (key == 'a' || key == 'd' || key == 'e' || key == 'x' || key == 'v'
-			|| key == 'q')
-			reset_states(d);
-		if (key == 'a')
-			transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
-		else if (key == 'd')
-			transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
-		else if (key == 'q')
-			transpts_with_given_matrix_bonus(d, &d->matrix->rot_x);
-		else if (key == 'e')
-			transpts_with_given_matrix_bonus(d, &d->matrix->rev_x);
-		else if (key == 'x')
-			transpts_with_given_matrix_bonus(d, &d->matrix->rot_z);
-		else if (key == 'v')
-			transpts_with_given_matrix_bonus(d, &d->matrix->rev_z);
-	}
+	if (key == 'a')
+		rotate_five_around_y(d);
+	else if (key == 'd')
+		reverse_five_around_y(d);
+	else if (key == 'q')
+		rotate_five_around_x(d);
+	else if (key == 'e')
+		reverse_five_around_x(d);
+	else if (key == 'x')
+		rotate_five_around_z(d);
+	else if (key == 'v')
+		reverse_five_around_z(d);
 }
 
-static void	reset_states(t_data *d)
+static inline void	rotate_five_around_y(t_data *d)
 {
-	d->state.isometric = 0;
-	d->state.diagonal = 0;
-	d->state.parallel = 0;
-	d->state.out_of_position = 1;
+	if (d->state.diagonal || d->state.parallel)
+		return ;
+	transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
+	reset_states(d);
+}
+
+static inline void	reverse_five_around_y(t_data *d)
+{
+	if (d->state.diagonal || d->state.parallel)
+		return ;
+	transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
+	reset_states(d);
 }

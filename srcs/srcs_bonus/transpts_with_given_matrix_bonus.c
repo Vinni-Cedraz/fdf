@@ -6,12 +6,11 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 20:18:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 11:09:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include "fdf_structs_bonus.h"
 
 static void				transform_a_point(t_point *p, t_matrix *m, t_data *d);
 static void				calculate_z_scale(t_data *d);

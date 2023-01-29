@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/28 20:54:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:02:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_T_MAP_BONUS_H
 
 # include "fdf_prototypes_bonus.h"
-# include "linked_list_tools.h"
 # include "fdf_structs_bonus.h"
+# include "linked_list_tools.h"
 
 static void			find_vertical_map_center(t_data *d) __attribute__((unused));
 typedef struct s_d	t_d;

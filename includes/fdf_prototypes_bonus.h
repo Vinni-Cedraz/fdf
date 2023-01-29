@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/28 21:35:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:07:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,14 @@ int						is_height_even(int height);
 int						is_width_even(int width);
 
 int						are_height_and_width_even(t_data *d);
+
+void					reset_states(t_data *d);
+
+void					rotate_five_around_x(t_data *d);
+
+void					reverse_five_around_x(t_data *d);
+
+void					rotate_five_around_z(t_data *d);
+
+void					reverse_five_around_z(t_data *d);
 #endif

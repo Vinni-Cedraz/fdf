@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/27 15:27:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:55:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ static void	handle_error(t_data *d)
 	errno = EINVAL;
 	ft_free_t_split(d->tool.pts_in_this_row);
 	ft_lstpoint_free(&d->map->pts);
-	perror("First line of the shouldn't be longer than any other line");
+	perror("First line of the map shouldn't be longer than any other line");
 }
