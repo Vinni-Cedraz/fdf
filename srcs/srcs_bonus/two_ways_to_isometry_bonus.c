@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:23:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:27:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:27:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-void	go_through_each_stage_of_isometric_transform(t_data *d)
+void	go_through_each_stage_of_iso(t_data *d)
 {
 	if (!d->state.randomly_rotated)
 		go_isometric_from_any(d, &loop_through_each_transition_method);

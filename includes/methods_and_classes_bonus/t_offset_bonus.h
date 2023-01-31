@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:27:18 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:04:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:48:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ typedef struct s_offset
 
 static inline void	up(t_data *d)
 {
-	d->offset->move_x += 25;
+	d->offset->move_y -= 25;
 }
 
 static inline void	down(t_data *d)
 {
-	d->offset->move_x -= 25;
+	d->offset->move_y += 25;
 }
 
 static inline void	left(t_data *d)
 {
-	d->offset->move_y -= 25;
+	d->offset->move_x -= 25;
 }
 
 static inline void	right(t_data *d)
 {
-	d->offset->move_y += 25;
+	d->offset->move_x += 25;
 }
 
 #endif

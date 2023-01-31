@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/29 17:58:03 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/31 16:16:27 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -g \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(MLX_INC) \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
@@ -87,7 +87,7 @@ BONUS_SRCS = parse_map_bonus \
 		   		   compute_color_gradient_bonus \
 				   assign_t_points_methods_bonus \
 			       			 open_win_n_img_bonus \
-			         initialize_lookup_lists_bonus \
+			       initialize_lookup_structs_bonus \
 					  	  find_map_center_aux_bonus \
 						   		   rotate_five_bonus \
 								   reverse_five_bonus \

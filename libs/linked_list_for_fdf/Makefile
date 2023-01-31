@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:33:51 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/29 16:00:49 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/01/31 16:13:31 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INC_PRINTF = ../ft_printf_libft/includes/
 INC_FDF = ../../includes/
 INC_METHODS = ../../includes/methods_and_classes_bonuss/
 INC = includes/
-CFLAGS = -Wall -Wextra -Werror \
+CFLAGS = -Wall -Wextra -Werror -O3\
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRINTF) \
 		 -I$(INC_FDF) \

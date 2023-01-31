@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:27:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:15:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void					loop_through_each_transition_method(t_data *d);
 
 void					go_isometric_from_random_state(t_data *d);
 
-void					go_through_each_stage_of_isometric_transform(t_data *d);
-
 t_m						multiply_two_matrices_bonus(t_m a, t_m b);
 
 void					compute_color_gradient_bonus(t_point *p, t_data *d);
@@ -79,7 +77,7 @@ int						close_win_bonus(t_data *data);
 
 void					assign_t_points_methods_bonus(t_data *d);
 
-void					initialize_lookup_lists_bonus(t_data *d);
+void					initialize_lookup_structs_bonus(t_data *d);
 
 void					change_grid_rendering_method(t_data *d);
 
@@ -119,7 +117,7 @@ void					rotate_five_around_z(t_data *d);
 
 void					reverse_five_around_z(t_data *d);
 
-void					go_through_each_stage_of_isometric_projection(t_d *d);
+void					go_through_each_stage_of_iso(t_d *d);
 
 void					move_back_to_isometric_state(t_data *d);
 
@@ -127,7 +125,7 @@ void					increase_altitude(t_data *d);
 
 void					decrease_altitude(t_data *d);
 
-void					invert_altitude(t_data *d);
+void					mirror_altitude(t_data *d);
 
 void					change_altitude_bonus(t_data *d, t_func_ptr method);
 

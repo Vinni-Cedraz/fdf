@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 16:51:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:53:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-inline void	invert_altitude(t_data *d)
+inline void	mirror_altitude(t_data *d)
 {
 	if (!d->state.isometric)
 		return ;

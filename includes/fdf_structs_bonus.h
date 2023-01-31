@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:10:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:12:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,13 +142,8 @@ typedef struct s_lookup
 {
 	t_node					*iso_transit_methods;
 	t_node					*grid_methods;
+	t_func_ptr				*events;
 }							t_lookup;
-
-typedef struct s_kc
-{
-	int						keycode;
-	void					(*f)(t_data *d);
-}							t_keycall;
 
 typedef struct s_offset		t_offset;
 
@@ -165,7 +160,6 @@ typedef struct s_d
 	t_map					*map;
 	t_rotation_matrices		*matrix;
 	t_lookup				lookup;
-	t_keycall				keycall;
 }							t_data;
 
 #endif
