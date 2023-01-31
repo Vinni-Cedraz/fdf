@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 19:16:20 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/21 14:23:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:34:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static t_row			multiply_row_matrix(t_row vec, t_matrix b);
-static t_vector			get_matrix_column(t_matrix m, int col);
+static t_row			multiply_row_matrix(t_row row, t_matrix b);
+static t_column			get_matrix_column(int col, t_matrix m);
 
 t_matrix	multiply_two_matrices_bonus(t_matrix a, t_matrix b)
 {
@@ -25,26 +25,26 @@ t_matrix	multiply_two_matrices_bonus(t_matrix a, t_matrix b)
 	return (final_matrix);
 }
 
-static inline t_row	multiply_row_matrix(t_row r, t_matrix m)
+static inline t_row	multiply_row_matrix(t_row row, t_matrix m)
 {
 	t_row		final_row;
-	t_vector	col;
+	t_column	m_col;
 
-	col = get_matrix_column(m, 1);
-	final_row.col_1 = (r.col_1 * col.x) + (r.col_2 * col.y) + (r.col_3 * col.z);
-	col = get_matrix_column(m, 2);
-	final_row.col_2 = (r.col_1 * col.x) + (r.col_2 * col.y) + (r.col_3 * col.z);
-	col = get_matrix_column(m, 3);
-	final_row.col_3 = (r.col_1 * col.x) + (r.col_2 * col.y) + (r.col_3 * col.z);
+	m_col = get_matrix_column(1, m);
+	final_row.a = (row.a * m_col.a) + (row.b * m_col.b) + (row.c * m_col.c);
+	m_col = get_matrix_column(2, m);
+	final_row.b = (row.a * m_col.a) + (row.b * m_col.b) + (row.c * m_col.c);
+	m_col = get_matrix_column(3, m);
+	final_row.c = (row.a * m_col.a) + (row.b * m_col.b) + (row.c * m_col.c);
 	return (final_row);
 }
 
-static inline t_vector	get_matrix_column(t_matrix m, int col)
+static inline t_column	get_matrix_column(int col, t_matrix m)
 {
-	t_vector	m_col[3];
+	t_column	m_col[3];
 
-	m_col[0] = (t_vector){m.row_1.col_1, m.row_2.col_1, m.row_3.col_1};
-	m_col[1] = (t_vector){m.row_1.col_2, m.row_2.col_2, m.row_3.col_2};
-	m_col[2] = (t_vector){m.row_1.col_3, m.row_2.col_3, m.row_3.col_3};
+	m_col[0] = (t_column){m.row_1.a, m.row_2.a, m.row_3.a};
+	m_col[1] = (t_column){m.row_1.b, m.row_2.b, m.row_3.b};
+	m_col[2] = (t_column){m.row_1.c, m.row_2.c, m.row_3.c};
 	return (m_col[col - 1]);
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:23:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 18:09:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 21:51:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,5 @@ void	go_isometric_from_any(t_data *d, t_func_ptr isometry_method)
 {
 	isometry_method(d);
 	if (d->state.isometric)
-	{
 		take_snapshot(d);
-		take_zoom_snapshot(d);
-	}
 }

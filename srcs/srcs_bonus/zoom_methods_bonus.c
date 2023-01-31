@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:42:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 17:45:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 21:48:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ inline void	update_state_after_reset(t_data *d)
 {
 	d->state.zoom_in = 0;
 	d->state.zoom_out = 0;
+	d->state.diagonal = 0;
+	d->state.parallel = 0;
 }
 
 inline void	update_state_after_zoom(t_data *d)

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 18:06:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:49:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,16 @@ typedef struct s_line
 
 typedef struct s_vec
 {
-	double					x;
-	double					y;
-	double					z;
-}							t_vector;
+	double					a;
+	double					b;
+	double					c;
+}							t_column;
 
 typedef struct s_row
 {
-	double					col_1;
-	double					col_2;
-	double					col_3;
+	double					a;
+	double					b;
+	double					c;
 }							t_row;
 
 typedef struct s_m
