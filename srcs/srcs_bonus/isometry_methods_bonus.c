@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:38:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 18:09:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:28:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	loop_through_each_transition_method(t_data *d)
 	d->lookup.iso_transit_methods = d->lookup.iso_transit_methods->next;
 }
 
-void	go_isometric_from_state_out_of_position(t_data *d)
+void	restore_iso_snapshot(t_data *d)
 {
 	t_node_with_a_point	*tmp;
 
@@ -32,7 +32,7 @@ void	go_isometric_from_state_out_of_position(t_data *d)
 	}
 }
 
-void	take_snapshot(t_data *d)
+void	take_iso_snapshot(t_data *d)
 {
 	t_node_with_a_point	*tmp;
 

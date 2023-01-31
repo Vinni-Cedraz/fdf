@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:42:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 21:48:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:02:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,4 @@ inline void	reset_zoom_method(t_data *d)
 		tmp->point.z = tmp->point.ol.zoom_z;
 		tmp = tmp->next;
 	}
-}
-
-inline void	update_state_after_reset(t_data *d)
-{
-	d->state.zoom_in = 0;
-	d->state.zoom_out = 0;
-	d->state.diagonal = 0;
-	d->state.parallel = 0;
-}
-
-inline void	update_state_after_zoom(t_data *d)
-{
-	if ((d->state.zoom_in - d->state.zoom_out) == 0)
-		d->state.neutral_zoom = 1;
-	else
-		d->state.neutral_zoom = 0;
 }

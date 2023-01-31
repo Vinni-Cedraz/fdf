@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 16:49:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:10:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,10 @@ typedef struct s_rm
 
 typedef struct s_state
 {
-	int						zoom_in;
-	int						zoom_out;
-	int						out_of_position;
+	int						randomly_rotated;
 	int						diagonal;
 	int						isometric;
 	int						parallel;
-	int						neutral_zoom;
 }							t_state;
 
 typedef void				(*t_fsm)(t_data *d);

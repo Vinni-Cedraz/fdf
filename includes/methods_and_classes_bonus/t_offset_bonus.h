@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:27:18 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 15:42:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:04:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_offset
 	double			scale_z;
 	double			move_x;
 	double			move_y;
+	int				neutral_zoom;
 }					t_offset;
 
 static inline void	up(t_data *d)

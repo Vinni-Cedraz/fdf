@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 18:13:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:27:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void					go_isometric_from_any(t_data *d, t_func_ptr iso_action);
 
 void					loop_through_each_transition_method(t_data *d);
 
-void					go_isometric_from_state_out_of_position(t_data *d);
+void					go_isometric_from_random_state(t_data *d);
 
 void					go_through_each_stage_of_isometric_transform(t_data *d);
 
@@ -135,9 +135,11 @@ void					update_state_after_reset(t_data *d);
 
 void					update_state_after_zoom(t_data *d);
 
-void					take_snapshot(t_data *d);
+void					take_iso_snapshot(t_data *d);
 
-void					restore_snapshot(t_data *d);
+void					restore_iso_snapshot(t_data *d);
+
+void					go_isometric_using_snapshot(t_data *d);
 
 void					go_to_diagonal(t_data *d);
 
@@ -146,7 +148,5 @@ void					go_to_isometric(t_data *d);
 void					undo_isometric(t_data *d);
 
 void					undo_diagonal(t_data *d);
-
-void					restore_snapshot(t_data *d);
 
 #endif

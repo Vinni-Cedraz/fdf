@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/22 01:25:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:32:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void				assign_coordinate_z(t_data *d);
 static double			get_column_position(int map_width, int counter);
 static double			get_row_position(int map_width, int counter);
-static void				take_snapshot_and_apply_scale(t_point *p, t_data *d);
+static void				take_iso_snapshot_and_apply_scale(t_point *p, t_d *d);
 
 void	assign_coordinates_bonus(t_data *d)
 {
@@ -28,14 +28,14 @@ void	assign_coordinates_bonus(t_data *d)
 	{
 		tmp->point.x = get_column_position(d->map->width, counter);
 		tmp->point.y = get_row_position(d->map->width, counter);
-		take_snapshot_and_apply_scale(&tmp->point, d);
+		take_iso_snapshot_and_apply_scale(&tmp->point, d);
 		tmp = tmp->next;
 		counter++;
 	}
 	assign_coordinate_z(d);
 }
 
-static inline void	take_snapshot_and_apply_scale(t_point *p, t_data *d)
+static inline void	take_iso_snapshot_and_apply_scale(t_point *p, t_data *d)
 {
 	p->ol.raw.x = p->x;
 	p->ol.raw.y = p->y;

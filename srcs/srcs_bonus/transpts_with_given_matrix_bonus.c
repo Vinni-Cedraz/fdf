@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 21:54:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/30 21:56:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 		transform_a_point(&tmp->point, rot, d);
 		tmp = tmp->next;
 	}
-	if (d->state.isometric)
-		take_zoom_snapshot(d);
 }
 
 static inline void	transform_a_point(t_point *p, t_matrix *m, t_data *d)
