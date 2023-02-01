@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/27 15:27:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/01 19:43:34 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,5 +191,7 @@ int		ft_atoi_base(char *str, char *base);
 int		ft_ishexup(char *s);
 // hex low:
 int		ft_ishexlow(char *s);
+// checks allocation:
+int		ft_memchk(size_t size1, size_t size2);
 
 #endif

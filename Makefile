@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/01 13:44:36 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/01 18:49:40 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,6 +129,7 @@ SRCS_FROM_LIBFT =  ft_strnstr \
 						  ft_lst_make_it_circular \
 						       ft_lstcircular_free \
 							              ft_putstr \
+										   ft_memchk \
 
 
 SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \
