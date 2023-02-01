@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/01 19:45:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/01 20:08:43 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,16 @@ static inline t_data	*pre_parse_allocations(void)
 {
 	t_data	*d;
 
-	d = ft_calloc(sizeof(t_data), 1);
-	ft_memchk(sizeof(*d), sizeof(t_data));
-	d->offset = ft_calloc(sizeof(t_offset), 1);
-	ft_memchk(sizeof(*d->offset), sizeof(t_offset));
-	d->map = ft_calloc(sizeof(t_map), 1);
-	ft_memchk(sizeof(*d->map), sizeof(t_map));
+	d = ft_calloc(sizeof(*d), 1);
+	d->offset = ft_calloc(sizeof(*d->offset), 1);
+	d->map = ft_calloc(sizeof(*d->map), 1);
 	return (d);
 }
 
 static inline void	pre_draw_allocations(t_data *d)
 {
-	d->img = ft_calloc(sizeof(t_img), 1);
-	ft_memchk(sizeof(*d->img), sizeof(t_img));
-	d->matrix = ft_calloc(sizeof(t_rotation_matrices), 1);
-	ft_memchk(sizeof(*d->matrix), sizeof(t_rotation_matrices));
-	d->mlx = malloc(sizeof(t_mlx));
-	ft_memchk(sizeof(*d->mlx), sizeof(t_mlx));
-	d->lookup.events = ft_calloc(128, sizeof(t_event));
-	ft_memchk(sizeof(*d->lookup.events), sizeof(t_event));
+	d->img = ft_calloc(sizeof(*d->img), 1);
+	d->matrix = ft_calloc(sizeof(*d->matrix), 1);
+	d->mlx = malloc(sizeof(*d->mlx));
+	d->lookup.events = ft_calloc(128, sizeof(*d->lookup.events));
 }
