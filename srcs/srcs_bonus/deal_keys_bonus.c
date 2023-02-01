@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 22:10:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:40:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	deal_keys_bonus(int key, t_data *d)
 
 static inline int	hash_function(int key)
 {
-	return ((key % 128 + 128) % 128);
+	return ((key % 96) + 32);
 }

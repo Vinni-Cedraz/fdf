@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 22:10:23 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:38:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ static inline void	hash_f(t_event *events)
 	i = -1;
 	while (++i <= 22)
 	{
-		hash = (events[i].key % 128 + 128) % 128;
+		hash = (events[i].key % 96) + 32;
 		events[hash] = events[i];
 	}
 }

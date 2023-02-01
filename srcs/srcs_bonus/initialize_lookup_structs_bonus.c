@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 21:53:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:37:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	initialize_grid_methods(t_data *d)
 
 static void	initialize_key_events_table(t_data *d)
 {
-	d->lookup.events = ft_calloc(151, sizeof(t_event));
+	d->lookup.events = ft_calloc(128, sizeof(t_event));
 	d->lookup.events[0] = (t_event){XK_ESCAPE, &close_window};
 	d->lookup.events[1] = (t_event){'h', &left};
 	d->lookup.events[2] = (t_event){'l', &right};
