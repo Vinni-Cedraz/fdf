@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 22:37:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:39:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	initialize_grid_methods(t_data *d)
 static void	initialize_key_events_table(t_data *d)
 {
 	d->lookup.events = ft_calloc(128, sizeof(t_event));
-	d->lookup.events[0] = (t_event){XK_ESCAPE, &close_window};
+	d->lookup.events[0] = (t_event){ESC, &close_window};
 	d->lookup.events[1] = (t_event){'h', &left};
 	d->lookup.events[2] = (t_event){'l', &right};
 	d->lookup.events[3] = (t_event){'k', &up};
@@ -70,8 +70,9 @@ static void	initialize_key_events_table(t_data *d)
 	d->lookup.events[16] = (t_event){' ', &go_through_each_stage_of_iso};
 	d->lookup.events[17] = (t_event){'g', &change_grid_rendering_method};
 	d->lookup.events[18] = (t_event){';', &move_back_to_isometric_state};
-	d->lookup.events[19] = (t_event){XK_LEFT, &left};
-	d->lookup.events[20] = (t_event){XK_RIGHT, &right};
-	d->lookup.events[21] = (t_event){XK_UP, &up};
-	d->lookup.events[22] = (t_event){XK_DOWN, &down};
+	d->lookup.events[19] = (t_event){LEFT_ARROW, &left};
+	d->lookup.events[20] = (t_event){RIGHT_ARROW, &right};
+	d->lookup.events[21] = (t_event){UP_ARROW, &up};
+	d->lookup.events[22] = (t_event){DOWN_ARROW, &down};
+	d->lookup.events[23] = (t_event){ENTER, &change_color_bonus};
 }
