@@ -6,31 +6,26 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 17:27:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:10:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static int	is_out_of_bounds(int key);
+static int			hash_function(int key);
 
 int	deal_keys_bonus(int key, t_data *d)
 {
-	if (is_out_of_bounds(key))
-	{
-		if (key == XK_ESCAPE)
-			close_win_bonus(d);
-		else
-			return (0);
-	}
-	if (d->lookup.events[key])
-		d->lookup.events[key](d);
+	int	index;
+
+	index = hash_function(key);
+	if (!d->lookup.events[index].f)
+		return (0);
+	d->lookup.events[index].f(d);
 	return (0);
 }
 
-static int	is_out_of_bounds(int key)
+static inline int	hash_function(int key)
 {
-	if (key < 32 || key > 122)
-		return (1);
-	return (0);
+	return ((key % 128 + 128) % 128);
 }

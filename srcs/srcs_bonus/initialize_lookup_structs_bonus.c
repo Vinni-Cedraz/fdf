@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 16:56:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 21:53:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ static void	initialize_key_events_table(t_data *d);
 
 void	initialize_lookup_structs_bonus(t_data *d)
 {
+	d->lookup.set_hash = &hash_f;
 	initialize_transition_methods(d);
 	initialize_grid_methods(d);
 	initialize_key_events_table(d);
+	d->lookup.set_hash(d->lookup.events);
 }
 
 static void	initialize_transition_methods(t_data *d)
@@ -48,23 +50,28 @@ static void	initialize_grid_methods(t_data *d)
 
 static void	initialize_key_events_table(t_data *d)
 {
-	d->lookup.events = ft_calloc(128, sizeof(void *));
-	d->lookup.events['h'] = (t_func_ptr){&left};
-	d->lookup.events['l'] = (t_func_ptr){&right};
-	d->lookup.events['k'] = (t_func_ptr){&up};
-	d->lookup.events['j'] = (t_func_ptr){&down};
-	d->lookup.events['w'] = (t_func_ptr){&zoom_in};
-	d->lookup.events['s'] = (t_func_ptr){&zoom_out};
-	d->lookup.events['d'] = (t_func_ptr){&rotate_five_around_y};
-	d->lookup.events['a'] = (t_func_ptr){&reverse_five_around_y};
-	d->lookup.events['e'] = (t_func_ptr){&rotate_five_around_x};
-	d->lookup.events['q'] = (t_func_ptr){&reverse_five_around_x};
-	d->lookup.events['v'] = (t_func_ptr){&rotate_five_around_z};
-	d->lookup.events['x'] = (t_func_ptr){&reverse_five_around_z};
-	d->lookup.events['z'] = (t_func_ptr){&increase_altitude};
-	d->lookup.events['c'] = (t_func_ptr){&decrease_altitude};
-	d->lookup.events['m'] = (t_func_ptr){&mirror_altitude};
-	d->lookup.events[' '] = (t_func_ptr){&go_through_each_stage_of_iso};
-	d->lookup.events['g'] = (t_func_ptr){&change_grid_rendering_method};
-	d->lookup.events[';'] = (t_func_ptr){&move_back_to_isometric_state};
+	d->lookup.events = ft_calloc(151, sizeof(t_event));
+	d->lookup.events[0] = (t_event){XK_ESCAPE, &close_window};
+	d->lookup.events[1] = (t_event){'h', &left};
+	d->lookup.events[2] = (t_event){'l', &right};
+	d->lookup.events[3] = (t_event){'k', &up};
+	d->lookup.events[4] = (t_event){'j', &down};
+	d->lookup.events[5] = (t_event){'w', &zoom_in};
+	d->lookup.events[6] = (t_event){'s', &zoom_out};
+	d->lookup.events[7] = (t_event){'d', &rotate_five_around_y};
+	d->lookup.events[8] = (t_event){'a', &reverse_five_around_y};
+	d->lookup.events[9] = (t_event){'e', &rotate_five_around_x};
+	d->lookup.events[10] = (t_event){'q', &reverse_five_around_x};
+	d->lookup.events[11] = (t_event){'v', &rotate_five_around_z};
+	d->lookup.events[12] = (t_event){'x', &reverse_five_around_z};
+	d->lookup.events[13] = (t_event){'z', &increase_altitude};
+	d->lookup.events[14] = (t_event){'c', &decrease_altitude};
+	d->lookup.events[15] = (t_event){'m', &mirror_altitude};
+	d->lookup.events[16] = (t_event){' ', &go_through_each_stage_of_iso};
+	d->lookup.events[17] = (t_event){'g', &change_grid_rendering_method};
+	d->lookup.events[18] = (t_event){';', &move_back_to_isometric_state};
+	d->lookup.events[19] = (t_event){XK_LEFT, &left};
+	d->lookup.events[20] = (t_event){XK_RIGHT, &right};
+	d->lookup.events[21] = (t_event){XK_UP, &up};
+	d->lookup.events[22] = (t_event){XK_DOWN, &down};
 }

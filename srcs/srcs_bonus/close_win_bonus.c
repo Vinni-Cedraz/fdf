@@ -6,11 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 16:19:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:10:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+
+void	close_window(t_data *d)
+{
+	close_win_bonus(d);
+}
 
 int	close_win_bonus(t_data *d)
 {

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 16:12:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:10:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "libs/ft_printf_libft/libft/libft_bonus.h"
 # include "linked_list_tools.h"
 # include <stdio.h>
+
+typedef struct s_ev			t_event;
+
+static void					hash_f(t_event *key) __attribute__((unused));
 
 typedef struct s_tmps
 {
@@ -138,12 +142,32 @@ typedef struct s_compute_color
 	t_rgb					rgb_map[6];
 }							t_compute_color;
 
+typedef struct s_ev
+{
+	int						key;
+	t_func_ptr				f;
+}							t_event;
+
 typedef struct s_lookup
 {
 	t_node					*iso_transit_methods;
 	t_node					*grid_methods;
-	t_func_ptr				*events;
+	t_event					*events;
+	void					(*set_hash)(t_event *events);
 }							t_lookup;
+
+static inline void	hash_f(t_event *events)
+{
+	int	hash;
+	int	i;
+
+	i = -1;
+	while (++i <= 22)
+	{
+		hash = (events[i].key % 128 + 128) % 128;
+		events[hash] = events[i];
+	}
+}
 
 typedef struct s_offset		t_offset;
 

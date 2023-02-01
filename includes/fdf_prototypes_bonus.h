@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 16:15:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/01/31 22:10:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,7 @@ void					go_to_isometric(t_data *d);
 void					undo_isometric(t_data *d);
 
 void					undo_diagonal(t_data *d);
+
+void					close_window(t_data *d);
 
 #endif
