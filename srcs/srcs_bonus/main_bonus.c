@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/01 20:55:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:43:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	d = pre_parse_allocations();
 	d->tool.argv = argv[1];
 	if (!parse_map_bonus(d))
-		return (free(d->map), free(d->offset), free(d->img), free(d), 0);
+		return (free(d->map), free(d->offset), free(d), 0);
 	pre_draw_allocations(d);
 	data_initializer_bonus(d);
 	mlx_loop_hook(d->mlx->ptr, draw_bonus, d);

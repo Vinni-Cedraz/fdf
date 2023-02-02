@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 15:54:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:08:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int				is_map_square(double ratio);
 void	calculate_default_scale_bonus(t_data *d)
 {
 	d->map->is_square = is_map_square(d->map->ratio);
+	printf("is_square: %d\n", d->map->is_square);
 	calculate_target_size(d->map);
 	d->offset->scale = d->map->target_width / d->map->width;
 	calculate_initial_offset(d);
@@ -30,6 +31,8 @@ static inline void	calculate_target_size(t_map *map)
 	map->target_width = WIN_HGHT * 0.9;
 	if (map->size > 1800)
 		map->target_width = WIN_HGHT;
+	if (map->is_vertical)
+		map->target_width = WIN_HGHT * 0.7;
 }
 
 static inline void	calculate_initial_offset(t_data *d)
@@ -41,8 +44,6 @@ static inline void	calculate_initial_offset(t_data *d)
 	x_offset += (double)MENU_WIDTH / 2;
 	y_offset = (WIN_HGHT - d->map->height * d->offset->scale) / 2;
 	y_offset += calculate_magic_factor(d);
-	if (!d->map->is_square)
-		y_offset -= d->map->ratio * y_offset;
 	d->offset->move_x += x_offset;
 	d->offset->move_y += y_offset;
 }
@@ -62,5 +63,5 @@ static inline int	is_map_square(double ratio)
 	double	tolerance;
 
 	tolerance = 0.15;
-	return (ratio >= 1 - tolerance && ratio <= 1 + tolerance);
+	return ((ratio >= 1 - tolerance && ratio <= 1 + tolerance));
 }

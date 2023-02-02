@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:49:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:14:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:48:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_atoi(const char *asci)
 	i = 0;
 	sign = 1;
 	to_int = 0;
+	if (!asci)
+		return (0);
 	while (is_whitespace(asci[i]))
 		i++;
 	if (issign(asci[i]))
