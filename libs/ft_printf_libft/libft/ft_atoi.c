@@ -6,15 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:49:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/17 16:13:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/01 23:14:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static inline int	is_whitespace(char c);
-static inline int	isdigit(int c);
-static inline int	issign(int c);
+static int			is_whitespace(char c);
+static int			isdigit(int c);
+static int			issign(int c);
 
 int	ft_atoi(const char *asci)
 {
@@ -25,8 +25,6 @@ int	ft_atoi(const char *asci)
 	i = 0;
 	sign = 1;
 	to_int = 0;
-	if (!asci)
-		return (0);
 	while (is_whitespace(asci[i]))
 		i++;
 	if (issign(asci[i]))
@@ -36,7 +34,7 @@ int	ft_atoi(const char *asci)
 	}
 	while (isdigit(asci[i]))
 	{
-		to_int = to_int * 10 + (asci[i] - '0');
+		to_int = (to_int * 10) + (asci[i] - '0');
 		i++;
 	}
 	to_int *= sign;
@@ -45,20 +43,20 @@ int	ft_atoi(const char *asci)
 
 static inline int	is_whitespace(char c)
 {
-	if (c == SPACE)
-		return (1);
-	else if (c == CARRIAGE_RETURN)
-		return (1);
-	else if (c == NEWLINE)
-		return (1);
-	else if (c == TAB)
-		return (1);
-	else if (c == VERTICAL_TAB)
-		return (1);
-	else if (c == FORMFEED)
-		return (1);
-	else
-		return (0);
+	int					i;
+	static const char	whitespaces[]
+		= {SPACE,
+		CARRIAGE_RETURN,
+		NEWLINE,
+		TAB,
+		VERTICAL_TAB,
+		FORMFEED};
+
+	i = -1;
+	while (++i < 6)
+		if (c == whitespaces[i])
+			return (1);
+	return (0);
 }
 
 static inline int	isdigit(int c)
