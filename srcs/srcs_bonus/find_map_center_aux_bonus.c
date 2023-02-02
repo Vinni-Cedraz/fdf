@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:12:56 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/28 09:24:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:25:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ inline int	is_width_even(int width)
 inline int	are_height_and_width_even(t_data *d)
 {
 	return (is_height_even(d->map->height) && is_width_even(d->map->width));
+}
+
+inline void	is_map_vertical(t_data *d)
+{
+	if (d->map->height > d->map->width)
+		d->map->is_vertical = 1;
+	else
+		d->map->is_vertical = 0;
 }

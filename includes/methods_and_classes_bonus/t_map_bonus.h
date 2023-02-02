@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/02 13:01:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:32:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include "fdf_structs_bonus.h"
 # include "linked_list_tools.h"
 
-static void			find_vert_or_sqr_center(t_data *d) __attribute__((unused));
+static void			find_vertical_center(t_data *d) __attribute__((unused));
+static void			find_square_center(t_data *d);
+static void			find_horizontal_center(t_data *d) __attribute__((unused));
 typedef struct s_d	t_d;
-static void			find_horizontal_map_center(t_d *d) __attribute__((unused));
+static void			find_horizontal_center(t_d *d) __attribute__((unused));
 static void			find_map_center(t_data *d) __attribute__((unused));
 
 typedef struct s_mp
@@ -46,21 +48,30 @@ static inline void	find_map_center(t_data *d)
 {
 	t_node_with_a_point	*central_node;
 
-	find_vert_or_sqr_center(d);
-	find_horizontal_map_center(d);
+	find_vertical_center(d);
+	find_horizontal_center(d);
+	find_square_center(d);
 	central_node = ft_lstpoint_getby_index(d->map->pts, d->center.index);
 	set_t_center_coordinates(&d->center, central_node);
 }
 
-static inline void	find_vert_or_sqr_center(t_data *d)
+static inline void	find_vertical_center(t_data *d)
 {
-	if (!d->map->is_vertical && !d->map->is_square)
+	if (!d->map->is_vertical)
 		return ;
 	d->center.index = (d->map->size + 1) / 2;
 	d->center.index += are_height_and_width_even(d) * (d->map->width / 2);
 }
 
-static inline void	find_horizontal_map_center(t_data *d)
+static inline void	find_square_center(t_data *d)
+{
+	if (!d->map->is_square)
+		return ;
+	d->center.index = (d->map->size + 1) / 2;
+	d->center.index += are_height_and_width_even(d) * (d->map->width / 2);
+}
+
+static inline void	find_horizontal_center(t_data *d)
 {
 	if (d->map->is_vertical)
 		return ;

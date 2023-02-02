@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 13:51:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:24:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	parse_map_bonus(t_data *d)
 {
 	if (!parse_file(d))
 		return (0);
+	get_map_dimensions_bonus(d);
 	create_points_list(d);
 	calculate_default_scale_bonus(d);
 	assign_coordinates_bonus(d);
@@ -40,7 +41,6 @@ static int	parse_file(t_data *d)
 	d->tool.fp = fopen(argv, "r");
 	if (!d->tool.fp || !d)
 		return (free(d->tool.fp), perror("Error"), 0);
-	get_map_dimensions_bonus(d);
 	return (1);
 }
 

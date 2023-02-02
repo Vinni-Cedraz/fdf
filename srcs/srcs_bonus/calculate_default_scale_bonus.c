@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/02 13:08:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:33:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void				calculate_target_size(t_map *map);
+static void				calculate_target_size(t_data *d);
 static void				calculate_initial_offset(t_data *d);
 static double			calculate_magic_factor(t_data *d);
 static int				is_map_square(double ratio);
@@ -20,19 +20,19 @@ static int				is_map_square(double ratio);
 void	calculate_default_scale_bonus(t_data *d)
 {
 	d->map->is_square = is_map_square(d->map->ratio);
-	printf("is_square: %d\n", d->map->is_square);
-	calculate_target_size(d->map);
+	calculate_target_size(d);
 	d->offset->scale = d->map->target_width / d->map->width;
 	calculate_initial_offset(d);
 }
 
-static inline void	calculate_target_size(t_map *map)
+static inline void	calculate_target_size(t_data *d)
 {
-	map->target_width = WIN_HGHT * 0.9;
-	if (map->size > 1800)
-		map->target_width = WIN_HGHT;
-	if (map->is_vertical)
-		map->target_width = WIN_HGHT * 0.7;
+	is_map_vertical(d);
+	d->map->target_width = WIN_HGHT * 0.9;
+	if (d->map->size > 1800)
+		d->map->target_width = WIN_HGHT;
+	if (d->map->is_vertical)
+		d->map->target_width = WIN_HGHT * 0.7;
 }
 
 static inline void	calculate_initial_offset(t_data *d)
