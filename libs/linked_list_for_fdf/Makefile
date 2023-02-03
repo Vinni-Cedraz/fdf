@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:33:51 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/02 22:01:56 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/03 13:17:08 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,18 +52,18 @@ SRCS = ft_lstpoint_new \
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
+	@printf "\n$(YELLOW)Linking linked_list_tools Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(OBJS); do \
-		printf "ar -rsc $(NAME) $$file\n"; \
 		ar -rsc $(NAME) $$file; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                          \r"; \
 	done
 	@for file in $(SRCS); do \
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\r"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                           \r"; \
 		fi; \
 	done
+	@printf "$(WHITE)Created Library $(RED)linked_list_tools.a $(DEF_COLOR)                                                                                     \n";
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH)
@@ -71,9 +71,9 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 
 LOOP:
 	@for file in $(SRCS); do \
-		if [ $(SRCS_PATH)$$file.c -nt $(OBJS_PATH)$$file.o ]; then \
-			printf "\n$(CYAN)Compiling $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-			printf "cc $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o\n"; \
+		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
+			printf "\n\n$(GREEN)[linked_list_tools] $(CYAN)Compiling $(WHITE)$$file\n"; \
+			printf "$(GRAY)cc -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o\n$(DEF_COLOR)"; \
 			$(CC) $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o; \
 			printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 		fi; \

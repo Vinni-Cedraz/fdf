@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:57:13 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/02 23:04:36 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/03 13:20:42 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 SRCS_1 = ft_printf \
-		  ft_printf \
 		   is_format \
 		       parser \
 		   print_until \
@@ -73,7 +72,7 @@ $(NAME): $(OBJS_1) $(OBJS_2) $(OBJS_3ALT)
 	@make libft_srcs_to_printf --no-print-directory
 	@for file in $(OBJS_1_MOD); do \
 		printf "\n$(YELLOW)a primary printf object has been modified...$(DEF_COLOR)\n"; \
-		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                   \r"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                              \r"; \
 		ar -rsc $(NAME) $$file; \
 	done
 	@for file in $(OBJS_2_MOD); do \
@@ -83,13 +82,13 @@ $(NAME): $(OBJS_1) $(OBJS_2) $(OBJS_3ALT)
 	done
 	@for file in $(OBJS_3ALT_MOD); do \
 		printf "\n$(YELLOW)an object from libft has been modified...$(DEF_COLOR)\n"; \
-		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                     \r"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                             \r"; \
 		ar -rsc $(NAME) $$file; \
 	done
 	@printf "\n$(YELLOW)Linking Primary Printf Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(SRCS_1); do \
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
-		printf "$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                    \r"; \
+		printf "$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                           \r"; \
 		ar -rsc $(NAME) $(OBJS_1_PATH)$$file.o; \
 	fi; \
 	done
@@ -111,7 +110,7 @@ $(NAME): $(OBJS_1) $(OBJS_2) $(OBJS_3ALT)
 		fi; \
 		done \
 	fi
-	@printf "$(CYAN)ft_printf OK$(DEF_COLOR)                                                                                                            \n";
+	@printf "\n$(CYAN)FT_PRINTF OK$(DEF_COLOR)                                                                                                            \n";
 
 
 $(OBJS_1_PATH)%.o: $(SRCS_1_PATH)%.c
@@ -131,7 +130,7 @@ SRCS_1_CC:
 	@printf "\n$(YELLOW)Compiling Printf Primary Functions...$(DEF_COLOR)\n";
 	@for file in $(SRCS_1); do \
 	if [ $(SRCS_1_PATH)$$file.c -nt $(OBJS_1_PATH)$$file.o ]; then \
-		printf "\n$(CYAN)Compiling $(WHITE)$$file.c $(DEF_COLOR)\n"; \
+		printf "\n$(GREEN)[ft_printf] $(CYAN)Compiling $(WHITE)$$file.c $(DEF_COLOR)\n"; \
 		printf "$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS_1_PATH)$$file.c -o $(OBJS_1_PATH)$$file.o\n"; \
 		$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS_1_PATH)$$file.c -o $(OBJS_1_PATH)$$file.o; \
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
@@ -142,7 +141,7 @@ SRCS_2_CC:
 	@printf "\n$(YELLOW)Compiling Printf Secondary Functions...$(DEF_COLOR)\n";
 	@for file in $(SRCS_2); do \
 	if [ $(SRCS_2_PATH)$$file.c -nt $(OBJS_2_PATH)$$file.o ]; then \
-		printf "\n$(CYAN)Compiling $(WHITE)$$file.c $(DEF_COLOR)\n"; \
+		printf "\n$(GREEN)[ft_printf] $(CYAN)Compiling $(WHITE)$$file.c $(DEF_COLOR)\n"; \
 		printf "$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS_2_PATH)$$file.c -o $(OBJS_2_PATH)$$file.o\n"; \
 		$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS_2_PATH)$$file.c -o $(OBJS_2_PATH)$$file.o; \
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
@@ -153,7 +152,7 @@ SRCS_3ALT_CC:
 	@printf "\n$(YELLOW)Compiling Libft Functions...$(DEF_COLOR)\n";
 	@for file in $(SRCS_3); do \
 	if [ $(SRCS_3_PATH)$$file.c -nt $(OBJS_3ALT_PATH)$$file.o ]; then \
-		printf "\n$(CYAN)Compiling $(WHITE)$$file.c $(DEF_COLOR)\n"; \
+		printf "\n$(GREEN)[ft_printf] $(CYAN)Compiling $(WHITE)$$file.c $(DEF_COLOR)\n"; \
 		printf "$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS_3_PATH)$$file.c -o $(OBJS_3ALT_PATH)$$file.o\n"; \
 		$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCS_3_PATH)$$file.c -o $(OBJS_3ALT_PATH)$$file.o; \
 		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/02 23:09:27 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/03 13:22:38 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -171,22 +171,19 @@ make_libft:
 $(NAME): $(OBJS) make_mlx make_libft
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(MOD_OBJ); do \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                       \r"; \
 		ar -rsc $(NAME) $$file; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(SRCS); do \
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $(OBJS_PATH)$$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                        \r"; \
 	fi; \
 	done
-	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
+	@printf "$(WHITE)Created Library $(RED)$(NAME)$(DEF_COLOR)                                             \n"
+	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  \n";
 	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(LIBFT_PATH)srcs_to_fdf.a -o $(EXECUTABLE)
-	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
+	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)                  \n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH)
@@ -213,20 +210,17 @@ make_libs_for_bonus:
 $(NAME_BONUS): $(BONUS_OBJS) make_mlx make_libs_for_bonus
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(BONUS_MOD_OBJ); do \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_BONUS) $$file\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                      \r"; \
 		ar -rsc $(NAME_BONUS) $$file; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(BONUS_SRCS); do \
 		if [[ -z "$$(nm $(NAME_BONUS) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME_BONUS) $(BONUS_OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME_BONUS) $(BONUS_OBJS_PATH)$$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                       \r"; \
 	fi; \
 	done
-	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)\n";
+	@printf "$(WHITE)Created Library $(RED)$(NAME_BONUS)$(DEF_COLOR)                                             \n"
+	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  \n";
 	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME_BONUS) $(MLX) $(LIBFT_PATH)srcs_to_fdf_bonus.a $(LINKED_LIST_TOOLS) -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
