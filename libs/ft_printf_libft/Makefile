@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 12:57:13 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/14 23:19:29 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/02 23:04:36 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,55 +72,46 @@ libft_srcs_to_printf:
 $(NAME): $(OBJS_1) $(OBJS_2) $(OBJS_3ALT)
 	@make libft_srcs_to_printf --no-print-directory
 	@for file in $(OBJS_1_MOD); do \
-		printf "\n$(YELLOW)a primary printf object has been modified...$(DEF_COLOR)"; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file\n"; \
+		printf "\n$(YELLOW)a primary printf object has been modified...$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                   \r"; \
 		ar -rsc $(NAME) $$file; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(OBJS_2_MOD); do \
-		printf "\n$(YELLOW)a secondary printf object has been modified...$(DEF_COLOR)"; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file\n"; \
+		printf "\n$(YELLOW)a secondary printf object has been modified...$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                    \r"; \
 		ar -rsc $(NAME) $$file; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
 	@for file in $(OBJS_3ALT_MOD); do \
-		printf "\n$(YELLOW)an object from libft has been modified...$(DEF_COLOR)"; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $$file\n"; \
+		printf "\n$(YELLOW)an object from libft has been modified...$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                     \r"; \
 		ar -rsc $(NAME) $$file; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	done
-	@printf "\n$(YELLOW)Linking Primary Printf Objects to Library...$(DEF_COLOR)";
+	@printf "\n$(YELLOW)Linking Primary Printf Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(SRCS_1); do \
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                    \r"; \
 		ar -rsc $(NAME) $(OBJS_1_PATH)$$file.o; \
-		printf "ar -rsc $(NAME) $(OBJS_1_PATH)$$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
-	@printf "\n$(YELLOW)Linking Secondary Printf Objects to Library...$(DEF_COLOR)";
+	@printf "$(GREEN)linked                                                                                                                      $(DEF_COLOR)";
+	@printf "\n$(YELLOW)Linking Secondary Printf Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(SRCS_2); do \
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
-		printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                                                                    \r"; \
 		ar -rsc $(NAME) $(OBJS_2_PATH)$$file.o; \
-		printf "ar -rsc $(NAME) $(OBJS_2_PATH)$$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 	fi; \
 	done
+	@printf "$(GREEN)linked                                                                                                                      $(DEF_COLOR)";
 	@if [ -d $(OBJS_3ALT_PATH) ]; then \
-		printf "\n$(YELLOW)Linking Libft Objects to Library...$(DEF_COLOR)"; \
+		printf "\n$(YELLOW)Linking Libft Objects to Library...$(DEF_COLOR)\n"; \
 		for file in $(SRCS_3); do \
 			if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
-			printf "\n$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
+			printf "$(CYAN)Linking $(WHITE)$$file.o $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 			ar -rsc $(NAME) $(OBJS_3ALT_PATH)$$file.o; \
-			printf "ar -rsc $(NAME) $(OBJS_3ALT_PATH)$$file.o\n"; \
-			printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
 		fi; \
 		done \
 	fi
+	@printf "$(CYAN)ft_printf OK$(DEF_COLOR)                                                                                                            \n";
 
 
 $(OBJS_1_PATH)%.o: $(SRCS_1_PATH)%.c

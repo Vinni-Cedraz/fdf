@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/07 00:07:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/02 21:40:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	deal_key(int key, t_data *d)
 		linear_transformations(d, &d->matrix->rot_x_54_73);
 		d->do_step_two = 1;
 	}
-	if (key == XK_ESCAPE)
+	if (key == ESC)
 		close_win(d);
 	return (0);
 }

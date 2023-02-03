@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:33:51 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/01/31 16:13:31 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/02 22:01:56 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,9 +61,7 @@ $(NAME): $(OBJS)
 	@for file in $(SRCS); do \
 		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME) $(OBJS_PATH)$$file.o; \
-		printf "\n$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
-		printf "ar -rsc $(NAME) $(OBJS_PATH)$$file.o\n"; \
-		printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\r"; \
 		fi; \
 	done
 
@@ -73,8 +71,8 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 
 LOOP:
 	@for file in $(SRCS); do \
-		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
-			printf "$(CYAN)Compiling $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
+		if [ $(SRCS_PATH)$$file.c -nt $(OBJS_PATH)$$file.o ]; then \
+			printf "\n$(CYAN)Compiling $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)\n"; \
 			printf "cc $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o\n"; \
 			$(CC) $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o; \
 			printf "$(WHITE)$$file $(GREEN)OK$(DEF_COLOR)\n"; \
