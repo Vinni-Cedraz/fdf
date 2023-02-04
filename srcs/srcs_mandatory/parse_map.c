@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 13:48:04 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/03 21:06:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int	get_hex_color(char *str)
 		if (str[i] == ',')
 		{
 			if (ft_ishexlow(str + i + 3))
-				color = ft_atoi_base(&str[i + 3], HEX_BASE);
+				color = ft_atoi_base(&str[i + 3], HEX_BASE_LOWER);
 			else
 				color = ft_atoi_base(&str[i + 3], HEX_BASE_UPPER);
 			return (color);

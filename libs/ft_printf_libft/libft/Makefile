@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/03 13:25:09 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/03 16:01:22 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,11 +106,18 @@ ft_lstcircular_free \
 ft_lstpop \
 ft_lstshift \
 	
+
 PRNTF_SRCS = ft_putchar \
-ft_strlen \
-ft_memset \
-ft_calloc \
-ft_itoa_base \
+               ft_calloc \
+                ft_strlen \
+                 ft_memset \
+               ft_itoa_base \
+		   		     ft_itoa \
+			       ft_ishexup \
+				    ft_strlcat \
+				      ft_strdup \
+					     ft_swap \
+
 
 FDF_SRCS = ft_strnstr \
 			   ft_swap \
@@ -212,7 +219,7 @@ $(NAME_PRNTF) : $(OBJS_PRNTF)
 		ar -rsc $(NAME_PRNTF) $(PRNTF_OBJS_PATH)$$file.o; \
 	fi; \
 	done
-	@printf "$(WHITE)Created Library $(RED)$(NAME_PRNTF)$(DEF_COLOR)                                                                           \n"; \
+	@printf "$(WHITE)Created Library $(RED)libftprintf.a$(DEF_COLOR)                                                                           \n"; \
 
 $(NAME_FDF) : $(OBJS_FDF) 
 	@printf "\n$(YELLOW)Linking fdf Objects From libft to Library...$(DEF_COLOR)\n";

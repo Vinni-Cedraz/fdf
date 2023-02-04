@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_format.c                                        :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 13:41:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2022/11/28 20:40:13 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/02/03 14:46:14 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/02/03 20:57:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_libft_includes.h"
 
-int	is_format(char c)
+int	parser(int i, va_list args)
 {
-	return (c == 'c'
-		|| c == 's'
-		|| c == 'p'
-		|| c == 'd'
-		|| c == 'i'
-		|| c == 'u'
-		|| c == 'x'
-		|| c == 'X'
-		|| c == '%');
+	int								prntd_chars;
+	static const t_ptr_to_put_funct	formatters[9] = {
+		call_putchar,
+		call_putstring,
+		call_putpointer,
+		call_putdeci,
+		call_putdeci,
+		call_puthexlow,
+		call_puthexup,
+		call_put_unsigned,
+		call_put_percent
+	};
+
+	prntd_chars = formatters[i](args);
+	return (prntd_chars);
 }

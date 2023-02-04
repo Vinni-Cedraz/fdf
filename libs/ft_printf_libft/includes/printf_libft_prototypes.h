@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 13:21:51 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/27 15:27:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/03 21:03:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,26 @@
 // PRINTF PROTAGONISTS:
 
 int		ft_printf(const char *format, ...);
-
-int		print_until(const char *str, va_list args);
-
-int		is_format(char c);
-
 int		parser(int c, va_list args);
+
+// auuxiliary functions (pointers to writers):
+int		call_putchar(va_list args);
+int		call_putstring(va_list args);
+int		call_putpointer(va_list args);
+int		call_putdeci(va_list args);
+int		call_puthexup(va_list args);
+int		call_puthexlow(va_list args);
+int		call_put_unsigned(va_list args);
+int		call_put_percent(va_list args);
 
 // auxiliary functions (writers):
 int		put_string(char *str);
 int		put_decimal(long value);
-int		put_usdecimal(long value);
-int		put_hex(unsigned long long value, int is_upper);
+int		put_unsigned(long value);
+int		put_hexup(unsigned long long value);
+int		put_hexlow(unsigned long long value);
 int		put_pointer(unsigned long long value);
+int		put_percent(void);
 
 // ASCII TYPE IDENTIFICATION FUNCTIONS:
 

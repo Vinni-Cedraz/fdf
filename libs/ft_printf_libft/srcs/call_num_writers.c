@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_hex.c                                          :+:      :+:    :+:   */
+/*   pointers_to_num_writers.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022 23:28:18 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 20:54:17 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/02/03 19:25:33 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/02/03 20:25:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_libft_includes.h"
 
-int	put_hex(unsigned long long value, int is_upper)
+inline int	call_putdeci(va_list args)
 {
-	char	*str;
-	int		counter;
+	return (put_decimal(va_arg(args, int)));
+}
 
-	if (is_upper)
-	{
-		str = ft_itoa_base(value, HEX_BASE_UPPER);
-		counter = put_string(str);
-		return (free(str), counter);
-	}
-	str = ft_itoa_base(value, HEX_BASE);
-	counter = put_string(str);
-	return (free(str), counter);
+inline int	call_puthexup(va_list args)
+{
+	return (put_hexup(va_arg(args, unsigned int)));
+}
+
+inline int	call_puthexlow(va_list args)
+{
+	return (put_hexlow(va_arg(args, unsigned int)));
+}
+
+inline int	call_put_unsigned(va_list args)
+{
+	return (put_unsigned(va_arg(args, unsigned int)));
 }

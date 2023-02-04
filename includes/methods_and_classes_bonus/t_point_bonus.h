@@ -6,16 +6,16 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 15:21:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/03 21:10:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_POINT_BONUS_H
 # define T_POINT_BONUS_H
 
-# include <string.h>
 # include "fdf_defines.h"
 # include "printf_libft_includes.h"
+# include <string.h>
 
 typedef struct s_d	t_data;
 typedef struct s_pt	t_point;
@@ -94,7 +94,7 @@ static inline char	*filter_up_to_x(char *current_point)
 static inline char	*check_hexstring(char *hexstring)
 {
 	if (ft_ishexlow(hexstring))
-		return (HEX_BASE);
+		return (HEX_BASE_LOWER);
 	if (ft_ishexup(hexstring))
 		return (HEX_BASE_UPPER);
 	return (NULL);

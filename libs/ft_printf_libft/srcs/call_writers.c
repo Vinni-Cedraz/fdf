@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_decimal.c                                      :+:      :+:    :+:   */
+/*   call_writers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022 23:32:49 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 20:53:54 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/02/03 19:23:22 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/02/03 20:59:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_libft_includes.h"
 
-int	put_decimal(signed long value)
+inline int	call_putchar(va_list args)
 {
-	char	*str;
-	int		counter;
+	return (ft_putchar(va_arg(args, int)));
+}
 
-	counter = 0;
-	if (value < 0)
-	{
-		ft_putchar('-');
-		value *= -1;
-		counter++;
-	}
-	str = ft_itoa_base(value, DECIMAL_BASE);
-	counter += put_string(str);
-	return (free(str), counter);
+inline int	call_putstring(va_list args)
+{
+	return (put_string(va_arg(args, char *)));
+}
+
+inline int	call_putpointer(va_list args)
+{
+	return (put_pointer(va_arg(args, unsigned long long)));
+}
+
+inline int	call_put_percent(va_list args)
+{
+	(void)args;
+	return (ft_putchar('%'));
 }
