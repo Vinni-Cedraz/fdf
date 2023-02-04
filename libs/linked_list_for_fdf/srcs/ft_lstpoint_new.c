@@ -6,19 +6,18 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:59:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 21:13:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:39:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked_list_tools.h"
 
-t_node_with_a_point	*ft_lstpoint_new(void)
+t_n	*ft_lstpoint_new(void)
 {
-	t_node_with_a_point	*n;
+	t_n	*n;
 
-	n = (t_node_with_a_point *)malloc(sizeof(t_node_with_a_point));
-	n->point = (t_point){0, 0, 0, 0, {0, 0, 0}, {0, 0, 0, 0, 0, 0, {0, 0, 0}},
-		NULL, NULL};
+	n = (t_n *)malloc(sizeof(t_n));
+	ft_bzero((char *)&n->point, sizeof(t_point));
 	n->next = NULL;
 	return (n);
 }

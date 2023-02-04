@@ -12,7 +12,7 @@
 
 #include "linked_list_tools.h"
 
-int	ft_lstpoint_size(t_node_with_a_point *lst)
+int	ft_lstpoint_size(t_n *lst)
 {
 	int	size;
 

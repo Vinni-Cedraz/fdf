@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 21:56:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:42:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static t_point				*move_center_back_to_place(t_point *p, t_center *c);
 
 void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 {
-	static short		counter;
-	t_node_with_a_point	*tmp;
+	static short	counter;
+	t_n				*tmp;
 
 	tmp = d->map->pts;
 	if (++counter == 1)

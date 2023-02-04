@@ -12,9 +12,9 @@
 
 #include "linked_list_tools.h"
 
-void	ft_lstpoint_free(t_node_with_a_point **list)
+void	ft_lstpoint_free(t_n **list)
 {
-	t_node_with_a_point	*tmp;
+	t_n	*tmp;
 
 	tmp = *list;
 	if (list == NULL)

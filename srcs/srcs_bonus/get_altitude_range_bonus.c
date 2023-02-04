@@ -12,8 +12,8 @@
 
 #include "fdf_includes_bonus.h"
 
-static inline short	get_max_z(t_node_with_a_point *map);
-static inline short	get_min_z(t_node_with_a_point *map);
+static inline short	get_max_z(t_n *map);
+static inline short	get_min_z(t_n *map);
 
 void	get_altitude_range_bonus(t_map *map)
 {
@@ -23,7 +23,7 @@ void	get_altitude_range_bonus(t_map *map)
 	map->is_plateau = (map->max_z == map->min_z);
 }
 
-static inline short	get_max_z(t_node_with_a_point *map)
+static inline short	get_max_z(t_n *map)
 {
 	short	max_z;
 
@@ -37,7 +37,7 @@ static inline short	get_max_z(t_node_with_a_point *map)
 	return (max_z);
 }
 
-static inline short	get_min_z(t_node_with_a_point *map)
+static inline short	get_min_z(t_n *map)
 {
 	short	min_z;
 

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/03 13:22:38 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/04 07:41:01 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -g \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(MLX_INC) \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
@@ -129,6 +129,7 @@ SRCS_FROM_LIBFT =  ft_strnstr \
 						  ft_lst_make_it_circular \
 						       ft_lstcircular_free \
 							              ft_putstr \
+										    ft_bzero \
 
 
 SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \

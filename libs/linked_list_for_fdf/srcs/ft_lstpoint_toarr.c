@@ -6,28 +6,22 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:45:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 21:13:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:27:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked_list_tools.h"
 
-t_point	**ft_lstpoint_toarr(t_node_with_a_point *node, uint width)
+void	ft_lstpoint_toarr(t_n *node, t_ui width, t_point **arr)
 {
-	uint	i;
-	uint	j;
-	uint	height;
-	t_point	**array;
+	t_ui	i;
+	t_ui	j;
 
-	height = (ft_lstpoint_size(node) / width);
-	array = (t_point **)malloc((height) * sizeof(t_point *));
 	i = 0;
 	j = 0;
 	while (node)
 	{
-		if (j == 0)
-			array[i] = (t_point *)malloc(width * sizeof(t_point));
-		array[i][j] = node->point;
+		arr[i][j] = node->point;
 		node = node->next;
 		j++;
 		if (j == width)
@@ -36,5 +30,4 @@ t_point	**ft_lstpoint_toarr(t_node_with_a_point *node, uint width)
 			i++;
 		}
 	}
-	return (array);
 }

@@ -20,7 +20,7 @@ void	loop_through_each_transition_method(t_data *d)
 
 void	restore_iso_snapshot(t_data *d)
 {
-	t_node_with_a_point	*tmp;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)
@@ -34,7 +34,7 @@ void	restore_iso_snapshot(t_data *d)
 
 void	take_iso_snapshot(t_data *d)
 {
-	t_node_with_a_point	*tmp;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)

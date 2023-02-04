@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/27 09:10:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:31:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ static void	paint_it_black(t_data *data);
 int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
-	d->map->arr = ft_lstpoint_toarr(d->map->pts, d->map->width);
+	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 	render_map_bonus(d);
-	ft_free_arr_size((void **)d->map->arr, d->map->height);
 	draw_menu_background(d->img);
 	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win_ptr, d->img->ptr, 0, 0);
 	draw_menu(d);

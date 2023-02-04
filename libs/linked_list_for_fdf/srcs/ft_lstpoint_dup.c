@@ -12,10 +12,10 @@
 
 #include "linked_list_tools.h"
 
-t_node_with_a_point	*ft_lstpoint_dup(t_node_with_a_point *lst)
+t_n	*ft_lstpoint_dup(t_n *lst)
 {
-	t_node_with_a_point	*new_lst;
-	t_node_with_a_point	*new_node;
+	t_n	*new_lst;
+	t_n	*new_node;
 
 	if (!lst)
 		return (NULL);

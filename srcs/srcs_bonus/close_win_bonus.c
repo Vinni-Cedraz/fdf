@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 22:10:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:31:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	close_win_bonus(t_data *d)
 	free(d->img);
 	free(d->offset);
 	free(d->matrix);
+	ft_free_arr_size((void **)d->map->arr, d->map->height);
 	ft_lstpoint_free(&d->map->pts);
 	ft_lstcircular_free(&d->lookup.iso_transit_methods);
 	ft_lstcircular_free(&d->lookup.grid_methods);

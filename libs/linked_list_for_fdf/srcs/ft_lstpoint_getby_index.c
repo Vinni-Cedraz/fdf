@@ -12,7 +12,7 @@
 
 #include "linked_list_tools.h"
 
-t_node_with_a_point	*ft_lstpoint_getby_index(t_node_with_a_point *lst, uint i)
+t_n	*ft_lstpoint_getby_index(t_n *lst, uint i)
 {
 	if (!i)
 		return (NULL);

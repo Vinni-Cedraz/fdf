@@ -12,7 +12,7 @@
 
 #include "linked_list_tools.h"
 
-typedef t_node_with_a_point	t_n;
+typedef t_n	t_n;
 
 int	ft_lstpoint_getby_content(t_n *lst, double x, double y, double z)
 {

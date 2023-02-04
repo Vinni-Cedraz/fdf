@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 12:55:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:43:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void			handle_error(t_data *d);
 
 int	assign_hexcolor_bonus(t_data *d)
 {
-	int					counter;
-	int					row_len;
-	t_node_with_a_point	*tmp;
-	char				*p_as_str;
-	int					success;
+	int		counter;
+	int		row_len;
+	t_n		*tmp;
+	char	*p_as_str;
+	int		success;
 
 	tmp = d->map->pts;
 	counter = -1;

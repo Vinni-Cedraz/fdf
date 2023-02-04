@@ -38,7 +38,7 @@ void	reset_zoom_from_snapshot(t_data *d)
 
 void	take_zoom_snapshot(t_data *d)
 {
-	t_node_with_a_point	*tmp;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)

@@ -14,7 +14,7 @@
 
 void	colorize_points_bonus(t_data *d)
 {
-	t_node_with_a_point	*tmp;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)

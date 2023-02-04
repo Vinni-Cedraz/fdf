@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:42:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:02:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:42:48 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 inline void	zoom_in_method(t_data *d)
 {
-	double				centered_origin_x;
-	double				centered_origin_y;
-	t_node_with_a_point	*tmp;
+	double	centered_origin_x;
+	double	centered_origin_y;
+	t_n		*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)
@@ -31,9 +31,9 @@ inline void	zoom_in_method(t_data *d)
 
 inline void	zoom_out_method(t_data *d)
 {
-	double				centered_origin_x;
-	double				centered_origin_y;
-	t_node_with_a_point	*tmp;
+	double	centered_origin_x;
+	double	centered_origin_y;
+	t_n		*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)
@@ -48,7 +48,7 @@ inline void	zoom_out_method(t_data *d)
 
 inline void	reset_zoom_method(t_data *d)
 {
-	t_node_with_a_point	*tmp;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)

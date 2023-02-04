@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:32:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:43:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void				take_iso_snapshot_and_apply_scale(t_point *p, t_d *d);
 
 void	assign_coordinates_bonus(t_data *d)
 {
-	int					counter;
-	t_node_with_a_point	*tmp;
+	int	counter;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	counter = 0;
@@ -55,8 +55,8 @@ static inline double	get_row_position(int map_width, int counter)
 
 static inline void	assign_coordinate_z(t_data *d)
 {
-	char				*buf;
-	t_node_with_a_point	*tmp;
+	char	*buf;
+	t_n		*tmp;
 
 	tmp = d->map->pts;
 	while (tmp)

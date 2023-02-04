@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 11:11:55 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/03 16:01:22 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/04 07:32:56 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -164,7 +164,7 @@ FDF_SRCS_BONUS =  ft_strnstr \
 							 ft_lst_make_it_circular \
 							 	  ft_lstcircular_free \
 							                ft_lstfree \
-											 ft_memmove \
+											   ft_bzero \
 
 ## OBJS VARIABLES ##
 

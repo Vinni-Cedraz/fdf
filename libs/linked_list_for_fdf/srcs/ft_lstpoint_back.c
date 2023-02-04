@@ -12,9 +12,9 @@
 
 #include "linked_list_tools.h"
 
-void	ft_lstpoint_back(t_node_with_a_point **lst, t_node_with_a_point *new)
+void	ft_lstpoint_back(t_n **lst, t_n *new)
 {
-	t_node_with_a_point	*temp;
+	t_n	*temp;
 
 	if (!lst || !new)
 		return ;

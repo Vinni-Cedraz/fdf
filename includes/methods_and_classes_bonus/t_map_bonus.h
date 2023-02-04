@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/02 13:32:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 07:49:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,38 @@
 # include "fdf_structs_bonus.h"
 # include "linked_list_tools.h"
 
-static void			find_vertical_center(t_data *d) __attribute__((unused));
-static void			find_square_center(t_data *d);
-static void			find_horizontal_center(t_data *d) __attribute__((unused));
-typedef struct s_d	t_d;
-static void			find_horizontal_center(t_d *d) __attribute__((unused));
-static void			find_map_center(t_data *d) __attribute__((unused));
+static void				find_vertical_center(t_data *d) __attribute__((unused));
+static void				find_square_center(t_data *d);
+static void				find_horizontal_center(t_data *d) __attribute__((unused));
+typedef struct s_d		t_d;
+static void				find_horizontal_center(t_d *d) __attribute__((unused));
+static void				find_map_center(t_data *d) __attribute__((unused));
+static t_point			**create_arrmap(t_map *map) __attribute__((unused));
 
 typedef struct s_mp
 {
-	int				has_hexcolor;
-	int				is_vertical;
-	int				is_square;
-	int				is_plateau;
-	int				width;
-	int				height;
-	uint			size;
-	short			max_z;
-	short			min_z;
-	double			initial_max_z;
-	double			target_width;
-	double			target_height;
-	double			ratio;
-	t_n				*pts;
-	t_point			**arr;
-	t_func_ptr		get_center;
-}					t_map;
+	int					has_hexcolor;
+	int					is_vertical;
+	int					is_square;
+	int					is_plateau;
+	int					width;
+	int					height;
+	uint				size;
+	short				max_z;
+	short				min_z;
+	double				initial_max_z;
+	double				target_width;
+	double				target_height;
+	double				ratio;
+	t_n					*pts;
+	t_point				**arr;
+	t_point				**(*create_arrmap)(t_map *map);
+	t_func_ptr			get_center;
+}						t_map;
 
 static inline void	find_map_center(t_data *d)
 {
-	t_node_with_a_point	*central_node;
+	t_n	*central_node;
 
 	find_vertical_center(d);
 	find_horizontal_center(d);
@@ -78,6 +80,26 @@ static inline void	find_horizontal_center(t_data *d)
 	d->center.index = d->map->size / 2;
 	d->center.index += is_height_even(d->map->height) * (d->map->width / 2);
 	d->center.index -= is_width_even(d->map->width) * (d->map->height / 2);
+}
+
+static inline t_point	**create_arrmap(t_map *map)
+{
+	int		i;
+	int		j;
+	t_point	point;
+	t_point	**arr;
+
+	i = -1;
+	j = 0;
+	arr = malloc((map->height) * sizeof(t_point *));
+	while (++i < map->height)
+	{
+		if (j == 0)
+			arr[i] = malloc(map->width * sizeof(t_point));
+		ft_bzero((char *)&point, sizeof(point));
+		arr[i][j] = point;
+	}
+	return (arr);
 }
 
 #endif
