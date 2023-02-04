@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/02 13:31:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 14:22:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,17 @@ void					close_window(t_data *d);
 void					change_color_bonus(t_data *d);
 
 void					is_map_vertical(t_data *d);
+
+void					get_max_x(t_data *d);
+
+void					get_max_y(t_data *d);
+
+void					get_min_y(t_data *d);
+
+void					get_min_x(t_data *d);
+
+void					go_spherical(t_data *d);
+
+void					get_phi_and_theta(t_data *d);
 
 #endif

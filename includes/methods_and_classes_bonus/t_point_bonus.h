@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/03 21:10:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 18:58:14 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ typedef struct s_phere
 {
 	double			phi;
 	double			theta;
-	double			r;
+	double			rho;
 }					t_sphere;
 
 typedef struct s_raw
 {
-	short			x;
-	short			y;
-	short			z;
+	double			x;
+	double			y;
+	double			z;
 }					t_raw;
 
 typedef struct s_origin

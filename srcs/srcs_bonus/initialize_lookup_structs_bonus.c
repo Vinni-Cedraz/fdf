@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/01 19:15:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 14:23:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	initialize_key_events_table(t_data *d)
 	d->lookup.events[12] = (t_event){'x', &reverse_five_around_z};
 	d->lookup.events[13] = (t_event){'z', &increase_altitude};
 	d->lookup.events[14] = (t_event){'c', &decrease_altitude};
-	d->lookup.events[15] = (t_event){'m', &mirror_altitude};
+	d->lookup.events[15] = (t_event){'b', &go_spherical};
 	d->lookup.events[16] = (t_event){' ', &go_through_each_stage_of_iso};
 	d->lookup.events[17] = (t_event){'g', &change_grid_rendering_method};
 	d->lookup.events[18] = (t_event){';', &move_back_to_isometric_state};

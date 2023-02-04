@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 07:49:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/04 19:01:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ typedef struct s_mp
 	uint				size;
 	short				max_z;
 	short				min_z;
+	double	 			max_x;
+	double	 			min_x;
+	double	 			max_y;
+	double	 			min_y;
 	double				initial_max_z;
 	double				target_width;
 	double				target_height;
 	double				ratio;
+	double 				radius;
 	t_n					*pts;
 	t_point				**arr;
 	t_point				**(*create_arrmap)(t_map *map);
