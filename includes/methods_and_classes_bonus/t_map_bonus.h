@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 19:27:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:26:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_barr
 	double				center_x;
 	double				center_y;
 	double				center_z;
+	double				scale;
 }						t_ball;
 
 typedef struct s_mp

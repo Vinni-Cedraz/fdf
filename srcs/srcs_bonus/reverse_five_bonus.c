@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 14:44:00 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 19:36:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:23:36 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ inline void	reverse_five_around_x(t_data *d)
 	if (!check_state_before_revfive(d))
 		return ;
 	transpts_with_given_matrix_bonus(d, &d->matrix->rev_x);
-	update_state_after_revfive(d);
+	if (d->state != spherical)
+		update_state_after_revfive(d);
 }
 
 inline void	reverse_five_around_y(t_data *d)
@@ -28,7 +29,8 @@ inline void	reverse_five_around_y(t_data *d)
 	if (!check_state_before_revfive(d))
 		return ;
 	transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
-	update_state_after_revfive(d);
+	if (d->state != spherical)
+		update_state_after_revfive(d);
 }
 
 inline void	reverse_five_around_z(t_data *d)
@@ -36,7 +38,8 @@ inline void	reverse_five_around_z(t_data *d)
 	if (!check_state_before_revfive(d))
 		return ;
 	transpts_with_given_matrix_bonus(d, &d->matrix->rev_z);
-	update_state_after_revfive(d);
+	if (d->state != spherical)
+		update_state_after_revfive(d);
 }
 
 static inline void	update_state_after_revfive(t_data *d)
