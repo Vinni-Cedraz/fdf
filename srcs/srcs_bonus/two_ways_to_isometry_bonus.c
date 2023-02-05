@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:23:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 16:27:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:46:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	go_through_each_stage_of_iso(t_data *d)
 {
-	if (!d->state.randomly_rotated)
+	if (d->state != randomly_rotated)
 		go_isometric_from_any(d, &loop_through_each_transition_method);
 }
 
 void	move_back_to_isometric_state(t_data *d)
 {
-	if (d->state.randomly_rotated)
+	if (d->state == randomly_rotated)
 		go_isometric_from_any(d, &go_isometric_using_snapshot);
 }
 
 void	go_isometric_from_any(t_data *d, t_func_ptr isometry_method)
 {
 	isometry_method(d);
-	if (d->state.isometric)
+	if (d->state == isometric)
 	{
 		take_iso_snapshot(d);
 		take_zoom_snapshot(d);

@@ -6,11 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 16:22:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:42:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+
+static void	update_state_after_spherical(t_data *d);
 
 void	get_phi_and_theta(t_data *d)
 {
@@ -25,7 +27,7 @@ void	get_phi_and_theta(t_data *d)
 	while (map)
 	{
 		p = map->point;
-		p.ball.phi = -(p.ol.raw.x) * steps_x;
+		p.ball.phi = (p.ol.raw.x) * steps_x;
 		p.ball.theta = (p.ol.raw.y + (d->map->height / 2)) * steps_y - M_PI / 2;
 		map->point = p;
 		map = map->next;
@@ -51,5 +53,13 @@ void	go_spherical(t_data *d)
 		node->point = p;
 		node = node->next;
 	}
-	d->state.parallel = 0;
+	update_state_after_spherical(d);
+}
+
+static void	update_state_after_spherical(t_data *d)
+{
+	d->state = spherical;
+	d->map->ball.center_x = (d->map->min_x + d->map->max_x) / 2;
+	d->map->ball.center_y = (d->map->min_y + d->map->max_y) / 2;
+	d->map->ball.center_z = (d->map->min_z + d->map->max_z) / 2;
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:06:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:43:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline void	zoom_in(t_data *d)
 {
-	if (d->state.diagonal || d->state.parallel)
+	if (d->state == diagonal || d->state == parallel)
 		return ;
 	zoom_in_method(d);
 	d->offset->neutral_zoom = 0;
@@ -22,7 +22,7 @@ inline void	zoom_in(t_data *d)
 
 inline void	zoom_out(t_data *d)
 {
-	if (d->state.diagonal || d->state.parallel)
+	if (d->state == diagonal || d->state == parallel)
 		return ;
 	zoom_out_method(d);
 	d->offset->neutral_zoom = 0;

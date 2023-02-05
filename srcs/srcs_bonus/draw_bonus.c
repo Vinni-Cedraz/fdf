@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 07:31:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:52:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	paint_it_black(t_data *data);
 int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
+	get_altitude_range_bonus(d->map);
+	get_xy_range_bonus(d);
 	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 	render_map_bonus(d);
 	draw_menu_background(d->img);

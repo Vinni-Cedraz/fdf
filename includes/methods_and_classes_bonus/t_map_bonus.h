@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 15:35:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:27:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ static void				find_horizontal_center(t_d *d) __attribute__((unused));
 static void				find_map_center(t_data *d) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
 
+typedef struct s_barr
+{
+	double				center_x;
+	double				center_y;
+	double				center_z;
+}						t_ball;
+
 typedef struct s_mp
 {
 	int					has_hexcolor;
@@ -34,8 +41,8 @@ typedef struct s_mp
 	double				width;
 	double				height;
 	uint				size;
-	short				max_z;
-	short				min_z;
+	double				max_z;
+	double				min_z;
 	double				max_x;
 	double				min_x;
 	double				max_y;
@@ -45,6 +52,7 @@ typedef struct s_mp
 	double				target_height;
 	double				ratio;
 	double				radius;
+	t_ball				ball;
 	t_n					*pts;
 	t_point				**arr;
 	t_point				**(*create_arrmap)(t_map *map);

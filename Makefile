@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/04 14:21:24 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/05 18:17:55 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -g \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(MLX_INC) \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \

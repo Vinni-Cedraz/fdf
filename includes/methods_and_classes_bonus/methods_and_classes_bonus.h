@@ -6,14 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:36:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 15:26:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:44:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef METHODS_AND_CLASSES_BONUS_H
 # define METHODS_AND_CLASSES_BONUS_H
 
-# include "isometry_changer_bonus.h"
 # include "t_map_bonus.h"
 # include "t_point_bonus.h"
 # include "t_offset_bonus.h"

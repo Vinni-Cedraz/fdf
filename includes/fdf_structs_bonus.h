@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/31 22:38:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:36:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,13 @@ typedef struct s_rm
 	t_matrix				spherical;
 }							t_rotation_matrices;
 
-typedef struct s_state
+typedef enum e_state
 {
-	int						randomly_rotated;
-	int						diagonal;
-	int						isometric;
-	int						parallel;
+	randomly_rotated,
+	diagonal,
+	isometric,
+	parallel,
+	spherical,
 }							t_state;
 
 typedef void				(*t_fsm)(t_data *d);
