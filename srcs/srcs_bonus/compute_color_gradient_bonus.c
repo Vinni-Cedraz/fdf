@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/28 20:56:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 16:15:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,23 @@ static long			rgb_to_int(double r, double g, double b);
 static long			hsl_to_rgb(t_compute_color *c);
 static int			get_color_wheel_sector_of_hue(double h);
 static void			initialize_rgb_map(t_compute_color *c);
+
+// void	compute_color_gradient_bonus(t_point *p, t_data *d)
+// {
+// 	double	range;
+// 	double	normalized_z;
+//
+// 	if (p->color != CYAN || d->map->is_plateau)
+// 		return ;
+// 	if (p->z <= 0)
+// 		return ;
+// 	range = d->map->max_z - d->map->min_z;
+// 	normalized_z = (p->z - d->map->min_z) / range;
+// 	d->c.saturation = 1;
+// 	d->c.light = 1 - normalized_z;
+// 	d->c.hue = 300;
+// 	p->color = hsl_to_rgb(&d->c);
+// }
 
 void	compute_color_gradient_bonus(t_point *p, t_data *d)
 {
