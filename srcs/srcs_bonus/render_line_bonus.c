@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/06 13:53:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/06 14:08:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static void	set_line_color(t_point p1, t_point p2, t_ui *color)
 
 static inline int	is_behind(t_point p2, t_d *d)
 {
-	double	half_ball;
+	double	dark_side;
 
-	half_ball = d->map->max_z * 0.1;
-	if (d->state == spherical && p2.z < half_ball)
+	dark_side = d->map->max_z * 0.05;
+	if (d->state == spherical && p2.z < dark_side)
 		return (1);
 	return (0);
 }

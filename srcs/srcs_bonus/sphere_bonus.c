@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/06 00:00:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/06 14:04:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	get_phi_and_theta(t_data *d)
 	while (map)
 	{
 		p = map->point;
-		p.ball.phi = (p.ol.raw.x) * steps_x;
+		p.ball.phi = -(p.ol.raw.x) * steps_x;
 		p.ball.theta = (p.ol.raw.y + (d->map->height / 2)) * steps_y - M_PI / 2;
 		map->point = p;
 		map = map->next;
