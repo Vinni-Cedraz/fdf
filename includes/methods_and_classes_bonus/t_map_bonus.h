@@ -30,7 +30,7 @@ typedef struct s_barr
 	double				center_x;
 	double				center_y;
 	double				center_z;
-	double				scale;
+	double				delta;
 }						t_ball;
 
 typedef struct s_mp

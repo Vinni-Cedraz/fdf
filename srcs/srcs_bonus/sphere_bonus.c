@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 22:07:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/06 00:00:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void	update_state_after_spherical(t_data *d);
+static void			update_state_after_spherical(t_data *d);
 
 void	get_phi_and_theta(t_data *d)
 {
@@ -40,6 +40,7 @@ void	go_spherical(t_data *d)
 	float	theta;
 	t_n		*node;
 	t_point	p;
+	float	rho;
 
 	node = d->map->pts;
 	while (node)
@@ -47,16 +48,29 @@ void	go_spherical(t_data *d)
 		p = node->point;
 		phi = p.ball.phi;
 		theta = p.ball.theta;
-		p.x = (d->map->radius + (p.ol.raw.z * 0.05)) * cos(phi) * sin(theta);
-		p.y = (d->map->radius + (p.ol.raw.z * 0.05)) * sin(phi) * sin(theta);
-		p.z = (d->map->radius + (p.ol.raw.z * 0.05)) * cos(theta);
+		rho = (d->map->radius + (p.ol.raw.z * d->map->ball.delta));
+		p.x = rho * cos(phi) * sin(theta);
+		p.y = rho * sin(phi) * sin(theta);
+		p.z = rho * cos(theta);
 		node->point = p;
 		node = node->next;
 	}
 	update_state_after_spherical(d);
 }
 
-static void	update_state_after_spherical(t_data *d)
+inline void	increase_sphere_height(t_data *d)
+{
+	d->map->ball.delta += 0.1;
+	go_spherical(d);
+}
+
+inline void	decrease_sphere_height(t_data *d)
+{
+	d->map->ball.delta -= 0.1;
+	go_spherical(d);
+}
+
+static inline void	update_state_after_spherical(t_data *d)
 {
 	d->state = spherical;
 	d->map->ball.center_x = (d->map->min_x + d->map->max_x) / 2;

@@ -51,10 +51,10 @@ static void	initialize_grid_methods(t_data *d)
 static void	initialize_key_events_table(t_data *d)
 {
 	d->lookup.events[0] = (t_event){ESC, &close_window};
-	d->lookup.events[1] = (t_event){'h', &left};
-	d->lookup.events[2] = (t_event){'l', &right};
-	d->lookup.events[3] = (t_event){'k', &up};
-	d->lookup.events[4] = (t_event){'j', &down};
+	d->lookup.events[1] = (t_event){'k', &increase_sphere_height};
+	d->lookup.events[2] = (t_event){'j', &decrease_sphere_height};
+	d->lookup.events[3] = (t_event){'h', &go_spherical};
+	d->lookup.events[4] = (t_event){'l', &move_back_to_isometric_state};
 	d->lookup.events[5] = (t_event){'w', &zoom_in};
 	d->lookup.events[6] = (t_event){'s', &zoom_out};
 	d->lookup.events[7] = (t_event){'d', &rotate_five_around_y};
@@ -65,7 +65,7 @@ static void	initialize_key_events_table(t_data *d)
 	d->lookup.events[12] = (t_event){'x', &reverse_five_around_z};
 	d->lookup.events[13] = (t_event){'z', &increase_altitude};
 	d->lookup.events[14] = (t_event){'c', &decrease_altitude};
-	d->lookup.events[15] = (t_event){'b', &go_spherical};
+	d->lookup.events[15] = (t_event){'m', &mirror_altitude};
 	d->lookup.events[16] = (t_event){' ', &go_through_each_stage_of_iso};
 	d->lookup.events[17] = (t_event){'g', &change_grid_rendering_method};
 	d->lookup.events[18] = (t_event){';', &move_back_to_isometric_state};

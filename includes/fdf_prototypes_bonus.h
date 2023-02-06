@@ -149,14 +149,14 @@ void					undo_diagonal(t_data *d);
 
 void					close_window(t_data *d);
 
-void					change_color_bonus(t_data *d);
-
 void					is_map_vertical(t_data *d);
 
 void					go_spherical(t_data *d);
 
 void					get_phi_and_theta(t_data *d);
 
-void 					get_xy_range_bonus(t_data *d);
+void					increase_sphere_height(t_data *d);
+
+void					decrease_sphere_height(t_data *d);
 
 #endif
