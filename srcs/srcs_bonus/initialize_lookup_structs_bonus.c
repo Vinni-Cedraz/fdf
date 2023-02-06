@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:56:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/06 11:54:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,4 @@ static void	initialize_key_events_table(t_data *d)
 	d->lookup.events[20] = (t_event){RIGHT_ARROW, &right};
 	d->lookup.events[21] = (t_event){UP_ARROW, &up};
 	d->lookup.events[22] = (t_event){DOWN_ARROW, &down};
-	d->lookup.events[23] = (t_event){ENTER, &change_color_bonus};
 }

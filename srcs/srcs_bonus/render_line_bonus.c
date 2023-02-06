@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:01:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:53:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void			set_line_color(t_point p1, t_point p2, t_ui *c);
 static void			put_pixel_img_bonus(t_img *img, int x, int y, t_ui color);
-static int			is_behind(t_point p1, t_point p2, t_d *d);
+static int			is_behind(t_point p2, t_d *d);
 
 void	render_line_bonus(t_point p1, t_point p2, t_data *d)
 {
 	t_line			line;
 	unsigned int	color;
 
-	if (is_behind(p1, p2, d))
+	if (is_behind(p2, d))
 		return ;
 	set_line_color(p1, p2, &color);
 	line.dx = p2.x - p1.x;
@@ -62,12 +62,12 @@ static void	set_line_color(t_point p1, t_point p2, t_ui *color)
 		*color = p2.color;
 }
 
-static inline int	is_behind(t_point p1, t_point p2, t_d *d)
+static inline int	is_behind(t_point p2, t_d *d)
 {
 	double	half_ball;
 
-	half_ball = d->map->max_z / 2;
-	if (d->state == spherical && (p1.z < half_ball || p2.z < half_ball))
+	half_ball = d->map->max_z * 0.1;
+	if (d->state == spherical && p2.z < half_ball)
 		return (1);
 	return (0);
 }
