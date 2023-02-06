@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 19:36:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:56:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,10 @@ typedef struct s_rm
 
 typedef enum e_state
 {
-	randomly_rotated,
+	parallel,
 	diagonal,
 	isometric,
-	parallel,
+	randomly_rotated,
 	spherical,
 }							t_state;
 
