@@ -62,5 +62,5 @@ static inline void	get_map_size(t_data *d)
 {
 	d->map->size = d->map->width * d->map->height;
 	d->map->ratio = (double)d->map->height / d->map->width;
-	d->map->radius = d->map->width * 0.7;
+	d->map->radius = d->map->width * 0.55;
 }

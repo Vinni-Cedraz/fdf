@@ -19,7 +19,6 @@
 
 static void				find_vertical_center(t_data *d) __attribute__((unused));
 static void				find_square_center(t_data *d);
-static void				find_horizontal_center(t_data *d) __attribute__((unused));
 typedef struct s_d		t_d;
 static void				find_horizontal_center(t_d *d) __attribute__((unused));
 static void				find_map_center(t_data *d) __attribute__((unused));
