@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/02 13:33:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:35:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	calculate_default_scale_bonus(t_data *d)
 
 static inline void	calculate_target_size(t_data *d)
 {
-	is_map_vertical(d);
+	is_map_vertical(d->map);
 	d->map->target_width = WIN_HGHT * 0.9;
 	if (d->map->size > 1800)
 		d->map->target_width = WIN_HGHT;

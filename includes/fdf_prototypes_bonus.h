@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:44:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:08:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,6 @@ void					undo_diagonal(t_data *d);
 
 void					call_close_window(t_data *d);
 
-void					is_map_vertical(t_data *d);
-
 void					go_spherical(t_data *d);
 
 void					get_phi_and_theta(t_data *d);
@@ -166,5 +164,7 @@ void					get_phi_and_theta(t_data *d);
 void					increase_sphere_height(t_data *d);
 
 void					decrease_sphere_height(t_data *d);
+
+void					get_xy_range_bonus(t_data *d);
 
 #endif

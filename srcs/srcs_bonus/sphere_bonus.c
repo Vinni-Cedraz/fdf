@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 01:01:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:21:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,8 @@ static inline void	update_state_after_spherical(t_data *d)
 	d->state = spherical;
 	if (first == 1)
 	{
-		d->offset->move_x += d->map->width * 2.3;
-		d->offset->move_y += d->map->height * 2.3;
 		get_altitude_range_bonus(d->map);
+		get_xy_range_bonus(d);
 		d->map->ball.center_x = (d->map->min_x + d->map->max_x) / 2;
 		d->map->ball.center_y = (d->map->min_y + d->map->max_y) / 2;
 		d->map->ball.center_z = (d->map->min_z + d->map->max_z) / 2;

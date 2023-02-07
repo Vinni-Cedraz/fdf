@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:27:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:22:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static inline int	is_dark_side_of_a_sphere(t_point p2, t_d *d)
 {
 	double	dark_side;
 
-	dark_side = d->map->max_z * 0.05;
+	dark_side = d->map->max_z * 0.01;
 	if (d->state == spherical && p2.z < dark_side)
 		return (1);
 	return (0);

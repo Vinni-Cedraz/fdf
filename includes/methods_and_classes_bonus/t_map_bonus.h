@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:53:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:52:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 # include "fdf_t_data_bonus.h"
 # include "linked_list_tools.h"
 
-static void				vertical_map_center(t_data *d) __attribute__((unused));
-static void				square_map_center(t_data *d);
 typedef struct s_d		t_d;
-static void				horizontal_map_center(t_d *d) __attribute__((unused));
 static void				get_map_center(t_data *d) __attribute__((unused));
+static int				is_map_vertical(t_map *map) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
 
 typedef struct s_ba
@@ -70,43 +68,17 @@ typedef struct s_mp
 
 static inline void	get_map_center(t_data *d)
 {
-	t_n	*central_node;
+	t_map	*map;
 
-	vertical_map_center(d);
-	horizontal_map_center(d);
-	square_map_center(d);
-	central_node = ft_lstpoint_getby_index(d->map->pts, d->map->center.index);
-	set_t_center_coordinates(&d->map->center, central_node);
+	map = d->map;
+	map->center.x = (map->max_x + map->min_x) / 2;
+	map->center.y = (map->max_y + map->min_y) / 2;
+	map->center.z = (map->max_z + map->min_z) / 2;
 }
 
-static inline void	vertical_map_center(t_data *d)
+static inline int	is_map_vertical(t_map *map)
 {
-	if (!d->map->is_vertical)
-		return ;
-	d->map->center.index = (d->map->size + 1) / 2;
-	d->map->center.index += are_height_and_width_even(d) * (d->map->width / 2);
-}
-
-static inline void	square_map_center(t_data *d)
-{
-	if (!d->map->is_square)
-		return ;
-	d->map->center.index = (d->map->size + 1) / 2;
-	d->map->center.index += are_height_and_width_even(d) * (d->map->width / 2);
-}
-
-static inline void	horizontal_map_center(t_data *d)
-{
-	int	height;
-	int	width;
-
-	height = d->map->height;
-	width = d->map->width;
-	if (d->map->is_vertical)
-		return ;
-	d->map->center.index = d->map->size / 2;
-	d->map->center.index += is_height_even(height) * (width / 2);
-	d->map->center.index -= is_width_even(width) * (height / 2);
+	return (map->width < map->height);
 }
 
 static inline t_point	**create_arrmap(t_map *map)

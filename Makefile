@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/07 11:04:00 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/07 19:07:15 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,14 +88,14 @@ BONUS_SRCS = parse_map_bonus \
 				   assign_t_points_methods_bonus \
 			       			 open_win_n_img_bonus \
 			       initialize_lookup_structs_bonus \
-					  	  find_map_center_aux_bonus \
-						   		   rotate_five_bonus \
-								   reverse_five_bonus \
-								            zoom_bonus \
-									 zoom_methods_bonus \
-								  isometry_methods_bonus \
-						isometry_transition_methods_bonus \
-										 	  sphere_bonus \
+						   		  rotate_five_bonus \
+								  reverse_five_bonus \
+								           zoom_bonus \
+									zoom_methods_bonus \
+								 isometry_methods_bonus \
+					   isometry_transition_methods_bonus \
+										 	 sphere_bonus \
+										get_xy_range_bonus \
 
 SRCS_FROM_MLX = mlx_init \
 	       mlx_new_window \
