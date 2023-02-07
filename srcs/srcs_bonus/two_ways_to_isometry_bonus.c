@@ -22,7 +22,7 @@ void	go_through_each_stage_of_iso(t_data *d)
 
 void	move_back_to_isometric_state(t_data *d)
 {
-	if (d->state == randomly_rotated)
+	if (d->state == randomly_rotated || d->state == spherical)
 		go_isometric_from_any(d, &go_isometric_using_snapshot);
 }
 
