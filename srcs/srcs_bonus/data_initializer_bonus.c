@@ -16,6 +16,7 @@ void	data_initializer_bonus(t_data *d)
 {
 	open_win_and_img_bonus(d);
 	d->state = parallel;
+	d->offset->neutral_zoom = 1;
 	initialize_lookup_structs_bonus(d);
 	get_altitude_range_bonus(d->map);
 	get_phi_and_theta(d);
