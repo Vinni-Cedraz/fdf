@@ -42,6 +42,8 @@ void	go_spherical(t_data *d)
 	t_point	p;
 	float	rho;
 
+	if (d->state != randomly_rotated && d->state != spherical)
+		return ;
 	node = d->map->pts;
 	while (node)
 	{
