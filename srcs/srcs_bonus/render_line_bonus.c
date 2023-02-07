@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 13:55:34 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 19:22:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 20:49:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static void				set_line_color(t_point p1, t_point p2, t_ui *c);
-static int				is_dark_side_of_a_sphere(t_point p2, t_d *d);
+static int				is_dark_side_of_a_sphere(t_point p, t_point p2, t_d *d);
 static void				move_line(t_line *line);
 static t_line			init_line(t_point p1, t_point p2, t_data *d);
 
@@ -22,7 +22,7 @@ void	render_line_bonus(t_point p1, t_point p2, t_data *d)
 	t_line			line;
 	unsigned int	color;
 
-	if (is_dark_side_of_a_sphere(p2, d))
+	if (is_dark_side_of_a_sphere(p1, p2, d))
 		return ;
 	set_line_color(p1, p2, &color);
 	line = init_line(p1, p2, d);
@@ -63,12 +63,12 @@ static void	set_line_color(t_point p1, t_point p2, t_ui *color)
 		*color = p2.color;
 }
 
-static inline int	is_dark_side_of_a_sphere(t_point p2, t_d *d)
+static inline int	is_dark_side_of_a_sphere(t_point p, t_point p2, t_d *d)
 {
 	double	dark_side;
 
 	dark_side = d->map->max_z * 0.01;
-	if (d->state == spherical && p2.z < dark_side)
+	if (d->state == spherical && p.z < dark_side && p2.z < dark_side)
 		return (1);
 	return (0);
 }

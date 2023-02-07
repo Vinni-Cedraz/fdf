@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 11:49:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 20:46:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ static void	define_change_altitude_matrix(t_rotation_matrices *m)
 	{1, 0, 0},
 	{0, 1, 0},
 	{0, 0, -1}};
-	m->change_altitude_up = mul_mat(m->undo_iso_and_pre_up, m->go_iso);
-	m->change_altitude_down = mul_mat(m->undo_iso_and_pre_down, m->go_iso);
-	m->change_altitude_mirror = mul_mat(m->undo_iso_and_pre_mirror, m->go_iso);
+	iso_in_one_step(m);
+	scale_z_up_tmp_stage(m);
+	m->change_altitude_up = mul_mat(m->undo_iso_do_pre_up, m->go_iso);
+	m->change_altitude_down = mul_mat(m->undo_iso_do_pre_down, m->go_iso);
+	m->change_altitude_mirror = mul_mat(m->undo_iso_do_pre_mirror, m->go_iso);
 }
