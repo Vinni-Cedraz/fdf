@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:38:53 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 10:47:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:51:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_COLOR_BONUS_H
 # define T_COLOR_BONUS_H
 
-# include "fdf_structs_bonus.h"
+# include "fdf_t_data_bonus.h"
 
 static void			create_hsl_map(t_data *data) __attribute__((unused));
 

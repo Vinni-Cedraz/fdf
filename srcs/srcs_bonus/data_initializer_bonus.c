@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 19:48:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:44:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	data_initializer_bonus(t_data *d)
 	get_phi_and_theta(d);
 	colorize_points_bonus(d);
 	define_rotation_matrices_bonus(d->matrix);
-	d->map->get_center = &find_map_center;
+	d->map->get_center = &get_map_center;
 }

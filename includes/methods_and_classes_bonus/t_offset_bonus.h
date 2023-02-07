@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:27:18 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 22:48:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:52:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_OFFSET_BONUS_H
 # define T_OFFSET_BONUS_H
 
-# include "fdf_structs_bonus.h"
+# include "fdf_t_data_bonus.h"
 
 static void			up(t_data *d) __attribute__((unused));
 static void			down(t_data *d) __attribute__((unused));

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 22:09:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:46:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ static inline t_emporary	move_center_to_origin(t_point *p, t_data *d)
 	}
 	else
 	{
-		t.x = p->x - d->center.x;
-		t.y = p->y - d->center.y;
-		t.z = p->z - d->center.z;
+		t.x = p->x - d->map->center.x;
+		t.y = p->y - d->map->center.y;
+		t.z = p->z - d->map->center.z;
 	}
 	return (t);
 }
@@ -74,9 +74,9 @@ static inline t_point	*move_center_back_to_place(t_point *p, t_d *d)
 	}
 	else
 	{
-		p->x += d->center.x;
-		p->y += d->center.y;
-		p->z += d->center.z;
+		p->x += d->map->center.x;
+		p->y += d->map->center.y;
+		p->z += d->map->center.z;
 	}
 	return (p);
 }

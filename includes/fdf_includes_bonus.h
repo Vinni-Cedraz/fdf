@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/29 15:23:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:51:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "fdf_defines.h"
 # include "fdf_keycodes.h"
 # include "linked_list_tools.h"
-# include "fdf_structs_bonus.h"
+# include "fdf_t_data_bonus.h"
 # include "fdf_prototypes_bonus.h"
 # include "printf_libft_includes.h"
 # include "methods_and_classes_bonus.h"

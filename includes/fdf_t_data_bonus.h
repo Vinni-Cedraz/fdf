@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_structs_bonus.h                                :+:      :+:    :+:   */
+/*   fdf_t_data_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 11:48:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:10:13 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/02/07 12:50:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_STRUCTS_BONUS_H
-# define FDF_STRUCTS_BONUS_H
+#ifndef FDF_T_DATA_BONUS_H
+# define FDF_T_DATA_BONUS_H
 
 # include "fdf_prototypes_bonus.h"
 # include "libs/ft_printf_libft/libft/libft_bonus.h"
@@ -34,27 +34,11 @@ typedef enum e_state
 	spherical,
 }							t_state;
 
-typedef struct s_ctr
-{
-	double					x;
-	double					y;
-	double					z;
-	int						index;
-}							t_center;
-
-typedef struct s_tmps
-{
-	double					x;
-	double					y;
-	double					z;
-}							t_emporary;
-
 typedef struct s_d
 {
 	t_assign_coordinates	tool;
 	t_state					state;
 	t_offset				*offset;
-	t_center				center;
 	t_emporary				t;
 	t_color					*c;
 	t_mlx					*mlx;

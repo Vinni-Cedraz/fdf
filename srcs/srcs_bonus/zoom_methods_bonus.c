@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:42:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 07:42:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:47:07 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ inline void	zoom_in_method(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		centered_origin_x = tmp->point.x - d->center.x;
-		centered_origin_y = tmp->point.y - d->center.y;
-		tmp->point.x = d->center.x + centered_origin_x * 1.1;
-		tmp->point.y = d->center.y + centered_origin_y * 1.1;
+		centered_origin_x = tmp->point.x - d->map->center.x;
+		centered_origin_y = tmp->point.y - d->map->center.y;
+		tmp->point.x = d->map->center.x + centered_origin_x * 1.1;
+		tmp->point.y = d->map->center.y + centered_origin_y * 1.1;
 		tmp = tmp->next;
 	}
 }
@@ -38,10 +38,10 @@ inline void	zoom_out_method(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		centered_origin_x = tmp->point.x - d->center.x;
-		centered_origin_y = tmp->point.y - d->center.y;
-		tmp->point.x = d->center.x + centered_origin_x / 1.1;
-		tmp->point.y = d->center.y + centered_origin_y / 1.1;
+		centered_origin_x = tmp->point.x - d->map->center.x;
+		centered_origin_y = tmp->point.y - d->map->center.y;
+		tmp->point.x = d->map->center.x + centered_origin_x / 1.1;
+		tmp->point.y = d->map->center.y + centered_origin_y / 1.1;
 		tmp = tmp->next;
 	}
 }

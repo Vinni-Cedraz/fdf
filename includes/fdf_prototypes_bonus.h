@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 11:00:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:44:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ typedef struct s_d		t_d;
 typedef struct s_is		t_i_changer;
 typedef struct s_ctr	t_center;
 typedef struct s_nd		t_n;
+
+// GENERAL PURPOSE TYPEDEFS
 typedef void			(*t_func_ptr)(t_data *d);
+typedef struct s_tmps
+{
+	double				x;
+	double				y;
+	double				z;
+}						t_emporary;
 
 // FUNCTION PROTOTYPES //
 void					data_initializer_bonus(t_data *d);
