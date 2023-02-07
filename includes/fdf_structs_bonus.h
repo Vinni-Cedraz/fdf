@@ -21,6 +21,7 @@
 typedef struct s_ev			t_event;
 
 static void					hash_f(t_event *key) __attribute__((unused));
+static void					create_hsl_map(t_data *d) __attribute__((unused));
 
 typedef struct s_tmps
 {
@@ -132,16 +133,23 @@ typedef enum e_state
 
 typedef void				(*t_fsm)(t_data *d);
 
-typedef struct s_compute_color
+typedef struct s_hsl
+{
+	double					h;
+	double					s;
+	double					l;
+}							t_hsl;
+
+typedef struct s_color
 {
 	double					base;
 	double					shaded;
 	double					tinted;
-	double					saturation;
-	double					light;
-	double					hue;
 	t_rgb					rgb_map[6];
-}							t_compute_color;
+	t_hsl					hsl_map[6];
+	t_hsl					hsl;
+	t_func_ptr				create_hsl_map;
+}							t_color;
 
 typedef struct s_ev
 {
@@ -179,12 +187,22 @@ typedef struct s_d
 	t_offset				*offset;
 	t_center				center;
 	t_emporary				t;
-	t_compute_color			c;
+	t_color					c;
 	t_mlx					*mlx;
 	t_img					*img;
 	t_map					*map;
 	t_rotation_matrices		*matrix;
 	t_lookup				lookup;
 }							t_data;
+
+static inline void	create_hsl_map(t_data *d)
+{
+	d->c.hsl_map[0] = (t_hsl){0.0, 1.0, 1.0};
+	d->c.hsl_map[1] = (t_hsl){60.0, 1.0, 0.5};
+	d->c.hsl_map[2] = (t_hsl){120.0, 1.0, 0.75};
+	d->c.hsl_map[3] = (t_hsl){180.0, 1.0, 0.5};
+	d->c.hsl_map[4] = (t_hsl){240.0, 1.0, 0.5};
+	d->c.hsl_map[5] = (t_hsl){300.0, 1.0, 1.0};
+}
 
 #endif

@@ -20,7 +20,7 @@ void	assign_t_points_methods_bonus(t_data *d)
 	while (tmp)
 	{
 		tmp->point.set_hexcolor = &set_hexcolor;
-		tmp->point.define_p_color_by_altitude = &compute_color_gradient_bonus;
+		tmp->point.compute_point_color = &compute_color_gradient_bonus;
 		tmp = tmp->next;
 	}
 }

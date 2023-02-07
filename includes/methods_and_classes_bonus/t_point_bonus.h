@@ -58,7 +58,7 @@ typedef struct s_pt
 	t_sphere		ball;
 	t_snapshot		ol;
 	void			(*set_hexcolor)(t_point *p, char *current_p_as_str);
-	void			(*define_p_color_by_altitude)(t_point *p, t_data *d);
+	void			(*compute_point_color)(t_point *p, t_data *d);
 }					t_point;
 
 typedef struct s_rgb

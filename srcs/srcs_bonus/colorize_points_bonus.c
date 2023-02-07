@@ -16,10 +16,12 @@ void	colorize_points_bonus(t_data *d)
 {
 	t_n	*tmp;
 
+	d->c.create_hsl_map = &create_hsl_map;
+	d->c.create_hsl_map(d);
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		tmp->point.define_p_color_by_altitude(&tmp->point, d);
+		tmp->point.compute_point_color(&tmp->point, d);
 		tmp = tmp->next;
 	}
 }
