@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/06 11:54:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 00:55:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ static void	initialize_key_events_table(t_data *d)
 	d->lookup.events[0] = (t_event){ESC, &close_window};
 	d->lookup.events[1] = (t_event){'k', &increase_sphere_height};
 	d->lookup.events[2] = (t_event){'j', &decrease_sphere_height};
-	d->lookup.events[3] = (t_event){'h', &go_spherical};
-	d->lookup.events[4] = (t_event){'l', &move_back_to_isometric_state};
+	d->lookup.events[3] = (t_event){'b', &go_spherical};
 	d->lookup.events[5] = (t_event){'w', &zoom_in};
 	d->lookup.events[6] = (t_event){'s', &zoom_out};
 	d->lookup.events[7] = (t_event){'d', &rotate_five_around_y};
