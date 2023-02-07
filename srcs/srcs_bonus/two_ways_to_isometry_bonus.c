@@ -14,7 +14,9 @@
 
 void	go_through_each_stage_of_iso(t_data *d)
 {
-	if (d->state != randomly_rotated)
+	if (!d->offset->neutral_zoom)
+		return ;
+	if (d->state == parallel || d->state == diagonal || d->state == isometric)
 		go_isometric_from_any(d, &loop_through_each_transition_method);
 }
 
