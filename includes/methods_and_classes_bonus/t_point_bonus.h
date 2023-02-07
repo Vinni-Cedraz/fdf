@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 18:58:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:46:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,6 @@ typedef struct s_pt
 	void			(*set_hexcolor)(t_point *p, char *current_p_as_str);
 	void			(*compute_point_color)(t_point *p, t_data *d);
 }					t_point;
-
-typedef struct s_rgb
-{
-	double			r;
-	double			g;
-	double			b;
-}					t_rgb;
 
 static inline void	set_hexcolor(t_point *p, char *current_p_as_str)
 {

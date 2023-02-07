@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 07:49:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:54:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static inline t_data	*pre_parse_allocations(void)
 	d = ft_calloc(sizeof(*d), 1);
 	d->offset = ft_calloc(sizeof(*d->offset), 1);
 	d->map = ft_calloc(sizeof(*d->map), 1);
+	d->c = ft_calloc(sizeof(*d->c), 1);
 	return (d);
 }
 

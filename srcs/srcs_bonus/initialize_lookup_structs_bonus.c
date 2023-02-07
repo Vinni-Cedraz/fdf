@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 00:55:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:59:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	initialize_grid_methods(t_data *d)
 
 static void	initialize_key_events_table(t_data *d)
 {
-	d->lookup.events[0] = (t_event){ESC, &close_window};
+	d->lookup.events[0] = (t_event){ESC, &call_close_window};
 	d->lookup.events[1] = (t_event){'k', &increase_sphere_height};
 	d->lookup.events[2] = (t_event){'j', &decrease_sphere_height};
 	d->lookup.events[3] = (t_event){'b', &go_spherical};

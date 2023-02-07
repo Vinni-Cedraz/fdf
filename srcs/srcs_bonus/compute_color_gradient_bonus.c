@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 00:36:15 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:51:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	compute_color_gradient_bonus(t_point *p, t_data *d)
 	if (index > 5 || index < 0)
 		index = 5;
 	interpolation_value = normalized_z * 5 - index;
-	hsl_low = d->c.hsl_map[index];
-	hsl_high = d->c.hsl_map[index + 1];
-	d->c.hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpolation_value;
-	d->c.hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpolation_value;
-	d->c.hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpolation_value;
-	p->color = hsl_to_rgb(&d->c);
+	hsl_low = d->c->hsl_map[index];
+	hsl_high = d->c->hsl_map[index + 1];
+	d->c->hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpolation_value;
+	d->c->hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpolation_value;
+	d->c->hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpolation_value;
+	p->color = hsl_to_rgb(d->c);
 }
 
 static inline long	hsl_to_rgb(t_color *c)

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:36:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 19:44:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:50:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include "t_map_bonus.h"
 # include "t_point_bonus.h"
 # include "t_offset_bonus.h"
+# include "t_color_bonus.h"
 
 #endif
