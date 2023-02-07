@@ -22,6 +22,7 @@
 // FORWARD DECLARATIONS (to prevent circular dependencies)
 typedef struct s_offset		t_offset;
 typedef struct s_color		t_color;
+typedef struct s_rm			t_rotation_matrices;
 
 typedef struct s_tmps
 {
@@ -44,14 +45,6 @@ typedef struct s_assign_coordinates
 	char					*first_line;
 	t_split					*pts_in_this_row;
 }							t_assign_coordinates;
-
-typedef struct s_ctr
-{
-	double					x;
-	double					y;
-	double					z;
-	int						index;
-}							t_center;
 
 typedef struct s_img
 {
@@ -76,50 +69,6 @@ typedef struct s_line
 	int						steps;
 }							t_line;
 
-typedef struct s_vec
-{
-	double					a;
-	double					b;
-	double					c;
-}							t_column;
-
-typedef struct s_row
-{
-	double					a;
-	double					b;
-	double					c;
-}							t_row;
-
-typedef struct s_m
-{
-	t_row					row_1;
-	t_row					row_2;
-	t_row					row_3;
-}							t_matrix;
-
-typedef struct s_rm
-{
-	t_matrix				rot_x;
-	t_matrix				rot_y;
-	t_matrix				rot_z;
-	t_matrix				rev_z;
-	t_matrix				rev_x;
-	t_matrix				rev_y;
-	t_matrix				rot_z_45;
-	t_matrix				rev_z_45;
-	t_matrix				rot_x_54_73;
-	t_matrix				rev_x_54_73;
-	t_matrix				go_iso;
-	t_matrix				undo_iso;
-	t_matrix				scaling_z_up;
-	t_matrix				scaling_z_down;
-	t_matrix				scaling_z_mirror;
-	t_matrix				change_altitude_up;
-	t_matrix				change_altitude_down;
-	t_matrix				change_altitude_mirror;
-	t_matrix				spherical;
-}							t_rotation_matrices;
-
 typedef enum e_state
 {
 	parallel,
@@ -128,6 +77,14 @@ typedef enum e_state
 	randomly_rotated,
 	spherical,
 }							t_state;
+
+typedef struct s_ctr
+{
+	double					x;
+	double					y;
+	double					z;
+	int						index;
+}							t_center;
 
 typedef struct s_d
 {

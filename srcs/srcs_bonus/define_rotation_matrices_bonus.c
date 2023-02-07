@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/23 10:49:30 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:49:30 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@ static void	define_change_altitude_matrix(t_rotation_matrices *matrix);
 
 void	define_rotation_matrices_bonus(t_rotation_matrices *matrix)
 {
-	matrix->scaling_z_up = (t_matrix){
-	{1, 0, 0},
-	{0, 1, 0},
-	{0, 0, 1.1}};
-	matrix->scaling_z_down = (t_matrix){
-	{1, 0, 0},
-	{0, 1, 0},
-	{0, 0, 0.9}};
-	matrix->scaling_z_mirror = (t_matrix){
-	{1, 0, 0},
-	{0, 1, 0},
-	{0, 0, -1}};
 	define_free_rotation_matrices(matrix);
 	define_isometry_step_one_rotation(matrix);
 	define_isometry_step_two_rotation(matrix);
@@ -93,18 +81,22 @@ static void	define_isometry_step_two_rotation(t_rotation_matrices *matrix)
 
 static void	define_change_altitude_matrix(t_rotation_matrices *m)
 {
-	t_matrix	scaled_up;
-	t_matrix	scaling_z_down;
-	t_matrix	mirrored;
-	t_mul_mat	mul_matrices;
+	t_mul_mat	mul_mat;
 
-	mul_matrices = &multiply_two_matrices_bonus;
-	m->undo_iso = mul_matrices(m->rev_x_54_73, m->rev_z_45);
-	m->go_iso = mul_matrices(m->rot_z_45, m->rot_x_54_73);
-	scaled_up = mul_matrices(m->undo_iso, m->scaling_z_up);
-	scaling_z_down = mul_matrices(m->undo_iso, m->scaling_z_down);
-	mirrored = mul_matrices(m->undo_iso, m->scaling_z_mirror);
-	m->change_altitude_up = mul_matrices(scaled_up, m->go_iso);
-	m->change_altitude_down = mul_matrices(scaling_z_down, m->go_iso);
-	m->change_altitude_mirror = mul_matrices(mirrored, m->go_iso);
+	mul_mat = &multiply_two_matrices_bonus;
+	m->pre_change_altitude_up = (t_matrix){
+	{1, 0, 0},
+	{0, 1, 0},
+	{0, 0, 1.1}};
+	m->pre_change_altitude_down = (t_matrix){
+	{1, 0, 0},
+	{0, 1, 0},
+	{0, 0, 0.9}};
+	m->pre_change_altitude_mirror = (t_matrix){
+	{1, 0, 0},
+	{0, 1, 0},
+	{0, 0, -1}};
+	m->change_altitude_up = mul_mat(m->undo_iso_and_pre_up, m->go_iso);
+	m->change_altitude_down = mul_mat(m->undo_iso_and_pre_down, m->go_iso);
+	m->change_altitude_mirror = mul_mat(m->undo_iso_and_pre_mirror, m->go_iso);
 }
