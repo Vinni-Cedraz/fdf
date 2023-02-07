@@ -72,6 +72,15 @@ inline void	decrease_sphere_height(t_data *d)
 
 static inline void	update_state_after_spherical(t_data *d)
 {
+	static int	first;
+
+	first++;
+	if (first == 1)
+	{
+		d->offset->move_x += d->map->width * 2.3;
+		d->offset->move_y += d->map->height * 2.3;
+		get_altitude_range_bonus(d->map);
+	}
 	d->state = spherical;
 	d->map->ball.center_x = (d->map->min_x + d->map->max_x) / 2;
 	d->map->ball.center_y = (d->map->min_y + d->map->max_y) / 2;

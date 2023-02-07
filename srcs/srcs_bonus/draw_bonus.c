@@ -21,7 +21,6 @@ int	draw_bonus(t_data *d)
 {
 	paint_it_black(d);
 	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
-	get_altitude_range_bonus(d->map);
 	if (d->offset->neutral_zoom)
 		take_zoom_snapshot(d);
 	render_map_bonus(d);
