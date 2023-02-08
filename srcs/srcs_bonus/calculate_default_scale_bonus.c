@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 23:48:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:10:50 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ static inline void	calculate_target_size(t_data *d)
 {
 	is_map_vertical(d->map);
 	d->map->target_width = WIN_HGHT * 0.9;
-	if (d->map->size > 1800)
+	if (d->map->size > 1800 && d->map->is_square)
 		d->map->target_width = WIN_HGHT;
+	else if (d->map->size > 1800 && !d->map->is_square)
+		d->map->target_width = WIN_HGHT * 1.5;
 	if (d->map->is_vertical)
 		d->map->target_width = WIN_HGHT * 0.7;
 }
