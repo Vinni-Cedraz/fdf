@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 19:08:12 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:49:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void					render_lines_square(t_data *d);
 
 void					render_lines_cross(t_data *d);
 
-void					colorize_points_bonus(t_data *d);
-
 int						draw_bonus(t_data *d);
 
 int						deal_keys_bonus(int key, t_data *d);
@@ -82,8 +80,6 @@ void					compute_color_gradient_bonus(t_point *p, t_data *d);
 void					get_map_dimensions_bonus(t_data *d);
 
 int						close_win_bonus(t_data *data);
-
-void					assign_t_points_methods_bonus(t_data *d);
 
 void					initialize_lookup_structs_bonus(t_data *d);
 

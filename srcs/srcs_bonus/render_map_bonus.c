@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 20:06:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/08 00:18:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 void	render_map_bonus(t_data *d)
 {
 	((t_func_ptr)(d->lookup.grid_methods->content))(d);
-	if (d->state != spherical)
-	{
-		get_xy_range_bonus(d);
-		get_altitude_range_bonus(d->map);
-		d->map->get_center(d);
-	}
 }
 
 void	change_grid_rendering_method(t_data *d)

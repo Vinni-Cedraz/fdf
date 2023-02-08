@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 11:56:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:51:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define T_POINT_BONUS_H
 
 # include "fdf_defines.h"
+# include "fdf_prototypes_bonus.h"
 # include "printf_libft_includes.h"
 # include <string.h>
 
@@ -57,8 +58,7 @@ typedef struct s_pt
 	long			color;
 	t_sphere		ball;
 	t_snapshot		ol;
-	void			(*set_hexcolor)(t_point *p, char *current_p_as_str);
-	void			(*compute_point_color)(t_point *p, t_data *d);
+	void			(*set_point_color)(t_point *p, t_data *d);
 }					t_point;
 
 static inline void	set_hexcolor(t_point *p, char *current_p_as_str)

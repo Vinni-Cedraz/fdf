@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 20:05:24 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/08 00:24:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 	tmp = d->map->pts;
 	if (++counter == 1)
 		calculate_z_scale(d);
+	if (d->state != spherical)
+		get_altitude_range_bonus(d->map);
 	while (tmp)
 	{
 		if (counter == 1 && tmp->point.z)
@@ -38,6 +40,7 @@ static inline void	transform_a_point(t_point *p, t_matrix *m, t_data *d)
 {
 	t_emporary	t;
 
+	d->map->get_center(d);
 	t = move_center_to_origin(p, d);
 	p->x = t.x * m->row_1.a + t.y * m->row_2.a + t.z * m->row_3.a;
 	p->y = t.x * m->row_1.b + t.y * m->row_2.b + t.z * m->row_3.b;

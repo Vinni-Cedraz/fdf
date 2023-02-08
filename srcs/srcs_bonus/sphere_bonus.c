@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 19:21:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/08 00:27:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,18 @@ void	go_spherical(t_data *d)
 	float	theta;
 	float	rho;
 	t_n		*node;
-	t_point	p;
 
 	if (d->state != randomly_rotated && d->state != spherical)
 		return ;
 	node = d->map->pts;
 	while (node)
 	{
-		p = node->point;
-		phi = p.ball.phi;
-		theta = p.ball.theta;
-		rho = (d->map->radius + (p.ol.raw.z * d->map->ball.delta));
-		p.x = rho * cos(phi) * sin(theta);
-		p.y = rho * sin(phi) * sin(theta);
-		p.z = rho * cos(theta);
-		node->point = p;
+		phi = node->point.ball.phi;
+		theta = node->point.ball.theta;
+		rho = (d->map->radius + (node->point.ol.raw.z * d->map->ball.delta));
+		node->point.x = rho * cos(phi) * sin(theta);
+		node->point.y = rho * sin(phi) * sin(theta);
+		node->point.z = rho * cos(theta);
 		node = node->next;
 	}
 	update_state_after_spherical(d);
@@ -62,13 +59,13 @@ void	go_spherical(t_data *d)
 
 inline void	increase_sphere_height(t_data *d)
 {
-	d->map->ball.delta += 0.1;
+	d->map->ball.delta += 0.01;
 	go_spherical(d);
 }
 
 inline void	decrease_sphere_height(t_data *d)
 {
-	d->map->ball.delta -= 0.1;
+	d->map->ball.delta -= 0.01;
 	go_spherical(d);
 }
 

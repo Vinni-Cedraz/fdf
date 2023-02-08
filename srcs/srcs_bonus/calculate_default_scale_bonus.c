@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 18:35:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 23:48:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	calculate_default_scale_bonus(t_data *d)
 	d->map->is_square = is_map_square(d->map->ratio);
 	calculate_target_size(d);
 	d->offset->scale = d->map->target_width / d->map->width;
+	d->map->radius *= d->offset->scale;
 	calculate_initial_offset(d);
 }
 

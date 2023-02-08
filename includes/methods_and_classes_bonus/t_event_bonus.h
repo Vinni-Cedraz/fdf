@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:11:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 10:53:46 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 22:09:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@
 # include "../../libs/ft_printf_libft/libft/libft_bonus.h"
 # include "fdf_prototypes_bonus.h"
 
-// FORWARD DECLARATION (to prevent circular dependencies)
 typedef struct s_ev	t_event;
 
-// METHOD DECLARATIONS (to silence unused function warnings)
 static void			hash_f(t_event *key) __attribute__((unused));
-static void			create_hsl_map(t_data *d) __attribute__((unused));
 
 typedef struct s_ev
 {

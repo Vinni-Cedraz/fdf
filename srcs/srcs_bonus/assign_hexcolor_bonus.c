@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 07:43:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:49:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void			handle_error(t_data *d);
 
 int	assign_hexcolor_bonus(t_data *d)
 {
+	t_n		*tmp;
+	int		success;
 	int		counter;
 	int		row_len;
-	t_n		*tmp;
 	char	*p_as_str;
-	int		success;
 
 	tmp = d->map->pts;
 	counter = -1;
@@ -35,7 +35,7 @@ int	assign_hexcolor_bonus(t_data *d)
 		if (!success)
 			return (handle_error(d), 0);
 		p_as_str = d->tool.pts_in_this_row->str_arr[counter % row_len];
-		tmp->point.set_hexcolor(&tmp->point, p_as_str);
+		set_hexcolor(&tmp->point, p_as_str);
 		tmp = tmp->next;
 		if (is_end_of_row(counter, row_len))
 			ft_free_t_split(d->tool.pts_in_this_row);
