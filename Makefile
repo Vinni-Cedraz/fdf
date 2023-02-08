@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/08 11:40:08 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/08 18:05:59 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,25 +14,24 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -g \
-		 -I$(MLX_INC) \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
 		 -I$(INC_CLASSES_METHODS) \
 		 -I$(INC_LINKED_LIST) \
 		 -I$(INC)
-MLX = mlx/libmlx_Linux.a
+# MLX = mlx/libmlx_Linux.a
 LIBFT_PATH = libs/ft_printf_libft/libft/
 PRNTF_PATH = libs/ft_printf_libft/
 LINKED_LIST_PATH = libs/linked_list_for_fdf/
 LINKED_LIST_TOOLS = $(LINKED_LIST_PATH)linked_list_tools.a
-INC_CLASSES_METHODS = includes/methods_and_classes_bonus
+INC_CLASSES_METHODS = includes/methods_and_classes_bonus/
 INC_LIBFT = $(LIBFT_PATH)includes/
 INC_PRNTF = $(PRNTF_PATH)includes/
 INC_LINKED_LIST = $(LINKED_LIST_PATH)includes/
-INC = includes/
-INC_MLX = mlx/
-MLXFLAGS = -lXext -lX11 -lm
+INC = includes
+# INC_MLX = mlx/
+MLXFLAGS = -L $(LIBFT_PATH) -lXext -lX11 -lm -lmlx
 
 # Colors
 RED    	  	=  \033[0;91m
@@ -43,13 +42,6 @@ GREEN     	=      \033[0;92m
 YELLOW      =       \033[0;93m
 MAGENTA     =        \033[0;95m
 DEF_COLOR   =         \033[0;39m
-
-## FUNCTIONS DECLARED AS METHODS OF SPECIFIC CLASSES IN A HEADER FILE:
-
-#go_to_diagonal;
-#go_to_isometric;
-#undo_iso;
-#undo_diag;
 
 SRCS = put_pixel_img \
   			parse_map \
@@ -94,14 +86,6 @@ BONUS_SRCS = parse_map_bonus \
 					 isometry_transition_methods_bonus \
 										   sphere_bonus \
 									  get_xy_range_bonus \
-
-SRCS_FROM_MLX = mlx_init \
-	       mlx_new_window \
-		     mlx_new_image \
-		  mlx_get_data_addr \
-	 mlx_put_image_to_window \
-		   mlx_destroy_window \
-		     mlx_destroy_image \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
 				   	   ft_swap \
@@ -158,16 +142,12 @@ BONUS_MOD_OBJ = $(shell find $(BONUS_OBJS_PATH)*.o -newer $(NAME_BONUS))
 
 all: $(NAME)
 
-make_mlx:
-	@./_mlx_/cp.c
-	@make -C mlx --no-print-directory
-
 make_libft:
 	@make srcs_to_fdf -C $(LIBFT_PATH) --no-print-directory
 	@make -C $(PRNTF_PATH) --no-print-directory
 
 
-$(NAME): $(OBJS) make_mlx make_libft
+$(NAME): $(OBJS) make_libft
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(MOD_OBJ); do \
 		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                       \r"; \
@@ -181,7 +161,7 @@ $(NAME): $(OBJS) make_mlx make_libft
 	done
 	@printf "$(WHITE)Created Library $(RED)$(NAME)$(DEF_COLOR)                                             \n"
 	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  \n";
-	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME) $(MLX) $(PRNTF_PATH)libftprintf.a $(LIBFT_PATH)srcs_to_fdf.a -o $(EXECUTABLE)
+	$(CC) $(CFLAGS) $(NAME) $(PRNTF_PATH)libftprintf.a $(LIBFT_PATH)srcs_to_fdf.a $(MLXFLAGS) -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)                  \n"
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
@@ -206,21 +186,21 @@ make_libs_for_bonus:
 	@make -C $(LINKED_LIST_PATH) --no-print-directory
 	@make srcs_to_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 
-$(NAME_BONUS): $(BONUS_OBJS) make_mlx make_libs_for_bonus
+$(NAME_BONUS): $(BONUS_OBJS) make_libs_for_bonus
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
 	@for file in $(BONUS_MOD_OBJ); do \
-		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                      \r"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                    \r"; \
 		ar -rsc $(NAME_BONUS) $$file; \
 	done
 	@for file in $(BONUS_SRCS); do \
 		if [[ -z "$$(nm $(NAME_BONUS) | grep $${file}.o:)" ]]; then \
 		ar -rsc $(NAME_BONUS) $(BONUS_OBJS_PATH)$$file.o; \
-		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                       \r"; \
+		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                     \r"; \
 	fi; \
 	done
-	@printf "$(WHITE)Created Library $(RED)$(NAME_BONUS)$(DEF_COLOR)                                             \n"
-	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  \n";
-	$(CC) $(MLXFLAGS) $(CFLAGS) $(NAME_BONUS) $(MLX) $(LIBFT_PATH)srcs_to_fdf_bonus.a $(LINKED_LIST_TOOLS) -o $(EXECUTABLE)
+	@printf "$(WHITE)Created Library $(RED)$(NAME_BONUS)$(DEF_COLOR)                                             							\n"
+	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  								\n";
+	$(CC) $(CFLAGS) $(NAME_BONUS) $(LIBFT_PATH)srcs_to_fdf_bonus.a $(LINKED_LIST_TOOLS) $(MLXFLAGS) -o $(EXECUTABLE)
 	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
 
 $(BONUS_OBJS_PATH)%.o: $(BONUS_SRCS_PATH)%.c
@@ -240,7 +220,6 @@ BONUS_LOOP:
 ################# CLEAN RULES #################
 
 clean:
-	@make clean -C mlx --no-print-directory
 	@make clean_fdf -C $(LIBFT_PATH) --no-print-directory
 	@make clean_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 	@make clean -C $(PRNTF_PATH) --no-print-directory
@@ -259,6 +238,5 @@ fclean: clean
 	@make fclean_fdf -C $(LIBFT_PATH) --no-print-directory
 	@make fclean_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 	@make fclean -C $(LINKED_LIST_PATH) --no-print-directory
-	@rm -f mlx/*.a
 
 re: fclean all

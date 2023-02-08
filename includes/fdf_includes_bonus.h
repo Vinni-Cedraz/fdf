@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/08 11:35:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:10:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 # define MENU_WIDTH 183
 
-# define WIN_HGHT 720
-# define WIN_WDTH 1080
+# define WIN_HGHT 1080
+# define WIN_WDTH 1920
 
 # include <errno.h>
 # include <math.h>
 # include <stdio.h>
 # include <string.h>
-# include "mlx.h"
+# include <mlx.h>
 # include "fdf_defines.h"
 # include "fdf_keycodes.h"
 # include "linked_list_tools.h"
