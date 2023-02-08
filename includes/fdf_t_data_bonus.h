@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:50:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/08 11:35:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_T_DATA_BONUS_H
 
 # include "fdf_prototypes_bonus.h"
-# include "libs/ft_printf_libft/libft/libft_bonus.h"
+# include "../libs/ft_printf_libft/libft/libft_bonus.h"
 # include "linked_list_tools.h"
 # include "t_event_bonus.h"
 # include "t_mlx_bonus.h"

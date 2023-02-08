@@ -6,12 +6,13 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:33:51 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/03 13:17:08 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/08 11:50:30 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ################ VARIABLES ################
 
+SHELL := /bin/bash					
 NAME = linked_list_tools.a
 INC_LIBFT = ../ft_printf_libft/libft/
 INC_PRINTF = ../ft_printf_libft/includes/
@@ -26,8 +27,6 @@ CFLAGS = -Wall -Wextra -Werror -O3\
 		 -I$(INC_METHODS)
 SRCS_PATH = srcs/
 OBJS_PATH = objs/
-OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
-MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))
 # Colors
 RED    	  	=  \033[0;91m
 GRAY      	=   \033[0;37m
@@ -47,6 +46,8 @@ SRCS = ft_lstpoint_new \
 			ft_lstpoint_size \
 			ft_lstpoint_toarr \
 
+OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
+MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))
 ################# COMPILING AND LINKING RULES #################
 
 all: $(NAME)
@@ -71,7 +72,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 
 LOOP:
 	@for file in $(SRCS); do \
-		if [[ -z "$$(nm $(NAME) | grep $${file}.o:)" ]]; then \
+		if [ $(SRCS_PATH)$$file.c -nt $(OBJS_PATH)$$file.o ]; then \
 			printf "\n\n$(GREEN)[linked_list_tools] $(CYAN)Compiling $(WHITE)$$file\n"; \
 			printf "$(GRAY)cc -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o\n$(DEF_COLOR)"; \
 			$(CC) $(CFLAGS) -c $(SRCS_PATH)$$file.c -o $(OBJS_PATH)$$file.o; \

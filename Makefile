@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/07 21:50:55 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/08 11:40:08 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -203,8 +203,8 @@ LOOP:
 bonus: $(NAME_BONUS)
 
 make_libs_for_bonus:
-	@make srcs_to_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 	@make -C $(LINKED_LIST_PATH) --no-print-directory
+	@make srcs_to_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 
 $(NAME_BONUS): $(BONUS_OBJS) make_mlx make_libs_for_bonus
 	@printf "\n$(YELLOW)Linking FDF Objects to Library...$(DEF_COLOR)\n";
