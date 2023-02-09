@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/08 18:19:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:54:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static t_data			*pre_parse_allocations(void);
 static void				pre_draw_allocations(t_data *d);
+static short			error_handler(t_data *d);
 
 int	main(int argc, char **argv)
 {
@@ -22,8 +23,9 @@ int	main(int argc, char **argv)
 	(void)argc;
 	d = pre_parse_allocations();
 	d->tool.argv = argv[1];
-	if (!parse_map_bonus(d))
-		return (free(d->map), free(d->offset), free(d->c), free(d), 0);
+	if (!is_a_valid_file(d))
+		return (error_handler(d));
+	parse_map_bonus(d);
 	pre_draw_allocations(d);
 	data_initializer_bonus(d);
 	mlx_loop_hook(d->mlx->ptr, draw_bonus, d);
@@ -51,4 +53,14 @@ static inline void	pre_draw_allocations(t_data *d)
 	d->lookup.events = ft_calloc(128, sizeof(*d->lookup.events));
 	d->map->create_arrmap = &create_arrmap;
 	d->map->arr = d->map->create_arrmap(d->map);
+}
+
+static inline short	error_handler(t_data *d)
+{
+	printf("%s\n", strerror(22));
+	free(d->map);
+	free(d->offset);
+	free(d->c);
+	free(d);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:54:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 11:56:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:00:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ typedef struct s_mlx
 	void	*ptr;
 	int		hook;
 }			t_mlx;
-
-typedef struct s_assign_coordinates
-{
-	FILE	*fp;
-	char	*argv;
-	char	*first_line;
-	t_split	*pts_in_this_row;
-}			t_assign_coordinates;
 
 typedef struct s_img
 {

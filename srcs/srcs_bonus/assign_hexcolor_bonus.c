@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 21:49:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:10:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,36 @@
 
 static int			read_points_in_current_row(t_data *d);
 static int			is_end_of_row(int counter, int width);
+static void			get_point_as_a_string(t_data *d, int counter, int row_len);
 static int			is_beginning_of_row(int counter, int width);
-static void			handle_error(t_data *d);
 
-int	assign_hexcolor_bonus(t_data *d)
+void	assign_hexcolor_bonus(t_data *d)
 {
-	t_n		*tmp;
-	int		success;
-	int		counter;
-	int		row_len;
-	char	*p_as_str;
+	t_n	*tmp;
+	int	counter;
+	int	row_len;
 
 	tmp = d->map->pts;
 	counter = -1;
 	row_len = (int)d->map->width;
 	while (tmp)
 	{
-		if (is_beginning_of_row(++counter, row_len))
-			success = read_points_in_current_row(d);
-		if (!success)
-			return (handle_error(d), 0);
-		p_as_str = d->tool.pts_in_this_row->str_arr[counter % row_len];
-		set_hexcolor(&tmp->point, p_as_str);
+		get_point_as_a_string(d, ++counter, row_len);
+		set_hexcolor(&tmp->point, d->tool.p_as_str);
 		tmp = tmp->next;
 		if (is_end_of_row(counter, row_len))
 			ft_free_t_split(d->tool.pts_in_this_row);
 	}
-	return (1);
+}
+
+static inline void	get_point_as_a_string(t_data *d, int counter, int row_len)
+{
+	if (is_beginning_of_row(counter, row_len))
+		d->tool.successfully_read = read_points_in_current_row(d);
+	if (!d->tool.successfully_read)
+		d->tool.p_as_str = "";
+	else
+		d->tool.p_as_str = d->tool.pts_in_this_row->str_arr[counter % row_len];
 }
 
 static inline int	read_points_in_current_row(t_data *d)
@@ -69,12 +72,4 @@ static inline int	is_beginning_of_row(int counter, int width)
 static inline int	is_end_of_row(int counter, int width)
 {
 	return ((counter + 1) % width == 0);
-}
-
-static void	handle_error(t_data *d)
-{
-	errno = EINVAL;
-	ft_free_t_split(d->tool.pts_in_this_row);
-	ft_lstpoint_free(&d->map->pts);
-	perror("First line of the map shouldn't be longer than any other line");
 }

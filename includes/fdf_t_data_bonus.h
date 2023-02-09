@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/08 11:35:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:06:06 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ typedef enum e_state
 	randomly_rotated,
 	spherical,
 }							t_state;
+
+typedef struct s_assign_coordinates
+{
+	FILE	*fp;
+	char	*argv;
+	char	*first_line;
+	t_split	*pts_in_this_row;
+	short	successfully_read;
+	char	*p_as_str;
+}			t_assign_coordinates;
 
 typedef struct s_d
 {

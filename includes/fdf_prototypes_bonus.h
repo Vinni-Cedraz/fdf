@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 21:49:44 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:51:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ typedef struct s_tmps
 // FUNCTION PROTOTYPES //
 void					data_initializer_bonus(t_data *d);
 
-int						parse_map_bonus(t_data *d);
+short					is_a_valid_file(t_data *d);
+
+void					parse_map_bonus(t_data *d);
 
 void					open_win_and_img_bonus(t_data *d);
 
 void					assign_coordinates_bonus(t_data *d);
 
-int						assign_hexcolor_bonus(t_data *d);
+void					assign_hexcolor_bonus(t_data *d);
 
 void					get_altitude_range_bonus(t_map *map);
 
