@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 01:18:40 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/30 09:55:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:05:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	close_win(t_data *data)
 	ft_free_arr((char **)data->map->arr, (void **)data->map->arr);
 	free(data->map);
 	free(data);
+	ft_bzero((char *)&data, sizeof(t_data));
 	exit(0);
 }

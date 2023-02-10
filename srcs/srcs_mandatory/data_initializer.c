@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:06:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 20:48:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:18:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	data_initializer(t_data *d)
 {
 	d->do_step_one = 0;
 	d->do_step_two = 0;
-	d->matrix = ft_calloc(sizeof(t_rotation_matrices), 1);
+	d->matrix = ft_calloc(sizeof(*d->matrix), 1);
 	if (ft_strnstr(d->argv[1], "elem-fract.fdf", ft_strlen(d->argv[1])))
 		d->move_y -= 50;
 	find_center_of_the_map(d);

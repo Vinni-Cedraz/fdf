@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/03 21:06:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:57:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	parse_map(char *argv, t_data *d)
 	char	*first_line;
 
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
-		return (ft_printf("%s\n", strerror(22)), 0);
+		return (-1);
 	fd = open(argv, O_RDONLY);
 	if ((fd == -1 || read(fd, buf, 0) == -1 || !d))
-		return (perror("Error"), 0);
+		return (-1);
 	first_line = ft_gnl(fd);
 	split_to_count_width = ft_split(first_line, ' ');
 	d->map->width = split_to_count_width->words;
@@ -42,7 +42,7 @@ int	parse_map(char *argv, t_data *d)
 	standard_scale(d, WINDOW_HEIGHT);
 	close(fd);
 	if (!create_map(d, argv, first_line))
-		return (ft_free_arr((char **)d->map->arr, (void **)d->map->arr), 0);
+		return (-2);
 	return (1);
 }
 
@@ -63,7 +63,7 @@ static int	create_map(t_data *d, char *argv, char *first_line)
 		d->tool.split = ft_split(d->tool.line, ' ');
 		free(d->tool.line);
 		if (is_shorter_than_first_line(d))
-			return (ft_printf("Error: map is too uneven"), 0);
+			return (0);
 		d->map->arr[d->tool.y] = ft_calloc(sizeof(t_point), d->map->width);
 		while (++d->tool.x < d->map->width)
 			make_t_point(&d, d->tool.split, d->tool.x, d->tool.y);
