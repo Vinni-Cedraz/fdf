@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 18:52:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/10 12:06:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ typedef struct s_mp
 	t_ball				ball;
 	t_n					*pts;
 	t_point				**arr;
-	t_point				**(*create_arrmap)(t_map *map);
-	t_func_ptr			get_center;
 	t_center			center;
 }						t_map;
 

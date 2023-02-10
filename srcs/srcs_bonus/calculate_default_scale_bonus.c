@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:32:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/08 12:10:50 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:56:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static inline void	calculate_initial_offset(t_data *d)
 	y_offset += calculate_magic_factor(d);
 	d->offset->move_x += x_offset;
 	d->offset->move_y += y_offset;
+	d->offset->initial_move_x = d->offset->move_x;
+	d->offset->initial_move_y = d->offset->move_y;
 }
 
 static inline double	calculate_magic_factor(t_data *d)
