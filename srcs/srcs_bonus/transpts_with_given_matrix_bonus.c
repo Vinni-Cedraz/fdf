@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/10 12:41:29 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/10 16:40:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 	t_n				*tmp;
 
 	tmp = d->map->pts;
-	printf("%f\n", d->offset->move_x);
 	if (++counter == 1)
 		calculate_z_scale(d);
 	if (d->state != spherical)

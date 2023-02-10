@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/10 11:57:46 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/10 19:15:10 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,10 +159,10 @@ $(NAME): $(OBJS) make_libft
 		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME)$(DEF_COLOR)                        \r"; \
 	fi; \
 	done
-	@printf "$(WHITE)Created Library $(RED)$(NAME)$(DEF_COLOR)                                             \n"
-	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  \n";
-	$(CC) $(CFLAGS) $(NAME) $(PRNTF_PATH)libftprintf.a $(LIBFT_PATH)srcs_to_fdf.a $(MLXFLAGS) -o $(EXECUTABLE)
-	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)                  \n"
+	@printf "$(CYAN)Creating $(EXECUTABLE)$(DEF_COLOR)\n"; \
+	$(CC) $(CFLAGS) $(NAME) $(PRNTF_PATH)libftprintf.a $(LIBFT_PATH)srcs_to_fdf.a $(MLXFLAGS) -o $(EXECUTABLE);
+	@printf "$(WHITE)Created Library $(RED)$(NAME)$(DEF_COLOR)                                             \n";
+	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)                  \n";
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(OBJS_PATH)
@@ -198,10 +198,10 @@ $(NAME_BONUS): $(BONUS_OBJS) make_libs_for_bonus
 		printf "$(CYAN)Linking $(WHITE)$$file $(GRAY)to $(RED)$(NAME_BONUS)$(DEF_COLOR)                                                     \r"; \
 	fi; \
 	done
-	@printf "$(WHITE)Created Library $(RED)$(NAME_BONUS)$(DEF_COLOR)                                             							\n"
-	@printf "\n$(YELLOW)Creating Executable...$(DEF_COLOR)                                                  								\n";
-	$(CC) $(CFLAGS) $(NAME_BONUS) $(LIBFT_PATH)srcs_to_fdf_bonus.a $(LINKED_LIST_TOOLS) $(MLXFLAGS) -o $(EXECUTABLE)
-	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n"
+	@printf "$(WHITE)Created Library $(RED)$(NAME_BONUS)$(DEF_COLOR)                                             \n";
+	@printf "$(CYAN)Creating $(EXECUTABLE)$(DEF_COLOR)\n"; \
+	$(CC) $(CFLAGS) $(NAME_BONUS) $(LIBFT_PATH)srcs_to_fdf_bonus.a $(LINKED_LIST_TOOLS) $(MLXFLAGS) -o $(EXECUTABLE);
+	@printf "\njust execute $(GREEN)./$(EXECUTABLE) $(GRAY)to run the program\n$(DEF_COLOR)\n";
 
 $(BONUS_OBJS_PATH)%.o: $(BONUS_SRCS_PATH)%.c
 	@mkdir -p $(BONUS_OBJS_PATH)
@@ -240,3 +240,5 @@ fclean: clean
 	@make fclean -C $(LINKED_LIST_PATH) --no-print-directory
 
 re: fclean all
+
+bonus_re: fclean bonus
