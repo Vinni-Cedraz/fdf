@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:43:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 19:57:34 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:03:09 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline short	get_min_z(t_n *map);
 
 void	get_altitude_range_bonus(t_map *map)
 {
-	static short	first;
+	static size_t	first;
 
 	first++;
 	map->max_z = get_max_z(map->pts);

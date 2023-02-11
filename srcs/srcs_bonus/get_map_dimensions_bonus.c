@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:59:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/08 18:17:36 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:02:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ static inline void	get_map_size(t_data *d)
 {
 	d->map->size = d->map->width * d->map->height;
 	d->map->ratio = (double)d->map->height / d->map->width;
-	d->map->radius = d->map->width * 0.55;
+	d->map->radius = d->map->width * 0.40;
+	d->menu_width = WIN_HGHT * 0.375;
 }

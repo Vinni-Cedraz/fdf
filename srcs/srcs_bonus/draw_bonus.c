@@ -6,14 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 22:54:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:53:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static void	draw_menu(t_data *d);
-static void	draw_menu_background(t_img *img);
+static void	draw_menu_background(t_data *d);
 static void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
 static void	paint_it_black(t_data *data);
 
@@ -29,25 +29,27 @@ int	draw_bonus(t_data *d)
 	return (0);
 }
 
-static inline void	draw_menu_background(t_img *img)
+static inline void	draw_menu_background(t_data *d)
 {
 	int	counter;
 	int	menu_size;
+	int	height;
 	int	i;
 	int	j;
 
 	counter = 0;
-	menu_size = MENU_WIDTH * img->height;
+	menu_size = d->menu_width * d->img->height;
+	height = d->img->height;
 	while (counter < menu_size)
 	{
-		i = counter / img->height;
-		j = counter % img->height;
-		put_pixel_img_bonus(img, i, j, DARKER_GRAY);
+		i = counter / height;
+		j = counter % height;
+		put_pixel_img_bonus(d->img, i, j, DARKER_GRAY);
 		counter++;
 	}
 }
 
-static inline void	paint_it_black(t_data *data)
+static inline void	paint_it_black(t_data *d)
 {
 	int	counter;
 	int	img_size;
@@ -55,21 +57,21 @@ static inline void	paint_it_black(t_data *data)
 	int	j;
 
 	counter = 0;
-	img_size = data->img->width * data->img->height;
+	img_size = d->img->width * d->img->height;
 	while (counter < img_size)
 	{
 		counter++;
-		i = counter / data->img->height;
-		if (i < MENU_WIDTH)
+		i = counter / d->img->height;
+		if (i < d->menu_width)
 			continue ;
-		j = counter % data->img->height;
-		put_pixel_img_bonus(data->img, i, j, BLACK);
+		j = counter % d->img->height;
+		put_pixel_img_bonus(d->img, i, j, BLACK);
 	}
 }
 
 static inline void	draw_menu(t_data *d)
 {
-	draw_menu_background(d->img);
+	draw_menu_background(d);
 	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 20, MAGENTA, \
 		"CONTROLS MENU");
 	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 60, YELLOW, \

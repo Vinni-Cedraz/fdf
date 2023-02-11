@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 16:06:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:48:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_assign_coordinates
 
 typedef struct s_d
 {
+	double					menu_width;
 	t_assign_coordinates	tool;
 	t_state					state;
 	t_offset				*offset;

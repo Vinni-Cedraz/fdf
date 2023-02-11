@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/10 16:40:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:03:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ static t_point				*move_center_back_to_place(t_point *p, t_data *d);
 
 void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 {
-	static short	counter;
 	t_n				*tmp;
 
 	tmp = d->map->pts;
-	if (++counter == 1)
+	if (d->state != isometric)
 		calculate_z_scale(d);
 	if (d->state != spherical)
 		get_altitude_range_bonus(d->map);
 	while (tmp)
 	{
-		if (counter == 1 && tmp->point.z)
+		if (d->state == parallel && tmp->point.z)
 			tmp->point.z *= d->offset->scale_z;
 		transform_a_point(&tmp->point, rot, d);
 		tmp = tmp->next;

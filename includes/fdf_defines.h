@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 20:50:06 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:27:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@
 # define RAD_120 2.0943951023931953
 // 2 degrees in RADS:
 # define RAD 0.03490658503988659
+// redefinition of M_PI for ease of read
+# define PI M_PI
 
 #endif

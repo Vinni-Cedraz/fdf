@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/10 16:46:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/11 17:48:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	get_phi_and_theta(t_data *d)
 	double	spread_points_vertically;
 
 	map = d->map->pts;
-	spread_points_horizontally = M_PI * 2 / (d->map->width - 1);
-	spread_points_vertically = M_PI / d->map->height;
+	spread_points_horizontally = PI * 2 / (d->map->width - 1);
+	spread_points_vertically = PI / d->map->height;
 	while (map)
 	{
 		p = map->point;
@@ -71,11 +71,11 @@ inline void	decrease_sphere_height(t_data *d)
 
 static inline void	update_state_after_spherical(t_data *d)
 {
-	static int	first;
+	static size_t	first;
 
 	first++;
 	d->state = spherical;
-	d->offset->move_x = (double)WIN_WDTH / 2 + MENU_WIDTH;
+	d->offset->move_x = (double)WIN_WDTH / 2 + (double)d->menu_width / 2;
 	d->offset->move_y = (double)WIN_HGHT / 2;
 	if (first == 1)
 	{
