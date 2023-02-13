@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/12 19:47:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/12 22:37:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 typedef struct s_d		t_d;
 static void				get_map_center(t_data *d) __attribute__((unused));
-static void				is_map_vertical(t_map *map) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
 
 typedef struct s_ba
@@ -42,7 +41,6 @@ typedef struct s_mp
 {
 	int					has_hexcolor;
 	int					is_vertical;
-	int					is_square;
 	int					is_plateau;
 	double				width;
 	double				height;
@@ -72,14 +70,6 @@ static inline void	get_map_center(t_data *d)
 	map->center.x = (map->max_x + map->min_x) / 2;
 	map->center.y = (map->max_y + map->min_y) / 2;
 	map->center.z = (map->max_z + map->min_z) / 2;
-}
-
-static inline void	is_map_vertical(t_map *map)
-{
-	if (map->width < map->height)
-		map->is_vertical = 1;
-	else
-		map->is_vertical = 0;
 }
 
 static inline t_point	**create_arrmap(t_map *map)

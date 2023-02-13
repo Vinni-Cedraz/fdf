@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/12 19:28:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:21:26 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static inline void	update_state_after_spherical(t_data *d)
 
 	first++;
 	d->state = spherical;
-	d->offset->move_x = (double)WIN_WDTH / 2 + (double)d->menu_width / 2;
+	d->offset->move_x = (double)WIN_WDTH / 2 + (double)d->scale->menu_width / 2;
 	d->offset->move_y = (double)WIN_HGHT / 2;
 	if (first == 1)
 	{

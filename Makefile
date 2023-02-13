@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/12 21:41:35 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/13 15:42:38 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -O3 \
+CFLAGS = -Wall -Wextra -Werror -g \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
 		 -I$(INC_CLASSES_METHODS) \
@@ -86,6 +86,7 @@ BONUS_SRCS = parse_map_bonus \
 					 isometry_transition_methods_bonus \
 										   sphere_bonus \
 									  get_xy_range_bonus \
+								 initialize_methods_bonus \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
 				   	   ft_swap \

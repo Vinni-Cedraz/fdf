@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:48:07 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/11 17:50:31 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 00:32:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ inline void	go_to_diagonal(t_data *d)
 inline void	go_to_isometric(t_data *d)
 {
 	transpts_with_given_matrix_bonus(d, &d->matrix->rot_x_54_73);
+	transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
 	d->state = isometric;
 }
 
 inline void	undo_isometric(t_data *d)
 {
+	transpts_with_given_matrix_bonus(d, &d->matrix->rev_y);
 	transpts_with_given_matrix_bonus(d, &d->matrix->rev_x_54_73);
 	d->state = diagonal;
 }

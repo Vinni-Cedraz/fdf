@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:36:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:20:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:04:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include "t_offset_bonus.h"
 # include "t_point_bonus.h"
 # include "t_rotation_matrices_bonus.h"
+# include "t_scale_bonus.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/10 19:00:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:45:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error_handler(d);
 	(void)argc;
+	initialize_methods_bonus(d);
 	parse_map_bonus(d);
 	pre_draw_allocations(d);
 	data_initializer_bonus(d);
@@ -42,6 +43,7 @@ static inline t_data	*pre_parse_allocations(void)
 
 	d = ft_calloc(sizeof(*d), 1);
 	d->offset = ft_calloc(sizeof(*d->offset), 1);
+	d->scale = ft_calloc(sizeof(*d->scale), 1);
 	d->map = ft_calloc(sizeof(*d->map), 1);
 	d->c = ft_calloc(sizeof(*d->c), 1);
 	return (d);

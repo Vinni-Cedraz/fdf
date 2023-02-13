@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:14:37 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 20:46:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 00:41:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ static inline void	iso_in_one_step(t_rotation_matrices *m)
 	t_mul_mat	mul_mat;
 
 	mul_mat = &multiply_two_matrices_bonus;
-	m->undo_iso = mul_mat(m->rev_x_54_73, m->rev_z_45);
+	m->undo_iso = mul_mat(m->rev_y, m->rev_x_54_73);
+	m->undo_iso = mul_mat(m->undo_iso, m->rev_z_45);
 	m->go_iso = mul_mat(m->rot_z_45, m->rot_x_54_73);
+	m->go_iso = mul_mat(m->go_iso, m->rot_y);
 }
 
 static inline void	scale_z_up_tmp_stage(t_rotation_matrices *m)

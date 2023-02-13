@@ -6,22 +6,24 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 15:54:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:28:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
-#include <sys/types.h>
 
 static void			create_points_list(t_data *d);
 static void			check_for_hexcolor(t_data *d);
+static void			apply_scale(t_data *d);
 
 void	parse_map_bonus(t_data *d)
 {
 	get_map_dimensions_bonus(d);
 	create_points_list(d);
 	calculate_default_scale_bonus(d);
+	calculate_initial_offset(d);
 	assign_coordinates_bonus(d);
+	apply_scale(d);
 	check_for_hexcolor(d);
 	if (d->map->has_hexcolor)
 		assign_hexcolor_bonus(d);
@@ -36,6 +38,29 @@ static void	create_points_list(t_data *d)
 	d->map->pts = ft_lstpoint_new();
 	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
+}
+
+static inline void	apply_scale(t_data *d)
+{
+	t_n		*tmp;
+	t_point	p;
+	t_scale	sca;
+
+	tmp = d->map->pts;
+	sca = *d->scale;
+	while (tmp)
+	{
+		p = tmp->point;
+		p.ol.raw.x = p.x;
+		p.ol.raw.y = p.y;
+		p.ol.raw.z = p.z;
+		p.x *= sca.map_sz_factor;
+		p.y *= sca.map_sz_factor;
+		p.z *= sca.map_sz_factor;
+		tmp->point = p;
+		tmp = tmp->next;
+	}
+	d->map->radius *= d->scale->map_sz_factor;
 }
 
 static inline void	check_for_hexcolor(t_data *d)

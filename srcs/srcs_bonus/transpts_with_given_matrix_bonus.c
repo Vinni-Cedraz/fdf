@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/12 21:34:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:28:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 	while (tmp)
 	{
 		if (d->state == parallel && tmp->point.z)
-			tmp->point.z *= d->offset->scale_z;
+			tmp->point.z *= d->scale->altitude_factor;
 		transform_a_point(&tmp->point, rot, d);
 		tmp = tmp->next;
 	}
@@ -86,12 +86,14 @@ static inline t_point	*move_center_back_to_place(t_point *p, t_d *d)
 static inline void	calculate_z_scale(t_data *d)
 {
 	double	z_range;
+	t_scale	sca;
 
-	if (d->map->is_plateau)
+	sca = *d->scale;
+	if (!d->map->is_plateau)
 	{
-		d->offset->scale_z = 1;
-		return ;
+		z_range = d->map->max_z - d->map->min_z;
+		d->scale->altitude_factor = (10 / sca.win_factor) / (z_range / 10);
 	}
-	z_range = d->map->max_z - d->map->min_z;
-	d->offset->scale_z = 5 / (z_range / 10);
+	else
+		d->scale->altitude_factor = 1;
 }
