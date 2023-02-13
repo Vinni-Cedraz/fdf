@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 16:28:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:47:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static inline void	apply_scale(t_data *d)
 		p.ol.raw.x = p.x;
 		p.ol.raw.y = p.y;
 		p.ol.raw.z = p.z;
-		p.x *= sca.map_sz_factor;
-		p.y *= sca.map_sz_factor;
-		p.z *= sca.map_sz_factor;
+		p.x *= sca.default_scale;
+		p.y *= sca.default_scale;
+		p.z *= sca.default_scale;
 		tmp->point = p;
 		tmp = tmp->next;
 	}
-	d->map->radius *= d->scale->map_sz_factor;
+	d->map->radius *= d->scale->default_scale;
 }
 
 static inline void	check_for_hexcolor(t_data *d)

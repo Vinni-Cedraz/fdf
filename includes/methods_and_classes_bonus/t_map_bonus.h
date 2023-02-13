@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/12 22:37:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:01:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "fdf_prototypes_bonus.h"
 # include "fdf_t_data_bonus.h"
 # include "linked_list_tools.h"
+# include <stddef.h>
 
 typedef struct s_d		t_d;
 static void				get_map_center(t_data *d) __attribute__((unused));
@@ -34,7 +35,6 @@ typedef struct s_ctr
 	double				x;
 	double				y;
 	double				z;
-	int					index;
 }						t_center;
 
 typedef struct s_mp
@@ -44,7 +44,7 @@ typedef struct s_mp
 	int					is_plateau;
 	double				width;
 	double				height;
-	uint				size;
+	size_t				size;
 	double				max_z;
 	double				min_z;
 	double				max_x;

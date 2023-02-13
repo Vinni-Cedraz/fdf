@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:54:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 21:36:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 # define WIN_WDTH 1370
 // #define WIN_HGHT 1080
 // #define WIN_WDTH 1920
-// #define WIN_HGHT 480
-// #define WIN_WDTH 640
+// # define WIN_HGHT 480
+// # define WIN_WDTH 640
 
 static void			calculate_win_factor(t_data *d) __attribute__((unused));
-static void			calculate_map_sz_factor(t_data *d) __attribute__((unused));
+static void			calculate_default_scale(t_data *d) __attribute__((unused));
 static void			set_t_scale_attributes(t_data *d) __attribute__((unused));
 static void			set_target_height(t_data *d) __attribute__((unused));
 static void			set_target_width(t_data *d) __attribute__((unused));
 
 typedef struct s_sc
 {
-	double			map_sz_factor;
+	double			default_scale;
 	double			altitude_factor;
 	double			menu_width;
 	double			win_hght;
@@ -40,7 +40,7 @@ typedef struct s_sc
 	double			win_factor;
 	t_func_ptr		create_t_scale;
 	t_func_ptr		calculate_win_factor;
-	t_func_ptr		calculate_map_size_factor;
+	t_func_ptr		calculate_default_scale;
 	t_func_ptr		set_target_width;
 	t_func_ptr		set_target_height;
 }					t_scale;
@@ -50,21 +50,19 @@ static inline void	calculate_win_factor(t_data *d)
 	d->scale->win_factor = 1000 / d->scale->win_hght;
 }
 
-static inline void	calculate_map_sz_factor(t_data *d)
+static inline void	calculate_default_scale(t_data *d)
 {
-	d->scale->map_sz_factor = d->map->target_width / d->map->width;
+	d->scale->default_scale = d->map->target_width / d->map->width;
 }
 
 static inline void	set_target_height(t_data *d)
 {
-	d->map->target_height = d->map->height * d->scale->map_sz_factor;
+	d->map->target_height = d->map->height * d->scale->default_scale;
 }
 
 static inline void	set_target_width(t_data *d)
 {
 	d->map->target_width = calculate_target_width(d);
-	if (d->map->size >= 20000 && WIN_HGHT < 720)
-		d->map->target_width = WIN_HGHT * 1.9;
 }
 
 static inline void	set_t_scale_attributes(t_data *d)
