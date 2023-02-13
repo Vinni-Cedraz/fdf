@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/11 20:03:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/12 21:34:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_point				*move_center_back_to_place(t_point *p, t_data *d);
 
 void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 {
-	t_n				*tmp;
+	t_n	*tmp;
 
 	tmp = d->map->pts;
 	if (d->state != isometric)
@@ -87,6 +87,11 @@ static inline void	calculate_z_scale(t_data *d)
 {
 	double	z_range;
 
+	if (d->map->is_plateau)
+	{
+		d->offset->scale_z = 1;
+		return ;
+	}
 	z_range = d->map->max_z - d->map->min_z;
 	d->offset->scale_z = 5 / (z_range / 10);
 }

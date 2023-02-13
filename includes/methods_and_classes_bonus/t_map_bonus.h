@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/10 12:06:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:47:13 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_d		t_d;
 static void				get_map_center(t_data *d) __attribute__((unused));
-static int				is_map_vertical(t_map *map) __attribute__((unused));
+static void				is_map_vertical(t_map *map) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
 
 typedef struct s_ba
@@ -74,9 +74,12 @@ static inline void	get_map_center(t_data *d)
 	map->center.z = (map->max_z + map->min_z) / 2;
 }
 
-static inline int	is_map_vertical(t_map *map)
+static inline void	is_map_vertical(t_map *map)
 {
-	return (map->width < map->height);
+	if (map->width < map->height)
+		map->is_vertical = 1;
+	else
+		map->is_vertical = 0;
 }
 
 static inline t_point	**create_arrmap(t_map *map)

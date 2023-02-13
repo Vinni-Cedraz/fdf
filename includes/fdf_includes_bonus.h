@@ -6,13 +6,17 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/11 20:04:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/12 21:51:53 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_INCLUDES_BONUS_H
 # define FDF_INCLUDES_BONUS_H
 
+// # define WIN_HGHT 720
+// # define WIN_WDTH 1370
+// # define WIN_HGHT 1080
+// # define WIN_WDTH 1920
 # define WIN_HGHT 480
 # define WIN_WDTH 640
 

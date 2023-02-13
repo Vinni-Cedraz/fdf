@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/11 17:48:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:28:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	go_spherical(t_data *d)
 
 inline void	increase_sphere_height(t_data *d)
 {
-	d->map->ball.delta += 0.05;
+	d->map->ball.delta += 0.01;
 	go_spherical(d);
 }
 
 inline void	decrease_sphere_height(t_data *d)
 {
-	d->map->ball.delta -= 0.05;
+	d->map->ball.delta -= 0.01;
 	go_spherical(d);
 }
 
