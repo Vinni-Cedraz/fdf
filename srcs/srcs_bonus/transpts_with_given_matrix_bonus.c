@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 16:28:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:46:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static inline void	transform_a_point(t_point *p, t_matrix *m, t_data *d)
 {
 	t_emporary	t;
 
-	get_map_center(d);
+	get_map_center(d->map);
 	t = move_center_to_origin(p, d);
 	p->x = t.x * m->row_1.a + t.y * m->row_2.a + t.z * m->row_3.a;
 	p->y = t.x * m->row_1.b + t.y * m->row_2.b + t.z * m->row_3.b;
@@ -86,14 +86,15 @@ static inline t_point	*move_center_back_to_place(t_point *p, t_d *d)
 static inline void	calculate_z_scale(t_data *d)
 {
 	double	z_range;
-	t_scale	sca;
+	double	z_factor;
+	t_scale	*sca;
 
-	sca = *d->scale;
-	if (!d->map->is_plateau)
-	{
-		z_range = d->map->max_z - d->map->min_z;
-		d->scale->altitude_factor = (10 / sca.win_factor) / (z_range / 10);
-	}
-	else
-		d->scale->altitude_factor = 1;
+	sca = d->scale;
+	z_range = d->map->max_z - d->map->min_z;
+	z_factor = sca->size_factor;
+	if (z_factor > 1)
+		z_factor = 1;
+	sca->altitude_factor = (100 * z_factor) / (z_range * 1.2);
+	if (d->map->is_plateau)
+		sca->altitude_factor = 1;
 }

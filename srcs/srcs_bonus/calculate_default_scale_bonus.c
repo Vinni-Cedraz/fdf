@@ -6,13 +6,13 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:01:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 21:26:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 22:38:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static double			do_linear_interpolation_to_get_factor(double size);
+static void			do_linear_interpolation_to_get_factor(t_data *d);
 
 void	calculate_default_scale_bonus(t_data *d)
 {
@@ -28,17 +28,21 @@ void	calculate_default_scale_bonus(t_data *d)
 
 double	calculate_target_width(t_data *d)
 {
-	double	size_factor;
-	double	win_factor;
-	t_scale	sca;
+	t_scale	*sca;
 
-	sca = *d->scale;
-	win_factor = sca.win_factor;
-	size_factor = do_linear_interpolation_to_get_factor(d->map->size);
-	return ((WIN_WDTH - sca.menu_width) * size_factor * win_factor);
+	sca = d->scale;
+	do_linear_interpolation_to_get_factor(d);
+	return ((WIN_WDTH - sca->menu_width) * sca->size_factor * sca->win_factor);
 }
 
-static inline double	do_linear_interpolation_to_get_factor(double size)
+static inline void	do_linear_interpolation_to_get_factor(t_data *d)
 {
-	return (0.4 + (size - 228) * (0.95 - 0.4) / (180000 - 228));
+	t_scale	*sca;
+	double	map_sz;
+
+	sca = d->scale;
+	map_sz = d->map->size;
+	sca->size_factor = (0.4 + (map_sz - 228) * (0.95 - 0.4) / (180000 - 228));
+	if (sca->size_factor > 3.75)
+		sca->size_factor = 3.75;
 }

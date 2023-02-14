@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:54:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 21:36:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/13 23:58:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include "fdf_t_data_bonus.h"
 # include "t_map_bonus.h"
 
-# define WIN_HGHT 720
-# define WIN_WDTH 1370
-// #define WIN_HGHT 1080
-// #define WIN_WDTH 1920
+// # define WIN_HGHT 720
+// # define WIN_WDTH 1370
+# define WIN_HGHT 1080
+# define WIN_WDTH 1920
 // # define WIN_HGHT 480
 // # define WIN_WDTH 640
 
@@ -38,6 +38,7 @@ typedef struct s_sc
 	double			win_hght;
 	double			win_wdth;
 	double			win_factor;
+	double			size_factor;
 	t_func_ptr		create_t_scale;
 	t_func_ptr		calculate_win_factor;
 	t_func_ptr		calculate_default_scale;
