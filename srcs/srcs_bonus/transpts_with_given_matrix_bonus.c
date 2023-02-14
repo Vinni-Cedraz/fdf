@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:46:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:57:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static inline void	transform_a_point(t_point *p, t_matrix *m, t_data *d)
 {
 	t_emporary	t;
 
-	get_map_center(d->map);
+	d->map->get_map_center(d);
 	t = move_center_to_origin(p, d);
 	p->x = t.x * m->row_1.a + t.y * m->row_2.a + t.z * m->row_3.a;
 	p->y = t.x * m->row_1.b + t.y * m->row_2.b + t.z * m->row_3.b;

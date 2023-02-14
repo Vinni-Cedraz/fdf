@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 13:07:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:51:44 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	deal_keys_bonus(int key, t_data *d)
 	if (!d->lookup.events[index].t_event_method)
 		return (0);
 	d->lookup.events[index].t_event_method(d);
-	return (0);
+	return (1);
 }

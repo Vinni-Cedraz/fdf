@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 18:47:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:00:24 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	parse_map_bonus(t_data *d)
 	get_map_dimensions_bonus(d);
 	create_points_list(d);
 	calculate_default_scale_bonus(d);
-	calculate_initial_offset(d);
+	d->offset->set_initial_offset(d);
 	assign_coordinates_bonus(d);
 	apply_scale(d);
 	check_for_hexcolor(d);

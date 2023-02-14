@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:42:11 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:47:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:30:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ inline void	mirror_altitude(t_data *d)
 	if (d->state != isometric)
 		go_isometric_using_snapshot(d);
 	reset_zoom_from_snapshot(d);
-	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_mirror);
+	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_mirr);
 }
 
 inline void	increase_altitude(t_data *d)

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:21:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:49:02 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static inline void	pre_draw_allocations(t_data *d)
 	d->img = ft_calloc(sizeof(*d->img), 1);
 	d->matrix = ft_calloc(sizeof(*d->matrix), 1);
 	d->mlx = malloc(sizeof(*d->mlx));
-	d->map->arr = create_arrmap(d->map);
+	d->map->arr = d->map->create_arrmap(d->map);
 	d->lookup.events = ft_calloc(128, sizeof(*d->lookup.events));
 }
 

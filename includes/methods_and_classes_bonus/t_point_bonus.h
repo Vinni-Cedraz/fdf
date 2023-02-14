@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:27:17 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 21:51:18 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:23:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
 
 typedef struct s_d	t_data;
 typedef struct s_pt	t_point;
-
-static char			*filter_up_to_x(char *current_point);
-static char			*check_hexstring(char *hexstring);
-static void			set_hexcolor(t_point *p, char *s) __attribute__((unused));
 
 typedef struct s_phere
 {
@@ -58,39 +54,6 @@ typedef struct s_pt
 	long			color;
 	t_sphere		ball;
 	t_snapshot		ol;
-	void			(*set_point_color)(t_point *p, t_data *d);
 }					t_point;
-
-static inline void	set_hexcolor(t_point *p, char *current_p_as_str)
-{
-	char	*hexstring;
-	char	*base;
-
-	hexstring = filter_up_to_x(current_p_as_str);
-	base = check_hexstring(hexstring);
-	if (base)
-		p->color = ft_atoi_base(hexstring, base);
-	else
-		p->color = CYAN;
-}
-
-static inline char	*filter_up_to_x(char *current_point)
-{
-	char	*comma;
-
-	comma = ft_strchr(current_point, ',');
-	if (!comma)
-		return (NULL);
-	return (comma + 3);
-}
-
-static inline char	*check_hexstring(char *hexstring)
-{
-	if (ft_ishexlow(hexstring))
-		return (HEX_BASE_LOWER);
-	if (ft_ishexup(hexstring))
-		return (HEX_BASE_UPPER);
-	return (NULL);
-}
 
 #endif

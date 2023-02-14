@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:43:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:09:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void	initialize_key_events_table(t_data *d)
 	d->lookup.events[16] = (t_event){' ', &go_through_each_stage_of_iso};
 	d->lookup.events[17] = (t_event){'g', &change_grid_rendering_method};
 	d->lookup.events[18] = (t_event){';', &move_back_to_isometric_state};
-	d->lookup.events[19] = (t_event){LEFT_ARROW, &left};
-	d->lookup.events[20] = (t_event){RIGHT_ARROW, &right};
-	d->lookup.events[21] = (t_event){UP_ARROW, &up};
-	d->lookup.events[22] = (t_event){DOWN_ARROW, &down};
+	d->lookup.events[19] = (t_event){UP_ARROW, d->offset->move[0]};
+	d->lookup.events[20] = (t_event){DOWN_ARROW, d->offset->move[1]};
+	d->lookup.events[21] = (t_event){LEFT_ARROW, d->offset->move[2]};
+	d->lookup.events[22] = (t_event){RIGHT_ARROW, d->offset->move[3]};
 }

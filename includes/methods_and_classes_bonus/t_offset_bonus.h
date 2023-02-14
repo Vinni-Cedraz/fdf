@@ -6,13 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:27:18 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 16:29:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:10:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_OFFSET_BONUS_H
 # define T_OFFSET_BONUS_H
 
+# include "fdf_prototypes_bonus.h"
 # include "fdf_t_data_bonus.h"
 # include "t_map_bonus.h"
 # include "t_scale_bonus.h"
@@ -30,6 +31,8 @@ typedef struct s_offset
 	double			initial_move_x;
 	double			initial_move_y;
 	int				neutral_zoom;
+	t_func_ptr		set_initial_offset;
+	t_func_ptr		move[4];
 }					t_offset;
 
 static inline void	up(t_data *d)

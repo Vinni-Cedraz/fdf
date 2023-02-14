@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 20:46:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:47:52 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	define_rotation_matrices_bonus(t_rotation_matrices *matrix)
 	define_free_rotation_matrices(matrix);
 	define_isometry_step_one_rotation(matrix);
 	define_isometry_step_two_rotation(matrix);
+	matrix->iso_in_one_step = &iso_in_one_step;
+	matrix->scale_z_up_tmp_stage = &scale_z_up_tmp_stage;
 	define_change_altitude_matrix(matrix);
 }
 
@@ -81,9 +83,6 @@ static void	define_isometry_step_two_rotation(t_rotation_matrices *matrix)
 
 static void	define_change_altitude_matrix(t_rotation_matrices *m)
 {
-	t_mul_mat	mul_mat;
-
-	mul_mat = &multiply_two_matrices_bonus;
 	m->pre_change_altitude_up = (t_matrix){
 	{1, 0, 0},
 	{0, 1, 0},
@@ -96,9 +95,9 @@ static void	define_change_altitude_matrix(t_rotation_matrices *m)
 	{1, 0, 0},
 	{0, 1, 0},
 	{0, 0, -1}};
-	iso_in_one_step(m);
-	scale_z_up_tmp_stage(m);
-	m->change_altitude_up = mul_mat(m->undo_iso_do_pre_up, m->go_iso);
-	m->change_altitude_down = mul_mat(m->undo_iso_do_pre_down, m->go_iso);
-	m->change_altitude_mirror = mul_mat(m->undo_iso_do_pre_mirror, m->go_iso);
+	m->iso_in_one_step(m);
+	m->scale_z_up_tmp_stage(m);
+	m->change_altitude_up = m->mul_mat(m->undo_iso_do_pre_up, m->go_iso);
+	m->change_altitude_down = m->mul_mat(m->undo_iso_do_pre_down, m->go_iso);
+	m->change_altitude_mirr = m->mul_mat(m->undo_iso_do_pre_mirror, m->go_iso);
 }

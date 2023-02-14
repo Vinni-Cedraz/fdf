@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:02:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:19:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,9 @@ void					get_xy_range_bonus(t_data *d);
 void					initialize_methods_bonus(t_data *d);
 
 void					colorize_points_bonus(t_data *d);
+
+int						max_steps(int dx, int dy);
+
+void					set_hexcolor_bonus(t_point *p, char *current_p_as_str);
 
 #endif

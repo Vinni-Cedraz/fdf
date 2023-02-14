@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/14 12:23:49 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/14 20:20:56 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ BONUS_SRCS = parse_map_bonus \
 									 get_xy_range_bonus \
 								initialize_methods_bonus \
 								    colorize_points_bonus \
+										set_hexcolor_bonus \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
 				   	   ft_swap \

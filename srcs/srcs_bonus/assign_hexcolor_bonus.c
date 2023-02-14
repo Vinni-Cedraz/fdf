@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 16:10:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:22:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	assign_hexcolor_bonus(t_data *d)
 	while (tmp)
 	{
 		get_point_as_a_string(d, ++counter, row_len);
-		set_hexcolor(&tmp->point, d->tool.p_as_str);
+		set_hexcolor_bonus(&tmp->point, d->tool.p_as_str);
 		tmp = tmp->next;
 		if (is_end_of_row(counter, row_len))
 			ft_free_t_split(d->tool.pts_in_this_row);

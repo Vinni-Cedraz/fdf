@@ -6,13 +6,14 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:14:37 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 00:41:20 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:48:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_ROTATION_MATRICES_BONUS_H
 # define T_ROTATION_MATRICES_BONUS_H
 
+# include "fdf_prototypes_bonus.h"
 # include "fdf_t_data_bonus.h"
 
 static void			iso_in_one_step(t_rm *m) __attribute__((unused));
@@ -41,6 +42,7 @@ typedef struct s_m
 
 // ALIAS FOR THE MATRIX MULTIPLICATION FUNCTION
 typedef t_matrix	(*t_mul_mat)(t_matrix, t_matrix);
+typedef void		(*t_mat_method)(t_rotation_matrices *);
 
 typedef struct s_rm
 {
@@ -64,24 +66,24 @@ typedef struct s_rm
 	t_matrix		undo_iso_do_pre_mirror;
 	t_matrix		change_altitude_up;
 	t_matrix		change_altitude_down;
-	t_matrix		change_altitude_mirror;
+	t_matrix		change_altitude_mirr;
 	t_matrix		spherical;
+	t_mul_mat		mul_mat;
+	t_mat_method	iso_in_one_step;
+	t_mat_method	scale_z_up_tmp_stage;
 }					t_rotation_matrices;
 
 static inline void	iso_in_one_step(t_rotation_matrices *m)
 {
-	t_mul_mat	mul_mat;
-
-	mul_mat = &multiply_two_matrices_bonus;
-	m->undo_iso = mul_mat(m->rev_y, m->rev_x_54_73);
-	m->undo_iso = mul_mat(m->undo_iso, m->rev_z_45);
-	m->go_iso = mul_mat(m->rot_z_45, m->rot_x_54_73);
-	m->go_iso = mul_mat(m->go_iso, m->rot_y);
+	m->mul_mat = &multiply_two_matrices_bonus;
+	m->undo_iso = m->mul_mat(m->rev_y, m->rev_x_54_73);
+	m->undo_iso = m->mul_mat(m->undo_iso, m->rev_z_45);
+	m->go_iso = m->mul_mat(m->rot_z_45, m->rot_x_54_73);
+	m->go_iso = m->mul_mat(m->go_iso, m->rot_y);
 }
 
 static inline void	scale_z_up_tmp_stage(t_rotation_matrices *m)
 {
-	t_mul_mat	mul_mat;
 	t_matrix	undo_iso;
 	t_matrix	pre_up;
 	t_matrix	pre_down;
@@ -91,10 +93,9 @@ static inline void	scale_z_up_tmp_stage(t_rotation_matrices *m)
 	pre_up = m->pre_change_altitude_up;
 	pre_down = m->pre_change_altitude_down;
 	pre_mirror = m->pre_change_altitude_mirror;
-	mul_mat = &multiply_two_matrices_bonus;
-	m->undo_iso_do_pre_up = mul_mat(undo_iso, pre_up);
-	m->undo_iso_do_pre_down = mul_mat(undo_iso, pre_down);
-	m->undo_iso_do_pre_mirror = mul_mat(undo_iso, pre_mirror);
+	m->undo_iso_do_pre_up = m->mul_mat(undo_iso, pre_up);
+	m->undo_iso_do_pre_down = m->mul_mat(undo_iso, pre_down);
+	m->undo_iso_do_pre_mirror = m->mul_mat(undo_iso, pre_mirror);
 }
 
 #endif

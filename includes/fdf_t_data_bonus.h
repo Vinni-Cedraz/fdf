@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:54:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:16:12 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_offset		t_offset;
 typedef struct s_color		t_color;
 typedef struct s_rm			t_rotation_matrices;
 typedef struct s_sc			t_scale;
+typedef struct s_pt			t_p;
 
 typedef enum e_state
 {

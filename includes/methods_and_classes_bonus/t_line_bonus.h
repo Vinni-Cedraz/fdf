@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:07:52 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 12:52:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:16:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,44 @@
 # include "t_offset_bonus.h"
 # include <math.h>
 
-typedef struct s_l	t_ln;
-
-static int			max_steps(int dx, int dy) __attribute__((unused));
-static void			pixel(t_img *i, t_ln l, t_ui c) __attribute__((unused));
+typedef struct s_l		t_ln;
+static t_ln				init_ln(t_p p1, t_p p2, t_d *d) __attribute__((unused));
+static void				lcolor(t_p p1, t_p p2, t_ui *c) __attribute__((unused));
 
 typedef struct s_l
 {
-	double			x;
-	double			y;
-	double			x_inc;
-	double			y_inc;
-	double			delta_x;
-	double			delta_y;
-	unsigned int	color;
-	double			steps;
-}					t_line;
+	double				x;
+	double				y;
+	double				x_inc;
+	double				y_inc;
+	double				delta_x;
+	double				delta_y;
+	unsigned int		color;
+	double				steps;
+}						t_line;
 
-static inline int	max_steps(int dx, int dy)
+static void	lcolor(t_point p1, t_point p2, t_ui *color)
 {
-	int	steps;
-
-	if (abs(dx) > abs(dy))
-		steps = abs(dx);
+	if (p1.color == p2.color)
+		*color = p1.color;
+	else if (p1.ol.raw.z < p2.ol.raw.z)
+		*color = p1.color;
 	else
-		steps = abs(dy);
-	return (steps);
+		*color = p2.color;
 }
 
-static void	pixel(t_img *img, t_line l, t_ui color)
+static inline t_line	init_ln(t_point p1, t_point p2, t_data *d)
 {
-	char	*ptr_to_color;
-	int		y_offset;
-	int		x_offset;
+	t_line	line;
 
-	y_offset = (int)l.y * img->line_len;
-	x_offset = (int)l.x * (img->bpp / 8);
-	if (l.x < 0 || l.x >= img->width || l.y < 0 || l.y >= img->height)
-		return ;
-	ptr_to_color = img->addr + y_offset + x_offset;
-	*(unsigned int *)ptr_to_color = color;
+	line.delta_x = p2.x - p1.x;
+	line.delta_y = p2.y - p1.y;
+	line.steps = max_steps(line.delta_x, line.delta_y);
+	line.x_inc = line.delta_x / line.steps;
+	line.y_inc = line.delta_y / line.steps;
+	line.x = p1.x + d->offset->move_x;
+	line.y = p1.y + d->offset->move_y;
+	return (line);
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 17:48:07 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:46:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:21:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ inline void	go_isometric_using_snapshot(t_data *d)
 	if (d->state == spherical)
 		get_xy_range_bonus(d);
 	get_altitude_range_bonus(d->map);
-	get_map_center(d->map);
+	d->map->get_map_center(d);
 	d->state = isometric;
 	d->offset->neutral_zoom = 1;
 }
