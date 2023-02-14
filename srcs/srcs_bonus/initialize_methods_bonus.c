@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:40:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:51:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:06:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	initialize_methods_bonus(t_data *d)
 static inline void	initialize_t_scale_methods(t_scale *scale)
 {
 	scale->create_t_scale = &set_t_scale_attributes;
-	scale->set_target_width = &set_target_width;
-	scale->set_target_height = &set_target_height;
 	scale->calculate_win_factor = &calculate_win_factor;
 }
 

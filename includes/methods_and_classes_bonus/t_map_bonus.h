@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 15:06:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:00:54 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ typedef struct s_d		t_d;
 static void				get_map_center(t_map *map) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
 static void				set_radius(t_data *d) __attribute__((unused));
-static void				set_target_height(t_data *d) __attribute__((unused));
-static void				set_target_width(t_data *d) __attribute__((unused));
 
 typedef struct s_ba
 {
@@ -67,17 +65,8 @@ typedef struct s_mp
 	t_point				**arr;
 	t_center			center;
 	t_func_ptr			set_radius;
+	t_func_ptr			get_map_center;
 }						t_map;
-
-static inline void	set_target_height(t_data *d)
-{
-	d->map->target_height = d->map->height * d->scale->default_scale;
-}
-
-static inline void	set_target_width(t_data *d)
-{
-	d->map->target_width = calculate_target_width(d);
-}
 
 static inline void	get_map_center(t_map *map)
 {

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:21:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:02:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,6 @@ void					decrease_sphere_height(t_data *d);
 void					get_xy_range_bonus(t_data *d);
 
 void					initialize_methods_bonus(t_data *d);
-
-double					calculate_target_width(t_data *d);
 
 void					colorize_points_bonus(t_data *d);
 

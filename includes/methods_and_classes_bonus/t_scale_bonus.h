@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:54:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:44:35 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:06:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 static void			calculate_win_factor(t_data *d) __attribute__((unused));
 static void			set_t_scale_attributes(t_data *d) __attribute__((unused));
-static void			set_target_height(t_data *d) __attribute__((unused));
-static void			set_target_width(t_data *d) __attribute__((unused));
 
 typedef struct s_sc
 {
@@ -37,9 +35,6 @@ typedef struct s_sc
 	double			size_factor;
 	t_func_ptr		create_t_scale;
 	t_func_ptr		calculate_win_factor;
-	t_func_ptr		calculate_default_scale;
-	t_func_ptr		set_target_width;
-	t_func_ptr		set_target_height;
 }					t_scale;
 
 static inline void	calculate_win_factor(t_data *d)
