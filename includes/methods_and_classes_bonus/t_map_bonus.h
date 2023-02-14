@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:14:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:45:33 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:06:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 # include "fdf_prototypes_bonus.h"
 # include "fdf_t_data_bonus.h"
 # include "linked_list_tools.h"
+# include "t_scale_bonus.h"
+# include <math.h>
 # include <stddef.h>
 
 typedef struct s_d		t_d;
 static void				get_map_center(t_map *map) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
+static void				set_radius(t_data *d) __attribute__((unused));
+static void				set_target_height(t_data *d) __attribute__((unused));
+static void				set_target_width(t_data *d) __attribute__((unused));
 
 typedef struct s_ba
 {
@@ -28,6 +33,7 @@ typedef struct s_ba
 	double				center_y;
 	double				center_z;
 	double				delta;
+	t_func_ptr			*set_radius;
 }						t_ball;
 
 typedef struct s_ctr
@@ -60,13 +66,38 @@ typedef struct s_mp
 	t_n					*pts;
 	t_point				**arr;
 	t_center			center;
+	t_func_ptr			set_radius;
 }						t_map;
+
+static inline void	set_target_height(t_data *d)
+{
+	d->map->target_height = d->map->height * d->scale->default_scale;
+}
+
+static inline void	set_target_width(t_data *d)
+{
+	d->map->target_width = calculate_target_width(d);
+}
 
 static inline void	get_map_center(t_map *map)
 {
 	map->center.x = (map->max_x + map->min_x) / 2;
 	map->center.y = (map->max_y + map->min_y) / 2;
 	map->center.z = (map->max_z + map->min_z) / 2;
+}
+
+static inline void	set_radius(t_data *d)
+{
+	double	ball_sz_factor;
+	double	map_sz;
+
+	map_sz = d->map->size;
+	ball_sz_factor = d->scale->size_factor;
+	if (ball_sz_factor > 1.6)
+		ball_sz_factor = 1.6;
+	if (ball_sz_factor < 0.417)
+		ball_sz_factor = 0.1;
+	d->map->radius = sqrt((map_sz / ball_sz_factor) / (PI * ball_sz_factor));
 }
 
 static inline t_point	**create_arrmap(t_map *map)

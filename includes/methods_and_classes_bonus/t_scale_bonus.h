@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:54:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 23:58:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:44:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 
 # include "fdf_prototypes_bonus.h"
 # include "fdf_t_data_bonus.h"
-# include "t_map_bonus.h"
 
-// # define WIN_HGHT 720
-// # define WIN_WDTH 1370
-# define WIN_HGHT 1080
-# define WIN_WDTH 1920
-// # define WIN_HGHT 480
-// # define WIN_WDTH 640
+# define WIN_HGHT 720
+# define WIN_WDTH 1370
+// # define WIN_HGHT 1080
+// # define WIN_WDTH 1920
 
 static void			calculate_win_factor(t_data *d) __attribute__((unused));
-static void			calculate_default_scale(t_data *d) __attribute__((unused));
 static void			set_t_scale_attributes(t_data *d) __attribute__((unused));
 static void			set_target_height(t_data *d) __attribute__((unused));
 static void			set_target_width(t_data *d) __attribute__((unused));
@@ -49,21 +45,6 @@ typedef struct s_sc
 static inline void	calculate_win_factor(t_data *d)
 {
 	d->scale->win_factor = 1000 / d->scale->win_hght;
-}
-
-static inline void	calculate_default_scale(t_data *d)
-{
-	d->scale->default_scale = d->map->target_width / d->map->width;
-}
-
-static inline void	set_target_height(t_data *d)
-{
-	d->map->target_height = d->map->height * d->scale->default_scale;
-}
-
-static inline void	set_target_width(t_data *d)
-{
-	d->map->target_width = calculate_target_width(d);
 }
 
 static inline void	set_t_scale_attributes(t_data *d)

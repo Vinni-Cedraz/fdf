@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 21:21:37 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:53:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	get_phi_and_theta(t_data *d)
 	double	spread_points_vertically;
 
 	map = d->map->pts;
+	d->map->set_radius(d);
 	spread_points_horizontally = PI * 2 / (d->map->width - 1);
 	spread_points_vertically = PI / d->map->height;
 	while (map)

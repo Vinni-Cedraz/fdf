@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 16:15:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:21:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void					loop_through_each_transition_method(t_data *d);
 void					go_isometric_from_random_state(t_data *d);
 
 t_m						multiply_two_matrices_bonus(t_m a, t_m b);
-
-void					compute_color_gradient_bonus(t_point *p, t_data *d);
 
 void					get_map_dimensions_bonus(t_data *d);
 
@@ -168,5 +166,7 @@ void					get_xy_range_bonus(t_data *d);
 void					initialize_methods_bonus(t_data *d);
 
 double					calculate_target_width(t_data *d);
+
+void					colorize_points_bonus(t_data *d);
 
 #endif

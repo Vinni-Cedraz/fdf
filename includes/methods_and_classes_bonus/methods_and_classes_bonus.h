@@ -6,18 +6,24 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 11:36:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 11:50:53 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:54:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef METHODS_AND_CLASSES_BONUS_H
 # define METHODS_AND_CLASSES_BONUS_H
 
+// I am lending concepts of OOP to C language
 // classes are structs with methods
 // methods are functions that are defined in the header file of it's class
 // and deal exclusively with the attributes of that class
 
+// Defining those simple functions in the header file
+// allows me to hide some implementation details and avoiding excess
+// function definitions in the source file
+
 # include "t_color_bonus.h"
+# include "t_lookup_bonus.h"
 # include "t_line_bonus.h"
 # include "t_map_bonus.h"
 # include "t_mlx_bonus.h"

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:59:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 21:41:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:53:39 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,5 @@ static inline void	get_map_size(t_data *d)
 {
 	d->map->size = d->map->width * d->map->height;
 	d->map->ratio = (double)d->map->height / d->map->width;
-	d->map->radius = WIN_HGHT * 0.16;
-	if (WIN_HGHT < 720)
-		d->map->radius = WIN_HGHT * 0.35;
 	printf("map size: %lu\n", d->map->size);
 }

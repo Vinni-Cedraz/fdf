@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 15:28:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:22:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline void	free_simple_pointers(t_data *d)
 	free(d->scale);
 	free(d->matrix);
 	free(d->lookup.events);
-	free(d->c);
+	free(d->color);
 }
 
 static inline void	free_complex_pointers(t_data *d)

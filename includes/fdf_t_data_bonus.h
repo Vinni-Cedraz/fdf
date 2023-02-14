@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 15:00:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:54:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libs/ft_printf_libft/libft/libft_bonus.h"
 # include "fdf_prototypes_bonus.h"
 # include "linked_list_tools.h"
-# include "t_event_bonus.h"
+# include "t_lookup_bonus.h"
 # include "t_mlx_bonus.h"
 # include <stdio.h>
 
@@ -53,7 +53,7 @@ typedef struct s_d
 	t_lookup				lookup;
 	t_scale					*scale;
 	t_offset				*offset;
-	t_color					*c;
+	t_color					*color;
 	t_mlx					*mlx;
 	t_img					*img;
 	t_map					*map;

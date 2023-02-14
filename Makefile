@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/13 19:39:50 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/14 12:23:49 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,18 +75,18 @@ BONUS_SRCS = parse_map_bonus \
 		   			  assign_hexcolor_bonus \
 		   		 multiply_two_matrices_bonus \
 		   			 get_map_dimensions_bonus \
-		   		  compute_color_gradient_bonus \
-			       		   open_win_n_img_bonus \
-			     initialize_lookup_structs_bonus \
-						   		rotate_five_bonus \
-								reverse_five_bonus \
-								         zoom_bonus \
-								  zoom_methods_bonus \
-							   isometry_methods_bonus \
-					 isometry_transition_methods_bonus \
-										   sphere_bonus \
-									  get_xy_range_bonus \
-								 initialize_methods_bonus \
+			       		  open_win_n_img_bonus \
+			    initialize_lookup_structs_bonus \
+						   	   rotate_five_bonus \
+							   reverse_five_bonus \
+								        zoom_bonus \
+								 zoom_methods_bonus \
+							  isometry_methods_bonus \
+					isometry_transition_methods_bonus \
+										  sphere_bonus \
+									 get_xy_range_bonus \
+								initialize_methods_bonus \
+								    colorize_points_bonus \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
 				   	   ft_swap \

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 15:45:13 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:21:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static inline t_data	*pre_parse_allocations(void)
 	d->offset = ft_calloc(sizeof(*d->offset), 1);
 	d->scale = ft_calloc(sizeof(*d->scale), 1);
 	d->map = ft_calloc(sizeof(*d->map), 1);
-	d->c = ft_calloc(sizeof(*d->c), 1);
+	d->color = ft_calloc(sizeof(*d->color), 1);
 	return (d);
 }
 
@@ -63,7 +63,7 @@ static inline void	error_handler(t_data *d)
 	printf("%s\n", strerror(22));
 	free(d->map);
 	free(d->offset);
-	free(d->c);
+	free(d->color);
 	free(d);
 	exit(1);
 }

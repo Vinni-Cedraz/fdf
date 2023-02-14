@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 21:17:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:43:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ static void	initialize_key_events_table(t_data *d);
 
 void	initialize_lookup_structs_bonus(t_data *d)
 {
-	d->lookup.set_hash = &hash_f;
 	initialize_transition_methods(d);
 	initialize_grid_methods(d);
 	initialize_key_events_table(d);
-	d->lookup.set_hash(d->lookup.events);
+	d->lookup.set_event_index_by_key(d->lookup.events);
 }
 
 static void	initialize_transition_methods(t_data *d)
