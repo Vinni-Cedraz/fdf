@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   compute_color_gradient_bonus.c                     :+:      :+:    :+:   */
+/*   colorize_points_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:21:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:02:00 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static long			rgb_to_int(double r, double g, double b);
 static long			hsl_to_rgb(t_color *c);
 static int			get_color_wheel_sector_of_hue(double h);
-static void			compute_color_gradient_bonus(t_point *p, t_data *d);
+static void			compute_color_gradient(t_point *p, t_data *d);
 
 void	colorize_points_bonus(t_data *d)
 {
@@ -25,12 +25,12 @@ void	colorize_points_bonus(t_data *d)
 	tmp = d->map->pts;
 	while (tmp)
 	{
-		compute_color_gradient_bonus(&tmp->point, d);
+		compute_color_gradient(&tmp->point, d);
 		tmp = tmp->next;
 	}
 }
 
-static inline void	compute_color_gradient_bonus(t_point *p, t_data *d)
+static inline void	compute_color_gradient(t_point *p, t_data *d)
 {
 	double	normalized_z;
 	int		index;

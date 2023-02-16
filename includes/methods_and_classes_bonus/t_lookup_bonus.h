@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:51:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:52:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:14:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ typedef struct s_lookup
 	t_node			*iso_transit_methods;
 	t_node			*grid_methods;
 	t_event			*events;
-	void			(*set_event_index_by_key)(t_event *events);
-	int				(*hash_function)(int key);
+	void			(*set_event_index_by_key)(t_event*);
+	int				(*hash_function)(int);
 }					t_lookup;
 
 static inline int	hash_function(int key)
 {
-	return ((key % 96) + 32);
+	return ((key % 105) + 22);
 }
 
 static inline void	set_event_index_by_key(t_event *events)

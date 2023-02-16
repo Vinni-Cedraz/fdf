@@ -6,11 +6,12 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:01:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 17:24:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:58:32 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include "t_interpolation_bonus.h"
 
 static void			calculate_default_scale(t_data *d);
 static void			calculate_size_factor(t_data *d);
@@ -44,18 +45,18 @@ static inline void	calculate_default_scale(t_data *d)
 
 static inline void	calculate_size_factor(t_data *d)
 {
-	double	current_map_delta;
-	double	map_sz_delta;
-	double	factor_delta;
-	double	*factor;
+	double			*result;
+	t_interpolation	inter;
 
-	map_sz_delta = 2892800 - 228;
-	factor_delta = 5.0 - 0.4;
-	current_map_delta = d->map->size - 228;
-	factor = &d->scale->size_factor;
-	*factor = 0.4 + current_map_delta * factor_delta / map_sz_delta;
-	if (*factor >= 2.26)
-		*factor = 2.26;
+	inter.interpolate = &interpolate_linear;
+	inter.normalize_result = &normalize;
+	inter.size_delta = 2892800 - 228;
+	inter.factor_delta = 5.0 - 0.4;
+	inter.current_delta = d->map->size - 228;
+	inter.min_factor = 0.4;
+	result = &d->scale->size_factor;
+	*result = inter.interpolate(inter);
+	inter.normalize_result(*result);
 }
 
 static inline void	set_target_height(t_data *d)

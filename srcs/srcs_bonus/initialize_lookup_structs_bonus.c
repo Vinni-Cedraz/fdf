@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 20:09:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:10:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,29 @@ static void	initialize_grid_methods(t_data *d)
 
 static void	initialize_key_events_table(t_data *d)
 {
-	d->lookup.events[0] = (t_event){ESC, &call_close_window};
-	d->lookup.events[1] = (t_event){'k', &increase_sphere_height};
-	d->lookup.events[2] = (t_event){'j', &decrease_sphere_height};
-	d->lookup.events[3] = (t_event){'b', &go_spherical};
-	d->lookup.events[5] = (t_event){'w', &zoom_in};
-	d->lookup.events[6] = (t_event){'s', &zoom_out};
-	d->lookup.events[7] = (t_event){'d', &rotate_five_around_y};
-	d->lookup.events[8] = (t_event){'a', &reverse_five_around_y};
-	d->lookup.events[9] = (t_event){'e', &rotate_five_around_x};
-	d->lookup.events[10] = (t_event){'q', &reverse_five_around_x};
-	d->lookup.events[11] = (t_event){'v', &rotate_five_around_z};
-	d->lookup.events[12] = (t_event){'x', &reverse_five_around_z};
-	d->lookup.events[13] = (t_event){'z', &increase_altitude};
-	d->lookup.events[14] = (t_event){'c', &decrease_altitude};
-	d->lookup.events[15] = (t_event){'m', &mirror_altitude};
-	d->lookup.events[16] = (t_event){' ', &go_through_each_stage_of_iso};
-	d->lookup.events[17] = (t_event){'g', &change_grid_rendering_method};
-	d->lookup.events[18] = (t_event){';', &move_back_to_isometric_state};
-	d->lookup.events[19] = (t_event){UP_ARROW, d->offset->move[0]};
-	d->lookup.events[20] = (t_event){DOWN_ARROW, d->offset->move[1]};
-	d->lookup.events[21] = (t_event){LEFT_ARROW, d->offset->move[2]};
-	d->lookup.events[22] = (t_event){RIGHT_ARROW, d->offset->move[3]};
+	t_event	*events;
+
+	events = d->lookup.events;
+	events[0] = (t_event){ESC, &call_close_window};
+	events[1] = (t_event){'k', &increase_sphere_height};
+	events[2] = (t_event){'j', &decrease_sphere_height};
+	events[3] = (t_event){'b', &go_spherical};
+	events[4] = (t_event){'w', &zoom_in};
+	events[5] = (t_event){'s', &zoom_out};
+	events[6] = (t_event){'d', &rotate_five_around_y};
+	events[7] = (t_event){'a', &reverse_five_around_y};
+	events[8] = (t_event){'e', &rotate_five_around_x};
+	events[9] = (t_event){'q', &reverse_five_around_x};
+	events[10] = (t_event){'v', &rotate_five_around_z};
+	events[11] = (t_event){'x', &reverse_five_around_z};
+	events[12] = (t_event){'z', &increase_altitude};
+	events[13] = (t_event){'c', &decrease_altitude};
+	events[14] = (t_event){'m', &mirror_altitude};
+	events[15] = (t_event){' ', &go_through_each_stage_of_iso};
+	events[16] = (t_event){'g', &change_grid_rendering_method};
+	events[17] = (t_event){';', &move_back_to_isometric_state};
+	events[18] = (t_event){UP_ARROW, d->offset->move[0]};
+	events[19] = (t_event){DOWN_ARROW, d->offset->move[1]};
+	events[20] = (t_event){LEFT_ARROW, d->offset->move[2]};
+	events[21] = (t_event){RIGHT_ARROW, d->offset->move[3]};
 }
