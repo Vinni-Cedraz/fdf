@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:51:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:14:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:55:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_ev
 
 typedef struct s_lookup
 {
-	t_node			*iso_transit_methods;
+	t_node			*transition_methods;
 	t_node			*grid_methods;
 	t_event			*events;
 	void			(*set_event_index_by_key)(t_event*);

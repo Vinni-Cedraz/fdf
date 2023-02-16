@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 13:08:55 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:43:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void					render_lines_cross(t_data *d);
 int						draw_bonus(t_data *d);
 int						deal_keys_bonus(int key, t_data *d);
 void					transpts_with_given_matrix_bonus(t_data *d, t_m *rot);
-void					go_isometric_from_any(t_data *d, t_func_ptr iso_action);
 void					loop_through_each_transition_method(t_data *d);
 void					go_isometric_from_random_state(t_data *d);
 t_m						multiply_two_matrices_bonus(t_m a, t_m b);
@@ -78,15 +77,12 @@ void					rotate_five_around_x(t_data *d);
 void					reverse_five_around_x(t_data *d);
 void					rotate_five_around_z(t_data *d);
 void					reverse_five_around_z(t_data *d);
-void					go_through_each_stage_of_iso(t_d *d);
-void					move_back_to_isometric_state(t_data *d);
 void					increase_altitude(t_data *d);
 void					decrease_altitude(t_data *d);
 void					mirror_altitude(t_data *d);
 void					change_altitude_bonus(t_data *d, t_func_ptr method);
 void					update_state_after_reset(t_data *d);
 void					update_state_after_zoom(t_data *d);
-void					take_iso_snapshot(t_data *d);
 void					restore_iso_snapshot(t_data *d);
 void					go_isometric_using_snapshot(t_data *d);
 void					go_to_diagonal(t_data *d);

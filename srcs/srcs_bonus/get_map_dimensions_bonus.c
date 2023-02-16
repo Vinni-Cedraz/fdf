@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 16:59:12 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:53:39 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/18 03:05:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static inline void	get_map_width(t_data *d)
 	t_split	*get_width;
 
 	get_width = ft_split(d->tool.first_line, ' ');
-	d->map->width = get_width->words;
+	d->map->width = get_width->number_of_words;
 	ft_free_t_split(get_width);
 	free(d->tool.first_line);
 }

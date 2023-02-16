@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:28:57 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 15:12:07 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/17 22:20:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 typedef unsigned char	t_uc;
 
-static inline void		*aux_memcpy(void *dst, const void *src, size_t n);
 static inline void		aux_swap(void *a, void *b, size_t size);
+static inline void		*aux_memcpy(void *dst, const void *src, size_t n);
 
 char	*ft_strrev(char *str, size_t strlen)
 {

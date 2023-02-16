@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 20:22:47 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/18 03:05:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static inline int	read_points_in_current_row(t_data *d)
 	free(untrimmed_line);
 	d->tool.pts_in_this_row = ft_split(trimmed_line, ' ');
 	free(trimmed_line);
-	if ((int)d->tool.pts_in_this_row->words < d->map->width)
+	if ((int)d->tool.pts_in_this_row->number_of_words < d->map->width)
 		return (0);
 	return (1);
 }

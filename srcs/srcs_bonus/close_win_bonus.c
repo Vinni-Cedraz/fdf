@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 12:22:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:55:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ static inline void	free_complex_pointers(t_data *d)
 {
 	ft_free_arr_size((void **)d->map->arr, d->map->height);
 	ft_lstpoint_free(&d->map->pts);
-	ft_lstcircular_free(&d->lookup.iso_transit_methods);
+	ft_lstcircular_free(&d->lookup.transition_methods);
 	ft_lstcircular_free(&d->lookup.grid_methods);
 }

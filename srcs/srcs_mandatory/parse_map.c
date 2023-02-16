@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:45:33 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 19:57:05 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:19:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parse_map(char *argv, t_data *d)
 		return (-1);
 	first_line = ft_gnl(fd);
 	split_to_count_width = ft_split(first_line, ' ');
-	d->map->width = split_to_count_width->words;
+	d->map->width = split_to_count_width->number_of_words;
 	close(fd);
 	fd = open(argv, O_RDONLY);
 	d->map->height = 0;
@@ -117,7 +117,7 @@ static int	is_shorter_than_first_line(t_data *d)
 	char	*gnl_buggy_line;
 
 	gnl_buggy_line = d->tool.line;
-	if ((int)d->tool.split->words < d->map->width)
+	if ((int)d->tool.split->number_of_words < d->map->width)
 	{
 		ft_free_t_split(d->tool.split);
 		while (gnl_buggy_line != NULL)

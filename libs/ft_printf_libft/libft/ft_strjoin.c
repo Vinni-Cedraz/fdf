@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 16:31:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/10 17:47:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/17 22:34:27 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ static inline size_t	aux_strlcpy(char *dst, const char *src, size_t size);
 static inline size_t	aux_strlen(const char *str);
 static inline void	*aux_memcpy(void *dst, const void *src, size_t n);
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int		len;
-	char	*res;
-
-	if (!s1 || !s2)
-		return (NULL);
-	len = aux_strlen(s1) + aux_strlen(s2) + 1;
-	res = malloc(len);
-	aux_strlcpy(res, s1, len);
-	aux_strlcat(res, s2, len);
-	return (free((char *)s1), free((char *)s2), res);
-}
+// char	*ft_strjoin(char const *s1, char const *s2)
+// {
+// 	int		len;
+// 	char	*res;
+//
+// 	if (!s1 || !s2)
+// 		return (NULL);
+// 	len = aux_strlen(s1) + aux_strlen(s2) + 1;
+// 	res = malloc(len);
+// 	aux_strlcpy(res, s1, len);
+// 	aux_strlcat(res, s2, len);
+// 	return (free((char *)s1), free((char *)s2), res);
+// }
 
 static inline size_t	aux_strlen(const char *str)
 {
@@ -76,4 +76,19 @@ static inline size_t	aux_strlcat(char *dst, const char *src, size_t size)
 	if (size > dst_sz)
 		aux_strlcpy(dst + dst_sz, src, size - dst_sz);
 	return (dst_sz + aux_strlen(src));
+}
+
+// standard version for trippoulie tester
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		len;
+	char	*res;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len = aux_strlen(s1) + aux_strlen(s2) + 1;
+	res = malloc(len);
+	aux_strlcpy(res, s1, len);
+	aux_strlcat(res, s2, len);
+	return (res);
 }

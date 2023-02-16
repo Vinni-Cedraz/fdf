@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/15 12:10:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:55:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	initialize_transition_methods(t_data *d)
 	ft_lstadd_back(&head, ft_lstnew(&undo_isometric));
 	ft_lstadd_back(&head, ft_lstnew(&undo_diagonal));
 	ft_lst_make_it_circular(&head);
-	d->lookup.iso_transit_methods = head;
+	d->lookup.transition_methods = head;
 }
 
 static void	initialize_grid_methods(t_data *d)
@@ -67,9 +67,9 @@ static void	initialize_key_events_table(t_data *d)
 	events[12] = (t_event){'z', &increase_altitude};
 	events[13] = (t_event){'c', &decrease_altitude};
 	events[14] = (t_event){'m', &mirror_altitude};
-	events[15] = (t_event){' ', &go_through_each_stage_of_iso};
+	events[15] = (t_event){' ', &loop_through_each_transition_method};
 	events[16] = (t_event){'g', &change_grid_rendering_method};
-	events[17] = (t_event){';', &move_back_to_isometric_state};
+	events[17] = (t_event){';', &restore_iso_snapshot};
 	events[18] = (t_event){UP_ARROW, d->offset->move[0]};
 	events[19] = (t_event){DOWN_ARROW, d->offset->move[1]};
 	events[20] = (t_event){LEFT_ARROW, d->offset->move[2]};

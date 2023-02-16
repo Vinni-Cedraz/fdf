@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:19:31 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/03 20:34:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/18 03:04:15 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ typedef int	(*t_ptr_to_put_funct)(va_list args);
 
 typedef struct s_plit
 {
+	char	whtspce;
 	char	*end;
 	char	*start;
 	char	**str_arr;
-	size_t	words;
+	size_t	number_of_words;
 
 }			t_split;
 

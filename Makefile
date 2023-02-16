@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/14 20:20:56 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/16 20:08:15 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,58 +62,57 @@ BONUS_SRCS = parse_map_bonus \
 	    data_initializer_bonus \
  define_rotation_matrices_bonus \
 		   		 close_win_bonus \
-	   two_ways_to_isometry_bonus \
-  transpts_with_given_matrix_bonus \
-		           render_map_bonus \
-		           render_line_bonus \
-		     			   draw_bonus \
-		   			   deal_keys_bonus \
-		   	      change_altitude_bonus \
-		   calculate_default_scale_bonus \
-		   		 get_altitude_range_bonus \
-		   		  assign_coordinates_bonus \
-		   			  assign_hexcolor_bonus \
-		   		 multiply_two_matrices_bonus \
-		   			 get_map_dimensions_bonus \
-			       		  open_win_n_img_bonus \
-			    initialize_lookup_structs_bonus \
-						   	   rotate_five_bonus \
-							   reverse_five_bonus \
-								        zoom_bonus \
-								 zoom_methods_bonus \
-							  isometry_methods_bonus \
-					isometry_transition_methods_bonus \
-										  sphere_bonus \
-									 get_xy_range_bonus \
-								initialize_methods_bonus \
-								    colorize_points_bonus \
-										set_hexcolor_bonus \
+			     render_map_bonus \
+			     render_line_bonus \
+					     draw_bonus \
+				     deal_keys_bonus \
+			    change_altitude_bonus \
+	     calculate_default_scale_bonus \
+			   get_altitude_range_bonus \
+			    assign_coordinates_bonus \
+				    assign_hexcolor_bonus \
+			   multiply_two_matrices_bonus \
+				   get_map_dimensions_bonus \
+					    open_win_n_img_bonus \
+			  initialize_lookup_structs_bonus \
+						     rotate_five_bonus \
+						     reverse_five_bonus \
+									  zoom_bonus \
+							   zoom_methods_bonus \
+				   lookup_transition_methods_bonus \
+		  loop_through_each_transition_method_bonus \
+									    sphere_bonus \
+								   get_xy_range_bonus \
+							  initialize_methods_bonus \
+								  colorize_points_bonus \
+									  set_hexcolor_bonus \
+					     transpts_with_given_matrix_bonus \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
 				   	   ft_swap \
 				    ft_free_arr \
 				ft_free_arr_size \
-				 ft_free_t_split \
-				     ft_atoi_base \
-				   ft_word_counter \
-				          ft_strlen \
-					          ft_gnl \
-					      ft_ishexlow \
-							ft_ishexup \
-							 ft_strtrim \
-					           ft_calloc \
-					              ft_atoi \
-							   	 ft_memchr \
-					               ft_split \
-							      ft_strjoin \
-								    ft_memcpy \
-								     ft_strdup \
-									  ft_lstnew \
-							      ft_lstadd_back \
-						  ft_lst_make_it_circular \
-						       ft_lstcircular_free \
-							              ft_putstr \
-										    ft_bzero \
+				  ft_free_t_split \
+				      ft_atoi_base \
+				    ft_word_counter \
+				           ft_strlen \
+					           ft_gnl \
+					       ft_ishexlow \
+							 ft_ishexup \
+							  ft_strtrim \
+					            ft_calloc \
+					               ft_atoi \
+							   	  ft_memchr \
+					                ft_split \
+							       ft_strjoin \
+								     ft_memcpy \
+								      ft_strdup \
+									   ft_lstnew \
+							       ft_lstadd_back \
+						   ft_lst_make_it_circular \
+						        ft_lstcircular_free \
+							               ft_putstr \
+										     ft_bzero \
 
 
 SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \
