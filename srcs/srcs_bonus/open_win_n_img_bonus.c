@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 12:39:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/01/26 12:49:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:06:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	open_win_and_img_bonus(t_data *d)
 
 static inline void	open_mlx_and_create_window(t_data *d)
 {
-	d->mlx->ptr = mlx_init();
-	d->mlx->win_ptr = mlx_new_window(d->mlx->ptr, WIN_WDTH, WIN_HGHT, "mlx 42");
+	d->mlx->display_ptr = mlx_init();
+	d->mlx->win_ptr = mlx_new_window(d->mlx->display_ptr, WIN_WDTH, WIN_HGHT, "mlx 42");
 }
 
 static inline void	create_image(t_data *d)
 {
-	d->img->ptr = mlx_new_image(d->mlx->ptr, WIN_WDTH, WIN_HGHT);
+	d->img->ptr = mlx_new_image(d->mlx->display_ptr, WIN_WDTH, WIN_HGHT);
 }
 
 static inline void	get_image_data_address(t_data *d)

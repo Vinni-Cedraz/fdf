@@ -6,17 +6,19 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 17:03:24 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/08 00:18:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:26:42 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
+// call the function in the current node of grid_methods
 void	render_map_bonus(t_data *d)
 {
 	((t_func_ptr)(d->lookup.grid_methods->content))(d);
 }
 
+// iterate to the next node in the grid_methods list
 void	change_grid_rendering_method(t_data *d)
 {
 	d->lookup.grid_methods = d->lookup.grid_methods->next;

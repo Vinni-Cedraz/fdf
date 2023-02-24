@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/24 16:46:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:06:40 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	main(int argc, char **argv)
 	parse_map_bonus(d);
 	pre_draw_allocations(d);
 	data_initializer_bonus(d);
-	mlx_loop_hook(d->mlx->ptr, draw_bonus, d);
-	mlx_hook(d->mlx->win_ptr, 02, 1L << 0, deal_keys_bonus, d);
-	mlx_hook(d->mlx->win_ptr, 17, 0, close_win_bonus, d);
-	mlx_loop(d->mlx->ptr);
+	mlx_loop_hook(d->mlx->display_ptr, &draw_bonus, d);
+	mlx_hook(d->mlx->win_ptr, 02, 1L << 0, &deal_keys_bonus, d);
+	mlx_hook(d->mlx->win_ptr, 17, 0, &close_win_bonus, d);
+	mlx_loop(d->mlx->display_ptr);
 }
 
 static inline t_data	*pre_parse_allocations(void)

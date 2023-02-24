@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 12:50:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 01:07:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 11:59:04 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_assign_coordinates
 
 typedef struct s_d
 {
+	int 					call_counter;
 	t_assign_coordinates	tool;
 	t_state					state;
 	t_emporary				t;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 15:10:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:07:03 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	draw_bonus(t_data *d)
 	if (d->offset->neutral_zoom)
 		take_zoom_snapshot(d);
 	render_map_bonus(d);
-	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win_ptr, d->img->ptr, 0, 0);
+	mlx_put_image_to_window(d->mlx->display_ptr, d->mlx->win_ptr, d->img->ptr, 0, 0);
 	draw_menu(d);
 	return (0);
 }
@@ -72,29 +72,29 @@ static inline void	paint_it_black(t_data *d)
 static inline void	draw_menu(t_data *d)
 {
 	draw_menu_background(d);
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 20, MAGENTA, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 20, MAGENTA, \
 		"CONTROLS MENU");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 60, YELLOW, \
-		"CHANGE TO ISOMETRIC: 'SPACE'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 100, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 60, CYAN, \
+		"FIRST, GO ISO: 'SPACE TWICE'");
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 100, WHITE, \
 		"ROTATE 1: 'a' / 'd'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 140, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 140, WHITE, \
 		"ROTATE 2: 'q' / 'e'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 180, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 180, WHITE, \
 		"ROTATE 3: 'x' / 'v'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 220, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 220, WHITE, \
 		"CHANGE ALTITUDE: 'z' / 'c'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 260, YELLOW, \
-		"TURN IT INTO A BALL: 'b'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 300, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 260, WHITE, \
+		"TURN IT INTO A BALL: 'ab'");
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 300, WHITE, \
 		"ZOOM IN: 'w' / 's'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 340, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 340, WHITE, \
 		"BALL ALTITUDE: 'j' / 'k'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 380, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 380, WHITE, \
 		"RESET TO ISOMETRIC: ';'");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 420, YELLOW, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 420, WHITE, \
 		"MOVE: arrow keys");
-	mlx_string_put(d->mlx->ptr, d->mlx->win_ptr, 10, 460, RED, \
+	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 460, CYAN, \
 		"EXIT: 'esc'");
 }
 

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:14:37 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 20:48:19 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 11:25:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,8 @@ typedef struct s_rm
 static inline void	iso_in_one_step(t_rotation_matrices *m)
 {
 	m->mul_mat = &multiply_two_matrices_bonus;
-	m->undo_iso = m->mul_mat(m->rev_y, m->rev_x_54_73);
-	m->undo_iso = m->mul_mat(m->undo_iso, m->rev_z_45);
+	m->undo_iso = m->mul_mat(m->rev_x_54_73, m->rev_z_45);
 	m->go_iso = m->mul_mat(m->rot_z_45, m->rot_x_54_73);
-	m->go_iso = m->mul_mat(m->go_iso, m->rot_y);
 }
 
 static inline void	scale_z_up_tmp_stage(t_rotation_matrices *m)

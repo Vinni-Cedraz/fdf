@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 20:06:52 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 20:07:01 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 10:41:23 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	restore_iso_snapshot(t_data *d)
 		tmp->point.z = tmp->point.ol.z;
 		tmp = tmp->next;
 	}
+	d->state = isometric;
 }
 
 static inline void	take_snapshots_after_looping(t_data *d)
@@ -60,10 +61,9 @@ static inline void	take_snapshots_after_looping(t_data *d)
 
 static inline short	check_state_before_looping_stages(t_data *d)
 {
-	if (!d->offset->neutral_zoom)
+	if (!d->offset->neutral_zoom || d->state == randomly_rotated
+		|| d->state == spherical)
 		return (0);
-	if (d->state == parallel || d->state == diagonal || d->state == isometric)
-		return (1);
 	return (1);
 }
 

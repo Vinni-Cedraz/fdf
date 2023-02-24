@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:54:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/09 16:00:21 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:06:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_mlx
 {
 	void	*win_ptr;
-	void	*ptr;
+	void	*display_ptr;
 	int		hook;
 }			t_mlx;
 

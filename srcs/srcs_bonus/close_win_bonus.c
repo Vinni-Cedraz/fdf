@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 03:24:36 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 19:55:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:06:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	call_close_window(t_data *d)
 
 int	close_win_bonus(t_data *d)
 {
-	mlx_destroy_image(d->mlx->ptr, d->img->ptr);
-	mlx_destroy_window(d->mlx->ptr, d->mlx->win_ptr);
-	mlx_destroy_display(d->mlx->ptr);
+	mlx_destroy_image(d->mlx->display_ptr, d->img->ptr);
+	mlx_destroy_window(d->mlx->display_ptr, d->mlx->win_ptr);
+	mlx_destroy_display(d->mlx->display_ptr);
 	free_simple_pointers(d);
 	free_complex_pointers(d);
 	free(d->map);
@@ -34,7 +34,7 @@ int	close_win_bonus(t_data *d)
 
 static inline void	free_simple_pointers(t_data *d)
 {
-	free(d->mlx->ptr);
+	free(d->mlx->display_ptr);
 	free(d->mlx);
 	free(d->img);
 	free(d->offset);

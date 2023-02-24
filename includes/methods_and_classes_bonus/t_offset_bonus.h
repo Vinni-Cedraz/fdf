@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:27:18 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 20:10:08 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:53:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct s_offset
 {
 	double			move_x;
 	double			move_y;
-	double			initial_move_x;
-	double			initial_move_y;
 	int				neutral_zoom;
 	t_func_ptr		set_initial_offset;
 	t_func_ptr		move[4];
@@ -66,8 +64,6 @@ static inline void	calculate_initial_offset(t_data *d)
 	y_offset = (sca.win_hght - d->map->target_height) / 2;
 	d->offset->move_x = x_offset;
 	d->offset->move_y = y_offset;
-	d->offset->initial_move_x = x_offset;
-	d->offset->initial_move_y = y_offset;
 }
 
 #endif

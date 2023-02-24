@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 23:18:14 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 20:47:52 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 18:32:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 typedef t_matrix	(*t_mul_mat)(t_matrix, t_matrix);
 
-static void	define_free_rotation_matrices(t_rotation_matrices *matrix);
+static void	define_five_degrees_rotation_matrices(t_rotation_matrices *matrix);
 static void	define_isometry_step_one_rotation(t_rotation_matrices *matrix);
 static void	define_isometry_step_two_rotation(t_rotation_matrices *matrix);
 static void	define_change_altitude_matrix(t_rotation_matrices *matrix);
 
 void	define_rotation_matrices_bonus(t_rotation_matrices *matrix)
 {
-	define_free_rotation_matrices(matrix);
+	define_five_degrees_rotation_matrices(matrix);
 	define_isometry_step_one_rotation(matrix);
 	define_isometry_step_two_rotation(matrix);
 	matrix->iso_in_one_step = &iso_in_one_step;
@@ -29,7 +29,7 @@ void	define_rotation_matrices_bonus(t_rotation_matrices *matrix)
 	define_change_altitude_matrix(matrix);
 }
 
-static void	define_free_rotation_matrices(t_rotation_matrices *matrix)
+static void	define_five_degrees_rotation_matrices(t_rotation_matrices *matrix)
 {
 	matrix->rev_x = (t_matrix){
 	{1, 0, 0},

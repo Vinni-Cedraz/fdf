@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 20:01:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 13:58:32 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:06:21 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static inline void	calculate_size_factor(t_data *d)
 	inter.interpolate = &interpolate_linear;
 	inter.normalize_result = &normalize;
 	inter.size_delta = 2892800 - 228;
-	inter.factor_delta = 5.0 - 0.4;
-	inter.current_delta = d->map->size - 228;
-	inter.min_factor = 0.4;
+	inter.factor_delta = 5.0 - 0.35;
+	inter.current_delta = d->map->size - 1;
+	inter.min_factor = 0.35;
 	result = &d->scale->size_factor;
 	*result = inter.interpolate(inter);
 	inter.normalize_result(*result);
