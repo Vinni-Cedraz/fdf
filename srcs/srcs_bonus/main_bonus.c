@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 19:49:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:46:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,22 @@ static inline void	error_handler(t_data *d)
 	printf("%s\n", strerror(22));
 	free(d->map);
 	free(d->offset);
+	free(d->scale);
 	free(d->color);
 	free(d);
+	exit(1);
+}
+
+void uneven_map_error(t_data *d)
+{
+	fclose(d->tool.fp);
+	ft_lstpoint_free(&d->map->pts);
+	free(d->map);
+	free(d->offset);
+	free(d->color);
+	free(d->scale);
+	ft_free_t_split(d->tool.pts_in_this_row);
+	free(d);
+	printf("%s\n", "Uneven map, first line shouldn't be bigger than the rest");
 	exit(1);
 }

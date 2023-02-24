@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/18 03:05:42 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:37:25 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int			read_points_in_current_row(t_data *d);
 static int			is_end_of_row(int counter, int width);
-static void			get_point_as_a_string(t_data *d, int counter, int row_len);
+static int 			get_point_as_a_string(t_data *d, int counter, int row_len);
 static int			is_beginning_of_row(int counter, int width);
 
 void	assign_hexcolor_bonus(t_data *d)
@@ -28,7 +28,8 @@ void	assign_hexcolor_bonus(t_data *d)
 	row_len = (int)d->map->width;
 	while (tmp)
 	{
-		get_point_as_a_string(d, ++counter, row_len);
+		if (!get_point_as_a_string(d, ++counter, row_len))
+			uneven_map_error(d);
 		set_hexcolor_bonus(&tmp->point, d->tool.p_as_str);
 		tmp = tmp->next;
 		if (is_end_of_row(counter, row_len))
@@ -36,14 +37,15 @@ void	assign_hexcolor_bonus(t_data *d)
 	}
 }
 
-static inline void	get_point_as_a_string(t_data *d, int counter, int row_len)
+static inline int get_point_as_a_string(t_data *d, int counter, int row_len)
 {
 	if (is_beginning_of_row(counter, row_len))
 		d->tool.successfully_read = read_points_in_current_row(d);
 	if (!d->tool.successfully_read)
-		d->tool.p_as_str = "";
+		return (0);
 	else
 		d->tool.p_as_str = d->tool.pts_in_this_row->str_arr[counter % row_len];
+	return (1);
 }
 
 static inline int	read_points_in_current_row(t_data *d)
