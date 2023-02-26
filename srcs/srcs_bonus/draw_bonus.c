@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 13:07:03 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:32:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static void	paint_it_black(t_data *data);
 
 int	draw_bonus(t_data *d)
 {
-	paint_it_black(d);
+	if (d->img->to_be_flushed)
+		paint_it_black(d);
+	d->img->to_be_flushed = 0;
 	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 	if (d->offset->neutral_zoom)
 		take_zoom_snapshot(d);

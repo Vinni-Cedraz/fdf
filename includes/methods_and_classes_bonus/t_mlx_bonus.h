@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:54:19 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 13:06:51 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:28:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int 	to_be_flushed;
 }			t_img;
 
 #endif

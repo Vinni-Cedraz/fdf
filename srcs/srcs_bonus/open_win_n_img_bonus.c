@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 12:39:16 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 12:06:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:30:55 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	open_win_and_img_bonus(t_data *d)
 	create_image(d);
 	get_image_data_address(d);
 	set_image_dimensions(d);
+	d->img->to_be_flushed = 0;
 }
 
 static inline void	open_mlx_and_create_window(t_data *d)

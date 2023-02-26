@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:15:32 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 13:04:16 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:32:45 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	deal_keys_bonus(int key, t_data *d)
 	static int	index;
 	static int	previous_key;
 
-	d->call_counter++;
+	d->img->to_be_flushed = 1;
 	if (previous_key != key)
 	{
 		index = d->lookup.hash_function(key);
