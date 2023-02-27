@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 17:21:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/04 07:26:54 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:03:22 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void					ft_lstpoint_toarr(t_n *n, t_ui width, t_point **arr);
 
 // duplicates a linked list of 't_node_with_a_point' s
 t_n						*ft_lstpoint_dup(t_n *lst);
+// makes a linked list of 't_node_with_a_point' circular
+void					ft_lstpoint_make_it_circular(t_n **head);
 
 #endif

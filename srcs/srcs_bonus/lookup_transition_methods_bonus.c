@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:58:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 11:24:23 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:51:35 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,13 @@ inline void	undo_diagonal(t_data *d)
 
 inline void	go_isometric_using_snapshot(t_data *d)
 {
-	restore_iso_snapshot(d);
+	if (d->state == spherical) {
+		normalize_after_leaving_sphere_bonus(d);
+		transpts_with_given_matrix_bonus(d, &d->matrix->go_iso);
+   }
+	else {
+		restore_iso_snapshot(d);
+		d->offset->neutral_zoom = 1;
+   }
 	d->state = isometric;
-	d->offset->neutral_zoom = 1;
 }

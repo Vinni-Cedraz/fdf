@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/24 16:46:28 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 22:24:11 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,29 @@ static void	create_points_list(t_data *d)
 	d->map->pts = ft_lstpoint_new();
 	while (counter-- > 1)
 		ft_lstpoint_front(&d->map->pts, ft_lstpoint_new());
+	ft_lstpoint_make_it_circular(&d->map->pts);
 }
 
 static inline void	apply_scale(t_data *d)
 {
-	t_n		*tmp;
+	t_n		*map;
+	t_n 	*dummy;
 	t_point	p;
 	t_scale	sca;
 
-	tmp = d->map->pts;
+	dummy = map = d->map->pts;
 	sca = *d->scale;
-	while (tmp)
+	while (map->next != dummy)
 	{
-		p = tmp->point;
+		p = map->point;
 		p.ol.raw.x = p.x;
 		p.ol.raw.y = p.y;
 		p.ol.raw.z = p.z;
 		p.x *= sca.default_scale;
 		p.y *= sca.default_scale;
 		p.z *= sca.default_scale;
-		tmp->point = p;
-		tmp = tmp->next;
+		map->point = p;
+		map = map->next;
 	}
 	d->map->radius *= d->scale->default_scale;
 }

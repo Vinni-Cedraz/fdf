@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:33:51 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/12 21:41:55 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/02/26 18:05:25 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC_PRINTF = ../ft_printf_libft/includes/
 INC_FDF = ../../includes/
 INC_METHODS = ../../includes/methods_and_classes_bonuss/
 INC = includes/
-CFLAGS = -Wall -Wextra -Werror -g \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRINTF) \
 		 -I$(INC_FDF) \
@@ -45,6 +45,7 @@ SRCS = ft_lstpoint_new \
     ft_lstpoint_getby_index \
 			ft_lstpoint_size \
 			ft_lstpoint_toarr \
+  ft_lstpoint_make_it_circular \
 
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))

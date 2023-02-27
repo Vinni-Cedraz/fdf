@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 19:57:23 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:35:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	transpts_with_given_matrix_bonus(t_data *d, t_matrix *rot)
 		calculate_z_scale(d);
 	if (d->state != spherical)
 		get_altitude_range_bonus(d->map);
-	while (tmp)
+	while (tmp->next != d->map->pts)
 	{
 		if (d->state == parallel && tmp->point.z)
 			tmp->point.z *= d->scale->altitude_factor;

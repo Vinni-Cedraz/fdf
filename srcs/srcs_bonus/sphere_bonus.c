@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:15:04 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 14:53:45 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:35:33 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_phi_and_theta(t_data *d)
 	d->map->set_radius(d);
 	spread_points_horizontally = PI * 2 / (d->map->width - 1);
 	spread_points_vertically = PI / d->map->height;
-	while (map)
+	while (map->next != d->map->pts)
 	{
 		p = map->point;
 		p.ball.phi = -p.ol.raw.x * spread_points_horizontally;
@@ -45,7 +45,7 @@ void	go_spherical(t_data *d)
 	if (d->state != randomly_rotated && d->state != spherical)
 		return ;
 	node = d->map->pts;
-	while (node)
+	while (node->next != d->map->pts)
 	{
 		phi = node->point.ball.phi;
 		theta = node->point.ball.theta;

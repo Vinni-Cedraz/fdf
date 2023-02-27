@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpoint_toarr.c                                :+:      :+:    :+:   */
+/*   normalize_after_leaving_sphere_bonus.c             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 19:45:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 18:31:53 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/02/26 23:47:24 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/02/26 23:48:05 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list_tools.h"
+#include "fdf_includes_bonus.h"
 
-void	ft_lstpoint_toarr(t_n *node, t_ui width, t_point **arr)
+void	normalize_after_leaving_sphere_bonus(t_data *d)
 {
-	t_ui	i;
-	t_ui	j;
-	t_n 	*dummy;
+	int	i;
 
-	i = 0;
-	j = 0;
-	dummy = node;
-	while (node->next != dummy)
+	i = 3;
+	restore_raw_state_bonus(d);
+	d->offset->move_x = d->offset->initial_move_x;
+	d->offset->move_y = d->offset->initial_move_y;
+	get_xy_range_bonus(d);
+	while (i--)
 	{
-		arr[i][j] = node->point;
-		node = node->next;
-		j++;
-		if (j == width)
-		{
-			j = 0;
-			i++;
-		}
+		go_to_diagonal(d);
+		go_to_isometric(d);
+		undo_isometric(d);
+		undo_diagonal(d);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/24 16:37:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:48:41 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,9 @@ void					initialize_methods_bonus(t_data *d);
 void					colorize_points_bonus(t_data *d);
 int						max_steps(int dx, int dy);
 void					set_hexcolor_bonus(t_point *p, char *current_p_as_str);
+void					draw_menu(t_data *d);
+void					error_handler(t_data *d);
+void					restore_raw_state_bonus(t_data *d);
+void					normalize_after_leaving_sphere_bonus(t_data *d);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:57:43 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/07 19:06:43 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:56:49 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ void	get_xy_range_bonus(t_data *d)
 static inline double	get_max_x(t_n *node)
 {
 	double	max;
+	t_n 	*tmp;
 
 	max = node->point.x;
-	while (node)
+	tmp = node;
+	while (node->next != tmp)
 	{
 		if (node->point.x > max)
 			max = node->point.x;
@@ -45,9 +47,11 @@ static inline double	get_max_x(t_n *node)
 static inline double	get_min_x(t_n *node)
 {
 	double	min;
+	t_n		*tmp;
 
+	tmp = node;
 	min = node->point.x;
-	while (node)
+	while (node->next != tmp)
 	{
 		if (node->point.x < min)
 			min = node->point.x;
@@ -59,9 +63,11 @@ static inline double	get_min_x(t_n *node)
 static inline double	get_max_y(t_n *node)
 {
 	double	max;
+	t_n		*tmp;
 
 	max = node->point.y;
-	while (node)
+	tmp = node;
+	while (node->next != tmp)
 	{
 		if (node->point.y > max)
 			max = node->point.y;
@@ -73,9 +79,11 @@ static inline double	get_max_y(t_n *node)
 static inline double	get_min_y(t_n *node)
 {
 	double	min;
+	t_n		*tmp;
 
 	min = node->point.y;
-	while (node)
+	tmp = node;
+	while (node->next != tmp)
 	{
 		if (node->point.y < min)
 			min = node->point.y;

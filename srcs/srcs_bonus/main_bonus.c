@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 20:08:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 12:06:40 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:35:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_data			*pre_parse_allocations(void);
 static void				pre_draw_allocations(t_data *d);
-static void				error_handler(t_data *d);
+static void				draw_first_frame(t_data *d);
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	parse_map_bonus(d);
 	pre_draw_allocations(d);
 	data_initializer_bonus(d);
+	draw_first_frame(d);
 	mlx_loop_hook(d->mlx->display_ptr, &draw_bonus, d);
 	mlx_hook(d->mlx->win_ptr, 02, 1L << 0, &deal_keys_bonus, d);
 	mlx_hook(d->mlx->win_ptr, 17, 0, &close_win_bonus, d);
@@ -58,27 +59,15 @@ static inline void	pre_draw_allocations(t_data *d)
 	d->lookup.events = ft_calloc(128, sizeof(*d->lookup.events));
 }
 
-static inline void	error_handler(t_data *d)
+static inline void	draw_first_frame(t_data *d)
 {
-	printf("%s\n", strerror(22));
-	free(d->map);
-	free(d->offset);
-	free(d->scale);
-	free(d->color);
-	free(d);
-	exit(1);
-}
-
-void uneven_map_error(t_data *d)
-{
-	fclose(d->tool.fp);
-	ft_lstpoint_free(&d->map->pts);
-	free(d->map);
-	free(d->offset);
-	free(d->color);
-	free(d->scale);
-	ft_free_t_split(d->tool.pts_in_this_row);
-	free(d);
-	printf("%s\n", "Uneven map, first line shouldn't be bigger than the rest");
-	exit(1);
+	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
+	render_map_bonus(d);
+	draw_menu(d);
+	mlx_put_image_to_window(d->mlx->display_ptr,
+							d->mlx->win_ptr,
+							d->img->ptr,
+							0,
+							0);
+	draw_menu(d);
 }

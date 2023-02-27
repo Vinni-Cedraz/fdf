@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:54:09 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/25 12:01:48 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:09:01 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // # define WIN_WDTH 1920
 
 static void			calculate_win_factor(t_data *d) __attribute__((unused));
-static void			set_t_scale_attributes(t_data *d) __attribute__((unused));
+static void			create_t_scale(t_data *d) __attribute__((unused));
 
 typedef struct s_sc
 {
@@ -42,7 +42,7 @@ static inline void	calculate_win_factor(t_data *d)
 	d->scale->win_factor = 1000 / d->scale->win_hght;
 }
 
-static inline void	set_t_scale_attributes(t_data *d)
+static inline void	create_t_scale(t_data *d)
 {
 	d->scale->win_hght = WIN_HGHT;
 	d->scale->win_wdth = WIN_WDTH;

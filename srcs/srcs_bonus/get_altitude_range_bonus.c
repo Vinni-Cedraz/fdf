@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:43:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/11 20:03:09 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:51:16 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	get_altitude_range_bonus(t_map *map)
 static inline short	get_max_z(t_n *map)
 {
 	short	max_z;
+	t_n		*tmp;
 
+	tmp = map;
 	max_z = map->point.z;
-	while (map->next)
+	while (map->next != tmp)
 	{
 		map = map->next;
 		if (map->point.z > max_z)
@@ -46,9 +48,11 @@ static inline short	get_max_z(t_n *map)
 static inline short	get_min_z(t_n *map)
 {
 	short	min_z;
+	t_n		*tmp;
 
+	tmp = map;
 	min_z = map->point.z;
-	while (map->next)
+	while (map->next!= tmp)
 	{
 		map = map->next;
 		if (map->point.z < min_z)

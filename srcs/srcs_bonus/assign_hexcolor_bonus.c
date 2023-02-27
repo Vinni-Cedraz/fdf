@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:01:46 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/24 16:37:25 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:37:20 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	assign_hexcolor_bonus(t_data *d)
 	tmp = d->map->pts;
 	counter = -1;
 	row_len = (int)d->map->width;
-	while (tmp)
+	while (tmp->next != d->map->pts)
 	{
 		if (!get_point_as_a_string(d, ++counter, row_len))
 			uneven_map_error(d);

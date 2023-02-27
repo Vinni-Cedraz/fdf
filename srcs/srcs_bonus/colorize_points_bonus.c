@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 14:02:00 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:33:57 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	colorize_points_bonus(t_data *d)
 
 	d->color->create_hsl_map(d->color->hsl_map);
 	tmp = d->map->pts;
-	while (tmp)
+	while (tmp->next != d->map->pts)
 	{
 		compute_color_gradient(&tmp->point, d);
 		tmp = tmp->next;

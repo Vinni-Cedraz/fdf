@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:05:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 19:55:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 22:45:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	initialize_key_events_table(t_data *d)
 	events[14] = (t_event){'m', &mirror_altitude};
 	events[15] = (t_event){' ', &loop_through_each_transition_method};
 	events[16] = (t_event){'g', &change_grid_rendering_method};
-	events[17] = (t_event){';', &restore_iso_snapshot};
+	events[17] = (t_event){';', &go_isometric_using_snapshot};
 	events[18] = (t_event){UP_ARROW, d->offset->move[0]};
 	events[19] = (t_event){DOWN_ARROW, d->offset->move[1]};
 	events[20] = (t_event){LEFT_ARROW, d->offset->move[2]};

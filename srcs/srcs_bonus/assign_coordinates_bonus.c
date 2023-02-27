@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:40:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/12 22:41:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:21:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	assign_coordinates_bonus(t_data *d)
 	int	counter;
 	t_n	*tmp;
 
-	tmp = d->map->pts;
 	counter = 0;
-	while (tmp)
+	tmp = d->map->pts;
+	while (tmp->next != d->map->pts)
 	{
 		tmp->point.x = get_column_position(d->map->width, counter);
 		tmp->point.y = get_row_position(d->map->width, counter);
@@ -49,7 +49,7 @@ static inline void	assign_coordinate_z(t_data *d)
 	t_n		*tmp;
 
 	tmp = d->map->pts;
-	while (tmp)
+	while (tmp->next != d->map->pts)
 	{
 		fscanf(d->tool.fp, "%ms", &buf);
 		tmp->point.z = ft_atoi(buf);

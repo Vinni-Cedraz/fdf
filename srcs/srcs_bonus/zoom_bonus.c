@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:38:50 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/05 22:46:38 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:36:29 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	take_zoom_snapshot(t_data *d)
 	t_n	*tmp;
 
 	tmp = d->map->pts;
-	while (tmp)
+	while (tmp->next != d->map->pts)
 	{
 		tmp->point.ol.zoom_x = tmp->point.x;
 		tmp->point.ol.zoom_y = tmp->point.y;

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:40:01 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/14 20:07:14 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:18:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	initialize_methods_bonus(t_data *d)
 
 static inline void	init_t_scale_and_offset(t_scale *scale, t_offset *offset)
 {
-	scale->create_t_scale = &set_t_scale_attributes;
+	scale->create_t_scale = &create_t_scale;
 	scale->calculate_win_factor = &calculate_win_factor;
 	offset->set_initial_offset = &calculate_initial_offset;
 	offset->move[0] = &up;
