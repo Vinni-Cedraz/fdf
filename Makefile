@@ -35,97 +35,97 @@ MLXFLAGS = -L $(LIBFT_PATH) -lXext -lX11 -lm -lmlx
 
 # Colors
 RED    	  	=  \033[0;91m
-GRAY      	=   \033[0;37m
-CYAN      	=    \033[0;96m
-WHITE     	=     \033[0;97m
-GREEN     	=      \033[0;92m
-YELLOW      =       \033[0;93m
-MAGENTA     =        \033[0;95m
-DEF_COLOR   =         \033[0;39m
+GRAY      	=  \033[0;37m
+CYAN      	=  \033[0;96m
+WHITE     	=  \033[0;97m
+GREEN     	=  \033[0;92m
+YELLOW          =  \033[0;93m
+MAGENTA         =  \033[0;95m
+DEF_COLOR       =  \033[0;39m
 
 SRCS = put_pixel_img \
   			parse_map \
-			 close_win \
-			 render_map \
-			    colorize \
-				     draw \
-  define_rotation_matrices \
-     linear_transformations \
-		    data_initializer \
-				     deal_key \
-			     standard_scale\
-	             open_win_n_img \
-	                        main \
+			close_win \
+			render_map \
+			colorize \
+			draw \
+			define_rotation_matrices \
+			linear_transformations \
+		    	data_initializer \
+			deal_key \
+			standard_scale\
+	             	open_win_n_img \
+	                main \
 
 BONUS_SRCS = parse_map_bonus \
-		   		   main_bonus \
-	    data_initializer_bonus \
- define_rotation_matrices_bonus \
-		   		 close_win_bonus \
-			     render_map_bonus \
-			     render_line_bonus \
-					     draw_bonus \
-				     deal_keys_bonus \
-			    change_altitude_bonus \
+	     main_bonus \
+	     data_initializer_bonus \
+ 	     define_rotation_matrices_bonus \
+	     close_win_bonus \
+	     render_map_bonus \
+	     render_line_bonus \
+	     draw_bonus \
+	     deal_keys_bonus \
+	     change_altitude_bonus \
 	     calculate_default_scale_bonus \
-			   get_altitude_range_bonus \
-			    assign_coordinates_bonus \
-				    assign_hexcolor_bonus \
-			   multiply_two_matrices_bonus \
-				   get_map_dimensions_bonus \
-					    open_win_n_img_bonus \
-			  initialize_lookup_structs_bonus \
-						     rotate_five_bonus \
-						     reverse_five_bonus \
-									  zoom_bonus \
-							   zoom_methods_bonus \
-				   lookup_transition_methods_bonus \
-		  loop_through_each_transition_method_bonus \
-									    sphere_bonus \
-								   get_xy_range_bonus \
-							  initialize_methods_bonus \
-								  colorize_points_bonus \
-									  set_hexcolor_bonus \
-					     transpts_with_given_matrix_bonus \
-									   	   draw_menu_bonus \
-									   error_handlers_bonus \
-									 restore_raw_state_bonus \
-				      	 normalize_after_leaving_sphere_bonus \
+     	     get_altitude_range_bonus \
+	     assign_coordinates_bonus \
+	     assign_hexcolor_bonus \
+	     multiply_two_matrices_bonus \
+	     get_map_dimensions_bonus \
+             open_win_n_img_bonus \
+	     initialize_lookup_structs_bonus \
+	     rotate_five_bonus \
+	     reverse_five_bonus \
+	     zoom_bonus \
+	     zoom_methods_bonus \
+	     lookup_transition_methods_bonus \
+	     loop_through_each_transition_method_bonus \
+	     sphere_bonus \
+	     get_xy_range_bonus \
+	     initialize_methods_bonus \
+	     colorize_points_bonus \
+	     set_hexcolor_bonus \
+	     transpts_with_given_matrix_bonus \
+	     draw_menu_bonus \
+	     error_handlers_bonus \
+	     restore_raw_state_bonus \
+	     normalize_after_leaving_sphere_bonus \
 
 SRCS_FROM_LIBFT =  ft_strnstr \
-				   	   ft_swap \
-				    ft_free_arr \
-				ft_free_arr_size \
-				  ft_free_t_split \
-				      ft_atoi_base \
-				    ft_word_counter \
-				           ft_strlen \
-					           ft_gnl \
-					       ft_ishexlow \
-							 ft_ishexup \
-							  ft_strtrim \
-					            ft_calloc \
-					               ft_atoi \
-							   	  ft_memchr \
-					                ft_split \
-							       ft_strjoin \
-								     ft_memcpy \
-								      ft_strdup \
-									   ft_lstnew \
-							       ft_lstadd_back \
-						   ft_lst_make_it_circular \
-						        ft_lstcircular_free \
-							               ft_putstr \
-										     ft_bzero \
+		   ft_swap \
+		   ft_free_arr \
+	    	   ft_free_arr_size \
+		   ft_free_t_split \
+		   ft_atoi_base \
+		   ft_word_counter \
+		   ft_strlen \
+		   ft_gnl \
+		   ft_ishexlow \
+		   ft_ishexup \
+		   ft_strtrim \
+		   ft_calloc \
+		   ft_atoi \
+		   ft_memchr \
+		   ft_split \
+		   ft_strjoin \
+		   ft_memcpy \
+		   ft_strdup \
+		   ft_lstnew \
+		   ft_lstadd_back \
+		   ft_lst_make_it_circular \
+		   ft_lstcircular_free \
+		   ft_putstr \
+		   ft_bzero \
 
 
 SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \
-								ft_lstpoint_new \
-								ft_lstpoint_free \
-								ft_lstpoint_front \
-					 	   ft_lstpoint_getby_index \
-								  ft_lstpoint_toarr \
-									ft_lstpoint_size \
+			      ft_lstpoint_new \
+			      ft_lstpoint_free \
+			      ft_lstpoint_front \
+			      ft_lstpoint_getby_index \
+			      ft_lstpoint_toarr \
+			      ft_lstpoint_size \
 
 ################ MANDATORY VARIABLES ################
 
