@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:51:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/16 19:55:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/03/19 12:12:56 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,21 @@ typedef struct s_lookup
 	t_node			*transition_methods;
 	t_node			*grid_methods;
 	t_event			*events;
-	void			(*set_event_index_by_key)(t_event*);
+	void			(*set_event_index_by_key)(t_event *);
 	int				(*hash_function)(int);
 }					t_lookup;
 
 static inline int	hash_function(int key)
 {
-	return ((key % 105) + 22);
+	int	x;
+
+	x = key;
+	x = (x ^ (x >> 12));
+	x = ((x << 7) | (x << 3) | (x << 2)) ^ ((x << 11) | 0b01001100000010111010110010110011);
+	x = (x ^ (x >> 16));
+	x = ((x << 13) | (x << 3) | (x << 1)) ^ ((x << 11) | 0b10000101111010111100101001101011);
+	x = x ^ (x >> 13);
+	return ((x & 0x7f) | 21);
 }
 
 static inline void	set_event_index_by_key(t_event *events)
@@ -47,10 +55,10 @@ static inline void	set_event_index_by_key(t_event *events)
 	int	i;
 
 	i = -1;
-	while (++i <= 22)
+	while (++i <= 0b10110)
 	{
-		hash = hash_function(events[i].key);
-		events[hash] = events[i];
+		hash = hash_function((*(events + i)).key);
+		*(events + hash) = *(events + i);
 	}
 }
 
