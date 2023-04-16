@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:51:58 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/04/15 19:32:17 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/04/16 11:31:46 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_lookup
 
 static inline int	hash_function(int key)
 {
-	return ((key % 105) + 22);
+	return (key % 127);
 }
 
 static inline void	set_event_index_by_key(t_event *events)
@@ -49,8 +49,9 @@ static inline void	set_event_index_by_key(t_event *events)
 	i = -1;
 	while (++i <= 22)
 	{
-		hash = hash_function((*(events + i)).key);
-		*(events + hash) = *(events + i);
+		hash = hash_function(events[i].key);
+		events[hash] = events[i];
+		events[i] = (t_event){0};
 	}
 }
 
