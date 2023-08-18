@@ -52,7 +52,7 @@ static inline short	get_min_z(t_n *map)
 
 	tmp = map;
 	min_z = map->point.z;
-	while (map->next!= tmp)
+	while (map->next != tmp)
 	{
 		map = map->next;
 		if (map->point.z < min_z)

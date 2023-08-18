@@ -43,14 +43,15 @@ static void	create_points_list(t_data *d)
 
 static inline void	apply_scale(t_data *d)
 {
-	t_n		*map;
-	t_n 	*dummy;
 	t_point	p;
 	t_scale	sca;
+	t_n		*map;
+	t_n		*first;
 
-	dummy = map = d->map->pts;
+	map = d->map->pts;
+	first = map;
 	sca = *d->scale;
-	while (map->next != dummy)
+	while (map->next != first)
 	{
 		p = map->point;
 		p.ol.raw.x = p.x;

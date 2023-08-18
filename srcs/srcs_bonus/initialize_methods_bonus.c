@@ -25,6 +25,13 @@ void	initialize_methods_bonus(t_data *d)
 	init_t_lookup(&d->lookup);
 }
 
+static inline void	init_t_map(t_map *map)
+{
+	map->set_radius = &set_radius;
+	map->get_map_center = &get_map_center;
+	map->create_arrmap = &create_arrmap;
+}
+
 static inline void	init_t_scale_and_offset(t_scale *scale, t_offset *offset)
 {
 	scale->create_t_scale = &create_t_scale;
@@ -46,11 +53,4 @@ static inline void	init_t_lookup(t_lookup *lookup)
 {
 	lookup->hash_function = &hash_function;
 	lookup->set_event_index_by_key = &set_event_index_by_key;
-}
-
-static inline void	init_t_map(t_map *map)
-{
-	map->set_radius = &set_radius;
-	map->get_map_center = &get_map_center;
-	map->create_arrmap = &create_arrmap;
 }
