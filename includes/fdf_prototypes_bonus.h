@@ -39,7 +39,7 @@ void					data_initializer_bonus(t_data *d);
 short					is_a_valid_file(t_data *d);
 void					parse_map_bonus(t_data *d);
 void					open_win_and_img_bonus(t_data *d);
-void 					uneven_map_error(t_data *d);
+void					uneven_map_error(t_data *d);
 void					assign_coordinates_bonus(t_data *d);
 void					assign_hexcolor_bonus(t_data *d);
 void					get_altitude_range_bonus(t_map *map);

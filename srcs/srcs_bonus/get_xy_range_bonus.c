@@ -31,7 +31,7 @@ void	get_xy_range_bonus(t_data *d)
 static inline double	get_max_x(t_n *node)
 {
 	double	max;
-	t_n 	*tmp;
+	t_n		*tmp;
 
 	max = node->point.x;
 	tmp = node;

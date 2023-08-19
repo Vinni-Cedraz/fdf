@@ -61,13 +61,16 @@ static inline void	pre_draw_allocations(t_data *d)
 
 static inline void	draw_first_frame(t_data *d)
 {
+	void	*dis;
+	void	*win;
+	void	*img;
+
+	dis = d->mlx->display_ptr;
+	win = d->mlx->win_ptr;
+	img = d->img->ptr;
 	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 	render_map_bonus(d);
 	draw_menu(d);
-	mlx_put_image_to_window(d->mlx->display_ptr,
-							d->mlx->win_ptr,
-							d->img->ptr,
-							0,
-							0);
+	mlx_put_image_to_window(dis, win, img, 0, 0);
 	draw_menu(d);
 }

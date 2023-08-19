@@ -26,8 +26,11 @@ void	open_win_and_img_bonus(t_data *d)
 
 static inline void	create_display_and_window(t_data *d)
 {
+	void	*dis;
+
+	dis = d->mlx->display_ptr;
 	d->mlx->display_ptr = mlx_init();
-	d->mlx->win_ptr = mlx_new_window(d->mlx->display_ptr, WIN_WDTH, WIN_HGHT, "mlx 42");
+	d->mlx->win_ptr = mlx_new_window(dis, WIN_WDTH, WIN_HGHT, "mlx 42");
 }
 
 static inline void	create_image(t_data *d)

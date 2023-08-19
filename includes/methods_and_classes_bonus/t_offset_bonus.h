@@ -64,8 +64,10 @@ static inline void	calculate_initial_offset(t_data *d)
 	sca = *d->scale;
 	x_offset = (sca.win_wdth - d->map->target_width + sca.menu_width) / 2;
 	y_offset = (sca.win_hght - d->map->target_height) / 2;
-	d->offset->initial_move_x = d->offset->move_x = x_offset;
-	d->offset->initial_move_y = d->offset->move_y = y_offset;
+	d->offset->move_x = x_offset;
+	d->offset->initial_move_x = x_offset;
+	d->offset->move_y = y_offset;
+	d->offset->initial_move_y = x_offset;
 }
 
 #endif

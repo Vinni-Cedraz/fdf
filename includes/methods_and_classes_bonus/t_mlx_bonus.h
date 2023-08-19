@@ -32,7 +32,7 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int 	to_be_flushed;
+	int		to_be_flushed;
 }			t_img;
 
 #endif

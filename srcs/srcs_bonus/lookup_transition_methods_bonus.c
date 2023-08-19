@@ -38,13 +38,15 @@ inline void	undo_diagonal(t_data *d)
 
 inline void	go_isometric_using_snapshot(t_data *d)
 {
-	if (d->state == spherical) {
+	if (d->state == spherical)
+	{
 		normalize_after_leaving_sphere_bonus(d);
 		transpts_with_given_matrix_bonus(d, &d->matrix->go_iso);
-   }
-	else {
+	}
+	else 
+	{
 		restore_iso_snapshot(d);
 		d->offset->neutral_zoom = 1;
-   }
+	}
 	d->state = isometric;
 }

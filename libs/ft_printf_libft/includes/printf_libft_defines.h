@@ -26,13 +26,13 @@
 # define EXCEPTION_STR "(null)"
 # define ZERO_EXCEPTION_STR "(nil)"
 # define CHAR 34
-# define STRING 's'
-# define POINTER 'p'
-# define DECIMAL 'd'
-# define UDECIMAL 'u'
-# define HEX_LOWER 'x'
-# define HEX_UPPER 'X'
-# define PERCENT '%'
-# define INTEGER 'i'
+# define STRING "s"
+# define POINTER "p"
+# define DECIMAL "d"
+# define UDECIMAL "u"
+# define HEX_LOWER "x"
+# define HEX_UPPER "X"
+# define PERCENT "%"
+# define INTEGER "i"
 
 #endif

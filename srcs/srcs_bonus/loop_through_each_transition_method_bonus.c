@@ -32,7 +32,8 @@ void	restore_iso_snapshot(t_data *d)
 
 	if (!check_state_before_using_iso_snapshot(d))
 		return ;
-	dummy = tmp = d->map->pts;
+	tmp = d->map->pts;
+	dummy = tmp;
 	while (tmp->next != dummy)
 	{
 		tmp->point.x = tmp->point.ol.x;
@@ -51,7 +52,8 @@ static inline void	take_snapshots_after_looping(t_data *d)
 	if (d->state != isometric)
 		return ;
 	take_zoom_snapshot(d);
-	dummy = tmp = d->map->pts;
+	tmp = d->map->pts;
+	dummy = tmp;
 	while (tmp->next != dummy)
 	{
 		tmp->point.ol.x = tmp->point.x;

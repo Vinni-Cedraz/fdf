@@ -17,6 +17,13 @@ static void			put_pixel_img_bonus(t_img *img, int x, int y, int color);
 
 int	draw_bonus(t_data *d)
 {
+	void	*dis;
+	void	*win;
+	void	*img;
+
+	img = d->img->ptr;
+	win = d->mlx->win_ptr;
+	dis = d->mlx->display_ptr;
 	if (d->img->to_be_flushed)
 	{
 		paint_it_black(d);
@@ -25,11 +32,7 @@ int	draw_bonus(t_data *d)
 		if (d->offset->neutral_zoom)
 			take_zoom_snapshot(d);
 		render_map_bonus(d);
-		mlx_put_image_to_window(d->mlx->display_ptr,
-								d->mlx->win_ptr,
-								d->img->ptr,
-								0,
-								0);
+		mlx_put_image_to_window(dis, win, img, 0, 0);
 		draw_menu(d);
 	}
 	return (0);

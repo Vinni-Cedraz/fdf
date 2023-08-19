@@ -48,7 +48,7 @@ typedef struct s_assign_coordinates
 
 typedef struct s_d
 {
-	int 					call_counter;
+	int						call_counter;
 	t_assign_coordinates	tool;
 	t_state					state;
 	t_emporary				t;

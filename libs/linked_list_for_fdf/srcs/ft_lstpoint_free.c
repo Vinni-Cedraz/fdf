@@ -18,7 +18,9 @@ void	ft_lstpoint_free(t_n **list)
 	t_n	*dummy;
 	t_n	*last;
 
-	last = dummy = tmp = *list;
+	tmp = *list;
+	dummy = tmp;
+	last = dummy;
 	while (last->next != dummy)
 		last = last->next;
 	last->next = NULL;

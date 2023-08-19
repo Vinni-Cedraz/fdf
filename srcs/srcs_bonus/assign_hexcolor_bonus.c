@@ -14,7 +14,7 @@
 
 static int			read_points_in_current_row(t_data *d);
 static int			is_end_of_row(int counter, int width);
-static int 			get_point_as_a_string(t_data *d, int counter, int row_len);
+static int			get_point_as_a_string(t_data *d, int counter, int row_len);
 static int			is_beginning_of_row(int counter, int width);
 
 void	assign_hexcolor_bonus(t_data *d)
@@ -37,7 +37,7 @@ void	assign_hexcolor_bonus(t_data *d)
 	}
 }
 
-static inline int get_point_as_a_string(t_data *d, int counter, int row_len)
+static inline int	get_point_as_a_string(t_data *d, int counter, int row_len)
 {
 	if (is_beginning_of_row(counter, row_len))
 		d->tool.successfully_read = read_points_in_current_row(d);

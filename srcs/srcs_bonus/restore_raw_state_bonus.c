@@ -19,8 +19,9 @@ void	restore_raw_state_bonus(t_data *d)
 	t_scale	scale;
 	t_point	p;
 
+	dummy = map;
+	map = d->map->pts;
 	scale = *d->scale;
-	dummy = map = d->map->pts;
 	while (map->next != dummy)
 	{
 		p = map->point;
