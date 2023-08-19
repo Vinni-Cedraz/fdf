@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 17:21:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 18:03:22 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:46:58 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_nd
 	t_point				point;
 	t_n					*next;
 }						t_n;
+
+typedef void			(*t_point_apply_fptr)(t_point *);
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n						*ft_lstpoint_new(void);

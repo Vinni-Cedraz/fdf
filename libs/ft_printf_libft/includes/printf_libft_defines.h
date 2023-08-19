@@ -25,14 +25,14 @@
 # define PRECEDING_STR "0x"
 # define EXCEPTION_STR "(null)"
 # define ZERO_EXCEPTION_STR "(nil)"
-# define CHAR 34
-# define STRING "s"
-# define POINTER "p"
-# define DECIMAL "d"
-# define UDECIMAL "u"
-# define HEX_LOWER "x"
-# define HEX_UPPER "X"
-# define PERCENT "%"
-# define INTEGER "i"
+# define CHAR 99
+# define STRING 115
+# define POINTER 112
+# define DECIMAL 100
+# define UDECIMAL 117
+# define HEX_LOWER 120
+# define HEX_UPPER 88
+# define PERCENT 37
+# define INTEGER 105
 
 #endif

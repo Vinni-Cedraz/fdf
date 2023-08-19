@@ -28,8 +28,8 @@ static inline void	create_display_and_window(t_data *d)
 {
 	void	*dis;
 
-	dis = d->mlx->display_ptr;
 	d->mlx->display_ptr = mlx_init();
+	dis = d->mlx->display_ptr;
 	d->mlx->win_ptr = mlx_new_window(dis, WIN_WDTH, WIN_HGHT, "mlx 42");
 }
 
