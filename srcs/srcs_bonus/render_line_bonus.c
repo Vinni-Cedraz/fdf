@@ -12,24 +12,24 @@
 
 #include "fdf_includes_bonus.h"
 
-static int			is_dark_side_of_a_sphere(t_point p, t_point p2, t_d *d);
+static int			is_dark_side_of_a_sphere(t_point p, t_point p2);
 static void			move_line(t_line *line);
 static void			put_pixel(t_img *img, t_line l, t_ui color);
 int					max_steps(int dx, int dy);
 
 // lcolor and init_ln are methods defined in t_line_bonus.h
-void	render_line_bonus(t_point p1, t_point p2, t_data *d)
+void	render_line_bonus(t_point p1, t_point p2)
 {
 	t_line			line;
 	unsigned int	color;
 
-	if (is_dark_side_of_a_sphere(p1, p2, d))
+	if (is_dark_side_of_a_sphere(p1, p2))
 		return ;
 	lcolor(p1, p2, &color);
-	line = init_ln(p1, p2, d);
+	line = init_ln(p1, p2);
 	while (line.steps--)
 	{
-		put_pixel(d->img, line, color);
+		put_pixel(get_data()->img, line, color);
 		move_line(&line);
 	}
 }
@@ -65,10 +65,12 @@ static inline void	move_line(t_line *line)
 	line->y += line->y_inc;
 }
 
-static inline int	is_dark_side_of_a_sphere(t_point p, t_point p2, t_d *d)
+static inline int	is_dark_side_of_a_sphere(t_point p, t_point p2)
 {
 	double	dark_side;
+	t_data	*d;
 
+	d = get_data();
 	dark_side = d->map->max_z * 0.01;
 	if (d->state == spherical && p.z < dark_side && p2.z < dark_side)
 		return (1);

@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:33:51 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/26 18:05:25 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/08/21 17:40:23 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS = ft_lstpoint_new \
 			ft_lstpoint_size \
 			ft_lstpoint_toarr \
   ft_lstpoint_make_it_circular \
+  			   ft_lstpoint_iter \
 
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))

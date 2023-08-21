@@ -12,17 +12,19 @@
 
 #include "fdf_includes_bonus.h"
 
-static void			update_state_after_spherical(t_data *d);
+static void			update_state_after_spherical(void);
 
-void	get_phi_and_theta(t_data *d)
+void	get_phi_and_theta(void)
 {
 	t_point	p;
 	t_n		*map;
 	double	spread_points_horizontally;
 	double	spread_points_vertically;
+	t_data	*d;
 
+	d = get_data();
 	map = d->map->pts;
-	d->map->set_radius(d);
+	d->map->set_radius();
 	spread_points_horizontally = PI * 2 / (d->map->width - 1);
 	spread_points_vertically = PI / d->map->height;
 	while (map->next != d->map->pts)
@@ -35,13 +37,15 @@ void	get_phi_and_theta(t_data *d)
 	}
 }
 
-void	go_spherical(t_data *d)
+void	go_spherical(void)
 {
 	float	phi;
 	float	theta;
 	float	rho;
 	t_n		*node;
+	t_data	*d;
 
+	d = get_data();
 	if (d->state != randomly_rotated && d->state != spherical)
 		return ;
 	node = d->map->pts;
@@ -55,32 +59,34 @@ void	go_spherical(t_data *d)
 		node->point.z = rho * cos(theta);
 		node = node->next;
 	}
-	update_state_after_spherical(d);
+	update_state_after_spherical();
 }
 
-inline void	increase_sphere_height(t_data *d)
+inline void	increase_sphere_height(void)
 {
-	d->map->ball.delta += 0.01;
-	go_spherical(d);
+	get_data()->map->ball.delta += 0.01;
+	go_spherical();
 }
 
-inline void	decrease_sphere_height(t_data *d)
+inline void	decrease_sphere_height(void)
 {
-	d->map->ball.delta -= 0.01;
-	go_spherical(d);
+	get_data()->map->ball.delta -= 0.01;
+	go_spherical();
 }
 
-static inline void	update_state_after_spherical(t_data *d)
+static inline void	update_state_after_spherical(void)
 {
 	static size_t	first;
+	t_data			*d;
 
 	first++;
+	d = get_data();
 	d->state = spherical;
 	d->offset->move_x = (double)WIN_WDTH / 2 + (double)d->scale->menu_width / 2;
 	d->offset->move_y = (double)WIN_HGHT / 2;
 	if (first == 1)
 	{
-		get_xy_range_bonus(d);
+		get_xy_range_bonus();
 		get_altitude_range_bonus(d->map);
 		d->map->ball.center_x = (d->map->min_x + d->map->max_x) / 2;
 		d->map->ball.center_y = (d->map->min_y + d->map->max_y) / 2;

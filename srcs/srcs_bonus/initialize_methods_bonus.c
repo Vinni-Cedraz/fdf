@@ -17,8 +17,11 @@ static void			init_t_color(t_color *color);
 static void			init_t_lookup(t_lookup *lookup);
 static void			init_t_map(t_map *map);
 
-void	initialize_methods_bonus(t_data *d)
+void	initialize_methods_bonus(void)
 {
+	t_data	*d;
+
+	d = get_data();
 	init_t_map(d->map);
 	init_t_scale_and_offset(d->scale, d->offset);
 	init_t_color(d->color);

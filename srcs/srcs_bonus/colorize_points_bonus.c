@@ -17,10 +17,12 @@ static long			hsl_to_rgb(t_color *c);
 static int			get_color_wheel_sector_of_hue(double h);
 static void			compute_color_gradient(t_point *p, t_data *d);
 
-void	colorize_points_bonus(t_data *d)
+void	colorize_points_bonus(void)
 {
-	t_n	*tmp;
+	t_n		*tmp;
+	t_data	*d;
 
+	d = get_data();
 	d->color->create_hsl_map(d->color->hsl_map);
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
@@ -34,7 +36,7 @@ static inline void	compute_color_gradient(t_point *p, t_data *d)
 {
 	double	normalized_z;
 	int		index;
-	double	interpolation;
+	double	interpol;
 	t_hsl	hsl_low;
 	t_hsl	hsl_high;
 
@@ -44,12 +46,12 @@ static inline void	compute_color_gradient(t_point *p, t_data *d)
 	index = (int)(normalized_z * 5);
 	if (index > 5 || index < 0)
 		index = 5;
-	interpolation = normalized_z * 5 - index;
+	interpol = normalized_z * 5 - index;
 	hsl_low = d->color->hsl_map[index];
 	hsl_high = d->color->hsl_map[index + 1];
-	d->color->hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpolation;
-	d->color->hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpolation;
-	d->color->hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpolation;
+	get_data()->color->hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpol;
+	get_data()->color->hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpol;
+	get_data()->color->hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpol;
 	p->color = hsl_to_rgb(d->color);
 }
 

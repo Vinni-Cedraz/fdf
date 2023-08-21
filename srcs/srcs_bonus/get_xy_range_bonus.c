@@ -17,10 +17,12 @@ static double			get_min_x(t_n *node);
 static double			get_max_y(t_n *node);
 static double			get_min_y(t_n *node);
 
-void	get_xy_range_bonus(t_data *d)
+void	get_xy_range_bonus(void)
 {
-	t_n	*node;
+	t_n		*node;
+	t_data	*d;
 
+	d = get_data();
 	node = d->map->pts;
 	d->map->max_x = get_max_x(node);
 	d->map->min_x = get_min_x(node);

@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 17:21:55 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/08/19 08:46:58 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:41:10 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_nd
 	t_n					*next;
 }						t_n;
 
-typedef void			(*t_point_apply_fptr)(t_point *);
+typedef void			(t_point_apply_fptr)(t_point *);
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n						*ft_lstpoint_new(void);
@@ -53,7 +53,11 @@ void					ft_lstpoint_toarr(t_n *n, t_ui width, t_point **arr);
 
 // duplicates a linked list of 't_node_with_a_point' s
 t_n						*ft_lstpoint_dup(t_n *lst);
+
 // makes a linked list of 't_node_with_a_point' circular
 void					ft_lstpoint_make_it_circular(t_n **head);
+
+// iterates circular linked list of t_node_with_a_point doing t_point_apply_fptr
+void					ft_lstpoint_iter(t_n *head, t_point_apply_fptr *f);
 
 #endif

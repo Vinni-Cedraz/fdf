@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/02/26 23:52:46 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/08/21 17:40:38 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -O3 \
+CFLAGS = -Wall -Wextra -Werror -g3 \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
 		 -I$(INC_CLASSES_METHODS) \
@@ -44,18 +44,18 @@ MAGENTA         =  \033[0;95m
 DEF_COLOR       =  \033[0;39m
 
 SRCS = put_pixel_img \
-  			parse_map \
+  		parse_map \
 			close_win \
 			render_map \
 			colorize \
 			draw \
 			define_rotation_matrices \
 			linear_transformations \
-		    	data_initializer \
+		  data_initializer \
 			deal_key \
 			standard_scale\
-	             	open_win_n_img \
-	                main \
+	    open_win_n_img \
+	    main \
 
 BONUS_SRCS = parse_map_bonus \
 	     main_bonus \
@@ -68,12 +68,12 @@ BONUS_SRCS = parse_map_bonus \
 	     deal_keys_bonus \
 	     change_altitude_bonus \
 	     calculate_default_scale_bonus \
-     	     get_altitude_range_bonus \
+     	 get_altitude_range_bonus \
 	     assign_coordinates_bonus \
 	     assign_hexcolor_bonus \
 	     multiply_two_matrices_bonus \
 	     get_map_dimensions_bonus \
-             open_win_n_img_bonus \
+       open_win_n_img_bonus \
 	     initialize_lookup_structs_bonus \
 	     rotate_five_bonus \
 	     reverse_five_bonus \
@@ -95,7 +95,7 @@ BONUS_SRCS = parse_map_bonus \
 SRCS_FROM_LIBFT =  ft_strnstr \
 		   ft_swap \
 		   ft_free_arr \
-	    	   ft_free_arr_size \
+	     ft_free_arr_size \
 		   ft_free_t_split \
 		   ft_atoi_base \
 		   ft_word_counter \
@@ -126,6 +126,7 @@ SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \
 			      ft_lstpoint_getby_index \
 			      ft_lstpoint_toarr \
 			      ft_lstpoint_size \
+            ft_lstpoint_iter \
 
 ################ MANDATORY VARIABLES ################
 

@@ -12,39 +12,43 @@
 
 #include "fdf_includes_bonus.h"
 
-static void			paint_it_black(t_data *data);
+static void			paint_it_black(void);
 static void			put_pixel_img_bonus(t_img *img, int x, int y, int color);
 
-int	draw_bonus(t_data *d)
+int	draw_bonus(void)
 {
 	void	*dis;
 	void	*win;
 	void	*img;
+	t_data	*d;
 
+	d = get_data();
 	img = d->img->ptr;
 	win = d->mlx->win_ptr;
 	dis = d->mlx->display_ptr;
 	if (d->img->to_be_flushed)
 	{
-		paint_it_black(d);
+		paint_it_black();
 		d->img->to_be_flushed = 0;
 		ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 		if (d->offset->neutral_zoom)
-			take_zoom_snapshot(d);
-		render_map_bonus(d);
+			take_zoom_snapshot();
+		render_map_bonus();
 		mlx_put_image_to_window(dis, win, img, 0, 0);
-		draw_menu(d);
+		draw_menu();
 	}
 	return (0);
 }
 
-static inline void	paint_it_black(t_data *d)
+static inline void	paint_it_black(void)
 {
-	int	counter;
-	int	img_size;
-	int	i;
-	int	j;
+	t_data	*d;
+	int		counter;
+	int		img_size;
+	int		i;
+	int		j;
 
+	d = get_data();
 	counter = 0;
 	img_size = d->img->width * d->img->height;
 	while (counter < img_size)

@@ -21,9 +21,9 @@
 # include <stddef.h>
 
 typedef struct s_d		t_d;
-static void				get_map_center(t_data *d) __attribute__((unused));
+static void				get_map_center(void) __attribute__((unused));
 static t_point			**create_arrmap(t_map *map) __attribute__((unused));
-static void				set_radius(t_data *d) __attribute__((unused));
+static void				set_radius(void) __attribute__((unused));
 
 typedef struct s_ba
 {
@@ -68,21 +68,23 @@ typedef struct s_mp
 	t_point				**(*create_arrmap)(struct s_mp *map);
 }						t_map;
 
-static inline void	get_map_center(t_data *d)
+static inline void	get_map_center(void)
 {
 	t_map	*map;
 
-	map = d->map;
+	map = get_data()->map;
 	map->center.x = (map->max_x + map->min_x) / 2;
 	map->center.y = (map->max_y + map->min_y) / 2;
 	map->center.z = (map->max_z + map->min_z) / 2;
 }
 
-static inline void	set_radius(t_data *d)
+static inline void	set_radius(void)
 {
+	t_data	*d;
 	double	ball_sz_factor;
 	double	map_sz;
 
+	d = get_data();
 	map_sz = d->map->size;
 	ball_sz_factor = d->scale->size_factor;
 	if (ball_sz_factor > 1.6)

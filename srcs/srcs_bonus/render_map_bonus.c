@@ -13,24 +13,26 @@
 #include "fdf_includes_bonus.h"
 
 // call the function in the current node of grid_methods
-void	render_map_bonus(t_data *d)
+void	render_map_bonus(void)
 {
-	((t_func_ptr)(d->lookup.grid_methods->content))(d);
+	((t_func_ptr)(get_data()->lookup.grid_methods->content))();
 }
 
 // iterate to the next node in the grid_methods list
-void	change_grid_rendering_method(t_data *d)
+void	change_grid_rendering_method(void)
 {
-	d->lookup.grid_methods = d->lookup.grid_methods->next;
+	get_data()->lookup.grid_methods = get_data()->lookup.grid_methods->next;
 }
 
-void	render_lines_square(t_data *d)
+void	render_lines_square(void)
 {
 	int		i;
 	int		j;
 	t_point	p;
+	t_data	*d;
 
 	i = 0;
+	d = get_data();
 	while (i < d->map->height)
 	{
 		j = 0;
@@ -38,24 +40,26 @@ void	render_lines_square(t_data *d)
 		{
 			p = d->map->arr[i][j];
 			if (j + 1 < d->map->width)
-				render_line_bonus(p, d->map->arr[i][j + 1], d);
+				render_line_bonus(p, d->map->arr[i][j + 1]);
 			if (i + 1 < d->map->height)
-				render_line_bonus(p, d->map->arr[i + 1][j], d);
+				render_line_bonus(p, d->map->arr[i + 1][j]);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	render_lines_cross(t_data *d)
+void	render_lines_cross(void)
 {
 	int		i;
 	int		j;
 	t_point	p1;
+	t_data	*d;
 
 	i = -1;
 	j = -1;
-	render_lines_square(d);
+	d = get_data();
+	render_lines_square();
 	while (++i < d->map->height)
 	{
 		j = -1;
@@ -64,35 +68,37 @@ void	render_lines_cross(t_data *d)
 			if (j < d->map->width - 1 && i < d->map->height - 1)
 			{
 				p1 = d->map->arr[i][j];
-				render_line_bonus(p1, d->map->arr[i + 1][j + 1], d);
+				render_line_bonus(p1, d->map->arr[i + 1][j + 1]);
 				p1 = d->map->arr[i + 1][j];
-				render_line_bonus(p1, d->map->arr[i][j + 1], d);
+				render_line_bonus(p1, d->map->arr[i][j + 1]);
 			}
 		}
 	}
 }
 
-void	render_pentagram(t_data *d)
+void	render_pentagram(void)
 {
 	int		i;
 	int		j;
 	t_point	p1;
+	t_data	*d;
 
 	i = -1;
 	j = -1;
+	d = get_data();
 	while (++i < d->map->height - 3)
 	{
 		j = -1;
 		while (++j < d->map->width - 3)
 		{
 			p1 = d->map->arr[i + 1][j];
-			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
-			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
+			render_line_bonus(p1, d->map->arr[i + 1][j + 2]);
+			render_line_bonus(p1, d->map->arr[i + 2][j + 2]);
 			p1 = d->map->arr[i + 2][j];
-			render_line_bonus(p1, d->map->arr[i][j + 1], d);
-			render_line_bonus(p1, d->map->arr[i + 1][j + 2], d);
+			render_line_bonus(p1, d->map->arr[i][j + 1]);
+			render_line_bonus(p1, d->map->arr[i + 1][j + 2]);
 			p1 = d->map->arr[i][j + 1];
-			render_line_bonus(p1, d->map->arr[i + 2][j + 2], d);
+			render_line_bonus(p1, d->map->arr[i + 2][j + 2]);
 		}
 	}
 }

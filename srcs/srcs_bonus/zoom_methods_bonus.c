@@ -12,12 +12,14 @@
 
 #include "fdf_includes_bonus.h"
 
-inline void	zoom_in_method(t_data *d)
+inline void	zoom_in_method(void)
 {
 	double	centered_origin_x;
 	double	centered_origin_y;
 	t_n		*tmp;
+	t_d		*d;
 
+	d = get_data();
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
 	{
@@ -29,12 +31,14 @@ inline void	zoom_in_method(t_data *d)
 	}
 }
 
-inline void	zoom_out_method(t_data *d)
+inline void	zoom_out_method(void)
 {
 	double	centered_origin_x;
 	double	centered_origin_y;
 	t_n		*tmp;
+	t_d		*d;
 
+	d = get_data();
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
 	{
@@ -46,10 +50,12 @@ inline void	zoom_out_method(t_data *d)
 	}
 }
 
-inline void	reset_zoom_method(t_data *d)
+inline void	reset_zoom_method(void)
 {
 	t_n	*tmp;
+	t_d	*d;
 
+	d = get_data();
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
 	{
