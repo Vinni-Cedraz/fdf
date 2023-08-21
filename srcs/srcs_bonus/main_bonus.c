@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 {
 	t_data	*d;
 
+	d = data_getter();
 	d = pre_parse_allocations();
 	d->tool.argv = argv[1];
 	if (!is_a_valid_file(d))
@@ -42,7 +43,7 @@ static inline t_data	*pre_parse_allocations(void)
 {
 	t_data	*d;
 
-	d = ft_calloc(sizeof(*d), 1);
+	d = data_getter();
 	d->offset = ft_calloc(sizeof(*d->offset), 1);
 	d->scale = ft_calloc(sizeof(*d->scale), 1);
 	d->map = ft_calloc(sizeof(*d->map), 1);

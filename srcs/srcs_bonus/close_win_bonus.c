@@ -28,7 +28,6 @@ int	close_win_bonus(t_data *d)
 	free_simple_pointers(d);
 	free_complex_pointers(d);
 	free(d->map);
-	free(d);
 	exit(0);
 }
 
