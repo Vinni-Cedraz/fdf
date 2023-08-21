@@ -12,47 +12,50 @@
 
 #include "fdf_includes_bonus.h"
 
-static void			update_state_after_rotfive(t_data *d);
-static int			check_state_before_rotfive(t_data *d);
+static void			update_state_after_rotfive(void);
+static int			check_state_before_rotfive(void);
 
-inline void	rotate_five_around_x(t_data *d)
+inline void	rotate_five_around_x(void)
 {
-	if (!check_state_before_rotfive(d))
+	if (!check_state_before_rotfive())
 		return ;
-	transpts_with_given_matrix_bonus(d, &d->matrix->rot_x);
-	if (d->state != spherical)
-		update_state_after_rotfive(d);
+	transpts_with_given_matrix_bonus(&get_data()->matrix->rot_x);
+	if (get_data()->state != spherical)
+		update_state_after_rotfive();
 }
 
-inline void	rotate_five_around_y(t_data *d)
+inline void	rotate_five_around_y(void)
 {
-	if (!check_state_before_rotfive(d))
+	if (!check_state_before_rotfive())
 		return ;
-	transpts_with_given_matrix_bonus(d, &d->matrix->rot_y);
-	if (d->state != spherical)
-		update_state_after_rotfive(d);
+	transpts_with_given_matrix_bonus(&get_data()->matrix->rot_y);
+	if (get_data()->state != spherical)
+		update_state_after_rotfive();
 }
 
-inline void	rotate_five_around_z(t_data *d)
+inline void	rotate_five_around_z(void)
 {
-	if (!check_state_before_rotfive(d))
+	if (!check_state_before_rotfive())
 		return ;
-	transpts_with_given_matrix_bonus(d, &d->matrix->rot_z);
-	if (d->state != spherical)
-		update_state_after_rotfive(d);
+	transpts_with_given_matrix_bonus(&get_data()->matrix->rot_z);
+	if (get_data()->state != spherical)
+		update_state_after_rotfive();
 }
 
-static inline void	update_state_after_rotfive(t_data *d)
+static inline void	update_state_after_rotfive(void)
 {
-	d->state = randomly_rotated;
-	d->offset->neutral_zoom = 1;
+	get_data()->state = randomly_rotated;
+	get_data()->offset->neutral_zoom = 1;
 }
 
-static inline int	check_state_before_rotfive(t_data *d)
+static inline int	check_state_before_rotfive(void)
 {
+	t_data	*d;
+
+	d = get_data();
 	if (d->state == diagonal || d->state == parallel)
 		return (0);
 	if (d->offset->neutral_zoom != 1)
-		return (reset_zoom_from_snapshot(d), 1);
+		return (reset_zoom_from_snapshot(), 1);
 	return (1);
 }

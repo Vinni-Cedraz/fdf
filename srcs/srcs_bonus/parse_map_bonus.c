@@ -6,34 +6,36 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:58:02 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 22:24:11 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/21 17:39:47 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void			create_points_list(t_data *d);
-static void			check_for_hexcolor(t_data *d);
-static void			apply_scale(t_data *d);
+static void			create_points_list(void);
+static void			check_for_hexcolor(void);
+static void			apply_scale(t_point *point);
 
-void	parse_map_bonus(t_data *d)
+void	parse_map_bonus(void)
 {
-	get_map_dimensions_bonus(d);
-	create_points_list(d);
-	calculate_default_scale_bonus(d);
-	d->offset->set_initial_offset(d);
-	assign_coordinates_bonus(d);
-	apply_scale(d);
-	check_for_hexcolor(d);
-	if (d->map->has_hexcolor)
-		assign_hexcolor_bonus(d);
-	fclose(d->tool.fp);
+	get_map_dimensions_bonus();
+	create_points_list();
+	calculate_default_scale_bonus();
+	get_data()->offset->set_initial_offset();
+	assign_coordinates_bonus();
+	ft_lstpoint_iter(get_data()->map->pts, &apply_scale);
+	check_for_hexcolor();
+	if (get_data()->map->has_hexcolor)
+		assign_hexcolor_bonus();
+	fclose(get_data()->tool.fp);
 }
 
-static void	create_points_list(t_data *d)
+static void	create_points_list(void)
 {
 	uint	counter;
+	t_data	*d;
 
+	d = get_data();
 	counter = d->map->size;
 	d->map->pts = ft_lstpoint_new();
 	while (counter-- > 1)
@@ -41,45 +43,40 @@ static void	create_points_list(t_data *d)
 	ft_lstpoint_make_it_circular(&d->map->pts);
 }
 
-static inline void	apply_scale(t_data *d)
+static inline void	apply_scale(t_point *point)
 {
-	t_point	p;
 	t_scale	sca;
-	t_n		*map;
-	t_n		*first;
+	t_data	*d;
 
-	map = d->map->pts;
-	first = map;
+	d = get_data();
 	sca = *d->scale;
-	while (map->next != first)
-	{
-		p = map->point;
-		p.ol.raw.x = p.x;
-		p.ol.raw.y = p.y;
-		p.ol.raw.z = p.z;
-		p.x *= sca.default_scale;
-		p.y *= sca.default_scale;
-		p.z *= sca.default_scale;
-		map->point = p;
-		map = map->next;
-	}
+	point->ol.raw.x = point->x;
+	point->ol.raw.y = point->y;
+	point->ol.raw.z = point->z;
+	point->x *= sca.default_scale;
+	point->y *= sca.default_scale;
+	point->z *= sca.default_scale;
 	d->map->radius *= d->scale->default_scale;
 }
 
-static inline void	check_for_hexcolor(t_data *d)
+static inline void	check_for_hexcolor(void)
 {
 	char	buf[1];
+	t_data	*d;
 
+	d = get_data();
 	while (fread(buf, 1, 1, d->tool.fp))
 		if (*buf == ',')
 			d->map->has_hexcolor = 1;
 	rewind(d->tool.fp);
 }
 
-short	is_a_valid_file(t_data *d)
+short	is_a_valid_file(void)
 {
 	char	*argv;
+	t_data	*d;
 
+	d = get_data();
 	argv = d->tool.argv;
 	if (!argv || !*argv || !ft_strnstr(argv, ".fdf", ft_strlen(argv)))
 		return (0);

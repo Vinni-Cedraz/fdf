@@ -27,8 +27,6 @@ typedef struct s_rm			t_rotation_matrices;
 typedef struct s_sc			t_scale;
 typedef struct s_pt			t_p;
 
-static inline t_data		*data_getter(void) __attribute__((unused));
-
 typedef enum e_state
 {
 	parallel,
@@ -64,11 +62,6 @@ typedef struct s_d
 	t_rotation_matrices		*matrix;
 }							t_data;
 
-static inline t_data	*data_getter(void)
-{
-	static t_data	data;
-
-	return (&data);
-}
+t_data	*get_data(void);
 
 #endif

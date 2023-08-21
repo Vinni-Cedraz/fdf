@@ -12,16 +12,16 @@
 
 #include "fdf_includes_bonus.h"
 
-void	restore_raw_state_bonus(t_data *d)
+void	restore_raw_state_bonus(void)
 {
 	t_n		*dummy;
 	t_n		*map;
 	t_scale	scale;
 	t_point	p;
 
-	map = d->map->pts;
+	map = get_data()->map->pts;
 	dummy = map;
-	scale = *d->scale;
+	scale = *get_data()->scale;
 	while (map->next != dummy)
 	{
 		p = map->point;
@@ -34,5 +34,5 @@ void	restore_raw_state_bonus(t_data *d)
 		map->point = p;
 		map = map->next;
 	}
-	d->state = parallel;
+	get_data()->state = parallel;
 }

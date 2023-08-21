@@ -35,6 +35,15 @@ typedef struct s_rgb
 	double				b;
 }						t_rgb;
 
+typedef struct s_compute
+{
+	double	normalized_z;
+	int		index;
+	double	interpol;
+	t_hsl	hsl_low;
+	t_hsl	hsl_high;
+}						t_compute_color;
+
 typedef struct s_color
 {
 	double				base;

@@ -12,26 +12,26 @@
 
 #include "fdf_includes_bonus.h"
 
-inline void	mirror_altitude(t_data *d)
+inline void	mirror_altitude(void)
 {
-	if (d->state != isometric)
-		go_isometric_using_snapshot(d);
-	reset_zoom_from_snapshot(d);
-	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_mirr);
+	if (get_data()->state != isometric)
+		go_isometric_using_snapshot();
+	reset_zoom_from_snapshot();
+	transpts_with_given_matrix_bonus(&get_data()->matrix->change_altitude_mirr);
 }
 
-inline void	increase_altitude(t_data *d)
+inline void	increase_altitude(void)
 {
-	if (d->state != isometric)
-		go_isometric_using_snapshot(d);
-	reset_zoom_from_snapshot(d);
-	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_up);
+	if (get_data()->state != isometric)
+		go_isometric_using_snapshot();
+	reset_zoom_from_snapshot();
+	transpts_with_given_matrix_bonus(&get_data()->matrix->change_altitude_up);
 }
 
-inline void	decrease_altitude(t_data *d)
+inline void	decrease_altitude(void)
 {
-	if (d->state != isometric)
-		go_isometric_using_snapshot(d);
-	reset_zoom_from_snapshot(d);
-	transpts_with_given_matrix_bonus(d, &d->matrix->change_altitude_down);
+	if (get_data()->state != isometric)
+		go_isometric_using_snapshot();
+	reset_zoom_from_snapshot();
+	transpts_with_given_matrix_bonus(&get_data()->matrix->change_altitude_down);
 }

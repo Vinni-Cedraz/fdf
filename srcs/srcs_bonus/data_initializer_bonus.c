@@ -12,15 +12,14 @@
 
 #include "fdf_includes_bonus.h"
 
-void	data_initializer_bonus(t_data *d)
+void	data_initializer_bonus(void)
 {
-	open_win_and_img_bonus(d);
-	d->state = parallel;
-	d->offset->neutral_zoom = 1;
-	initialize_lookup_structs_bonus(d);
-	get_altitude_range_bonus(d->map);
-	get_xy_range_bonus(d);
-	get_phi_and_theta(d);
-	colorize_points_bonus(d);
-	define_rotation_matrices_bonus(d->matrix);
+	open_win_and_img_bonus();
+	get_data()->state = parallel;
+	get_data()->offset->neutral_zoom = 1;
+	initialize_lookup_structs_bonus();
+	get_xyz_range_bonus();
+	ft_lstpoint_iter(get_data()->map->pts, &get_phi_and_theta);
+	colorize_points_bonus();
+	define_rotation_matrices_bonus(get_data()->matrix);
 }

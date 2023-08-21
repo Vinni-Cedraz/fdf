@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 18:33:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:54:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,35 @@
 static long			rgb_to_int(double r, double g, double b);
 static long			hsl_to_rgb(t_color *c);
 static int			get_color_wheel_sector_of_hue(double h);
-static void			compute_color_gradient(t_point *p, t_data *d);
+static void			compute_color_gradient(t_point *p);
 
-void	colorize_points_bonus(t_data *d)
+void	colorize_points_bonus(void)
 {
-	t_n	*tmp;
+	t_data	*d;
 
+	d = get_data();
 	d->color->create_hsl_map(d->color->hsl_map);
-	tmp = d->map->pts;
-	while (tmp->next != d->map->pts)
-	{
-		compute_color_gradient(&tmp->point, d);
-		tmp = tmp->next;
-	}
+	ft_lstpoint_iter(d->map->pts, &compute_color_gradient);
 }
 
-static inline void	compute_color_gradient(t_point *p, t_data *d)
+static inline void	compute_color_gradient(t_point *p)
 {
-	double	normalized_z;
-	int		index;
-	double	interpolation;
-	t_hsl	hsl_low;
-	t_hsl	hsl_high;
+	t_compute_color	c;
+	t_data			*d;
 
+	d = get_data();
 	if (p->color != CYAN || d->map->is_plateau)
 		return ;
-	normalized_z = (p->z - d->map->min_z) / (d->map->max_z - d->map->min_z);
-	index = (int)(normalized_z * 5);
-	if (index > 5 || index < 0)
-		index = 5;
-	interpolation = normalized_z * 5 - index;
-	hsl_low = d->color->hsl_map[index];
-	hsl_high = d->color->hsl_map[index + 1];
-	d->color->hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpolation;
-	d->color->hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpolation;
-	d->color->hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpolation;
+	c.normalized_z = (p->z - d->map->min_z) / (d->map->max_z - d->map->min_z);
+	c.index = (int)(c.normalized_z * 5);
+	if (c.index > 5 || c.index < 0)
+		c.index = 5;
+	c.interpol = c.normalized_z * 5 - c.index;
+	c.hsl_low = d->color->hsl_map[c.index];
+	c.hsl_high = d->color->hsl_map[c.index + 1];
+	d->color->hsl.h = c.hsl_low.h + (c.hsl_high.h - c.hsl_low.h) * c.interpol;
+	d->color->hsl.s = c.hsl_low.s + (c.hsl_high.s - c.hsl_low.s) * c.interpol;
+	d->color->hsl.l = c.hsl_low.l + (c.hsl_high.l - c.hsl_low.l) * c.interpol;
 	p->color = hsl_to_rgb(d->color);
 }
 

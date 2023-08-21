@@ -12,34 +12,45 @@
 
 #include "fdf_includes_bonus.h"
 
-inline void	zoom_in(t_data *d)
+inline void	zoom_in(void)
 {
+	t_data	*d;
+
+	d = get_data();
 	if (d->state == diagonal || d->state == parallel)
 		return ;
-	zoom_in_method(d);
+	zoom_in_method();
 	d->offset->neutral_zoom = 0;
 }
 
-inline void	zoom_out(t_data *d)
+inline void	zoom_out(void)
 {
+	t_data	*d;
+
+	d = get_data();
 	if (d->state == diagonal || d->state == parallel)
 		return ;
-	zoom_out_method(d);
+	zoom_out_method();
 	d->offset->neutral_zoom = 0;
 }
 
-void	reset_zoom_from_snapshot(t_data *d)
+void	reset_zoom_from_snapshot(void)
 {
+	t_data	*d;
+
+	d = get_data();
 	if (d->offset->neutral_zoom == 1)
 		return ;
-	reset_zoom_method(d);
+	reset_zoom_method();
 	d->offset->neutral_zoom = 1;
 }
 
-void	take_zoom_snapshot(t_data *d)
+void	take_zoom_snapshot(void)
 {
-	t_n	*tmp;
+	t_n		*tmp;
+	t_data	*d;
 
+	d = get_data();
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
 	{

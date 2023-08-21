@@ -12,20 +12,22 @@
 
 #include "fdf_includes_bonus.h"
 
-void	normalize_after_leaving_sphere_bonus(t_data *d)
+void	normalize_after_leaving_sphere_bonus(void)
 {
-	int	i;
+	int		i;
+	t_data	*d;
 
 	i = 3;
-	restore_raw_state_bonus(d);
+	d = get_data();
+	restore_raw_state_bonus();
 	d->offset->move_x = d->offset->initial_move_x;
 	d->offset->move_y = d->offset->initial_move_y;
-	get_xy_range_bonus(d);
+	get_xyz_range_bonus();
 	while (i--)
 	{
-		go_to_diagonal(d);
-		go_to_isometric(d);
-		undo_isometric(d);
-		undo_diagonal(d);
+		go_to_diagonal();
+		go_to_isometric();
+		undo_isometric();
+		undo_diagonal();
 	}
 }

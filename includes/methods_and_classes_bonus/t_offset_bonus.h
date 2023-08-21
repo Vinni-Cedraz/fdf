@@ -18,11 +18,11 @@
 # include "t_map_bonus.h"
 # include "t_scale_bonus.h"
 
-static void			up(t_data *d) __attribute__((unused));
-static void			down(t_data *d) __attribute__((unused));
-static void			left(t_data *d) __attribute__((unused));
-static void			right(t_data *d) __attribute__((unused));
-static void			calculate_initial_offset(t_data *d) __attribute__((unused));
+static void			up(void) __attribute__((unused));
+static void			down(void) __attribute__((unused));
+static void			left(void) __attribute__((unused));
+static void			right(void) __attribute__((unused));
+static void			calculate_initial_offset(void) __attribute__((unused));
 
 typedef struct s_offset
 {
@@ -35,32 +35,34 @@ typedef struct s_offset
 	t_func_ptr		move[4];
 }					t_offset;
 
-static inline void	up(t_data *d)
+static inline void	up(void)
 {
-	d->offset->move_y -= 25;
+	get_data()->offset->move_y -= 25;
 }
 
-static inline void	down(t_data *d)
+static inline void	down(void)
 {
-	d->offset->move_y += 25;
+	get_data()->offset->move_y += 25;
 }
 
-static inline void	left(t_data *d)
+static inline void	left(void)
 {
-	d->offset->move_x -= 25;
+	get_data()->offset->move_x -= 25;
 }
 
-static inline void	right(t_data *d)
+static inline void	right(void)
 {
-	d->offset->move_x += 25;
+	get_data()->offset->move_x += 25;
 }
 
-static inline void	calculate_initial_offset(t_data *d)
+static inline void	calculate_initial_offset(void)
 {
 	double	x_offset;
 	double	y_offset;
 	t_scale	sca;
+	t_data	*d;
 
+	d = get_data();
 	sca = *d->scale;
 	x_offset = (sca.win_wdth - d->map->target_width + sca.menu_width) / 2;
 	y_offset = (sca.win_hght - d->map->target_height) / 2;

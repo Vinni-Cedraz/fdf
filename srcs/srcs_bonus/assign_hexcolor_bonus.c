@@ -12,24 +12,26 @@
 
 #include "fdf_includes_bonus.h"
 
-static int			read_points_in_current_row(t_data *d);
+static int			read_points_in_current_row(void);
 static int			is_end_of_row(int counter, int width);
-static int			get_point_as_a_string(t_data *d, int counter, int row_len);
+static int			get_point_as_a_string(int counter, int row_len);
 static int			is_beginning_of_row(int counter, int width);
 
-void	assign_hexcolor_bonus(t_data *d)
+void	assign_hexcolor_bonus(void)
 {
-	t_n	*tmp;
-	int	counter;
-	int	row_len;
+	t_n		*tmp;
+	int		counter;
+	int		row_len;
+	t_data	*d;
 
+	d = get_data();
 	tmp = d->map->pts;
 	counter = -1;
 	row_len = (int)d->map->width;
 	while (tmp->next != d->map->pts)
 	{
-		if (!get_point_as_a_string(d, ++counter, row_len))
-			uneven_map_error(d);
+		if (!get_point_as_a_string(++counter, row_len))
+			uneven_map_error();
 		set_hexcolor_bonus(&tmp->point, d->tool.p_as_str);
 		tmp = tmp->next;
 		if (is_end_of_row(counter, row_len))
@@ -37,10 +39,13 @@ void	assign_hexcolor_bonus(t_data *d)
 	}
 }
 
-static inline int	get_point_as_a_string(t_data *d, int counter, int row_len)
+static inline int	get_point_as_a_string(int counter, int row_len)
 {
+	t_data	*d;
+
+	d = get_data();
 	if (is_beginning_of_row(counter, row_len))
-		d->tool.successfully_read = read_points_in_current_row(d);
+		d->tool.successfully_read = read_points_in_current_row();
 	if (!d->tool.successfully_read)
 		return (0);
 	else
@@ -48,12 +53,14 @@ static inline int	get_point_as_a_string(t_data *d, int counter, int row_len)
 	return (1);
 }
 
-static inline int	read_points_in_current_row(t_data *d)
+static inline int	read_points_in_current_row(void)
 {
 	size_t	len;
 	char	*untrimmed_line;
 	char	*trimmed_line;
+	t_data	*d;
 
+	d = get_data();
 	len = 0;
 	untrimmed_line = "";
 	getline(&untrimmed_line, &len, d->tool.fp);

@@ -12,16 +12,18 @@
 
 #include "fdf_includes_bonus.h"
 
-static void				assign_coordinate_z(t_data *d);
+static void				assign_coordinate_z(void);
 static double			get_column_position(int map_width, int counter);
 static double			get_row_position(int map_width, int counter);
 
-void	assign_coordinates_bonus(t_data *d)
+void	assign_coordinates_bonus(void)
 {
-	int	counter;
-	t_n	*tmp;
+	int		counter;
+	t_data	*d;
+	t_n		*tmp;
 
 	counter = 0;
+	d = get_data();
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
 	{
@@ -30,7 +32,7 @@ void	assign_coordinates_bonus(t_data *d)
 		tmp = tmp->next;
 		counter++;
 	}
-	assign_coordinate_z(d);
+	assign_coordinate_z();
 }
 
 static inline double	get_column_position(int map_width, int counter)
@@ -43,11 +45,13 @@ static inline double	get_row_position(int map_width, int counter)
 	return ((int)((double)counter / map_width));
 }
 
-static inline void	assign_coordinate_z(t_data *d)
+static inline void	assign_coordinate_z(void)
 {
 	char	*buf;
 	t_n		*tmp;
+	t_data	*d;
 
+	d = get_data();
 	tmp = d->map->pts;
 	while (tmp->next != d->map->pts)
 	{

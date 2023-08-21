@@ -12,39 +12,32 @@
 
 #include "fdf_includes_bonus.h"
 
-static void	draw_menu_background(t_data *d);
-static void	put_pixel_img_bonus(t_img *img, int x, int y, int color);
+static void			draw_menu_background(void);
+static void			put_pixel_img_bonus(t_img *img, int x, int y, int color);
 
-void	draw_menu(t_data *d)
+void	draw_menu(void)
 {
-	draw_menu_background(d);
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 20, MAGENTA, \
-		"CONTROLS MENU");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 60, CYAN, \
-		"FIRST, GO ISO: 'SPACE TWICE'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 100, WHITE, \
-		"ROTATE 1: 'a' / 'd'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 140, WHITE, \
-		"ROTATE 2: 'q' / 'e'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 180, WHITE, \
-		"ROTATE 3: 'x' / 'v'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 220, WHITE, \
-		"CHANGE ALTITUDE: 'z' / 'c'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 260, WHITE, \
-		"TURN IT INTO A BALL: 'ab'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 300, WHITE, \
-		"ZOOM IN: 'w' / 's'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 340, WHITE, \
-		"BALL ALTITUDE: 'j' / 'k'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 380, WHITE, \
-		"RESET TO ISOMETRIC: ';'");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 420, WHITE, \
-		"MOVE: arrow keys");
-	mlx_string_put(d->mlx->display_ptr, d->mlx->win_ptr, 10, 460, CYAN, \
-		"EXIT: 'esc'");
+	void	*dsp;
+	void	*win;
+
+	dsp = get_data()->mlx->display_ptr;
+	win = get_data()->mlx->win_ptr;
+	draw_menu_background();
+	mlx_string_put(dsp, win, 10, 20, MAGENTA, "CONTROLS MENU");
+	mlx_string_put(dsp, win, 10, 60, CYAN, "FIRST, GO ISO: 'SPACE TWICE'");
+	mlx_string_put(dsp, win, 10, 100, WHITE, "ROTATE 1: 'a' / 'd'");
+	mlx_string_put(dsp, win, 10, 140, WHITE, "ROTATE 2: 'q' / 'e'");
+	mlx_string_put(dsp, win, 10, 180, WHITE, "ROTATE 3: 'x' / 'v'");
+	mlx_string_put(dsp, win, 10, 220, WHITE, "CHANGE ALTITUDE: 'z' / 'c'");
+	mlx_string_put(dsp, win, 10, 260, WHITE, "TURN IT INTO A BALL: 'ab'");
+	mlx_string_put(dsp, win, 10, 300, WHITE, "ZOOM IN: 'w' / 's'");
+	mlx_string_put(dsp, win, 10, 340, WHITE, "BALL ALTITUDE: 'j' / 'k'");
+	mlx_string_put(dsp, win, 10, 380, WHITE, "RESET TO ISOMETRIC: ';'");
+	mlx_string_put(dsp, win, 10, 420, WHITE, "MOVE: arrow keys");
+	mlx_string_put(dsp, win, 10, 460, CYAN, "EXIT: 'esc'");
 }
 
-static inline void	draw_menu_background(t_data *d)
+static inline void	draw_menu_background(void)
 {
 	int	counter;
 	int	menu_size;
@@ -53,13 +46,13 @@ static inline void	draw_menu_background(t_data *d)
 	int	j;
 
 	counter = 0;
-	menu_size = d->scale->menu_width * d->img->height;
-	height = d->img->height;
+	menu_size = get_data()->scale->menu_width * get_data()->img->height;
+	height = get_data()->img->height;
 	while (counter < menu_size)
 	{
 		i = counter / height;
 		j = counter % height;
-		put_pixel_img_bonus(d->img, i, j, DARKER_GRAY);
+		put_pixel_img_bonus(get_data()->img, i, j, DARKER_GRAY);
 		counter++;
 	}
 }

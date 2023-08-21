@@ -21,8 +21,8 @@
 # define WIN_HGHT 1080
 # define WIN_WDTH 1920
 
-static void			calculate_win_factor(t_data *d) __attribute__((unused));
-static void			create_t_scale(t_data *d) __attribute__((unused));
+static void			calculate_win_factor(void) __attribute__((unused));
+static void			create_t_scale(void) __attribute__((unused));
 
 typedef struct s_sc
 {
@@ -37,13 +37,16 @@ typedef struct s_sc
 	t_func_ptr		calculate_win_factor;
 }					t_scale;
 
-static inline void	calculate_win_factor(t_data *d)
+static inline void	calculate_win_factor(void)
 {
-	d->scale->win_factor = 1000 / d->scale->win_hght;
+	get_data()->scale->win_factor = 1000 / get_data()->scale->win_hght;
 }
 
-static inline void	create_t_scale(t_data *d)
+static inline void	create_t_scale(void)
 {
+	t_data	*d;
+
+	d = get_data();
 	d->scale->win_hght = WIN_HGHT;
 	d->scale->win_wdth = WIN_WDTH;
 	d->scale->menu_width = WIN_HGHT * 0.275;

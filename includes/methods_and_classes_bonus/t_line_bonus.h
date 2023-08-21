@@ -18,7 +18,7 @@
 # include <math.h>
 
 typedef struct s_l		t_ln;
-static t_ln				init_ln(t_p p1, t_p p2, t_d *d) __attribute__((unused));
+static t_ln				init_ln(t_p p1, t_p p2) __attribute__((unused));
 static void				lcolor(t_p p1, t_p p2, t_ui *c) __attribute__((unused));
 
 typedef struct s_l
@@ -43,7 +43,7 @@ static void	lcolor(t_point p1, t_point p2, t_ui *color)
 		*color = p2.color;
 }
 
-static inline t_line	init_ln(t_point p1, t_point p2, t_data *d)
+static inline t_line	init_ln(t_point p1, t_point p2)
 {
 	t_line	line;
 
@@ -52,8 +52,8 @@ static inline t_line	init_ln(t_point p1, t_point p2, t_data *d)
 	line.steps = max_steps(line.delta_x, line.delta_y);
 	line.x_inc = line.delta_x / line.steps;
 	line.y_inc = line.delta_y / line.steps;
-	line.x = p1.x + d->offset->move_x;
-	line.y = p1.y + d->offset->move_y;
+	line.x = p1.x + get_data()->offset->move_x;
+	line.y = p1.y + get_data()->offset->move_y;
 	return (line);
 }
 

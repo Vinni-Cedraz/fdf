@@ -12,19 +12,19 @@
 
 #include "fdf_includes_bonus.h"
 
-static void	initialize_transition_methods(t_data *d);
-static void	initialize_grid_methods(t_data *d);
-static void	initialize_key_events_table(t_data *d);
+static void	initialize_transition_methods(void);
+static void	initialize_grid_methods(void);
+static void	initialize_key_events_table(void);
 
-void	initialize_lookup_structs_bonus(t_data *d)
+void	initialize_lookup_structs_bonus(void)
 {
-	initialize_transition_methods(d);
-	initialize_grid_methods(d);
-	initialize_key_events_table(d);
-	d->lookup.set_event_index_by_key(d->lookup.events);
+	initialize_transition_methods();
+	initialize_grid_methods();
+	initialize_key_events_table();
+	get_data()->lookup.set_event_index_by_key(get_data()->lookup.events);
 }
 
-static void	initialize_transition_methods(t_data *d)
+static void	initialize_transition_methods(void)
 {
 	t_node	*head;
 
@@ -33,10 +33,10 @@ static void	initialize_transition_methods(t_data *d)
 	ft_lstadd_back(&head, ft_lstnew(&undo_isometric));
 	ft_lstadd_back(&head, ft_lstnew(&undo_diagonal));
 	ft_lst_make_it_circular(&head);
-	d->lookup.transition_methods = head;
+	get_data()->lookup.transition_methods = head;
 }
 
-static void	initialize_grid_methods(t_data *d)
+static void	initialize_grid_methods(void)
 {
 	t_node	*head;
 
@@ -44,14 +44,14 @@ static void	initialize_grid_methods(t_data *d)
 	ft_lstadd_back(&head, ft_lstnew(&render_lines_cross));
 	ft_lstadd_back(&head, ft_lstnew(&render_pentagram));
 	ft_lst_make_it_circular(&head);
-	d->lookup.grid_methods = head;
+	get_data()->lookup.grid_methods = head;
 }
 
-static void	initialize_key_events_table(t_data *d)
+static void	initialize_key_events_table(void)
 {
 	t_event	*events;
 
-	events = d->lookup.events;
+	events = get_data()->lookup.events;
 	events[0] = (t_event){ESC, &call_close_window};
 	events[1] = (t_event){'k', &increase_sphere_height};
 	events[2] = (t_event){'j', &decrease_sphere_height};
@@ -70,8 +70,8 @@ static void	initialize_key_events_table(t_data *d)
 	events[15] = (t_event){' ', &loop_through_each_transition_method};
 	events[16] = (t_event){'g', &change_grid_rendering_method};
 	events[17] = (t_event){';', &go_isometric_using_snapshot};
-	events[18] = (t_event){UP_ARROW, d->offset->move[0]};
-	events[19] = (t_event){DOWN_ARROW, d->offset->move[1]};
-	events[20] = (t_event){LEFT_ARROW, d->offset->move[2]};
-	events[21] = (t_event){RIGHT_ARROW, d->offset->move[3]};
+	events[18] = (t_event){UP_ARROW, get_data()->offset->move[0]};
+	events[19] = (t_event){DOWN_ARROW, get_data()->offset->move[1]};
+	events[20] = (t_event){LEFT_ARROW, get_data()->offset->move[2]};
+	events[21] = (t_event){RIGHT_ARROW, get_data()->offset->move[3]};
 }
