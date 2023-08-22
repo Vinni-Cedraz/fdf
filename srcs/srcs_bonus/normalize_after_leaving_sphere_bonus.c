@@ -22,7 +22,7 @@ void	normalize_after_leaving_sphere_bonus(void)
 	restore_raw_state_bonus();
 	d->offset->move_x = d->offset->initial_move_x;
 	d->offset->move_y = d->offset->initial_move_y;
-	get_xy_range_bonus();
+	get_xyz_range_bonus();
 	while (i--)
 	{
 		go_to_diagonal();

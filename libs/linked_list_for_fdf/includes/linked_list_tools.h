@@ -25,6 +25,8 @@ typedef struct s_xy_range
 	double				min_x;
 	double				max_y;
 	double				min_y;
+	double				max_z;
+	double				min_z;
 }						t_xy_range;
 
 typedef t_xy_range		t_xy;

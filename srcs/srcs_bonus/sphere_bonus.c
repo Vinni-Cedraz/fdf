@@ -75,8 +75,7 @@ static inline void	update_state_after_spherical(void)
 	d->offset->move_y = (double)WIN_HGHT / 2;
 	if (first == 1)
 	{
-		get_xy_range_bonus();
-		get_altitude_range_bonus(d->map);
+		get_xyz_range_bonus();
 		d->map->ball.center_x = (d->map->min_x + d->map->max_x) / 2;
 		d->map->ball.center_y = (d->map->min_y + d->map->max_y) / 2;
 		d->map->ball.center_z = (d->map->min_z + d->map->max_z) / 2;

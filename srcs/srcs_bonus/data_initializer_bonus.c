@@ -18,8 +18,7 @@ void	data_initializer_bonus(void)
 	get_data()->state = parallel;
 	get_data()->offset->neutral_zoom = 1;
 	initialize_lookup_structs_bonus();
-	get_altitude_range_bonus(get_data()->map);
-	get_xy_range_bonus();
+	get_xyz_range_bonus();
 	ft_lstpoint_iter(get_data()->map->pts, &get_phi_and_theta);
 	colorize_points_bonus();
 	define_rotation_matrices_bonus(get_data()->matrix);

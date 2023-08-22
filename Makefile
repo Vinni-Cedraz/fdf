@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -g3 \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
 		 -I$(INC_CLASSES_METHODS) \
@@ -68,7 +68,6 @@ BONUS_SRCS = parse_map_bonus \
 	     deal_keys_bonus \
 	     change_altitude_bonus \
 	     calculate_default_scale_bonus \
-     	 get_altitude_range_bonus \
 	     assign_coordinates_bonus \
 	     assign_hexcolor_bonus \
 	     multiply_two_matrices_bonus \
@@ -82,7 +81,7 @@ BONUS_SRCS = parse_map_bonus \
 	     lookup_transition_methods_bonus \
 	     loop_through_each_transition_method_bonus \
 	     sphere_bonus \
-	     get_xy_range_bonus \
+	     get_xyz_range_bonus \
 	     initialize_methods_bonus \
 	     colorize_points_bonus \
 	     set_hexcolor_bonus \

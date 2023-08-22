@@ -14,7 +14,7 @@
 
 SHELL := /bin/bash
 NAME = libftprintf.a
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -O3
 RM = rm -f
 AR = ar rcs
 INCLUDES = -Iincludes/

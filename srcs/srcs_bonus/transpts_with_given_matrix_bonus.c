@@ -27,7 +27,7 @@ void	transpts_with_given_matrix_bonus(t_matrix *rot)
 	if (d->state != isometric)
 		calculate_z_scale();
 	if (d->state != spherical)
-		get_altitude_range_bonus(d->map);
+		get_xyz_range_bonus();
 	while (tmp->next != d->map->pts)
 	{
 		if (d->state == parallel && tmp->point.z)
