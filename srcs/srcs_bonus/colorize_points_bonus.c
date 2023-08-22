@@ -28,26 +28,23 @@ void	colorize_points_bonus(void)
 
 static inline void	compute_color_gradient(t_point *p)
 {
-	double	normalized_z;
-	int		index;
-	double	interpol;
-	t_hsl	hsl_low;
-	t_hsl	hsl_high;
+	t_compute_color	c;
+	t_data			*d;
 
-	if (p->color != CYAN || get_data()->map->is_plateau)
+	d = get_data();
+	if (p->color != CYAN || d->map->is_plateau)
 		return ;
-	normalized_z = (p->z - get_data()->map->min_z) / (get_data()->map->max_z
-			- get_data()->map->min_z);
-	index = (int)(normalized_z * 5);
-	if (index > 5 || index < 0)
-		index = 5;
-	interpol = normalized_z * 5 - index;
-	hsl_low = get_data()->color->hsl_map[index];
-	hsl_high = get_data()->color->hsl_map[index + 1];
-	get_data()->color->hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpol;
-	get_data()->color->hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpol;
-	get_data()->color->hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpol;
-	p->color = hsl_to_rgb(get_data()->color);
+	c.normalized_z = (p->z - d->map->min_z) / (d->map->max_z - d->map->min_z);
+	c.index = (int)(c.normalized_z * 5);
+	if (c.index > 5 || c.index < 0)
+		c.index = 5;
+	c.interpol = c.normalized_z * 5 - c.index;
+	c.hsl_low = d->color->hsl_map[c.index];
+	c.hsl_high = d->color->hsl_map[c.index + 1];
+	d->color->hsl.h = c.hsl_low.h + (c.hsl_high.h - c.hsl_low.h) * c.interpol;
+	d->color->hsl.s = c.hsl_low.s + (c.hsl_high.s - c.hsl_low.s) * c.interpol;
+	d->color->hsl.l = c.hsl_low.l + (c.hsl_high.l - c.hsl_low.l) * c.interpol;
+	p->color = hsl_to_rgb(d->color);
 }
 
 static inline long	hsl_to_rgb(t_color *c)
