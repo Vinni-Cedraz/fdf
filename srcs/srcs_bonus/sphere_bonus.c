@@ -14,27 +14,16 @@
 
 static void			update_state_after_spherical(void);
 
-void	get_phi_and_theta(void)
+void	get_phi_and_theta(t_point *point)
 {
-	t_point	p;
-	t_n		*map;
-	double	spread_points_horizontally;
 	double	spread_points_vertically;
-	t_data	*d;
+	double	spread_points_horizontally;
 
-	d = get_data();
-	map = d->map->pts;
-	d->map->set_radius();
-	spread_points_horizontally = PI * 2 / (d->map->width - 1);
-	spread_points_vertically = PI / d->map->height;
-	while (map->next != d->map->pts)
-	{
-		p = map->point;
-		p.ball.phi = -p.ol.raw.x * spread_points_horizontally;
-		p.ball.theta = p.ol.raw.y * spread_points_vertically;
-		map->point = p;
-		map = map->next;
-	}
+	get_data()->map->set_radius();
+	spread_points_horizontally = PI * 2 / (get_data()->map->width - 1);
+	spread_points_vertically = PI / get_data()->map->height;
+	point->ball.phi = -(point->ol.raw.x * spread_points_horizontally);
+	point->ball.theta = point->ol.raw.y * spread_points_vertically;
 }
 
 void	go_spherical(void)

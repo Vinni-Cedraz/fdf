@@ -92,7 +92,7 @@ void					undo_isometric(void);
 void					undo_diagonal(void);
 void					call_close_window(void);
 void					go_spherical(void);
-void					get_phi_and_theta(void);
+void					get_phi_and_theta(t_point *point);
 void					increase_sphere_height(void);
 void					decrease_sphere_height(void);
 void					get_xy_range_bonus(void);
