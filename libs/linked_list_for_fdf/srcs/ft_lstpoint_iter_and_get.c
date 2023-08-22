@@ -11,17 +11,25 @@
 /* ************************************************************************** */
 
 #include "linked_list_tools.h"
+#include <limits.h>
 
 t_xy	ft_lstpoint_iter_and_get(t_n *list_point, t_point_calc_fptr calculate)
 {
-	t_n			*first;
-	t_xy_range	result;
+	t_n					*first;
+	static t_xy_range	result;
+	t_xy_range			range;
 
-	bzero(&result, sizeof(result));
 	first = list_point;
+	range = (t_xy){
+		.max_x = SHRT_MIN,
+		.min_x = SHRT_MAX,
+		.max_y = SHRT_MIN,
+		.min_y = SHRT_MAX
+	};
+	result = range;
 	while (list_point->next != first)
 	{
-		result = calculate(&list_point->point);
+		result = calculate(&list_point->point, result);
 		list_point = list_point->next;
 	}
 	return (result);

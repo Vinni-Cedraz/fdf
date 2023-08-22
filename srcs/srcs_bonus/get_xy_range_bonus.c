@@ -13,7 +13,7 @@
 #include "fdf_includes_bonus.h"
 #include <limits.h>
 
-static t_xy_range			get_xy_range(t_point *point);
+static t_xy_range			get_xy_range(t_point *point, t_xy range);
 
 void	get_xy_range_bonus(void)
 {
@@ -30,16 +30,8 @@ void	get_xy_range_bonus(void)
 	d->map->min_y = range.min_y;
 }
 
-static inline t_xy_range	get_xy_range(t_point *point)
+static inline t_xy_range	get_xy_range(t_point *point, t_xy range)
 {
-	static t_xy_range	range = (t_xy){
-		.max_x = SHRT_MIN,
-		.min_x = SHRT_MAX,
-		.max_y = SHRT_MIN,
-		.min_y = SHRT_MAX
-	};
-
-	range.max_x = point->x;
 	if (point->x > range.max_x)
 		range.max_x = point->x;
 	if (point->x < range.min_x)

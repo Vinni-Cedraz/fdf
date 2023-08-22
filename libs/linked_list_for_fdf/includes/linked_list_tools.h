@@ -36,7 +36,7 @@ typedef struct s_nd
 }						t_n;
 
 typedef					void(t_point_apply_fptr)(t_point *);
-typedef					t_xy_range(t_point_calc_fptr)(t_point *);
+typedef					t_xy_range(t_point_calc_fptr)(t_point *, t_xy_range);
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n						*ft_lstpoint_new(void);

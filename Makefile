@@ -44,18 +44,18 @@ MAGENTA         =  \033[0;95m
 DEF_COLOR       =  \033[0;39m
 
 SRCS = put_pixel_img \
-  		parse_map \
-			close_win \
-			render_map \
-			colorize \
-			draw \
-			define_rotation_matrices \
-			linear_transformations \
-		  data_initializer \
-			deal_key \
-			standard_scale\
-	    open_win_n_img \
-	    main \
+	   parse_map \
+	   close_win \
+	   render_map \
+	   colorize \
+	   draw \
+	   define_rotation_matrices \
+	   linear_transformations \
+	   data_initializer \
+	   deal_key \
+	   standard_scale\
+	   open_win_n_img \
+	   main \
 
 BONUS_SRCS = parse_map_bonus \
 	     main_bonus \
@@ -73,7 +73,7 @@ BONUS_SRCS = parse_map_bonus \
 	     assign_hexcolor_bonus \
 	     multiply_two_matrices_bonus \
 	     get_map_dimensions_bonus \
-       open_win_n_img_bonus \
+		 open_win_n_img_bonus \
 	     initialize_lookup_structs_bonus \
 	     rotate_five_bonus \
 	     reverse_five_bonus \
@@ -95,7 +95,7 @@ BONUS_SRCS = parse_map_bonus \
 SRCS_FROM_LIBFT =  ft_strnstr \
 		   ft_swap \
 		   ft_free_arr \
-	     ft_free_arr_size \
+		   ft_free_arr_size \
 		   ft_free_t_split \
 		   ft_atoi_base \
 		   ft_word_counter \
