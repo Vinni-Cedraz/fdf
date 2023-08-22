@@ -19,14 +19,24 @@ typedef unsigned int	t_ui;
 
 typedef struct s_nd		t_n;
 
+typedef struct s_xy_range
+{
+	double				max_x;
+	double				min_x;
+	double				max_y;
+	double				min_y;
+}						t_xy_range;
+
+typedef t_xy_range		t_xy;
+
 typedef struct s_nd
 {
 	t_point				point;
 	t_n					*next;
 }						t_n;
 
-typedef void			(t_point_apply_fptr)(t_point *);
-typedef double			(t_point_calc_fptr)(t_point *);
+typedef					void(t_point_apply_fptr)(t_point *);
+typedef					t_xy_range(t_point_calc_fptr)(t_point *);
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n						*ft_lstpoint_new(void);
@@ -62,6 +72,6 @@ void					ft_lstpoint_make_it_circular(t_n **head);
 void					ft_lstpoint_iter(t_n *head, t_point_apply_fptr *f);
 
 // iterates circular linked list of t_node_with_a_point while calculating stuff
-double					ft_lstpoint_iter_and_get(t_n *h, t_point_calc_fptr *f);
+t_xy_range				ft_lstpoint_iter_and_get(t_n *h, t_point_calc_fptr *f);
 
 #endif

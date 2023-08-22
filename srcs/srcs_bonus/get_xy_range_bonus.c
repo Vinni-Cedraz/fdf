@@ -11,85 +11,42 @@
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
+#include <limits.h>
 
-static double			get_max_x(t_n *node);
-static double			get_min_x(t_n *node);
-static double			get_max_y(t_n *node);
-static double			get_min_y(t_n *node);
+static t_xy_range			get_xy_range(t_point *point);
 
 void	get_xy_range_bonus(void)
 {
-	t_n		*node;
-	t_data	*d;
+	t_n			*lst;
+	t_data		*d;
+	t_xy_range	range;
 
 	d = get_data();
-	node = d->map->pts;
-	d->map->max_x = get_max_x(node);
-	d->map->min_x = get_min_x(node);
-	d->map->max_y = get_max_y(node);
-	d->map->min_y = get_min_y(node);
+	lst = d->map->pts;
+	range = ft_lstpoint_iter_and_get(lst, &get_xy_range);
+	d->map->max_x = range.max_x;
+	d->map->min_x = range.min_x;
+	d->map->max_y = range.max_y;
+	d->map->min_y = range.min_y;
 }
 
-static inline double	get_max_x(t_n *node)
+static inline t_xy_range	get_xy_range(t_point *point)
 {
-	double	max;
-	t_n		*tmp;
+	static t_xy_range	range = (t_xy){
+		.max_x = SHRT_MIN,
+		.min_x = SHRT_MAX,
+		.max_y = SHRT_MIN,
+		.min_y = SHRT_MAX
+	};
 
-	max = node->point.x;
-	tmp = node;
-	while (node->next != tmp)
-	{
-		if (node->point.x > max)
-			max = node->point.x;
-		node = node->next;
-	}
-	return (max);
-}
-
-static inline double	get_min_x(t_n *node)
-{
-	double	min;
-	t_n		*tmp;
-
-	tmp = node;
-	min = node->point.x;
-	while (node->next != tmp)
-	{
-		if (node->point.x < min)
-			min = node->point.x;
-		node = node->next;
-	}
-	return (min);
-}
-
-static inline double	get_max_y(t_n *node)
-{
-	double	max;
-	t_n		*tmp;
-
-	max = node->point.y;
-	tmp = node;
-	while (node->next != tmp)
-	{
-		if (node->point.y > max)
-			max = node->point.y;
-		node = node->next;
-	}
-	return (max);
-}
-
-static inline double	get_min_y(t_n *node)
-{
-	double	min;
-	t_n		*tmp;
-
-	min = node->point.y;
-	tmp = node;
-	while (node->next != tmp)
-	{
-		if (node->point.y < min)
-			min = node->point.y;
-		node = node->next;
-	}
-	return (min);
+	range.max_x = point->x;
+	if (point->x > range.max_x)
+		range.max_x = point->x;
+	if (point->x < range.min_x)
+		range.min_x = point->x;
+	if (point->y > range.max_y)
+		range.max_y = point->y;
+	if (point->y < range.min_y)
+		range.min_y = point->y;
+	return (range);
 }

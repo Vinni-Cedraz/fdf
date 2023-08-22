@@ -12,12 +12,12 @@
 
 #include "linked_list_tools.h"
 
-double	ft_lstpoint_iter_and_get(t_n *list_point, t_point_calc_fptr calculate)
+t_xy	ft_lstpoint_iter_and_get(t_n *list_point, t_point_calc_fptr calculate)
 {
-	t_n		*first;
-	double	result;
+	t_n			*first;
+	t_xy_range	result;
 
-	result = 0;
+	bzero(&result, sizeof(result));
 	first = list_point;
 	while (list_point->next != first)
 	{
