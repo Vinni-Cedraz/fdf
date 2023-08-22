@@ -126,7 +126,8 @@ SRCS_FROM_LINKED_LIST_TOOLS = ft_lstpoint_back \
 			      ft_lstpoint_getby_index \
 			      ft_lstpoint_toarr \
 			      ft_lstpoint_size \
-            ft_lstpoint_iter \
+				  ft_lstpoint_iter \
+				  ft_lstpoint_iter_and_get \
 
 ################ MANDATORY VARIABLES ################
 

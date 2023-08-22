@@ -26,6 +26,7 @@ typedef struct s_nd
 }						t_n;
 
 typedef void			(t_point_apply_fptr)(t_point *);
+typedef double			(t_point_calc_fptr)(t_point *);
 
 // ads a node_with_a_point and initializes the point to all zeros
 t_n						*ft_lstpoint_new(void);
@@ -59,5 +60,8 @@ void					ft_lstpoint_make_it_circular(t_n **head);
 
 // iterates circular linked list of t_node_with_a_point doing t_point_apply_fptr
 void					ft_lstpoint_iter(t_n *head, t_point_apply_fptr *f);
+
+// iterates circular linked list of t_node_with_a_point while calculating stuff
+double					ft_lstpoint_iter_and_get(t_n *h, t_point_calc_fptr *f);
 
 #endif

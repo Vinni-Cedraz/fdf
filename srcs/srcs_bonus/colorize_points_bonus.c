@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 11:29:10 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 18:33:57 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/22 15:54:17 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,18 @@
 static long			rgb_to_int(double r, double g, double b);
 static long			hsl_to_rgb(t_color *c);
 static int			get_color_wheel_sector_of_hue(double h);
-static void			compute_color_gradient(t_point *p, t_data *d);
+static void			compute_color_gradient(t_point *p);
 
 void	colorize_points_bonus(void)
 {
-	t_n		*tmp;
 	t_data	*d;
 
 	d = get_data();
 	d->color->create_hsl_map(d->color->hsl_map);
-	tmp = d->map->pts;
-	while (tmp->next != d->map->pts)
-	{
-		compute_color_gradient(&tmp->point, d);
-		tmp = tmp->next;
-	}
+	ft_lstpoint_iter(d->map->pts, &compute_color_gradient);
 }
 
-static inline void	compute_color_gradient(t_point *p, t_data *d)
+static inline void	compute_color_gradient(t_point *p)
 {
 	double	normalized_z;
 	int		index;
@@ -40,19 +34,20 @@ static inline void	compute_color_gradient(t_point *p, t_data *d)
 	t_hsl	hsl_low;
 	t_hsl	hsl_high;
 
-	if (p->color != CYAN || d->map->is_plateau)
+	if (p->color != CYAN || get_data()->map->is_plateau)
 		return ;
-	normalized_z = (p->z - d->map->min_z) / (d->map->max_z - d->map->min_z);
+	normalized_z = (p->z - get_data()->map->min_z) / (get_data()->map->max_z
+			- get_data()->map->min_z);
 	index = (int)(normalized_z * 5);
 	if (index > 5 || index < 0)
 		index = 5;
 	interpol = normalized_z * 5 - index;
-	hsl_low = d->color->hsl_map[index];
-	hsl_high = d->color->hsl_map[index + 1];
+	hsl_low = get_data()->color->hsl_map[index];
+	hsl_high = get_data()->color->hsl_map[index + 1];
 	get_data()->color->hsl.h = hsl_low.h + (hsl_high.h - hsl_low.h) * interpol;
 	get_data()->color->hsl.s = hsl_low.s + (hsl_high.s - hsl_low.s) * interpol;
 	get_data()->color->hsl.l = hsl_low.l + (hsl_high.l - hsl_low.l) * interpol;
-	p->color = hsl_to_rgb(d->color);
+	p->color = hsl_to_rgb(get_data()->color);
 }
 
 static inline long	hsl_to_rgb(t_color *c)

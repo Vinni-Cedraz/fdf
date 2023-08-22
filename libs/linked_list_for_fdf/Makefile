@@ -47,6 +47,7 @@ SRCS = ft_lstpoint_new \
 			ft_lstpoint_toarr \
   ft_lstpoint_make_it_circular \
   			   ft_lstpoint_iter \
+  		ft_lstpoint_iter_and_get \
 
 OBJS = $(patsubst %, $(OBJS_PATH)%.o, $(SRCS))
 MOD_OBJ = $(shell find $(OBJS_PATH)*.o -newer $(NAME))
