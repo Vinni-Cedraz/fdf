@@ -16,6 +16,13 @@ static t_data			*pre_parse_allocations(void);
 static void				pre_draw_allocations(void);
 static void				draw_first_frame(void);
 
+t_data	*get_data(void)
+{
+	static t_data	data;
+
+	return (&data);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*d;
