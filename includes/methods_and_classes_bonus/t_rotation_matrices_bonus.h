@@ -82,15 +82,11 @@ static inline void	iso_in_one_step(t_rotation_matrices *m)
 
 static inline void	scale_z_up_tmp_stage(t_rotation_matrices *m)
 {
-	t_matrix	undo_iso;
-	t_matrix	pre_up;
-	t_matrix	pre_down;
-	t_matrix	pre_mirror;
+	const t_matrix	undo_iso = m->undo_iso;
+	const t_matrix	pre_up = m->pre_change_altitude_up;
+	const t_matrix	pre_down = m->pre_change_altitude_down;
+	const t_matrix	pre_mirror = m->pre_change_altitude_mirror;
 
-	undo_iso = m->undo_iso;
-	pre_up = m->pre_change_altitude_up;
-	pre_down = m->pre_change_altitude_down;
-	pre_mirror = m->pre_change_altitude_mirror;
 	m->undo_iso_do_pre_up = m->mul_mat(undo_iso, pre_up);
 	m->undo_iso_do_pre_down = m->mul_mat(undo_iso, pre_down);
 	m->undo_iso_do_pre_mirror = m->mul_mat(undo_iso, pre_mirror);

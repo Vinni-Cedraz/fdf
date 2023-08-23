@@ -27,24 +27,22 @@ void	change_grid_rendering_method(void)
 void	render_lines_square(void)
 {
 	int		i;
-	int		j;
 	t_point	p;
 	t_data	*d;
+	int		row;
+	int		col;
 
-	i = 0;
 	d = get_data();
-	while (i < d->map->height)
+	i = 0;
+	while (i < (int)d->map->size)
 	{
-		j = 0;
-		while (j < d->map->width)
-		{
-			p = d->map->arr[i][j];
-			if (j + 1 < d->map->width)
-				render_line_bonus(p, d->map->arr[i][j + 1]);
-			if (i + 1 < d->map->height)
-				render_line_bonus(p, d->map->arr[i + 1][j]);
-			j++;
-		}
+		row = (int)(i / d->map->width);
+		col = (int)i % (int)(d->map->width);
+		p = d->map->arr[row][col];
+		if (col + 1 < d->map->width)
+			render_line_bonus(p, d->map->arr[row][col + 1]);
+		if (row + 1 < d->map->height)
+			render_line_bonus(p, d->map->arr[row + 1][col]);
 		i++;
 	}
 }
