@@ -24,6 +24,7 @@ void	change_grid_rendering_method(void)
 	get_data()->lookup.grid_methods = get_data()->lookup.grid_methods->next;
 }
 
+// the following functions are the grid methods
 void	render_lines_square(void)
 {
 	int		i;
@@ -32,17 +33,17 @@ void	render_lines_square(void)
 	int		row;
 	int		col;
 
-	d = get_data();
 	i = 0;
+	d = get_data();
 	while (i < (int)d->map->size)
 	{
-		row = (int)(i / d->map->width);
-		col = (int)i % (int)(d->map->width);
-		p = d->map->arr[row][col];
-		if (col + 1 < d->map->width)
-			render_line_bonus(p, d->map->arr[row][col + 1]);
-		if (row + 1 < d->map->height)
-			render_line_bonus(p, d->map->arr[row + 1][col]);
+		row = (int)(i / d->map->width) + 1;
+		col = (int)i % (int)(d->map->width) + 1;
+		p = d->map->arr[row - 1][col -1];
+		if (col < d->map->width)
+			render_line_bonus(p, d->map->arr[row - 1][col]);
+		if (row < d->map->height)
+			render_line_bonus(p, d->map->arr[row][col - 1]);
 		i++;
 	}
 }

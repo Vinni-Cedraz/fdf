@@ -229,16 +229,14 @@ clean:
 	@make clean_fdf -C $(LIBFT_PATH) --no-print-directory
 	@make clean_fdf_bonus -C $(LIBFT_PATH) --no-print-directory
 	@make clean -C $(PRNTF_PATH) --no-print-directory
-	@rm -rf $(WIP_OBJS_PATH)
 	@rm -rf $(OBJS_PATH)
 	@rm -rf $(BONUS_OBJS_PATH)
+	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@rm -f vgcore*
 	@rm -f a.out
 
 fclean: clean
-	@rm -f $(NAME)
-	@rm -f $(NAME_BONUS)
-	@rm -f $(NAME_WIP)
 	@rm -f $(EXECUTABLE)
 	@make fclean -C $(PRNTF_PATH) --no-print-directory
 	@make fclean_fdf -C $(LIBFT_PATH) --no-print-directory
