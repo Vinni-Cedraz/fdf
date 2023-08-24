@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 11:20:26 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/13 15:19:02 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/24 14:27:18 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <string.h>
+
+// debugging function
+void	print_state(void);
 
 #endif

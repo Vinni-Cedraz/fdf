@@ -17,10 +17,10 @@ static void			put_pixel_img_bonus(t_img *img, int x, int y, int color);
 
 int	draw_bonus(void)
 {
+	t_data	*d;
 	void	*dis;
 	void	*win;
 	void	*img;
-	t_data	*d;
 
 	d = get_data();
 	img = d->img->ptr;
@@ -55,10 +55,11 @@ static inline void	paint_it_black(void)
 	{
 		counter++;
 		i = counter / d->img->height;
-		if (i < d->scale->menu_width)
-			continue ;
-		j = counter % d->img->height;
-		put_pixel_img_bonus(d->img, i, j, BLACK);
+		if (i >= d->scale->menu_width)
+		{
+			j = counter % d->img->height;
+			put_pixel_img_bonus(d->img, i, j, BLACK);
+		}
 	}
 }
 
