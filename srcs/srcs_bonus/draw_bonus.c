@@ -55,10 +55,11 @@ static inline void	paint_it_black(void)
 	{
 		counter++;
 		i = counter / d->img->height;
-		if (i < d->scale->menu_width)
-			continue ;
-		j = counter % d->img->height;
-		put_pixel_img_bonus(d->img, i, j, BLACK);
+		if (i >= d->scale->menu_width)
+		{
+			j = counter % d->img->height;
+			put_pixel_img_bonus(d->img, i, j, BLACK);
+		}
 	}
 }
 

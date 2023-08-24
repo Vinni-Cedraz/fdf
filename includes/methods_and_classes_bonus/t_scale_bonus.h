@@ -16,10 +16,10 @@
 # include "fdf_prototypes_bonus.h"
 # include "fdf_t_data_bonus.h"
 
-// # define WIN_HGHT 720
-// # define WIN_WDTH 1370
-# define WIN_HGHT 1080
-# define WIN_WDTH 1920
+# define WIN_HGHT 720
+# define WIN_WDTH 1370
+// # define WIN_HGHT 1080
+// # define WIN_WDTH 1920
 
 static void			calculate_win_factor(void) __attribute__((unused));
 static void			create_t_scale(void) __attribute__((unused));

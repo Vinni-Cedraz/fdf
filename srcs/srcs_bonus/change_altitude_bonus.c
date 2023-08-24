@@ -14,6 +14,8 @@
 
 inline void	mirror_altitude(void)
 {
+	if (get_data()->state == spherical)
+		return ;
 	if (get_data()->state != isometric)
 		go_isometric_using_snapshot();
 	reset_zoom_from_snapshot();
@@ -22,6 +24,8 @@ inline void	mirror_altitude(void)
 
 inline void	increase_altitude(void)
 {
+	if (get_data()->state == spherical)
+		return ;
 	if (get_data()->state != isometric)
 		go_isometric_using_snapshot();
 	reset_zoom_from_snapshot();
@@ -30,6 +34,8 @@ inline void	increase_altitude(void)
 
 inline void	decrease_altitude(void)
 {
+	if (get_data()->state == spherical)
+		return ;
 	if (get_data()->state != isometric)
 		go_isometric_using_snapshot();
 	reset_zoom_from_snapshot();
