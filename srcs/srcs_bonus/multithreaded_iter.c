@@ -49,26 +49,30 @@ int	get_end_idx(int i)
 	return (2 * (map_size / 8) * i);
 }
 
-t_shape_and_idx	getshape(t_shape_and_idx shape, int i)
+t_shape_and_idx	get_t_shape_and_idx(t_shape_and_idx shape, int i)
 {
-	return ((t_shape_and_idx){.fptr = shape.fptr, .start_idx = get_start_idx(i),
-		.end_idx = get_end_idx(i)});
+	return ((t_shape_and_idx){
+		.fptr = shape.fptr,
+		.start_idx = get_start_idx(i),
+		.end_idx = get_end_idx(i)
+	});
 }
 
-// this one here will create the threads and call them with two function pointer
-// arguments: 1-> arrpoints_iter 2-> the argument it received when it was called
-// by render_lines_<shape>
 void	spawn_threads(t_shape_and_idx shape)
 {
 	int				i;
 	pthread_t		threads[8];
-	t_shape_and_idx	this_shape[8];
+	t_shape_and_idx	this_shape_and_idx[8];
 
 	i = -1;
 	while (++i < 8)
 	{
-		this_shape[i] = getshape(shape, i);
-		pthread_create(&threads[i], NULL, arrpoints_iter, ((void *)&shape));
+		this_shape_and_idx[i] = get_t_shape_and_idx(shape, i);
+		pthread_create(
+			&threads[i],
+			NULL,
+			&arrpoints_iter,
+			((void *)&this_shape_and_idx[i]));
 	}
 	i = -1;
 	while (++i < 8)
@@ -88,7 +92,7 @@ void	*arrpoints_iter(void *shape_fptr)
 	arr = map->arr;
 	end_idx = ((t_shape_and_idx *)(shape_fptr))->end_idx;
 	start_idx = ((t_shape_and_idx *)(shape_fptr))->start_idx;
-	while (start_idx++ < end_idx)
+	while (start_idx < end_idx)
 	{
 		row = start_idx / (int)map->width;
 		col = start_idx % (int)map->width;
@@ -104,9 +108,9 @@ void	*square(t_point *p, int row, int col)
 	t_data	*d;
 
 	d = get_data();
-	if (col < d->map->width)
+	if (col + 1 < d->map->width)
 		render_line_bonus(*p, d->map->arr[row][col + 1]);
-	if (row < d->map->height)
+	if (row + 1 < d->map->height)
 		render_line_bonus(*p, d->map->arr[row + 1][col]);
 	return (NULL);
 }
