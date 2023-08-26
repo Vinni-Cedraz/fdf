@@ -19,36 +19,40 @@ void			*square(t_point *p, int row, int col);
 typedef struct s_shape_and_idx
 {
 	t_shape		fptr;
-	int			idx;
+	int			start_idx;
+	int			end_idx;
 }				t_shape_and_idx;
 
 void			spawn_threads(t_shape_and_idx shape);
+void			*arrpoints_iter(void *shape_fptr);
 
 // these ones will be called by the button event
 void	render_lines_square(void)
 {
-	spawn_threads((t_shape_and_idx){.fptr = square, .idx = 0});
+	spawn_threads((t_shape_and_idx){.fptr = square});
 }
 
-void	*arrpoints_iter(void *shape_fptr)
+// int i goes from 0 to 7 and represents the number of the thread being created
+int	get_start_idx(int i)
 {
-	t_point	**arr;
-	t_map	*map;
-	int		idx;
-	int		row;
-	int		col;
+	size_t	map_size;
 
-	idx = ((t_shape_and_idx)(shape_fptr)).idx;
-	map = get_data()->map;
-	arr = map->arr;
-	while (idx++ < (int)map->size)
-	{
-		row = idx / (int)map->width;
-		col = idx % (int)map->width;
-		((t_shape_and_idx)&(shape_fptr)).shape(&arr[row][col], row, col);
-		idx++;
-	}
-	return (NULL);
+	map_size = get_data()->map->size;
+	return ((map_size / 8) * i);
+}
+
+int	get_end_idx(int i)
+{
+	size_t	map_size;
+
+	map_size = get_data()->map->size;
+	return (2 * (map_size / 8) * i);
+}
+
+t_shape_and_idx	getshape(t_shape_and_idx shape, int i)
+{
+	return ((t_shape_and_idx){.fptr = shape.fptr, .start_idx = get_start_idx(i),
+		.end_idx = get_end_idx(i)});
 }
 
 // this one here will create the threads and call them with two function pointer
@@ -56,18 +60,42 @@ void	*arrpoints_iter(void *shape_fptr)
 // by render_lines_<shape>
 void	spawn_threads(t_shape_and_idx shape)
 {
-	int			i;
-	pthread_t	threads[8];
+	int				i;
+	pthread_t		threads[8];
+	t_shape_and_idx	this_shape[8];
 
 	i = -1;
 	while (++i < 8)
 	{
-		pthread_create(&threads[i], NULL, arrpoints_iter,
-				(void *)&(t_shape_and_idx){.fptr = shape, .idx = get_idx(i)});
+		this_shape[i] = getshape(shape, i);
+		pthread_create(&threads[i], NULL, arrpoints_iter, ((void *)&shape));
 	}
 	i = -1;
 	while (++i < 8)
 		pthread_join(threads[i], NULL);
+}
+
+void	*arrpoints_iter(void *shape_fptr)
+{
+	t_point	**arr;
+	t_map	*map;
+	int		end_idx;
+	int		start_idx;
+	int		row;
+	int		col;
+
+	map = get_data()->map;
+	arr = map->arr;
+	end_idx = ((t_shape_and_idx *)(shape_fptr))->end_idx;
+	start_idx = ((t_shape_and_idx *)(shape_fptr))->start_idx;
+	while (start_idx++ < end_idx)
+	{
+		row = start_idx / (int)map->width;
+		col = start_idx % (int)map->width;
+		((t_shape_and_idx *)(shape_fptr))->fptr(&arr[row][col], row, col);
+		start_idx++;
+	}
+	return (NULL);
 }
 
 // the following functions are the grid methods
@@ -77,9 +105,9 @@ void	*square(t_point *p, int row, int col)
 
 	d = get_data();
 	if (col < d->map->width)
-		render_line_bonus(*p, d->map->arr[row - 1][col]);
+		render_line_bonus(*p, d->map->arr[row][col + 1]);
 	if (row < d->map->height)
-		render_line_bonus(*p, d->map->arr[row][col - 1]);
+		render_line_bonus(*p, d->map->arr[row + 1][col]);
 	return (NULL);
 }
 
