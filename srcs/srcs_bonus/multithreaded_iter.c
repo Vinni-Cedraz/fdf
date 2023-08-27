@@ -46,7 +46,7 @@ int	get_end_idx(int i)
 	size_t	map_size;
 
 	map_size = get_data()->map->size;
-	return (2 * (map_size / 8) * i);
+	return ((map_size / 8) * (i + 1));
 }
 
 t_shape_and_idx	get_t_shape_and_idx(t_shape_and_idx shape, int i)
