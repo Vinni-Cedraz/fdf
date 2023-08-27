@@ -13,6 +13,9 @@
 #ifndef FDF_INCLUDES_BONUS_H
 # define FDF_INCLUDES_BONUS_H
 
+// to be included on t_multithreaded_iter in the future:
+# define NUM_THREADS 8
+
 # include "fdf_defines.h"
 # include "fdf_keycodes.h"
 # include "fdf_prototypes_bonus.h"

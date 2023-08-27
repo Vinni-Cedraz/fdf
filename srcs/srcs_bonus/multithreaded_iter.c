@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 18:37:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/08/25 19:24:18 by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/0NUM_THREADS/25 1NUM_THREADS:37:03 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/0NUM_THREADS/25 19:24:1NUM_THREADS by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,40 @@ void	render_lines_square(void)
 // int i goes from 0 to 7 and represents the number of the thread being created
 int	get_start_idx(int i)
 {
-	size_t	map_size;
+	uint	map_size;
+	uint	remainder;
+	int		res;
+	int		surplus;
 
+	if (0 == i)
+		return (i);
+	surplus = 0;
 	map_size = get_data()->map->size;
-	return ((map_size / 8) * i);
+	remainder = map_size % NUM_THREADS; 
+	if (remainder && remainder <= NUM_THREADS)
+		surplus = 1;
+	else if (remainder && remainder > NUM_THREADS)
+		surplus = remainder / NUM_THREADS;
+	res = (map_size / NUM_THREADS) * i + surplus;
+	return (res);
 }
 
 int	get_end_idx(int i)
 {
-	size_t	map_size;
+	uint	map_size;
+	uint	remainder;
+	int		res;
+	int		surplus;
 
+	surplus = 0;
 	map_size = get_data()->map->size;
-	return ((map_size / 8) * (i + 1));
+	remainder = map_size % NUM_THREADS; 
+	if (remainder && remainder <= NUM_THREADS)
+		surplus = 1;
+	else if (remainder && remainder > NUM_THREADS)
+		surplus = remainder / NUM_THREADS;
+	res = (map_size / NUM_THREADS) * (i + 1) + surplus;
+	return (res);
 }
 
 t_shape_and_idx	get_t_shape_and_idx(t_shape_and_idx shape, int i)
@@ -61,11 +83,11 @@ t_shape_and_idx	get_t_shape_and_idx(t_shape_and_idx shape, int i)
 void	spawn_threads(t_shape_and_idx shape)
 {
 	int				i;
-	pthread_t		threads[8];
-	t_shape_and_idx	this_shape_and_idx[8];
+	pthread_t		threads[NUM_THREADS];
+	t_shape_and_idx	this_shape_and_idx[NUM_THREADS];
 
 	i = -1;
-	while (++i < 8)
+	while (++i < NUM_THREADS)
 	{
 		this_shape_and_idx[i] = get_t_shape_and_idx(shape, i);
 		pthread_create(
@@ -75,7 +97,7 @@ void	spawn_threads(t_shape_and_idx shape)
 			((void *)&this_shape_and_idx[i]));
 	}
 	i = -1;
-	while (++i < 8)
+	while (++i < NUM_THREADS)
 		pthread_join(threads[i], NULL);
 }
 
