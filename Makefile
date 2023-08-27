@@ -70,7 +70,7 @@ BONUS_SRCS = parse_map_bonus \
 	     calculate_default_scale_bonus \
 	     assign_coordinates_bonus \
 	     assign_hexcolor_bonus \
-		 multithreaded_iter \
+		 multi_threaded_iter \
 	     multiply_two_matrices_bonus \
 	     get_map_dimensions_bonus \
 		 open_win_n_img_bonus \
