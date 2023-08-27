@@ -24,6 +24,12 @@ void	change_grid_rendering_method(void)
 	get_data()->lookup.grid_methods = get_data()->lookup.grid_methods->next;
 }
 
+// the following functions are the grid_methods:
+void	render_lines_square(void)
+{
+	spawn_threads((t_shape_and_idx){.fptr = square});
+}
+
 void	render_lines_cross(void)
 {
 	int		i;
