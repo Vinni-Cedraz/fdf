@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/0NUM_THREADS/25 1NUM_THREADS:37:03 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/0NUM_THREADS/25 19:24:1NUM_THREADS by vcedraz-         ###   ########.fr       */
+/*   Created: 2023/08/27 19:12:37 by vcedraz-          #+#    #+#             */
+/*   Updated: 2023/08/27 19:16:59 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,73 +32,60 @@ void	render_lines_square(void)
 	spawn_threads((t_shape_and_idx){.fptr = square});
 }
 
-// int i goes from 0 to 7 and represents the number of the thread being created
-int	get_start_idx(int i)
+int	get_start_idx(int thread_number)
 {
 	uint	map_size;
-	uint	remainder;
-	int		res;
-	int		surplus;
+	int		remainder;
 
-	if (0 == i)
-		return (i);
-	surplus = 0;
+	if (1 == thread_number)
+		return (0);
 	map_size = get_data()->map->size;
-	remainder = map_size % NUM_THREADS; 
-	if (remainder && remainder <= NUM_THREADS)
-		surplus = 1;
-	else if (remainder && remainder > NUM_THREADS)
-		surplus = remainder / NUM_THREADS;
-	res = (map_size / NUM_THREADS) * i + surplus;
-	return (res);
+	remainder = map_size % NUM_THREADS;
+	return ((map_size / NUM_THREADS) * (thread_number - 1) + remainder);
 }
 
-int	get_end_idx(int i)
+int	get_end_idx(int thread_number)
 {
 	uint	map_size;
-	uint	remainder;
-	int		res;
-	int		surplus;
+	short	remainder;
 
-	surplus = 0;
 	map_size = get_data()->map->size;
 	remainder = map_size % NUM_THREADS; 
-	if (remainder && remainder <= NUM_THREADS)
-		surplus = 1;
-	else if (remainder && remainder > NUM_THREADS)
-		surplus = remainder / NUM_THREADS;
-	res = (map_size / NUM_THREADS) * (i + 1) + surplus;
-	return (res);
+	return ((map_size / NUM_THREADS) * thread_number + remainder);
 }
 
-t_shape_and_idx	get_t_shape_and_idx(t_shape_and_idx shape, int i)
+t_shape_and_idx	get_t_shape_and_idx(t_shape_and_idx shape, int thread_number)
 {
+	const int	start_idx = get_start_idx(thread_number + 1);
+	const int	end_idx = get_end_idx(thread_number + 1);
+
 	return ((t_shape_and_idx){
 		.fptr = shape.fptr,
-		.start_idx = get_start_idx(i),
-		.end_idx = get_end_idx(i)
+		.start_idx = start_idx,
+		.end_idx = end_idx
 	});
 }
 
 void	spawn_threads(t_shape_and_idx shape)
 {
-	int				i;
+	int				thread_nb;
 	pthread_t		threads[NUM_THREADS];
 	t_shape_and_idx	this_shape_and_idx[NUM_THREADS];
 
-	i = -1;
-	while (++i < NUM_THREADS)
+	thread_nb = 0;
+	while (thread_nb < NUM_THREADS)
 	{
-		this_shape_and_idx[i] = get_t_shape_and_idx(shape, i);
+		this_shape_and_idx[thread_nb] = get_t_shape_and_idx(shape, thread_nb);
 		pthread_create(
-			&threads[i],
+			&threads[thread_nb],
 			NULL,
 			&arrpoints_iter,
-			((void *)&this_shape_and_idx[i]));
+			((void *)&this_shape_and_idx[thread_nb]));
+		thread_nb++;
 	}
-	i = -1;
-	while (++i < NUM_THREADS)
-		pthread_join(threads[i], NULL);
+	thread_nb = -1;
+	while (++thread_nb < NUM_THREADS)
+		pthread_join(threads[thread_nb], NULL);
 }
 
 void	*arrpoints_iter(void *shape_fptr)
