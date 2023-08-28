@@ -19,7 +19,6 @@ int	deal_keys_bonus(int key)
 	t_data		*d;
 
 	d = get_data();
-	d->img->to_be_flushed = 1;
 	if (previous_key != key)
 	{
 		index = d->lookup.hash_function(key);
@@ -28,5 +27,6 @@ int	deal_keys_bonus(int key)
 	if (!d->lookup.events[index].t_event_method)
 		return (0);
 	d->lookup.events[index].t_event_method();
+	d->img->to_be_flushed = 1;
 	return (1);
 }
