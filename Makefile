@@ -6,7 +6,7 @@
 #    By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 19:19:27 by vcedraz-          #+#    #+#              #
-#    Updated: 2023/08/21 17:40:38 by vcedraz-         ###   ########.fr        #
+#    Updated: 2023/08/28 15:47:16 by vcedraz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ BONUS_SRCS = parse_map_bonus \
 	     calculate_default_scale_bonus \
 	     assign_coordinates_bonus \
 	     assign_hexcolor_bonus \
-		 multi_threaded_iter \
+		 multi_threaded_workers \
 	     multiply_two_matrices_bonus \
 	     get_map_dimensions_bonus \
 		 open_win_n_img_bonus \

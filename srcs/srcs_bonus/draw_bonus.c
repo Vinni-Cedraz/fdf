@@ -28,9 +28,10 @@ int	draw_bonus(void)
 	if (d->img->to_be_flushed)
 	{
 		flush_image();
-		d->img->to_be_flushed = 0;
+		d->img->to_be_flushed = 1;
 		if (d->offset->neutral_zoom)
 			take_zoom_snapshot();
+		ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 		render_map_bonus();
 		mlx_put_image_to_window(dis, win, img, 0, 0);
 		draw_menu();
@@ -40,10 +41,10 @@ int	draw_bonus(void)
 
 void	flush_image(void)
 {
-	multi_threaded_iter((t_action_and_idx){.action = &paint_it_black});
+	multi_threaded_workers((t_worker_task){.action = &paint_it_black});
 }
 
-void	*paint_it_black(t_arrpoints_iter *iter)
+void	*paint_it_black(t_worker_task *iter)
 {
 	t_data	*d;
 
@@ -56,7 +57,7 @@ void	*paint_it_black(t_arrpoints_iter *iter)
 int	get_img_start_idx(int thread_number)
 {
 	t_img	*img;
-	uint	img_size;
+	int	img_size;
 	int		remainder;
 
 	if (1 == thread_number)

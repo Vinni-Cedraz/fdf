@@ -27,4 +27,5 @@ void	data_initializer_bonus(void)
 	colorize_points_bonus();
 	define_rotation_matrices_bonus(get_data()->matrix);
 	map->arr = map->create_arrmap(map);
+	ft_lstpoint_toarr(map->pts, map->width, map->arr);
 }

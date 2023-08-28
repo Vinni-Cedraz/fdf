@@ -27,16 +27,16 @@ void	change_grid_rendering_method(void)
 // the following functions are the grid_methods:
 void	render_lines_square(void)
 {
-	multi_threaded_iter((t_action_and_idx){.action = render_square});
+	multi_threaded_workers((t_worker_task){.action = render_square});
 }
 
 void	render_lines_cross(void)
 {
 	render_lines_square();
-	multi_threaded_iter((t_action_and_idx){.action = render_cross});
+	multi_threaded_workers((t_worker_task){.action = render_cross});
 }
 
 void	render_lines_pentagram(void)
 {
-	multi_threaded_iter((t_action_and_idx){.action = render_pentagram});
+	multi_threaded_workers((t_worker_task){.action = render_pentagram});
 }

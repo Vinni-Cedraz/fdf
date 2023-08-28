@@ -62,7 +62,7 @@ void					ft_lstpoint_free(t_n **list);
 int						ft_lstpoint_size(t_n *lst);
 
 // to transform a linked list of ode_with_a_points into a 2d array of t_points
-void					ft_lstpoint_toarr(t_n *n, t_ui width, t_point **arr);
+void					ft_lstpoint_toarr(t_n *n, t_ui width, t_point ***arr);
 
 // duplicates a linked list of 't_node_with_a_point' s
 t_n						*ft_lstpoint_dup(t_n *lst);

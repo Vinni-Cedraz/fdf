@@ -26,9 +26,8 @@ typedef struct s_d		t_d;
 typedef struct s_is		t_i_changer;
 typedef struct s_ctr	t_center;
 typedef struct s_nd		t_n;
-typedef struct s_shpidx	t_action_and_idx;
+typedef struct s_task	t_task;
 typedef struct s_img	t_img;
-typedef struct s_iter	t_iter;
 
 // GENERAL PURPOSE TYPEDEFS
 typedef void			(*t_func_ptr)(void);
@@ -109,11 +108,11 @@ void					draw_menu(void);
 void					error_handler(void);
 void					restore_raw_state_bonus(void);
 void					normalize_after_leaving_sphere_bonus(void);
-void					multi_threaded_iter(t_action_and_idx actidx);
+void					multi_threaded_workers(t_task actidx);
 void					put_pixel_img_bonus(t_img *img, int x, int y, int c);
 int						get_img_start_idx(int thread_number);
 int						get_img_end_idx(int thread_number);
-void					*paint_it_black(t_iter *iter);
-void					*transform_a_point(t_iter *iter);
+void					*paint_it_black(t_task *task);
+void					*transform_a_point(t_task *task);
 
 #endif

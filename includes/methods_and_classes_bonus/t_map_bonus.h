@@ -22,7 +22,7 @@
 
 typedef struct s_d		t_d;
 static void				get_map_center(void) __attribute__((unused));
-static t_point			**create_arrmap(t_map *map) __attribute__((unused));
+static t_point			***create_arrmap(t_map *map) __attribute__((unused));
 static void				set_radius(void) __attribute__((unused));
 
 typedef struct s_ba
@@ -61,11 +61,11 @@ typedef struct s_mp
 	double				radius;
 	t_ball				ball;
 	t_n					*pts;
-	t_point				**arr;
+	t_point				***arr;
 	t_center			center;
 	t_func_ptr			set_radius;
 	t_func_ptr			get_map_center;
-	t_point				**(*create_arrmap)(struct s_mp *map);
+	t_point				***(*create_arrmap)(struct s_mp *map);
 }						t_map;
 
 static inline void	get_map_center(void)
@@ -94,25 +94,17 @@ static inline void	set_radius(void)
 	d->map->radius = sqrt((map_sz / ball_sz_factor) / (PI * ball_sz_factor));
 }
 
-static inline t_point	**create_arrmap(t_map *map)
+static inline t_point	***create_arrmap(t_map *map)
 {
 	int		i;
-	int		j;
-	t_point	point;
-	t_point	**arr;
+	t_point	***arr;
 
 	i = -1;
-	j = 0;
-	map = get_data()->map;
-	arr = malloc((map->height) * sizeof(t_point *));
+	arr = malloc((map->height) * sizeof(t_point **));
 	while (++i < map->height)
 	{
-		if (j == 0)
-			arr[i] = malloc(map->width * sizeof(t_point));
-		ft_bzero((char *)&point, sizeof(point));
-		arr[i][j] = point;
+		arr[i] = malloc(map->width * sizeof(t_point *));
 	}
-	ft_lstpoint_toarr(map->pts, map->width, arr);
 	return (arr);
 }
 

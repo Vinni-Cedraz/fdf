@@ -17,7 +17,7 @@ t_n	*ft_lstpoint_new(void)
 	t_n	*n;
 
 	n = (t_n *)malloc(sizeof(t_n));
-	ft_bzero((char *)&n->point, sizeof(t_point));
+	bzero((char *)&n->point, sizeof(t_point));
 	n->next = NULL;
 	return (n);
 }

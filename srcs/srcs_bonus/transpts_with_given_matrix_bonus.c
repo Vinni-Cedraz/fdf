@@ -6,15 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 20:49:05 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 18:35:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:20:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
 static void					calculate_z_scale(void);
-static t_emporary			move_center_to_origin(t_point p);
-static t_point				move_center_back_to_place(t_point p);
+static t_emporary			move_center_to_origin(t_point *p);
+static void					move_center_back_to_place(t_point *p);
 
 void	transpts_with_given_matrix_bonus(t_matrix *rot)
 {
@@ -25,34 +25,34 @@ void	transpts_with_given_matrix_bonus(t_matrix *rot)
 		calculate_z_scale();
 	if (d->state != spherical)
 		get_xyz_range_bonus();
-	multi_threaded_iter((t_action_and_idx){
+	multi_threaded_workers((t_worker_task){
 		.rot = *rot,
 		.action = transform_a_point,
 	});
 }
 
-void	*transform_a_point(t_arrpoints_iter *iter)
+void	*transform_a_point(t_worker_task *task)
 {
 	t_emporary	t;
-	t_data		*d;
-	t_point		**arr;
 	t_matrix	m;
+	t_data		*d;
+	t_point		***arr;
 
 	d = get_data();
 	arr = d->map->arr;
-	m = iter->rot;
-	if (d->state == parallel && arr[iter->row][iter->col].z)
-		arr[iter->row][iter->col].z *= d->scale->altitude_factor;
+	m = task->rot;
+	if (d->state == parallel && arr[task->row][task->col]->z)
+		arr[task->row][task->col]->z *= d->scale->altitude_factor;
 	d->map->get_map_center();
-	t = move_center_to_origin(*iter->p);
-	iter->p->x = t.x * m.row_1.a + t.y * m.row_2.a + t.z * m.row_3.a;
-	iter->p->y = t.x * m.row_1.b + t.y * m.row_2.b + t.z * m.row_3.b;
-	iter->p->z = t.x * m.row_1.c + t.y * m.row_2.c + t.z * m.row_3.c;
-	*iter->p = move_center_back_to_place(*iter->p);
+	t = move_center_to_origin(task->p);
+	task->p->x = t.x * m.row_1.a + t.y * m.row_2.a + t.z * m.row_3.a;
+	task->p->y = t.x * m.row_1.b + t.y * m.row_2.b + t.z * m.row_3.b;
+	task->p->z = t.x * m.row_1.c + t.y * m.row_2.c + t.z * m.row_3.c;
+	move_center_back_to_place(task->p);
 	return (NULL);
 }
 
-static inline t_emporary	move_center_to_origin(t_point p)
+static inline t_emporary	move_center_to_origin(t_point *p)
 {
 	t_emporary	t;
 	t_data		*d;
@@ -60,37 +60,36 @@ static inline t_emporary	move_center_to_origin(t_point p)
 	d = get_data();
 	if (d->state == spherical)
 	{
-		t.x = p.x - d->map->ball.center_x;
-		t.y = p.y - d->map->ball.center_y;
-		t.z = p.z - d->map->ball.center_z;
+		t.x = p->x - d->map->ball.center_x;
+		t.y = p->y - d->map->ball.center_y;
+		t.z = p->z - d->map->ball.center_z;
 	}
 	else
 	{
-		t.x = p.x - d->map->center.x;
-		t.y = p.y - d->map->center.y;
-		t.z = p.z - d->map->center.z;
+		t.x = p->x - d->map->center.x;
+		t.y = p->y - d->map->center.y;
+		t.z = p->z - d->map->center.z;
 	}
 	return (t);
 }
 
-static inline t_point	move_center_back_to_place(t_point p)
+static inline void move_center_back_to_place(t_point *p)
 {
 	t_data	*d;
 
 	d = get_data();
 	if (d->state == spherical)
 	{
-		p.x += d->map->ball.center_x;
-		p.y += d->map->ball.center_y;
-		p.z += d->map->ball.center_z;
+		p->x += d->map->ball.center_x;
+		p->y += d->map->ball.center_y;
+		p->z += d->map->ball.center_z;
 	}
 	else
 	{
-		p.x += d->map->center.x;
-		p.y += d->map->center.y;
-		p.z += d->map->center.z;
+		p->x += d->map->center.x;
+		p->y += d->map->center.y;
+		p->z += d->map->center.z;
 	}
-	return (p);
 }
 
 static inline void	calculate_z_scale(void)
