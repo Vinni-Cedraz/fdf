@@ -50,7 +50,7 @@ void							assign_hexcolor_bonus(void);
 void							calculate_default_scale_bonus(void);
 void							define_rotation_matrices_bonus(t_rm *matrix);
 void							render_map_bonus(void);
-void							render_line_bonus(t_point p1, t_point p2);
+void							render_line_bonus(t_point *p1, t_point *p2);
 void							render_lines_square(void);
 void							render_lines_cross(void);
 void							render_lines_pentagram(void);

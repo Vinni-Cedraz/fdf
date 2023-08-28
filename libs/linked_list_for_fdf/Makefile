@@ -19,7 +19,7 @@ INC_PRINTF = ../ft_printf_libft/includes/
 INC_FDF = ../../includes/
 INC_METHODS = ../../includes/methods_and_classes_bonuss/
 INC = includes/
-CFLAGS = -Wall -Wextra -Werror -g \
+CFLAGS = -Wall -Wextra -Werror -O3 \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRINTF) \
 		 -I$(INC_FDF) \
