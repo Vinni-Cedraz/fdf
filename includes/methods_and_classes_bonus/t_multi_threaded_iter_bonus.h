@@ -32,7 +32,6 @@ typedef struct s_iter
 
 typedef struct s_shape_and_idx
 {
-	short				is_paint_it_black;
 	t_action			action;
 	int					start_idx;
 	int					end_idx;
