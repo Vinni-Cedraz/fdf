@@ -66,7 +66,6 @@ static inline void	pre_draw_allocations(void)
 	d->img = ft_calloc(sizeof(*d->img), 1);
 	d->matrix = ft_calloc(sizeof(*d->matrix), 1);
 	d->mlx = malloc(sizeof(*d->mlx));
-	d->map->arr = d->map->create_arrmap(d->map);
 	d->lookup.events = ft_calloc(128, sizeof(*d->lookup.events));
 }
 
@@ -81,7 +80,6 @@ static inline void	draw_first_frame(void)
 	dis = d->mlx->display_ptr;
 	win = d->mlx->win_ptr;
 	img = d->img->ptr;
-	ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 	render_map_bonus();
 	draw_menu();
 	mlx_put_image_to_window(dis, win, img, 0, 0);

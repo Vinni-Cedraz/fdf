@@ -29,7 +29,6 @@ int	draw_bonus(void)
 	{
 		flush_image();
 		d->img->to_be_flushed = 0;
-		ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 		if (d->offset->neutral_zoom)
 			take_zoom_snapshot();
 		render_map_bonus();
@@ -44,13 +43,13 @@ void	flush_image(void)
 	multi_threaded_iter((t_action_and_idx){.action = &paint_it_black});
 }
 
-void	*paint_it_black(int row, int col)
+void	*paint_it_black(t_arrpoints_iter *iter)
 {
 	t_data	*d;
 
 	d = get_data();
-	if (col > d->scale->menu_width)
-		put_pixel_img_bonus(d->img, col, row, BLACK);
+	if (iter->col > d->scale->menu_width)
+		put_pixel_img_bonus(d->img, iter->col, iter->row, BLACK);
 	return (NULL);
 }
 

@@ -28,10 +28,7 @@ void	multi_threaded_iter(t_action_and_idx action)
 	while (thread_nb < NUM_THREADS)
 	{
 		this_action_and_idx[thread_nb] = get_actidx(action, thread_nb);
-		pthread_create(
-			&threads[thread_nb],
-			NULL,
-			&array_iter,
+		pthread_create(&threads[thread_nb], NULL, &array_iter,
 			((void *)&this_action_and_idx[thread_nb]));
 		thread_nb++;
 	}
@@ -77,30 +74,32 @@ static inline t_actidx	get_actidx(t_actidx action_and_idx, int thread_number)
 		start_idx = get_start_idx(thread_number + 1);
 		end_idx = get_end_idx(thread_number + 1);
 	}
-	return ((t_action_and_idx){
-		.action = action_and_idx.action,
-		.start_idx = start_idx,
-		.end_idx = end_idx
-	});
+	return ((t_action_and_idx){.action = action_and_idx.action,
+		.start_idx = start_idx, .end_idx = end_idx});
 }
 
 static void	*array_iter(void *action_fptr)
 {
 	t_arrpoints_iter	iter;
+	t_action_and_idx	actidx;
 
+	actidx = *((t_action_and_idx *)(action_fptr));
 	iter = (t_arrpoints_iter){
-		.end_idx = get_iter_end_idx(action_fptr),
-		.start_idx = get_iter_start_idx(action_fptr),
+		.start_idx = actidx.start_idx,
+		.end_idx = actidx.end_idx,
+		.width = get_data()->map->width,
+		.rot = (t_matrix){0},
 	};
-	if (((t_action_and_idx *)(action_fptr))->action == paint_it_black)
+	if (actidx.action == paint_it_black)
 		iter.width = get_data()->img->width;
-	else
-		iter.width = get_data()->map->width;
+	else if (actidx.action == transform_a_point)
+		iter.rot = actidx.rot;
 	while (iter.start_idx < iter.end_idx)
 	{
 		iter.row = iter.start_idx / iter.width;
 		iter.col = iter.start_idx % iter.width;
-		((t_action_and_idx *)(action_fptr))->action(iter.row, iter.col);
+		iter.p = &get_data()->map->arr[iter.col][iter.row];
+		actidx.action(&iter);
 		iter.start_idx++;
 	}
 	return (NULL);

@@ -103,6 +103,7 @@ static inline t_point	**create_arrmap(t_map *map)
 
 	i = -1;
 	j = 0;
+	map = get_data()->map;
 	arr = malloc((map->height) * sizeof(t_point *));
 	while (++i < map->height)
 	{
@@ -111,6 +112,7 @@ static inline t_point	**create_arrmap(t_map *map)
 		ft_bzero((char *)&point, sizeof(point));
 		arr[i][j] = point;
 	}
+	ft_lstpoint_toarr(map->pts, map->width, arr);
 	return (arr);
 }
 
