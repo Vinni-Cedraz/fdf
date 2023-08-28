@@ -14,7 +14,7 @@ SHELL := /bin/bash
 NAME = fdf.a
 NAME_BONUS = fdf_bonus.a
 EXECUTABLE = fdf
-CFLAGS = -Wall -Wextra -Werror -O3 -pthread \
+CFLAGS = -Wall -Wextra -Werror -g -pthread \
 		 -I$(INC_LIBFT) \
 		 -I$(INC_PRNTF) \
 		 -I$(INC_CLASSES_METHODS) \
@@ -61,6 +61,7 @@ BONUS_SRCS = parse_map_bonus \
 	     main_bonus \
 	     data_initializer_bonus \
  	     define_rotation_matrices_bonus \
+		 put_pixel_img_bonus \
 	     close_win_bonus \
 	     render_map_bonus \
 	     render_line_bonus \

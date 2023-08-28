@@ -6,12 +6,15 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/08/25 18:38:56 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:23:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_PROTOTYPES_BONUS_H
 # define FDF_PROTOTYPES_BONUS_H
+
+# define TRUE 1
+# define FALSE 0
 
 // FORWARD DECLARATIONS
 typedef struct s_mp				t_map;
@@ -23,7 +26,8 @@ typedef struct s_d				t_d;
 typedef struct s_is				t_i_changer;
 typedef struct s_ctr			t_center;
 typedef struct s_nd				t_n;
-typedef struct s_shape_and_idx	t_shape_and_idx;
+typedef struct s_shape_and_idx	t_action_and_idx;
+typedef struct s_img			t_img;
 
 // GENERAL PURPOSE TYPEDEFS
 typedef void					(*t_func_ptr)(void);
@@ -47,9 +51,9 @@ void							calculate_default_scale_bonus(void);
 void							define_rotation_matrices_bonus(t_rm *matrix);
 void							render_map_bonus(void);
 void							render_line_bonus(t_point p1, t_point p2);
-void							render_pentagram(void);
 void							render_lines_square(void);
 void							render_lines_cross(void);
+void							render_lines_pentagram(void);
 int								draw_bonus(void);
 int								deal_keys_bonus(int key);
 void							transpts_with_given_matrix_bonus(t_m *rot);
@@ -106,6 +110,9 @@ void							draw_menu(void);
 void							error_handler(void);
 void							restore_raw_state_bonus(void);
 void							normalize_after_leaving_sphere_bonus(void);
-void							spawn_threads(t_shape_and_idx shape);
+void							multi_threaded_iter(t_action_and_idx shape);
+void							put_pixel_img_bonus(t_img *img, int x, int y, int color);
+int								get_img_start_idx(int thread_number);
+int								get_img_end_idx(int thread_number);
 
 #endif

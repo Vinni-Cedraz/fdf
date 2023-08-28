@@ -6,7 +6,7 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 20:05:08 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/08/27 20:11:10 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:26:51 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,52 +19,91 @@
 # include "fdf_t_data_bonus.h"
 # include <sys/types.h>
 
-typedef void			*(*t_shape)(int row, int col);
+typedef void			*(*t_action)(int row, int col);
 
 typedef struct s_iter
 {
 	int					end_idx;
 	int					start_idx;
-	uint				map_width;
+	uint				width;
 	int					row;
 	int					col;
 }						t_arrpoints_iter;
 
 typedef struct s_shape_and_idx
 {
-	t_shape				fptr;
+	short				is_paint_it_black;
+	t_action			action;
 	int					start_idx;
 	int					end_idx;
-}						t_shape_and_idx;
+}						t_action_and_idx;
 
-typedef t_shape_and_idx	t_shpidx;
+typedef t_action_and_idx	t_actidx;
 
-static void				*square(int r, int c) __attribute__((unused));
+static void				*render_square(int r, int c) __attribute__((unused));
+static void				*render_cross(int row, int col) __attribute__((unused));
 static int				get_iter_end_idx(void *f) __attribute__((unused));
 static int				get_iter_start_idx(void *f) __attribute__((unused));
+static void				*render_pentagram(int row, int col) __attribute__((unused));
 
-static inline void	*square(int row, int col)
+static inline void	*render_square(int row, int col)
 {
-	t_data	*d;
+	t_map	*map;
 	t_point	*p;
 
-	d = get_data();
-	p = &d->map->arr[row][col];
-	if (col + 1 < d->map->width)
-		render_line_bonus(*p, d->map->arr[row][col + 1]);
-	if (row + 1 < d->map->height)
-		render_line_bonus(*p, d->map->arr[row + 1][col]);
+	map = get_data()->map;
+	p = &map->arr[row][col];
+	if (col + 1 < map->width)
+		render_line_bonus(*p, map->arr[row][col + 1]);
+	if (row + 1 < map->height)
+		render_line_bonus(*p, map->arr[row + 1][col]);
 	return (NULL);
 }
 
-static inline int	get_iter_end_idx(void *shape_fptr)
+static inline void	*render_cross(int row, int col)
 {
-	return (((t_shape_and_idx *)(shape_fptr))->end_idx);
+	t_point	p1;
+	t_map	*map;
+
+	map = get_data()->map;
+	if (col < map->width - 1 && row < map->height - 1)
+	{
+		p1 = map->arr[row][col];
+		render_line_bonus(p1, map->arr[row + 1][col + 1]);
+		p1 = map->arr[row + 1][col];
+		render_line_bonus(p1, map->arr[row][col + 1]);
+	}
+	return (NULL);
 }
 
-static inline int	get_iter_start_idx(void *shape_fptr)
+static inline void	*render_pentagram(int row, int col)
 {
-	return (((t_shape_and_idx *)(shape_fptr))->start_idx);
+	t_point	*p1;
+	t_map	*map;
+
+	map = get_data()->map;
+	if (row < map->height - 3 && col < map->width - 3)
+	{
+		p1 = &map->arr[row + 1][col];
+		render_line_bonus(*p1, map->arr[row + 1][col + 2]);
+		render_line_bonus(*p1, map->arr[row + 2][col + 2]);
+		p1 = &map->arr[row + 2][col];
+		render_line_bonus(*p1, map->arr[row][col + 1]);
+		render_line_bonus(*p1, map->arr[row + 1][col + 2]);
+		p1 = &map->arr[row][col + 1];
+		render_line_bonus(*p1, map->arr[row + 2][col + 2]);
+	}
+	return (NULL);
+}
+
+static inline int	get_iter_end_idx(void *action_and_idx)
+{
+	return (((t_action_and_idx *)(action_and_idx))->end_idx);
+}
+
+static inline int	get_iter_start_idx(void *action_and_idx)
+{
+	return (((t_action_and_idx *)(action_and_idx))->start_idx);
 }
 
 #endif

@@ -27,58 +27,16 @@ void	change_grid_rendering_method(void)
 // the following functions are the grid_methods:
 void	render_lines_square(void)
 {
-	spawn_threads((t_shape_and_idx){.fptr = square});
+	multi_threaded_iter((t_action_and_idx){.action = render_square});
 }
 
 void	render_lines_cross(void)
 {
-	int		i;
-	int		j;
-	t_point	p1;
-	t_data	*d;
-
-	i = -1;
-	j = -1;
-	d = get_data();
-	while (++i < d->map->height)
-	{
-		j = -1;
-		while (++j < d->map->width)
-		{
-			if (j < d->map->width - 1 && i < d->map->height - 1)
-			{
-				p1 = d->map->arr[i][j];
-				render_line_bonus(p1, d->map->arr[i + 1][j + 1]);
-				p1 = d->map->arr[i + 1][j];
-				render_line_bonus(p1, d->map->arr[i][j + 1]);
-			}
-		}
-	}
+	render_lines_square();
+	multi_threaded_iter((t_action_and_idx){.action = render_cross});
 }
 
-void	render_pentagram(void)
+void	render_lines_pentagram(void)
 {
-	int		i;
-	int		j;
-	t_point	p1;
-	t_data	*d;
-
-	i = -1;
-	j = -1;
-	d = get_data();
-	while (++i < d->map->height - 3)
-	{
-		j = -1;
-		while (++j < d->map->width - 3)
-		{
-			p1 = d->map->arr[i + 1][j];
-			render_line_bonus(p1, d->map->arr[i + 1][j + 2]);
-			render_line_bonus(p1, d->map->arr[i + 2][j + 2]);
-			p1 = d->map->arr[i + 2][j];
-			render_line_bonus(p1, d->map->arr[i][j + 1]);
-			render_line_bonus(p1, d->map->arr[i + 1][j + 2]);
-			p1 = d->map->arr[i][j + 1];
-			render_line_bonus(p1, d->map->arr[i + 2][j + 2]);
-		}
-	}
+	multi_threaded_iter((t_action_and_idx){.action = render_pentagram});
 }

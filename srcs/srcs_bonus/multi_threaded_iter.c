@@ -6,33 +6,33 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:12:37 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/08/27 19:16:59 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:30:08 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 #include <pthread.h>
 
-static t_shpidx		get_t_shape_and_idx(t_shpidx shape, int thread_number);
-static void			*arrpoints_iter(void *shape_fptr);
-static int			get_start_idx(int thread_number);
-static int			get_end_idx(int thread_number);
+static t_actidx			get_actidx(t_actidx action, int thread_number);
+static void				*array_iter(void *action);
+static int				get_start_idx(int thread_number);
+static int				get_end_idx(int thread_number);
 
-void	spawn_threads(t_shape_and_idx shape)
+void	multi_threaded_iter(t_action_and_idx action)
 {
-	int				thread_nb;
-	pthread_t		threads[NUM_THREADS];
-	t_shape_and_idx	this_shape_and_idx[NUM_THREADS];
+	int					thread_nb;
+	pthread_t			threads[NUM_THREADS];
+	t_action_and_idx	this_action_and_idx[NUM_THREADS];
 
 	thread_nb = 0;
 	while (thread_nb < NUM_THREADS)
 	{
-		this_shape_and_idx[thread_nb] = get_t_shape_and_idx(shape, thread_nb);
+		this_action_and_idx[thread_nb] = get_actidx(action, thread_nb);
 		pthread_create(
 			&threads[thread_nb],
 			NULL,
-			&arrpoints_iter,
-			((void *)&this_shape_and_idx[thread_nb]));
+			&array_iter,
+			((void *)&this_action_and_idx[thread_nb]));
 		thread_nb++;
 	}
 	thread_nb = -1;
@@ -58,38 +58,49 @@ static inline int	get_end_idx(int thread_number)
 	short	remainder;
 
 	map_size = get_data()->map->size;
-	remainder = map_size % NUM_THREADS; 
+	remainder = map_size % NUM_THREADS;
 	return ((map_size / NUM_THREADS) * thread_number + remainder);
 }
 
-static inline t_shpidx	get_t_shape_and_idx(t_shpidx shape, int thread_number)
+static inline t_actidx	get_actidx(t_actidx action_and_idx, int thread_number)
 {
-	const int	start_idx = get_start_idx(thread_number + 1);
-	const int	end_idx = get_end_idx(thread_number + 1);
+	int	start_idx;
+	int	end_idx;
 
-	return ((t_shape_and_idx){
-		.fptr = shape.fptr,
+	if (TRUE == action_and_idx.is_paint_it_black)
+	{
+		start_idx = get_img_start_idx(thread_number + 1);
+		end_idx = get_img_end_idx(thread_number + 1);
+	}
+	else
+	{
+		start_idx = get_start_idx(thread_number + 1);
+		end_idx = get_end_idx(thread_number + 1);
+	}
+	return ((t_action_and_idx){
+		.action = action_and_idx.action,
 		.start_idx = start_idx,
 		.end_idx = end_idx
 	});
 }
 
-static void	*arrpoints_iter(void *shape_fptr)
+static void	*array_iter(void *action_fptr)
 {
 	t_arrpoints_iter	iter;
 
 	iter = (t_arrpoints_iter){
-		.end_idx = get_iter_end_idx(shape_fptr),
-		.start_idx = get_iter_start_idx(shape_fptr),
-		.map_width = get_data()->map->width,
-		.row = 0,
-		.col = 0,
+		.end_idx = get_iter_end_idx(action_fptr),
+		.start_idx = get_iter_start_idx(action_fptr),
 	};
+	if (((t_action_and_idx *)(action_fptr))->is_paint_it_black)
+		iter.width = get_data()->img->width - get_data()->scale->menu_width;
+	else
+		iter.width = get_data()->map->width;
 	while (iter.start_idx < iter.end_idx)
 	{
-		iter.row = iter.start_idx / iter.map_width;
-		iter.col = iter.start_idx % iter.map_width;
-		((t_shape_and_idx *)(shape_fptr))->fptr(iter.row, iter.col);
+		iter.row = iter.start_idx / iter.width;
+		iter.col = iter.start_idx % iter.width;
+		((t_action_and_idx *)(action_fptr))->action(iter.row, iter.col);
 		iter.start_idx++;
 	}
 	return (NULL);
