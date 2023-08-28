@@ -114,5 +114,6 @@ void							multi_threaded_iter(t_action_and_idx shape);
 void							put_pixel_img_bonus(t_img *img, int x, int y, int color);
 int								get_img_start_idx(int thread_number);
 int								get_img_end_idx(int thread_number);
+void							*paint_it_black(int row, int col);
 
 #endif

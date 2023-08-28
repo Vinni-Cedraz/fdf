@@ -67,7 +67,7 @@ static inline t_actidx	get_actidx(t_actidx action_and_idx, int thread_number)
 	int	start_idx;
 	int	end_idx;
 
-	if (TRUE == action_and_idx.is_paint_it_black)
+	if (paint_it_black == action_and_idx.action)
 	{
 		start_idx = get_img_start_idx(thread_number + 1);
 		end_idx = get_img_end_idx(thread_number + 1);
@@ -92,8 +92,8 @@ static void	*array_iter(void *action_fptr)
 		.end_idx = get_iter_end_idx(action_fptr),
 		.start_idx = get_iter_start_idx(action_fptr),
 	};
-	if (((t_action_and_idx *)(action_fptr))->is_paint_it_black)
-		iter.width = get_data()->img->width - get_data()->scale->menu_width;
+	if (((t_action_and_idx *)(action_fptr))->action == paint_it_black)
+		iter.width = get_data()->img->width;
 	else
 		iter.width = get_data()->map->width;
 	while (iter.start_idx < iter.end_idx)

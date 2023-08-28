@@ -13,7 +13,6 @@
 #include "fdf_includes_bonus.h"
 
 static void			flush_image(void);
-static void			*paint_it_black(int row, int col);
 
 int	draw_bonus(void)
 {
@@ -42,18 +41,13 @@ int	draw_bonus(void)
 
 void	flush_image(void)
 {
-	multi_threaded_iter((t_action_and_idx){
-		.action = &paint_it_black,
-		.is_paint_it_black = TRUE
-	});
+	multi_threaded_iter((t_action_and_idx){.action = &paint_it_black});
 }
 
-static inline void	*paint_it_black(int row, int col)
+void	*paint_it_black(int row, int col)
 {
 	t_data	*d;
-	static int counter;
 
-	printf("paint_it_black was called %d times, for this row: %d, and this col: %d\n", counter++, row, col);
 	d = get_data();
 	if (col > d->scale->menu_width)
 		put_pixel_img_bonus(d->img, col, row, BLACK);
