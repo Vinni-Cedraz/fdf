@@ -47,7 +47,7 @@ static inline void	set_event_index_by_key(t_event *events)
 	int	i;
 
 	i = -1;
-	while (++i <= 22)
+	while (++i < 23)
 	{
 		hash = hash_function(events[i].key);
 		events[hash] = events[i];

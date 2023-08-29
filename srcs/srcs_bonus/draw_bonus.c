@@ -6,21 +6,20 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 23:47:42 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 17:35:49 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:25:37 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_includes_bonus.h"
 
-static void			paint_it_black(void);
-static void			put_pixel_img_bonus(t_img *img, int x, int y, int color);
+static void	flush_image(void);
 
 int	draw_bonus(void)
 {
+	t_data	*d;
 	void	*dis;
 	void	*win;
 	void	*img;
-	t_data	*d;
 
 	d = get_data();
 	img = d->img->ptr;
@@ -28,11 +27,11 @@ int	draw_bonus(void)
 	dis = d->mlx->display_ptr;
 	if (d->img->to_be_flushed)
 	{
-		paint_it_black();
+		flush_image();
 		d->img->to_be_flushed = 0;
-		ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 		if (d->offset->neutral_zoom)
 			take_zoom_snapshot();
+		ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);
 		render_map_bonus();
 		mlx_put_image_to_window(dis, win, img, 0, 0);
 		draw_menu();
@@ -40,35 +39,43 @@ int	draw_bonus(void)
 	return (0);
 }
 
-static inline void	paint_it_black(void)
+void	flush_image(void)
 {
-	t_data	*d;
-	int		counter;
-	int		img_size;
-	int		i;
-	int		j;
-
-	d = get_data();
-	counter = 0;
-	img_size = d->img->width * d->img->height;
-	while (counter < img_size)
-	{
-		counter++;
-		i = counter / d->img->height;
-		if (i >= d->scale->menu_width)
-		{
-			j = counter % d->img->height;
-			put_pixel_img_bonus(d->img, i, j, BLACK);
-		}
-	}
+	multi_threaded_workers((t_worker_task){.action = &paint_it_black});
 }
 
-static inline void	put_pixel_img_bonus(t_img *img, int x, int y, int color)
+void	*paint_it_black(t_worker_task *iter)
 {
-	char	*ptr_to_color;
+	t_data	*d;
 
-	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
-		return ;
-	ptr_to_color = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int *)ptr_to_color = color;
+	d = get_data();
+	if (iter->col > d->scale->menu_width)
+		put_pixel_img_bonus(d->img, iter->col, iter->row, BLACK);
+	return (NULL);
+}
+
+int	get_img_start_idx(int thread_number)
+{
+	t_img	*img;
+	int		img_size;
+	int		remainder;
+
+	if (1 == thread_number)
+		return (0);
+	img = get_data()->img;
+	img_size = img->width * img->height;
+	remainder = img_size % NUM_THREADS;
+	return ((img_size / NUM_THREADS) * (thread_number - 1) + remainder);
+}
+
+int	get_img_end_idx(int thread_number)
+{
+	t_img	*img;
+	uint	img_size;
+	short	remainder;
+
+	img = get_data()->img;
+	img_size = img->width * img->height;
+	remainder = img_size % NUM_THREADS;
+	return ((img_size / NUM_THREADS) * thread_number + remainder);
 }

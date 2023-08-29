@@ -42,7 +42,7 @@ static void	initialize_grid_methods(void)
 
 	head = ft_lstnew(&render_lines_square);
 	ft_lstadd_back(&head, ft_lstnew(&render_lines_cross));
-	ft_lstadd_back(&head, ft_lstnew(&render_pentagram));
+	ft_lstadd_back(&head, ft_lstnew(&render_lines_pentagram));
 	ft_lst_make_it_circular(&head);
 	get_data()->lookup.grid_methods = head;
 }

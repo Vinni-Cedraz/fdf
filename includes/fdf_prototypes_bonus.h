@@ -6,16 +6,19 @@
 /*   By: vcedraz- <vcedraz-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:57:45 by vcedraz-          #+#    #+#             */
-/*   Updated: 2023/02/26 23:48:41 by vcedraz-         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:23:19 by vcedraz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_PROTOTYPES_BONUS_H
 # define FDF_PROTOTYPES_BONUS_H
 
+# define TRUE 1
+# define FALSE 0
+
 // FORWARD DECLARATIONS
 typedef struct s_mp		t_map;
-typedef struct s_pt		t_point;
+typedef struct s_pt		t_p;
 typedef struct s_m		t_m;
 typedef struct s_rm		t_rm;
 typedef struct s_zs		t_zscaler;
@@ -23,6 +26,8 @@ typedef struct s_d		t_d;
 typedef struct s_is		t_i_changer;
 typedef struct s_ctr	t_center;
 typedef struct s_nd		t_n;
+typedef struct s_task	t_task;
+typedef struct s_img	t_img;
 
 // GENERAL PURPOSE TYPEDEFS
 typedef void			(*t_func_ptr)(void);
@@ -45,10 +50,10 @@ void					assign_hexcolor_bonus(void);
 void					calculate_default_scale_bonus(void);
 void					define_rotation_matrices_bonus(t_rm *matrix);
 void					render_map_bonus(void);
-void					render_line_bonus(t_point p1, t_point p2);
-void					render_pentagram(void);
+void					render_line_bonus(t_p *p1, t_p *p2);
 void					render_lines_square(void);
 void					render_lines_cross(void);
+void					render_lines_pentagram(void);
 int						draw_bonus(void);
 int						deal_keys_bonus(int key);
 void					transpts_with_given_matrix_bonus(t_m *rot);
@@ -91,17 +96,23 @@ void					undo_isometric(void);
 void					undo_diagonal(void);
 void					call_close_window(void);
 void					go_spherical(void);
-void					get_phi_and_theta(t_point *point);
+void					get_phi_and_theta(t_p *point);
 void					increase_sphere_height(void);
 void					decrease_sphere_height(void);
 void					get_xyz_range_bonus(void);
 void					initialize_methods_bonus(void);
 void					colorize_points_bonus(void);
 int						max_steps(int dx, int dy);
-void					set_hexcolor_bonus(t_point *p, char *current_p_as_str);
+void					set_hexcolor_bonus(t_p *p, char *p_str);
 void					draw_menu(void);
 void					error_handler(void);
 void					restore_raw_state_bonus(void);
 void					normalize_after_leaving_sphere_bonus(void);
+void					multi_threaded_workers(t_task actidx);
+void					put_pixel_img_bonus(t_img *img, int x, int y, int c);
+int						get_img_start_idx(int thread_number);
+int						get_img_end_idx(int thread_number);
+void					*paint_it_black(t_task *task);
+void					*transform_a_point(t_task *task);
 
 #endif
