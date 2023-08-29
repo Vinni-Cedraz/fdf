@@ -98,7 +98,6 @@ static void	*array_iter(void *task)
 	{
 		this_task.row = this_task.start_idx / this_task.width;
 		this_task.col = this_task.start_idx % this_task.width;
-		printf("row: %d and col: %d\n", this_task.row, this_task.col);
 		this_task.p = arr[this_task.row][this_task.col];
 		this_task.action(&this_task);
 		this_task.start_idx++;
