@@ -28,7 +28,7 @@ int	draw_bonus(void)
 	if (d->img->to_be_flushed)
 	{
 		flush_image();
-		d->img->to_be_flushed = 1;
+		d->img->to_be_flushed = 0;
 		if (d->offset->neutral_zoom)
 			take_zoom_snapshot();
 		ft_lstpoint_toarr(d->map->pts, d->map->width, d->map->arr);

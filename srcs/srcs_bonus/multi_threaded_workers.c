@@ -14,7 +14,7 @@
 #include <pthread.h>
 
 static t_task			get_this_wrkrs_task(t_task action, int thread_number);
-static void				*array_iter(void *action);
+static void				*single_thread_iterator(void *action);
 static int				get_start_idx(int thread_number);
 static int				get_end_idx(int thread_number);
 
@@ -31,7 +31,7 @@ void	multi_threaded_workers(t_task task)
 		pthread_create(
 			&workers[idx],
 			NULL,
-			&array_iter,
+			&single_thread_iterator,
 			((void *)&this_worker_task[idx]));
 		idx++;
 	}
@@ -84,7 +84,7 @@ static inline t_task	get_this_wrkrs_task(t_task task, int idx)
 		.end_idx = end_idx});
 }
 
-static void	*array_iter(void *task)
+static void	*single_thread_iterator(void *task)
 {
 	t_worker_task	this_task;
 	t_point			***arr;
@@ -98,7 +98,8 @@ static void	*array_iter(void *task)
 	{
 		this_task.row = this_task.start_idx / this_task.width;
 		this_task.col = this_task.start_idx % this_task.width;
-		this_task.p = arr[this_task.row][this_task.col];
+		if (this_task.action != paint_it_black)
+			this_task.p = arr[this_task.row][this_task.col];
 		this_task.action(&this_task);
 		this_task.start_idx++;
 	}
