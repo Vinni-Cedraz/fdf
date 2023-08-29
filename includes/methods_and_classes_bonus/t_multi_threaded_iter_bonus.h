@@ -21,32 +21,32 @@
 # include <sys/types.h>
 
 // forward declaration of struct s_iter
-typedef struct s_task t_worker_task;
+typedef struct s_task	t_worker_task;
 
 // function pointer typedef
-typedef void				*(*t_action)(t_worker_task *iter);
+typedef void			*(*t_action)(t_worker_task *iter);
 
 // definition of struct s_iter and type t_arrpoints_iter
 typedef struct s_task
 {
-	t_action				action;
-	int						end_idx;
-	int						start_idx;
-	uint					width;
-	int						row;
-	int						col;
-	t_point					*p;
-	t_matrix				rot;
-}							t_worker_task;
+	t_action			action;
+	int					end_idx;
+	int					start_idx;
+	uint				width;
+	int					row;
+	int					col;
+	t_point				*p;
+	t_matrix			rot;
+}						t_worker_task;
 
 // alias of t_arpoints_iter:
 typedef t_worker_task	t_task;
 
-static void					*render_square(t_task *i) __attribute__((unused));
-static void					*render_cross(t_task *i) __attribute__((unused));
-static int					get_iter_end_idx(void *f) __attribute__((unused));
-static int					get_iter_start_idx(void *f) __attribute__((unused));
-static void					*render_pentagram(t_task *i)__attribute__((unused));
+static void				*render_square(t_task *i) __attribute__((unused));
+static void				*render_cross(t_task *i) __attribute__((unused));
+static int				get_iter_end_idx(void *f) __attribute__((unused));
+static int				get_iter_start_idx(void *f) __attribute__((unused));
+static void				*render_pentagram(t_task *i) __attribute__((unused));
 
 static inline void	*render_square(t_worker_task *iter)
 {
@@ -74,7 +74,7 @@ static inline void	*render_cross(t_task *iter)
 	int		col;
 
 	row = iter->row;
-	col	= iter->col;
+	col = iter->col;
 	map = get_data()->map;
 	if (col < map->width - 1 && row < map->height - 1)
 	{

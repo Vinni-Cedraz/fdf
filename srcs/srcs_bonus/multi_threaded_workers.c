@@ -28,10 +28,7 @@ void	multi_threaded_workers(t_task task)
 	while (idx < NUM_THREADS)
 	{
 		this_worker_task[idx] = get_this_wrkrs_task(task, idx);
-		pthread_create(
-			&workers[idx],
-			NULL,
-			&single_thread_iterator,
+		pthread_create(&workers[idx], NULL, &single_thread_iterator,
 			((void *)&this_worker_task[idx]));
 		idx++;
 	}
@@ -77,11 +74,8 @@ static inline t_task	get_this_wrkrs_task(t_task task, int idx)
 		start_idx = get_start_idx(idx + 1);
 		end_idx = get_end_idx(idx + 1);
 	}
-	return ((t_task){
-		.action = task.action,
-		.rot = task.rot,
-		.start_idx = start_idx,
-		.end_idx = end_idx});
+	return ((t_task){.action = task.action, .rot = task.rot,
+		.start_idx = start_idx, .end_idx = end_idx});
 }
 
 static void	*single_thread_iterator(void *task)

@@ -37,10 +37,10 @@ static inline void	create_display_and_window(void)
 
 static inline void	create_image(void)
 {
+	t_data	*d;
 	int		*bpp;
 	int		*endian;
 	int		*line_len;
-	t_data	*d;
 
 	d = get_data();
 	d->img->ptr = mlx_new_image(d->mlx->display_ptr, WIN_WDTH, WIN_HGHT);

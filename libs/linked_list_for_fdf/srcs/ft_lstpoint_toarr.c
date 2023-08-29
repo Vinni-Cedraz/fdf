@@ -16,7 +16,7 @@ void	ft_lstpoint_toarr(t_n *node, t_ui width, t_point ***arr)
 {
 	t_ui	i;
 	t_ui	j;
-	t_n 	*dummy;
+	t_n		*dummy;
 
 	i = 0;
 	j = 0;

@@ -73,7 +73,7 @@ static inline t_emporary	move_center_to_origin(t_point *p)
 	return (t);
 }
 
-static inline void move_center_back_to_place(t_point *p)
+static inline void	move_center_back_to_place(t_point *p)
 {
 	t_data	*d;
 

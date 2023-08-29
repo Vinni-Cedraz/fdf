@@ -12,7 +12,7 @@
 
 #include "fdf_includes_bonus.h"
 
-static void			flush_image(void);
+static void	flush_image(void);
 
 int	draw_bonus(void)
 {
@@ -57,7 +57,7 @@ void	*paint_it_black(t_worker_task *iter)
 int	get_img_start_idx(int thread_number)
 {
 	t_img	*img;
-	int	img_size;
+	int		img_size;
 	int		remainder;
 
 	if (1 == thread_number)

@@ -19,7 +19,8 @@
 
 typedef struct s_l		t_ln;
 static t_ln				init_ln(t_p *p1, t_p *p2) __attribute__((unused));
-static void				lcolor(t_p *p1, t_p *p2, t_ui *c) __attribute__((unused));
+static void				lcolor(t_p *p1, t_p *p2,
+							t_ui *c) __attribute__((unused));
 
 typedef struct s_l
 {
