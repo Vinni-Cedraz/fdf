@@ -28,5 +28,7 @@
 
 // debugging function
 void					print_state(void);
+void	        print_state(void);
+
 
 #endif
