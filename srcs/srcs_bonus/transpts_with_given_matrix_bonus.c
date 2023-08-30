@@ -25,6 +25,7 @@ void	transpts_with_given_matrix_bonus(t_matrix *rot)
 		calculate_z_scale();
 	if (d->state != spherical)
 		get_xyz_range_bonus();
+	d->map->get_map_center();
 	multi_threaded_workers((t_worker_task){
 		.rot = *rot,
 		.action = transform_a_point,
@@ -43,7 +44,6 @@ void	*transform_a_point(t_worker_task *task)
 	m = task->rot;
 	if (d->state == parallel && arr[task->row][task->col]->z)
 		arr[task->row][task->col]->z *= d->scale->altitude_factor;
-	d->map->get_map_center();
 	t = move_center_to_origin(task->p);
 	task->p->x = t.x * m.row_1.a + t.y * m.row_2.a + t.z * m.row_3.a;
 	task->p->y = t.x * m.row_1.b + t.y * m.row_2.b + t.z * m.row_3.b;

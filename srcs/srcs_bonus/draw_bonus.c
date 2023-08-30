@@ -21,12 +21,12 @@ int	draw_bonus(void)
 	void	*win;
 	void	*img;
 
-	d = get_data();
-	img = d->img->ptr;
-	win = d->mlx->win_ptr;
-	dis = d->mlx->display_ptr;
-	if (d->img->to_be_flushed)
+	if (get_data()->img->to_be_flushed)
 	{
+		d = get_data();
+		img = d->img->ptr;
+		win = d->mlx->win_ptr;
+		dis = d->mlx->display_ptr;
 		flush_image();
 		d->img->to_be_flushed = 0;
 		if (d->offset->neutral_zoom)
