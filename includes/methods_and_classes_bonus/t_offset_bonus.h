@@ -26,10 +26,10 @@ static void			calculate_initial_offset(void) __attribute__((unused));
 
 typedef struct s_offset
 {
-	double			move_x;
-	double			move_y;
-	double			initial_move_x;
-	double			initial_move_y;
+	float			move_x;
+	float			move_y;
+	float			initial_move_x;
+	float			initial_move_y;
 	int				neutral_zoom;
 	t_func_ptr		set_initial_offset;
 	t_func_ptr		move[4];
@@ -57,8 +57,8 @@ static inline void	right(void)
 
 static inline void	calculate_initial_offset(void)
 {
-	double	x_offset;
-	double	y_offset;
+	float	x_offset;
+	float	y_offset;
 	t_scale	sca;
 	t_data	*d;
 

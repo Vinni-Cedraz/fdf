@@ -68,6 +68,6 @@ static inline void	get_map_size(void)
 
 	d = get_data();
 	d->map->size = d->map->width * d->map->height;
-	d->map->ratio = (double)d->map->height / d->map->width;
+	d->map->ratio = (float)d->map->height / d->map->width;
 	printf("map size: %lu\n", d->map->size);
 }

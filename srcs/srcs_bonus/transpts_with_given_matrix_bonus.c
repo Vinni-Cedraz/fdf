@@ -94,8 +94,8 @@ static inline void	move_center_back_to_place(t_point *p)
 
 static inline void	calculate_z_scale(void)
 {
-	double	z_range;
-	double	z_factor;
+	float	z_range;
+	float	z_factor;
 	t_scale	*sca;
 	t_data	*d;
 

@@ -29,13 +29,13 @@
 # define WINDOW_WIDTH 1920
 
 // 54.735610317245 in RADS
-# define RAD_54_73 0.9510565162951535
+# define RAD_54_73 0.951
 // 45 in RADS
-# define RAD_45 0.7853981633974483
+# define RAD_45 0.785
 // 120 in RADS:
-# define RAD_120 2.0943951023931953
+# define RAD_120 2.094
 // 2 degrees in RADS:
-# define RAD 0.03490658503988659
+# define RAD 0.034
 // redefinition of M_PI for ease of read
 # define PI M_PI
 

@@ -17,10 +17,10 @@
 
 typedef struct s_line
 {
-	double				x;
-	double				y;
-	double				x_inc;
-	double				y_inc;
+	float				x;
+	float				y;
+	float				x_inc;
+	float				y_inc;
 	int					dx;
 	int					dy;
 	int					steps;
@@ -29,21 +29,21 @@ typedef struct s_line
 
 typedef struct s_point
 {
-	double				x;
-	double				y;
-	double				z;
-	double				color;
+	float				x;
+	float				y;
+	float				z;
+	float				color;
 }						t_point;
 
 typedef struct s_map
 {
 	int					width;
 	int					height;
-	double				max_z;
-	double				min_z;
-	double				target_width;
-	double				target_height;
-	double				ratio;
+	float				max_z;
+	float				min_z;
+	float				target_width;
+	float				target_height;
+	float				ratio;
 	t_point				**arr;
 }						t_map;
 
@@ -69,9 +69,9 @@ typedef struct s_create_map
 
 typedef struct s_row
 {
-	double				x;
-	double				y;
-	double				z;
+	float				x;
+	float				y;
+	float				z;
 }						t_row;
 
 typedef struct s_matrix
@@ -105,13 +105,13 @@ typedef struct s_data
 	short int			zoom_in;
 	short int			zoom_out;
 	short int			neutral_zoom;
-	double				cx;
-	double				cy;
-	double				cz;
-	double				move_x;
-	double				move_y;
-	double				scale;
-	double				scale_z;
+	float				cx;
+	float				cy;
+	float				cz;
+	float				move_x;
+	float				move_y;
+	float				scale;
+	float				scale_z;
 	t_img				*img;
 	t_map				*map;
 	t_create_map		tool;

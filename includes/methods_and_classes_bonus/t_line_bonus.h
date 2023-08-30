@@ -24,14 +24,14 @@ static void				lcolor(t_p *p1, t_p *p2,
 
 typedef struct s_l
 {
-	double				x;
-	double				y;
-	double				x_inc;
-	double				y_inc;
-	double				delta_x;
-	double				delta_y;
+	float				x;
+	float				y;
+	float				x_inc;
+	float				y_inc;
+	float				delta_x;
+	float				delta_y;
 	unsigned int		color;
-	double				steps;
+	float				steps;
 }						t_line;
 
 static void	lcolor(t_point *p1, t_point *p2, t_ui *color)

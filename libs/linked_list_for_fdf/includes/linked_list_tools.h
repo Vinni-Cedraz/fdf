@@ -21,12 +21,12 @@ typedef struct s_nd		t_n;
 
 typedef struct s_xy_range
 {
-	double				max_x;
-	double				min_x;
-	double				max_y;
-	double				min_y;
-	double				max_z;
-	double				min_z;
+	float				max_x;
+	float				min_x;
+	float				max_y;
+	float				min_y;
+	float				max_z;
+	float				min_z;
 }						t_xy_range;
 
 typedef t_xy_range		t_xy;

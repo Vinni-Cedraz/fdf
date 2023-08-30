@@ -14,7 +14,7 @@
 
 typedef t_n	t_n;
 
-int	ft_lstpoint_getby_content(t_n *lst, double x, double y, double z)
+int	ft_lstpoint_getby_content(t_n *lst, float x, float y, float z)
 {
 	int	i;
 

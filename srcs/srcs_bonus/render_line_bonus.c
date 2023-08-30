@@ -67,7 +67,7 @@ static inline void	move_line(t_line *line)
 
 static inline int	is_dark_side_of_a_sphere(t_point *p, t_point *p2)
 {
-	double	dark_side;
+	float	dark_side;
 	t_data	*d;
 
 	d = get_data();

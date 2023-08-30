@@ -13,8 +13,8 @@
 #include "fdf_includes_bonus.h"
 
 static void				assign_coordinate_z(void);
-static double			get_column_position(int map_width, int counter);
-static double			get_row_position(int map_width, int counter);
+static float			get_column_position(int map_width, int counter);
+static float			get_row_position(int map_width, int counter);
 
 void	assign_coordinates_bonus(void)
 {
@@ -35,14 +35,14 @@ void	assign_coordinates_bonus(void)
 	assign_coordinate_z();
 }
 
-static inline double	get_column_position(int map_width, int counter)
+static inline float	get_column_position(int map_width, int counter)
 {
 	return (counter % map_width);
 }
 
-static inline double	get_row_position(int map_width, int counter)
+static inline float	get_row_position(int map_width, int counter)
 {
-	return ((int)((double)counter / map_width));
+	return ((int)((float)counter / map_width));
 }
 
 static inline void	assign_coordinate_z(void)

@@ -42,9 +42,9 @@ void	linear_transformations(t_data *d, t_matrix *rotation_matrix)
 static void	transform_a_point(t_point *old, t_matrix *m, t_data *d)
 {
 	t_point	*p;
-	double	cx;
-	double	cy;
-	double	cz;
+	float	cx;
+	float	cy;
+	float	cz;
 
 	p = &(t_point){
 		1,
@@ -65,7 +65,7 @@ static void	transform_a_point(t_point *old, t_matrix *m, t_data *d)
 
 static void	calculate_z_scale(t_data *d)
 {
-	double	z_range;
+	float	z_range;
 
 	z_range = d->map->max_z - d->map->min_z;
 	d->scale_z = 5 / (z_range / 10);

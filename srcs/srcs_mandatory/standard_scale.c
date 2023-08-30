@@ -24,7 +24,7 @@ void	standard_scale(t_data *d, short size)
 
 static void	calculate_target_scaled_map_size(t_map *map, short size)
 {
-	map->ratio = (double)map->width / (double)map->height;
+	map->ratio = (float)map->width / (float)map->height;
 	if (map->ratio > 1)
 	{
 		map->target_width = size;
@@ -39,11 +39,11 @@ static void	calculate_target_scaled_map_size(t_map *map, short size)
 
 static void	get_values_to_centralize_img_on_window(t_data *d)
 {
-	double	map_w;
-	double	map_h;
-	double	win_w;
-	double	win_h;
-	double	magic_factor;
+	float	map_w;
+	float	map_h;
+	float	win_w;
+	float	win_h;
+	float	magic_factor;
 
 	map_w = d->map->width;
 	map_h = d->map->height;
@@ -53,7 +53,7 @@ static void	get_values_to_centralize_img_on_window(t_data *d)
 	if (magic_factor > 10)
 		magic_factor /= 10;
 	if (map_h > map_w)
-		ft_swap(&map_h, &map_w, sizeof(double));
+		ft_swap(&map_h, &map_w, sizeof(float));
 	d->move_x += ((win_w - map_w * d->scale) / 2);
 	if (d->map->ratio == 1 || (d->map->ratio >= 0.95 && d->map->ratio <= 1.05))
 		d->move_y += (win_h - map_h * d->scale) / 2;

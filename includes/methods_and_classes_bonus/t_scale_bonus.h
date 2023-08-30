@@ -26,13 +26,13 @@ static void			create_t_scale(void) __attribute__((unused));
 
 typedef struct s_sc
 {
-	double			default_scale;
-	double			altitude_factor;
-	double			menu_width;
-	double			win_hght;
-	double			win_wdth;
-	double			win_factor;
-	double			size_factor;
+	float			default_scale;
+	float			altitude_factor;
+	float			menu_width;
+	float			win_hght;
+	float			win_wdth;
+	float			win_factor;
+	float			size_factor;
 	t_func_ptr		create_t_scale;
 	t_func_ptr		calculate_win_factor;
 }					t_scale;

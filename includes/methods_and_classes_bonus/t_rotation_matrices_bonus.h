@@ -21,16 +21,16 @@ static void			scale_z_up_tmp_stage(t_rm *m) __attribute__((unused));
 
 typedef struct s_vec
 {
-	double			a;
-	double			b;
-	double			c;
+	float			a;
+	float			b;
+	float			c;
 }					t_column;
 
 typedef struct s_row
 {
-	double			a;
-	double			b;
-	double			c;
+	float			a;
+	float			b;
+	float			c;
 }					t_row;
 
 typedef struct s_m

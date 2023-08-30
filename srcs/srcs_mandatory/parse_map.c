@@ -78,8 +78,8 @@ static void	make_t_point(t_data **d, t_split *t_split, int x, int y)
 {
 	int	hexcolor;
 
-	(*d)->map->arr[y][x].x = (double)x * (*d)->scale;
-	(*d)->map->arr[y][x].y = (double)y * (*d)->scale;
+	(*d)->map->arr[y][x].x = (float)x * (*d)->scale;
+	(*d)->map->arr[y][x].y = (float)y * (*d)->scale;
 	(*d)->map->arr[y][x].z = ft_atoi(t_split->str_arr[x]);
 	hexcolor = get_hex_color(t_split->str_arr[x]);
 	if (hexcolor)

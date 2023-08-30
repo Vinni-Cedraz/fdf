@@ -12,9 +12,9 @@
 
 #include "fdf_includes_bonus.h"
 
-static long			rgb_to_int(double r, double g, double b);
+static long			rgb_to_int(float r, float g, float b);
 static long			hsl_to_rgb(t_color *c);
-static int			get_color_wheel_sector_of_hue(double h);
+static int			get_color_wheel_sector_of_hue(float h);
 static void			compute_color_gradient(t_point *p);
 
 void	colorize_points_bonus(void)
@@ -50,8 +50,8 @@ static inline void	compute_color_gradient(t_point *p)
 static inline long	hsl_to_rgb(t_color *c)
 {
 	int		i;
-	double	fractional;
-	double	p_color;
+	float	fractional;
+	float	p_color;
 
 	i = get_color_wheel_sector_of_hue(c->hsl.h);
 	fractional = (c->hsl.h / 60 - i);
@@ -63,12 +63,12 @@ static inline long	hsl_to_rgb(t_color *c)
 	return (p_color);
 }
 
-static inline int	get_color_wheel_sector_of_hue(double h)
+static inline int	get_color_wheel_sector_of_hue(float h)
 {
 	return ((int)floor(h / 60) % 6);
 }
 
-static inline long	rgb_to_int(double r, double g, double b)
+static inline long	rgb_to_int(float r, float g, float b)
 {
 	long	red;
 	long	green;

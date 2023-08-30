@@ -30,8 +30,8 @@ void	calculate_default_scale_bonus(void)
 
 static inline void	set_target_width(void)
 {
-	double	*target;
-	double	real_width;
+	float	*target;
+	float	real_width;
 	t_data	*d;
 
 	d = get_data();
@@ -50,7 +50,7 @@ static inline void	calculate_default_scale(void)
 
 static inline void	calculate_size_factor(void)
 {
-	double			*result;
+	float			*result;
 	t_interpolation	inter;
 
 	inter.interpolate = &interpolate_linear;

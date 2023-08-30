@@ -23,34 +23,34 @@ typedef struct s_pt	t_point;
 
 typedef struct s_phere
 {
-	double			phi;
-	double			theta;
-	double			rho;
+	float			phi;
+	float			theta;
+	float			rho;
 }					t_sphere;
 
 typedef struct s_raw
 {
-	double			x;
-	double			y;
-	double			z;
+	float			x;
+	float			y;
+	float			z;
 }					t_raw;
 
 typedef struct s_origin
 {
-	double			x;
-	double			y;
-	double			z;
-	double			zoom_x;
-	double			zoom_y;
-	double			zoom_z;
+	float			x;
+	float			y;
+	float			z;
+	float			zoom_x;
+	float			zoom_y;
+	float			zoom_z;
 	t_raw			raw;
 }					t_snapshot;
 
 typedef struct s_pt
 {
-	double			x;
-	double			y;
-	double			z;
+	float			x;
+	float			y;
+	float			z;
 	long			color;
 	t_sphere		ball;
 	t_snapshot		ol;

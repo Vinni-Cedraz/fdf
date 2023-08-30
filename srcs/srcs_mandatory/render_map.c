@@ -47,8 +47,8 @@ static void	render_line(t_point p1, t_point p2, t_data *d)
 		line.steps = abs(line.dx);
 	else
 		line.steps = abs(line.dy);
-	line.x_inc = line.dx / (double)line.steps;
-	line.y_inc = line.dy / (double)line.steps;
+	line.x_inc = line.dx / (float)line.steps;
+	line.y_inc = line.dy / (float)line.steps;
 	line.x = p1.x + d->move_x;
 	line.y = p1.y + d->move_y;
 	while (line.steps--)

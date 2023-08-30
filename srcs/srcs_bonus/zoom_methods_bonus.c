@@ -14,8 +14,8 @@
 
 inline void	zoom_in_method(void)
 {
-	double	centered_origin_x;
-	double	centered_origin_y;
+	float	centered_origin_x;
+	float	centered_origin_y;
 	t_n		*tmp;
 	t_d		*d;
 
@@ -33,8 +33,8 @@ inline void	zoom_in_method(void)
 
 inline void	zoom_out_method(void)
 {
-	double	centered_origin_x;
-	double	centered_origin_y;
+	float	centered_origin_x;
+	float	centered_origin_y;
 	t_n		*tmp;
 	t_d		*d;
 

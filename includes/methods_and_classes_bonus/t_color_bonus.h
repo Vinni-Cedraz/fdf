@@ -23,32 +23,32 @@ static void				create_rgb_map(t_color *c) __attribute__((unused));
 
 typedef struct s_hsl
 {
-	double				h;
-	double				s;
-	double				l;
+	float				h;
+	float				s;
+	float				l;
 }						t_hsl;
 
 typedef struct s_rgb
 {
-	double				r;
-	double				g;
-	double				b;
+	float				r;
+	float				g;
+	float				b;
 }						t_rgb;
 
 typedef struct s_compute
 {
-	double	normalized_z;
+	float	normalized_z;
 	int		index;
-	double	interpol;
+	float	interpol;
 	t_hsl	hsl_low;
 	t_hsl	hsl_high;
 }						t_compute_color;
 
 typedef struct s_color
 {
-	double				base;
-	double				shaded;
-	double				tinted;
+	float				base;
+	float				shaded;
+	float				tinted;
 	t_rgb				rgb_map[6];
 	t_hsl				hsl_map[6];
 	t_hsl				hsl;

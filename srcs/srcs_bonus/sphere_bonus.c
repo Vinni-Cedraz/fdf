@@ -16,8 +16,8 @@ static void			update_state_after_spherical(void);
 
 void	get_phi_and_theta(t_point *point)
 {
-	double	spread_points_vertically;
-	double	spread_points_horizontally;
+	float	spread_points_vertically;
+	float	spread_points_horizontally;
 
 	get_data()->map->set_radius();
 	spread_points_horizontally = PI * 2 / (get_data()->map->width - 1);
@@ -71,8 +71,8 @@ static inline void	update_state_after_spherical(void)
 	first++;
 	d = get_data();
 	d->state = spherical;
-	d->offset->move_x = (double)WIN_WDTH / 2 + (double)d->scale->menu_width / 2;
-	d->offset->move_y = (double)WIN_HGHT / 2;
+	d->offset->move_x = (float)WIN_WDTH / 2 + (float)d->scale->menu_width / 2;
+	d->offset->move_y = (float)WIN_HGHT / 2;
 	if (first == 1)
 	{
 		get_xyz_range_bonus();

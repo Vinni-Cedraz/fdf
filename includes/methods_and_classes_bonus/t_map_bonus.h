@@ -27,17 +27,17 @@ static void				set_radius(void) __attribute__((unused));
 
 typedef struct s_ba
 {
-	double				center_x;
-	double				center_y;
-	double				center_z;
-	double				delta;
+	float				center_x;
+	float				center_y;
+	float				center_z;
+	float				delta;
 }						t_ball;
 
 typedef struct s_ctr
 {
-	double				x;
-	double				y;
-	double				z;
+	float				x;
+	float				y;
+	float				z;
 }						t_center;
 
 typedef struct s_mp
@@ -45,20 +45,20 @@ typedef struct s_mp
 	int					has_hexcolor;
 	int					is_vertical;
 	int					is_plateau;
-	double				width;
-	double				height;
+	float				width;
+	float				height;
 	size_t				size;
-	double				max_z;
-	double				min_z;
-	double				max_x;
-	double				min_x;
-	double				max_y;
-	double				min_y;
-	double				initial_max_z;
-	double				target_width;
-	double				target_height;
-	double				ratio;
-	double				radius;
+	float				max_z;
+	float				min_z;
+	float				max_x;
+	float				min_x;
+	float				max_y;
+	float				min_y;
+	float				initial_max_z;
+	float				target_width;
+	float				target_height;
+	float				ratio;
+	float				radius;
 	t_ball				ball;
 	t_n					*pts;
 	t_point				***arr;
@@ -81,8 +81,8 @@ static inline void	get_map_center(void)
 static inline void	set_radius(void)
 {
 	t_data	*d;
-	double	ball_sz_factor;
-	double	map_sz;
+	float	ball_sz_factor;
+	float	map_sz;
 
 	d = get_data();
 	map_sz = d->map->size;

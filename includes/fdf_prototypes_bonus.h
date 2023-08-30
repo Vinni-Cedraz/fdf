@@ -34,9 +34,9 @@ typedef void			(*t_func_ptr)(void);
 
 typedef struct s_tmps
 {
-	double				x;
-	double				y;
-	double				z;
+	float				x;
+	float				y;
+	float				z;
 }						t_emporary;
 
 // FUNCTION PROTOTYPES //
