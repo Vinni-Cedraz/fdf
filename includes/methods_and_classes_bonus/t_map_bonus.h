@@ -88,7 +88,7 @@ static inline void	set_radius(void)
 	map_sz = d->map->size;
 	ball_sz_factor = d->scale->size_factor;
 	if (ball_sz_factor > 1.6)
-		ball_sz_factor = 1.6;
+		ball_sz_factor = 1.2;
 	if (ball_sz_factor < 0.417)
 		ball_sz_factor = 0.1;
 	d->map->radius = sqrt((map_sz / ball_sz_factor) / (PI * ball_sz_factor));

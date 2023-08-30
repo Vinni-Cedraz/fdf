@@ -35,7 +35,8 @@
 // 120 in RADS:
 # define RAD_120 2.094
 // 2 degrees in RADS:
-# define RAD 0.034
+# define RAD 0.0349
+
 // redefinition of M_PI for ease of read
 # define PI M_PI
 
