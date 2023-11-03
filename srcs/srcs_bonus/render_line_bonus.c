@@ -13,56 +13,57 @@
 #include "fdf_includes_bonus.h"
 
 static int			is_dark_side_of_a_sphere(t_point *p, t_point *p2);
-static void			move_line(t_line *line);
-static void			put_pixel(t_img *img, t_line l, t_ui color);
+static void			put_pixel(t_img *img, t_line *l, t_uint color);
 int					max_steps(int dx, int dy);
+static void			low_line(t_line *line);
+static void			steep_line(t_line *line);
 
 // lcolor and init_ln are methods defined in t_line_bonus.h
 void	render_line_bonus(t_point *p1, t_point *p2)
 {
-	t_line			line;
-	unsigned int	color;
+	t_line	line;
 
 	if (is_dark_side_of_a_sphere(p1, p2))
 		return ;
-	lcolor(p1, p2, &color);
 	line = init_ln(p1, p2);
-	while (line.steps--)
+	if (abs(line.delta_x) > abs(line.delta_y))
+		low_line(&line);
+	else
+		steep_line(&line);
+}
+
+static void	low_line(t_line *line)
+{
+	while (line->delta_x-- >= 0)
 	{
-		put_pixel(get_data()->img, line, color);
-		move_line(&line);
+		put_pixel(get_data()->img, line, line->color);
+		line->y += line->slope;
+		line->x++;
 	}
 }
 
-static void	put_pixel(t_img *img, t_line l, t_ui color)
+static void	steep_line(t_line *line)
+{
+	while (line->delta_y-- >= 0)
+	{
+		put_pixel(get_data()->img, line, line->color);
+		line->x += line->slope;
+		line->y++;
+	}
+}
+
+static void	put_pixel(t_img *img, t_line *l, t_uint color)
 {
 	char	*ptr_to_color;
 	int		y_offset;
 	int		x_offset;
 
-	y_offset = (int)l.y * img->line_len;
-	x_offset = (int)l.x * (img->bpp / 8);
-	if (l.x < 0 || l.x >= img->width || l.y < 0 || l.y >= img->height)
+	y_offset = (int)l->y * img->line_len;
+	x_offset = (int)l->x * (img->bpp / 8);
+	if (l->x < 0 || l->x >= img->width || l->y < 0 || l->y >= img->height)
 		return ;
 	ptr_to_color = img->addr + y_offset + x_offset;
 	*(unsigned int *)ptr_to_color = color;
-}
-
-inline int	max_steps(int dx, int dy)
-{
-	int	steps;
-
-	if (abs(dx) > abs(dy))
-		steps = abs(dx);
-	else
-		steps = abs(dy);
-	return (steps);
-}
-
-static inline void	move_line(t_line *line)
-{
-	line->x += line->x_inc;
-	line->y += line->y_inc;
 }
 
 static inline int	is_dark_side_of_a_sphere(t_point *p, t_point *p2)

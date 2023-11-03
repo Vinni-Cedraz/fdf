@@ -18,20 +18,18 @@
 # include <math.h>
 
 typedef struct s_l		t_ln;
-static t_ln				init_ln(t_p *p1, t_p *p2) __attribute__((unused));
-static void				lcolor(t_p *p1, t_p *p2,
-							t_ui *c) __attribute__((unused));
+static t_ln			init_ln(t_p *p1, t_p *p2) __attribute__((unused));
+static void			lcolor(t_p *p1, t_p *p2, t_ui *c) __attribute__((unused));
 
 typedef struct s_l
 {
 	float				x;
 	float				y;
-	float				x_inc;
-	float				y_inc;
-	float				delta_x;
-	float				delta_y;
+	t_point				tmp;
+	float				slope;
+	int					delta_x;
+	int					delta_y;
 	unsigned int		color;
-	float				steps;
 }						t_line;
 
 static void	lcolor(t_point *p1, t_point *p2, t_ui *color)
@@ -50,11 +48,13 @@ static inline t_line	init_ln(t_point *p1, t_point *p2)
 
 	line.delta_x = p2->x - p1->x;
 	line.delta_y = p2->y - p1->y;
-	line.steps = max_steps(line.delta_x, line.delta_y);
-	line.x_inc = line.delta_x / line.steps;
-	line.y_inc = line.delta_y / line.steps;
-	line.x = p1->x + get_data()->offset->move_x;
-	line.y = p1->y + get_data()->offset->move_y;
+	if (abs(line.delta_x) > abs(line.delta_y))
+		line.slope = (float)line.delta_y / line.delta_x;
+	else
+		line.slope = (float)line.delta_x / line.delta_y;
+	lcolor(p1, p2, &line.color);
+	line.x = p1->x;
+	line.y = p1->y;
 	return (line);
 }
 

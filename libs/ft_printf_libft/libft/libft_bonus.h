@@ -16,7 +16,7 @@
 # include "libft.h"
 
 typedef struct s_nodes	t_node;
-typedef unsigned int	t_ui;
+typedef unsigned int	t_uint;
 
 typedef struct s_nodes
 {
@@ -42,11 +42,11 @@ int						ft_lstsize(t_node *first_node);
 // ft_lst_print prints the content of a list
 void					ft_lstprint(t_node **lst);
 // adds a node at a specific position in the list and returns a pointer to it
-t_node					*ft_lstadd_here(t_node **lst, t_node *n, t_ui index);
+t_node					*ft_lstadd_here(t_node **lst, t_node *n, t_uint index);
 // del a node at a given index
-void					ft_lstdel_here(t_node **lst, t_ui index);
+void					ft_lstdel_here(t_node **lst, t_uint index);
 // returns a pointer to the node at the index position in the list
-t_node					*ft_lstgetby_index(t_node *lst, t_ui index);
+t_node					*ft_lstgetby_index(t_node *lst, t_uint index);
 // returns the index at which a given content is found within a list
 int						ft_lstgetby_content(t_node *lst, void *content);
 // frees the first node of a list
