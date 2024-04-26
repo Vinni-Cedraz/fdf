@@ -1,2 +1,5 @@
 
 
+[submodule "map_generator_fdf"]
+	path = map_generator_fdf
+	url = https://github.com/ArthurSobreira/map_generator_fdf.git
